@@ -1,0 +1,24 @@
+{
+    "name": "coderbyte-multiple-choice-consolidated",
+    "version": "1.0.0",
+    "description": "Consolidated Coderbyte-style Multiple Choice Assessment Platform - Dynamic test selection",
+    "main": "server.js",
+    "scripts": {
+        "dev": "node server.js",
+        "start": "node server.js"
+    },
+    "keywords": [
+        "javascript",
+        "assessment",
+        "multiple-choice",
+        "coderbyte",
+        "interview-prep",
+        "consolidated"
+    ],
+    "author": "",
+    "license": "MIT",
+    "dependencies": {
+        "express": "^4.21.2",
+        "open": "^8.4.2"
+    }
+}

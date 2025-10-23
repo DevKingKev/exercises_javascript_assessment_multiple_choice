@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiple Choice Assessment Platform</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Multiple Choice Assessment Platform</h1>
+            <p>Choose your difficulty level and test to begin</p>
+        </header>
+
+        <!-- Test Selection Screen -->
+        <div id="test-selection" class="screen active">
+            <div class="difficulty-section">
+                <h2>Select Difficulty Level</h2>
+                <div class="difficulty-buttons">
+                    <button class="difficulty-btn active" data-difficulty="easy">Easy</button>
+                    <button class="difficulty-btn" data-difficulty="medium">Medium</button>
+                    <button class="difficulty-btn" data-difficulty="hard">Hard</button>
+                </div>
+            </div>
+
+            <div class="test-list">
+                <h3>Available Tests</h3>
+                <div id="tests-container">
+                    <!-- Tests will be dynamically loaded here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Assessment Screen -->
+        <div id="assessment" class="screen">
+            <div class="assessment-header">
+                <div class="test-info">
+                    <h2 id="test-title">Test Title</h2>
+                    <p id="test-description">Test description</p>
+                </div>
+                <div class="progress-info">
+                    <div class="question-counter">
+                        Question <span id="current-question">1</span> of <span id="total-questions">20</span>
+                    </div>
+                    <div class="timer">
+                        Time: <span id="timer-display">30:00</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill"></div>
+            </div>
+
+            <!-- Question Grid Navigation -->
+            <div class="question-grid-section">
+                <h4>Question Navigation</h4>
+                <div class="question-grid" id="question-grid">
+                    <!-- Question buttons will be dynamically generated -->
+                </div>
+                <div class="grid-legend">
+                    <div class="legend-item">
+                        <div class="legend-circle current"></div>
+                        <span>Current</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-circle answered"></div>
+                        <span>Answered</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-circle unanswered"></div>
+                        <span>Unanswered</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="question-container">
+                <h3 id="question-text">Question will appear here</h3>
+                <div class="options-container" id="options-container">
+                    <!-- Options will be dynamically generated -->
+                </div>
+            </div>
+
+            <div class="navigation-buttons">
+                <button id="prev-btn" class="nav-btn" disabled>Previous</button>
+                <button id="next-btn" class="nav-btn">Next</button>
+                <button id="submit-btn" class="submit-btn hidden">Submit Test</button>
+            </div>
+        </div>
+
+        <!-- Results Screen -->
+        <div id="results" class="screen">
+            <div class="results-header">
+                <h2>Test Results</h2>
+                <div class="score-display">
+                    <div class="score-circle">
+                        <span id="score-percentage">0%</span>
+                    </div>
+                    <div class="score-details">
+                        <p>You scored <span id="correct-answers">0</span> out of <span id="total-answers">0</span></p>
+                        <p class="time-taken">Time taken: <span id="time-taken">0:00</span></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="performance-breakdown">
+                <h3>Performance by Topic</h3>
+                <div id="topic-breakdown">
+                    <!-- Topic breakdown will be generated here -->
+                </div>
+            </div>
+
+            <div class="question-review">
+                <h3>Question Review</h3>
+                <div id="review-container">
+                    <!-- Detailed review will be generated here -->
+                </div>
+            </div>
+
+            <div class="results-actions">
+                <button id="retake-btn" class="action-btn">Retake Test</button>
+                <button id="new-test-btn" class="action-btn">Choose New Test</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

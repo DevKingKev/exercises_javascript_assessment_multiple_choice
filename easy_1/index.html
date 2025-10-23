@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coderbyte Assessment - Easy Level 1</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div id="app">
+        <!-- Start Screen -->
+        <div id="start-screen" class="screen active">
+            <div class="container">
+                <h1>Coderbyte Assessment</h1>
+                <h2>Easy Level - Test 1</h2>
+                <div class="test-info">
+                    <p><strong>Questions:</strong> 17</p>
+                    <p><strong>Time Limit:</strong> 30 minutes</p>
+                    <p><strong>Difficulty:</strong> Easy</p>
+                </div>
+                <div class="instructions">
+                    <h3>Instructions:</h3>
+                    <ul>
+                        <li>Write JavaScript functions to solve each problem</li>
+                        <li>You can test your code with the provided test cases</li>
+                        <li>Each question has multiple test cases that must pass</li>
+                        <li>You can move between questions freely</li>
+                        <li>Your progress is automatically saved</li>
+                    </ul>
+                </div>
+                <button id="start-btn" class="btn btn-primary">Start Assessment</button>
+            </div>
+        </div>
+
+        <!-- Assessment Screen -->
+        <div id="assessment-screen" class="screen">
+            <div class="header">
+                <div class="header-left">
+                    <h2>Question <span id="current-question">1</span> of 17</h2>
+                </div>
+                <div class="header-center">
+                    <div class="progress-bar">
+                        <div id="progress-fill" class="progress-fill"></div>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <div id="timer" class="timer">30:00</div>
+                </div>
+            </div>
+
+            <div class="main-content">
+                <div class="question-nav">
+                    <div id="question-buttons" class="question-buttons"></div>
+                </div>
+
+                <div class="question-area">
+                    <div id="question-content" class="question-content">
+                        <!-- Question content will be loaded here -->
+                    </div>
+
+                    <div class="code-area">
+                        <div class="code-header">
+                            <span>Your Solution:</span>
+                            <button id="test-code-btn" class="btn btn-secondary">Test Code</button>
+                        </div>
+                        <textarea id="code-editor" class="code-editor"
+                            placeholder="Write your function here..."></textarea>
+                        <div id="test-results" class="test-results"></div>
+                    </div>
+                </div>
+
+                <div class="navigation">
+                    <button id="prev-btn" class="btn btn-secondary">Previous</button>
+                    <button id="next-btn" class="btn btn-primary">Next</button>
+                    <button id="finish-btn" class="btn btn-success" style="display: none;">Finish Assessment</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Results Screen -->
+        <div id="results-screen" class="screen">
+            <div class="container">
+                <h1>Assessment Complete!</h1>
+                <div id="score-summary" class="score-summary">
+                    <!-- Score will be displayed here -->
+                </div>
+                <div id="detailed-results" class="detailed-results">
+                    <!-- Detailed results will be displayed here -->
+                </div>
+                <button id="restart-btn" class="btn btn-primary">Take Assessment Again</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="questions.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>

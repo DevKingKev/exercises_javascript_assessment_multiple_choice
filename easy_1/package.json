@@ -1,0 +1,28 @@
+{
+    "name": "coderbyte-assessment-easy-1",
+    "version": "1.0.0",
+    "description": "A self-contained Coderbyte-style assessment application with 17 easy-level programming questions",
+    "main": "server.js",
+    "scripts": {
+        "dev": "node server.js",
+        "start": "node server.js",
+        "test": "echo \"No tests specified\" && exit 0"
+    },
+    "keywords": [
+        "coderbyte",
+        "assessment",
+        "javascript",
+        "programming",
+        "interview",
+        "practice"
+    ],
+    "author": "Kevin",
+    "license": "MIT",
+    "devDependencies": {
+        "express": "^4.21.2",
+        "open": "^8.4.2"
+    },
+    "engines": {
+        "node": ">=14.0.0"
+    }
+}
