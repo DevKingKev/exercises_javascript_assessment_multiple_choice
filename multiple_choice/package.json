@@ -6,13 +6,11 @@
     "scripts": {
         "build": "tsc -p tsconfig.client.json && tsc -p tsconfig.server.json",
         "build:watch": "tsc --watch",
-        "dev": "npm run build && node server.js",
-        "dev:ts": "npm run build && node dist/src/server.js",
-        "dev:watch": "concurrently \"npm run build:watch\" \"nodemon server.js\"",
-        "dev:watch:ts": "concurrently \"npm run build:watch\" \"nodemon dist/src/server.js\"",
-        "start": "npm run build && node server.js",
-        "start:ts": "npm run build && node dist/server-ts.js",
-        "type-check": "tsc --noEmit"
+        "dev": "npm run build && node dist/server.js",
+        "dev:watch": "concurrently \"npm run build:watch\" \"nodemon dist/server.js\"",
+        "start": "npm run build && node dist/server.js",
+        "type-check": "tsc --noEmit",
+        "clean": "rm -rf dist/"
     },
     "keywords": [
         "typescript",

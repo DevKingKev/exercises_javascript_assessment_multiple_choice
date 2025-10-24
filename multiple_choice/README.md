@@ -39,17 +39,30 @@ A comprehensive multiple choice assessment platform built with TypeScript, featu
 
 ## Installation & Usage
 
+### Quick Start
+
 1. Install dependencies:
-```bash
-npm install
-```
+
+   ```bash
+   npm install
+   ```
 
 2. Build and start the TypeScript server:
-```bash
-npm run start
-```
 
-3. Open your browser to: http://localhost:3001
+   ```bash
+   npm start
+   ```
+
+3. Open your browser to: <http://localhost:3001>
+
+### Development Commands
+
+- **Build TypeScript**: `npm run build` - Compiles TypeScript to JavaScript
+- **Development Mode**: `npm run dev` - Build and run once  
+- **Watch Mode**: `npm run dev:watch` - Auto-rebuild and restart on file changes
+- **Type Check**: `npm run type-check` - Validate TypeScript without compilation
+- **Clean Build**: `npm run clean` - Remove compiled dist folder
+- **Build Watch**: `npm run build:watch` - Continuous TypeScript compilation
 
 ## Adding New Tests
 
@@ -93,14 +106,13 @@ The server will automatically detect and serve the new test.
 
 ## File Structure
 
-```
+```text
 multiple_choice/
-├── src/
-│   ├── app.ts          # TypeScript main application logic
-│   └── server.ts       # TypeScript Express server
+├── app.ts              # TypeScript main application logic
+├── server.ts           # TypeScript Express server  
 ├── types/
 │   └── index.ts        # TypeScript interface definitions
-├── dist/               # Compiled JavaScript output
+├── dist/               # Compiled JavaScript output (auto-generated)
 ├── tests/
 │   ├── easy/
 │   │   ├── test1.js    # JavaScript Fundamentals
@@ -109,11 +121,13 @@ multiple_choice/
 │   │   └── test4.js    # Modern JavaScript & Programming Concepts
 │   ├── medium/         # Future medium tests
 │   └── hard/           # Future hard tests
-├── package.json        # Dependencies and scripts
-├── tsconfig.json       # TypeScript configuration
+├── tsconfig.json       # Base TypeScript configuration
+├── tsconfig.client.json # Client-side TypeScript config (ES2020)
+├── tsconfig.server.json # Server-side TypeScript config (CommonJS)
+├── package.json        # Dependencies and npm scripts
 ├── index.html          # Main application interface
 ├── styles.css          # Complete styling
-└── README.md
+└── README.md           # This file
 ```
 
 ## API Endpoints
