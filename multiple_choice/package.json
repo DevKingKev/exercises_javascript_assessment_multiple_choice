@@ -1,24 +1,39 @@
 {
-    "name": "coderbyte-multiple-choice-consolidated",
+    "name": "coderbyte-multiple-choice-typescript",
     "version": "1.0.0",
-    "description": "Consolidated Coderbyte-style Multiple Choice Assessment Platform - Dynamic test selection",
+    "description": "TypeScript Multiple Choice Assessment Platform - Dynamic test selection with type safety",
     "main": "server.js",
     "scripts": {
-        "dev": "node server.js",
-        "start": "node server.js"
+        "build": "tsc -p tsconfig.client.json && tsc -p tsconfig.server.json",
+        "build:watch": "tsc --watch",
+        "dev": "npm run build && node server.js",
+        "dev:ts": "npm run build && node dist/src/server.js",
+        "dev:watch": "concurrently \"npm run build:watch\" \"nodemon server.js\"",
+        "dev:watch:ts": "concurrently \"npm run build:watch\" \"nodemon dist/src/server.js\"",
+        "start": "npm run build && node server.js",
+        "start:ts": "npm run build && node dist/server-ts.js",
+        "type-check": "tsc --noEmit"
     },
     "keywords": [
+        "typescript",
         "javascript",
         "assessment",
         "multiple-choice",
         "coderbyte",
         "interview-prep",
-        "consolidated"
+        "type-safe"
     ],
     "author": "",
     "license": "MIT",
     "dependencies": {
         "express": "^4.21.2",
         "open": "^8.4.2"
+    },
+    "devDependencies": {
+        "@types/express": "^5.0.4",
+        "@types/node": "^22.8.1",
+        "concurrently": "^9.0.1",
+        "nodemon": "^3.1.7",
+        "typescript": "^5.6.3"
     }
 }

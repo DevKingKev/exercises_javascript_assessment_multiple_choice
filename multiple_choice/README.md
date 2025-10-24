@@ -1,18 +1,33 @@
-# Multiple Choice Assessment Platform
+# Multiple Choice Assessment Platform - TypeScript Edition
 
-A unified Coderbyte-style multiple choice assessment platform that dynamically loads different tests from modular resource files.
+A comprehensive multiple choice assessment platform built with TypeScript, featuring type safety, modern development practices, and comprehensive progress tracking.
 
 ## Features
 
-- **Dynamic Test Loading**: Tests are loaded from modular resource files
-- **Multiple Difficulty Levels**: Easy, Medium, Hard (expandable)
-- **Test Selection Interface**: Choose from available tests with descriptions
-- **Unified Assessment Engine**: Single codebase serves all tests
-- **Question Grid Navigation**: Visual progress grid for jumping to specific questions
-- **Comprehensive Results**: Detailed breakdown with explanations
-- **Responsive Design**: Works on desktop and mobile
-- **Timer System**: Visual countdown with warnings
-- **Progress Tracking**: Visual indicators and navigation
+### 🎯 Core Functionality
+- **Dynamic Test Selection**: Choose from multiple difficulty levels (Easy, Medium, Hard)
+- **Real-time Timer**: Configurable time limits with countdown display
+- **Interactive Navigation**: Question grid for easy navigation between questions
+- **Progress Tracking**: Visual progress indicators and completion status
+- **Detailed Results**: Comprehensive scoring with topic breakdown and question review
+
+### 📊 Progress Tracking System
+- **Persistent Local Storage**: All exam results saved locally for historical analysis
+- **Multi-level Organization**: Results organized by difficulty → test → individual attempts
+- **Performance Analytics**: Track improvement over time with detailed metrics
+- **Topic Analysis**: Identify areas needing improvement with topic-specific scoring
+- **Attempt History**: Complete history of all test attempts with timestamps and scores
+
+### 🌍 Internationalization
+- **Locale-aware Date Formatting**: Automatic locale detection with proper fallbacks
+- **Regional Date Formats**: Support for DD/MM/YYYY, MM/DD/YYYY, and other regional formats
+- **Time Display**: 12/24-hour format based on user locale preferences
+
+### 🔧 TypeScript Benefits
+- **Type Safety**: Comprehensive interfaces and type definitions
+- **Better Development Experience**: IntelliSense, auto-completion, and compile-time error checking
+- **Maintainable Code**: Clear contracts between components with strong typing
+- **Modern JavaScript**: Latest ES features with backward compatibility
 
 ## Current Tests
 
@@ -29,12 +44,12 @@ A unified Coderbyte-style multiple choice assessment platform that dynamically l
 npm install
 ```
 
-2. Start the development server:
+2. Build and start the TypeScript server:
 ```bash
-npm run dev
+npm run start
 ```
 
-3. Open your browser to: http://localhost:3005
+3. Open your browser to: http://localhost:3001
 
 ## Adding New Tests
 
@@ -80,19 +95,24 @@ The server will automatically detect and serve the new test.
 
 ```
 multiple_choice/
-├── package.json
-├── server.js           # Express server with API endpoints
-├── index.html          # Main application interface
-├── styles.css          # Complete styling
-├── app.js             # Assessment platform logic
+├── src/
+│   ├── app.ts          # TypeScript main application logic
+│   └── server.ts       # TypeScript Express server
+├── types/
+│   └── index.ts        # TypeScript interface definitions
+├── dist/               # Compiled JavaScript output
 ├── tests/
 │   ├── easy/
-│   │   ├── test1.js   # JavaScript Fundamentals
-│   │   ├── test2.js   # Advanced JavaScript Basics
-│   │   ├── test3.js   # JavaScript Methods & Operations
-│   │   └── test4.js   # Modern JavaScript & Programming Concepts
-│   ├── medium/        # Future medium tests
-│   └── hard/          # Future hard tests
+│   │   ├── test1.js    # JavaScript Fundamentals
+│   │   ├── test2.js    # Advanced JavaScript Basics
+│   │   ├── test3.js    # JavaScript Methods & Operations
+│   │   └── test4.js    # Modern JavaScript & Programming Concepts
+│   ├── medium/         # Future medium tests
+│   └── hard/           # Future hard tests
+├── package.json        # Dependencies and scripts
+├── tsconfig.json       # TypeScript configuration
+├── index.html          # Main application interface
+├── styles.css          # Complete styling
 └── README.md
 ```
 
@@ -103,9 +123,10 @@ multiple_choice/
 
 ## Technology Stack
 
-- **Backend**: Node.js + Express.js
-- **Frontend**: Vanilla JavaScript + CSS3
-- **Architecture**: API-driven with modular test loading
+- **Backend**: Node.js + Express.js with TypeScript
+- **Frontend**: TypeScript compiled to JavaScript + CSS3
+- **Build System**: TypeScript compiler with CommonJS modules
+- **Architecture**: API-driven with modular test loading and type safety
 
 ## Benefits
 
@@ -117,9 +138,11 @@ multiple_choice/
 
 ## Development
 
-- Port: 3005
-- Auto-reload: Manual (refresh browser after changes)
-- Test format: Node.js modules with metadata and questions
+- **Port**: 3001
+- **TypeScript Build**: `npm run build` or `npm run build:watch`
+- **Development Server**: `npm run dev:watch:ts` for hot reloading
+- **Test Format**: Node.js modules with metadata and questions
+- **Type Checking**: `npm run type-check` for validation
 
 ## Future Enhancements
 

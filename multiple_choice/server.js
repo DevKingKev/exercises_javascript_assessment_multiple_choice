@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
 const fs = require('fs');
-const open = require('open');
+// const open = require('open'); // Commented out to avoid issues
 
 const app = express();
 const PORT = 3001;
@@ -80,10 +80,29 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
 });
 
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
     console.log(`Multiple Choice Assessment Platform running at http://localhost:${PORT}`);
-    console.log('Opening browser automatically...');
+    console.log('Server ready for connections');
+    console.log('Press Ctrl+C to stop the server');
+});
 
-    // Automatically open the browser
-    open(`http://localhost:${PORT}`);
+server.on('error', (error) => {
+    console.error('Server error:', error);
+});
+
+process.on('SIGINT', () => {
+    console.log('\nReceived SIGINT, shutting down gracefully...');
+    server.close(() => {
+        process.exit(0);
+    });
+});
+
+process.on('uncaughtException', (error) => {
+    console.error('Uncaught Exception:', error);
+    process.exit(1);
+});
+
+process.on('unhandledRejection', (reason, promise) => {
+    console.error('Unhandled Rejection at:', promise, 'reason:', reason);
+    process.exit(1);
 });
