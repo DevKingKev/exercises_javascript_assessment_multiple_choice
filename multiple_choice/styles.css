@@ -813,7 +813,7 @@ header p {
 
 .test-header {
     display: flex;
-    justify-content: between;
+    justify-content: space-between;
     align-items: center;
     gap: 15px;
 }

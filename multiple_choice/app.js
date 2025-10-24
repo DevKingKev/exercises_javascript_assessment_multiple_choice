@@ -608,7 +608,7 @@ class AssessmentApp {
             <div class="attempts-history">
                 ${results.slice().reverse().map((result, index) => `
                     <div class="attempt-item">
-                        <div class="attempt-date">${new Date(result.date).toLocaleString()}</div>
+                        <div class="attempt-date">${this.formatDate(result.date)}</div>
                         <div class="attempt-details">
                             <div class="attempt-score">Score: ${result.correct}/${result.total} (${result.percentage}%)</div>
                             <div class="attempt-time">Time: ${result.timeTaken}</div>
@@ -659,6 +659,50 @@ class AssessmentApp {
             }
         });
         return improvementTopics;
+    }
+
+    formatDate (dateString) {
+        const date = new Date(dateString);
+
+        // Try to get the user's locale, fallback to 'en-GB' for DD/MM/YYYY format
+        let locale = navigator.language || navigator.userLanguage || 'en-GB';
+
+        // If locale is just "en", use "en-GB" for DD/MM/YYYY format
+        if (locale === 'en') {
+            locale = 'en-GB';
+        }
+
+        try {
+            // Format date part only
+            const dateOptions = {
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit'
+            };
+
+            // Format time part only
+            const timeOptions = {
+                hour: '2-digit',
+                minute: '2-digit',
+                hour12: true
+            };
+
+            const datePart = date.toLocaleDateString(locale, dateOptions);
+            const timePart = date.toLocaleTimeString(locale, timeOptions);
+
+            return `${datePart}, ${timePart}`;
+        } catch (error) {
+            // Fallback to DD/MM/YYYY, HH:MM AM/PM format
+            const day = date.getDate().toString().padStart(2, '0');
+            const month = (date.getMonth() + 1).toString().padStart(2, '0');
+            const year = date.getFullYear();
+            const hours = date.getHours();
+            const minutes = date.getMinutes().toString().padStart(2, '0');
+            const ampm = hours >= 12 ? 'PM' : 'AM';
+            const displayHours = hours % 12 || 12;
+
+            return `${day}/${month}/${year}, ${displayHours}:${minutes} ${ampm}`;
+        }
     }
 }
 
