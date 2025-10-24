@@ -4,7 +4,7 @@
 
 This document contains the complete context for the Coderbyte-style assessment applications built during our development session. The project includes multiple assessment formats designed to mimic Coderbyte's interview preparation platform.
 
-**Latest Update**: Multiple Choice Assessment Platform has been migrated to TypeScript with comprehensive type safety and modern development practices.
+**Latest Update**: Multiple Choice Assessment Platform has been migrated to **Vite + TypeScript** with modern build tooling, hot module replacement, and improved development workflow.
 
 ## Current Directory Structure
 
@@ -20,12 +20,23 @@ This document contains the complete context for the Coderbyte-style assessment a
 │   ├── app.js                       # Assessment logic for coding
 │   ├── README.md
 │   └── node_modules/
-└── multiple_choice/                 # Consolidated Multiple Choice Platform
+└── multiple_choice/                 # Consolidated Multiple Choice Platform (Vite + TypeScript)
     ├── package.json
-    ├── server.js                    # Express server (port 3001)
-    ├── index.html
-    ├── styles.css
-    ├── app.js                       # Unified assessment platform logic
+    ├── server.ts                    # TypeScript Express server (port 3001)
+    ├── src/
+    │   └── main.ts                  # Vite client entry point (TypeScript)
+    ├── dist/
+    │   ├── public/                  # Vite build output (client assets)
+    │   └── server.js                # Compiled server (CommonJS)
+    ├── scripts/
+    │   └── dev-runner.js            # Development orchestration script
+    ├── vite.config.ts               # Vite configuration
+    ├── tsconfig.json                # Base TypeScript configuration
+    ├── tsconfig.client.json         # Client TypeScript config (ES2020 modules)
+    ├── tsconfig.server.json         # Server TypeScript config (CommonJS)
+    ├── index.html                   # HTML entry with dynamic loader
+    ├── app.ts                       # Legacy compatibility shim
+    ├── styles.css                   # Application styles
     ├── tests/
     │   ├── easy/
     │   │   ├── test1.js             # JavaScript Fundamentals (20 questions)
@@ -81,12 +92,14 @@ npm install
 npm run dev  # Starts on http://localhost:3001
 ```
 
-## Application 2: TypeScript Multiple Choice Platform (multiple_choice)
+## Application 2: Vite + TypeScript Multiple Choice Platform (multiple_choice)
 
 ### Description
-A unified assessment platform built with TypeScript that dynamically loads different multiple choice tests from modular resource files. This consolidates all multiple choice functionality into a single scalable application with comprehensive type safety, where tests are stored as data files rather than separate applications.
+A unified assessment platform built with **Vite and TypeScript** that dynamically loads different multiple choice tests from modular resource files. This consolidates all multiple choice functionality into a single scalable application with comprehensive type safety, modern build tooling, hot module replacement (HMR), and an optimized development workflow. Tests are stored as data files rather than separate applications.
 
 ### Key Features
+- **Modern Build System**: Vite for fast HMR and optimized production builds
+- **Development Proxy Architecture**: Express server proxies to Vite in dev mode for seamless development
 - **Dynamic test loading** from modular resource files
 - **Question grid navigation** with visual progress indicators for jumping to specific questions
 - **Test selection interface** with difficulty levels and topic descriptions
@@ -95,9 +108,63 @@ A unified assessment platform built with TypeScript that dynamically loads diffe
 - **Unified timer system** with visual warnings
 - **Comprehensive results** with detailed explanations and topic breakdown
 - **Scalable structure** for easy addition of new tests
+- **Hot Module Replacement**: Instant updates during development without full page reloads
 
-### Test Structure
-The platform uses a modular file structure for tests:
+### Architecture Overview
+
+#### Development Mode
+```
+npm run dev
+  ↓
+dev-runner.js orchestrates:
+  1. tsc --watch (server: tsconfig.server.json → dist/server.js)
+  2. vite dev server (client: port 5173 with HMR)
+  3. node dist/server.js (Express on port 3001)
+     ↓
+Express proxies non-/api requests → Vite (port 5173)
+API routes handled by Express directly
+Browser accesses: http://localhost:3001
+```
+
+#### Production Build
+```
+npm run build
+  ↓
+1. tsc -p tsconfig.server.json → dist/server.js (CommonJS)
+2. vite build → dist/public/ (optimized client bundle)
+  ↓
+npm start
+  ↓
+Express serves static files from dist/public/
+Browser accesses: http://localhost:3001
+```
+
+### Technical Implementation
+- **Build Tool**: Vite 5.x for fast development and optimized production builds
+- **Server**: Express.js with TypeScript on port 3001
+- **Client**: TypeScript (ES2020 modules) compiled via Vite
+- **Development Server**: Vite dev server on port 5173 (proxied through Express)
+- **Dev Orchestration**: Custom script (`scripts/dev-runner.js`) manages:
+  - TypeScript watch compilation for server
+  - Vite dev server with HMR
+  - Express server with dynamic proxy
+  - Automatic restarts on server code changes
+- **Proxy Middleware**: `http-proxy-middleware` for dev mode routing
+- **Type Definitions**: Comprehensive interfaces for all data structures
+- **API Endpoints**:
+  - `GET /api/tests` - List all available tests by difficulty
+  - `GET /api/test/:difficulty/:testId` - Load specific test data
+- **Test Format**: Node.js modules exporting typed metadata and questions
+- **Dynamic Loading**: Type-safe tests loaded on-demand via fetch API calls
+- **Modular Architecture**: Easy to add new tests without code changes
+
+### Development Workflow Improvements
+- **Fast HMR**: Vite provides instant hot module replacement for client code
+- **Automatic Restarts**: Server restarts automatically when TypeScript server code changes
+- **Single Command**: `npm run dev` starts everything with one command
+- **Port Management**: Browser URL stays on port 3001; Vite runs internally on 5173
+- **No MIME Errors**: Proper proxying ensures correct content types for all resources
+- **Polling-based File Watching**: Avoids system file watcher limits (EMFILE errors)
 ```
 tests/
 ├── easy/
@@ -190,20 +257,41 @@ module.exports = { metadata, questions };
 
 ### Launch Instructions
 
+#### Development Mode (with HMR)
+
 ```bash
 cd /home/kevin/vhosts/lab/coderbyte/multiple_choice
 npm install
-npm start  # Builds TypeScript and starts on http://localhost:3001
+npm run dev  # Starts dev-runner, Vite, and Express on http://localhost:3001
+```
+
+This single command orchestrates:
+
+- TypeScript watch compilation for server code
+- Vite dev server with hot module replacement
+- Express server with proxy to Vite
+- Automatic restarts on server changes
+
+#### Production Build
+
+```bash
+cd /home/kevin/vhosts/lab/coderbyte/multiple_choice
+npm install
+npm run build  # Compile TypeScript and build with Vite
+npm start      # Serve production build on http://localhost:3001
 ```
 
 ### Development Commands
 
 ```bash
-npm run build       # Compile TypeScript to JavaScript
-npm run dev         # Build and run once  
-npm run dev:watch   # Auto-rebuild and restart on changes
-npm run type-check  # Validate TypeScript without compilation
-npm run clean       # Remove compiled dist folder
+npm run dev           # Start complete development environment (recommended)
+npm run build         # Build for production (server + client)
+npm run build:server  # Build server TypeScript only
+npm run build:client  # Build client with Vite only
+npm run build:watch   # Watch mode for both builds
+npm start             # Start production server
+npm run type-check    # Validate TypeScript without compilation
+npm run clean         # Remove compiled dist folder
 ```
 
 ## Scoring System (All Applications)
@@ -232,22 +320,28 @@ npm run clean       # Remove compiled dist folder
 ## Technology Stack
 
 ### Backend
-- **Node.js** (version 14+)
-- **Express.js** (^4.21.2) - Static file serving and development server
-- **TypeScript** (^5.6.3) - Type-safe server development (multiple_choice only)
-- **open** (^8.4.2) - Auto-browser opening
 
-### Frontend  
-- **TypeScript** - Compiled to JavaScript with comprehensive type safety (multiple_choice)
+- **Node.js** (version 14+)
+- **Express.js** (^4.21.2) - API server and dev proxy
+- **TypeScript** (^5.6.3) - Type-safe server development (multiple_choice)
+- **http-proxy-middleware** (^2.0.6) - Dev mode proxying to Vite (multiple_choice)
+
+### Frontend
+
+- **Vite** (^5.4.21) - Modern build tool with HMR (multiple_choice)
+- **TypeScript** (^5.6.3) - Compiled to JavaScript with comprehensive type safety (multiple_choice)
 - **Vanilla JavaScript** - No frameworks, pure ES6+ (easy_1)
 - **CSS3** - Responsive design with Flexbox/Grid
 - **HTML5** - Semantic markup
 
 ### Development
+
 - **npm** - Package management and scripts
+- **Vite Dev Server** - Fast HMR and optimized builds (multiple_choice)
 - **TypeScript Compiler** - Dual build system for client/server (multiple_choice)
-- **Local servers** - Port 3001 (multiple choice TypeScript) and 3002 (coding JavaScript)
-- **Hot reload** - Auto-restart with nodemon for TypeScript development
+- **Custom Dev Runner** - Orchestrates TypeScript watch, Vite, and Express (multiple_choice)
+- **Local servers** - Port 3001 (multiple choice Vite+TypeScript) and 3002 (coding JavaScript)
+- **Polling File Watcher** - Avoids EMFILE limits on Linux systems
 
 ## Shared Components & Features
 
@@ -339,13 +433,17 @@ This context file should be updated whenever:
 ## Current Status
 
 As of October 24, 2025:
+
 - ✅ easy_1 (coding assessment) - Complete and tested (JavaScript)
-- ✅ multiple_choice (TypeScript platform) - **MIGRATED TO TYPESCRIPT** with comprehensive type safety
-  - Complete with 4 test modules and question grid navigation  
-  - Dual build system (client ES2020, server CommonJS)
+- ✅ multiple_choice (Vite + TypeScript platform) - **MIGRATED TO VITE** with HMR and modern build tooling
+  - Complete with 4 test modules and question grid navigation
+  - Vite dev server with instant hot module replacement
+  - Express proxy architecture for seamless development
+  - Dual build system (client: Vite bundle, server: CommonJS)
   - Type-safe interfaces for all data structures
-  - Modern development workflow with auto-rebuild
-- ❌ easy_multiple_choice_1, easy_multiple_choice_2, easy_multiple_choice_3 - Removed (replaced by consolidated TypeScript platform)
+  - Custom dev orchestration with automatic restarts
+  - Production-ready with optimized builds
+- ❌ easy_multiple_choice_1, easy_multiple_choice_2, easy_multiple_choice_3 - Removed (replaced by consolidated Vite+TypeScript platform)
 - 🔄 Ready for additional assessment development
 - 📦 Both remaining applications have dependencies installed and are functional
 
@@ -365,5 +463,142 @@ The TypeScript migration of the multiple choice platform provides:
 - **Maintainable Code**: Clear contracts between components with strong typing
 - **Modern Tooling**: Dual build system supporting both browser and Node.js environments
 - **Future-Proof**: Ready for advanced features with robust type definitions
+
+## Vite Migration (October 2025)
+
+The multiple choice platform was successfully migrated to use Vite as the build tool, providing significant development experience improvements:
+
+### Migration Objectives
+
+- Eliminate MIME type errors when serving TypeScript files directly
+- Implement hot module replacement (HMR) for instant feedback during development
+- Maintain the Express server on port 3001 for a consistent user experience
+- Preserve the existing `npm run dev` workflow
+- Optimize production builds with modern bundling
+
+### Key Changes Implemented
+
+#### 1. **Vite Integration**
+
+- Added Vite 5.4.21 as the client build tool
+- Configured `vite.config.ts` with proper root, build output (`dist/public`), and dev server settings
+- Moved client code from `app.ts` to `src/main.ts` for Vite's convention
+- Set up Vite to proxy `/api` requests back to Express during development
+
+#### 2. **Development Architecture**
+
+- **Dev Proxy Pattern**: Express server proxies non-API requests to Vite dev server
+  - Express runs on port 3001 (user-facing)
+  - Vite dev server runs on port 5173 (internal)
+  - All `/api/*` requests handled by Express directly
+  - All other requests (HTML, JS, CSS, assets) proxied to Vite for HMR
+- **Dynamic Middleware**: `http-proxy-middleware` conditionally loaded in dev mode
+- **Environment Detection**: Server detects `VITE_DEV=1` to enable proxy mode
+
+#### 3. **Build System Enhancements**
+
+- **Dual TypeScript Compilation**:
+  - Client: `tsconfig.client.json` → ES2020 modules → processed by Vite
+  - Server: `tsconfig.server.json` → CommonJS → `dist/server.js`
+- **Production Build**: Two-step process
+  1. `vite build` → produces optimized client bundle in `dist/public/`
+  2. `tsc -p tsconfig.server.json` → compiles server to `dist/server.js`
+- **Development Build**: Separate watch processes for client and server
+
+#### 4. **Development Orchestration**
+
+- Created `scripts/dev-runner.js` to manage the development workflow:
+  - Spawns TypeScript watch compiler for server code
+  - Spawns Vite dev server on port 5173 with HMR enabled
+  - Waits for both to be ready before starting Express server
+  - Monitors `dist/server.js` for changes and restarts server automatically
+  - Uses polling instead of filesystem watchers to avoid EMFILE errors
+  - Provides clear, emoji-enhanced logging for debugging
+
+#### 5. **Backward Compatibility**
+
+- `app.ts` serves as a compatibility shim exporting from `src/main.ts`
+- `index.html` includes dynamic loader that:
+  - Attempts to load from Vite dev server in development
+  - Falls back to production build if Vite not available
+  - Probes for correct MIME types to avoid browser blocking
+
+#### 6. **File Watcher Optimization**
+
+- Replaced `chokidar` with polling-based file monitoring
+- Prevents EMFILE (too many open files) errors on Linux
+- Uses `fs.statSync()` and `setInterval()` for change detection
+- More reliable across different operating systems
+
+### Migration Challenges Resolved
+
+1. **MIME Type Error**: Browser blocking `.ts` files with `video/mp2t` content-type
+   - **Solution**: Vite serves files with correct MIME types; Express proxies to Vite
+
+2. **Port Management**: Keeping user-facing URL on port 3001
+   - **Solution**: Express acts as gateway, proxying to Vite internally
+
+3. **API Route Interception**: Proxy middleware catching `/api` requests
+   - **Solution**: Registered API routes BEFORE proxy middleware in Express
+
+4. **File Watcher Limits**: EMFILE errors from too many watchers
+   - **Solution**: Switched to polling-based file monitoring in dev-runner
+
+5. **Server Startup Coordination**: Starting server before Vite ready
+   - **Solution**: Dev-runner probes Vite ports and waits for both conditions
+
+### Benefits Achieved
+
+- ✅ **Instant HMR**: Sub-second updates when changing client code
+- ✅ **Type Safety**: Full TypeScript support with proper module resolution
+- ✅ **Optimized Builds**: Tree-shaking and code-splitting in production
+- ✅ **Better DX**: Single `npm run dev` command starts everything
+- ✅ **No Port Confusion**: Users always access localhost:3001
+- ✅ **Reliable Workflow**: Polling-based watchers avoid system limits
+- ✅ **Clean Separation**: Client and server code clearly delineated
+
+### Updated npm Scripts
+
+```json
+{
+  "dev": "node scripts/dev-runner.js",
+  "build": "npm run build:server && npm run build:client",
+  "build:server": "tsc -p tsconfig.server.json",
+  "build:client": "vite build",
+  "build:watch": "concurrently \"npm:build:server -- --watch\" \"npm:build:client -- --watch\"",
+  "start": "node dist/server.js",
+  "type-check": "tsc --noEmit",
+  "clean": "rm -rf dist"
+}
+```
+
+### Files Added/Modified
+
+**New Files:**
+
+- `vite.config.ts` - Vite configuration
+- `scripts/dev-runner.js` - Development orchestration
+- `src/main.ts` - Client entry point (moved from `app.ts`)
+- `tsconfig.client.json` - Client TypeScript config
+
+**Modified Files:**
+
+- `server.ts` - Added dev proxy middleware
+- `package.json` - Updated scripts and dependencies
+- `index.html` - Added dynamic loader for dev/prod compatibility
+- `app.ts` - Now a compatibility shim
+
+**Dependencies Added:**
+
+- `vite@^5.4.21` - Build tool
+- `http-proxy-middleware@^2.0.6` - Dev proxy
+
+### Production Deployment Notes
+
+- Run `npm run build` to create optimized bundles
+- `dist/public/` contains client assets (served as static files)
+- `dist/server.js` is the compiled Express server
+- Server automatically serves from `dist/public/` when not in dev mode
+- No Vite runtime needed in production
 
 This context should be referenced for all future development to ensure consistency and proper continuation of the project.
