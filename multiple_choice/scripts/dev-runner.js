@@ -35,6 +35,7 @@ function spawnTsc (project, label) {
 
 let tscClient = null;
 let tscServer = null;
+let viteProcess = null;
 let serverProcess = null;
 let restarting = false;
 let restartTimer = null;
@@ -43,6 +44,18 @@ function startTscWatchers () {
     console.log('[dev-runner] Starting tsc watchers...');
     tscClient = spawnTsc('tsconfig.client.json', 'tsc-client');
     tscServer = spawnTsc('tsconfig.server.json', 'tsc-server');
+    // Start Vite dev server for client HMR
+    spawnViteDev();
+}
+
+function spawnViteDev () {
+    console.log('[dev-runner] Starting Vite dev server...');
+    // Use npx to prefer local vite installation
+    viteProcess = spawn('npx', ['vite'], { cwd: PROJECT_ROOT, stdio: ['inherit', 'pipe', 'pipe'] });
+    if (viteProcess.stdout) prefixStream('vite', viteProcess.stdout, false);
+    if (viteProcess.stderr) prefixStream('vite', viteProcess.stderr, true);
+    viteProcess.on('exit', (code) => console.log(`[vite] exited with ${code}`));
+    return viteProcess;
 }
 
 function startServer () {
@@ -115,6 +128,7 @@ function shutdown () {
     console.log('[dev-runner] Shutting down...');
     if (tscClient) tscClient.kill();
     if (tscServer) tscServer.kill();
+    if (viteProcess) viteProcess.kill();
     if (serverProcess) serverProcess.kill();
     process.exit(0);
 }

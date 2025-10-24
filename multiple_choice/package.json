@@ -4,8 +4,10 @@
     "description": "TypeScript Multiple Choice Assessment Platform - Dynamic test selection with type safety",
     "main": "server.js",
     "scripts": {
-        "build": "tsc -p tsconfig.client.json && tsc -p tsconfig.server.json",
-        "build:watch": "tsc -p tsconfig.client.json --watch & tsc -p tsconfig.server.json --watch",
+        "build": "npm run build:client && tsc -p tsconfig.server.json",
+        "build:watch": "vite build --watch & tsc -p tsconfig.server.json --watch",
+        "build:client": "vite build",
+        "dev:client": "vite",
         "dev": "node scripts/dev-runner.js",
         "dev:nodemon": "npm run build && npx nodemon --legacy-watch --watch dist/server.js dist/server.js",
         "dev:once": "npm run build && node dist/server.js",
@@ -34,6 +36,7 @@
         "chokidar": "^3.5.3",
         "concurrently": "^9.0.1",
         "nodemon": "^3.1.7",
-        "typescript": "^5.6.3"
+        "typescript": "^5.6.3",
+        "vite": "^5.1.0"
     }
 }

@@ -36,8 +36,15 @@ const PORT = 3001;
 // Use current directory (the source will be compiled to dist)
 const projectRoot = path.resolve( __dirname, '../' ); // Go up one level from dist to project root
 
-// Serve static files from the project root directory  
-app.use( express.static( projectRoot ) );
+// If a built client exists (vite output) serve that from dist/public. Otherwise fall back to project root.
+const builtClientDir = path.resolve( projectRoot, 'dist', 'public' );
+if ( fs.existsSync( builtClientDir ) ) {
+    console.log( '📦 Serving built client from:', builtClientDir );
+    app.use( express.static( builtClientDir ) );
+} else {
+    console.log( '🧭 Serving static files from project root (dev mode) at', projectRoot );
+    app.use( express.static( projectRoot ) );
+}
 
 // API endpoint to get available tests
 app.get( '/api/tests', ( req: Request, res: Response ) => {
@@ -132,9 +139,15 @@ app.get( '/api/test/:difficulty/:testId', ( req: Request, res: Response ) => {
 
 // Serve the main page
 app.get( '/', ( req: Request, res: Response ) => {
+    // Prefer the built index.html if present
+    const builtIndex = path.resolve( projectRoot, 'dist', 'public', 'index.html' );
+    if ( fs.existsSync( builtIndex ) ) {
+        console.log( '🏠 Serving built index.html from:', builtIndex );
+        return res.sendFile( builtIndex );
+    }
     const indexPath = path.resolve( projectRoot, 'index.html' );
     console.log( '🏠 Serving index.html from:', indexPath );
-    res.sendFile( indexPath );
+    return res.sendFile( indexPath );
 } );
 
 // Start server with proper error handling
