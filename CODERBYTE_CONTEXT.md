@@ -10,7 +10,7 @@ This document contains the complete context for the Coderbyte-style assessment a
 /home/kevin/vhosts/lab/coderbyte/
 ├── easy_1/                          # Coding Assessment
 │   ├── package.json
-│   ├── server.js                    # Express server (port 3001)
+│   ├── server.js                    # Express server (port 3002)
 │   ├── .gitignore
 │   ├── index.html
 │   ├── styles.css
@@ -20,7 +20,7 @@ This document contains the complete context for the Coderbyte-style assessment a
 │   └── node_modules/
 └── multiple_choice/                 # Consolidated Multiple Choice Platform
     ├── package.json
-    ├── server.js                    # Express server (port 3002)
+    ├── server.js                    # Express server (port 3001)
     ├── index.html
     ├── styles.css
     ├── app.js                       # Unified assessment platform logic

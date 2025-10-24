@@ -29,7 +29,7 @@ coderbyte/
 ## 🚀 Applications
 
 ### 1. Coding Assessment (`easy_1`)
-**Port: 3001** | **Questions: 17** | **Time: 30 minutes**
+**Port: 3002** | **Questions: 17** | **Time: 30 minutes**
 
 A self-contained coding assessment where users write JavaScript functions to solve programming challenges.
 
@@ -54,7 +54,7 @@ npm run dev
 ```
 
 ### 2. Multiple Choice Platform (`multiple_choice`)
-**Port: 3002** | **Tests: 4** | **Questions: 110+** | **Time: 30 minutes per test**
+**Port: 3001** | **Tests: 4** | **Questions: 110+** | **Time: 30 minutes per test**
 
 A unified platform that dynamically loads different multiple-choice tests from modular resource files.
 
@@ -125,8 +125,8 @@ For complete technical documentation, development guidelines, and detailed featu
 5. Browser will open automatically
 
 ### Port Assignments
-- `easy_1`: http://localhost:3001
-- `multiple_choice`: http://localhost:3002
+- `multiple_choice`: http://localhost:3001
+- `easy_1`: http://localhost:3002
 
 ## 🚀 Future Development
 
