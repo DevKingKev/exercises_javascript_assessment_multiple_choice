@@ -9,7 +9,7 @@ interface Question {
     explanation?: string;
 }
 
-interface TestMetadata {
+interface AssessmentMetadata {
     id?: string;
     title: string;
     description: string;
@@ -19,13 +19,13 @@ interface TestMetadata {
     topics?: string[];
 }
 
-interface Test {
-    metadata: TestMetadata;
+interface Assessment {
+    metadata: AssessmentMetadata;
     questions: Question[];
 }
 
-interface AvailableTests {
-    [difficulty: string]: ( TestMetadata & { id: string; } )[];
+interface AvailableAssessments {
+    [difficulty: string]: ( AssessmentMetadata & { id: string; } )[];
 }
 
 interface TopicBreakdown {
@@ -41,7 +41,7 @@ interface QuestionReview {
     options: { [key: string]: string; };
 }
 
-interface TestResults {
+interface AssessmentResults {
     correct: number;
     total: number;
     percentage: number;
@@ -50,9 +50,9 @@ interface TestResults {
 }
 
 interface ResultRecord {
-    testId: string;
+    assessmentId: string;
     difficulty: string;
-    testTitle: string;
+    assessmentTitle: string;
     date: string;
     correct: number;
     total: number;
@@ -64,11 +64,11 @@ interface ResultRecord {
 
 interface ResultsHistory {
     [difficulty: string]: {
-        [testId: string]: ResultRecord[];
+        [assessmentId: string]: ResultRecord[];
     };
 }
 
-type ScreenId = 'test-selection' | 'assessment' | 'results';
+type ScreenId = 'assessment-selection' | 'assessment' | 'results';
 type ScoreBadgeClass = 'score-excellent' | 'score-good' | 'score-average' | 'score-poor';
 
 interface DateFormatOptions {
@@ -89,13 +89,13 @@ interface ExtendedNavigator extends Navigator {
 }
 
 class AssessmentApp {
-    private currentTest: Test | null = null;
+    private currentAssessment: Assessment | null = null;
     private currentQuestionIndex: number = 0;
     private userAnswers: ( string | null )[] = [];
     private startTime: Date | null = null;
     private timerInterval: number | null = null;
     private timeLimit: number = 30; // minutes
-    private availableTests: AvailableTests = {};
+    private availableAssessments: AvailableAssessments = {};
     private resultsHistory: ResultsHistory;
 
     constructor() {
@@ -104,21 +104,21 @@ class AssessmentApp {
     }
 
     private async initializeApp (): Promise<void> {
-        await this.loadAvailableTests();
+        await this.loadAvailableAssessments();
         this.setupEventListeners();
         this.renderResultsHistory();
-        this.showTestSelection();
+        this.showAssessmentSelection();
     }
 
-    private async loadAvailableTests (): Promise<void> {
+    private async loadAvailableAssessments (): Promise<void> {
         try {
-            const response = await fetch( '/api/tests' );
-            const data: AvailableTests = await response.json();
-            this.availableTests = data;
-            this.renderTestList( 'easy' ); // Default to easy
+            const response = await fetch( '/api/assessments' );
+            const data: AvailableAssessments = await response.json();
+            this.availableAssessments = data;
+            this.renderAssessmentList( 'easy' ); // Default to easy
         } catch ( error ) {
-            console.error( 'Error loading tests:', error );
-            this.showError( 'Failed to load available tests' );
+            console.error( '❌ Error loading assessments:', error );
+            this.showError( 'Failed to load available assessments' );
         }
     }
 
@@ -139,7 +139,7 @@ class AssessmentApp {
         const nextBtn = document.getElementById( 'next-btn' );
         const submitBtn = document.getElementById( 'submit-btn' );
         const retakeBtn = document.getElementById( 'retake-btn' );
-        const newTestBtn = document.getElementById( 'new-test-btn' );
+        const newAssessmentBtn = document.getElementById( 'new-assessment-btn' );
 
         if ( prevBtn ) {
             prevBtn.addEventListener( 'click', () => this.previousQuestion() );
@@ -150,17 +150,17 @@ class AssessmentApp {
         }
 
         if ( submitBtn ) {
-            submitBtn.addEventListener( 'click', () => this.submitTest() );
+            submitBtn.addEventListener( 'click', () => this.submitAssessment() );
         }
 
         if ( retakeBtn ) {
-            retakeBtn.addEventListener( 'click', () => this.retakeTest() );
+            retakeBtn.addEventListener( 'click', () => this.retakeAssessment() );
         }
 
-        if ( newTestBtn ) {
-            newTestBtn.addEventListener( 'click', () => {
+        if ( newAssessmentBtn ) {
+            newAssessmentBtn.addEventListener( 'click', () => {
                 this.renderResultsHistory();
-                this.showTestSelection();
+                this.showAssessmentSelection();
             } );
         }
     }
@@ -176,63 +176,64 @@ class AssessmentApp {
             targetBtn.classList.add( 'active' );
         }
 
-        // Render tests for selected difficulty
-        this.renderTestList( difficulty );
+        // Render assessments for selected difficulty
+        this.renderAssessmentList( difficulty );
     }
 
-    private renderTestList ( difficulty: string ): void {
-        const container = document.getElementById( 'tests-container' );
+    private renderAssessmentList ( difficulty: string ): void {
+        const container = document.getElementById( 'assessments-container' );
         if ( !container ) return;
 
         container.innerHTML = '';
 
-        const tests = this.availableTests[difficulty] || [];
+        // Render assessments for selected difficulty
+        const assessments = this.availableAssessments[difficulty] || [];
 
-        if ( tests.length === 0 ) {
+        if ( assessments.length === 0 ) {
             container.innerHTML = `
         <div style="grid-column: 1 / -1; text-align: center; padding: 40px; color: #64748b;">
-          <h4>No tests available for ${difficulty} difficulty</h4>
+          <h4>No assessments available for ${difficulty} difficulty</h4>
           <p>Please select a different difficulty level</p>
         </div>
       `;
             return;
         }
 
-        tests.forEach( ( test: TestMetadata & { id: string; } ) => {
-            const testCard = document.createElement( 'div' );
-            testCard.className = 'test-card';
-            testCard.addEventListener( 'click', () => this.startTest( difficulty, test.id ) );
+        assessments.forEach( ( assessment: AssessmentMetadata & { id: string; } ) => {
+            const assessmentCard = document.createElement( 'div' );
+            assessmentCard.className = 'assessment-card';
+            assessmentCard.addEventListener( 'click', () => this.startAssessment( difficulty, assessment.id ) );
 
-            testCard.innerHTML = `
-        <h4>${test.title}</h4>
-        <p>${test.description}</p>
-        <div class="test-meta">
-          <span>${test.questionCount} questions</span>
-          <span>${test.timeLimit} min</span>
+            assessmentCard.innerHTML = `
+        <h4>${assessment.title}</h4>
+        <p>${assessment.description}</p>
+        <div class="assessment-meta">
+          <span>${assessment.questionCount} questions</span>
+          <span>${assessment.timeLimit} min</span>
         </div>
       `;
 
-            container.appendChild( testCard );
+            container.appendChild( assessmentCard );
         } );
     }
 
-    private async startTest ( difficulty: string, testId: string ): Promise<void> {
+    private async startAssessment ( difficulty: string, assessmentId: string ): Promise<void> {
         try {
-            const response = await fetch( `/api/test/${difficulty}/${testId}` );
-            const testData: Test = await response.json();
+            const response = await fetch( `/api/assessment/${difficulty}/${assessmentId}` );
+            const assessmentData: Assessment = await response.json();
 
-            this.currentTest = testData;
+            this.currentAssessment = assessmentData;
             this.currentQuestionIndex = 0;
-            this.userAnswers = new Array( testData.questions.length ).fill( null );
-            this.timeLimit = testData.metadata.timeLimit;
+            this.userAnswers = new Array( assessmentData.questions.length ).fill( null );
+            this.timeLimit = assessmentData.metadata.timeLimit;
 
             this.showAssessment();
             this.startTimer();
             this.renderQuestion();
             this.updateProgress();
         } catch ( error ) {
-            console.error( 'Error loading test:', error );
-            this.showError( 'Failed to load test' );
+            console.error( 'Error loading assessment:', error );
+            this.showError( 'Failed to load assessment' );
         }
     }
 
@@ -247,24 +248,24 @@ class AssessmentApp {
         }
     }
 
-    private showTestSelection (): void {
-        this.showScreen( 'test-selection' );
+    private showAssessmentSelection (): void {
+        this.showScreen( 'assessment-selection' );
         this.stopTimer();
     }
 
     private showAssessment (): void {
-        if ( !this.currentTest ) return;
+        if ( !this.currentAssessment ) return;
 
         this.showScreen( 'assessment' );
 
-        // Update test info
-        const testTitle = document.getElementById( 'test-title' );
-        const testDescription = document.getElementById( 'test-description' );
+        // Update assessment info
+        const assessmentTitle = document.getElementById( 'assessment-title' );
+        const assessmentDescription = document.getElementById( 'assessment-description' );
         const totalQuestions = document.getElementById( 'total-questions' );
 
-        if ( testTitle ) testTitle.textContent = this.currentTest.metadata.title;
-        if ( testDescription ) testDescription.textContent = this.currentTest.metadata.description;
-        if ( totalQuestions ) totalQuestions.textContent = this.currentTest.questions.length.toString();
+        if ( assessmentTitle ) assessmentTitle.textContent = this.currentAssessment.metadata.title;
+        if ( assessmentDescription ) assessmentDescription.textContent = this.currentAssessment.metadata.description;
+        if ( totalQuestions ) totalQuestions.textContent = this.currentAssessment.questions.length.toString();
 
         // Render question grid
         this.renderQuestionGrid();
@@ -277,9 +278,9 @@ class AssessmentApp {
     }
 
     private renderQuestion (): void {
-        if ( !this.currentTest ) return;
+        if ( !this.currentAssessment ) return;
 
-        const question = this.currentTest.questions[this.currentQuestionIndex];
+        const question = this.currentAssessment.questions[this.currentQuestionIndex];
 
         const questionText = document.getElementById( 'question-text' );
         const currentQuestionEl = document.getElementById( 'current-question' );
@@ -336,7 +337,7 @@ class AssessmentApp {
     }
 
     private updateNavigationButtons (): void {
-        if ( !this.currentTest ) return;
+        if ( !this.currentAssessment ) return;
 
         const prevBtn = document.getElementById( 'prev-btn' ) as HTMLButtonElement | null;
         const nextBtn = document.getElementById( 'next-btn' ) as HTMLElement | null;
@@ -346,7 +347,7 @@ class AssessmentApp {
             prevBtn.disabled = this.currentQuestionIndex === 0;
         }
 
-        const isLastQuestion = this.currentQuestionIndex === this.currentTest.questions.length - 1;
+        const isLastQuestion = this.currentQuestionIndex === this.currentAssessment.questions.length - 1;
 
         if ( isLastQuestion ) {
             if ( nextBtn ) nextBtn.style.display = 'none';
@@ -366,9 +367,9 @@ class AssessmentApp {
     }
 
     private nextQuestion (): void {
-        if ( !this.currentTest ) return;
+        if ( !this.currentAssessment ) return;
 
-        if ( this.currentQuestionIndex < this.currentTest.questions.length - 1 ) {
+        if ( this.currentQuestionIndex < this.currentAssessment.questions.length - 1 ) {
             this.currentQuestionIndex++;
             this.renderQuestion();
             this.updateProgress();
@@ -376,9 +377,9 @@ class AssessmentApp {
     }
 
     private updateProgress (): void {
-        if ( !this.currentTest ) return;
+        if ( !this.currentAssessment ) return;
 
-        const progress = ( ( this.currentQuestionIndex + 1 ) / this.currentTest.questions.length ) * 100;
+        const progress = ( ( this.currentQuestionIndex + 1 ) / this.currentAssessment.questions.length ) * 100;
         const progressFill = document.getElementById( 'progress-fill' ) as HTMLElement | null;
 
         if ( progressFill ) {
@@ -387,14 +388,14 @@ class AssessmentApp {
     }
 
     private renderQuestionGrid (): void {
-        if ( !this.currentTest ) return;
+        if ( !this.currentAssessment ) return;
 
         const gridContainer = document.getElementById( 'question-grid' );
         if ( !gridContainer ) return;
 
         gridContainer.innerHTML = '';
 
-        for ( let i = 0; i < this.currentTest.questions.length; i++ ) {
+        for ( let i = 0; i < this.currentAssessment.questions.length; i++ ) {
             const questionBtn = document.createElement( 'button' );
             questionBtn.className = 'question-btn';
             questionBtn.textContent = ( i + 1 ).toString();
@@ -428,9 +429,9 @@ class AssessmentApp {
     }
 
     private jumpToQuestion ( questionIndex: number ): void {
-        if ( !this.currentTest ) return;
+        if ( !this.currentAssessment ) return;
 
-        if ( questionIndex >= 0 && questionIndex < this.currentTest.questions.length ) {
+        if ( questionIndex >= 0 && questionIndex < this.currentAssessment.questions.length ) {
             this.currentQuestionIndex = questionIndex;
             this.renderQuestion();
             this.updateProgress();
@@ -446,7 +447,7 @@ class AssessmentApp {
             const remaining = endTime.getTime() - now.getTime();
 
             if ( remaining <= 0 ) {
-                this.submitTest();
+                this.submitAssessment();
                 return;
             }
 
@@ -468,7 +469,7 @@ class AssessmentApp {
         }
     }
 
-    private submitTest (): void {
+    private submitAssessment (): void {
         if ( !this.confirmSubmission() ) {
             return;
         }
@@ -483,11 +484,11 @@ class AssessmentApp {
             return confirm( `You have ${unanswered} unanswered questions. Are you sure you want to submit?` );
         }
 
-        return confirm( 'Are you sure you want to submit your test?' );
+        return confirm( 'Are you sure you want to submit your assessment?' );
     }
 
     private calculateAndDisplayResults (): void {
-        if ( !this.currentTest ) return;
+        if ( !this.currentAssessment ) return;
 
         const results = this.calculateResults();
 
@@ -513,9 +514,9 @@ class AssessmentApp {
 
         // Save results to local storage
         const resultRecord: ResultRecord = {
-            testId: this.currentTest.metadata.id || 'test1',
-            difficulty: this.currentTest.metadata.difficulty,
-            testTitle: this.currentTest.metadata.title,
+            assessmentId: this.currentAssessment.metadata.id || 'test1',
+            difficulty: this.currentAssessment.metadata.difficulty,
+            assessmentTitle: this.currentAssessment.metadata.title,
             date: new Date().toISOString(),
             correct: results.correct,
             total: results.total,
@@ -529,12 +530,12 @@ class AssessmentApp {
         this.renderResultsHistory();
     }
 
-    private calculateResults (): TestResults {
-        if ( !this.currentTest ) {
-            throw new Error( 'No current test available for calculation' );
+    private calculateResults (): AssessmentResults {
+        if ( !this.currentAssessment ) {
+            throw new Error( 'No current assessment available for calculation' );
         }
 
-        const questions = this.currentTest.questions;
+        const questions = this.currentAssessment.questions;
         let correct = 0;
         const topicScores: TopicBreakdown = {};
         const questionReview: QuestionReview[] = [];
@@ -548,7 +549,7 @@ class AssessmentApp {
             }
 
             // Track topic performance (simplified - using question topics if available)
-            const topics = this.currentTest!.metadata.topics || ['General'];
+            const topics = this.currentAssessment!.metadata.topics || ['General'];
             const questionTopic = topics[index % topics.length] || 'General';
 
             if ( !topicScores[questionTopic] ) {
@@ -649,10 +650,10 @@ class AssessmentApp {
         } );
     }
 
-    private retakeTest (): void {
-        if ( this.currentTest ) {
+    private retakeAssessment (): void {
+        if ( this.currentAssessment ) {
             this.currentQuestionIndex = 0;
-            this.userAnswers = new Array( this.currentTest.questions.length ).fill( null );
+            this.userAnswers = new Array( this.currentAssessment.questions.length ).fill( null );
             this.showAssessment();
             this.startTimer();
             this.renderQuestion();
@@ -675,11 +676,11 @@ class AssessmentApp {
             this.resultsHistory[result.difficulty] = {};
         }
 
-        if ( !this.resultsHistory[result.difficulty][result.testId] ) {
-            this.resultsHistory[result.difficulty][result.testId] = [];
+        if ( !this.resultsHistory[result.difficulty][result.assessmentId] ) {
+            this.resultsHistory[result.difficulty][result.assessmentId] = [];
         }
 
-        this.resultsHistory[result.difficulty][result.testId].push( result );
+        this.resultsHistory[result.difficulty][result.assessmentId].push( result );
         localStorage.setItem( 'assessmentResults', JSON.stringify( this.resultsHistory ) );
     }
 
@@ -707,13 +708,13 @@ class AssessmentApp {
         } );
     }
 
-    private createDifficultySection ( difficulty: string, tests: { [testId: string]: ResultRecord[]; } ): HTMLElement {
+    private createDifficultySection ( difficulty: string, assessments: { [assessmentId: string]: ResultRecord[]; } ): HTMLElement {
         const section = document.createElement( 'div' );
         section.className = 'difficulty-section';
 
         // Calculate average for latest results
-        const latestScores = Object.values( tests ).map( testResults => {
-            const latest = testResults[testResults.length - 1];
+        const latestScores = Object.values( assessments ).map( assessmentResults => {
+            const latest = assessmentResults[assessmentResults.length - 1];
             return latest.percentage;
         } );
         const averageScore = Math.round( latestScores.reduce( ( a, b ) => a + b, 0 ) / latestScores.length );
@@ -723,45 +724,45 @@ class AssessmentApp {
         header.innerHTML = `
       <div class="difficulty-info">
         <div class="difficulty-title">${difficulty.charAt( 0 ).toUpperCase() + difficulty.slice( 1 )}</div>
-        <div class="difficulty-average">Average: ${averageScore}% (${Object.keys( tests ).length} tests)</div>
+        <div class="difficulty-average">Average: ${averageScore}% (${Object.keys( assessments ).length} assessments)</div>
       </div>
       <div class="expand-icon">▶</div>
     `;
 
-        const testsContainer = document.createElement( 'div' );
-        testsContainer.className = 'test-results-container';
+        const assessmentsContainer = document.createElement( 'div' );
+        assessmentsContainer.className = 'assessment-results-container';
 
-        // Create test items
-        Object.entries( tests ).forEach( ( [testId, results] ) => {
-            const testItem = this.createTestResultItem( difficulty, testId, results );
-            testsContainer.appendChild( testItem );
+        // Create assessment items
+        Object.entries( assessments ).forEach( ( [assessmentId, results] ) => {
+            const assessmentItem = this.createAssessmentResultItem( difficulty, assessmentId, results );
+            assessmentsContainer.appendChild( assessmentItem );
         } );
 
         // Add click handlers
         header.addEventListener( 'click', () => {
             header.classList.toggle( 'expanded' );
-            testsContainer.classList.toggle( 'expanded' );
+            assessmentsContainer.classList.toggle( 'expanded' );
         } );
 
         section.appendChild( header );
-        section.appendChild( testsContainer );
+        section.appendChild( assessmentsContainer );
 
         return section;
     }
 
-    private createTestResultItem ( difficulty: string, testId: string, results: ResultRecord[] ): HTMLElement {
+    private createAssessmentResultItem ( difficulty: string, assessmentId: string, results: ResultRecord[] ): HTMLElement {
         const latestResult = results[results.length - 1];
-        const testMetadata = this.getTestMetadata( difficulty, testId );
+        const testMetadata = this.getAssessmentMetadata( difficulty, assessmentId );
 
         const item = document.createElement( 'div' );
-        item.className = 'test-result-item';
+        item.className = 'assessment-result-item';
 
         const scoreBadgeClass = this.getScoreBadgeClass( latestResult.percentage );
 
         item.innerHTML = `
-      <div class="test-header">
-        <div class="test-info">
-          <div class="test-name">${testMetadata ? testMetadata.title : `Test ${testId}`}</div>
+      <div class="assessment-header">
+        <div class="assessment-info">
+          <div class="assessment-name">${testMetadata ? testMetadata.title : `Test ${assessmentId}`}</div>
           <div class="latest-score">Latest: ${latestResult.percentage}% (${results.length} attempts)</div>
         </div>
         <div class="score-badge ${scoreBadgeClass}">
@@ -788,7 +789,7 @@ class AssessmentApp {
     `;
 
         // Add click handler to expand/collapse attempts
-        const testHeader = item.querySelector( '.test-header' ) as HTMLElement;
+        const testHeader = item.querySelector( '.assessment-header' ) as HTMLElement;
         const attemptsHistory = item.querySelector( '.attempts-history' ) as HTMLElement;
 
         if ( testHeader && attemptsHistory ) {
@@ -801,9 +802,9 @@ class AssessmentApp {
         return item;
     }
 
-    private getTestMetadata ( difficulty: string, testId: string ): TestMetadata | null {
-        if ( this.availableTests[difficulty] ) {
-            return this.availableTests[difficulty].find( ( test: TestMetadata & { id: string; } ) => test.id === testId ) || null;
+    private getAssessmentMetadata ( difficulty: string, assessmentId: string ): AssessmentMetadata | null {
+        if ( this.availableAssessments[difficulty] ) {
+            return this.availableAssessments[difficulty].find( ( test: AssessmentMetadata & { id: string; } ) => test.id === assessmentId ) || null;
         }
         return null;
     }
@@ -874,9 +875,14 @@ class AssessmentApp {
 }
 
 // Initialize the application when the page loads
-document.addEventListener( 'DOMContentLoaded', () => {
+// Handle both cases: DOM not ready yet, or already loaded
+if ( document.readyState === 'loading' ) {
+    document.addEventListener( 'DOMContentLoaded', () => {
+        new AssessmentApp();
+    } );
+} else {
     new AssessmentApp();
-} );
+}
 
 // Mark this file as a module to avoid "file is not a module" errors on import
 export { };

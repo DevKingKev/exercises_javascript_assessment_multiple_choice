@@ -5,7 +5,7 @@ import path from 'path';
 import fs from 'fs';
 
 // Define interfaces for better type safety
-interface TestMetadata {
+interface AssessmentMetadata {
     id?: string;
     title: string;
     description: string;
@@ -15,20 +15,20 @@ interface TestMetadata {
     topics?: string[];
 }
 
-interface TestQuestion {
+interface AssessmentQuestion {
     question: string;
     options: { [key: string]: string; };
     correct: string;
     explanation?: string;
 }
 
-interface TestData {
-    metadata: TestMetadata;
-    questions: TestQuestion[];
+interface AssessmentData {
+    metadata: AssessmentMetadata;
+    questions: AssessmentQuestion[];
 }
 
-interface TestStructure {
-    [difficulty: string]: ( TestMetadata & { id: string; } )[];
+interface AssessmentStructure {
+    [difficulty: string]: ( AssessmentMetadata & { id: string; } )[];
 }
 
 const app = express();
@@ -45,94 +45,94 @@ const vitePort = process.env.VITE_PORT || '5173';
 // API ROUTES - Must be registered BEFORE proxy middleware!
 // ============================================================================
 
-// API endpoint to get available tests
-app.get( '/api/tests', ( req: Request, res: Response ) => {
-    console.log( '🔍 API /tests endpoint called' );
+// API endpoint to get available assessments
+app.get( '/api/assessments', ( req: Request, res: Response ) => {
+    console.log( '🔍 API /assessments endpoint called' );
 
-    const testsDir = path.resolve( projectRoot, 'tests' );
-    console.log( '📁 Looking for tests in:', testsDir );
+    const assessmentsDir = path.resolve( projectRoot, 'assessments' );
+    console.log( '📁 Looking for assessments in:', assessmentsDir );
 
-    const testStructure: TestStructure = {};
+    const assessmentStructure: AssessmentStructure = {};
 
     try {
-        // Check if tests directory exists
-        if ( !fs.existsSync( testsDir ) ) {
-            console.error( '❌ Tests directory not found:', testsDir );
-            return res.status( 404 ).json( { error: 'Tests directory not found' } );
+        // Check if assessments directory exists
+        if ( !fs.existsSync( assessmentsDir ) ) {
+            console.error( '❌ Assessments directory not found:', assessmentsDir );
+            return res.status( 404 ).json( { error: 'Assessments directory not found' } );
         }
 
-        const difficulties = fs.readdirSync( testsDir );
+        const difficulties = fs.readdirSync( assessmentsDir );
         console.log( '📋 Found difficulties:', difficulties );
 
         for ( const difficulty of difficulties ) {
-            const difficultyPath = path.join( testsDir, difficulty );
+            const difficultyPath = path.join( assessmentsDir, difficulty );
 
             if ( fs.statSync( difficultyPath ).isDirectory() ) {
                 console.log( `📂 Processing difficulty: ${difficulty}` );
-                testStructure[difficulty] = [];
+                assessmentStructure[difficulty] = [];
 
-                const testFiles = fs.readdirSync( difficultyPath );
-                console.log( `📄 Files in ${difficulty}:`, testFiles );
+                const assessmentFiles = fs.readdirSync( difficultyPath );
+                console.log( `📄 Files in ${difficulty}:`, assessmentFiles );
 
-                for ( const file of testFiles ) {
+                for ( const file of assessmentFiles ) {
                     if ( file.endsWith( '.js' ) ) {
-                        const testPath = path.join( difficultyPath, file );
-                        console.log( `🔄 Loading test file: ${testPath}` );
+                        const assessmentPath = path.join( difficultyPath, file );
+                        console.log( `🔄 Loading assessment file: ${assessmentPath}` );
 
                         try {
                             // Clear require cache to ensure fresh data
-                            delete require.cache[require.resolve( testPath )];
-                            const testData = require( testPath ) as TestData;
+                            delete require.cache[require.resolve( assessmentPath )];
+                            const assessmentData = require( assessmentPath ) as AssessmentData;
 
-                            if ( testData.metadata ) {
-                                testStructure[difficulty].push( {
+                            if ( assessmentData.metadata ) {
+                                assessmentStructure[difficulty].push( {
                                     id: file.replace( '.js', '' ),
-                                    ...testData.metadata
+                                    ...assessmentData.metadata
                                 } );
                                 console.log( `✅ Successfully loaded: ${file}` );
                             } else {
                                 console.warn( `⚠️  No metadata found in: ${file}` );
                             }
                         } catch ( error ) {
-                            console.error( `❌ Error loading test ${file}:`, ( error as Error ).message );
+                            console.error( `❌ Error loading assessment ${file}:`, ( error as Error ).message );
                         }
                     }
                 }
             }
         }
 
-        console.log( '📊 Final test structure:', JSON.stringify( testStructure, null, 2 ) );
-        res.json( testStructure );
+        console.log( '📊 Final assessment structure:', JSON.stringify( assessmentStructure, null, 2 ) );
+        res.json( assessmentStructure );
     } catch ( error ) {
-        console.error( '💥 Error in /api/tests:', error );
-        res.status( 500 ).json( { error: 'Failed to load tests' } );
+        console.error( '💥 Error in /api/assessments:', error );
+        res.status( 500 ).json( { error: 'Failed to load assessments' } );
     }
     return;
 } );
 
-// API endpoint to get specific test questions
-app.get( '/api/test/:difficulty/:testId', ( req: Request, res: Response ) => {
-    const { difficulty, testId } = req.params;
-    const testPath = path.resolve( projectRoot, 'tests', difficulty, `${testId}.js` );
+// API endpoint to get specific assessment questions
+app.get( '/api/assessment/:difficulty/:assessmentId', ( req: Request, res: Response ) => {
+    const { difficulty, assessmentId } = req.params;
+    const assessmentPath = path.resolve( projectRoot, 'assessments', difficulty, `${assessmentId}.js` );
 
-    console.log( `🎯 Loading specific test: ${difficulty}/${testId}` );
-    console.log( `📁 Test path: ${testPath}` );
+    console.log( `🎯 Loading specific assessment: ${difficulty}/${assessmentId}` );
+    console.log( `📁 Assessment path: ${assessmentPath}` );
 
     try {
         // Clear require cache to ensure fresh data
-        delete require.cache[require.resolve( testPath )];
-        const testData = require( testPath ) as TestData;
+        delete require.cache[require.resolve( assessmentPath )];
+        const assessmentData = require( assessmentPath ) as AssessmentData;
 
         res.json( {
             metadata: {
-                id: testId,
-                ...testData.metadata
+                id: assessmentId,
+                ...assessmentData.metadata
             },
-            questions: testData.questions
+            questions: assessmentData.questions
         } );
     } catch ( error ) {
-        console.error( `❌ Error loading test ${difficulty}/${testId}:`, error );
-        res.status( 404 ).json( { error: 'Test not found' } );
+        console.error( `❌ Error loading assessment ${difficulty}/${assessmentId}:`, error );
+        res.status( 404 ).json( { error: 'Assessment not found' } );
     }
 } );
 
@@ -185,7 +185,7 @@ app.get( '/', ( req: Request, res: Response ) => {
 const server = app.listen( PORT, () => {
     console.log( `🚀 TypeScript Multiple Choice Assessment Platform running at http://localhost:${PORT}` );
     console.log( `📂 Project root: ${projectRoot}` );
-    console.log( `📋 Tests directory: ${path.resolve( projectRoot, 'tests' )}` );
+    console.log( `📋 Assessments directory: ${path.resolve( projectRoot, 'assessments' )}` );
     console.log( '⏹️  Press Ctrl+C to stop the server' );
 } );
 

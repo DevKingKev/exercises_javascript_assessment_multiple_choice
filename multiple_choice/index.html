@@ -12,11 +12,11 @@
     <div class="container">
         <header>
             <h1>Multiple Choice Assessment Platform</h1>
-            <p>Choose your difficulty level and test to begin</p>
+            <p>Choose your difficulty level and assessment to begin</p>
         </header>
 
-        <!-- Test Selection Screen -->
-        <div id="test-selection" class="screen active">
+        <!-- Assessment Selection Screen -->
+        <div id="assessment-selection" class="screen active">
             <div class="difficulty-section">
                 <h2>Select Difficulty Level</h2>
                 <div class="difficulty-buttons">
@@ -34,10 +34,10 @@
                 </div>
             </div>
 
-            <div class="test-list">
-                <h3>Available Tests</h3>
-                <div id="tests-container">
-                    <!-- Tests will be dynamically loaded here -->
+            <div class="assessment-list">
+                <h3>Available Assessments</h3>
+                <div id="assessments-container">
+                    <!-- Assessments will be dynamically loaded here -->
                 </div>
             </div>
         </div>
@@ -45,9 +45,9 @@
         <!-- Assessment Screen -->
         <div id="assessment" class="screen">
             <div class="assessment-header">
-                <div class="test-info">
-                    <h2 id="test-title">Test Title</h2>
-                    <p id="test-description">Test description</p>
+                <div class="assessment-info">
+                    <h2 id="assessment-title">Assessment Title</h2>
+                    <p id="assessment-description">Assessment description</p>
                 </div>
                 <div class="progress-info">
                     <div class="question-counter">
@@ -95,14 +95,14 @@
             <div class="navigation-buttons">
                 <button id="prev-btn" class="nav-btn" disabled>Previous</button>
                 <button id="next-btn" class="nav-btn">Next</button>
-                <button id="submit-btn" class="submit-btn hidden">Submit Test</button>
+                <button id="submit-btn" class="submit-btn hidden">Submit Assessment</button>
             </div>
         </div>
 
         <!-- Results Screen -->
         <div id="results" class="screen">
             <div class="results-header">
-                <h2>Test Results</h2>
+                <h2>Assessment Results</h2>
                 <div class="score-display">
                     <div class="score-circle">
                         <span id="score-percentage">0%</span>
@@ -129,8 +129,8 @@
             </div>
 
             <div class="results-actions">
-                <button id="retake-btn" class="action-btn">Retake Test</button>
-                <button id="new-test-btn" class="action-btn">Choose New Test</button>
+                <button id="retake-btn" class="action-btn">Retake Assessment</button>
+                <button id="new-assessment-btn" class="action-btn">Choose New Assessment</button>
             </div>
         </div>
     </div>
