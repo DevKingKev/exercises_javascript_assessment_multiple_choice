@@ -65,7 +65,7 @@ A self-contained Coderbyte-style assessment application with 17 easy-level progr
 - Array Addition I (subset sum problem)
 
 ### Technical Implementation
-- **Server**: Express.js on port 3001
+- **Server**: Express.js on port 3002
 - **Frontend**: Vanilla JavaScript with comprehensive CSS styling
 - **Code Editor**: Textarea with monospace font and syntax highlighting colors
 - **Test Runner**: Dynamic function evaluation with multiple test cases
@@ -130,7 +130,7 @@ tests/
    - New original test covering advanced programming concepts
 
 ### Technical Implementation
-- **Server**: Express.js on port 3002
+- **Server**: Express.js on port 3001
 - **Frontend**: Vanilla JavaScript with unified assessment engine
 - **API Endpoints**:
   - `GET /api/tests` - List all available tests by difficulty
@@ -188,7 +188,7 @@ module.exports = { metadata, questions };
 ```bash
 cd /home/kevin/vhosts/lab/coderbyte/multiple_choice
 npm install
-npm run dev  # Starts on http://localhost:3002
+npm run dev  # Starts on http://localhost:3001
 ```
 
 ## Scoring System (All Applications)
@@ -228,7 +228,7 @@ npm run dev  # Starts on http://localhost:3002
 
 ### Development
 - **npm** - Package management and scripts
-- **Local servers** - Port 3001 (coding) and 3002 (multiple choice)
+- **Local servers** - Port 3001 (multiple choice) and 3002 (coding)
 - **Hot reload** - Manual refresh (simple development setup)
 
 ## Shared Components & Features
@@ -276,8 +276,8 @@ Based on the conversation, the following additional assessments are planned:
 ## Development Guidelines Established
 
 1. **Consistent Port Assignment**:
-   - easy_1: 3001
-   - multiple_choice: 3002 (consolidated platform)
+   - multiple_choice: 3001 (consolidated platform)
+   - easy_1: 3002
    - Future apps: Increment by 1 (3003, 3004, etc.)
 
 2. **Folder Naming Convention**:

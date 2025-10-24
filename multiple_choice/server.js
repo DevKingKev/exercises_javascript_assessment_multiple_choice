@@ -63,7 +63,10 @@ app.get('/api/test/:difficulty/:testId', (req, res) => {
         const testData = require(testPath);
 
         res.json({
-            metadata: testData.metadata,
+            metadata: {
+                id: testId,
+                ...testData.metadata
+            },
             questions: testData.questions
         });
     } catch (error) {

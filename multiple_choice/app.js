@@ -9,6 +9,7 @@ class AssessmentApp {
         this.timerInterval = null;
         this.timeLimit = 30; // minutes
         this.availableTests = {};
+        this.resultsHistory = this.loadResultsHistory();
 
         this.initializeApp();
     }
@@ -16,6 +17,7 @@ class AssessmentApp {
     async initializeApp () {
         await this.loadAvailableTests();
         this.setupEventListeners();
+        this.renderResultsHistory();
         this.showTestSelection();
     }
 
@@ -59,6 +61,7 @@ class AssessmentApp {
         });
 
         document.getElementById('new-test-btn').addEventListener('click', () => {
+            this.renderResultsHistory();
             this.showTestSelection();
         });
     }
@@ -354,6 +357,23 @@ class AssessmentApp {
 
         // Display question review
         this.renderQuestionReview(results.questionReview);
+
+        // Save results to local storage
+        const resultRecord = {
+            testId: this.currentTest.metadata.id || 'test1',
+            difficulty: this.currentTest.metadata.difficulty,
+            testTitle: this.currentTest.metadata.title,
+            date: new Date().toISOString(),
+            correct: results.correct,
+            total: results.total,
+            percentage: results.percentage,
+            timeTaken: timeTaken,
+            improvementTopics: this.getImprovementTopics(results.topicBreakdown),
+            topicBreakdown: results.topicBreakdown
+        };
+
+        this.saveResult(resultRecord);
+        this.renderResultsHistory();
     }
 
     calculateResults () {
@@ -480,6 +500,165 @@ class AssessmentApp {
 
     showError (message) {
         alert(`Error: ${message}`);
+    }
+
+    // Local Storage and Results History Methods
+    loadResultsHistory () {
+        const stored = localStorage.getItem('assessmentResults');
+        return stored ? JSON.parse(stored) : {};
+    }
+
+    saveResult (result) {
+        const testKey = `${result.difficulty}_${result.testId}`;
+
+        if (!this.resultsHistory[result.difficulty]) {
+            this.resultsHistory[result.difficulty] = {};
+        }
+
+        if (!this.resultsHistory[result.difficulty][result.testId]) {
+            this.resultsHistory[result.difficulty][result.testId] = [];
+        }
+
+        this.resultsHistory[result.difficulty][result.testId].push(result);
+        localStorage.setItem('assessmentResults', JSON.stringify(this.resultsHistory));
+    }
+
+    renderResultsHistory () {
+        const historyContainer = document.getElementById('results-history');
+
+        if (Object.keys(this.resultsHistory).length === 0) {
+            historyContainer.classList.add('hidden');
+            return;
+        }
+
+        historyContainer.classList.remove('hidden');
+        const difficultyContainer = historyContainer.querySelector('.difficulty-results');
+        difficultyContainer.innerHTML = '';
+
+        // Process each difficulty level
+        ['easy', 'medium', 'hard'].forEach(difficulty => {
+            if (this.resultsHistory[difficulty] && Object.keys(this.resultsHistory[difficulty]).length > 0) {
+                const difficultySection = this.createDifficultySection(difficulty, this.resultsHistory[difficulty]);
+                difficultyContainer.appendChild(difficultySection);
+            }
+        });
+    }
+
+    createDifficultySection (difficulty, tests) {
+        const section = document.createElement('div');
+        section.className = 'difficulty-section';
+
+        // Calculate average for latest results
+        const latestScores = Object.values(tests).map(testResults => {
+            const latest = testResults[testResults.length - 1];
+            return latest.percentage;
+        });
+        const averageScore = Math.round(latestScores.reduce((a, b) => a + b, 0) / latestScores.length);
+
+        const header = document.createElement('div');
+        header.className = 'difficulty-header';
+        header.innerHTML = `
+            <div class="difficulty-info">
+                <div class="difficulty-title">${difficulty.charAt(0).toUpperCase() + difficulty.slice(1)}</div>
+                <div class="difficulty-average">Average: ${averageScore}% (${Object.keys(tests).length} tests)</div>
+            </div>
+            <div class="expand-icon">▶</div>
+        `;
+
+        const testsContainer = document.createElement('div');
+        testsContainer.className = 'test-results-container';
+
+        // Create test items
+        Object.entries(tests).forEach(([testId, results]) => {
+            const testItem = this.createTestResultItem(difficulty, testId, results);
+            testsContainer.appendChild(testItem);
+        });
+
+        // Add click handlers
+        header.addEventListener('click', () => {
+            header.classList.toggle('expanded');
+            testsContainer.classList.toggle('expanded');
+        });
+
+        section.appendChild(header);
+        section.appendChild(testsContainer);
+
+        return section;
+    }
+
+    createTestResultItem (difficulty, testId, results) {
+        const latestResult = results[results.length - 1];
+        const testMetadata = this.getTestMetadata(difficulty, testId);
+
+        const item = document.createElement('div');
+        item.className = 'test-result-item';
+
+        const scoreBadgeClass = this.getScoreBadgeClass(latestResult.percentage);
+
+        item.innerHTML = `
+            <div class="test-header">
+                <div class="test-info">
+                    <div class="test-name">${testMetadata ? testMetadata.title : `Test ${testId}`}</div>
+                    <div class="latest-score">Latest: ${latestResult.percentage}% (${results.length} attempts)</div>
+                </div>
+                <div class="score-badge ${scoreBadgeClass}">
+                    ${latestResult.percentage}%
+                </div>
+            </div>
+            <div class="attempts-history">
+                ${results.slice().reverse().map((result, index) => `
+                    <div class="attempt-item">
+                        <div class="attempt-date">${new Date(result.date).toLocaleString()}</div>
+                        <div class="attempt-details">
+                            <div class="attempt-score">Score: ${result.correct}/${result.total} (${result.percentage}%)</div>
+                            <div class="attempt-time">Time: ${result.timeTaken}</div>
+                        </div>
+                        ${result.improvementTopics && result.improvementTopics.length > 0 ? `
+                            <div class="improvement-topics">
+                                <div class="improvement-topics-label">Topics needing improvement:</div>
+                                <div class="topics-list">${result.improvementTopics.join(', ')}</div>
+                            </div>
+                        ` : ''}
+                    </div>
+                `).join('')}
+            </div>
+        `;
+
+        // Add click handler to expand/collapse attempts
+        const testHeader = item.querySelector('.test-header');
+        const attemptsHistory = item.querySelector('.attempts-history');
+
+        testHeader.addEventListener('click', () => {
+            item.classList.toggle('expanded');
+            attemptsHistory.classList.toggle('expanded');
+        });
+
+        return item;
+    }
+
+    getTestMetadata (difficulty, testId) {
+        if (this.availableTests[difficulty]) {
+            return this.availableTests[difficulty].find(test => test.id === testId);
+        }
+        return null;
+    }
+
+    getScoreBadgeClass (percentage) {
+        if (percentage >= 90) return 'score-excellent';
+        if (percentage >= 75) return 'score-good';
+        if (percentage >= 60) return 'score-average';
+        return 'score-poor';
+    }
+
+    getImprovementTopics (topicBreakdown) {
+        const improvementTopics = [];
+        Object.entries(topicBreakdown).forEach(([topic, scores]) => {
+            const percentage = (scores.correct / scores.total) * 100;
+            if (percentage < 70) { // Topics with less than 70% need improvement
+                improvementTopics.push(topic);
+            }
+        });
+        return improvementTopics;
     }
 }
 
