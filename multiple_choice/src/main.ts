@@ -277,6 +277,36 @@ class AssessmentApp {
         this.calculateAndDisplayResults();
     }
 
+    private formatTextWithCode ( text: string ): string {
+        // Detect code blocks: look for text containing newlines and typical code patterns
+        const hasNewlines = text.includes( '\n' );
+        const hasCodePatterns = /function|console\.|return|const|let|var|=>|{|}|\[|\]/.test( text );
+
+        if ( hasNewlines && hasCodePatterns ) {
+            // Split into parts: text before code, code block, text after code
+            const parts = text.split( /\n\n/ );
+
+            if ( parts.length > 1 ) {
+                // Assume the part with code patterns is the code block
+                return parts.map( part => {
+                    const trimmedPart = part.trim();
+                    if ( /function|console\.|return|const|let|var|=>/.test( trimmedPart ) ) {
+                        return `<pre><code>${this.escapeHtml( trimmedPart )}</code></pre>`;
+                    }
+                    return this.escapeHtml( trimmedPart );
+                } ).join( '' );
+            }
+        }
+
+        return this.escapeHtml( text );
+    }
+
+    private escapeHtml ( text: string ): string {
+        const div = document.createElement( 'div' );
+        div.textContent = text;
+        return div.innerHTML;
+    }
+
     private renderQuestion (): void {
         if ( !this.currentAssessment ) return;
 
@@ -285,7 +315,7 @@ class AssessmentApp {
         const questionText = document.getElementById( 'question-text' );
         const currentQuestionEl = document.getElementById( 'current-question' );
 
-        if ( questionText ) questionText.textContent = question.question;
+        if ( questionText ) questionText.innerHTML = this.formatTextWithCode( question.question );
         if ( currentQuestionEl ) currentQuestionEl.textContent = ( this.currentQuestionIndex + 1 ).toString();
 
         const optionsContainer = document.getElementById( 'options-container' );
@@ -631,17 +661,17 @@ class AssessmentApp {
 
             reviewItem.innerHTML = `
         <div class="review-question">
-          <strong>Question ${index + 1}:</strong> ${review.question}
+          <strong>Question ${index + 1}:</strong> ${this.formatTextWithCode( review.question )}
         </div>
         <div class="review-answer user">
-          <strong>Your answer:</strong> ${userAnswerText}
+          <strong>Your answer:</strong> ${this.escapeHtml( userAnswerText )}
         </div>
         <div class="review-answer ${review.isCorrect ? 'correct' : 'incorrect'}">
-          <strong>Correct answer:</strong> ${correctAnswerText}
+          <strong>Correct answer:</strong> ${this.escapeHtml( correctAnswerText )}
         </div>
         ${review.explanation ? `
           <div style="margin-top: 10px; padding: 10px; background: #f8fafc; border-radius: 6px; font-size: 0.9rem; color: #4a5568;">
-            <strong>Explanation:</strong> ${review.explanation}
+            <strong>Explanation:</strong> ${this.escapeHtml( review.explanation )}
           </div>
         ` : ''}
       `;
