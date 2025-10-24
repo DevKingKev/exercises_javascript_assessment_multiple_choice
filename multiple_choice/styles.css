@@ -14,7 +14,7 @@ body {
 }
 
 .container {
-    max-width: 1000px;
+    max-width: 1500px;
     margin: 0 auto;
     padding: 20px;
     min-height: 100vh;
@@ -328,6 +328,14 @@ header p {
     line-height: 1.6;
 }
 
+#question-text p {
+    margin: 0 0 10px 0;
+}
+
+#question-text p:last-child {
+    margin-bottom: 0;
+}
+
 #question-text pre {
     background: #1e293b;
     color: #e2e8f0;
@@ -366,6 +374,14 @@ header p {
     white-space: pre;
     word-wrap: normal;
     overflow-x: auto;
+}
+
+.review-question p {
+    margin: 0 0 8px 0;
+}
+
+.review-question p:last-child {
+    margin-bottom: 0;
 }
 
 .options-container {
@@ -613,13 +629,27 @@ header p {
     line-height: 1.6;
 }
 
+.review-explanation p {
+    margin: 0 0 12px 0;
+    line-height: 1.7;
+}
+
+.review-explanation p:last-child {
+    margin-bottom: 0;
+}
+
+.review-explanation strong {
+    color: #2d3748;
+    font-weight: 600;
+}
+
 .review-explanation pre {
     background: #1e293b;
     color: #e2e8f0;
     padding: 15px;
     border-radius: 6px;
     overflow-x: auto;
-    margin: 10px 0;
+    margin: 12px 0;
     font-family: "Consolas", "Monaco", "Courier New", monospace;
     font-size: 0.9rem;
     line-height: 1.5;
