@@ -135,7 +135,30 @@
         </div>
     </div>
 
-    <script type="module" src="/app.ts"></script>
+    <!-- Dynamic loader: try to load the Vite module entry when available (dev). If not, fall back to the built app. -->
+    <script>
+        (async function () {
+            // Try to probe the development module. If it is served with a JS MIME type we
+            // assume the Vite dev server (or proxy) is active and load the module. Otherwise
+            // redirect to the production-built index which contains the correct hashed bundle.
+            try {
+                const resp = await fetch('/src/main.ts', { method: 'HEAD' });
+                const ct = resp.headers.get('content-type') || '';
+                if (resp.ok && /javascript|application\/ecmascript/.test(ct)) {
+                    const s = document.createElement('script');
+                    s.type = 'module';
+                    s.src = '/src/main.ts';
+                    document.body.appendChild(s);
+                    return;
+                }
+            } catch (e) {
+                // fall through to redirect
+            }
+            // Fallback: point to the built client (served from dist/public). The server
+            // will serve this file in production; in dev it will exist when you've run the build.
+            window.location.href = '/dist/public/index.html';
+        })();
+    </script>
 </body>
 
 </html>

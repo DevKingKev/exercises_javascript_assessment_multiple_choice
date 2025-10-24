@@ -1,5 +1,6 @@
 // TypeScript Server - Simplified and Working Version
 import express, { Request, Response } from 'express';
+// NOTE: http-proxy-middleware is added as a devDependency and will be required dynamically in dev mode.
 import path from 'path';
 import fs from 'fs';
 
@@ -36,15 +37,13 @@ const PORT = 3001;
 // Use current directory (the source will be compiled to dist)
 const projectRoot = path.resolve( __dirname, '../' ); // Go up one level from dist to project root
 
-// If a built client exists (vite output) serve that from dist/public. Otherwise fall back to project root.
-const builtClientDir = path.resolve( projectRoot, 'dist', 'public' );
-if ( fs.existsSync( builtClientDir ) ) {
-    console.log( '📦 Serving built client from:', builtClientDir );
-    app.use( express.static( builtClientDir ) );
-} else {
-    console.log( '🧭 Serving static files from project root (dev mode) at', projectRoot );
-    app.use( express.static( projectRoot ) );
-}
+// Decide whether we're running in Vite dev mode. dev-runner sets VITE_DEV=1 when spawning the server.
+const viteDev = process.env.VITE_DEV === '1' || process.env.NODE_ENV === 'development';
+const vitePort = process.env.VITE_PORT || '5173';
+
+// ============================================================================
+// API ROUTES - Must be registered BEFORE proxy middleware!
+// ============================================================================
 
 // API endpoint to get available tests
 app.get( '/api/tests', ( req: Request, res: Response ) => {
@@ -136,6 +135,38 @@ app.get( '/api/test/:difficulty/:testId', ( req: Request, res: Response ) => {
         res.status( 404 ).json( { error: 'Test not found' } );
     }
 } );
+
+// ============================================================================
+// PROXY OR STATIC FILE SERVING
+// ============================================================================
+
+if ( viteDev ) {
+    console.log( `↪️  Dev mode detected — proxying non-/api requests to Vite at http://localhost:${vitePort}` );
+    // Dynamically require the proxy middleware to avoid import-time failures when not installed in production.
+    // The dependency is added as a devDependency in package.json.
+    // Only proxy requests that are NOT for /api — keep API routes local.
+    // `createProxyMiddleware` accepts a filter function as the first argument.
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    const { createProxyMiddleware } = require( 'http-proxy-middleware' );
+    app.use( '/', createProxyMiddleware( ( pathname: string ) => {
+        return !pathname.startsWith( '/api' );
+    }, {
+        target: `http://localhost:${vitePort}`,
+        changeOrigin: true,
+        ws: true,
+        logLevel: 'warn'
+    } ) );
+} else {
+    // If a built client exists (vite output) serve that from dist/public. Otherwise fall back to project root.
+    const builtClientDir = path.resolve( projectRoot, 'dist', 'public' );
+    if ( fs.existsSync( builtClientDir ) ) {
+        console.log( '📦 Serving built client from:', builtClientDir );
+        app.use( express.static( builtClientDir ) );
+    } else {
+        console.log( '🧭 Serving static files from project root (dev mode) at', projectRoot );
+        app.use( express.static( projectRoot ) );
+    }
+}
 
 // Serve the main page
 app.get( '/', ( req: Request, res: Response ) => {
