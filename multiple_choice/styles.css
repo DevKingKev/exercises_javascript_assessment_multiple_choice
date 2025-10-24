@@ -603,6 +603,35 @@ header p {
     color: #4a5568;
 }
 
+.review-explanation {
+    margin-top: 15px;
+    padding: 15px;
+    background: #f8fafc;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    color: #4a5568;
+    line-height: 1.6;
+}
+
+.review-explanation pre {
+    background: #1e293b;
+    color: #e2e8f0;
+    padding: 15px;
+    border-radius: 6px;
+    overflow-x: auto;
+    margin: 10px 0;
+    font-family: "Consolas", "Monaco", "Courier New", monospace;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.review-explanation code {
+    display: block;
+    white-space: pre;
+    word-wrap: normal;
+    overflow-x: auto;
+}
+
 .results-actions {
     display: flex;
     justify-content: center;

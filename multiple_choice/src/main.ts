@@ -670,8 +670,8 @@ class AssessmentApp {
           <strong>Correct answer:</strong> ${this.escapeHtml( correctAnswerText )}
         </div>
         ${review.explanation ? `
-          <div style="margin-top: 10px; padding: 10px; background: #f8fafc; border-radius: 6px; font-size: 0.9rem; color: #4a5568;">
-            <strong>Explanation:</strong> ${this.escapeHtml( review.explanation )}
+          <div class="review-explanation">
+            <strong>Explanation:</strong> ${this.formatTextWithCode( review.explanation )}
           </div>
         ` : ''}
       `;
