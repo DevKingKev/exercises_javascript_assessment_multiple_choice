@@ -5,9 +5,10 @@
     "main": "server.js",
     "scripts": {
         "build": "tsc -p tsconfig.client.json && tsc -p tsconfig.server.json",
-        "build:watch": "tsc --watch",
-        "dev": "npm run build && node dist/server.js",
-        "dev:watch": "concurrently \"npm run build:watch\" \"nodemon dist/server.js\"",
+        "build:watch": "tsc -p tsconfig.client.json --watch & tsc -p tsconfig.server.json --watch",
+        "dev": "npm run build && npm run build:watch & sleep 3 && node dist/server.js",
+        "dev:nodemon": "npm run build && npx nodemon --legacy-watch --watch dist/server.js dist/server.js",
+        "dev:once": "npm run build && node dist/server.js",
         "start": "npm run build && node dist/server.js",
         "type-check": "tsc --noEmit",
         "clean": "rm -rf dist/"
