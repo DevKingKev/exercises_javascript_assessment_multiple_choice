@@ -37,6 +37,22 @@ This document contains the complete context for the Coderbyte-style assessment a
     ├── index.html                   # HTML entry with dynamic loader
     ├── app.ts                       # Legacy compatibility shim
     ├── styles.css                   # Application styles
+    ├── src/
+    │   ├── main.ts                  # Vite client entry point (TypeScript)
+    │   ├── models/                  # TypeScript type definitions (NEW)
+    │   │   ├── index.ts             # Re-exports all model types
+    │   │   ├── question.ts          # Question type definitions
+    │   │   ├── assessment.ts        # Assessment type definitions
+    │   │   ├── results.ts           # Results type definitions
+    │   │   └── format.ts            # Format type definitions
+    │   └── utils/                   # Extracted utility functions (NEW)
+    │       ├── formatUtils.ts       # Formatting helpers (escapeHtml, formatWithMarkers, etc.)
+    │       ├── dateUtils.ts         # Date formatting utilities
+    │       ├── resultsUtils.ts      # Results calculation helpers
+    │       └── __tests__/           # Unit tests for utilities (NEW)
+    │           ├── formatUtils.test.ts
+    │           ├── dateUtils.test.ts
+    │           └── resultsUtils.test.ts
     ├── tests/
     │   ├── easy/
     │   │   ├── test1.js             # JavaScript Fundamentals (20 questions)
@@ -45,6 +61,8 @@ This document contains the complete context for the Coderbyte-style assessment a
     │   │   └── test4.js             # Modern JavaScript & Programming Concepts (30 questions)
     │   ├── medium/                  # Placeholder for future tests
     │   └── hard/                    # Placeholder for future tests
+    ├── coverage/                    # Test coverage reports (generated)
+    ├── vitest.config.ts             # Vitest test configuration (NEW)
     └── node_modules/
 ```
 
@@ -601,4 +619,216 @@ The multiple choice platform was successfully migrated to use Vite as the build 
 - Server automatically serves from `dist/public/` when not in dev mode
 - No Vite runtime needed in production
 
+## Code Quality & Testing (October 2025)
+
+### Refactoring Initiative
+
+Following the Vite migration, a comprehensive code refactoring was performed to improve maintainability, testability, and code organization in the multiple_choice platform.
+
+#### 1. **TypeScript Models Centralization**
+
+**Goal**: Consolidate all TypeScript interfaces and types into a dedicated models directory.
+
+**Changes**:
+- Created `src/models/` directory with modular type definition files:
+  - `question.ts` - Question and option types
+  - `assessment.ts` - Test/assessment metadata types
+  - `results.ts` - Results and scoring types
+  - `format.ts` - Formatting configuration types
+  - `index.ts` - Re-exports all types for convenient imports
+
+**Benefits**:
+- Single source of truth for all type definitions
+- Easy to locate and update interfaces
+- Better code organization and discoverability
+- Type-only imports used in `src/main.ts` for optimal bundling
+
+#### 2. **Utility Functions Extraction**
+
+**Goal**: Remove helper functions from `src/main.ts` and organize them into focused utility modules.
+
+**Changes**:
+- Created `src/utils/` directory with three utility modules:
+  - **`formatUtils.ts`**: Text and code formatting functions
+    - `escapeHtml()` - HTML entity escaping
+    - `formatWithMarkers()` - [CODE] marker-based formatting
+    - `formatAutoDetect()` - Automatic code detection and formatting
+    - `formatTextWithCode()` - Unified formatting entry point
+  - **`dateUtils.ts`**: Date formatting utilities
+    - `formatDate()` - Locale-aware date/time formatting with fallback
+  - **`resultsUtils.ts`**: Results calculation helpers
+    - `getScoreBadgeClass()` - Score classification (excellent/good/average/poor)
+    - `getImprovementTopics()` - Identify weak topic areas
+    - `formatTimeTaken()` - Convert duration to MM:SS format
+
+**Benefits**:
+- `src/main.ts` reduced from ~750 lines with clearer responsibilities
+- Utilities are reusable across the application
+- Each module has a single, well-defined purpose
+- Easier to test individual functions in isolation
+
+#### 3. **Comprehensive Unit Testing**
+
+**Goal**: Achieve high code coverage with automated tests for all utility functions.
+
+**Test Framework Setup**:
+- **Vitest 4.0.3** - Modern, fast test runner compatible with Vite
+- **@vitest/coverage-v8** - Built-in V8-based coverage reporting
+- **jsdom** - DOM environment for browser API testing
+- Configuration in `vitest.config.ts`:
+  ```typescript
+  {
+    test: {
+      environment: 'jsdom',
+      globals: true,
+      coverage: {
+        provider: 'v8',
+        reporter: ['text', 'html'],
+        reportsDirectory: './coverage'
+      }
+    }
+  }
+  ```
+
+**Test Files Created**:
+- `src/utils/__tests__/formatUtils.test.ts` (4 tests)
+  - HTML escaping
+  - Marker-based formatting
+  - Auto-detection formatting
+  - Unified formatting function
+  
+- `src/utils/__tests__/dateUtils.test.ts` (6 tests)
+  - Localized date/time formatting
+  - Locale mapping ("en" → "en-GB")
+  - Extended navigator fallback (userLanguage)
+  - Default locale fallback
+  - Fallback formatting when toLocale* methods throw
+  - PM hours handling in fallback path
+  
+- `src/utils/__tests__/resultsUtils.test.ts` (3 tests)
+  - Score badge classification boundaries
+  - Topic improvement identification
+  - Time duration formatting
+
+**Test Coverage Achieved**:
+```
+File             | % Stmts | % Branch | % Funcs | % Lines
+-----------------|---------|----------|---------|----------
+dateUtils.ts     |   100%  |   100%   |   100%  |   100%
+formatUtils.ts   |  96.29% |  85.71%  |   100%  |   100%
+resultsUtils.ts  |   100%  |   100%   |   100%  |   100%
+-----------------|---------|----------|---------|----------
+Overall          |  98.5%  |   92.5%  |   100%  |   100%
+```
+
+**Testing Approach - Deterministic Tests**:
+- **Challenge**: Date/time behavior varies by timezone and locale
+- **Solution**: Temporarily stub Date prototype methods during tests
+  - Mock `toLocaleDateString()` and `toLocaleTimeString()` to force exceptions
+  - Stub date getters (`getHours`, `getMinutes`, etc.) to return fixed values
+  - Restore original methods in `finally` blocks to prevent test pollution
+- **Alternative**: Dependency injection (recommended for future refactoring)
+  - Refactor functions to accept injectable clock/formatter dependencies
+  - Pass fake implementations in tests instead of stubbing globals
+  - Cleaner, safer, and more maintainable approach
+
+**npm Scripts for Testing**:
+```json
+{
+  "test": "vitest",
+  "test:coverage": "vitest --coverage",
+  "type-check": "tsc --noEmit"
+}
+```
+
+**Running Tests**:
+```bash
+# Run tests in watch mode
+npm test
+
+# Run tests once
+npm test -- --run
+
+# Run tests with coverage report
+npm run test:coverage
+
+# Type-check without running tests
+npm run type-check
+```
+
+**Coverage Reports**:
+- Text summary printed to console
+- HTML report generated in `coverage/index.html`
+- Open `coverage/index.html` in browser for interactive exploration
+
+#### 4. **Dependency Management**
+
+**Version Alignment**:
+- Updated Vitest and coverage provider to latest stable versions
+- Resolved peer dependency conflicts with Express types
+- Current critical dependencies:
+  ```json
+  {
+    "devDependencies": {
+      "@types/express": "^4.17.21",
+      "@vitest/coverage-v8": "^4.0.3",
+      "vitest": "^4.0.3",
+      "jsdom": "^22.1.0"
+    }
+  }
+  ```
+
+**Installation Notes**:
+- Used `--legacy-peer-deps` flag during development to resolve conflicts
+- Final stable configuration works without flags
+- Clean install: `rm -rf node_modules package-lock.json && npm install`
+
+### Code Quality Metrics
+
+**Before Refactoring**:
+- Single `src/main.ts` file with ~750 lines
+- Inline type definitions mixed with logic
+- Helper functions embedded in main class
+- No unit tests or coverage measurement
+
+**After Refactoring**:
+- `src/main.ts` focused on UI logic and orchestration
+- Types organized in `src/models/` (5 files)
+- Utilities extracted to `src/utils/` (3 files)
+- Comprehensive test suite (13 tests, 100% pass rate)
+- 98.5% statement coverage, 92.5% branch coverage
+- All utility functions have 100% line coverage
+
+### Future Improvements
+
+**Recommended Next Steps**:
+1. **Dependency Injection Refactor**: Remove Date prototype stubbing
+   - Refactor `formatDate` to accept optional clock/formatter parameters
+   - Update tests to pass fake implementations instead of stubbing
+   
+2. **Increase Branch Coverage for formatUtils**: Currently 85.71%
+   - Add tests for edge cases in markup parsing
+   - Test different code block patterns and escape sequences
+   
+3. **CI/CD Integration**:
+   - Create GitHub Actions workflow
+   - Run tests and coverage on every PR
+   - Enforce minimum coverage thresholds
+   - Publish coverage reports to GitHub Pages or Codecov
+
+4. **Test Main Application Logic**:
+   - Create tests for `AssessmentApp` class in `src/main.ts`
+   - Mock DOM elements and browser APIs
+   - Test state management and user interactions
+
+### Benefits of Testing & Refactoring
+
+- **Confidence**: Changes can be made safely with test coverage
+- **Documentation**: Tests serve as living examples of how functions work
+- **Regression Prevention**: Automated tests catch bugs early
+- **Code Quality**: Refactoring improved modularity and maintainability
+- **Developer Experience**: Fast test feedback loop with Vitest's HMR
+- **Onboarding**: New developers can understand code structure quickly
+
 This context should be referenced for all future development to ensure consistency and proper continuation of the project.
+
