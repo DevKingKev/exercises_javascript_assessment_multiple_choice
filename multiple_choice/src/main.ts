@@ -220,7 +220,7 @@ class AssessmentApp {
         const questionText = document.getElementById( 'question-text' );
         const currentQuestionEl = document.getElementById( 'current-question' );
 
-        if ( questionText ) questionText.innerHTML = this.formatTextWithCode( question.question );
+        if ( questionText ) questionText.innerHTML = formatTextWithCode( question.question );
         if ( currentQuestionEl ) currentQuestionEl.textContent = ( this.currentQuestionIndex + 1 ).toString();
 
         const optionsContainer = document.getElementById( 'options-container' );
@@ -437,7 +437,7 @@ class AssessmentApp {
         if ( totalAnswers ) totalAnswers.textContent = results.total.toString();
 
         // Display time taken
-        const timeTaken = this.calculateTimeTaken();
+        const timeTaken = formatTimeTaken( this.startTime );
         const timeTakenEl = document.getElementById( 'time-taken' );
         if ( timeTakenEl ) timeTakenEl.textContent = timeTaken;
 
@@ -457,7 +457,7 @@ class AssessmentApp {
             total: results.total,
             percentage: results.percentage,
             timeTaken: timeTaken,
-            improvementTopics: this.getImprovementTopics( results.topicBreakdown ),
+            improvementTopics: getImprovementTopics( results.topicBreakdown ),
             topicBreakdown: results.topicBreakdown
         };
 
@@ -559,7 +559,7 @@ class AssessmentApp {
 
             reviewItem.innerHTML = `
         <div class="review-question">
-          <strong>Question ${index + 1}:</strong> ${this.formatTextWithCode( review.question )}
+          <strong>Question ${index + 1}:</strong> ${formatTextWithCode( review.question )}
         </div>
                 <div class="review-answer user">
                     <strong>Your answer:</strong> ${escapeHtml( userAnswerText )}
@@ -569,7 +569,7 @@ class AssessmentApp {
                 </div>
         ${review.explanation ? `
           <div class="review-explanation">
-            <strong>Explanation:</strong> ${this.formatTextWithCode( review.explanation )}
+            <strong>Explanation:</strong> ${formatTextWithCode( review.explanation )}
           </div>
         ` : ''}
       `;
@@ -685,7 +685,7 @@ class AssessmentApp {
         const item = document.createElement( 'div' );
         item.className = 'assessment-result-item';
 
-        const scoreBadgeClass = this.getScoreBadgeClass( latestResult.percentage );
+        const scoreBadgeClass = getScoreBadgeClass( latestResult.percentage );
 
         item.innerHTML = `
       <div class="assessment-header">
@@ -700,7 +700,7 @@ class AssessmentApp {
       <div class="attempts-history">
         ${results.slice().reverse().map( ( result, index ) => `
           <div class="attempt-item">
-            <div class="attempt-date">${this.formatDate( result.date )}</div>
+            <div class="attempt-date">${formatDate( result.date )}</div>
             <div class="attempt-details">
               <div class="attempt-score">Score: ${result.correct}/${result.total} (${result.percentage}%)</div>
               <div class="attempt-time">Time: ${result.timeTaken}</div>
@@ -737,17 +737,7 @@ class AssessmentApp {
         return null;
     }
 
-    private getScoreBadgeClass ( percentage: number ): ScoreBadgeClass {
-        return getScoreBadgeClass( percentage );
-    }
 
-    private getImprovementTopics ( topicBreakdown: TopicBreakdown ): string[] {
-        return getImprovementTopics( topicBreakdown );
-    }
-
-    private formatDate ( dateString: string ): string {
-        return formatDate( dateString );
-    }
 }
 
 // Initialize the application when the page loads
