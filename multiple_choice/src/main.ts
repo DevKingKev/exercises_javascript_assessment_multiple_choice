@@ -1,92 +1,22 @@
 // Multiple Choice Assessment Platform - Main Application Logic (TypeScript)
 
-// Inline type definitions (removed import to avoid module issues in browser)
-interface Question {
-    id: number;
-    question: string;
-    options: { [key: string]: string; };
-    correct: string;
-    explanation?: string;
-}
-
-interface AssessmentMetadata {
-    id?: string;
-    title: string;
-    description: string;
-    difficulty: string;
-    timeLimit: number;
-    questionCount: number;
-    topics?: string[];
-}
-
-interface Assessment {
-    metadata: AssessmentMetadata;
-    questions: Question[];
-}
-
-interface AvailableAssessments {
-    [difficulty: string]: ( AssessmentMetadata & { id: string; } )[];
-}
-
-interface TopicBreakdown {
-    [topic: string]: { correct: number; total: number; };
-}
-
-interface QuestionReview {
-    question: string;
-    userAnswer: string | null;
-    correctAnswer: string;
-    isCorrect: boolean;
-    explanation?: string;
-    options: { [key: string]: string; };
-}
-
-interface AssessmentResults {
-    correct: number;
-    total: number;
-    percentage: number;
-    topicBreakdown: TopicBreakdown;
-    questionReview: QuestionReview[];
-}
-
-interface ResultRecord {
-    assessmentId: string;
-    difficulty: string;
-    assessmentTitle: string;
-    date: string;
-    correct: number;
-    total: number;
-    percentage: number;
-    timeTaken: string;
-    improvementTopics: string[];
-    topicBreakdown: TopicBreakdown;
-}
-
-interface ResultsHistory {
-    [difficulty: string]: {
-        [assessmentId: string]: ResultRecord[];
-    };
-}
-
-type ScreenId = 'assessment-selection' | 'assessment' | 'results';
-type ScoreBadgeClass = 'score-excellent' | 'score-good' | 'score-average' | 'score-poor';
-
-interface DateFormatOptions {
-    year: 'numeric' | '2-digit';
-    month: 'numeric' | '2-digit' | 'long' | 'short' | 'narrow';
-    day: 'numeric' | '2-digit';
-}
-
-interface TimeFormatOptions {
-    hour: 'numeric' | '2-digit';
-    minute: 'numeric' | '2-digit';
-    hour12: boolean;
-}
-
-// Extended Navigator interface for legacy browser support
-interface ExtendedNavigator extends Navigator {
-    userLanguage?: string;
-}
+// Import shared type definitions from models
+import type {
+    Question,
+    AssessmentMetadata,
+    Assessment,
+    AvailableAssessments,
+    TopicBreakdown,
+    QuestionReview,
+    AssessmentResults,
+    ResultRecord,
+    ResultsHistory,
+    ScreenId,
+    ScoreBadgeClass,
+    DateFormatOptions,
+    TimeFormatOptions,
+    ExtendedNavigator
+} from './models';
 
 class AssessmentApp {
     private currentAssessment: Assessment | null = null;
