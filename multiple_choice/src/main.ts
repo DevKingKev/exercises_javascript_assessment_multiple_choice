@@ -12,11 +12,13 @@ import type {
     ResultRecord,
     ResultsHistory,
     ScreenId,
-    ScoreBadgeClass,
-    DateFormatOptions,
-    TimeFormatOptions,
-    ExtendedNavigator
+    ScoreBadgeClass
 } from './models';
+
+// Utility functions moved to src/utils
+import { formatTextWithCode, escapeHtml } from './utils/formatUtils';
+import { formatDate } from './utils/dateUtils';
+import { getScoreBadgeClass, getImprovementTopics, formatTimeTaken } from './utils/resultsUtils';
 
 class AssessmentApp {
     private currentAssessment: Assessment | null = null;
@@ -206,67 +208,8 @@ class AssessmentApp {
         this.stopTimer();
         this.calculateAndDisplayResults();
     }
-
     private formatTextWithCode ( text: string ): string {
-        // Check if text uses explicit code markers [CODE]...[/CODE]
-        if ( text.includes( '[CODE]' ) && text.includes( '[/CODE]' ) ) {
-            return this.formatWithMarkers( text );
-        }
-
-        // Fallback: auto-detect code blocks (legacy support)
-        return this.formatAutoDetect( text );
-    }
-
-    private formatWithMarkers ( text: string ): string {
-        // Split by code markers
-        const parts = text.split( /(\[CODE\][\s\S]*?\[\/CODE\])/g );
-
-        return parts.map( part => {
-            if ( part.startsWith( '[CODE]' ) && part.endsWith( '[/CODE]' ) ) {
-                // Extract code content between markers
-                const code = part.slice( 6, -7 ).trim(); // Remove [CODE] and [/CODE]
-                return `<pre><code>${this.escapeHtml( code )}</code></pre>`;
-            } else {
-                // Regular text - wrap non-empty paragraphs
-                const trimmed = part.trim();
-                if ( !trimmed ) return '';
-
-                // Split by double newlines for multiple paragraphs
-                return trimmed.split( /\n\n+/ ).map( p => {
-                    const paragraph = p.trim();
-                    return paragraph ? `<p>${this.escapeHtml( paragraph )}</p>` : '';
-                } ).join( '' );
-            }
-        } ).join( '' );
-    }
-
-    private formatAutoDetect ( text: string ): string {
-        // Split on double newlines to get paragraphs/sections
-        const sections = text.split( /\n\n+/ );
-
-        return sections.map( section => {
-            const trimmed = section.trim();
-            if ( !trimmed ) return '';
-
-            // Check if this section is code (has newlines AND code patterns)
-            const hasInternalNewlines = trimmed.includes( '\n' );
-            const hasCodePatterns = /^(const|let|var|function|class|\{|\[|\/\/|if|for|while|return|import|export)/.test( trimmed ) ||
-                /[{}\[\];]/.test( trimmed ) && hasInternalNewlines;
-
-            if ( hasCodePatterns && hasInternalNewlines ) {
-                // This is a code block
-                return `<pre><code>${this.escapeHtml( trimmed )}</code></pre>`;
-            } else {
-                // Regular text - wrap in paragraph
-                return `<p>${this.escapeHtml( trimmed )}</p>`;
-            }
-        } ).join( '' );
-    }
-
-    private escapeHtml ( text: string ): string {
-        const div = document.createElement( 'div' );
-        div.textContent = text;
-        return div.innerHTML;
+        return formatTextWithCode( text );
     }
 
     private renderQuestion (): void {
@@ -574,14 +517,7 @@ class AssessmentApp {
     }
 
     private calculateTimeTaken (): string {
-        if ( !this.startTime ) return '0:00';
-
-        const endTime = new Date();
-        const timeTaken = endTime.getTime() - this.startTime.getTime();
-        const minutes = Math.floor( timeTaken / ( 1000 * 60 ) );
-        const seconds = Math.floor( ( timeTaken % ( 1000 * 60 ) ) / 1000 );
-
-        return `${minutes}:${seconds.toString().padStart( 2, '0' )}`;
+        return formatTimeTaken( this.startTime );
     }
 
     private renderTopicBreakdown ( topicScores: TopicBreakdown ): void {
@@ -625,12 +561,12 @@ class AssessmentApp {
         <div class="review-question">
           <strong>Question ${index + 1}:</strong> ${this.formatTextWithCode( review.question )}
         </div>
-        <div class="review-answer user">
-          <strong>Your answer:</strong> ${this.escapeHtml( userAnswerText )}
-        </div>
-        <div class="review-answer ${review.isCorrect ? 'correct' : 'incorrect'}">
-          <strong>Correct answer:</strong> ${this.escapeHtml( correctAnswerText )}
-        </div>
+                <div class="review-answer user">
+                    <strong>Your answer:</strong> ${escapeHtml( userAnswerText )}
+                </div>
+                <div class="review-answer ${review.isCorrect ? 'correct' : 'incorrect'}">
+                    <strong>Correct answer:</strong> ${escapeHtml( correctAnswerText )}
+                </div>
         ${review.explanation ? `
           <div class="review-explanation">
             <strong>Explanation:</strong> ${this.formatTextWithCode( review.explanation )}
@@ -802,67 +738,15 @@ class AssessmentApp {
     }
 
     private getScoreBadgeClass ( percentage: number ): ScoreBadgeClass {
-        if ( percentage >= 90 ) return 'score-excellent';
-        if ( percentage >= 75 ) return 'score-good';
-        if ( percentage >= 60 ) return 'score-average';
-        return 'score-poor';
+        return getScoreBadgeClass( percentage );
     }
 
     private getImprovementTopics ( topicBreakdown: TopicBreakdown ): string[] {
-        const improvementTopics: string[] = [];
-        Object.entries( topicBreakdown ).forEach( ( [topic, scores] ) => {
-            const typedScores = scores as { correct: number; total: number; };
-            const percentage = ( typedScores.correct / typedScores.total ) * 100;
-            if ( percentage < 70 ) { // Topics with less than 70% need improvement
-                improvementTopics.push( topic );
-            }
-        } );
-        return improvementTopics;
+        return getImprovementTopics( topicBreakdown );
     }
 
     private formatDate ( dateString: string ): string {
-        const date = new Date( dateString );
-
-        // Try to get the user's locale, fallback to 'en-GB' for DD/MM/YYYY format
-        const extendedNavigator = navigator as ExtendedNavigator;
-        let locale = navigator.language || extendedNavigator.userLanguage || 'en-GB';
-
-        // If locale is just "en", use "en-GB" for DD/MM/YYYY format
-        if ( locale === 'en' ) {
-            locale = 'en-GB';
-        }
-
-        try {
-            // Format date part only
-            const dateOptions: DateFormatOptions = {
-                year: 'numeric',
-                month: '2-digit',
-                day: '2-digit'
-            };
-
-            // Format time part only
-            const timeOptions: TimeFormatOptions = {
-                hour: '2-digit',
-                minute: '2-digit',
-                hour12: true
-            };
-
-            const datePart = date.toLocaleDateString( locale, dateOptions );
-            const timePart = date.toLocaleTimeString( locale, timeOptions );
-
-            return `${datePart}, ${timePart}`;
-        } catch ( error ) {
-            // Fallback to DD/MM/YYYY, HH:MM AM/PM format
-            const day = date.getDate().toString().padStart( 2, '0' );
-            const month = ( date.getMonth() + 1 ).toString().padStart( 2, '0' );
-            const year = date.getFullYear();
-            const hours = date.getHours();
-            const minutes = date.getMinutes().toString().padStart( 2, '0' );
-            const ampm = hours >= 12 ? 'PM' : 'AM';
-            const displayHours = hours % 12 || 12;
-
-            return `${day}/${month}/${year}, ${displayHours}:${minutes} ${ampm}`;
-        }
+        return formatDate( dateString );
     }
 }
 
