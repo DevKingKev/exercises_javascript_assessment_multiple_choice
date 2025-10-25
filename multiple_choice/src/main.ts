@@ -11,8 +11,7 @@ import type {
     AssessmentResults,
     ResultRecord,
     ResultsHistory,
-    ScreenId,
-    ScoreBadgeClass
+    ScreenId
 } from './models';
 
 // Utility functions moved to src/utils
