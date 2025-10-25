@@ -45,7 +45,7 @@ const questions = [
     },
     {
         id: 3,
-        question: "What is the output of the following code?\n\nfunction test() {\n    return 5;\n}\nconsole.log(test());",
+        question: "What is the output of the following code?\n\n[CODE]\nfunction test() {\n    return 5;\n}\nconsole.log(test());\n[/CODE]",
         options: {
             A: "undefined",
             B: "5",
@@ -69,7 +69,7 @@ const questions = [
     },
     {
         id: 5,
-        question: "What will the following code output?\n\nlet x = 10;\nif (x > 5) {\n    console.log(\"Greater\");\n} else {\n    console.log(\"Smaller\");\n}",
+        question: "What will the following code output?\n\n[CODE]\nlet x = 10;\nif (x > 5) {\n    console.log(\"Greater\");\n} else {\n    console.log(\"Smaller\");\n}\n[/CODE]",
         options: {
             A: "Greater",
             B: "Smaller",
@@ -81,7 +81,7 @@ const questions = [
     },
     {
         id: 6,
-        question: "How many times will this loop execute?\n\nfor (let i = 0; i < 3; i++) {\n    console.log(i);\n}",
+        question: "How many times will this loop execute?\n\n[CODE]\nfor (let i = 0; i < 3; i++) {\n    console.log(i);\n}\n[/CODE]",
         options: {
             A: "2 times",
             B: "3 times",
@@ -117,7 +117,7 @@ const questions = [
     },
     {
         id: 9,
-        question: "What is the length of this array?\n\nlet arr = [1, 2, 3, , 5];",
+        question: "What is the length of this array?\n\n[CODE]\nlet arr = [1, 2, 3, , 5];\n[/CODE]",
         options: {
             A: "4",
             B: "5",
@@ -129,7 +129,7 @@ const questions = [
     },
     {
         id: 10,
-        question: "What is the result of: true && false || true?",
+        question: "What is the result of: [CODE]true && false || true[/CODE]?",
         options: {
             A: "true",
             B: "false",
@@ -137,11 +137,11 @@ const questions = [
             D: "Error"
         },
         correct: "A",
-        explanation: "Due to operator precedence, this evaluates as (true && false) || true = false || true = true."
+        explanation: "Due to operator precedence, this evaluates as [CODE](true && false) || true = false || true = true[/CODE]."
     },
     {
         id: 11,
-        question: "What happens when you call a function with fewer arguments than parameters?\n\nfunction greet(name, age) {\n    console.log(name, age);\n}\ngreet(\"John\");",
+        question: "What happens when you call a function with fewer arguments than parameters?\n\n[CODE]\nfunction greet(name, age) {\n    console.log(name, age);\n}\ngreet(\"John\");\n[/CODE]",
         options: {
             A: "Error",
             B: "John undefined",
@@ -153,7 +153,7 @@ const questions = [
     },
     {
         id: 12,
-        question: "What is the result of: '5' + 3?",
+        question: "What is the result of: [CODE]'5' + 3[/CODE]?",
         options: {
             A: "8",
             B: "'53'",
@@ -165,7 +165,7 @@ const questions = [
     },
     {
         id: 13,
-        question: "What will this code output?\n\nlet x = 1;\nfunction test() {\n    let x = 2;\n    console.log(x);\n}\ntest();",
+        question: "What will this code output?\n\n[CODE]\nlet x = 1;\nfunction test() {\n    let x = 2;\n    console.log(x);\n}\ntest();\n[/CODE]",
         options: {
             A: "1",
             B: "2",
@@ -225,7 +225,7 @@ const questions = [
     },
     {
         id: 18,
-        question: "What is the result of Math.floor(4.7)?",
+        question: "What is the result of [CODE]Math.floor(4.7)[/CODE]?",
         options: {
             A: "4",
             B: "5",
@@ -233,7 +233,7 @@ const questions = [
             D: "Error"
         },
         correct: "A",
-        explanation: "Math.floor() rounds down to the nearest integer, so 4.7 becomes 4."
+        explanation: "[CODE]Math.floor()[/CODE] rounds down to the nearest integer, so 4.7 becomes 4."
     },
     {
         id: 19,

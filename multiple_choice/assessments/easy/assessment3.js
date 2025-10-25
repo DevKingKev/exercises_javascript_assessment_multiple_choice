@@ -21,7 +21,7 @@ const metadata = {
 const questions = [
     {
         id: 1,
-        question: "What does Math.max(5, 10, 3) return?",
+        question: "What does [CODE]Math.max(5, 10, 3)[/CODE] return?",
         options: {
             A: "5",
             B: "10",
@@ -29,7 +29,7 @@ const questions = [
             D: "18"
         },
         correct: "B",
-        explanation: "Math.max() returns the largest of the given numbers. Among 5, 10, and 3, the largest is 10."
+        explanation: "[CODE]Math.max()[/CODE] returns the largest of the given numbers. Among 5, 10, and 3, the largest is 10."
     },
     {
         id: 2,
@@ -45,7 +45,7 @@ const questions = [
     },
     {
         id: 3,
-        question: "What does 'hello'.charAt(1) return?",
+        question: "What does [CODE]'hello'.charAt(1)[/CODE] return?",
         options: {
             A: "'h'",
             B: "'e'",
@@ -53,11 +53,11 @@ const questions = [
             D: "'o'"
         },
         correct: "B",
-        explanation: "charAt(1) returns the character at index 1. String indexing starts at 0, so index 1 in 'hello' is 'e'."
+        explanation: "[CODE]charAt(1)[/CODE] returns the character at index 1. String indexing starts at 0, so index 1 in 'hello' is 'e'."
     },
     {
         id: 4,
-        question: "What is the result of 2 * 3 + 4?",
+        question: "What is the result of [CODE]2 * 3 + 4[/CODE]?",
         options: {
             A: "14",
             B: "10",
@@ -65,7 +65,7 @@ const questions = [
             D: "9"
         },
         correct: "B",
-        explanation: "Following order of operations (PEMDAS), multiplication happens before addition: 2 * 3 = 6, then 6 + 4 = 10."
+        explanation: "Following order of operations (PEMDAS), multiplication happens before addition: [CODE]2 * 3 = 6[/CODE], then [CODE]6 + 4 = 10[/CODE]."
     },
     {
         id: 5,
@@ -81,7 +81,7 @@ const questions = [
     },
     {
         id: 6,
-        question: "What does Math.pow(2, 3) return?",
+        question: "What does [CODE]Math.pow(2, 3)[/CODE] return?",
         options: {
             A: "5",
             B: "6",
@@ -89,7 +89,7 @@ const questions = [
             D: "9"
         },
         correct: "C",
-        explanation: "Math.pow(2, 3) calculates 2 to the power of 3, which is 2 * 2 * 2 = 8."
+        explanation: "[CODE]Math.pow(2, 3)[/CODE] calculates 2 to the power of 3, which is [CODE]2 * 2 * 2 = 8[/CODE]."
     },
     {
         id: 7,
@@ -101,7 +101,7 @@ const questions = [
             D: "Both A and B"
         },
         correct: "D",
-        explanation: "Both test[0] and test.charAt(0) access the first character. charAt() is more traditional, bracket notation is newer but widely supported."
+        explanation: "Both [CODE]test[0][/CODE] and [CODE]test.charAt(0)[/CODE] access the first character. [CODE]charAt()[/CODE] is more traditional, bracket notation is newer but widely supported."
     },
     {
         id: 8,
@@ -113,7 +113,7 @@ const questions = [
             D: "Both A and C"
         },
         correct: "D",
-        explanation: "Both function declaration (A) and function expression (C) are valid ways to create a function in JavaScript."
+        explanation: "Both function declaration [CODE]function myFunc() {}[/CODE] and function expression [CODE]myFunc = function() {}[/CODE] are valid ways to create a function in JavaScript."
     },
     {
         id: 9,
@@ -129,7 +129,7 @@ const questions = [
     },
     {
         id: 10,
-        question: "What does 'hello'.substring(1, 3) return?",
+        question: "What does [CODE]'hello'.substring(1, 3)[/CODE] return?",
         options: {
             A: "'el'",
             B: "'ell'",
@@ -137,11 +137,11 @@ const questions = [
             D: "'h'"
         },
         correct: "A",
-        explanation: "substring(1, 3) extracts characters from index 1 up to (but not including) index 3. In 'hello', this gives 'el'."
+        explanation: "[CODE]substring(1, 3)[/CODE] extracts characters from index 1 up to (but not including) index 3. In 'hello', this gives 'el'."
     },
     {
         id: 11,
-        question: "What is the result of 10 / 2 * 3?",
+        question: "What is the result of [CODE]10 / 2 * 3[/CODE]?",
         options: {
             A: "1.67",
             B: "15",
@@ -149,7 +149,7 @@ const questions = [
             D: "6"
         },
         correct: "B",
-        explanation: "Operations of equal precedence are evaluated left to right: 10 / 2 = 5, then 5 * 3 = 15."
+        explanation: "Operations of equal precedence are evaluated left to right: [CODE]10 / 2 = 5[/CODE], then [CODE]5 * 3 = 15[/CODE]."
     },
     {
         id: 12,
@@ -161,11 +161,11 @@ const questions = [
             D: "locate()"
         },
         correct: "C",
-        explanation: "indexOf() returns the index of the first occurrence of a substring. It returns -1 if the substring is not found."
+        explanation: "[CODE]indexOf()[/CODE] returns the index of the first occurrence of a substring. It returns -1 if the substring is not found."
     },
     {
         id: 13,
-        question: "What does Math.min(8, 3, 15) return?",
+        question: "What does [CODE]Math.min(8, 3, 15)[/CODE] return?",
         options: {
             A: "8",
             B: "3",
@@ -173,7 +173,7 @@ const questions = [
             D: "26"
         },
         correct: "B",
-        explanation: "Math.min() returns the smallest of the given numbers. Among 8, 3, and 15, the smallest is 3."
+        explanation: "[CODE]Math.min()[/CODE] returns the smallest of the given numbers. Among 8, 3, and 15, the smallest is 3."
     },
     {
         id: 14,
@@ -185,7 +185,7 @@ const questions = [
             D: "execute myFunction"
         },
         correct: "B",
-        explanation: "Functions are called (invoked) by adding parentheses after the function name: myFunction(). Arguments go inside the parentheses."
+        explanation: "Functions are called (invoked) by adding parentheses after the function name: [CODE]myFunction()[/CODE]. Arguments go inside the parentheses."
     },
     {
         id: 15,
@@ -197,11 +197,11 @@ const questions = [
             D: "join()"
         },
         correct: "C",
-        explanation: "concat() is used to merge two or more arrays. This method does not change the existing arrays, but returns a new array."
+        explanation: "[CODE]concat()[/CODE] is used to merge two or more arrays. This method does not change the existing arrays, but returns a new array."
     },
     {
         id: 16,
-        question: "What is the result of 5 + 3 * 2?",
+        question: "What is the result of [CODE]5 + 3 * 2[/CODE]?",
         options: {
             A: "16",
             B: "11",
@@ -209,11 +209,11 @@ const questions = [
             D: "10"
         },
         correct: "B",
-        explanation: "Multiplication has higher precedence than addition: 3 * 2 = 6, then 5 + 6 = 11."
+        explanation: "Multiplication has higher precedence than addition: [CODE]3 * 2 = 6[/CODE], then [CODE]5 + 6 = 11[/CODE]."
     },
     {
         id: 17,
-        question: "What does 'JavaScript'.slice(0, 4) return?",
+        question: "What does [CODE]'JavaScript'.slice(0, 4)[/CODE] return?",
         options: {
             A: "'Java'",
             B: "'JavaScript'",
@@ -221,7 +221,7 @@ const questions = [
             D: "'J'"
         },
         correct: "A",
-        explanation: "slice(0, 4) extracts characters from index 0 up to (but not including) index 4. This gives 'Java'."
+        explanation: "[CODE]slice(0, 4)[/CODE] extracts characters from index 0 up to (but not including) index 4. This gives 'Java'."
     },
     {
         id: 18,
@@ -233,7 +233,7 @@ const questions = [
             D: "organize()"
         },
         correct: "B",
-        explanation: "sort() sorts the elements of an array in place and returns the sorted array. By default, it sorts as strings in ascending order."
+        explanation: "[CODE]sort()[/CODE] sorts the elements of an array in place and returns the sorted array. By default, it sorts as strings in ascending order."
     },
     {
         id: 19,
@@ -249,7 +249,7 @@ const questions = [
     },
     {
         id: 20,
-        question: "What does Math.floor(4.7) return?",
+        question: "What does [CODE]Math.floor(4.7)[/CODE] return?",
         options: {
             A: "4",
             B: "5",
@@ -257,7 +257,7 @@ const questions = [
             D: "Error"
         },
         correct: "A",
-        explanation: "Math.floor() returns the largest integer less than or equal to the given number. 4.7 floors down to 4."
+        explanation: "[CODE]Math.floor()[/CODE] returns the largest integer less than or equal to the given number. 4.7 floors down to 4."
     },
     {
         id: 21,
@@ -269,11 +269,11 @@ const questions = [
             D: "arr[-1]"
         },
         correct: "B",
-        explanation: "Array indexing starts at 0, so the last element is at index (length - 1). arr[arr.length] would be undefined."
+        explanation: "Array indexing starts at 0, so the last element is at index (length - 1). [CODE]arr[arr.length][/CODE] would be undefined."
     },
     {
         id: 22,
-        question: "What is the result of 12 % 5?",
+        question: "What is the result of [CODE]12 % 5[/CODE]?",
         options: {
             A: "2",
             B: "2.4",
@@ -281,7 +281,7 @@ const questions = [
             D: "0"
         },
         correct: "A",
-        explanation: "The modulus operator (%) returns the remainder. 12 divided by 5 is 2 remainder 2, so 12 % 5 = 2."
+        explanation: "The modulus operator (%) returns the remainder. 12 divided by 5 is 2 remainder 2, so [CODE]12 % 5 = 2[/CODE]."
     },
     {
         id: 23,
@@ -293,11 +293,11 @@ const questions = [
             D: "delete()"
         },
         correct: "B",
-        explanation: "shift() removes the first element from an array and returns that element. pop() removes the last element."
+        explanation: "[CODE]shift()[/CODE] removes the first element from an array and returns that element. [CODE]pop()[/CODE] removes the last element."
     },
     {
         id: 24,
-        question: "What does 'hello'.toUpperCase() return?",
+        question: "What does [CODE]'hello'.toUpperCase()[/CODE] return?",
         options: {
             A: "'hello'",
             B: "'HELLO'",
@@ -305,11 +305,11 @@ const questions = [
             D: "Error"
         },
         correct: "B",
-        explanation: "toUpperCase() converts all characters in a string to uppercase letters. 'hello' becomes 'HELLO'."
+        explanation: "[CODE]toUpperCase()[/CODE] converts all characters in a string to uppercase letters. 'hello' becomes 'HELLO'."
     },
     {
         id: 25,
-        question: "What is the result of (4 + 2) * 3?",
+        question: "What is the result of [CODE](4 + 2) * 3[/CODE]?",
         options: {
             A: "10",
             B: "14",
@@ -317,7 +317,7 @@ const questions = [
             D: "12"
         },
         correct: "C",
-        explanation: "Parentheses have the highest precedence: (4 + 2) = 6, then 6 * 3 = 18."
+        explanation: "Parentheses have the highest precedence: [CODE](4 + 2) = 6[/CODE], then [CODE]6 * 3 = 18[/CODE]."
     },
     {
         id: 26,
@@ -333,7 +333,7 @@ const questions = [
     },
     {
         id: 27,
-        question: "What does Math.ceil(3.2) return?",
+        question: "What does [CODE]Math.ceil(3.2)[/CODE] return?",
         options: {
             A: "3",
             B: "4",
@@ -341,7 +341,7 @@ const questions = [
             D: "Error"
         },
         correct: "B",
-        explanation: "Math.ceil() returns the smallest integer greater than or equal to the given number. 3.2 ceils up to 4."
+        explanation: "[CODE]Math.ceil()[/CODE] returns the smallest integer greater than or equal to the given number. 3.2 ceils up to 4."
     },
     {
         id: 28,
@@ -357,7 +357,7 @@ const questions = [
     },
     {
         id: 29,
-        question: "What does [1, 2, 3].indexOf(2) return?",
+        question: "What does [CODE][1, 2, 3].indexOf(2)[/CODE] return?",
         options: {
             A: "2",
             B: "1",
@@ -365,11 +365,11 @@ const questions = [
             D: "-1"
         },
         correct: "B",
-        explanation: "indexOf() returns the index of the first occurrence of the element. The value 2 is at index 1 in the array [1, 2, 3]."
+        explanation: "[CODE]indexOf()[/CODE] returns the index of the first occurrence of the element. The value 2 is at index 1 in the array [1, 2, 3]."
     },
     {
         id: 30,
-        question: "What is the result of 15 - 3 * 2?",
+        question: "What is the result of [CODE]15 - 3 * 2[/CODE]?",
         options: {
             A: "24",
             B: "9",
@@ -377,7 +377,7 @@ const questions = [
             D: "12"
         },
         correct: "B",
-        explanation: "Multiplication has higher precedence than subtraction: 3 * 2 = 6, then 15 - 6 = 9."
+        explanation: "Multiplication has higher precedence than subtraction: [CODE]3 * 2 = 6[/CODE], then [CODE]15 - 6 = 9[/CODE]."
     }
 ];
 

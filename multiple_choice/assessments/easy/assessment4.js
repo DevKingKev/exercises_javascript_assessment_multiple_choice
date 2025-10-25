@@ -30,7 +30,7 @@ const questions = [
             D: "() -> {}"
         },
         correct: "B",
-        explanation: "Arrow functions use the syntax (parameters) => { function body }. The () => {} is the simplest form for a function with no parameters."
+        explanation: "Arrow functions use the syntax [CODE](parameters) => { function body }[/CODE]. The [CODE]() => {}[/CODE] is the simplest form for a function with no parameters."
     },
     {
         id: 2,
@@ -42,7 +42,7 @@ const questions = [
             D: "JSON.toString()"
         },
         correct: "B",
-        explanation: "JSON.stringify() converts a JavaScript object or value to a JSON string. JSON.parse() does the opposite - converts JSON to JavaScript."
+        explanation: "[CODE]JSON.stringify()[/CODE] converts a JavaScript object or value to a JSON string. [CODE]JSON.parse()[/CODE] does the opposite - converts JSON to JavaScript."
     },
     {
         id: 3,
@@ -54,7 +54,7 @@ const questions = [
             D: "'Hello ' + name"
         },
         correct: "C",
-        explanation: "Template literals use backticks (`) and allow embedded expressions with ${expression} syntax for string interpolation."
+        explanation: "Template literals use backticks (`) and allow embedded expressions with [CODE]${expression}[/CODE] syntax for string interpolation."
     },
     {
         id: 4,
@@ -66,7 +66,7 @@ const questions = [
             D: "error { code } catch (e) { handle }"
         },
         correct: "A",
-        explanation: "The try...catch statement executes code in the try block and handles any exceptions in the catch block with the error parameter."
+        explanation: "The [CODE]try...catch[/CODE] statement executes code in the try block and handles any exceptions in the catch block with the error parameter."
     },
     {
         id: 5,
@@ -78,7 +78,7 @@ const questions = [
             D: "Date.new()"
         },
         correct: "B",
-        explanation: "new Date() creates a new Date object with the current date and time. Date.now() returns a timestamp number, not a Date object."
+        explanation: "[CODE]new Date()[/CODE] creates a new Date object with the current date and time. [CODE]Date.now()[/CODE] returns a timestamp number, not a Date object."
     },
     {
         id: 6,
@@ -90,7 +90,7 @@ const questions = [
             D: "Function parameters"
         },
         correct: "C",
-        explanation: "The for...of loop iterates over iterable values (like array elements, string characters). for...in iterates over object properties."
+        explanation: "The [CODE]for...of[/CODE] loop iterates over iterable values (like array elements, string characters). [CODE]for...in[/CODE] iterates over object properties."
     },
     {
         id: 7,
@@ -102,7 +102,7 @@ const questions = [
             D: "const a, b = [1, 2]"
         },
         correct: "B",
-        explanation: "Array destructuring uses square brackets []. Object destructuring uses curly braces {}. This assigns a=1, b=2."
+        explanation: "Array destructuring uses square brackets []. Object destructuring uses curly braces {}. This assigns [CODE]a=1, b=2[/CODE]."
     },
     {
         id: 8,
@@ -114,7 +114,7 @@ const questions = [
             D: "Formats JSON string"
         },
         correct: "B",
-        explanation: "JSON.parse() parses a JSON string and returns the corresponding JavaScript object or value."
+        explanation: "[CODE]JSON.parse()[/CODE] parses a JSON string and returns the corresponding JavaScript object or value."
     },
     {
         id: 9,
@@ -126,7 +126,7 @@ const questions = [
             D: "All of the above"
         },
         correct: "D",
-        explanation: "All options create valid regex patterns for digits: \\d matches any digit, [0-9] matches digits 0-9, and + means one or more."
+        explanation: "All options create valid regex patterns for digits: [CODE]\\d[/CODE] matches any digit, [CODE][0-9][/CODE] matches digits 0-9, and [CODE]+[/CODE] means one or more."
     },
     {
         id: 10,
@@ -138,7 +138,7 @@ const questions = [
             D: "for...of is faster"
         },
         correct: "C",
-        explanation: "for...in iterates over object properties (keys), while for...of iterates over iterable values (like array elements)."
+        explanation: "[CODE]for...in[/CODE] iterates over object properties (keys), while [CODE]for...of[/CODE] iterates over iterable values (like array elements)."
     },
     {
         id: 11,
@@ -150,7 +150,7 @@ const questions = [
             D: "Date.getYear()"
         },
         correct: "B",
-        explanation: "getFullYear() returns the 4-digit year. getYear() is deprecated and returns year minus 1900."
+        explanation: "[CODE]getFullYear()[/CODE] returns the 4-digit year. [CODE]getYear()[/CODE] is deprecated and returns year minus 1900."
     },
     {
         id: 12,
@@ -162,7 +162,7 @@ const questions = [
             D: "Returns empty object"
         },
         correct: "C",
-        explanation: "JSON.parse() throws a SyntaxError if the string is not valid JSON. You should use try...catch to handle this."
+        explanation: "[CODE]JSON.parse()[/CODE] throws a SyntaxError if the string is not valid JSON. You should use [CODE]try...catch[/CODE] to handle this."
     },
     {
         id: 13,
@@ -174,7 +174,7 @@ const questions = [
             D: "All of the above"
         },
         correct: "D",
-        explanation: "All are valid. Single parameters don't need parentheses, and single expressions don't need braces or explicit return."
+        explanation: "All are valid. Single parameters don't need parentheses, and single expressions don't need braces or explicit [CODE]return[/CODE]."
     },
     {
         id: 14,
@@ -186,7 +186,7 @@ const questions = [
             D: "All of the above"
         },
         correct: "D",
-        explanation: "The spread operator can expand array elements, copy arrays ([...arr]), and combine arrays ([...arr1, ...arr2])."
+        explanation: "The spread operator can expand array elements, copy arrays ([CODE][...arr][/CODE]), and combine arrays ([CODE][...arr1, ...arr2][/CODE])."
     },
     {
         id: 15,
@@ -198,7 +198,7 @@ const questions = [
             D: "catch (e: TypeError)"
         },
         correct: "B",
-        explanation: "JavaScript catch blocks catch all errors. To handle specific types, check the error type inside the catch block using instanceof."
+        explanation: "JavaScript catch blocks catch all errors. To handle specific types, check the error type inside the catch block using [CODE]instanceof[/CODE]."
     },
     {
         id: 16,
@@ -210,7 +210,7 @@ const questions = [
             D: "Syntax error"
         },
         correct: "B",
-        explanation: "Template literals (backticks) evaluate expressions inside ${}. The expression 1 + 2 evaluates to 3."
+        explanation: "Template literals (backticks) evaluate expressions inside [CODE]${}[/CODE]. The expression [CODE]1 + 2[/CODE] evaluates to 3."
     },
     {
         id: 17,
@@ -222,7 +222,7 @@ const questions = [
             D: "All of the above"
         },
         correct: "D",
-        explanation: "test() returns boolean, match() returns matches, search() returns index. All can be used to test regex matches in different ways."
+        explanation: "[CODE]test()[/CODE] returns boolean, [CODE]match()[/CODE] returns matches, [CODE]search()[/CODE] returns index. All can be used to test regex matches in different ways."
     },
     {
         id: 18,
@@ -234,7 +234,7 @@ const questions = [
             D: "const {newName: name} = obj"
         },
         correct: "A",
-        explanation: "Use the syntax {originalName: newVariableName} to destructure a property into a differently named variable."
+        explanation: "Use the syntax [CODE]{originalName: newVariableName}[/CODE] to destructure a property into a differently named variable."
     },
     {
         id: 19,
@@ -246,7 +246,7 @@ const questions = [
             D: "Current time string"
         },
         correct: "C",
-        explanation: "Date.now() returns the current timestamp as the number of milliseconds since January 1, 1970 UTC."
+        explanation: "[CODE]Date.now()[/CODE] returns the current timestamp as the number of milliseconds since January 1, 1970 UTC."
     },
     {
         id: 20,
@@ -282,7 +282,7 @@ const questions = [
             D: "Both A and B"
         },
         correct: "D",
-        explanation: "Template literals preserve actual line breaks and also interpret escape characters like \\n."
+        explanation: "Template literals preserve actual line breaks and also interpret escape characters like [CODE]\\n[/CODE]."
     },
     {
         id: 23,
@@ -294,7 +294,7 @@ const questions = [
             D: "Prevents errors from occurring"
         },
         correct: "C",
-        explanation: "The finally block always executes, whether an error occurs or not. It's useful for cleanup operations."
+        explanation: "The [CODE]finally[/CODE] block always executes, whether an error occurs or not. It's useful for cleanup operations."
     },
     {
         id: 24,
@@ -306,7 +306,7 @@ const questions = [
             D: "function test(a := 5) {}"
         },
         correct: "A",
-        explanation: "ES6 default parameters use the syntax parameter = defaultValue. This sets a default value if no argument is provided."
+        explanation: "ES6 default parameters use the syntax [CODE]parameter = defaultValue[/CODE]. This sets a default value if no argument is provided."
     },
     {
         id: 25,
@@ -330,7 +330,7 @@ const questions = [
             D: "date.formatDate()"
         },
         correct: "A",
-        explanation: "toDateString() returns the date portion as a string (e.g., 'Mon Oct 23 2025'). getDate() returns only the day number."
+        explanation: "[CODE]toDateString()[/CODE] returns the date portion as a string (e.g., 'Mon Oct 23 2025'). [CODE]getDate()[/CODE] returns only the day number."
     },
     {
         id: 27,
@@ -342,7 +342,7 @@ const questions = [
             D: "Strings ending with lowercase letters"
         },
         correct: "B",
-        explanation: "^ means start of string, [a-z]+ means one or more lowercase letters, $ means end of string. Together they match strings containing only lowercase letters."
+        explanation: "[CODE]^[/CODE] means start of string, [CODE][a-z]+[/CODE] means one or more lowercase letters, [CODE]$[/CODE] means end of string. Together they match strings containing only lowercase letters."
     },
     {
         id: 28,
@@ -354,7 +354,7 @@ const questions = [
             D: "All of the above"
         },
         correct: "A",
-        explanation: "parseInt() automatically skips leading whitespace, but trim() + parseInt() is more explicit. Number() also handles whitespace but converts to decimal."
+        explanation: "[CODE]parseInt()[/CODE] automatically skips leading whitespace, but [CODE]trim() + parseInt()[/CODE] is more explicit. [CODE]Number()[/CODE] also handles whitespace but converts to decimal."
     },
     {
         id: 29,
@@ -378,7 +378,7 @@ const questions = [
             D: "Both B and C"
         },
         correct: "D",
-        explanation: "Array.isArray() is the preferred method, and instanceof Array also works. typeof returns 'object' for arrays, not 'array'."
+        explanation: "[CODE]Array.isArray()[/CODE] is the preferred method, and [CODE]instanceof Array[/CODE] also works. [CODE]typeof[/CODE] returns 'object' for arrays, not 'array'."
     }
 ];
 
