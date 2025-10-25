@@ -208,9 +208,7 @@ class AssessmentApp {
         this.stopTimer();
         this.calculateAndDisplayResults();
     }
-    private formatTextWithCode ( text: string ): string {
-        return formatTextWithCode( text );
-    }
+
 
     private renderQuestion (): void {
         if ( !this.currentAssessment ) return;
@@ -516,9 +514,7 @@ class AssessmentApp {
         };
     }
 
-    private calculateTimeTaken (): string {
-        return formatTimeTaken( this.startTime );
-    }
+
 
     private renderTopicBreakdown ( topicScores: TopicBreakdown ): void {
         const container = document.getElementById( 'topic-breakdown' );
