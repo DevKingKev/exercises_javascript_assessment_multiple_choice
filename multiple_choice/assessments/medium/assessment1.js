@@ -24,7 +24,7 @@ const metadata = {
 const questions = [
     {
         id: 1,
-        question: "What will the following code output?\n\nfunction outer() {\n    let count = 0;\n    return function inner() {\n        count++;\n        return count;\n    };\n}\n\nconst counter = outer();\nconsole.log(counter());\nconsole.log(counter());",
+        question: "What will the following code output?\n\n[CODE]\nfunction outer() {\n    let count = 0;\n    return function inner() {\n        count++;\n        return count;\n    };\n}\n\nconst counter = outer();\nconsole.log(counter());\nconsole.log(counter());\n[/CODE]",
         options: {
             A: "0, 0",
             B: "1, 1",
@@ -36,7 +36,7 @@ const questions = [
     },
     {
         id: 2,
-        question: "What is the output of this code?\n\nconst arr = [1, 2, 3, 4, 5];\nconst result = arr.reduce((acc, curr) => acc + curr, 0);\nconsole.log(result);",
+        question: "What is the output of this code?\n\n[CODE]\nconst arr = [1, 2, 3, 4, 5];\nconst result = arr.reduce((acc, curr) => acc + curr, 0);\nconsole.log(result);\n[/CODE]",
         options: {
             A: "0",
             B: "15",
@@ -60,7 +60,7 @@ const questions = [
     },
     {
         id: 4,
-        question: "What will this code output?\n\nconst obj = {\n    name: 'Alice',\n    greet: function() {\n        console.log(this.name);\n    }\n};\n\nconst greetFunc = obj.greet;\ngreetFunc();",
+        question: "What will this code output?\n\n[CODE]\nconst obj = {\n    name: 'Alice',\n    greet: function() {\n        console.log(this.name);\n    }\n};\n\nconst greetFunc = obj.greet;\ngreetFunc();\n[/CODE]",
         options: {
             A: "Alice",
             B: "undefined",
@@ -84,7 +84,7 @@ const questions = [
     },
     {
         id: 6,
-        question: "What will this code output?\n\nconst arr = [1, 2, 3];\nconst [a, ...rest] = arr;\nconsole.log(rest);",
+        question: "What will this code output?\n\n[CODE]\nconst arr = [1, 2, 3];\nconst [a, ...rest] = arr;\nconsole.log(rest);\n[/CODE]",
         options: {
             A: "1",
             B: "[1, 2, 3]",
@@ -96,7 +96,7 @@ const questions = [
     },
     {
         id: 7,
-        question: "What does the following code demonstrate?\n\nclass Animal {\n    constructor(name) {\n        this.name = name;\n    }\n    speak() {\n        console.log(`${this.name} makes a sound`);\n    }\n}\n\nclass Dog extends Animal {\n    speak() {\n        console.log(`${this.name} barks`);\n    }\n}",
+        question: "What does the following code demonstrate?\n\n[CODE]\nclass Animal {\n    constructor(name) {\n        this.name = name;\n    }\n    speak() {\n        console.log(`${this.name} makes a sound`);\n    }\n}\n\nclass Dog extends Animal {\n    speak() {\n        console.log(`${this.name} barks`);\n    }\n}\n[/CODE]",
         options: {
             A: "Encapsulation",
             B: "Polymorphism",
@@ -108,7 +108,7 @@ const questions = [
     },
     {
         id: 8,
-        question: "What will be the output?\n\nconsole.log(typeof null);\nconsole.log(typeof undefined);\nconsole.log(typeof []);\nconsole.log(typeof {});",
+        question: "What will be the output?\n\n[CODE]\nconsole.log(typeof null);\nconsole.log(typeof undefined);\nconsole.log(typeof []);\nconsole.log(typeof {});\n[/CODE]",
         options: {
             A: "'null', 'undefined', 'array', 'object'",
             B: "'object', 'undefined', 'object', 'object'",
@@ -132,7 +132,7 @@ const questions = [
     },
     {
         id: 10,
-        question: "What will this code output?\n\nconst promise = new Promise((resolve, reject) => {\n    setTimeout(() => resolve('Success!'), 1000);\n});\n\npromise.then(result => console.log(result));\nconsole.log('Waiting...');",
+        question: "What will this code output?\n\n[CODE]\nconst promise = new Promise((resolve, reject) => {\n    setTimeout(() => resolve('Success!'), 1000);\n});\n\npromise.then(result => console.log(result));\nconsole.log('Waiting...');\n[/CODE]",
         options: {
             A: "'Success!' then 'Waiting...'",
             B: "'Waiting...' then 'Success!'",
@@ -156,7 +156,7 @@ const questions = [
     },
     {
         id: 12,
-        question: "What does the spread operator (...) do in this context?\n\nconst arr1 = [1, 2, 3];\nconst arr2 = [4, 5, 6];\nconst combined = [...arr1, ...arr2];",
+        question: "What does the spread operator (...) do in this context?\n\n[CODE]\nconst arr1 = [1, 2, 3];\nconst arr2 = [4, 5, 6];\nconst combined = [...arr1, ...arr2];\n[/CODE]",
         options: {
             A: "Creates a nested array",
             B: "Merges the arrays into a single flat array",
@@ -168,7 +168,7 @@ const questions = [
     },
     {
         id: 13,
-        question: "What will this code output?\n\nfunction* generator() {\n    yield 1;\n    yield 2;\n    yield 3;\n}\n\nconst gen = generator();\nconsole.log(gen.next().value);\nconsole.log(gen.next().value);",
+        question: "What will this code output?\n\n[CODE]\nfunction* generator() {\n    yield 1;\n    yield 2;\n    yield 3;\n}\n\nconst gen = generator();\nconsole.log(gen.next().value);\nconsole.log(gen.next().value);\n[/CODE]",
         options: {
             A: "1, 1",
             B: "1, 2",
@@ -192,7 +192,7 @@ const questions = [
     },
     {
         id: 15,
-        question: "What will this code output?\n\nconst obj = { a: 1, b: 2, c: 3 };\nconst { a, ...rest } = obj;\nconsole.log(rest);",
+        question: "What will this code output?\n\n[CODE]\nconst obj = { a: 1, b: 2, c: 3 };\nconst { a, ...rest } = obj;\nconsole.log(rest);\n[/CODE]",
         options: {
             A: "{ a: 1, b: 2, c: 3 }",
             B: "{ b: 2, c: 3 }",
@@ -216,7 +216,7 @@ const questions = [
     },
     {
         id: 17,
-        question: "What is the output of this code?\n\nconst arr = [1, 2, 3, 4, 5];\nconst filtered = arr.filter(x => x > 2).map(x => x * 2);\nconsole.log(filtered);",
+        question: "What is the output of this code?\n\n[CODE]\nconst arr = [1, 2, 3, 4, 5];\nconst filtered = arr.filter(x => x > 2).map(x => x * 2);\nconsole.log(filtered);\n[/CODE]",
         options: {
             A: "[2, 4, 6, 8, 10]",
             B: "[6, 8, 10]",
@@ -252,7 +252,7 @@ const questions = [
     },
     {
         id: 20,
-        question: "What will this code output?\n\nconst promise1 = Promise.resolve(3);\nconst promise2 = Promise.reject('Error');\nconst promise3 = Promise.resolve(5);\n\nPromise.all([promise1, promise2, promise3])\n    .then(results => console.log(results))\n    .catch(error => console.log(error));",
+        question: "What will this code output?\n\n[CODE]\nconst promise1 = Promise.resolve(3);\nconst promise2 = Promise.reject('Error');\nconst promise3 = Promise.resolve(5);\n\nPromise.all([promise1, promise2, promise3])\n    .then(results => console.log(results))\n    .catch(error => console.log(error));\n[/CODE]",
         options: {
             A: "[3, 'Error', 5]",
             B: "[3, 5]",
@@ -276,7 +276,7 @@ const questions = [
     },
     {
         id: 22,
-        question: "What will this code output?\n\nconst obj = { a: 1 };\nconst copy1 = obj;\nconst copy2 = { ...obj };\n\ncopy1.a = 2;\ncopy2.a = 3;\n\nconsole.log(obj.a);",
+        question: "What will this code output?\n\n[CODE]\nconst obj = { a: 1 };\nconst copy1 = obj;\nconst copy2 = { ...obj };\n\ncopy1.a = 2;\ncopy2.a = 3;\n\nconsole.log(obj.a);\n[/CODE]",
         options: {
             A: "1",
             B: "2",
@@ -284,7 +284,7 @@ const questions = [
             D: "undefined"
         },
         correct: "B",
-        explanation: "This demonstrates the crucial difference between reference assignment and copying objects. Understanding this prevents many common bugs in JavaScript.\n\nWhat happens:\n\n1. const copy1 = obj;\n   - Creates a REFERENCE to the same object\n   - Both 'obj' and 'copy1' point to the same memory location\n   - Changes to copy1 affect obj (they're the same object!)\n\n2. const copy2 = { ...obj };\n   - Creates a SHALLOW COPY (new object)\n   - copy2 is a different object with the same properties\n   - Changes to copy2 don't affect obj\n\n3. copy1.a = 2;\n   - Since copy1 and obj reference the same object, obj.a becomes 2\n\n4. copy2.a = 3;\n   - copy2 is independent, so obj.a stays 2\n\nVisual representation:\nobj → {a: 1} ← copy1 (same object)\ncopy2 → {a: 1} (different object)\n\nImportant caveats:\n\nSHALLOW COPY (spread, Object.assign):\nconst obj = { a: 1, nested: { b: 2 } };\nconst copy = { ...obj };\ncopy.nested.b = 3;\nconsole.log(obj.nested.b); // 3 - nested objects still referenced!\n\nDEEP COPY (various methods):\n// Quick but limited:\nconst deepCopy = JSON.parse(JSON.stringify(obj));\n// Better for complex objects:\nconst deepCopy = structuredClone(obj); // Modern browsers\n\nRule of thumb: Use spread for simple objects, structuredClone() for nested structures."
+        explanation: "This demonstrates the crucial difference between reference assignment and copying objects. Understanding this prevents many common bugs in JavaScript.\n\nWhat happens:\n\n[CODE]\nconst obj = { a: 1 };\nconst copy1 = obj;\nconst copy2 = { ...obj };\n\ncopy1.a = 2;\ncopy2.a = 3;\n\nconsole.log(obj.a);\n[/CODE]\n\n1. const copy1 = obj;\n   - Creates a REFERENCE to the same object\n   - Both 'obj' and 'copy1' point to the same memory location\n   - Changes to copy1 affect obj (they're the same object!)\n\n2. const copy2 = { ...obj };\n   - Creates a SHALLOW COPY (new object)\n   - copy2 is a different object with the same properties\n   - Changes to copy2 don't affect obj\n\n3. copy1.a = 2;\n   - Since copy1 and obj reference the same object, obj.a becomes 2\n\n4. copy2.a = 3;\n   - copy2 is independent, so obj.a stays 2\n\nVisual representation:\n\n[CODE]\nobj → {a: 1} ← copy1 (same object)\ncopy2 → {a: 1} (different object)\n[/CODE]\n\nImportant caveats:\n\nSHALLOW COPY (spread, Object.assign):\n\n[CODE]\nconst obj = { a: 1, nested: { b: 2 } };\nconst copy = { ...obj };\ncopy.nested.b = 3;\nconsole.log(obj.nested.b); // 3 - nested objects still referenced!\n[/CODE]\n\nDEEP COPY (various methods):\n\n[CODE]\n// Quick but limited:\nconst deepCopy = JSON.parse(JSON.stringify(obj));\n// Better for complex objects:\nconst deepCopy = structuredClone(obj); // Modern browsers\n[/CODE]\n\nRule of thumb: Use spread for simple objects, structuredClone() for nested structures."
     },
     {
         id: 23,

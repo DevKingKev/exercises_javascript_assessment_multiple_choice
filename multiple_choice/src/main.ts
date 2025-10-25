@@ -278,27 +278,59 @@ class AssessmentApp {
     }
 
     private formatTextWithCode ( text: string ): string {
-        // Detect code blocks: look for text containing newlines and typical code patterns
-        const hasNewlines = text.includes( '\n' );
-        const hasCodePatterns = /function|console\.|return|const|let|var|=>|{|}|\[|\]/.test( text );
-
-        if ( hasNewlines && hasCodePatterns ) {
-            // Split into parts: text before code, code block, text after code
-            const parts = text.split( /\n\n/ );
-
-            if ( parts.length > 1 ) {
-                // Assume the part with code patterns is the code block
-                return parts.map( part => {
-                    const trimmedPart = part.trim();
-                    if ( /function|console\.|return|const|let|var|=>/.test( trimmedPart ) ) {
-                        return `<pre><code>${this.escapeHtml( trimmedPart )}</code></pre>`;
-                    }
-                    return this.escapeHtml( trimmedPart );
-                } ).join( '' );
-            }
+        // Check if text uses explicit code markers [CODE]...[/CODE]
+        if ( text.includes( '[CODE]' ) && text.includes( '[/CODE]' ) ) {
+            return this.formatWithMarkers( text );
         }
 
-        return this.escapeHtml( text );
+        // Fallback: auto-detect code blocks (legacy support)
+        return this.formatAutoDetect( text );
+    }
+
+    private formatWithMarkers ( text: string ): string {
+        // Split by code markers
+        const parts = text.split( /(\[CODE\][\s\S]*?\[\/CODE\])/g );
+
+        return parts.map( part => {
+            if ( part.startsWith( '[CODE]' ) && part.endsWith( '[/CODE]' ) ) {
+                // Extract code content between markers
+                const code = part.slice( 6, -7 ).trim(); // Remove [CODE] and [/CODE]
+                return `<pre><code>${this.escapeHtml( code )}</code></pre>`;
+            } else {
+                // Regular text - wrap non-empty paragraphs
+                const trimmed = part.trim();
+                if ( !trimmed ) return '';
+
+                // Split by double newlines for multiple paragraphs
+                return trimmed.split( /\n\n+/ ).map( p => {
+                    const paragraph = p.trim();
+                    return paragraph ? `<p>${this.escapeHtml( paragraph )}</p>` : '';
+                } ).join( '' );
+            }
+        } ).join( '' );
+    }
+
+    private formatAutoDetect ( text: string ): string {
+        // Split on double newlines to get paragraphs/sections
+        const sections = text.split( /\n\n+/ );
+
+        return sections.map( section => {
+            const trimmed = section.trim();
+            if ( !trimmed ) return '';
+
+            // Check if this section is code (has newlines AND code patterns)
+            const hasInternalNewlines = trimmed.includes( '\n' );
+            const hasCodePatterns = /^(const|let|var|function|class|\{|\[|\/\/|if|for|while|return|import|export)/.test( trimmed ) ||
+                /[{}\[\];]/.test( trimmed ) && hasInternalNewlines;
+
+            if ( hasCodePatterns && hasInternalNewlines ) {
+                // This is a code block
+                return `<pre><code>${this.escapeHtml( trimmed )}</code></pre>`;
+            } else {
+                // Regular text - wrap in paragraph
+                return `<p>${this.escapeHtml( trimmed )}</p>`;
+            }
+        } ).join( '' );
     }
 
     private escapeHtml ( text: string ): string {
