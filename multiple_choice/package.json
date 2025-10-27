@@ -1,5 +1,5 @@
 {
-    "name": "coderbyte-multiple-choice-typescript",
+    "name": "virtuarama-multiple-choice-typescript",
     "version": "1.0.0",
     "description": "TypeScript Multiple Choice Assessment Platform - Dynamic test selection with type safety",
     "main": "server.js",

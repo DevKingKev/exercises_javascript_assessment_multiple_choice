@@ -1,4 +1,4 @@
-// Multiple Choice Assessment Platform - Main Application Logic (TypeScript)
+// Virtuarama - Multiple Choice Assessment Platform - Main Application Logic (TypeScript)
 
 // Import shared type definitions from models
 import type {
