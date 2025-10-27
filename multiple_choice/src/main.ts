@@ -427,22 +427,31 @@ class AssessmentApp {
         }
     }
 
-    private submitAssessment (): void {
-        if ( !this.confirmSubmission() ) {
+    private async submitAssessment (): Promise<void> {
+        const confirmed = await this.confirmSubmission();
+        if ( !confirmed ) {
             return;
         }
 
         this.showResults();
     }
 
-    private confirmSubmission (): boolean {
+    private async confirmSubmission (): Promise<boolean> {
         const unanswered = this.userAnswers.filter( answer => answer === null ).length;
 
         if ( unanswered > 0 ) {
-            return confirm( `You have ${unanswered} unanswered questions. Are you sure you want to submit?` );
+            return await this.showConfirm(
+                'Submit Assessment',
+                `You have ${unanswered} unanswered questions. Are you sure you want to submit?`,
+                false
+            );
         }
 
-        return confirm( 'Are you sure you want to submit your assessment?' );
+        return await this.showConfirm(
+            'Submit Assessment',
+            'Are you sure you want to submit your assessment?',
+            false
+        );
     }
 
     private calculateAndDisplayResults (): void {
@@ -610,16 +619,20 @@ class AssessmentApp {
         }
     }
 
-    private quitAssessment (): void {
+    private async quitAssessment (): Promise<void> {
         const unanswered = this.userAnswers.filter( answer => answer === null ).length;
         const totalQuestions = this.userAnswers.length;
 
         let confirmMessage = 'Are you sure you want to quit this assessment?';
+        let title = 'Quit Assessment';
+
         if ( unanswered < totalQuestions ) {
             confirmMessage = `You have answered ${totalQuestions - unanswered} of ${totalQuestions} questions. Your progress will be lost. Are you sure you want to quit?`;
         }
 
-        if ( confirm( confirmMessage ) ) {
+        const confirmed = await this.showConfirm( title, confirmMessage, true );
+
+        if ( confirmed ) {
             this.stopTimer();
             this.currentAssessment = null;
             this.currentQuestionIndex = 0;
@@ -630,7 +643,98 @@ class AssessmentApp {
     }
 
     private showError ( message: string ): void {
-        alert( `Error: ${message}` );
+        this.showAlert( 'Error', message );
+    }
+
+    // Dialog Methods
+    private showAlert ( title: string, message: string ): Promise<void> {
+        return new Promise( ( resolve ) => {
+            const dialog = document.getElementById( 'custom-dialog' ) as HTMLDialogElement;
+            const dialogTitle = document.getElementById( 'dialog-title' );
+            const dialogMessage = document.getElementById( 'dialog-message' );
+            const cancelBtn = document.getElementById( 'dialog-cancel-btn' ) as HTMLButtonElement;
+            const confirmBtn = document.getElementById( 'dialog-confirm-btn' ) as HTMLButtonElement;
+
+            if ( !dialog || !dialogTitle || !dialogMessage || !confirmBtn ) return resolve();
+
+            // Set content
+            dialogTitle.textContent = title;
+            dialogMessage.textContent = message;
+
+            // Hide cancel button for alerts
+            cancelBtn.style.display = 'none';
+            confirmBtn.textContent = 'OK';
+            confirmBtn.className = 'dialog-btn dialog-btn-confirm';
+
+            // Show dialog
+            dialog.showModal();
+
+            // Handle confirm
+            const handleConfirm = () => {
+                dialog.close();
+                confirmBtn.removeEventListener( 'click', handleConfirm );
+                resolve();
+            };
+
+            confirmBtn.addEventListener( 'click', handleConfirm );
+        } );
+    }
+
+    private showConfirm ( title: string, message: string, isDanger: boolean = false ): Promise<boolean> {
+        return new Promise( ( resolve ) => {
+            const dialog = document.getElementById( 'custom-dialog' ) as HTMLDialogElement;
+            const dialogTitle = document.getElementById( 'dialog-title' );
+            const dialogMessage = document.getElementById( 'dialog-message' );
+            const cancelBtn = document.getElementById( 'dialog-cancel-btn' ) as HTMLButtonElement;
+            const confirmBtn = document.getElementById( 'dialog-confirm-btn' ) as HTMLButtonElement;
+
+            if ( !dialog || !dialogTitle || !dialogMessage || !cancelBtn || !confirmBtn ) return resolve( false );
+
+            // Set content
+            dialogTitle.textContent = title;
+            dialogMessage.textContent = message;
+
+            // Show both buttons
+            cancelBtn.style.display = 'block';
+            confirmBtn.textContent = 'Confirm';
+            confirmBtn.className = isDanger ? 'dialog-btn dialog-btn-confirm danger' : 'dialog-btn dialog-btn-confirm';
+
+            // Show dialog
+            dialog.showModal();
+
+            // Handle confirm
+            const handleConfirm = () => {
+                dialog.close();
+                cleanup();
+                resolve( true );
+            };
+
+            // Handle cancel
+            const handleCancel = () => {
+                dialog.close();
+                cleanup();
+                resolve( false );
+            };
+
+            // Handle backdrop click
+            const handleBackdrop = ( e: MouseEvent ) => {
+                if ( e.target === dialog ) {
+                    dialog.close();
+                    cleanup();
+                    resolve( false );
+                }
+            };
+
+            const cleanup = () => {
+                confirmBtn.removeEventListener( 'click', handleConfirm );
+                cancelBtn.removeEventListener( 'click', handleCancel );
+                dialog.removeEventListener( 'click', handleBackdrop );
+            };
+
+            confirmBtn.addEventListener( 'click', handleConfirm );
+            cancelBtn.addEventListener( 'click', handleCancel );
+            dialog.addEventListener( 'click', handleBackdrop );
+        } );
     }
 
     // Spinner Methods
