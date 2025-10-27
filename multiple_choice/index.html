@@ -36,6 +36,18 @@
 
             <div class="assessment-list">
                 <h3>Available Assessments</h3>
+                <!-- Loading Spinner Overlay -->
+                <div class="spinner-overlay" id="spinner-overlay">
+                    <div class="spinner-container">
+                        <div class="spinner">
+                            <div class="spinner-ring"></div>
+                            <div class="spinner-ring"></div>
+                            <div class="spinner-ring"></div>
+                        </div>
+                        <div class="spinner-text">Loading Assessment Data</div>
+                        <div class="spinner-subtext">Please wait...</div>
+                    </div>
+                </div>
                 <div id="assessments-container">
                     <!-- Assessments will be dynamically loaded here -->
                 </div>
@@ -56,6 +68,9 @@
                     <div class="timer">
                         Time: <span id="timer-display">30:00</span>
                     </div>
+                    <button id="quit-assessment-btn" class="quit-btn" title="Quit and return to assessment selection">
+                        Quit Assessment
+                    </button>
                 </div>
             </div>
 

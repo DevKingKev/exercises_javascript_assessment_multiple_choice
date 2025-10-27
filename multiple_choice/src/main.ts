@@ -42,6 +42,7 @@ class AssessmentApp {
     }
 
     private async loadAvailableAssessments (): Promise<void> {
+        this.showSpinner( 'Loading Available Assessments...' );
         try {
             const response = await fetch( '/api/assessments' );
             const data: AvailableAssessments = await response.json();
@@ -51,13 +52,15 @@ class AssessmentApp {
         } catch ( error ) {
             console.error( '❌ Error loading assessments:', error );
             this.showError( 'Failed to load available assessments' );
+        } finally {
+            this.hideSpinner();
         }
     }
 
     private updateDifficultyButtonCounts (): void {
         // Update each difficulty button to show the count of available assessments
         const difficulties = ['easy', 'medium', 'hard'];
-        
+
         difficulties.forEach( difficulty => {
             const btn = document.querySelector( `[data-difficulty="${difficulty}"]` );
             if ( btn ) {
@@ -86,6 +89,7 @@ class AssessmentApp {
         const submitBtn = document.getElementById( 'submit-btn' );
         const retakeBtn = document.getElementById( 'retake-btn' );
         const newAssessmentBtn = document.getElementById( 'new-assessment-btn' );
+        const quitAssessmentBtn = document.getElementById( 'quit-assessment-btn' );
 
         if ( prevBtn ) {
             prevBtn.addEventListener( 'click', () => this.previousQuestion() );
@@ -108,6 +112,10 @@ class AssessmentApp {
                 this.renderResultsHistory();
                 this.showAssessmentSelection();
             } );
+        }
+
+        if ( quitAssessmentBtn ) {
+            quitAssessmentBtn.addEventListener( 'click', () => this.quitAssessment() );
         }
     }
 
@@ -164,6 +172,7 @@ class AssessmentApp {
     }
 
     private async startAssessment ( difficulty: string, assessmentId: string ): Promise<void> {
+        this.showSpinner( 'Loading Assessment...' );
         try {
             const response = await fetch( `/api/assessment/${difficulty}/${assessmentId}` );
             const assessmentData: Assessment = await response.json();
@@ -180,6 +189,8 @@ class AssessmentApp {
         } catch ( error ) {
             console.error( 'Error loading assessment:', error );
             this.showError( 'Failed to load assessment' );
+        } finally {
+            this.hideSpinner();
         }
     }
 
@@ -599,8 +610,53 @@ class AssessmentApp {
         }
     }
 
+    private quitAssessment (): void {
+        const unanswered = this.userAnswers.filter( answer => answer === null ).length;
+        const totalQuestions = this.userAnswers.length;
+
+        let confirmMessage = 'Are you sure you want to quit this assessment?';
+        if ( unanswered < totalQuestions ) {
+            confirmMessage = `You have answered ${totalQuestions - unanswered} of ${totalQuestions} questions. Your progress will be lost. Are you sure you want to quit?`;
+        }
+
+        if ( confirm( confirmMessage ) ) {
+            this.stopTimer();
+            this.currentAssessment = null;
+            this.currentQuestionIndex = 0;
+            this.userAnswers = [];
+            this.renderResultsHistory();
+            this.showAssessmentSelection();
+        }
+    }
+
     private showError ( message: string ): void {
         alert( `Error: ${message}` );
+    }
+
+    // Spinner Methods
+    private showSpinner ( message: string = 'Loading...', subtext: string = 'Please wait...' ): void {
+        const spinnerOverlay = document.getElementById( 'spinner-overlay' );
+        const spinnerText = document.querySelector( '.spinner-text' );
+        const spinnerSubtext = document.querySelector( '.spinner-subtext' );
+
+        if ( spinnerText ) {
+            spinnerText.textContent = message;
+        }
+
+        if ( spinnerSubtext ) {
+            spinnerSubtext.textContent = subtext;
+        }
+
+        if ( spinnerOverlay ) {
+            spinnerOverlay.classList.add( 'active' );
+        }
+    }
+
+    private hideSpinner (): void {
+        const spinnerOverlay = document.getElementById( 'spinner-overlay' );
+        if ( spinnerOverlay ) {
+            spinnerOverlay.classList.remove( 'active' );
+        }
     }
 
     // Local Storage and Results History Methods

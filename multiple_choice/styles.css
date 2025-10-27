@@ -106,6 +106,11 @@ header p {
     color: white;
 }
 
+.assessment-list {
+    position: relative;
+    min-height: 300px;
+}
+
 .assessment-list h3 {
     text-align: center;
     margin-bottom: 25px;
@@ -200,6 +205,26 @@ header p {
 
 .timer {
     font-size: 1.1rem;
+}
+
+.quit-btn {
+    padding: 8px 16px;
+    border: 2px solid #e53e3e;
+    background: white;
+    color: #e53e3e;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    margin-top: 4px;
+}
+
+.quit-btn:hover {
+    background: #e53e3e;
+    color: white;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(229, 62, 62, 0.3);
 }
 
 .progress-bar {
@@ -706,6 +731,12 @@ header p {
         flex-direction: row;
         justify-content: center;
         gap: 20px;
+        flex-wrap: wrap;
+    }
+
+    .quit-btn {
+        margin-top: 0;
+        width: 100%;
     }
 
     .question-grid {
@@ -1033,4 +1064,97 @@ header p {
         grid-template-columns: 1fr;
         gap: 4px;
     }
+}
+
+/* Loading Spinner */
+.spinner-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    -webkit-backdrop-filter: blur(3px);
+    backdrop-filter: blur(3px);
+    border-radius: 12px;
+}
+
+.spinner-overlay.active {
+    display: flex;
+    animation: fadeIn 0.3s ease-in;
+}
+
+.spinner-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+}
+
+.spinner {
+    width: 60px;
+    height: 60px;
+    position: relative;
+    animation: spin 1.5s linear infinite;
+}
+
+.spinner-ring {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 4px solid transparent;
+    border-top-color: #5a67d8;
+    border-radius: 50%;
+    animation: spin 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+}
+
+.spinner-ring:nth-child(1) {
+    animation-delay: -0.45s;
+}
+
+.spinner-ring:nth-child(2) {
+    animation-delay: -0.3s;
+    border-top-color: rgba(90, 103, 216, 0.6);
+}
+
+.spinner-ring:nth-child(3) {
+    animation-delay: -0.15s;
+    border-top-color: rgba(90, 103, 216, 0.3);
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.spinner-text {
+    color: #2d3748;
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: center;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.spinner-subtext {
+    color: #64748b;
+    font-size: 0.85rem;
+    text-align: center;
+    margin-top: -10px;
 }
