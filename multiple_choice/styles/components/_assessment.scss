@@ -1,0 +1,311 @@
+// Assessment screen
+
+.assessment-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: $spacing-xl;
+    flex-wrap: wrap;
+    gap: $spacing-xl;
+}
+
+.assessment-info {
+    h2 {
+        color: $gray-700;
+        margin-bottom: 5px;
+        font-size: $font-size-3xl;
+    }
+
+    p {
+        color: $gray-500;
+        font-size: $font-size-base;
+    }
+}
+
+.progress-info {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-sm;
+}
+
+.question-counter,
+.timer {
+    font-weight: $font-weight-semibold;
+    color: $primary;
+    background: $primary-light;
+    padding: $spacing-sm $spacing-lg;
+    border-radius: $radius-md;
+}
+
+.timer {
+    font-size: $font-size-lg;
+}
+
+.quit-btn {
+    padding: $spacing-sm $spacing-lg;
+    border: 2px solid $danger;
+    background: white;
+    color: $danger;
+    border-radius: $radius-md;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: $font-weight-semibold;
+    transition: all $transition-base;
+    margin-top: $spacing-xs;
+
+    &:hover {
+        background: $danger;
+        color: white;
+        transform: translateY(-1px);
+        box-shadow: $shadow-danger;
+    }
+}
+
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background: $gray-200;
+    border-radius: $radius-sm;
+    margin-bottom: $spacing-3xl;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: $gradient-progress;
+    transition: width $transition-base;
+    border-radius: $radius-sm;
+}
+
+// Question Grid Navigation
+.question-grid-section {
+    margin-bottom: $spacing-3xl;
+    background: $gray-50;
+    border-radius: $radius-xl;
+    padding: $spacing-xl;
+    border: 1px solid $gray-200;
+
+    h4 {
+        color: $gray-700;
+        margin-bottom: $spacing-lg;
+        font-size: $font-size-lg;
+        text-align: center;
+    }
+}
+
+.question-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+    gap: $spacing-sm;
+    margin: 0 auto $spacing-lg auto;
+}
+
+.question-btn {
+    width: 50px;
+    height: 50px;
+    border: 2px solid $gray-200;
+    background: white;
+    border-radius: $radius-lg;
+    cursor: pointer;
+    font-weight: $font-weight-semibold;
+    color: $gray-500;
+    transition: all $transition-base;
+    @include flex-center;
+    font-size: 0.9rem;
+
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: $shadow-md;
+    }
+
+    &.current {
+        background: $primary;
+        border-color: $primary;
+        color: white;
+    }
+
+    &.answered {
+        background: $success;
+        border-color: $success;
+        color: white;
+    }
+
+    &.unanswered {
+        background: white;
+        border-color: $gray-200;
+        color: $gray-500;
+    }
+}
+
+.grid-legend {
+    display: flex;
+    justify-content: center;
+    gap: $spacing-xl;
+    margin-top: $spacing-lg;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: $font-size-sm;
+    color: $gray-500;
+}
+
+.legend-circle {
+    width: 16px;
+    height: 16px;
+    border-radius: $radius-full;
+    border: 2px solid $gray-200;
+
+    &.current {
+        background: $primary;
+        border-color: $primary;
+    }
+
+    &.answered {
+        background: $success;
+        border-color: $success;
+    }
+
+    &.unanswered {
+        background: white;
+        border-color: $gray-200;
+    }
+}
+
+// Question content
+.question-container {
+    margin-bottom: $spacing-4xl;
+}
+
+#question-text {
+    color: $gray-700;
+    margin-bottom: $spacing-2xl;
+    font-size: $font-size-xl;
+    line-height: 1.6;
+
+    p {
+        margin: 0 0 10px 0;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    pre {
+        @include code-block;
+    }
+}
+
+.review-question {
+    pre {
+        @include code-block;
+    }
+
+    p {
+        margin: 0 0 $spacing-sm 0;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}
+
+// Options
+.options-container {
+    display: grid;
+    gap: $spacing-lg;
+}
+
+.option {
+    display: flex;
+    align-items: center;
+    padding: $spacing-lg $spacing-xl;
+    border: 2px solid $gray-200;
+    border-radius: $radius-lg;
+    cursor: pointer;
+    transition: all $transition-base;
+    background: white;
+
+    &:hover {
+        border-color: $primary;
+        background: $primary-light;
+    }
+
+    &.selected {
+        border-color: $primary;
+        background: $primary;
+        color: white;
+
+        .option-letter {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+    }
+}
+
+.option-letter {
+    width: 30px;
+    height: 30px;
+    border-radius: $radius-full;
+    background: $gray-200;
+    @include flex-center;
+    font-weight: bold;
+    margin-right: $spacing-lg;
+    transition: all $transition-base;
+}
+
+.option-text {
+    flex: 1;
+    font-size: $font-size-base;
+    line-height: 1.4;
+}
+
+// Navigation buttons
+.navigation-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: $spacing-3xl;
+}
+
+.nav-btn,
+.submit-btn,
+.action-btn {
+    @include button-base;
+}
+
+.nav-btn {
+    background: $gray-100;
+    color: $gray-500;
+
+    @include button-hover-lift;
+
+    &:hover:not(:disabled) {
+        background: $gray-200;
+    }
+
+    &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        transform: none;
+    }
+}
+
+.submit-btn,
+.action-btn {
+    background: $primary;
+    color: white;
+
+    &:hover {
+        background: $primary-dark;
+        transform: translateY(-1px);
+        box-shadow: $shadow-primary-lg;
+    }
+
+    &.hidden {
+        display: none;
+    }
+}

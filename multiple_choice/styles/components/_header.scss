@@ -1,0 +1,18 @@
+// Header component
+
+header {
+    text-align: center;
+    margin-bottom: $spacing-4xl;
+    color: white;
+
+    h1 {
+        font-size: $font-size-5xl;
+        margin-bottom: 10px;
+        font-weight: $font-weight-semibold;
+    }
+
+    p {
+        font-size: $font-size-lg;
+        opacity: 0.9;
+    }
+}

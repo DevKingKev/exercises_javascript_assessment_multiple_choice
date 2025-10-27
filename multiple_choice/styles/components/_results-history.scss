@@ -1,0 +1,193 @@
+// Results history section
+
+.results-history {
+    @include card-base;
+    margin-bottom: $spacing-3xl;
+
+    &.hidden {
+        display: none;
+    }
+
+    h2 {
+        color: $gray-700;
+        margin-bottom: $spacing-2xl;
+        font-size: $font-size-2xl;
+        text-align: center;
+    }
+}
+
+.difficulty-header {
+    background: #f7fafc;
+    border: 2px solid $gray-200;
+    border-radius: $radius-xl;
+    padding: $spacing-lg $spacing-xl;
+    margin-bottom: $spacing-lg;
+    cursor: pointer;
+    transition: all $transition-base;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &:hover {
+        background: #edf2f7;
+        border-color: $gray-300;
+    }
+
+    &.expanded {
+        background: $blue-light;
+        border-color: $blue-border;
+
+        .expand-icon {
+            transform: rotate(90deg);
+        }
+    }
+}
+
+.difficulty-info {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-xs;
+}
+
+.difficulty-title {
+    font-size: $font-size-lg;
+    font-weight: $font-weight-semibold;
+    color: $gray-700;
+    text-transform: capitalize;
+}
+
+.difficulty-average {
+    font-size: 0.9rem;
+    color: #718096;
+}
+
+.expand-icon {
+    font-size: 1.2rem;
+    color: $gray-600;
+    transition: transform $transition-base;
+}
+
+.assessment-results-container {
+    display: none;
+    padding: $spacing-xl;
+    background: $gray-50;
+    border-radius: $radius-lg;
+    margin-bottom: $spacing-lg;
+
+    &.expanded {
+        display: block;
+    }
+}
+
+.assessment-result-item {
+    background: white;
+    border: 1px solid $gray-200;
+    border-radius: $radius-lg;
+    padding: $spacing-lg;
+    margin-bottom: $spacing-lg;
+    cursor: pointer;
+    transition: all $transition-base;
+
+    &:hover {
+        background: #f7fafc;
+        border-color: $gray-300;
+    }
+
+    &.expanded {
+        background: $blue-light;
+        border-color: $blue-border;
+    }
+}
+
+.assessment-name {
+    font-size: $font-size-base;
+    font-weight: $font-weight-semibold;
+    color: $gray-700;
+    margin-bottom: $spacing-xs;
+}
+
+.latest-score {
+    font-size: 0.9rem;
+    color: #718096;
+}
+
+.score-badge {
+    padding: $spacing-xs $spacing-md;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: $font-weight-semibold;
+    color: white;
+
+    &.score-excellent {
+        background: $success;
+    }
+
+    &.score-good {
+        background: $info;
+    }
+
+    &.score-average {
+        background: $warning;
+    }
+
+    &.score-poor {
+        background: #f56565;
+    }
+}
+
+.attempts-history {
+    display: none;
+    padding-top: $spacing-xl;
+    border-top: 1px solid $gray-200;
+    margin-top: $spacing-lg;
+
+    &.expanded {
+        display: block;
+    }
+}
+
+.attempt-item {
+    background: $gray-50;
+    border-radius: $radius-md;
+    padding: $spacing-md;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+}
+
+.attempt-date {
+    font-weight: $font-weight-semibold;
+    color: $gray-700;
+    margin-bottom: $spacing-sm;
+}
+
+.attempt-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: $spacing-sm;
+}
+
+.attempt-score {
+    color: $gray-600;
+}
+
+.attempt-time {
+    color: #718096;
+}
+
+.improvement-topics {
+    margin-top: $spacing-sm;
+}
+
+.improvement-topics-label {
+    font-weight: $font-weight-semibold;
+    color: $danger;
+    font-size: $font-size-sm;
+    margin-bottom: $spacing-xs;
+}
+
+.topics-list {
+    color: #718096;
+    font-size: 0.8rem;
+    line-height: 1.4;
+}

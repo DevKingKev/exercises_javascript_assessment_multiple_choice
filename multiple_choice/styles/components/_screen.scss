@@ -1,0 +1,11 @@
+// Screen management styles
+
+.screen {
+    display: none;
+    @include card-base;
+    animation: fadeIn $transition-slow ease-in;
+
+    &.active {
+        display: block;
+    }
+}

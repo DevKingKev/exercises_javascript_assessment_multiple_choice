@@ -1,0 +1,93 @@
+// Assessment selection styles
+
+.difficulty-buttons {
+    display: flex;
+    justify-content: center;
+    gap: $spacing-lg;
+    margin-bottom: $spacing-3xl;
+}
+
+.difficulty-btn {
+    padding: $spacing-md $spacing-3xl;
+    border: 2px solid $gray-200;
+    background: white;
+    border-radius: $radius-lg;
+    cursor: pointer;
+    font-size: $font-size-base;
+    font-weight: $font-weight-medium;
+    transition: all $transition-base;
+    color: $gray-500;
+
+    &:hover {
+        border-color: $primary;
+        color: $primary;
+        transform: translateY(-2px);
+        box-shadow: $shadow-primary;
+    }
+
+    &.active {
+        background: $primary;
+        border-color: $primary;
+        color: white;
+    }
+}
+
+.assessment-list {
+    position: relative;
+    min-height: 300px;
+
+    h3 {
+        text-align: center;
+        margin-bottom: $spacing-2xl;
+        color: $gray-700;
+        font-size: $font-size-2xl;
+    }
+}
+
+#assessments-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: $spacing-xl;
+}
+
+.assessment-card {
+    border: 2px solid $gray-200;
+    border-radius: $radius-xl;
+    padding: $spacing-2xl;
+    cursor: pointer;
+    transition: all $transition-base;
+    background: $gray-50;
+
+    &:hover {
+        border-color: $primary;
+        transform: translateY(-3px);
+        box-shadow: $shadow-lg;
+        background: white;
+    }
+
+    h4 {
+        color: $gray-700;
+        margin-bottom: 10px;
+        font-size: 1.2rem;
+    }
+
+    p {
+        color: $gray-500;
+        line-height: 1.5;
+        margin-bottom: $spacing-lg;
+    }
+}
+
+.assessment-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+    color: $gray-500;
+
+    span {
+        background: $gray-200;
+        padding: $spacing-xs $spacing-sm;
+        border-radius: $radius-sm;
+    }
+}

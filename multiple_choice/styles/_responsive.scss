@@ -1,0 +1,193 @@
+// Responsive styles
+
+@include respond-to(md) {
+    .container {
+        padding: $spacing-lg;
+    }
+
+    header {
+        h1 {
+            font-size: $font-size-4xl;
+        }
+    }
+
+    .screen {
+        padding: $spacing-xl;
+    }
+
+    .difficulty-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .difficulty-btn {
+        width: 200px;
+    }
+
+    #assessments-container {
+        grid-template-columns: 1fr;
+    }
+
+    .assessment-header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .progress-info {
+        text-align: center;
+        flex-direction: row;
+        justify-content: center;
+        gap: $spacing-xl;
+        flex-wrap: wrap;
+    }
+
+    .quit-btn {
+        margin-top: 0;
+        width: 100%;
+    }
+
+    .question-grid {
+        grid-template-columns: repeat(5, 1fr);
+        gap: 6px;
+    }
+
+    .question-btn {
+        width: 45px;
+        height: 45px;
+        font-size: 0.8rem;
+    }
+
+    .grid-legend {
+        gap: $spacing-lg;
+    }
+
+    .legend-item {
+        font-size: 0.8rem;
+    }
+
+    .score-display {
+        flex-direction: column;
+        gap: $spacing-xl;
+    }
+
+    .score-details {
+        text-align: center;
+    }
+
+    .navigation-buttons {
+        flex-direction: column;
+        gap: $spacing-lg;
+    }
+
+    .nav-btn,
+    .submit-btn {
+        width: 100%;
+    }
+
+    .results-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .action-btn {
+        width: 200px;
+    }
+
+    .results-history {
+        padding: $spacing-xl;
+    }
+
+    .difficulty-header {
+        padding: $spacing-md $spacing-lg;
+    }
+
+    .assessment-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .attempt-details {
+        grid-template-columns: 1fr;
+        gap: $spacing-xs;
+    }
+}
+
+@include respond-to(xs) {
+    header {
+        h1 {
+            font-size: $font-size-3xl;
+        }
+    }
+
+    .screen {
+        padding: $spacing-lg;
+    }
+
+    #question-text {
+        font-size: $font-size-lg;
+    }
+
+    .option {
+        padding: $spacing-md $spacing-lg;
+    }
+
+    .option-text {
+        font-size: 0.9rem;
+    }
+
+    .question-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: $spacing-xs;
+    }
+
+    .question-btn {
+        width: 40px;
+        height: 40px;
+        font-size: $font-size-xs;
+    }
+
+    .question-grid-section {
+        padding: $spacing-lg;
+    }
+
+    .grid-legend {
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .legend-item {
+        font-size: $font-size-xs;
+    }
+
+    .legend-circle {
+        width: 14px;
+        height: 14px;
+    }
+
+    .custom-dialog {
+        width: 95%;
+        max-width: none;
+    }
+
+    .dialog-header {
+        padding: 20px 20px 12px 20px;
+    }
+
+    .dialog-title {
+        font-size: 1.25rem;
+    }
+
+    .dialog-body {
+        padding: 20px;
+    }
+
+    .dialog-footer {
+        padding: 12px 20px 20px 20px;
+        flex-direction: column-reverse;
+    }
+
+    .dialog-btn {
+        width: 100%;
+    }
+}

@@ -1,0 +1,106 @@
+// Color Variables
+$primary: #5a67d8;
+$primary-dark: #4c51bf;
+$primary-light: #f0f4ff;
+
+$success: #48bb78;
+$success-dark: #38a169;
+$success-light: #f0fff4;
+
+$danger: #e53e3e;
+$danger-dark: #c53030;
+$danger-light: #fed7d7;
+
+$warning: #ed8936;
+$info: #4299e1;
+
+$gray-50: #f8fafc;
+$gray-100: #f1f5f9;
+$gray-200: #e2e8f0;
+$gray-300: #cbd5e0;
+$gray-400: #a0aec0;
+$gray-500: #64748b;
+$gray-600: #4a5568;
+$gray-700: #2d3748;
+$gray-800: #1a202c;
+$gray-900: #0f172a;
+
+$blue-light: #ebf8ff;
+$blue-border: #3182ce;
+
+$code-bg: #1e293b;
+$code-text: #e2e8f0;
+
+// Gradient
+$gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+$gradient-success: linear-gradient(135deg, $success, $success-dark);
+$gradient-progress: linear-gradient(90deg, $success, $success-dark);
+
+// Typography
+$font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+$font-family-mono: "Consolas", "Monaco", "Courier New", monospace;
+
+$font-size-xs: 0.75rem;
+$font-size-sm: 0.85rem;
+$font-size-base: 1rem;
+$font-size-lg: 1.1rem;
+$font-size-xl: 1.3rem;
+$font-size-2xl: 1.5rem;
+$font-size-3xl: 1.8rem;
+$font-size-4xl: 2rem;
+$font-size-5xl: 2.5rem;
+
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+
+// Spacing
+$spacing-xs: 4px;
+$spacing-sm: 8px;
+$spacing-md: 12px;
+$spacing-lg: 15px;
+$spacing-xl: 20px;
+$spacing-2xl: 25px;
+$spacing-3xl: 30px;
+$spacing-4xl: 40px;
+
+// Border Radius
+$radius-sm: 4px;
+$radius-md: 6px;
+$radius-lg: 8px;
+$radius-xl: 12px;
+$radius-2xl: 15px;
+$radius-full: 50%;
+
+// Shadows
+$shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
+$shadow-md: 0 4px 12px rgba(0, 0, 0, 0.15);
+$shadow-lg: 0 8px 25px rgba(0, 0, 0, 0.15);
+$shadow-xl: 0 10px 30px rgba(0, 0, 0, 0.2);
+$shadow-2xl: 0 20px 60px rgba(0, 0, 0, 0.3);
+
+$shadow-primary: 0 4px 12px rgba(90, 103, 216, 0.2);
+$shadow-primary-lg: 0 4px 12px rgba(90, 103, 216, 0.3);
+$shadow-danger: 0 4px 12px rgba(229, 62, 62, 0.3);
+$shadow-success: 0 8px 25px rgba(72, 187, 120, 0.3);
+
+// Transitions
+$transition-fast: 0.2s ease;
+$transition-base: 0.3s ease;
+$transition-slow: 0.5s ease;
+
+// Breakpoints
+$breakpoint-xs: 480px;
+$breakpoint-sm: 640px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 1024px;
+$breakpoint-xl: 1280px;
+
+// Layout
+$container-max-width: 1500px;
+$container-padding: 20px;
+
+// Z-index
+$z-spinner: 100;
+$z-dialog: 1000;

@@ -1,0 +1,62 @@
+// Mixins for reusable styles
+
+@mixin button-base {
+    padding: 12px 24px;
+    border: none;
+    border-radius: $radius-lg;
+    cursor: pointer;
+    font-size: $font-size-base;
+    font-weight: $font-weight-semibold;
+    transition: all $transition-base;
+}
+
+@mixin button-hover-lift {
+    &:hover:not(:disabled) {
+        transform: translateY(-1px);
+    }
+}
+
+@mixin card-base {
+    background: white;
+    border-radius: $radius-xl;
+    padding: $spacing-3xl;
+    box-shadow: $shadow-xl;
+}
+
+@mixin flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin code-block {
+    background: $code-bg;
+    color: $code-text;
+    padding: $spacing-xl;
+    border-radius: $radius-lg;
+    overflow-x: auto;
+    margin: $spacing-lg 0;
+    font-family: $font-family-mono;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    box-shadow: $shadow-sm;
+
+    code {
+        display: block;
+        white-space: pre;
+        word-wrap: normal;
+        overflow-x: auto;
+    }
+}
+
+@mixin respond-to($breakpoint) {
+    @if $breakpoint == xs {
+        @media (max-width: $breakpoint-xs) {
+            @content;
+        }
+    } @else if $breakpoint == md {
+        @media (max-width: $breakpoint-md) {
+            @content;
+        }
+    }
+}
