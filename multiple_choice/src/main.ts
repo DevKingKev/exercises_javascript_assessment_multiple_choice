@@ -46,11 +46,26 @@ class AssessmentApp {
             const response = await fetch( '/api/assessments' );
             const data: AvailableAssessments = await response.json();
             this.availableAssessments = data;
+            this.updateDifficultyButtonCounts();
             this.renderAssessmentList( 'easy' ); // Default to easy
         } catch ( error ) {
             console.error( '❌ Error loading assessments:', error );
             this.showError( 'Failed to load available assessments' );
         }
+    }
+
+    private updateDifficultyButtonCounts (): void {
+        // Update each difficulty button to show the count of available assessments
+        const difficulties = ['easy', 'medium', 'hard'];
+        
+        difficulties.forEach( difficulty => {
+            const btn = document.querySelector( `[data-difficulty="${difficulty}"]` );
+            if ( btn ) {
+                const count = this.availableAssessments[difficulty]?.length || 0;
+                const capitalizedDifficulty = difficulty.charAt( 0 ).toUpperCase() + difficulty.slice( 1 );
+                btn.textContent = `${capitalizedDifficulty} (${count})`;
+            }
+        } );
     }
 
     private setupEventListeners (): void {
