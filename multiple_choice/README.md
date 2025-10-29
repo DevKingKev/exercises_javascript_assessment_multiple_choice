@@ -46,28 +46,31 @@ A comprehensive multiple choice assessment platform built with **Vite and TypeSc
 ### Development Mode
 
 ```text
-npm run dev
+pnpm dev
   ↓
-scripts/dev-runner.js orchestrates:
-  1. TypeScript watch (server) → dist/server.js
-  2. Vite dev server → http://localhost:5173 (HMR enabled)
-  3. Express server → http://localhost:3001
-     ├─ /api/* → Handled by Express directly
-     └─ /* → Proxied to Vite dev server
+Vite dev server with Vue 3:
+  • Hot Module Replacement (HMR)
+  • Vue 3 + Composition API
+  • Pinia state management
+  • Vue Router navigation
+  • TypeScript support
+  • Runs on http://localhost:5173
 ```
 
-**User accesses**: `http://localhost:3001` (Express gateway)  
-**Vite runs internally**: `http://localhost:5173` (proxied, not accessed directly)
+**User accesses**: `http://localhost:5173` (Vite dev server with HMR)
 
 ### Production Build
 
 ```text
-npm run build
+pnpm build
   ↓
-1. vite build → dist/public/ (optimized client bundle)
-2. tsc -p tsconfig.server.json → dist/server.js
+1. vue-tsc --build --force (Type checking)
+2. vite build → dist/ (optimized SPA bundle)
+   • Minified & tree-shaken code
+   • Code splitting
+   • Asset optimization
   ↓
-npm start → Express serves static files from dist/public/
+pnpm preview → Preview production build locally
 ```
 
 ## Current Tests
@@ -82,66 +85,77 @@ npm start → Express serves static files from dist/public/
 
 ### Prerequisites
 
-- Node.js 14+ installed
-- npm or yarn package manager
+- Node.js 18+ installed
+- pnpm package manager (`npm install -g pnpm`)
 
 ### Quick Start - Development Mode
 
 1. **Install dependencies:**
 
    ```bash
-   npm install
+   pnpm install
    ```
 
 2. **Start development environment:**
 
    ```bash
-   npm run dev
+   pnpm dev
    ```
 
-   This single command automatically:
-   - Compiles TypeScript server code in watch mode
-   - Starts Vite dev server with HMR on port 5173
-   - Starts Express server on port 3001
-   - Sets up proxy routing
-   - Monitors for changes and restarts as needed
+   This starts the Vite dev server with:
+   - Vue 3 with hot module replacement (HMR)
+   - TypeScript support
+   - Vue Router for navigation
+   - Pinia for state management
+   - Instant updates on file changes
 
-3. **Open your browser to:** `http://localhost:3001`
+3. **Open your browser to:** `http://localhost:5173`
 
-   All changes to client code will hot-reload instantly!
+   All changes to Vue components will hot-reload instantly!
 
 ### Production Build & Deployment
 
 1. **Build for production:**
 
    ```bash
-   npm run build
+   pnpm build
    ```
 
-   This creates optimized bundles:
-   - `dist/public/` - Vite-optimized client assets
-   - `dist/server.js` - Compiled Express server
+   This creates optimized bundles in `dist/` directory with:
+   - Type checking
+   - Minified and tree-shaken code
+   - Optimized assets
 
-2. **Start production server:**
+2. **Preview production build:**
 
    ```bash
-   npm start
+   pnpm preview
    ```
 
-3. **Open your browser to:** `http://localhost:3001`
+3. **Open your browser to:** `http://localhost:4173`
 
 ### Development Commands
 
 | Command | Description |
 |---------|-------------|
-| `npm run dev` | Start complete development environment (recommended) |
-| `npm run build` | Build for production (server + client) |
-| `npm run build:server` | Build server TypeScript only |
-| `npm run build:client` | Build client with Vite only |
-| `npm run build:watch` | Watch mode for both builds |
-| `npm start` | Start production server |
-| `npm run type-check` | Validate TypeScript without compilation |
-| `npm run clean` | Remove compiled dist folder |
+| `pnpm dev` | Start Vite dev server with HMR (recommended) |
+| `pnpm build` | Build for production with type checking |
+| `pnpm preview` | Preview production build locally |
+| `pnpm test:unit` | Run unit tests with Vitest |
+| `pnpm test:unit:coverage` | Run tests with coverage report |
+| `pnpm test:unit:ui` | Run tests with Vitest UI |
+| `pnpm type-check` | Validate TypeScript types |
+| `pnpm lint` | Lint and fix code with ESLint |
+| `pnpm format` | Format code with Prettier |
+| `pnpm clean` | Remove compiled dist folder |
+
+### Server Commands (if needed)
+
+| Command | Description |
+|---------|-------------|
+| `pnpm server:dev` | Start Express server with dev runner |
+| `pnpm server:build` | Build server TypeScript |
+| `pnpm server:start` | Start compiled Express server |
 
 ## Adding New Tests
 
@@ -223,53 +237,66 @@ multiple_choice/
 
 ## Technology Stack
 
-- **Build Tool**: Vite 5.x - Modern build tool with instant HMR
-- **Backend**: Node.js + Express.js with TypeScript
-- **Frontend**: TypeScript compiled to JavaScript via Vite + CSS3
-- **Dev Proxy**: http-proxy-middleware for routing in development
-- **Architecture**: API-driven with modular test loading and type safety
+- **Framework**: Vue 3.5+ with Composition API (`<script setup>`)
+- **State Management**: Pinia 2.2+ (Composition API style)
+- **Routing**: Vue Router 4.4+
+- **Build Tool**: Vite 5.4+ with instant HMR
+- **Language**: TypeScript 5.6+
+- **Styling**: SCSS with scoped styles
+- **Testing**: Vitest 4.0+ for unit tests
+- **Code Quality**: ESLint + Prettier
+- **Package Manager**: pnpm
 
 ## Development Workflow
 
-### How `npm run dev` Works
+### How `pnpm dev` Works
 
-1. **dev-runner.js** orchestrates three processes:
-   - TypeScript compiler watching `server.ts` → compiles to `dist/server.js`
-   - Vite dev server on port 5173 with HMR
-   - Express server on port 3001 with dynamic proxy
+1. **Vite dev server** starts with:
+   - Vue 3 plugin with HMR enabled
+   - TypeScript compilation on the fly
+   - SCSS preprocessing
+   - Vue DevTools integration
 
-2. **Startup sequence**:
-   - Wait for TypeScript to compile server code
-   - Wait for Vite to start and detect its port
-   - Start Express server with `VITE_DEV=1` environment variable
+2. **Hot Module Replacement (HMR)**:
+   - Component changes → Instant update without full reload
+   - State preservation during updates
+   - Style changes → Injected without page refresh
 
-3. **Request routing** (in dev mode):
-   - `/api/*` → Handled by Express directly (test data)
-   - `/*` → Proxied to Vite dev server (HMR-enabled client)
-
-4. **File watching**:
-   - Client code changes → Vite HMR updates instantly
-   - Server code changes → TypeScript recompiles → Express restarts
+3. **File watching**:
+   - `.vue` files → Recompiled and hot-reloaded
+   - `.ts` files → Type-checked and reloaded
+   - `.scss` files → Reprocessed and injected
+   - Assets → Optimized and served
 
 ### Troubleshooting
 
-**Port 3001 already in use?**
-
-```bash
-lsof -ti:3001 | xargs kill -9
-```
-
-**Vite not starting?**
-
-Check if port 5173 is available:
+**Port 5173 already in use?**
 
 ```bash
 lsof -ti:5173 | xargs kill -9
 ```
 
-**Server not restarting after changes?**
+**Dependencies not installing?**
 
-The dev-runner uses polling to detect file changes. If you experience issues, check the console output for errors.
+Make sure you have pnpm installed:
+
+```bash
+npm install -g pnpm
+```
+
+**Type errors in IDE?**
+
+Run type checking:
+
+```bash
+pnpm type-check
+```
+
+**HMR not working?**
+
+1. Check browser console for errors
+2. Restart the dev server: `pnpm dev`
+3. Clear browser cache and reload
 
 ## Benefits
 
@@ -286,17 +313,24 @@ The dev-runner uses polling to detect file changes. If you experience issues, ch
 
 For production deployment:
 
-1. Run `npm run build` to create optimized bundles
-2. Deploy the `dist/` directory to your server
-3. Set environment variables as needed
-4. Run `npm start` to start the production server
+1. Run `pnpm build` to create optimized bundles
+2. Deploy the `dist/` directory to your hosting provider
+3. Serve the static files from `dist/index.html`
 
 The production build:
 
-- Serves optimized, minified client assets from `dist/public/`
-- No Vite runtime or proxy needed
-- Uses standard Express static file serving
-- Includes source maps for debugging if needed
+- Creates a fully static Single Page Application (SPA)
+- All assets are minified and optimized
+- Code is split for optimal loading
+- Tree-shaking removes unused code
+- Source maps available for debugging
+
+### Hosting Options:
+
+- **Vercel**: `vercel deploy`
+- **Netlify**: Drag & drop `dist/` folder
+- **GitHub Pages**: Deploy `dist/` to gh-pages branch
+- **Static Server**: Any web server (nginx, Apache, etc.)
 
 ## Future Enhancements
 

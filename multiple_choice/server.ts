@@ -148,13 +148,24 @@ if ( viteDev ) {
     // `createProxyMiddleware` accepts a filter function as the first argument.
     // eslint-disable-next-line @typescript-eslint/no-var-requires
     const { createProxyMiddleware } = require( 'http-proxy-middleware' );
-    app.use( '/', createProxyMiddleware( ( pathname: string ) => {
-        return !pathname.startsWith( '/api' );
+    app.use( '/', createProxyMiddleware( ( pathname: string, req: any ) => {
+        const shouldProxy = !pathname.startsWith( '/api' );
+        console.log( `🔀 Proxy decision for ${pathname}: ${shouldProxy ? 'PROXY to Vite' : 'LOCAL to Express'}` );
+        return shouldProxy;
     }, {
         target: `http://localhost:${vitePort}`,
         changeOrigin: true,
         ws: true,
-        logLevel: 'warn'
+        logLevel: 'debug',
+        onProxyReq: ( proxyReq: any, req: any ) => {
+            console.log( `➡️  Proxying ${req.method} ${req.url} to Vite` );
+        },
+        onProxyRes: ( proxyRes: any, req: any ) => {
+            console.log( `⬅️  Response from Vite for ${req.url}: ${proxyRes.statusCode}` );
+        },
+        onError: ( err: any, req: any, res: any ) => {
+            console.error( `❌ Proxy error for ${req.url}:`, err.message );
+        }
     } ) );
 } else {
     // If a built client exists (vite output) serve that from dist/public. Otherwise fall back to project root.
@@ -166,20 +177,20 @@ if ( viteDev ) {
         console.log( '🧭 Serving static files from project root (dev mode) at', projectRoot );
         app.use( express.static( projectRoot ) );
     }
-}
 
-// Serve the main page
-app.get( '/', ( req: Request, res: Response ) => {
-    // Prefer the built index.html if present
-    const builtIndex = path.resolve( projectRoot, 'dist', 'public', 'index.html' );
-    if ( fs.existsSync( builtIndex ) ) {
-        console.log( '🏠 Serving built index.html from:', builtIndex );
-        return res.sendFile( builtIndex );
-    }
-    const indexPath = path.resolve( projectRoot, 'index.html' );
-    console.log( '🏠 Serving index.html from:', indexPath );
-    return res.sendFile( indexPath );
-} );
+    // Serve the main page (only in production/non-proxy mode)
+    app.get( '/', ( req: Request, res: Response ) => {
+        // Prefer the built index.html if present
+        const builtIndex = path.resolve( projectRoot, 'dist', 'public', 'index.html' );
+        if ( fs.existsSync( builtIndex ) ) {
+            console.log( '🏠 Serving built index.html from:', builtIndex );
+            return res.sendFile( builtIndex );
+        }
+        const indexPath = path.resolve( projectRoot, 'index.html' );
+        console.log( '🏠 Serving index.html from:', indexPath );
+        return res.sendFile( indexPath );
+    } );
+}
 
 // Start server with proper error handling
 const server = app.listen( PORT, () => {
