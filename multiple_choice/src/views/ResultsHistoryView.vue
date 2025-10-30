@@ -19,60 +19,24 @@
 
       <!-- Results History -->
       <div v-else class="results-history">
-        <div
+        <DifficultyResultsSection
           v-for="difficulty in ['easy', 'medium', 'hard']"
           :key="difficulty"
-          class="difficulty-section"
+          v-show="hasResultsForDifficulty(difficulty)"
+          :difficulty="difficulty"
+          :is-expanded="expandedDifficulty === difficulty"
+          :assessment-count="getAssessmentCountForDifficulty(difficulty)"
+          :average-score="resultsStore.averageScoreByDifficulty(difficulty)"
+          @toggle="toggleDifficulty(difficulty)"
         >
-          <template v-if="hasResultsForDifficulty(difficulty)">
-            <div
-              class="difficulty-header"
-              :class="{ expanded: expandedDifficulty === difficulty }"
-              @click="toggleDifficulty(difficulty)"
-              @keydown.enter="toggleDifficulty(difficulty)"
-              @keydown.space.prevent="toggleDifficulty(difficulty)"
-              role="button"
-              :aria-expanded="expandedDifficulty === difficulty"
-              :aria-controls="`difficulty-${difficulty}`"
-              tabindex="0"
-            >
-              <div class="difficulty-info">
-                <div class="difficulty-title">
-                  <span class="difficulty-badge" :class="`badge-${difficulty}`">
-                    {{ difficulty.charAt(0).toUpperCase() + difficulty.slice(1) }}
-                  </span>
-                </div>
-                <div class="difficulty-stats">
-                  <span class="stat-item">
-                    <strong>{{ getAssessmentCountForDifficulty(difficulty) }}</strong>
-                    {{ getAssessmentCountForDifficulty(difficulty) === 1 ? 'assessment' : 'assessments' }}
-                  </span>
-                  <span class="stat-divider">•</span>
-                  <span class="stat-item">
-                    Average: <strong>{{ resultsStore.averageScoreByDifficulty(difficulty) }}%</strong>
-                  </span>
-                </div>
-              </div>
-              <div class="expand-icon" aria-hidden="true">▶</div>
-            </div>
-            
-            <div
-              :id="`difficulty-${difficulty}`"
-              class="assessment-results-container"
-              :class="{ expanded: expandedDifficulty === difficulty }"
-              role="region"
-              :aria-label="`${difficulty} difficulty results`"
-            >
-              <AssessmentResultItem
-                v-for="[assessmentId, results] in getAssessmentResultsForDifficulty(difficulty)"
-                :key="assessmentId"
-                :assessment-id="assessmentId"
-                :assessment-title="getAssessmentTitle(difficulty, assessmentId)"
-                :results="results"
-              />
-            </div>
-          </template>
-        </div>
+          <AssessmentResultItem
+            v-for="[assessmentId, results] in getAssessmentResultsForDifficulty(difficulty)"
+            :key="assessmentId"
+            :assessment-id="assessmentId"
+            :assessment-title="getAssessmentTitle(difficulty, assessmentId)"
+            :results="results"
+          />
+        </DifficultyResultsSection>
 
         <!-- Clear History Button -->
         <div class="actions-section">
@@ -90,19 +54,29 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
-import { RouterLink } from 'vue-router';
+import { ref, onMounted } from 'vue';
+import { RouterLink, useRoute } from 'vue-router';
 import { useAssessmentStore } from '../stores/assessmentStore';
 import { useResultsStore } from '../stores/resultsStore';
 import { useUiStore } from '../stores/uiStore';
 import AssessmentResultItem from '../components/AssessmentResultItem.vue';
+import DifficultyResultsSection from '../components/DifficultyResultsSection.vue';
 import type { ResultRecord } from '../models';
 
+const route = useRoute();
 const assessmentStore = useAssessmentStore();
 const resultsStore = useResultsStore();
 const uiStore = useUiStore();
 
 const expandedDifficulty = ref<string | null>('easy');
+
+// Handle query parameter for expanding a specific difficulty
+onMounted(() => {
+  const expandParam = route.query.expand as string;
+  if (expandParam && ['easy', 'medium', 'hard'].includes(expandParam)) {
+    expandedDifficulty.value = expandParam;
+  }
+});
 
 function hasResultsForDifficulty(difficulty: string): boolean {
   const results = resultsStore.getResultsByDifficulty(difficulty);
@@ -222,112 +196,6 @@ async function handleClearHistory() {
   gap: $spacing-xl;
 }
 
-.difficulty-section {
-  background: white;
-  border-radius: $radius-xl;
-  box-shadow: $shadow-sm;
-  overflow: hidden;
-}
-
-.difficulty-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: $spacing-xl $spacing-2xl;
-  cursor: pointer;
-  user-select: none;
-  background: $gray-50;
-  border-bottom: 2px solid $gray-200;
-  transition: all $transition-fast;
-
-  &:hover {
-    background: $gray-100;
-  }
-
-  &:focus-visible {
-    outline: 2px solid $primary;
-    outline-offset: -2px;
-  }
-
-  &.expanded {
-    .expand-icon {
-      transform: rotate(90deg);
-    }
-  }
-}
-
-.difficulty-info {
-  display: flex;
-  flex-direction: column;
-  gap: $spacing-sm;
-}
-
-.difficulty-title {
-  display: flex;
-  align-items: center;
-  gap: $spacing-md;
-}
-
-.difficulty-badge {
-  padding: $spacing-sm $spacing-lg;
-  border-radius: $radius-lg;
-  font-size: $font-size-base;
-  font-weight: $font-weight-semibold;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-
-  &.badge-easy {
-    background: $success-light;
-    color: $success-dark;
-  }
-
-  &.badge-medium {
-    background: $blue-light;
-    color: $blue-border;
-  }
-
-  &.badge-hard {
-    background: $danger-light;
-    color: $danger-dark;
-  }
-}
-
-.difficulty-stats {
-  display: flex;
-  align-items: center;
-  gap: $spacing-md;
-  font-size: $font-size-sm;
-  color: $gray-600;
-
-  .stat-item {
-    strong {
-      color: $gray-800;
-      font-weight: $font-weight-semibold;
-    }
-  }
-
-  .stat-divider {
-    color: $gray-400;
-  }
-}
-
-.expand-icon {
-  font-size: $font-size-lg;
-  color: $gray-500;
-  transition: transform $transition-fast;
-}
-
-.assessment-results-container {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height $transition-base ease-out;
-
-  &.expanded {
-    max-height: 10000px;
-    transition: max-height $transition-base ease-in;
-  }
-}
-
 .actions-section {
   display: flex;
   justify-content: center;
@@ -373,25 +241,6 @@ async function handleClearHistory() {
       font-size: $font-size-base;
     }
   }
-
-  .difficulty-header {
-    padding: $spacing-lg $spacing-xl;
-  }
-
-  .difficulty-badge {
-    font-size: $font-size-sm;
-    padding: $spacing-xs $spacing-md;
-  }
-
-  .difficulty-stats {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: $spacing-xs;
-
-    .stat-divider {
-      display: none;
-    }
-  }
 }
 
 @media (max-width: $breakpoint-sm) {
@@ -413,10 +262,6 @@ async function handleClearHistory() {
     h2 {
       font-size: $font-size-2xl;
     }
-  }
-
-  .difficulty-header {
-    padding: $spacing-md $spacing-lg;
   }
 }
 </style>

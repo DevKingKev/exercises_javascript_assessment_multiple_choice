@@ -158,6 +158,48 @@ describe( 'assessmentStore', () => {
 
             expect( global.fetch ).toHaveBeenCalledWith( '/api/assessments' );
             expect( store.availableAssessments ).toEqual( mockData );
+            expect( store.assessmentsLoaded ).toBe( true );
+        } );
+
+        it( 'skips loading if already loaded', async () => {
+            const store = useAssessmentStore();
+            const mockData: any = {
+                easy: [{ id: 'easy-1', title: 'Easy Test', description: 'Test', difficulty: 'easy', timeLimit: 30, questionCount: 10 }]
+            };
+
+            ( global.fetch as any ).mockResolvedValueOnce( {
+                ok: true,
+                json: async () => mockData
+            } );
+
+            // First load
+            await store.loadAvailableAssessments();
+            expect( global.fetch ).toHaveBeenCalledTimes( 1 );
+            expect( store.assessmentsLoaded ).toBe( true );
+
+            // Second load should be skipped
+            await store.loadAvailableAssessments();
+            expect( global.fetch ).toHaveBeenCalledTimes( 1 ); // Still only 1 call
+        } );
+
+        it( 'forces reload when force parameter is true', async () => {
+            const store = useAssessmentStore();
+            const mockData: any = {
+                easy: [{ id: 'easy-1', title: 'Easy Test', description: 'Test', difficulty: 'easy', timeLimit: 30, questionCount: 10 }]
+            };
+
+            ( global.fetch as any ).mockResolvedValue( {
+                ok: true,
+                json: async () => mockData
+            } );
+
+            // First load
+            await store.loadAvailableAssessments();
+            expect( global.fetch ).toHaveBeenCalledTimes( 1 );
+
+            // Force reload
+            await store.loadAvailableAssessments( true );
+            expect( global.fetch ).toHaveBeenCalledTimes( 2 ); // Called twice
         } );
 
         it( 'throws error when fetch fails', async () => {

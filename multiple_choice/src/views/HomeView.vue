@@ -11,18 +11,8 @@
         :counts="difficultyCounts"
       />
 
-      <!-- Quick Stats Banner (if user has history) -->
-      <div v-if="resultsStore.hasHistory" class="quick-stats-banner">
-        <div class="stats-content">
-          <span class="stats-icon" aria-hidden="true">📊</span>
-          <span class="stats-text">
-            You have completed assessments!
-          </span>
-        </div>
-        <RouterLink to="/results" class="view-results-btn">
-          View All Results →
-        </RouterLink>
-      </div>
+      <!-- Results Overview -->
+      <ResultsOverview />
 
       <!-- Assessment List -->
       <div class="assessment-list">
@@ -59,6 +49,7 @@ import { useResultsStore } from '@/stores/resultsStore';
 import { useUiStore } from '@/stores/uiStore';
 import DifficultySelector from '@/components/DifficultySelector.vue';
 import AssessmentCard from '@/components/AssessmentCard.vue';
+import ResultsOverview from '@/components/ResultsOverview.vue';
 
 const router = useRouter();
 const assessmentStore = useAssessmentStore();
@@ -96,13 +87,20 @@ async function startAssessment(assessmentId: string) {
 }
 
 onMounted(async () => {
+  // Only show loading if assessments haven't been loaded yet
+  const showLoading = !assessmentStore.assessmentsLoaded;
+  
   try {
-    uiStore.showLoading('Loading Available Assessments...');
+    if (showLoading) {
+      uiStore.showLoading('Loading Available Assessments...');
+    }
     await assessmentStore.loadAvailableAssessments();
   } catch (error) {
     await uiStore.showAlert('Error', 'Failed to load available assessments');
   } finally {
-    uiStore.hideLoading();
+    if (showLoading) {
+      uiStore.hideLoading();
+    }
   }
 });
 </script>
@@ -130,75 +128,5 @@ onMounted(async () => {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 20px;
-}
-
-.quick-stats-banner {
-  margin: 30px 0;
-  padding: 20px 24px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  border-radius: 12px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-
-  &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(102, 126, 234, 0.3);
-  }
-
-  @media (max-width: 600px) {
-    flex-direction: column;
-    gap: 16px;
-    text-align: center;
-  }
-}
-
-.stats-content {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  color: white;
-}
-
-.stats-icon {
-  font-size: 1.5rem;
-  animation: pulse 2s ease-in-out infinite;
-}
-
-@keyframes pulse {
-  0%, 100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.1);
-  }
-}
-
-.stats-text {
-  font-size: 1.1rem;
-  font-weight: 500;
-}
-
-.view-results-btn {
-  padding: 10px 20px;
-  background: white;
-  color: #667eea;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: 600;
-  transition: all 0.2s ease;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-
-  &:hover {
-    background: #f8f9fa;
-    transform: translateX(4px);
-  }
-
-  &:focus-visible {
-    outline: 3px solid white;
-    outline-offset: 2px;
-  }
 }
 </style>

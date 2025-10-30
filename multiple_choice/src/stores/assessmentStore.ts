@@ -5,6 +5,7 @@ import type { Assessment, AvailableAssessments, AssessmentMetadata } from '@/mod
 export const useAssessmentStore = defineStore( 'assessment', () => {
     // State
     const availableAssessments = ref<AvailableAssessments>( {} );
+    const assessmentsLoaded = ref<boolean>( false );
     const currentAssessment = ref<Assessment | null>( null );
     const currentDifficulty = ref<string>( 'easy' );
     const currentQuestionIndex = ref<number>( 0 );
@@ -52,7 +53,12 @@ export const useAssessmentStore = defineStore( 'assessment', () => {
     } );
 
     // Actions
-    async function loadAvailableAssessments () {
+    async function loadAvailableAssessments ( force = false ) {
+        // Skip if already loaded and not forcing a refresh
+        if ( assessmentsLoaded.value && !force ) {
+            return;
+        }
+
         try {
             const response = await fetch( '/api/assessments' );
             if ( !response.ok ) {
@@ -60,6 +66,7 @@ export const useAssessmentStore = defineStore( 'assessment', () => {
             }
             const data: AvailableAssessments = await response.json();
             availableAssessments.value = data;
+            assessmentsLoaded.value = true;
         } catch ( error ) {
             console.error( '❌ Error loading assessments:', error );
             throw error;
@@ -137,6 +144,7 @@ export const useAssessmentStore = defineStore( 'assessment', () => {
     return {
         // State
         availableAssessments,
+        assessmentsLoaded,
         currentAssessment,
         currentDifficulty,
         currentQuestionIndex,
