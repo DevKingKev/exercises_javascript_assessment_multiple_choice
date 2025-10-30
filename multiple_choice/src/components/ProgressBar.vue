@@ -16,7 +16,7 @@ defineProps<Props>();
 .progress-bar {
   width: 100%;
   height: 8px;
-  background: #ecf0f1;
+  background: var(--bg-tertiary);
   border-radius: 4px;
   overflow: hidden;
   margin: 20px 0;

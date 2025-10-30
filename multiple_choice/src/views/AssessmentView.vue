@@ -1,3 +1,4 @@
+
 <template>
   <div class="container" v-if="assessmentStore.currentAssessment">
     <div class="screen active">
@@ -247,8 +248,12 @@ onUnmounted(() => {
 </script>
 
 <style scoped lang="scss">
+
 .screen {
   display: none;
+  background: var(--card-bg) !important;
+  border: 1px solid var(--card-border) !important;
+  box-shadow: var(--shadow-xl) !important;
 
   &.active {
     display: block;
@@ -262,8 +267,7 @@ onUnmounted(() => {
   gap: 24px;
   margin-bottom: 20px;
   padding-bottom: 20px;
-  border-bottom: 2px solid #ecf0f1;
-
+  border-bottom: 2px solid var(--border-base);
   @media (max-width: 768px) {
     flex-direction: column;
   }
@@ -271,68 +275,79 @@ onUnmounted(() => {
 
 .assessment-info {
   flex: 1;
-
   h2 {
     margin: 0 0 8px 0;
     font-size: 1.8rem;
-    color: #2c3e50;
+    color: var(--text-primary);
   }
-
   p {
     margin: 0;
-    color: #7f8c8d;
+    color: var(--text-secondary);
     line-height: 1.6;
   }
 }
+
 
 .progress-info {
   display: flex;
   flex-direction: column;
   gap: 12px;
   align-items: flex-end;
-
+  background: var(--bg-tertiary);
+  padding: 12px 20px;
+  border-radius: 8px;
+  box-shadow: var(--shadow-xs);
   @media (max-width: 768px) {
     align-items: flex-start;
     width: 100%;
   }
 }
 
+.progress-info .question-counter,
+.progress-info .timer {
+  color: var(--text-primary);
+}
+
+
 .question-counter,
 .timer {
   font-size: 1.1rem;
   font-weight: 600;
-  color: #2c3e50;
+  color: var(--text-primary);
 }
 
 .quit-btn {
   padding: 8px 16px;
   background: #e74c3c;
-  color: white;
+  color: #fff;
   border: none;
   border-radius: 6px;
   font-size: 0.95rem;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.2s ease;
-
+  box-shadow: var(--shadow-sm);
   &:hover {
     background: #c0392b;
+    color: #fff;
     transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
   }
 }
 
 .question-container {
   margin: 30px 0;
   padding: 30px;
-  background: white;
+  background: var(--card-bg);
   border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--card-border);
 }
 
 .question-text {
   font-size: 1.3rem;
   line-height: 1.6;
-  color: #2c3e50;
+  color: var(--text-primary);
   margin-bottom: 24px;
 }
 
@@ -343,23 +358,37 @@ onUnmounted(() => {
 }
 
 .option {
+  background: var(--bg-secondary);
+  border: 2px solid var(--border-base);
+  color: var(--text-primary);
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.option:hover,
+.option.selected {
+  background: var(--bg-hover);
+  border-color: #3498db;
+  color: var(--text-primary);
+}
+
+.option {
   display: flex;
   align-items: center;
   gap: 16px;
   padding: 16px;
-  border: 2px solid #d5dbdb;
+  border: 2px solid var(--border-base);
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.2s ease;
-
+  background: var(--bg-secondary);
+  color: var(--text-primary);
   &:hover {
     border-color: #3498db;
-    background: #ebf5fb;
+    background: var(--bg-hover);
   }
-
   &.selected {
     border-color: #3498db;
-    background: #ebf5fb;
+    background: var(--bg-hover);
   }
 }
 
@@ -369,17 +398,17 @@ onUnmounted(() => {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #ecf0f1;
+  background: var(--bg-tertiary);
   border-radius: 8px;
   font-weight: 700;
   font-size: 1.1rem;
-  color: #2c3e50;
+  color: var(--text-primary);
 }
 
 .option-text {
   flex: 1;
   font-size: 1.05rem;
-  color: #34495e;
+  color: var(--text-secondary);
 }
 
 .navigation-buttons {
@@ -399,30 +428,89 @@ onUnmounted(() => {
   cursor: pointer;
   transition: all 0.2s ease;
 
-  &:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
+  .nav-btn,
+  .submit-btn {
+    padding: 12px 32px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: var(--shadow-sm);
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+  .nav-btn {
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+    &:hover:not(:disabled) {
+      background: var(--bg-hover);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-md);
+    }
+  }
+  .submit-btn {
+    background: #2ecc71;
+    color: #fff;
+    margin-left: auto;
+    &:hover {
+      background: #27ae60;
+      color: #fff;
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-md);
+    }
   }
 }
 
-.nav-btn {
-  background: #ecf0f1;
-  color: #2c3e50;
-
-  &:hover:not(:disabled) {
-    background: #d5dbdb;
-    transform: translateY(-1px);
-  }
+  // Dark mode overrides for options
+:root[data-theme="dark"] .option {
+  background: var(--bg-tertiary) !important;
+  border-color: var(--border-medium) !important;
+  color: var(--text-primary) !important;
 }
 
-.submit-btn {
-  background: #2ecc71;
-  color: white;
-  margin-left: auto;
-
-  &:hover {
-    background: #27ae60;
-    transform: translateY(-1px);
-  }
+:root[data-theme="dark"] .option:hover,
+:root[data-theme="dark"] .option.selected {
+  background: var(--bg-hover) !important;
+  border-color: #3498db !important;
+  color: var(--text-primary) !important;
 }
+
+:root[data-theme="dark"] .options-container {
+  background: transparent !important;
+}
+// Dark mode override for .progress-info
+:root[data-theme="dark"] .progress-info {
+  background: var(--bg-secondary) !important;
+  box-shadow: var(--shadow-xs) !important;
+  border: 1.5px solid var(--border-medium) !important;
+}
+
+:root[data-theme="dark"] .progress-info,
+:root[data-theme="dark"] .progress-info .question-counter,
+:root[data-theme="dark"] .progress-info .timer {
+  color: var(--text-primary) !important;
+}
+
+:root[data-theme="dark"] .progress-info .quit-btn {
+  background: #e74c3c !important;
+  color: #fff !important;
+  border: none !important;
+}
+
+:root[data-theme="dark"] .progress-info .quit-btn:hover {
+  background: #c0392b !important;
+  color: #fff !important;
+}
+:root[data-theme="dark"] .progress-info .question-counter,
+:root[data-theme="dark"] .progress-info .timer {
+  background: var(--bg-tertiary) !important;
+  padding: 4px 10px !important;
+  border-radius: 6px !important;
+  color: var(--text-primary) !important;
+}
+
 </style>

@@ -51,13 +51,13 @@ defineEmits<{
 .question-grid-section {
   margin: 30px 0;
   padding: 20px;
-  background: #f8f9fa;
+  background: var(--card-bg);
   border-radius: 8px;
-
+  box-shadow: var(--shadow-sm);
   h4 {
     margin: 0 0 16px 0;
     font-size: 1.1rem;
-    color: #2c3e50;
+    color: var(--text-primary);
   }
 }
 
@@ -71,35 +71,33 @@ defineEmits<{
 .question-btn {
   width: 50px;
   height: 50px;
-  border: 2px solid #d5dbdb;
-  background: white;
+  border: 2px solid var(--border-base);
+  background: var(--bg-secondary);
   border-radius: 8px;
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease;
-
+  color: var(--text-primary);
   &:hover {
     transform: scale(1.05);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-sm);
+    background: var(--bg-hover);
   }
-
   &.current {
     background: #3498db;
-    color: white;
+    color: #fff;
     border-color: #3498db;
   }
-
   &.answered {
     background: #2ecc71;
-    color: white;
+    color: #fff;
     border-color: #2ecc71;
   }
-
   &.unanswered {
-    background: white;
-    color: #95a5a6;
-    border-color: #d5dbdb;
+    background: var(--bg-secondary);
+    color: var(--text-muted);
+    border-color: var(--border-base);
   }
 }
 
@@ -114,25 +112,22 @@ defineEmits<{
   align-items: center;
   gap: 8px;
   font-size: 0.9rem;
-  color: #7f8c8d;
+  color: var(--text-secondary);
 }
 
 .legend-circle {
   width: 20px;
   height: 20px;
   border-radius: 4px;
-
   &.current {
     background: #3498db;
   }
-
   &.answered {
     background: #2ecc71;
   }
-
   &.unanswered {
-    background: white;
-    border: 2px solid #d5dbdb;
+    background: var(--bg-secondary);
+    border: 2px solid var(--border-base);
   }
 }
 </style>
