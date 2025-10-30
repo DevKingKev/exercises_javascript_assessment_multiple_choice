@@ -4,7 +4,7 @@
     <div class="screen active">
       <div class="assessment-header">
         <div class="assessment-info">
-          <h2>{{ assessmentStore.currentAssessment.metadata.title }}</h2>
+          <h2>{{ displayHeader }}</h2>
           <p>{{ assessmentStore.currentAssessment.metadata.description }}</p>
         </div>
         <div class="progress-info">
@@ -81,6 +81,7 @@ import { useUiStore } from '@/stores/uiStore';
 import { useTimer } from '@/composables/useTimer';
 import { formatTextWithCode } from '@/utils/formatUtils';
 import { formatTimeTaken, getImprovementTopics } from '@/utils/resultsUtils';
+import { formatAssessmentLabel } from '@/utils/assessmentUtils';
 import ProgressBar from '@/components/ProgressBar.vue';
 import QuestionGrid from '@/components/QuestionGrid.vue';
 import type { TopicBreakdown, QuestionReview, ResultRecord } from '@/models';
@@ -92,6 +93,14 @@ const resultsStore = useResultsStore();
 const uiStore = useUiStore();
 
 const timer = useTimer(assessmentStore.timeLimit, handleTimeUp);
+
+import { computed } from 'vue';
+
+const displayHeader = computed(() => {
+  const meta = assessmentStore.currentAssessment?.metadata;
+  if (!meta) return '';
+  return formatAssessmentLabel(meta.id, meta.title);
+});
 
 function formatQuestion(text: string): string {
   return formatTextWithCode(text);

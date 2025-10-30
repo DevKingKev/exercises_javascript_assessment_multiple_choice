@@ -60,6 +60,7 @@ import { useUiStore } from '../stores/uiStore';
 import AssessmentResultItem from '../components/AssessmentResultItem.vue';
 import DifficultyResultsSection from '../components/DifficultyResultsSection.vue';
 import type { ResultRecord } from '../models';
+import { formatAssessmentLabel } from '@/utils/assessmentUtils';
 
 const route = useRoute();
 const assessmentStore = useAssessmentStore();
@@ -104,7 +105,9 @@ function getAllResultsForDifficulty(difficulty: string): ResultRecord[] {
 
 function getAssessmentTitle(difficulty: string, assessmentId: string): string {
   const metadata = assessmentStore.getAssessmentMetadata(difficulty, assessmentId);
-  return metadata ? metadata.title : `Assessment ${assessmentId}`;
+  // Prefer full title if available; otherwise format using the id (extract number if present)
+  if (metadata && metadata.title) return metadata.title;
+  return formatAssessmentLabel(assessmentId, null);
 }
 
 function toggleDifficulty(difficulty: string) {

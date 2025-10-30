@@ -2,7 +2,7 @@
   <div class="assessment-result-item" :class="{ expanded: isExpanded }">
     <div class="assessment-result-item-header" @click="toggleExpanded">
       <div class="assessment-info">
-        <div class="assessment-name">Assessment {{ result.assessmentId }} - {{ result.assessmentTitle }}</div>
+  <div class="assessment-name">{{ displayAssessmentLabel }}</div>
         <div class="assessment-date">{{ formatDate(result.date) }}</div>
       </div>
       <div class="header-right">
@@ -58,6 +58,7 @@ import { ref, computed } from 'vue';
 import type { ResultRecord } from '@/models';
 import { formatDate } from '@/utils/dateUtils';
 import { getScoreBadgeClass } from '@/utils/resultsUtils';
+import { formatAssessmentLabel } from '@/utils/assessmentUtils';
 
 interface Props {
   result: ResultRecord;
@@ -72,6 +73,10 @@ const scoreBadgeClass = computed(() => getScoreBadgeClass(props.result.percentag
 function toggleExpanded() {
   isExpanded.value = !isExpanded.value;
 }
+
+const displayAssessmentLabel = computed(() =>
+  formatAssessmentLabel(props.result.assessmentId, props.result.assessmentTitle)
+);
 
 function getTopicClass(correct: number, total: number): string {
   if (total === 0) return 'topic-neutral';
