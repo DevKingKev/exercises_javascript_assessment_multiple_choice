@@ -27,6 +27,24 @@
           </div>
           <div class="attempt-time">Time: {{ result.timeTaken }}</div>
         </div>
+        
+        <!-- Topic Breakdown with Color Grading -->
+        <div v-if="result.topicBreakdown && Object.keys(result.topicBreakdown).length > 0" class="topic-breakdown">
+          <div class="topic-breakdown-label">Topic Performance:</div>
+          <div class="topics-grid">
+            <div 
+              v-for="(topic, topicName) in result.topicBreakdown" 
+              :key="topicName"
+              class="topic-item"
+              :class="getTopicScoreClass(topic.correct, topic.total)"
+              :title="`${topic.correct}/${topic.total} correct`"
+            >
+              <div class="topic-name">{{ topicName }}</div>
+              <div class="topic-score">{{ topic.correct }}/{{ topic.total }}</div>
+            </div>
+          </div>
+        </div>
+        
         <div v-if="result.improvementTopics && result.improvementTopics.length > 0" class="improvement-topics">
           <div class="improvement-topics-label">Topics needing improvement:</div>
           <div class="topics-list">{{ result.improvementTopics.join(', ') }}</div>
@@ -60,6 +78,18 @@ const scoreBadgeClass = computed(() => getScoreBadgeClass(latestResult.value.per
 
 function toggleExpanded() {
   isExpanded.value = !isExpanded.value;
+}
+
+function getTopicScoreClass(correct: number, total: number): string {
+  if (total === 0) return 'topic-neutral';
+  
+  const percentage = (correct / total) * 100;
+  
+  if (percentage === 100) return 'topic-perfect';
+  if (percentage >= 80) return 'topic-good';
+  if (percentage >= 60) return 'topic-fair';
+  if (percentage >= 40) return 'topic-poor';
+  return 'topic-fail';
 }
 </script>
 
@@ -173,13 +203,93 @@ function toggleExpanded() {
 .attempt-details {
   display: flex;
   gap: 24px;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
 }
 
 .attempt-score,
 .attempt-time {
   font-size: 0.9rem;
   color: #34495e;
+}
+
+.topic-breakdown {
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
+
+.topic-breakdown-label {
+  font-size: 0.85rem;
+  color: #2d3748; // $gray-700
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.topics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 8px;
+}
+
+.topic-item {
+  padding: 8px 12px;
+  border-radius: 6px; // $radius-md
+  border: 2px solid;
+  transition: all 0.2s ease;
+  
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.topic-name {
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin-bottom: 2px;
+  line-height: 1.3;
+}
+
+.topic-score {
+  font-size: 0.75rem;
+  font-weight: 600;
+  opacity: 0.8;
+}
+
+// Color grading for topics
+.topic-perfect {
+  background: #d4edda; // Light green
+  border-color: #28a745; // Green
+  color: #155724; // Dark green
+}
+
+.topic-good {
+  background: #d1ecf1; // Light blue
+  border-color: #17a2b8; // Blue
+  color: #0c5460; // Dark blue
+}
+
+.topic-fair {
+  background: #fff3cd; // Light yellow
+  border-color: #ffc107; // Yellow/orange
+  color: #856404; // Dark yellow
+}
+
+.topic-poor {
+  background: #ffe5d0; // Light orange
+  border-color: #fd7e14; // Orange
+  color: #8b4513; // Dark orange/brown
+}
+
+.topic-fail {
+  background: #f8d7da; // Light red
+  border-color: #dc3545; // Red
+  color: #721c24; // Dark red
+}
+
+.topic-neutral {
+  background: #e2e8f0; // $gray-200
+  border-color: #cbd5e0; // $gray-300
+  color: #4a5568; // $gray-600
 }
 
 .improvement-topics {
