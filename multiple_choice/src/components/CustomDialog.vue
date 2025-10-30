@@ -88,12 +88,17 @@ function handleBackdropClick(e: MouseEvent) {
   border: none;
   border-radius: 12px;
   padding: 0;
-  min-width: 400px;
+  width: 400px;
   max-width: 90vw;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
 
   &::backdrop {
     background: rgba(0, 0, 0, 0.5);
+  }
+
+  // Responsive adjustments for smaller screens
+  @media (max-width: 480px) {
+    width: 95vw;
   }
 }
 
