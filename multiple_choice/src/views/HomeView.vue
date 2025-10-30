@@ -26,6 +26,7 @@
               :description="assessment.description"
               :question-count="assessment.questionCount"
               :time-limit="assessment.timeLimit"
+              :assessment-id="assessment.id"
               @select="startAssessment(assessment.id)"
             />
           </template>
