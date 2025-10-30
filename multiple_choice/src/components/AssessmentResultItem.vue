@@ -1,6 +1,6 @@
 <template>
   <div class="assessment-result-item">
-    <div class="assessment-header">
+    <div class="assessment-result-item-header">
       <div class="assessment-info">
         <div class="assessment-name">Assessment {{ result.assessmentId }} - {{ result.assessmentTitle }}</div>
         <div class="assessment-date">{{ formatDate(result.date) }}</div>
@@ -80,7 +80,7 @@ function getTopicClass(correct: number, total: number): string {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-.assessment-header {
+.assessment-result-item-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -233,7 +233,7 @@ function getTopicClass(correct: number, total: number): string {
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
   }
   
-  .assessment-header {
+  .assessment-result-item-header {
     border-bottom-color: #334155;
   }
   
