@@ -22,9 +22,17 @@ const routes: RouteRecordRaw[] = [
     {
         path: '/results',
         name: 'results',
+        component: () => import( '@/views/ResultsHistoryView.vue' ),
+        meta: {
+            title: 'Results History'
+        }
+    },
+    {
+        path: '/assessment-result',
+        name: 'assessment-result',
         component: () => import( '@/views/ResultsView.vue' ),
         meta: {
-            title: 'Results'
+            title: 'Assessment Results'
         }
     },
     {

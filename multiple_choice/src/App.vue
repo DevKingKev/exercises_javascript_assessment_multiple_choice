@@ -1,6 +1,10 @@
 <template>
   <div id="app">
-    <RouterView />
+    <NavigationHeader />
+    
+    <main role="main">
+      <RouterView />
+    </main>
     
     <!-- Global UI Components -->
     <LoadingSpinner
@@ -25,6 +29,7 @@
 
 <script setup lang="ts">
 import { RouterView } from 'vue-router';
+import NavigationHeader from './components/NavigationHeader.vue';
 import LoadingSpinner from './components/LoadingSpinner.vue';
 import CustomDialog from './components/CustomDialog.vue';
 import { useUiStore } from './stores/uiStore';

@@ -165,7 +165,7 @@ async function submitAssessment() {
   resultsStore.saveResult(resultRecord);
 
   // Navigate to results
-  router.push({ name: 'results' });
+  router.push({ name: 'assessment-result' });
 }
 
 function calculateResults() {
