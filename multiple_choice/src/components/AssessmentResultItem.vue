@@ -1,16 +1,24 @@
 <template>
-  <div class="assessment-result-item">
-    <div class="assessment-result-item-header">
+  <div class="assessment-result-item" :class="{ expanded: isExpanded }">
+    <div class="assessment-result-item-header" @click="toggleExpanded">
       <div class="assessment-info">
         <div class="assessment-name">Assessment {{ result.assessmentId }} - {{ result.assessmentTitle }}</div>
         <div class="assessment-date">{{ formatDate(result.date) }}</div>
       </div>
-      <div class="score-badge" :class="scoreBadgeClass">
-        {{ result.percentage }}%
+      <div class="header-right">
+        <div class="score-badge" :class="scoreBadgeClass">
+          {{ result.percentage }}%
+        </div>
+        <div class="expand-icon" :class="{ expanded: isExpanded }">
+          <!-- Chevron right (collapsed), down (expanded) -->
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" style="transition: transform 0.3s;" :style="isExpanded ? 'transform: rotate(90deg);' : ''">
+            <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 111.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+          </svg>
+        </div>
       </div>
     </div>
     
-    <div class="assessment-content">
+    <div v-if="isExpanded" class="assessment-content">
       <div class="assessment-details">
         <div class="detail-item">
           <span class="detail-label">Score:</span>
@@ -46,7 +54,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
+import { ref, computed } from 'vue';
 import type { ResultRecord } from '@/models';
 import { formatDate } from '@/utils/dateUtils';
 import { getScoreBadgeClass } from '@/utils/resultsUtils';
@@ -57,7 +65,13 @@ interface Props {
 
 const props = defineProps<Props>();
 
+const isExpanded = ref(false);
+
 const scoreBadgeClass = computed(() => getScoreBadgeClass(props.result.percentage));
+
+function toggleExpanded() {
+  isExpanded.value = !isExpanded.value;
+}
 
 function getTopicClass(correct: number, total: number): string {
   if (total === 0) return 'topic-neutral';
@@ -85,11 +99,33 @@ function getTopicClass(correct: number, total: number): string {
   justify-content: space-between;
   align-items: center;
   padding: 16px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+
+  &:hover {
+    background: #f8f9fa;
+  }
+}
+
+.assessment-result-item.expanded .assessment-result-item-header {
   border-bottom: 1px solid #e1e8ed;
 }
 
 .assessment-info {
   flex: 1;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.expand-icon {
+  display: flex;
+  align-items: center;
+  color: #64748b;
+  /* Remove old rotation, now handled inline on SVG */
 }
 
 .assessment-name {
@@ -227,14 +263,26 @@ function getTopicClass(correct: number, total: number): string {
 }
 
 // Additional dark mode support for the component
+// Stronger dark mode override for assessment-result-item-header hover
+:root[data-theme="dark"] .assessment-result-item-header:hover {
+  background: rgba(51, 65, 85, 0.85) !important; /* softer, lighter blue-gray */
+  box-shadow: 0 2px 8px 0 rgba(30, 41, 59, 0.18) !important;
+  border-bottom: 1px solid #334155 !important;
+}
+
 :global(:root[data-theme="dark"]) {
   .assessment-result-item {
     background: #1e293b;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
   }
+  /* Remove .assessment-result-item-header hover here, now handled above */
   
-  .assessment-result-item-header {
+  .assessment-result-item.expanded .assessment-result-item-header {
     border-bottom-color: #334155;
+  }
+  
+  .expand-icon {
+    color: #94a3b8;
   }
   
   .assessment-name {
