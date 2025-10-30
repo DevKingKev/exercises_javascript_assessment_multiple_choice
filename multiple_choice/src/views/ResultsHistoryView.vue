@@ -122,23 +122,17 @@ async function handleClearHistory() {
 .page-header {
   text-align: center;
   margin-bottom: $spacing-4xl;
-  padding-top: $spacing-xl;
+  color: white;
 
   h1 {
-    font-size: $font-size-4xl;
-    font-weight: $font-weight-bold;
-    color: $gray-800;
-    margin-bottom: $spacing-md;
-    background: $gradient-primary;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    font-size: $font-size-5xl;
+    margin-bottom: 10px;
+    font-weight: $font-weight-semibold;
   }
 
   p {
     font-size: $font-size-lg;
-    color: $gray-600;
-    margin: 0;
+    opacity: 0.9;
   }
 }
 
@@ -206,8 +200,8 @@ async function handleClearHistory() {
 .clear-history-btn {
   padding: $spacing-md $spacing-2xl;
   background: white;
-  color: $danger;
-  border: 2px solid $danger-light;
+  color: mix($danger, black, 70%);
+  border: 2px solid mix($danger, white, 30%);
   border-radius: $radius-lg;
   font-size: $font-size-base;
   font-weight: $font-weight-semibold;
@@ -215,8 +209,9 @@ async function handleClearHistory() {
   transition: all $transition-fast;
 
   &:hover {
-    background: $danger-light;
+    background: mix($danger, white, 8%);
     border-color: $danger;
+    color: $danger;
     transform: translateY(-1px);
   }
 

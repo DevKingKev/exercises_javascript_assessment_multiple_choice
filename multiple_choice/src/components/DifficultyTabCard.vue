@@ -51,7 +51,7 @@ const capitalizedDifficulty = computed(() => {
   padding: 16px;
   background: white;
   border-radius: 8px;
-  border: 2px solid transparent;
+  border: 2px solid #e5e7eb;
   text-decoration: none;
   transition: all 0.2s ease;
   min-height: 140px;
@@ -81,29 +81,29 @@ const capitalizedDifficulty = computed(() => {
   }
 
   &.difficulty-easy {
-    color: #10b981;
-    background: linear-gradient(135deg, white 0%, #f0fdf4 100%);
+    color: #059669;
+    background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
 
     &.has-results:hover {
-      background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+      background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);
     }
   }
 
   &.difficulty-medium {
-    color: #3b82f6;
-    background: linear-gradient(135deg, white 0%, #eff6ff 100%);
+    color: #2563eb;
+    background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
 
     &.has-results:hover {
-      background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+      background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
     }
   }
 
   &.difficulty-hard {
-    color: #ef4444;
-    background: linear-gradient(135deg, white 0%, #fef2f2 100%);
+    color: #dc2626;
+    background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
 
     &.has-results:hover {
-      background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+      background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
     }
   }
 }
