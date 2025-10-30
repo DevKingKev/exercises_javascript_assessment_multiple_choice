@@ -52,9 +52,10 @@ withDefaults(defineProps<Props>(), {
 .spinner-container {
   text-align: center;
   padding: 40px;
-  background: white;
+  background: var(--card-bg);
   border-radius: 12px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--border-base);
 }
 
 .spinner {
@@ -96,12 +97,12 @@ withDefaults(defineProps<Props>(), {
 .spinner-text {
   font-size: 1.2rem;
   font-weight: 600;
-  color: #2c3e50;
+  color: var(--text-primary);
   margin-bottom: 8px;
 }
 
 .spinner-subtext {
   font-size: 0.95rem;
-  color: #7f8c8d;
+  color: var(--text-secondary);
 }
 </style>

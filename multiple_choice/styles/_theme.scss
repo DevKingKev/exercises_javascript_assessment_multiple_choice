@@ -1,7 +1,8 @@
 // Dark Theme Styles using CSS Custom Properties
 
 // Light theme (default)
-:root[data-theme="light"] {
+:root[data-theme="light"],
+:root:not([data-theme]) {
   // Background colors
   --bg-body: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   --bg-container: #ffffff;
@@ -28,6 +29,7 @@
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
   --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.15);
   --shadow-lg: 0 8px 25px rgba(0, 0, 0, 0.15);
+  --shadow-xl: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
 // Dark theme
@@ -58,247 +60,745 @@
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
   --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.5);
   --shadow-lg: 0 8px 25px rgba(0, 0, 0, 0.6);
+  --shadow-xl: 0 10px 30px rgba(0, 0, 0, 0.7);
 }
 
-// Apply theme to body
+// Apply theme globally
 body {
-  background: var(--bg-body);
+  background: var(--bg-body) !important;
   color: var(--text-primary);
 }
 
-// Container theming
 .container {
   color: var(--text-primary);
 }
 
-// Screen/Card theming
+// ============================================
+// SCREEN/CARD COMPONENTS
+// ============================================
 .screen {
-  background: var(--card-bg);
-  border: 1px solid var(--card-border);
-  box-shadow: var(--shadow-lg);
+  background: var(--card-bg) !important;
+  border: 1px solid var(--card-border) !important;
+  box-shadow: var(--shadow-xl) !important;
 }
 
-// Navigation Header theming
+// Results history component (uses card-base mixin)
+.results-history {
+  background: var(--card-bg) !important;
+  
+  h2 {
+    color: var(--text-primary) !important;
+  }
+}
+
+// Legacy results-history.scss styles that need theme support
+.difficulty-average {
+  color: var(--text-secondary) !important;
+}
+
+.difficulty-title {
+  color: var(--text-primary) !important;
+}
+
+.assessment-results-container {
+  background: var(--bg-secondary) !important;
+}
+
+.attempt-item {
+  background: var(--bg-tertiary) !important;
+}
+
+.attempt-score {
+  color: var(--text-secondary) !important;
+}
+
+.attempt-time {
+  color: var(--text-secondary) !important;
+}
+
+.topics-list {
+  color: var(--text-secondary) !important;
+}
+
+// ============================================
+// NAVIGATION HEADER
+// ============================================
 .nav-header {
-  background: var(--card-bg);
-  border-bottom-color: var(--border-base);
-  box-shadow: var(--shadow-sm);
+  background: var(--card-bg) !important;
+  border-bottom-color: var(--border-base) !important;
+  box-shadow: var(--shadow-sm) !important;
 }
 
 .nav-brand .brand-link {
-  color: var(--text-primary);
+  color: var(--text-primary) !important;
 }
 
 .nav-link {
-  color: var(--text-secondary);
+  color: var(--text-secondary) !important;
   
   &:hover {
-    color: #5a67d8;
-    background: var(--bg-hover);
+    background: var(--bg-hover) !important;
+  }
+  
+  &.router-link-active,
+  &[aria-current="page"] {
+    color: #5a67d8 !important;
+  }
+}
+
+// Light mode navigation active state
+:root[data-theme="light"],
+:root:not([data-theme]) {
+  .nav-link {
+    &.router-link-active,
+    &[aria-current="page"] {
+      background: #f0f4ff !important;
+    }
+  }
+  
+  .settings-link {
+    &.router-link-active,
+    &[aria-current="page"] {
+      background: #f0f4ff !important;
+    }
+  }
+}
+
+// Dark mode navigation active state
+:root[data-theme="dark"] {
+  .nav-link {
+    &.router-link-active,
+    &[aria-current="page"] {
+      background: rgba(90, 103, 216, 0.2) !important;
+    }
+  }
+  
+  .settings-link {
+    &.router-link-active,
+    &[aria-current="page"] {
+      background: rgba(90, 103, 216, 0.2) !important;
+    }
   }
 }
 
 .nav-actions {
-  border-left-color: var(--border-base);
+  border-left-color: var(--border-base) !important;
 }
 
 .settings-link {
-  color: var(--text-secondary);
+  color: var(--text-secondary) !important;
   
   &:hover {
-    color: #5a67d8;
-    background: var(--bg-hover);
+    background: var(--bg-hover) !important;
   }
 }
 
-// Settings page theming
-.settings-section {
-  background: var(--card-bg);
-  border-color: var(--border-base);
-  box-shadow: var(--shadow-sm);
-}
-
-.section-title {
-  color: var(--text-primary);
-  border-bottom-color: var(--border-base);
-}
-
-.setting-label {
-  color: var(--text-primary);
-}
-
-.setting-description {
-  color: var(--text-secondary);
-}
-
-.theme-option {
-  background: var(--bg-secondary);
-  border-color: var(--border-medium);
-  color: var(--text-secondary);
-  
-  &:hover {
-    background: var(--bg-hover);
+// ============================================
+// DIFFICULTY SELECTOR
+// ============================================
+.difficulty-section {
+  h2 {
+    color: var(--text-primary) !important;
   }
 }
 
-.current-theme-preview {
-  background: var(--bg-secondary);
-  border-color: var(--border-base);
+.difficulty-buttons {
+  button {
+    background: var(--card-bg) !important;
+    color: #3498db !important;
+    border-color: #3498db !important;
+    
+    &:hover:not(:disabled):not(.active) {
+      background: var(--bg-hover) !important;
+    }
+    
+    &.active {
+      background: #3498db !important;
+      color: white !important;
+      border-color: #3498db !important;
+    }
+  }
 }
 
-.preview-label {
-  color: var(--text-secondary);
+// Dark mode specific for difficulty selector
+:root[data-theme="dark"] {
+  .difficulty-buttons button {
+    &:not(.active) {
+      background: var(--card-bg) !important;
+      color: #60a5fa !important;
+      border-color: #60a5fa !important;
+      
+      &:hover {
+        background: var(--bg-hover) !important;
+      }
+    }
+    
+    &.active {
+      background: #3b82f6 !important;
+      color: white !important;
+      border-color: #3b82f6 !important;
+    }
+  }
 }
 
-.preview-badge {
-  background: var(--bg-tertiary);
-  border-color: var(--border-medium);
-  color: var(--text-primary);
-}
-
-// Results Overview theming
+// ============================================
+// RESULTS OVERVIEW
+// ============================================
 .results-overview {
-  background: var(--bg-secondary);
-  border-color: var(--border-base);
+  background: var(--bg-secondary) !important;
+  border-color: var(--border-base) !important;
 }
 
 .overview-title {
-  color: var(--text-primary);
+  color: var(--text-primary) !important;
 }
 
-// Difficulty Tab Card theming
+// ============================================
+// DIFFICULTY TAB CARDS
+// ============================================
 .difficulty-tab {
-  background: var(--card-bg);
-  border-color: var(--border-base);
-  box-shadow: var(--shadow-sm);
+  border-color: var(--border-base) !important;
+  box-shadow: var(--shadow-sm) !important;
   
   &:hover {
-    box-shadow: var(--shadow-md);
+    box-shadow: var(--shadow-md) !important;
   }
+}
+
+.difficulty-name {
+  color: currentColor !important;
 }
 
 .stat-label {
-  color: var(--text-tertiary);
+  color: var(--text-tertiary) !important;
 }
 
-// Difficulty Results Section theming
-.difficulty-section {
-  background: var(--card-bg);
-  border-color: var(--border-base);
+.stat-value {
+  color: currentColor !important;
 }
 
-.difficulty-header {
-  background: var(--bg-secondary);
-  
-  &:hover {
-    background: var(--bg-tertiary);
+.no-data-badge {
+  background: var(--bg-tertiary) !important;
+  color: var(--text-muted) !important;
+}
+
+// Light mode - keep original gradient backgrounds
+:root[data-theme="light"],
+:root:not([data-theme]) {
+  .difficulty-tab {
+    &.difficulty-easy {
+      background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%) !important;
+      color: #059669 !important;
+      
+      &.has-results:hover {
+        background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%) !important;
+      }
+    }
+    
+    &.difficulty-medium {
+      background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%) !important;
+      color: #2563eb !important;
+      
+      &.has-results:hover {
+        background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%) !important;
+      }
+    }
+    
+    &.difficulty-hard {
+      background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%) !important;
+      color: #dc2626 !important;
+      
+      &.has-results:hover {
+        background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%) !important;
+      }
+    }
   }
 }
 
-.difficulty-stats {
-  color: var(--text-secondary);
+// Dark mode - darker themed backgrounds with same color scheme
+:root[data-theme="dark"] {
+  .difficulty-tab {
+    &.difficulty-easy {
+      background: linear-gradient(135deg, #1a2e23 0%, #0f4229 100%) !important;
+      color: #34d399 !important;
+      border-color: #065f46 !important;
+      
+      &.has-results:hover {
+        background: linear-gradient(135deg, #0f4229 0%, #064e3b 100%) !important;
+      }
+    }
+    
+    &.difficulty-medium {
+      background: linear-gradient(135deg, #1e293b 0%, #1e3a8a 100%) !important;
+      color: #60a5fa !important;
+      border-color: #1e40af !important;
+      
+      &.has-results:hover {
+        background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%) !important;
+      }
+    }
+    
+    &.difficulty-hard {
+      background: linear-gradient(135deg, #2d1b1f 0%, #7f1d1d 100%) !important;
+      color: #f87171 !important;
+      border-color: #991b1b !important;
+      
+      &.has-results:hover {
+        background: linear-gradient(135deg, #7f1d1d 0%, #991b1b 100%) !important;
+      }
+    }
+  }
 }
 
-// Assessment Card theming
+// ============================================
+// ASSESSMENT CARDS
+// ============================================
 .assessment-card {
-  background: var(--card-bg);
-  border-color: var(--border-base);
+  background: var(--card-bg) !important;
+  border-color: var(--border-base) !important;
+  box-shadow: var(--shadow-sm) !important;
   
   &:hover {
-    box-shadow: var(--shadow-md);
+    box-shadow: var(--shadow-md) !important;
+    background: var(--bg-hover) !important;
+  }
+  
+  h4 {
+    color: var(--text-primary) !important;
+  }
+  
+  p {
+    color: var(--text-secondary) !important;
   }
 }
 
 .assessment-title {
-  color: var(--text-primary);
+  color: var(--text-primary) !important;
 }
 
 .assessment-description {
-  color: var(--text-secondary);
+  color: var(--text-secondary) !important;
 }
 
 .assessment-details {
-  color: var(--text-tertiary);
+  color: var(--text-tertiary) !important;
 }
 
-// Assessment Result Item theming
+.assessment-meta {
+  span {
+    background: var(--bg-tertiary) !important;
+    color: var(--text-secondary) !important;
+  }
+}
+
+.assessment-list h3 {
+  color: var(--text-primary) !important;
+}
+
+.assessments-container > div {
+  color: var(--text-secondary) !important;
+  
+  h4 {
+    color: var(--text-primary) !important;
+  }
+}
+
+// ============================================
+// DIFFICULTY RESULTS SECTION
+// ============================================
+.difficulty-section {
+  background: var(--card-bg) !important;
+  border-color: var(--border-base) !important;
+  box-shadow: var(--shadow-sm) !important;
+}
+
+.difficulty-header {
+  background: var(--bg-secondary) !important;
+  color: var(--text-primary) !important;
+  border-color: var(--border-base) !important;
+  
+  &:hover {
+    background: var(--bg-tertiary) !important;
+    border-color: var(--border-medium) !important;
+  }
+  
+  &.expanded {
+    border-color: var(--border-medium) !important;
+  }
+}
+
+.difficulty-info {
+  color: var(--text-primary) !important;
+}
+
+.difficulty-badge {
+  &.badge-easy {
+    background: var(--bg-tertiary) !important;
+    color: #34d399 !important;
+  }
+  
+  &.badge-medium {
+    background: var(--bg-tertiary) !important;
+    color: #60a5fa !important;
+  }
+  
+  &.badge-hard {
+    background: var(--bg-tertiary) !important;
+    color: #f87171 !important;
+  }
+}
+
+.difficulty-stats {
+  color: var(--text-secondary) !important;
+  
+  .stat-item {
+    color: var(--text-secondary) !important;
+    
+    strong {
+      color: var(--text-primary) !important;
+    }
+  }
+  
+  .stat-divider {
+    color: var(--text-muted) !important;
+  }
+}
+
+.expand-icon {
+  color: var(--text-muted) !important;
+}
+
+.difficulty-name-text {
+  color: var(--text-primary) !important;
+}
+
+// ============================================
+// ASSESSMENT RESULT ITEMS
+// ============================================
+.assessment-result-item {
+  background: var(--card-bg) !important;
+  border-color: var(--border-base) !important;
+  box-shadow: var(--shadow-sm) !important;
+  
+  &:hover {
+    border-color: var(--border-medium) !important;
+  }
+  
+  &.expanded {
+    border-color: var(--border-medium) !important;
+  }
+}
+
+.assessment-header {
+  &:hover {
+    background: var(--bg-hover) !important;
+  }
+}
+
+.assessment-info {
+  .assessment-name {
+    color: var(--text-primary) !important;
+  }
+  
+  .latest-score-wrapper {
+    .latest-score,
+    .latest-date {
+      color: var(--text-secondary) !important;
+    }
+  }
+}
+
+// Score badge - keep original colors but adjust for visibility in dark mode
+:root[data-theme="dark"] {
+  .score-badge {
+    &.score-excellent {
+      background: rgba(74, 222, 128, 0.2) !important;
+      color: #86efac !important;
+    }
+    
+    &.score-good {
+      background: rgba(56, 189, 248, 0.2) !important;
+      color: #7dd3fc !important;
+    }
+    
+    &.score-average {
+      background: rgba(251, 191, 36, 0.2) !important;
+      color: #fcd34d !important;
+    }
+    
+    &.score-poor {
+      background: rgba(248, 113, 113, 0.2) !important;
+      color: #fca5a5 !important;
+    }
+  }
+}
+
+.attempts-history {
+  background: var(--bg-secondary) !important;
+  border-top-color: var(--border-base) !important;
+}
+
+.attempt-item {
+  background: var(--card-bg) !important;
+}
+
+.attempt-date {
+  color: var(--text-primary) !important;
+}
+
+.attempt-details {
+  .attempt-score,
+  .attempt-time {
+    color: var(--text-secondary) !important;
+  }
+}
+
+.topic-breakdown {
+  .topic-breakdown-label {
+    color: var(--text-primary) !important;
+  }
+}
+
+// Topic items - keep color grading visible in both themes
+:root[data-theme="dark"] {
+  .topic-item {
+    &.topic-perfect {
+      background: rgba(74, 222, 128, 0.15) !important;
+      border-color: #4ade80 !important;
+      color: #86efac !important;
+    }
+    
+    &.topic-good {
+      background: rgba(56, 189, 248, 0.15) !important;
+      border-color: #38bdf8 !important;
+      color: #7dd3fc !important;
+    }
+    
+    &.topic-fair {
+      background: rgba(251, 191, 36, 0.15) !important;
+      border-color: #fbbf24 !important;
+      color: #fcd34d !important;
+    }
+    
+    &.topic-poor {
+      background: rgba(251, 146, 60, 0.15) !important;
+      border-color: #fb923c !important;
+      color: #fdba74 !important;
+    }
+    
+    &.topic-fail {
+      background: rgba(248, 113, 113, 0.15) !important;
+      border-color: #f87171 !important;
+      color: #fca5a5 !important;
+    }
+    
+    &.topic-neutral {
+      background: var(--bg-tertiary) !important;
+      border-color: var(--border-medium) !important;
+      color: var(--text-secondary) !important;
+    }
+  }
+}
+
+.improvement-topics {
+  border-top-color: var(--border-base) !important;
+  
+  .improvement-topics-label {
+    color: var(--text-secondary) !important;
+  }
+  
+  .topics-list {
+    // Keep red for visibility in both modes
+    color: #f87171 !important;
+  }
+}
+
+// Improvement topics list keeps its red color for visibility
+
 .result-item {
-  background: var(--card-bg);
-  border-color: var(--border-base);
+  background: var(--bg-secondary) !important;
+  border-color: var(--border-base) !important;
 }
 
 .result-header {
-  color: var(--text-primary);
+  color: var(--text-primary) !important;
+}
+
+.result-title {
+  color: var(--text-primary) !important;
+}
+
+.result-meta {
+  color: var(--text-secondary) !important;
 }
 
 .result-score {
-  color: var(--text-secondary);
+  color: var(--text-secondary) !important;
 }
 
-// Difficulty Selector theming
-.difficulty-selector {
-  background: var(--bg-secondary);
-  border-color: var(--border-base);
-}
-
-.difficulty-btn {
-  background: var(--card-bg);
-  color: var(--text-primary);
-  border-color: var(--border-medium);
-  
-  &:hover:not(:disabled) {
-    background: var(--bg-hover);
-  }
-}
-
-// No Results theming
+// ============================================
+// NO RESULTS STATE
+// ============================================
 .no-results {
-  background: var(--card-bg);
-  box-shadow: var(--shadow-sm);
+  background: var(--card-bg) !important;
+  box-shadow: var(--shadow-sm) !important;
   
   h2 {
-    color: var(--text-primary);
+    color: var(--text-primary) !important;
   }
   
   p {
-    color: var(--text-secondary);
+    color: var(--text-secondary) !important;
   }
 }
 
-// Clear History Button theming (keep danger color visible in both themes)
+// ============================================
+// SETTINGS PAGE
+// ============================================
+.settings-section {
+  background: var(--card-bg) !important;
+  border-color: var(--border-base) !important;
+  box-shadow: var(--shadow-sm) !important;
+}
+
+.section-title {
+  color: var(--text-primary) !important;
+  border-bottom-color: var(--border-base) !important;
+}
+
+.setting-label {
+  color: var(--text-primary) !important;
+}
+
+.setting-description {
+  color: var(--text-secondary) !important;
+}
+
+.theme-option {
+  background: var(--bg-secondary) !important;
+  border-color: var(--border-medium) !important;
+  color: var(--text-secondary) !important;
+  
+  &:hover {
+    background: var(--bg-hover) !important;
+  }
+  
+  &.active {
+    background: var(--bg-tertiary) !important;
+  }
+}
+
+.current-theme-preview {
+  background: var(--bg-secondary) !important;
+  border-color: var(--border-base) !important;
+}
+
+.preview-label {
+  color: var(--text-secondary) !important;
+}
+
+.preview-badge {
+  background: var(--bg-tertiary) !important;
+  border-color: var(--border-medium) !important;
+  color: var(--text-primary) !important;
+}
+
+// ============================================
+// BUTTONS
+// ============================================
 .clear-history-btn {
-  background: var(--card-bg);
-  // Keep danger color as is for visibility
+  background: var(--card-bg) !important;
+  border-color: var(--border-medium) !important;
+  
+  &:hover {
+    background: var(--bg-hover) !important;
+  }
 }
 
-// Assessment List theming
-.assessment-list h3 {
-  color: var(--text-primary);
+// Dark mode specific for clear history button - adjust text color visibility
+:root[data-theme="dark"] {
+  .clear-history-btn {
+    color: #fca5a5 !important; // Lighter red for better visibility
+    border-color: #7f1d1d !important; // Darker red border
+    
+    &:hover {
+      border-color: #991b1b !important;
+      color: #f87171 !important;
+    }
+  }
 }
 
-// Form elements in dark theme
+// .start-btn and .view-all-btn keep their gradient for visibility in both themes
+
+// ============================================
+// PAGE HEADERS
+// ============================================
+.page-header {
+  h1, p {
+    color: white !important;
+  }
+}
+
+// ============================================
+// SPINNER / LOADING OVERLAY
+// ============================================
+.spinner-text {
+  color: var(--text-primary) !important;
+}
+
+.spinner-subtext {
+  color: var(--text-secondary) !important;
+}
+
+// Dark mode - darker overlay with better contrast
+:root[data-theme="dark"] {
+  .spinner-overlay {
+    background: rgba(30, 36, 51, 0.95) !important;
+  }
+}
+
+// ============================================
+// FORM ELEMENTS IN DARK MODE
+// ============================================
 :root[data-theme="dark"] {
   input,
   select,
   textarea {
-    background: var(--bg-tertiary);
-    color: var(--text-primary);
-    border-color: var(--border-medium);
+    background: var(--bg-tertiary) !important;
+    color: var(--text-primary) !important;
+    border-color: var(--border-medium) !important;
     
     &::placeholder {
-      color: var(--text-muted);
+      color: var(--text-muted) !important;
     }
     
     &:focus {
-      background: var(--bg-secondary);
+      background: var(--bg-secondary) !important;
+    }
+  }
+}
+
+// ============================================
+// DARK MODE SPECIFIC OVERRIDES
+// ============================================
+:root[data-theme="dark"] {
+  // Override any remaining hardcoded light backgrounds
+  .difficulty-tab.difficulty-easy,
+  .difficulty-tab.difficulty-medium,
+  .difficulty-tab.difficulty-hard {
+    &:hover {
+      background: var(--bg-hover) !important;
     }
   }
   
-  button {
-    &:not(.theme-option):not(.clear-history-btn):not(.difficulty-btn):not(.nav-link):not(.settings-link) {
-      background: var(--bg-tertiary);
-      color: var(--text-primary);
-      border-color: var(--border-medium);
+  // Ensure all text is visible
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--text-primary) !important;
+  }
+  
+  p, span, div {
+    &:not(.stat-value):not(.difficulty-name):not(.theme-label) {
+      color: inherit;
     }
   }
 }
