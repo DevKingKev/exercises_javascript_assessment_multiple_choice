@@ -21,6 +21,16 @@
     }
 }
 
+// Dark-mode overrides for spinner/overlay
+:root[data-theme="dark"] {
+    .spinner-overlay { background: rgba(30,36,51,0.95) !important; }
+    .spinner-ring { border-top-color: var(--primary, #3b82f6) !important; }
+    .spinner-ring:nth-child(2) { border-top-color: rgba(90,103,216,0.6) !important; }
+    .spinner-ring:nth-child(3) { border-top-color: rgba(90,103,216,0.3) !important; }
+    .spinner-text { color: var(--text-primary, #e2e8f0) !important; }
+    .spinner-subtext { color: var(--text-secondary, #cbd5e0) !important; }
+}
+
 .spinner-container {
     display: flex;
     flex-direction: column;

@@ -16,3 +16,9 @@ header {
         opacity: 0.9;
     }
 }
+
+// Dark-mode header adjustments
+:root[data-theme="dark"] {
+    header { color: var(--text-inverse, #ffffff) !important; }
+    header p { color: var(--text-secondary, #cbd5e0) !important; }
+}

@@ -309,3 +309,60 @@
         display: none;
     }
 }
+
+// Dark-mode overrides for any remaining hardcoded light values in this partial
+:root[data-theme="dark"] {
+    .assessment-info {
+        h2 { color: var(--text-primary, #e2e8f0) !important; }
+        p  { color: var(--text-secondary, #cbd5e0) !important; }
+    }
+
+    .question-counter,
+    .timer {
+        color: var(--text-primary, #e2e8f0) !important;
+        background: var(--bg-secondary, #252b3b) !important;
+    }
+
+    .quit-btn {
+        background: var(--card-bg, #252b3b) !important;
+        color: var(--danger, #e74c3c) !important;
+        border-color: var(--danger, #e74c3c) !important;
+
+        &:hover {
+            background: var(--danger, #e74c3c) !important;
+            color: var(--text-inverse, #fff) !important;
+        }
+    }
+
+    .progress-bar { background: var(--bg-tertiary, #2d3548) !important; }
+    .progress-fill { background: var(--gradient-progress, linear-gradient(90deg,#34d399,#60a5fa)) !important; }
+
+    .question-grid-section {
+        background: var(--bg-secondary, #252b3b) !important;
+        border: 1px solid var(--card-border, #353d52) !important;
+
+        h4 { color: var(--text-primary, #e2e8f0) !important; }
+    }
+
+    .question-btn {
+        background: var(--card-bg, #252b3b) !important;
+        border-color: var(--card-border, #353d52) !important;
+        color: var(--text-secondary, #cbd5e0) !important;
+
+        &.current { background: var(--primary, #3b82f6) !important; border-color: var(--primary, #3b82f6) !important; color: var(--text-inverse, #fff) !important; }
+        &.answered { background: var(--success, #16a34a) !important; border-color: var(--success, #16a34a) !important; color: var(--text-inverse, #fff) !important; }
+        &.unanswered { background: var(--card-bg, #252b3b) !important; border-color: var(--card-border, #353d52) !important; color: var(--text-secondary, #cbd5e0) !important; }
+    }
+
+    .option {
+        background: var(--card-bg, #252b3b) !important;
+        border: 2px solid var(--card-border, #353d52) !important;
+        color: var(--text-primary, #e2e8f0) !important;
+
+        &:hover { border-color: var(--primary, #3b82f6) !important; background: var(--bg-secondary, #252b3b) !important; }
+
+        &.selected { background: var(--primary, #3b82f6) !important; color: var(--text-inverse, #fff) !important; }
+    }
+
+    .option-letter { background: var(--border-base, #353d52) !important; color: var(--text-primary, #e2e8f0) !important; }
+}

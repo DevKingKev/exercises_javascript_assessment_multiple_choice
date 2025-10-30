@@ -44,6 +44,31 @@
     }
 }
 
+// Dark-mode overrides for assessment selection
+:root[data-theme="dark"] {
+    .difficulty-btn {
+        background: var(--card-bg, #252b3b) !important;
+        border: 2px solid var(--card-border, #353d52) !important;
+        color: var(--text-secondary, #cbd5e0) !important;
+
+        &:hover { border-color: var(--primary, #3b82f6) !important; color: var(--primary, #3b82f6) !important; background: var(--bg-hover, #353d52) !important; }
+
+        &.active { background: var(--primary, #3b82f6) !important; color: var(--text-inverse, #fff) !important; border-color: var(--primary, #3b82f6) !important; }
+    }
+
+    .assessment-card {
+        background: var(--card-bg, #252b3b) !important;
+        border: 2px solid var(--card-border, #353d52) !important;
+
+        &:hover { background: var(--bg-secondary, #252b3b) !important; }
+
+        h4 { color: var(--text-primary, #e2e8f0) !important; }
+        p  { color: var(--text-secondary, #cbd5e0) !important; }
+    }
+
+    .assessment-meta span { background: var(--bg-tertiary, #2d3548) !important; color: var(--text-secondary, #cbd5e0) !important; }
+}
+
 #assessments-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));

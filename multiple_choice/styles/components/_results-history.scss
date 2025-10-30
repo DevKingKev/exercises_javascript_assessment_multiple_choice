@@ -43,6 +43,34 @@
     }
 }
 
+// Dark-mode overrides for results history
+:root[data-theme="dark"] {
+    .difficulty-header {
+        background: var(--bg-secondary, #252b3b) !important;
+        border: 2px solid var(--card-border, #353d52) !important;
+
+        &:hover { background: var(--bg-tertiary, #2d3548) !important; border-color: var(--border-medium, #4a5568) !important; }
+
+        &.expanded { background: var(--bg-hover, #353d52) !important; border-color: var(--card-border, #353d52) !important; }
+    }
+
+    .assessment-results-container { background: var(--bg-secondary, #252b3b) !important; }
+
+    .assessment-result-item {
+        background: var(--card-bg, #252b3b) !important;
+        border: 1px solid var(--card-border, #353d52) !important;
+
+        &:hover { background: var(--bg-secondary, #252b3b) !important; border-color: var(--border-medium, #4a5568) !important; }
+    }
+
+    .attempts-history { background: var(--bg-secondary, #252b3b) !important; border-top: 1px solid var(--border-base, #353d52) !important; }
+
+    .attempt-item { background: var(--card-bg, #252b3b) !important; }
+
+    .difficulty-title, .assessment-name { color: var(--text-primary, #e2e8f0) !important; }
+    .difficulty-average, .latest-score, .attempt-time, .topics-list { color: var(--text-secondary, #cbd5e0) !important; }
+}
+
 .difficulty-info {
     display: flex;
     flex-direction: column;

@@ -181,3 +181,60 @@ function handleBackdropClick(e: MouseEvent) {
   }
 }
 </style>
+
+/* Dark-mode overrides (unscoped so they reliably apply when :root[data-theme="dark"] is active) */
+<style lang="scss">
+:root[data-theme="dark"] {
+  .custom-dialog {
+    background: var(--card-bg, #0b1220);
+    color: var(--text-primary, #e6eef8);
+    border: 1px solid var(--card-border, #1f2937);
+    box-shadow: 0 12px 40px rgba(2, 6, 23, 0.7);
+  }
+
+  .custom-dialog::backdrop {
+    background: rgba(0, 0, 0, 0.75);
+  }
+
+  .dialog-header {
+    border-bottom: 1px solid var(--border-medium, #122033);
+  }
+
+  .dialog-title {
+    color: var(--text-primary, #e6eef8);
+  }
+
+  .dialog-body,
+  .dialog-message {
+    color: var(--text-secondary, #c9d6e3);
+  }
+
+  .dialog-footer {
+    background: transparent;
+  }
+
+  .dialog-btn-cancel {
+    background: var(--bg-secondary, #0f1724);
+    color: var(--text-primary, #e6eef8);
+    border: 1px solid var(--border-base, #22303a);
+  }
+
+  .dialog-btn-cancel:hover {
+    background: color-mix(in srgb, var(--bg-secondary, #0f1724) 80%, black);
+  }
+
+  .dialog-btn-confirm {
+    background: var(--bg-accent, #5a67d8);
+    color: var(--text-on-accent, #fff);
+  }
+
+  .dialog-btn-confirm:hover {
+    filter: brightness(0.95);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
+  }
+
+  .dialog-btn-confirm.danger {
+    background: var(--danger, #e53e3e);
+  }
+}
+</style>

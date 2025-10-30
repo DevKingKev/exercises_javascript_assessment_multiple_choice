@@ -54,11 +54,19 @@ defineEmits<{
   background: var(--card-bg);
   border-radius: 8px;
   box-shadow: var(--shadow-sm);
+  border: 1px solid var(--card-border);
   h4 {
     margin: 0 0 16px 0;
     font-size: 1.1rem;
     color: var(--text-primary);
   }
+}
+
+// Dark mode: ensure the grid section border blends with other cards
+:root[data-theme="dark"] .question-grid-section {
+  background: var(--card-bg) !important;
+  border: 1px solid var(--card-border) !important;
+  box-shadow: var(--shadow-sm) !important;
 }
 
 .question-grid {
