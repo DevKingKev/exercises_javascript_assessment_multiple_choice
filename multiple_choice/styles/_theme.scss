@@ -560,6 +560,49 @@ body {
 }
 
 // Topic items - keep color grading visible in both themes
+// Light mode - original color grading
+:root[data-theme="light"],
+:root:not([data-theme]) {
+  .topic-item {
+    &.topic-perfect {
+      background: #d4edda !important;
+      border-color: #28a745 !important;
+      color: #155724 !important;
+    }
+    
+    &.topic-good {
+      background: #d1ecf1 !important;
+      border-color: #17a2b8 !important;
+      color: #0c5460 !important;
+    }
+    
+    &.topic-fair {
+      background: #fff3cd !important;
+      border-color: #ffc107 !important;
+      color: #856404 !important;
+    }
+    
+    &.topic-poor {
+      background: #ffe5d0 !important;
+      border-color: #fd7e14 !important;
+      color: #8b4513 !important;
+    }
+    
+    &.topic-fail {
+      background: #f8d7da !important;
+      border-color: #dc3545 !important;
+      color: #721c24 !important;
+    }
+    
+    &.topic-neutral {
+      background: #e2e8f0 !important;
+      border-color: #cbd5e0 !important;
+      color: #4a5568 !important;
+    }
+  }
+}
+
+// Dark mode - darker color grading for better contrast
 :root[data-theme="dark"] {
   .topic-item {
     &.topic-perfect {
@@ -797,7 +840,7 @@ body {
   }
   
   p, span, div {
-    &:not(.stat-value):not(.difficulty-name):not(.theme-label) {
+    &:not(.stat-value):not(.difficulty-name):not(.theme-label):not(.topic-tag) {
       color: inherit;
     }
   }

@@ -30,11 +30,9 @@
           @toggle="toggleDifficulty(difficulty)"
         >
           <AssessmentResultItem
-            v-for="[assessmentId, results] in getAssessmentResultsForDifficulty(difficulty)"
-            :key="assessmentId"
-            :assessment-id="assessmentId"
-            :assessment-title="getAssessmentTitle(difficulty, assessmentId)"
-            :results="results"
+            v-for="result in getAllResultsForDifficulty(difficulty)"
+            :key="`${result.assessmentId}-${result.date}`"
+            :result="result"
           />
         </DifficultyResultsSection>
 
@@ -91,6 +89,17 @@ function getAssessmentCountForDifficulty(difficulty: string): number {
 function getAssessmentResultsForDifficulty(difficulty: string): [string, ResultRecord[]][] {
   const results = resultsStore.getResultsByDifficulty(difficulty);
   return Object.entries(results);
+}
+
+function getAllResultsForDifficulty(difficulty: string): ResultRecord[] {
+  const results = resultsStore.getResultsByDifficulty(difficulty);
+  // Flatten all results from all assessments into a single array
+  const allResults: ResultRecord[] = [];
+  for (const [assessmentId, resultsList] of Object.entries(results)) {
+    allResults.push(...resultsList);
+  }
+  // Sort by date (newest first)
+  return allResults.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 }
 
 function getAssessmentTitle(difficulty: string, assessmentId: string): string {
