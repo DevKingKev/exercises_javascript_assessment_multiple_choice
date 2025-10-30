@@ -3,6 +3,9 @@
 @import 'mixins';
 @import 'base';
 
+// Import theme
+@import 'theme';
+
 // Import components
 @import 'components/header';
 @import 'components/screen';

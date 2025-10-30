@@ -28,13 +28,21 @@
 </template>
 
 <script setup lang="ts">
+import { onMounted } from 'vue';
 import { RouterView } from 'vue-router';
 import NavigationHeader from './components/NavigationHeader.vue';
 import LoadingSpinner from './components/LoadingSpinner.vue';
 import CustomDialog from './components/CustomDialog.vue';
 import { useUiStore } from './stores/uiStore';
+import { useThemeStore } from './stores/themeStore';
 
 const uiStore = useUiStore();
+const themeStore = useThemeStore();
+
+// Initialize theme on mount
+onMounted(() => {
+  themeStore.applyTheme();
+});
 </script>
 
 <style lang="scss">

@@ -7,30 +7,45 @@
         </RouterLink>
       </div>
       
-      <ul class="nav-links" role="menubar">
-        <li role="none">
+      <div class="nav-content">
+        <ul class="nav-links" role="menubar">
+          <li role="none">
+            <RouterLink
+              to="/"
+              class="nav-link"
+              role="menuitem"
+              :aria-current="isActive('/') ? 'page' : undefined"
+            >
+              <span class="nav-icon" aria-hidden="true">🏠</span>
+              <span class="nav-text">Home</span>
+            </RouterLink>
+          </li>
+          <li role="none">
+            <RouterLink
+              to="/results"
+              class="nav-link"
+              role="menuitem"
+              :aria-current="isActive('/results') ? 'page' : undefined"
+            >
+              <span class="nav-icon" aria-hidden="true">📊</span>
+              <span class="nav-text">Results</span>
+            </RouterLink>
+          </li>
+        </ul>
+
+        <div class="nav-actions">
           <RouterLink
-            to="/"
-            class="nav-link"
+            to="/settings"
+            class="settings-link"
             role="menuitem"
-            :aria-current="isActive('/') ? 'page' : undefined"
+            :aria-current="isActive('/settings') ? 'page' : undefined"
+            aria-label="User settings"
+            title="User Settings"
           >
-            <span class="nav-icon" aria-hidden="true">🏠</span>
-            <span class="nav-text">Home</span>
+            <span class="settings-icon" aria-hidden="true">⚙️</span>
           </RouterLink>
-        </li>
-        <li role="none">
-          <RouterLink
-            to="/results"
-            class="nav-link"
-            role="menuitem"
-            :aria-current="isActive('/results') ? 'page' : undefined"
-          >
-            <span class="nav-icon" aria-hidden="true">📊</span>
-            <span class="nav-text">Results</span>
-          </RouterLink>
-        </li>
-      </ul>
+        </div>
+      </div>
     </div>
   </nav>
 </template>
@@ -101,6 +116,12 @@ const isActive = computed(() => {
   }
 }
 
+.nav-content {
+  display: flex;
+  align-items: center;
+  gap: $spacing-3xl;
+}
+
 .nav-links {
   display: flex;
   align-items: center;
@@ -111,6 +132,48 @@ const isActive = computed(() => {
 
   li {
     margin: 0;
+  }
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  padding-left: $spacing-xl;
+  border-left: 2px solid $gray-200;
+}
+
+.settings-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  text-decoration: none;
+  color: $gray-600;
+  border-radius: $radius-full;
+  transition: all $transition-fast;
+  position: relative;
+
+  &:hover {
+    color: $primary;
+    background: $primary-light;
+    transform: rotate(90deg);
+  }
+
+  &:focus-visible {
+    outline: 2px solid $primary;
+    outline-offset: 2px;
+  }
+
+  &.router-link-active,
+  &[aria-current="page"] {
+    color: $primary;
+    background: $primary-light;
+  }
+
+  .settings-icon {
+    font-size: $font-size-2xl;
+    line-height: 1;
   }
 }
 
@@ -180,6 +243,10 @@ const isActive = computed(() => {
     }
   }
 
+  .nav-content {
+    gap: $spacing-xl;
+  }
+
   .nav-links {
     gap: $spacing-xs;
   }
@@ -196,9 +263,26 @@ const isActive = computed(() => {
       font-size: $font-size-sm;
     }
   }
+
+  .nav-actions {
+    padding-left: $spacing-md;
+  }
+
+  .settings-link {
+    width: 40px;
+    height: 40px;
+
+    .settings-icon {
+      font-size: $font-size-xl;
+    }
+  }
 }
 
 @media (max-width: $breakpoint-xs) {
+  .nav-content {
+    gap: $spacing-md;
+  }
+
   .nav-link {
     padding: $spacing-sm;
 
@@ -208,6 +292,19 @@ const isActive = computed(() => {
 
     .nav-icon {
       font-size: $font-size-xl;
+    }
+  }
+
+  .nav-actions {
+    padding-left: $spacing-sm;
+  }
+
+  .settings-link {
+    width: 36px;
+    height: 36px;
+
+    .settings-icon {
+      font-size: $font-size-lg;
     }
   }
 }

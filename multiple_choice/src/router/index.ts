@@ -36,6 +36,14 @@ const routes: RouteRecordRaw[] = [
         }
     },
     {
+        path: '/settings',
+        name: 'settings',
+        component: () => import( '@/views/SettingsView.vue' ),
+        meta: {
+            title: 'User Settings'
+        }
+    },
+    {
         // Catch-all 404 route
         path: '/:pathMatch(.*)*',
         redirect: '/'

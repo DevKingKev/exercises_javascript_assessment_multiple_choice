@@ -1,0 +1,304 @@
+// Dark Theme Styles using CSS Custom Properties
+
+// Light theme (default)
+:root[data-theme="light"] {
+  // Background colors
+  --bg-body: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --bg-container: #ffffff;
+  --bg-secondary: #f8fafc;
+  --bg-tertiary: #f1f5f9;
+  --bg-hover: #f0f4ff;
+  
+  // Text colors
+  --text-primary: #1a202c;
+  --text-secondary: #4a5568;
+  --text-tertiary: #64748b;
+  --text-muted: #a0aec0;
+  --text-inverse: #ffffff;
+  
+  // Border colors
+  --border-light: #f1f5f9;
+  --border-base: #e2e8f0;
+  --border-medium: #cbd5e0;
+  --border-dark: #a0aec0;
+  
+  // Component specific
+  --card-bg: #ffffff;
+  --card-border: #e2e8f0;
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.15);
+  --shadow-lg: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+// Dark theme
+:root[data-theme="dark"] {
+  // Background colors
+  --bg-body: linear-gradient(135deg, #1a1f3a 0%, #2d1b3d 100%);
+  --bg-container: #1e2433;
+  --bg-secondary: #252b3b;
+  --bg-tertiary: #2d3548;
+  --bg-hover: #353d52;
+  
+  // Text colors
+  --text-primary: #e2e8f0;
+  --text-secondary: #cbd5e0;
+  --text-tertiary: #a0aec0;
+  --text-muted: #64748b;
+  --text-inverse: #1a202c;
+  
+  // Border colors
+  --border-light: #2d3548;
+  --border-base: #353d52;
+  --border-medium: #4a5568;
+  --border-dark: #64748b;
+  
+  // Component specific
+  --card-bg: #252b3b;
+  --card-border: #353d52;
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 8px 25px rgba(0, 0, 0, 0.6);
+}
+
+// Apply theme to body
+body {
+  background: var(--bg-body);
+  color: var(--text-primary);
+}
+
+// Container theming
+.container {
+  color: var(--text-primary);
+}
+
+// Screen/Card theming
+.screen {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  box-shadow: var(--shadow-lg);
+}
+
+// Navigation Header theming
+.nav-header {
+  background: var(--card-bg);
+  border-bottom-color: var(--border-base);
+  box-shadow: var(--shadow-sm);
+}
+
+.nav-brand .brand-link {
+  color: var(--text-primary);
+}
+
+.nav-link {
+  color: var(--text-secondary);
+  
+  &:hover {
+    color: #5a67d8;
+    background: var(--bg-hover);
+  }
+}
+
+.nav-actions {
+  border-left-color: var(--border-base);
+}
+
+.settings-link {
+  color: var(--text-secondary);
+  
+  &:hover {
+    color: #5a67d8;
+    background: var(--bg-hover);
+  }
+}
+
+// Settings page theming
+.settings-section {
+  background: var(--card-bg);
+  border-color: var(--border-base);
+  box-shadow: var(--shadow-sm);
+}
+
+.section-title {
+  color: var(--text-primary);
+  border-bottom-color: var(--border-base);
+}
+
+.setting-label {
+  color: var(--text-primary);
+}
+
+.setting-description {
+  color: var(--text-secondary);
+}
+
+.theme-option {
+  background: var(--bg-secondary);
+  border-color: var(--border-medium);
+  color: var(--text-secondary);
+  
+  &:hover {
+    background: var(--bg-hover);
+  }
+}
+
+.current-theme-preview {
+  background: var(--bg-secondary);
+  border-color: var(--border-base);
+}
+
+.preview-label {
+  color: var(--text-secondary);
+}
+
+.preview-badge {
+  background: var(--bg-tertiary);
+  border-color: var(--border-medium);
+  color: var(--text-primary);
+}
+
+// Results Overview theming
+.results-overview {
+  background: var(--bg-secondary);
+  border-color: var(--border-base);
+}
+
+.overview-title {
+  color: var(--text-primary);
+}
+
+// Difficulty Tab Card theming
+.difficulty-tab {
+  background: var(--card-bg);
+  border-color: var(--border-base);
+  box-shadow: var(--shadow-sm);
+  
+  &:hover {
+    box-shadow: var(--shadow-md);
+  }
+}
+
+.stat-label {
+  color: var(--text-tertiary);
+}
+
+// Difficulty Results Section theming
+.difficulty-section {
+  background: var(--card-bg);
+  border-color: var(--border-base);
+}
+
+.difficulty-header {
+  background: var(--bg-secondary);
+  
+  &:hover {
+    background: var(--bg-tertiary);
+  }
+}
+
+.difficulty-stats {
+  color: var(--text-secondary);
+}
+
+// Assessment Card theming
+.assessment-card {
+  background: var(--card-bg);
+  border-color: var(--border-base);
+  
+  &:hover {
+    box-shadow: var(--shadow-md);
+  }
+}
+
+.assessment-title {
+  color: var(--text-primary);
+}
+
+.assessment-description {
+  color: var(--text-secondary);
+}
+
+.assessment-details {
+  color: var(--text-tertiary);
+}
+
+// Assessment Result Item theming
+.result-item {
+  background: var(--card-bg);
+  border-color: var(--border-base);
+}
+
+.result-header {
+  color: var(--text-primary);
+}
+
+.result-score {
+  color: var(--text-secondary);
+}
+
+// Difficulty Selector theming
+.difficulty-selector {
+  background: var(--bg-secondary);
+  border-color: var(--border-base);
+}
+
+.difficulty-btn {
+  background: var(--card-bg);
+  color: var(--text-primary);
+  border-color: var(--border-medium);
+  
+  &:hover:not(:disabled) {
+    background: var(--bg-hover);
+  }
+}
+
+// No Results theming
+.no-results {
+  background: var(--card-bg);
+  box-shadow: var(--shadow-sm);
+  
+  h2 {
+    color: var(--text-primary);
+  }
+  
+  p {
+    color: var(--text-secondary);
+  }
+}
+
+// Clear History Button theming (keep danger color visible in both themes)
+.clear-history-btn {
+  background: var(--card-bg);
+  // Keep danger color as is for visibility
+}
+
+// Assessment List theming
+.assessment-list h3 {
+  color: var(--text-primary);
+}
+
+// Form elements in dark theme
+:root[data-theme="dark"] {
+  input,
+  select,
+  textarea {
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+    border-color: var(--border-medium);
+    
+    &::placeholder {
+      color: var(--text-muted);
+    }
+    
+    &:focus {
+      background: var(--bg-secondary);
+    }
+  }
+  
+  button {
+    &:not(.theme-option):not(.clear-history-btn):not(.difficulty-btn):not(.nav-link):not(.settings-link) {
+      background: var(--bg-tertiary);
+      color: var(--text-primary);
+      border-color: var(--border-medium);
+    }
+  }
+}
