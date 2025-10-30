@@ -3,8 +3,11 @@
     <div class="assessment-header" @click="toggleExpanded">
       <div class="assessment-info">
         <div class="assessment-name">{{ assessmentTitle }}</div>
-        <div class="latest-score">
-          Latest: {{ latestResult.percentage }}% ({{ results.length }} {{ results.length === 1 ? 'attempt' : 'attempts' }})
+        <div class="latest-score-wrapper">
+          <div class="latest-score">
+            Latest: {{ latestResult.percentage }}% ({{ results.length }} {{ results.length === 1 ? 'attempt' : 'attempts' }}),
+          </div>
+          <div class="latest-date">{{ formatDate(latestResult.date) }}</div>
         </div>
       </div>
       <div class="score-badge" :class="scoreBadgeClass">
@@ -93,9 +96,27 @@ function toggleExpanded() {
   margin-bottom: 4px;
 }
 
+.latest-score-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  
+  @media (min-width: 768px) {
+    flex-direction: row;
+    gap: 12px;
+    align-items: center;
+  }
+}
+
 .latest-score {
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   color: #7f8c8d;
+}
+
+.latest-date {
+  font-size: 0.95rem;
+  color: #64748b; // $gray-500
+  font-weight: 400; // Normal weight, not bold
 }
 
 .score-badge {
@@ -143,9 +164,10 @@ function toggleExpanded() {
 }
 
 .attempt-date {
-  font-size: 0.85rem;
-  color: #7f8c8d;
-  margin-bottom: 8px;
+  font-weight: 600; // $font-weight-semibold
+  color: #2d3748; // $gray-700
+  margin-bottom: 8px; // $spacing-sm
+  font-size: 0.9rem;
 }
 
 .attempt-details {

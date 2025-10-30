@@ -58,7 +58,51 @@ export const useResultsStore = defineStore( 'results', () => {
     function loadResultsHistory () {
         try {
             const stored = localStorage.getItem( 'assessmentResults' );
-            resultsHistory.value = stored ? JSON.parse( stored ) : {};
+            if ( !stored ) {
+                resultsHistory.value = {};
+                return;
+            }
+
+            const parsed = JSON.parse( stored );
+
+            // Migrate old data format (testId/testTitle) to new format (assessmentId/assessmentTitle)
+            const migrated: ResultsHistory = {};
+
+            for ( const difficulty in parsed ) {
+                migrated[difficulty] = {};
+
+                for ( const id in parsed[difficulty] ) {
+                    const records = parsed[difficulty][id];
+
+                    // Migrate each record
+                    const migratedRecords = records.map( ( record: any ) => {
+                        // If old format, convert to new format
+                        if ( record.testId || record.testTitle ) {
+                            return {
+                                assessmentId: record.testId || record.assessmentId,
+                                difficulty: record.difficulty,
+                                assessmentTitle: record.testTitle || record.assessmentTitle,
+                                date: record.date,
+                                correct: record.correct,
+                                total: record.total,
+                                percentage: record.percentage,
+                                timeTaken: record.timeTaken,
+                                improvementTopics: record.improvementTopics || [],
+                                topicBreakdown: record.topicBreakdown || {}
+                            };
+                        }
+                        // Already in new format
+                        return record;
+                    } );
+
+                    migrated[difficulty][id] = migratedRecords;
+                }
+            }
+
+            resultsHistory.value = migrated;
+
+            // Save migrated data back to localStorage
+            localStorage.setItem( 'assessmentResults', JSON.stringify( migrated ) );
         } catch ( error ) {
             console.error( 'Error loading results history:', error );
             resultsHistory.value = {};

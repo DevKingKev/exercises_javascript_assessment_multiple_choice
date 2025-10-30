@@ -26,44 +26,46 @@ defineEmits<{
 
 <style scoped lang="scss">
 .assessment-card {
-  background: white;
-  padding: 24px;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background: #f8fafc; // $gray-50
+  border: 2px solid #e2e8f0; // $gray-200
+  border-radius: 12px; // $radius-xl
+  padding: 25px; // $spacing-2xl
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.3s ease; // $transition-base
 
   &:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-    border-color: #3498db;
+    border-color: #5a67d8; // $primary
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); // $shadow-lg
+    background: white;
   }
 
   h4 {
-    margin: 0 0 12px 0;
-    font-size: 1.25rem;
-    color: #2c3e50;
+    color: #2d3748; // $gray-700
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    margin-top: 0;
   }
 
   p {
-    margin: 0 0 16px 0;
-    color: #7f8c8d;
-    line-height: 1.6;
+    color: #64748b; // $gray-500
+    line-height: 1.5;
+    margin-bottom: 15px; // $spacing-lg
+    margin-top: 0;
   }
 }
 
 .assessment-meta {
   display: flex;
-  gap: 16px;
-  font-size: 0.9rem;
-  color: #95a5a6;
+  gap: 15px; // $spacing-lg
+  font-size: 0.85rem; // $font-size-sm
 
   span {
-    &::before {
-      content: '•';
-      margin-right: 8px;
-      color: #3498db;
-    }
+    background: #e2e8f0; // $gray-200
+    color: #64748b; // $gray-500
+    padding: 5px 12px;
+    border-radius: 6px; // $radius-md
+    font-weight: 500; // $font-weight-medium
   }
 }
 </style>
