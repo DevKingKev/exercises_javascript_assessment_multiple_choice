@@ -1,5 +1,7 @@
 <template>
-  <div class="container" v-if="resultsStore.currentResults">
+  <div>
+    <LoadingSpinner :visible="isLoading" message="Restoring assessment..." subtext="Loading saved result..." />
+    <div class="container" v-if="resultsStore.currentResults">
     <div class="screen active">
       <div class="results-header">
         <h2>Assessment Results</h2>
@@ -73,10 +75,12 @@
       </div>
     </div>
   </div>
+  </div>
 </template>
 
 <script setup lang="ts">
 import { onMounted, ref, watch } from 'vue';
+import LoadingSpinner from '@/components/LoadingSpinner.vue';
 import { useRouter, useRoute } from 'vue-router';
 import { useAssessmentStore } from '@/stores/assessmentStore';
 import { useResultsStore } from '@/stores/resultsStore';
@@ -90,6 +94,7 @@ const route = useRoute();
 const assessmentStore = useAssessmentStore();
 const resultsStore = useResultsStore();
 const savedResultDate = ref<string | null>( null );
+const isLoading = ref(false);
 
 function formatQuestion(text: string): string {
   return formatTextWithCode(text);
@@ -133,6 +138,9 @@ const findAndRestore = async (idStr?: string) => {
   if (!idStr) return;
   const id = Number(idStr);
   if (Number.isNaN(id)) return;
+  // show spinner while we attempt restoration
+  isLoading.value = true;
+  try {
 
   // Search resultsHistory for the matching record
   const history = resultsStore.resultsHistory || {};
@@ -153,7 +161,7 @@ const findAndRestore = async (idStr?: string) => {
     if (found) break;
   }
 
-  if (!found) return;
+    if (!found) return;
 
   // Expose saved date for display
   savedResultDate.value = found.rec.date || null;
@@ -196,7 +204,7 @@ const findAndRestore = async (idStr?: string) => {
     };
 
     resultsStore.setCurrentResults(built);
-  } else {
+    } else {
     // If we cannot reconstruct question-level review (missing assessment),
     // still set a minimal currentResults so the UI can show the saved summary.
     resultsStore.setCurrentResults({
@@ -207,6 +215,9 @@ const findAndRestore = async (idStr?: string) => {
       questionReview: [] as QuestionReview[],
       timeTaken: found.rec.timeTaken
     });
+    }
+  } finally {
+    isLoading.value = false;
   }
 };
 
