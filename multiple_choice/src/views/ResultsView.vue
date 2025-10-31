@@ -76,7 +76,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
+import { onMounted, ref, watch } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
 import { useAssessmentStore } from '@/stores/assessmentStore';
 import { useResultsStore } from '@/stores/resultsStore';
@@ -125,93 +125,110 @@ function newAssessment() {
   router.push({ name: 'home' });
 }
 
-onMounted(() => {
-  // If a resultRecordId is present in the URL, try to find the saved
-  // ResultRecord in localStorage so we can show the saved date and (when
-  // necessary) reconstruct the currentResults from persisted data.
-  const idParam = (route.query.resultRecordId || (route.params as any).resultRecordId) as string | undefined;
+// Search and restore a saved result record by id string. This is declared
+// at top-level so we can call it from onMounted and also watch for route
+// changes (when user navigates to a different resultRecordId without a full
+// route remount).
+const findAndRestore = async (idStr?: string) => {
+  if (!idStr) return;
+  const id = Number(idStr);
+  if (Number.isNaN(id)) return;
 
-  async function findAndRestore(idStr?: string) {
-    if (!idStr) return;
-    const id = Number(idStr);
-    if (Number.isNaN(id)) return;
+  // Search resultsHistory for the matching record
+  const history = resultsStore.resultsHistory || {};
+  let found: { rec: any; difficulty: string; assessmentId: string } | null = null;
 
-    // Search resultsHistory for the matching record
-    const history = resultsStore.resultsHistory || {};
-    let found: { rec: any; difficulty: string; assessmentId: string } | null = null;
-
-    for (const difficulty of Object.keys(history)) {
-      const assessmentsMap = history[difficulty] || {};
-      for (const aid of Object.keys(assessmentsMap)) {
-        const arr = assessmentsMap[aid] || [];
-        for (const rec of arr) {
-          if (rec && rec.resultRecordId === id) {
-            found = { rec, difficulty, assessmentId: aid };
-            break;
-          }
+  for (const difficulty of Object.keys(history)) {
+    const assessmentsMap = history[difficulty] || {};
+    for (const aid of Object.keys(assessmentsMap)) {
+      const arr = assessmentsMap[aid] || [];
+      for (const rec of arr) {
+        if (rec && rec.resultRecordId === id) {
+          found = { rec, difficulty, assessmentId: aid };
+          break;
         }
-        if (found) break;
       }
       if (found) break;
     }
-
-    if (!found) return;
-
-    // Expose saved date for display
-    savedResultDate.value = found.rec.date || null;
-
-    // If we already have transient currentResults (recent submission), keep it.
-    // Otherwise, attempt to reconstruct using the saved wrongAnswers and the
-    // original assessment questions (load assessment if necessary).
-    if (!resultsStore.currentResults) {
-      try {
-        // Ensure assessment is loaded so we can access questions
-        await assessmentStore.loadAssessment(found.difficulty, found.rec.assessmentId);
-      } catch (e) {
-        // Non-fatal: if we can't load assessment, we cannot reconstruct.
-        console.debug('Could not load assessment for reconstruction', e);
-      }
-
-      const assessment = assessmentStore.currentAssessment;
-      if (assessment && Array.isArray(assessment.questions)) {
-        const wrongs: { questionNr: number; answer: string }[] = found.rec.wrongAnswers || [];
-
-        const questionReview = assessment.questions.map((q: any) => {
-          const wrong = wrongs.find(w => Number(w.questionNr) === Number(q.id));
-          const userAnswer = wrong ? String(wrong.answer) : String(q.correct);
-          const isCorrect = userAnswer === q.correct;
-          return {
-            question: q.question,
-            userAnswer,
-            correctAnswer: q.correct,
-            isCorrect,
-            explanation: q.explanation,
-            options: q.options
-          };
-        });
-
-        const built = {
-          correct: found.rec.correct,
-          total: found.rec.total,
-          percentage: found.rec.percentage,
-          topicBreakdown: found.rec.topicBreakdown || {},
-          questionReview,
-          timeTaken: found.rec.timeTaken
-        };
-
-        resultsStore.setCurrentResults(built);
-      }
-    }
+    if (found) break;
   }
 
-  // Always try to find the saved record if an id was provided in the URL.
+  if (!found) return;
+
+  // Expose saved date for display
+  savedResultDate.value = found.rec.date || null;
+
+  // Attempt to reconstruct using the saved wrongAnswers and the original
+  // assessment questions (load assessment if necessary). Unlike the previous
+  // implementation, always reconstruct the saved record when a resultRecordId
+  // is provided — do not skip when transient currentResults already exist.
+  try {
+    await assessmentStore.loadAssessment(found.difficulty, found.rec.assessmentId);
+  } catch (e) {
+    console.debug('Could not load assessment for reconstruction', e);
+  }
+
+  const assessment = assessmentStore.currentAssessment;
+  if (assessment && Array.isArray(assessment.questions)) {
+    const wrongs: { questionNr: number; answer: string }[] = found.rec.wrongAnswers || [];
+
+    const questionReview = assessment.questions.map((q: any) => {
+      const wrong = wrongs.find(w => Number(w.questionNr) === Number(q.id));
+      const userAnswer = wrong ? String(wrong.answer) : String(q.correct);
+      const isCorrect = userAnswer === q.correct;
+      return {
+        question: q.question,
+        userAnswer,
+        correctAnswer: q.correct,
+        isCorrect,
+        explanation: q.explanation,
+        options: q.options
+      };
+    });
+
+    const built = {
+      correct: found.rec.correct,
+      total: found.rec.total,
+      percentage: found.rec.percentage,
+      topicBreakdown: found.rec.topicBreakdown || {},
+      questionReview,
+      timeTaken: found.rec.timeTaken
+    };
+
+    resultsStore.setCurrentResults(built);
+  } else {
+    // If we cannot reconstruct question-level review (missing assessment),
+    // still set a minimal currentResults so the UI can show the saved summary.
+    resultsStore.setCurrentResults({
+      correct: found.rec.correct,
+      total: found.rec.total,
+      percentage: found.rec.percentage,
+      topicBreakdown: found.rec.topicBreakdown || {},
+      questionReview: [] as QuestionReview[],
+      timeTaken: found.rec.timeTaken
+    });
+  }
+};
+
+onMounted(() => {
+  const idParam = (route.query.resultRecordId || (route.params as any).resultRecordId) as string | undefined;
   findAndRestore(idParam).then(() => {
-    // If no transient results and no id provided, redirect home.
     if (!resultsStore.currentResults && !idParam) {
       router.push({ name: 'home' });
     }
   });
 });
+
+// Watch for route changes so navigating to another `resultRecordId` reloads
+// the appropriate saved result without requiring a full component remount.
+watch(
+  () => (route.query.resultRecordId || (route.params as any).resultRecordId) as string | undefined,
+  (newVal, oldVal) => {
+    if (newVal && newVal !== oldVal) {
+      findAndRestore(newVal);
+    }
+  }
+);
 </script>
 
 <style scoped lang="scss">
