@@ -15,7 +15,41 @@ const metadata = {
         "Callback functions and basic async concepts",
         "Modern JavaScript syntax and best practices"
     ],
-    "assessmentId": 4
+    "assessmentId": 4,
+    "topicLinks": [
+        {
+            "topicName": "ES6+ Features (arrow functions, template literals, destructuring)",
+            "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/New_in_JavaScript"
+        },
+        {
+            "topicName": "Loop types and iteration methods",
+            "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Loops_and_iteration"
+        },
+        {
+            "topicName": "Modern JavaScript syntax and best practices",
+            "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/New_in_JavaScript"
+        },
+        {
+            "topicName": "JSON parsing and stringifying",
+            "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON"
+        },
+        {
+            "topicName": "Regular expressions basics",
+            "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions"
+        },
+        {
+            "topicName": "Error handling (try/catch, error types)",
+            "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Control_flow_and_error_handling#exception_handling"
+        },
+        {
+            "topicName": "Date and Time operations",
+            "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date"
+        },
+        {
+            "topicName": "Callback functions and basic async concepts",
+            "mdnLink": "https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous"
+        }
+    ]
 };
 
 const questions = [
@@ -32,18 +66,9 @@ const questions = [
         "explanation": "Arrow functions use the syntax [CODE](parameters) => { function body }[/CODE]. The [CODE]() => {}[/CODE] is the simplest form for a function with no parameters.",
         "topic": {
             "topics": [
-                {
-                    "topicName": "ES6+ Features (arrow functions, template literals, destructuring)",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/New_in_JavaScript"
-                },
-                {
-                    "topicName": "Loop types and iteration methods",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Loops_and_iteration"
-                },
-                {
-                    "topicName": "Modern JavaScript syntax and best practices",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/New_in_JavaScript"
-                }
+                "ES6+ Features (arrow functions, template literals, destructuring)",
+                "Loop types and iteration methods",
+                "Modern JavaScript syntax and best practices"
             ]
         }
     },
@@ -60,10 +85,7 @@ const questions = [
         "explanation": "[CODE]JSON.stringify()[/CODE] converts a JavaScript object or value to a JSON string. [CODE]JSON.parse()[/CODE] does the opposite - converts JSON to JavaScript.",
         "topic": {
             "topics": [
-                {
-                    "topicName": "JSON parsing and stringifying",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON"
-                }
+                "JSON parsing and stringifying"
             ]
         }
     },
@@ -80,22 +102,10 @@ const questions = [
         "explanation": "Template literals use backticks (`) and allow embedded expressions with [CODE]${expression}[/CODE] syntax for string interpolation.",
         "topic": {
             "topics": [
-                {
-                    "topicName": "ES6+ Features (arrow functions, template literals, destructuring)",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/New_in_JavaScript"
-                },
-                {
-                    "topicName": "Regular expressions basics",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions"
-                },
-                {
-                    "topicName": "Loop types and iteration methods",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Loops_and_iteration"
-                },
-                {
-                    "topicName": "Modern JavaScript syntax and best practices",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/New_in_JavaScript"
-                }
+                "ES6+ Features (arrow functions, template literals, destructuring)",
+                "Regular expressions basics",
+                "Loop types and iteration methods",
+                "Modern JavaScript syntax and best practices"
             ]
         }
     },
@@ -112,10 +122,7 @@ const questions = [
         "explanation": "The [CODE]try...catch[/CODE] statement executes code in the try block and handles any exceptions in the catch block with the error parameter.",
         "topic": {
             "topics": [
-                {
-                    "topicName": "Error handling (try/catch, error types)",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Control_flow_and_error_handling#exception_handling"
-                }
+                "Error handling (try/catch, error types)"
             ]
         }
     },
@@ -132,14 +139,8 @@ const questions = [
         "explanation": "[CODE]new Date()[/CODE] creates a new Date object with the current date and time. [CODE]Date.now()[/CODE] returns a timestamp number, not a Date object.",
         "topic": {
             "topics": [
-                {
-                    "topicName": "Date and Time operations",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date"
-                },
-                {
-                    "topicName": "Loop types and iteration methods",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Loops_and_iteration"
-                }
+                "Date and Time operations",
+                "Loop types and iteration methods"
             ]
         }
     },
@@ -156,10 +157,7 @@ const questions = [
         "explanation": "The [CODE]for...of[/CODE] loop iterates over iterable values (like array elements, string characters). [CODE]for...in[/CODE] iterates over object properties.",
         "topic": {
             "topics": [
-                {
-                    "topicName": "Loop types and iteration methods",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Loops_and_iteration"
-                }
+                "Loop types and iteration methods"
             ]
         }
     },
@@ -176,14 +174,8 @@ const questions = [
         "explanation": "Array destructuring uses square brackets []. Object destructuring uses curly braces {}. This assigns [CODE]a=1, b=2[/CODE].",
         "topic": {
             "topics": [
-                {
-                    "topicName": "ES6+ Features (arrow functions, template literals, destructuring)",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/New_in_JavaScript"
-                },
-                {
-                    "topicName": "Modern JavaScript syntax and best practices",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/New_in_JavaScript"
-                }
+                "ES6+ Features (arrow functions, template literals, destructuring)",
+                "Modern JavaScript syntax and best practices"
             ]
         }
     },
@@ -200,10 +192,7 @@ const questions = [
         "explanation": "[CODE]JSON.parse()[/CODE] parses a JSON string and returns the corresponding JavaScript object or value.",
         "topic": {
             "topics": [
-                {
-                    "topicName": "JSON parsing and stringifying",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON"
-                }
+                "JSON parsing and stringifying"
             ]
         }
     },
@@ -220,14 +209,8 @@ const questions = [
         "explanation": "All options create valid regex patterns for digits: [CODE]\\d[/CODE] matches any digit, [CODE][0-9][/CODE] matches digits 0-9, and [CODE]+[/CODE] means one or more.",
         "topic": {
             "topics": [
-                {
-                    "topicName": "Regular expressions basics",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions"
-                },
-                {
-                    "topicName": "Loop types and iteration methods",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Loops_and_iteration"
-                }
+                "Regular expressions basics",
+                "Loop types and iteration methods"
             ]
         }
     },
@@ -244,10 +227,7 @@ const questions = [
         "explanation": "[CODE]for...in[/CODE] iterates over object properties (keys), while [CODE]for...of[/CODE] iterates over iterable values (like array elements).",
         "topic": {
             "topics": [
-                {
-                    "topicName": "Loop types and iteration methods",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Loops_and_iteration"
-                }
+                "Loop types and iteration methods"
             ]
         }
     },
@@ -264,10 +244,7 @@ const questions = [
         "explanation": "[CODE]getFullYear()[/CODE] returns the 4-digit year. [CODE]getYear()[/CODE] is deprecated and returns year minus 1900.",
         "topic": {
             "topics": [
-                {
-                    "topicName": "Date and Time operations",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date"
-                }
+                "Date and Time operations"
             ]
         }
     },
@@ -284,14 +261,8 @@ const questions = [
         "explanation": "[CODE]JSON.parse()[/CODE] throws a SyntaxError if the string is not valid JSON. You should use [CODE]try...catch[/CODE] to handle this.",
         "topic": {
             "topics": [
-                {
-                    "topicName": "Error handling (try/catch, error types)",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Control_flow_and_error_handling#exception_handling"
-                },
-                {
-                    "topicName": "JSON parsing and stringifying",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON"
-                }
+                "Error handling (try/catch, error types)",
+                "JSON parsing and stringifying"
             ]
         }
     },
@@ -308,14 +279,8 @@ const questions = [
         "explanation": "All are valid. Single parameters don't need parentheses, and single expressions don't need braces or explicit [CODE]return[/CODE].",
         "topic": {
             "topics": [
-                {
-                    "topicName": "ES6+ Features (arrow functions, template literals, destructuring)",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/New_in_JavaScript"
-                },
-                {
-                    "topicName": "Modern JavaScript syntax and best practices",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/New_in_JavaScript"
-                }
+                "ES6+ Features (arrow functions, template literals, destructuring)",
+                "Modern JavaScript syntax and best practices"
             ]
         }
     },
@@ -332,10 +297,7 @@ const questions = [
         "explanation": "The spread operator can expand array elements, copy arrays ([CODE][...arr][/CODE]), and combine arrays ([CODE][...arr1, ...arr2][/CODE]).",
         "topic": {
             "topics": [
-                {
-                    "topicName": "ES6+ Features (arrow functions, template literals, destructuring)",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/New_in_JavaScript"
-                }
+                "ES6+ Features (arrow functions, template literals, destructuring)"
             ]
         }
     },
@@ -352,10 +314,7 @@ const questions = [
         "explanation": "JavaScript catch blocks catch all errors. To handle specific types, check the error type inside the catch block using [CODE]instanceof[/CODE].",
         "topic": {
             "topics": [
-                {
-                    "topicName": "Error handling (try/catch, error types)",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Control_flow_and_error_handling#exception_handling"
-                }
+                "Error handling (try/catch, error types)"
             ]
         }
     },
@@ -372,18 +331,9 @@ const questions = [
         "explanation": "Template literals (backticks) evaluate expressions inside [CODE]${}[/CODE]. The expression [CODE]1 + 2[/CODE] evaluates to 3.",
         "topic": {
             "topics": [
-                {
-                    "topicName": "ES6+ Features (arrow functions, template literals, destructuring)",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/New_in_JavaScript"
-                },
-                {
-                    "topicName": "Regular expressions basics",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions"
-                },
-                {
-                    "topicName": "Modern JavaScript syntax and best practices",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/New_in_JavaScript"
-                }
+                "ES6+ Features (arrow functions, template literals, destructuring)",
+                "Regular expressions basics",
+                "Modern JavaScript syntax and best practices"
             ]
         }
     },
@@ -400,10 +350,7 @@ const questions = [
         "explanation": "[CODE]test()[/CODE] returns boolean, [CODE]match()[/CODE] returns matches, [CODE]search()[/CODE] returns index. All can be used to test regex matches in different ways.",
         "topic": {
             "topics": [
-                {
-                    "topicName": "Regular expressions basics",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions"
-                }
+                "Regular expressions basics"
             ]
         }
     },
@@ -420,14 +367,8 @@ const questions = [
         "explanation": "Use the syntax [CODE]{originalName: newVariableName}[/CODE] to destructure a property into a differently named variable.",
         "topic": {
             "topics": [
-                {
-                    "topicName": "ES6+ Features (arrow functions, template literals, destructuring)",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/New_in_JavaScript"
-                },
-                {
-                    "topicName": "Modern JavaScript syntax and best practices",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/New_in_JavaScript"
-                }
+                "ES6+ Features (arrow functions, template literals, destructuring)",
+                "Modern JavaScript syntax and best practices"
             ]
         }
     },
@@ -444,10 +385,7 @@ const questions = [
         "explanation": "[CODE]Date.now()[/CODE] returns the current timestamp as the number of milliseconds since January 1, 1970 UTC.",
         "topic": {
             "topics": [
-                {
-                    "topicName": "Date and Time operations",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date"
-                }
+                "Date and Time operations"
             ]
         }
     },
@@ -464,10 +402,7 @@ const questions = [
         "explanation": "All loop types continue while their condition is true and stop when it becomes false. They differ in when the condition is checked.",
         "topic": {
             "topics": [
-                {
-                    "topicName": "Loop types and iteration methods",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Loops_and_iteration"
-                }
+                "Loop types and iteration methods"
             ]
         }
     },
@@ -484,10 +419,7 @@ const questions = [
         "explanation": "A callback function is a function passed as an argument to another function, to be called later when needed.",
         "topic": {
             "topics": [
-                {
-                    "topicName": "Callback functions and basic async concepts",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous"
-                }
+                "Callback functions and basic async concepts"
             ]
         }
     },
@@ -504,14 +436,8 @@ const questions = [
         "explanation": "Template literals preserve actual line breaks and also interpret escape characters like [CODE]\\n[/CODE].",
         "topic": {
             "topics": [
-                {
-                    "topicName": "ES6+ Features (arrow functions, template literals, destructuring)",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/New_in_JavaScript"
-                },
-                {
-                    "topicName": "Modern JavaScript syntax and best practices",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/New_in_JavaScript"
-                }
+                "ES6+ Features (arrow functions, template literals, destructuring)",
+                "Modern JavaScript syntax and best practices"
             ]
         }
     },
@@ -528,14 +454,8 @@ const questions = [
         "explanation": "The [CODE]finally[/CODE] block always executes, whether an error occurs or not. It's useful for cleanup operations.",
         "topic": {
             "topics": [
-                {
-                    "topicName": "Error handling (try/catch, error types)",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Control_flow_and_error_handling#exception_handling"
-                },
-                {
-                    "topicName": "Loop types and iteration methods",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Loops_and_iteration"
-                }
+                "Error handling (try/catch, error types)",
+                "Loop types and iteration methods"
             ]
         }
     },
@@ -552,14 +472,8 @@ const questions = [
         "explanation": "ES6 default parameters use the syntax [CODE]parameter = defaultValue[/CODE]. This sets a default value if no argument is provided.",
         "topic": {
             "topics": [
-                {
-                    "topicName": "Loop types and iteration methods",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Loops_and_iteration"
-                },
-                {
-                    "topicName": "Modern JavaScript syntax and best practices",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/New_in_JavaScript"
-                }
+                "Loop types and iteration methods",
+                "Modern JavaScript syntax and best practices"
             ]
         }
     },
@@ -576,10 +490,7 @@ const questions = [
         "explanation": "The rest parameter collects all remaining function arguments into an array, allowing functions to accept variable numbers of arguments.",
         "topic": {
             "topics": [
-                {
-                    "topicName": "ES6+ Features (arrow functions, template literals, destructuring)",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/New_in_JavaScript"
-                }
+                "ES6+ Features (arrow functions, template literals, destructuring)"
             ]
         }
     },
@@ -596,14 +507,8 @@ const questions = [
         "explanation": "[CODE]toDateString()[/CODE] returns the date portion as a string (e.g., 'Mon Oct 23 2025'). [CODE]getDate()[/CODE] returns only the day number.",
         "topic": {
             "topics": [
-                {
-                    "topicName": "Date and Time operations",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date"
-                },
-                {
-                    "topicName": "Loop types and iteration methods",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Loops_and_iteration"
-                }
+                "Date and Time operations",
+                "Loop types and iteration methods"
             ]
         }
     },
@@ -620,14 +525,8 @@ const questions = [
         "explanation": "[CODE]^[/CODE] means start of string, [CODE][a-z]+[/CODE] means one or more lowercase letters, [CODE]$[/CODE] means end of string. Together they match strings containing only lowercase letters.",
         "topic": {
             "topics": [
-                {
-                    "topicName": "Regular expressions basics",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions"
-                },
-                {
-                    "topicName": "Modern JavaScript syntax and best practices",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/New_in_JavaScript"
-                }
+                "Regular expressions basics",
+                "Modern JavaScript syntax and best practices"
             ]
         }
     },
@@ -644,10 +543,7 @@ const questions = [
         "explanation": "[CODE]parseInt()[/CODE] automatically skips leading whitespace, but [CODE]trim() + parseInt()[/CODE] is more explicit. [CODE]Number()[/CODE] also handles whitespace but converts to decimal.",
         "topic": {
             "topics": [
-                {
-                    "topicName": "ES6+ Features (arrow functions, template literals, destructuring)",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/New_in_JavaScript"
-                }
+                "ES6+ Features (arrow functions, template literals, destructuring)"
             ]
         }
     },
@@ -664,18 +560,9 @@ const questions = [
         "explanation": "JavaScript allows functions to have unused parameters without error. They're simply ignored if not used in the function body.",
         "topic": {
             "topics": [
-                {
-                    "topicName": "ES6+ Features (arrow functions, template literals, destructuring)",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/New_in_JavaScript"
-                },
-                {
-                    "topicName": "Error handling (try/catch, error types)",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Control_flow_and_error_handling#exception_handling"
-                },
-                {
-                    "topicName": "Modern JavaScript syntax and best practices",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/New_in_JavaScript"
-                }
+                "ES6+ Features (arrow functions, template literals, destructuring)",
+                "Error handling (try/catch, error types)",
+                "Modern JavaScript syntax and best practices"
             ]
         }
     },
@@ -692,10 +579,7 @@ const questions = [
         "explanation": "[CODE]Array.isArray()[/CODE] is the preferred method, and [CODE]instanceof Array[/CODE] also works. [CODE]typeof[/CODE] returns 'object' for arrays, not 'array'.",
         "topic": {
             "topics": [
-                {
-                    "topicName": "Loop types and iteration methods",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Loops_and_iteration"
-                }
+                "Loop types and iteration methods"
             ]
         }
     }

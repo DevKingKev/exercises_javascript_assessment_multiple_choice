@@ -14,7 +14,37 @@ const metadata = {
         "Array operations and manipulation",
         "String indexing and character access"
     ],
-    "assessmentId": 3
+    "assessmentId": 3,
+    "topicLinks": [
+        {
+            "topicName": "Math object methods (Math.max, Math.min, Math.pow)",
+            "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math"
+        },
+        {
+            "topicName": "Mathematical operations and precedence",
+            "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence"
+        },
+        {
+            "topicName": "Array methods (push, slice, reverse, sort, concat)",
+            "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array"
+        },
+        {
+            "topicName": "Array operations and manipulation",
+            "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Indexed_collections"
+        },
+        {
+            "topicName": "String methods (slice, charAt, substring, indexOf)",
+            "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"
+        },
+        {
+            "topicName": "String indexing and character access",
+            "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"
+        },
+        {
+            "topicName": "Function declaration and invocation",
+            "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions"
+        }
+    ]
 };
 
 const questions = [
@@ -31,14 +61,8 @@ const questions = [
         "explanation": "[CODE]Math.max()[/CODE] returns the largest of the given numbers. Among 5, 10, and 3, the largest is 10.",
         "topic": {
             "topics": [
-                {
-                    "topicName": "Math object methods (Math.max, Math.min, Math.pow)",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math"
-                },
-                {
-                    "topicName": "Mathematical operations and precedence",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence"
-                }
+                "Math object methods (Math.max, Math.min, Math.pow)",
+                "Mathematical operations and precedence"
             ]
         }
     },
@@ -55,14 +79,8 @@ const questions = [
         "explanation": "push() adds one or more elements to the end of an array and returns the new length of the array.",
         "topic": {
             "topics": [
-                {
-                    "topicName": "Array methods (push, slice, reverse, sort, concat)",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array"
-                },
-                {
-                    "topicName": "Array operations and manipulation",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Indexed_collections"
-                }
+                "Array methods (push, slice, reverse, sort, concat)",
+                "Array operations and manipulation"
             ]
         }
     },
@@ -79,18 +97,9 @@ const questions = [
         "explanation": "[CODE]charAt(1)[/CODE] returns the character at index 1. String indexing starts at 0, so index 1 in 'hello' is 'e'.",
         "topic": {
             "topics": [
-                {
-                    "topicName": "String methods (slice, charAt, substring, indexOf)",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"
-                },
-                {
-                    "topicName": "Mathematical operations and precedence",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence"
-                },
-                {
-                    "topicName": "String indexing and character access",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"
-                }
+                "String methods (slice, charAt, substring, indexOf)",
+                "Mathematical operations and precedence",
+                "String indexing and character access"
             ]
         }
     },
@@ -107,10 +116,7 @@ const questions = [
         "explanation": "Following order of operations (PEMDAS), multiplication happens before addition: [CODE]2 * 3 = 6[/CODE], then [CODE]6 + 4 = 10[/CODE].",
         "topic": {
             "topics": [
-                {
-                    "topicName": "Mathematical operations and precedence",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence"
-                }
+                "Mathematical operations and precedence"
             ]
         }
     },
@@ -127,18 +133,9 @@ const questions = [
         "explanation": "slice() returns a shallow copy of a portion of an array into a new array. splice() modifies the original array.",
         "topic": {
             "topics": [
-                {
-                    "topicName": "Array methods (push, slice, reverse, sort, concat)",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array"
-                },
-                {
-                    "topicName": "String methods (slice, charAt, substring, indexOf)",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"
-                },
-                {
-                    "topicName": "Array operations and manipulation",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Indexed_collections"
-                }
+                "Array methods (push, slice, reverse, sort, concat)",
+                "String methods (slice, charAt, substring, indexOf)",
+                "Array operations and manipulation"
             ]
         }
     },
@@ -155,14 +152,8 @@ const questions = [
         "explanation": "[CODE]Math.pow(2, 3)[/CODE] calculates 2 to the power of 3, which is [CODE]2 * 2 * 2 = 8[/CODE].",
         "topic": {
             "topics": [
-                {
-                    "topicName": "Math object methods (Math.max, Math.min, Math.pow)",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math"
-                },
-                {
-                    "topicName": "Mathematical operations and precedence",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence"
-                }
+                "Math object methods (Math.max, Math.min, Math.pow)",
+                "Mathematical operations and precedence"
             ]
         }
     },
@@ -179,18 +170,9 @@ const questions = [
         "explanation": "Both [CODE]test[0][/CODE] and [CODE]test.charAt(0)[/CODE] access the first character. [CODE]charAt()[/CODE] is more traditional, bracket notation is newer but widely supported.",
         "topic": {
             "topics": [
-                {
-                    "topicName": "String methods (slice, charAt, substring, indexOf)",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"
-                },
-                {
-                    "topicName": "Mathematical operations and precedence",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence"
-                },
-                {
-                    "topicName": "String indexing and character access",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"
-                }
+                "String methods (slice, charAt, substring, indexOf)",
+                "Mathematical operations and precedence",
+                "String indexing and character access"
             ]
         }
     },
@@ -207,14 +189,8 @@ const questions = [
         "explanation": "Both function declaration [CODE]function myFunc() {}[/CODE] and function expression [CODE]myFunc = function() {}[/CODE] are valid ways to create a function in JavaScript.",
         "topic": {
             "topics": [
-                {
-                    "topicName": "Function declaration and invocation",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions"
-                },
-                {
-                    "topicName": "Mathematical operations and precedence",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence"
-                }
+                "Function declaration and invocation",
+                "Mathematical operations and precedence"
             ]
         }
     },
@@ -231,14 +207,8 @@ const questions = [
         "explanation": "reverse() reverses an array in place. The first array element becomes the last, and the last becomes the first.",
         "topic": {
             "topics": [
-                {
-                    "topicName": "Array methods (push, slice, reverse, sort, concat)",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array"
-                },
-                {
-                    "topicName": "Array operations and manipulation",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Indexed_collections"
-                }
+                "Array methods (push, slice, reverse, sort, concat)",
+                "Array operations and manipulation"
             ]
         }
     },
@@ -255,18 +225,9 @@ const questions = [
         "explanation": "[CODE]substring(1, 3)[/CODE] extracts characters from index 1 up to (but not including) index 3. In 'hello', this gives 'el'.",
         "topic": {
             "topics": [
-                {
-                    "topicName": "String methods (slice, charAt, substring, indexOf)",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"
-                },
-                {
-                    "topicName": "Mathematical operations and precedence",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence"
-                },
-                {
-                    "topicName": "String indexing and character access",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"
-                }
+                "String methods (slice, charAt, substring, indexOf)",
+                "Mathematical operations and precedence",
+                "String indexing and character access"
             ]
         }
     },
@@ -283,10 +244,7 @@ const questions = [
         "explanation": "Operations of equal precedence are evaluated left to right: [CODE]10 / 2 = 5[/CODE], then [CODE]5 * 3 = 15[/CODE].",
         "topic": {
             "topics": [
-                {
-                    "topicName": "Mathematical operations and precedence",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence"
-                }
+                "Mathematical operations and precedence"
             ]
         }
     },
@@ -303,18 +261,9 @@ const questions = [
         "explanation": "[CODE]indexOf()[/CODE] returns the index of the first occurrence of a substring. It returns -1 if the substring is not found.",
         "topic": {
             "topics": [
-                {
-                    "topicName": "String methods (slice, charAt, substring, indexOf)",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"
-                },
-                {
-                    "topicName": "Mathematical operations and precedence",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence"
-                },
-                {
-                    "topicName": "String indexing and character access",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"
-                }
+                "String methods (slice, charAt, substring, indexOf)",
+                "Mathematical operations and precedence",
+                "String indexing and character access"
             ]
         }
     },
@@ -331,14 +280,8 @@ const questions = [
         "explanation": "[CODE]Math.min()[/CODE] returns the smallest of the given numbers. Among 8, 3, and 15, the smallest is 3.",
         "topic": {
             "topics": [
-                {
-                    "topicName": "Math object methods (Math.max, Math.min, Math.pow)",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math"
-                },
-                {
-                    "topicName": "Mathematical operations and precedence",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence"
-                }
+                "Math object methods (Math.max, Math.min, Math.pow)",
+                "Mathematical operations and precedence"
             ]
         }
     },
@@ -355,14 +298,8 @@ const questions = [
         "explanation": "Functions are called (invoked) by adding parentheses after the function name: [CODE]myFunction()[/CODE]. Arguments go inside the parentheses.",
         "topic": {
             "topics": [
-                {
-                    "topicName": "Function declaration and invocation",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions"
-                },
-                {
-                    "topicName": "Mathematical operations and precedence",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence"
-                }
+                "Function declaration and invocation",
+                "Mathematical operations and precedence"
             ]
         }
     },
@@ -379,18 +316,9 @@ const questions = [
         "explanation": "[CODE]concat()[/CODE] is used to merge two or more arrays. This method does not change the existing arrays, but returns a new array.",
         "topic": {
             "topics": [
-                {
-                    "topicName": "Array methods (push, slice, reverse, sort, concat)",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array"
-                },
-                {
-                    "topicName": "Mathematical operations and precedence",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence"
-                },
-                {
-                    "topicName": "Array operations and manipulation",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Indexed_collections"
-                }
+                "Array methods (push, slice, reverse, sort, concat)",
+                "Mathematical operations and precedence",
+                "Array operations and manipulation"
             ]
         }
     },
@@ -407,10 +335,7 @@ const questions = [
         "explanation": "Multiplication has higher precedence than addition: [CODE]3 * 2 = 6[/CODE], then [CODE]5 + 6 = 11[/CODE].",
         "topic": {
             "topics": [
-                {
-                    "topicName": "Mathematical operations and precedence",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence"
-                }
+                "Mathematical operations and precedence"
             ]
         }
     },
@@ -427,22 +352,10 @@ const questions = [
         "explanation": "[CODE]slice(0, 4)[/CODE] extracts characters from index 0 up to (but not including) index 4. This gives 'Java'.",
         "topic": {
             "topics": [
-                {
-                    "topicName": "Array methods (push, slice, reverse, sort, concat)",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array"
-                },
-                {
-                    "topicName": "String methods (slice, charAt, substring, indexOf)",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"
-                },
-                {
-                    "topicName": "Mathematical operations and precedence",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence"
-                },
-                {
-                    "topicName": "String indexing and character access",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"
-                }
+                "Array methods (push, slice, reverse, sort, concat)",
+                "String methods (slice, charAt, substring, indexOf)",
+                "Mathematical operations and precedence",
+                "String indexing and character access"
             ]
         }
     },
@@ -459,26 +372,11 @@ const questions = [
         "explanation": "[CODE]sort()[/CODE] sorts the elements of an array in place and returns the sorted array. By default, it sorts as strings in ascending order.",
         "topic": {
             "topics": [
-                {
-                    "topicName": "Array methods (push, slice, reverse, sort, concat)",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array"
-                },
-                {
-                    "topicName": "String methods (slice, charAt, substring, indexOf)",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"
-                },
-                {
-                    "topicName": "Mathematical operations and precedence",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence"
-                },
-                {
-                    "topicName": "Array operations and manipulation",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Indexed_collections"
-                },
-                {
-                    "topicName": "String indexing and character access",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"
-                }
+                "Array methods (push, slice, reverse, sort, concat)",
+                "String methods (slice, charAt, substring, indexOf)",
+                "Mathematical operations and precedence",
+                "Array operations and manipulation",
+                "String indexing and character access"
             ]
         }
     },
@@ -495,18 +393,9 @@ const questions = [
         "explanation": "The string 'coding' has 6 characters: c-o-d-i-n-g. The length property counts all characters including spaces.",
         "topic": {
             "topics": [
-                {
-                    "topicName": "String methods (slice, charAt, substring, indexOf)",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"
-                },
-                {
-                    "topicName": "Mathematical operations and precedence",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence"
-                },
-                {
-                    "topicName": "String indexing and character access",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"
-                }
+                "String methods (slice, charAt, substring, indexOf)",
+                "Mathematical operations and precedence",
+                "String indexing and character access"
             ]
         }
     },
@@ -523,14 +412,8 @@ const questions = [
         "explanation": "[CODE]Math.floor()[/CODE] returns the largest integer less than or equal to the given number. 4.7 floors down to 4.",
         "topic": {
             "topics": [
-                {
-                    "topicName": "Math object methods (Math.max, Math.min, Math.pow)",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math"
-                },
-                {
-                    "topicName": "Mathematical operations and precedence",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence"
-                }
+                "Math object methods (Math.max, Math.min, Math.pow)",
+                "Mathematical operations and precedence"
             ]
         }
     },
@@ -547,22 +430,10 @@ const questions = [
         "explanation": "Array indexing starts at 0, so the last element is at index (length - 1). [CODE]arr[arr.length][/CODE] would be undefined.",
         "topic": {
             "topics": [
-                {
-                    "topicName": "Array methods (push, slice, reverse, sort, concat)",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array"
-                },
-                {
-                    "topicName": "Mathematical operations and precedence",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence"
-                },
-                {
-                    "topicName": "Array operations and manipulation",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Indexed_collections"
-                },
-                {
-                    "topicName": "String indexing and character access",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"
-                }
+                "Array methods (push, slice, reverse, sort, concat)",
+                "Mathematical operations and precedence",
+                "Array operations and manipulation",
+                "String indexing and character access"
             ]
         }
     },
@@ -579,10 +450,7 @@ const questions = [
         "explanation": "The modulus operator (%) returns the remainder. 12 divided by 5 is 2 remainder 2, so [CODE]12 % 5 = 2[/CODE].",
         "topic": {
             "topics": [
-                {
-                    "topicName": "Mathematical operations and precedence",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence"
-                }
+                "Mathematical operations and precedence"
             ]
         }
     },
@@ -599,18 +467,9 @@ const questions = [
         "explanation": "[CODE]shift()[/CODE] removes the first element from an array and returns that element. [CODE]pop()[/CODE] removes the last element.",
         "topic": {
             "topics": [
-                {
-                    "topicName": "Array methods (push, slice, reverse, sort, concat)",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array"
-                },
-                {
-                    "topicName": "Mathematical operations and precedence",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence"
-                },
-                {
-                    "topicName": "Array operations and manipulation",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Indexed_collections"
-                }
+                "Array methods (push, slice, reverse, sort, concat)",
+                "Mathematical operations and precedence",
+                "Array operations and manipulation"
             ]
         }
     },
@@ -627,18 +486,9 @@ const questions = [
         "explanation": "[CODE]toUpperCase()[/CODE] converts all characters in a string to uppercase letters. 'hello' becomes 'HELLO'.",
         "topic": {
             "topics": [
-                {
-                    "topicName": "String methods (slice, charAt, substring, indexOf)",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"
-                },
-                {
-                    "topicName": "Mathematical operations and precedence",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence"
-                },
-                {
-                    "topicName": "String indexing and character access",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"
-                }
+                "String methods (slice, charAt, substring, indexOf)",
+                "Mathematical operations and precedence",
+                "String indexing and character access"
             ]
         }
     },
@@ -655,10 +505,7 @@ const questions = [
         "explanation": "Parentheses have the highest precedence: [CODE](4 + 2) = 6[/CODE], then [CODE]6 * 3 = 18[/CODE].",
         "topic": {
             "topics": [
-                {
-                    "topicName": "Mathematical operations and precedence",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence"
-                }
+                "Mathematical operations and precedence"
             ]
         }
     },
@@ -675,14 +522,8 @@ const questions = [
         "explanation": "The length property returns the number of elements in an array. This is a fundamental property of JavaScript arrays.",
         "topic": {
             "topics": [
-                {
-                    "topicName": "Array methods (push, slice, reverse, sort, concat)",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array"
-                },
-                {
-                    "topicName": "Array operations and manipulation",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Indexed_collections"
-                }
+                "Array methods (push, slice, reverse, sort, concat)",
+                "Array operations and manipulation"
             ]
         }
     },
@@ -699,14 +540,8 @@ const questions = [
         "explanation": "[CODE]Math.ceil()[/CODE] returns the smallest integer greater than or equal to the given number. 3.2 ceils up to 4.",
         "topic": {
             "topics": [
-                {
-                    "topicName": "Math object methods (Math.max, Math.min, Math.pow)",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math"
-                },
-                {
-                    "topicName": "Mathematical operations and precedence",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence"
-                }
+                "Math object methods (Math.max, Math.min, Math.pow)",
+                "Mathematical operations and precedence"
             ]
         }
     },
@@ -723,22 +558,10 @@ const questions = [
         "explanation": "The + operator is used for both addition and string concatenation in JavaScript. When used with strings, it concatenates them.",
         "topic": {
             "topics": [
-                {
-                    "topicName": "Array methods (push, slice, reverse, sort, concat)",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array"
-                },
-                {
-                    "topicName": "String methods (slice, charAt, substring, indexOf)",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"
-                },
-                {
-                    "topicName": "Mathematical operations and precedence",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence"
-                },
-                {
-                    "topicName": "String indexing and character access",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"
-                }
+                "Array methods (push, slice, reverse, sort, concat)",
+                "String methods (slice, charAt, substring, indexOf)",
+                "Mathematical operations and precedence",
+                "String indexing and character access"
             ]
         }
     },
@@ -755,26 +578,11 @@ const questions = [
         "explanation": "[CODE]indexOf()[/CODE] returns the index of the first occurrence of the element. The value 2 is at index 1 in the array [1, 2, 3].",
         "topic": {
             "topics": [
-                {
-                    "topicName": "Array methods (push, slice, reverse, sort, concat)",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array"
-                },
-                {
-                    "topicName": "String methods (slice, charAt, substring, indexOf)",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"
-                },
-                {
-                    "topicName": "Mathematical operations and precedence",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence"
-                },
-                {
-                    "topicName": "Array operations and manipulation",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Indexed_collections"
-                },
-                {
-                    "topicName": "String indexing and character access",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"
-                }
+                "Array methods (push, slice, reverse, sort, concat)",
+                "String methods (slice, charAt, substring, indexOf)",
+                "Mathematical operations and precedence",
+                "Array operations and manipulation",
+                "String indexing and character access"
             ]
         }
     },
@@ -791,10 +599,7 @@ const questions = [
         "explanation": "Multiplication has higher precedence than subtraction: [CODE]3 * 2 = 6[/CODE], then [CODE]15 - 6 = 9[/CODE].",
         "topic": {
             "topics": [
-                {
-                    "topicName": "Mathematical operations and precedence",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence"
-                }
+                "Mathematical operations and precedence"
             ]
         }
     }

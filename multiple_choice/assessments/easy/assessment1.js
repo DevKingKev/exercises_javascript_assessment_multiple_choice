@@ -14,6 +14,7 @@ const metadata = {
         "DOM manipulation basics",
         "Event handling fundamentals"
     ],
+    "topicLinks": [],
     "assessmentId": 1
 };
 
@@ -31,14 +32,8 @@ const questions = [
         "explanation": "All three options (var, let, const) are valid ways to declare variables in JavaScript. However, 'let' and 'const' are ES6 features with block scope, while 'var' has function scope.",
         "topic": {
             "topics": [
-                {
-                    "topicName": "Variable declarations (var, let, const)",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#declaring_variables"
-                },
-                {
-                    "topicName": "Function basics and scope",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions"
-                }
+                "Variable declarations (var, let, const)",
+                "Function basics and scope"
             ]
         }
     },
@@ -55,14 +50,8 @@ const questions = [
         "explanation": "The push() method adds one or more elements to the end of an array and returns the new length of the array.",
         "topic": {
             "topics": [
-                {
-                    "topicName": "Array and string methods",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array"
-                },
-                {
-                    "topicName": "Function basics and scope",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions"
-                }
+                "Array and string methods",
+                "Function basics and scope"
             ]
         }
     },
@@ -79,10 +68,7 @@ const questions = [
         "explanation": "The function returns 5, so console.log(test()) will output 5.",
         "topic": {
             "topics": [
-                {
-                    "topicName": "Function basics and scope",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions"
-                }
+                "Function basics and scope"
             ]
         }
     },
@@ -99,14 +85,8 @@ const questions = [
         "explanation": "The toUpperCase() method converts a string to uppercase letters.",
         "topic": {
             "topics": [
-                {
-                    "topicName": "Variable declarations (var, let, const)",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#declaring_variables"
-                },
-                {
-                    "topicName": "Array and string methods",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array"
-                }
+                "Variable declarations (var, let, const)",
+                "Array and string methods"
             ]
         }
     },
@@ -123,14 +103,8 @@ const questions = [
         "explanation": "Since x (10) is greater than 5, the condition is true, so 'Greater' is printed.",
         "topic": {
             "topics": [
-                {
-                    "topicName": "Variable declarations (var, let, const)",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#declaring_variables"
-                },
-                {
-                    "topicName": "Conditional statements and loops",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Control_flow_and_error_handling"
-                }
+                "Variable declarations (var, let, const)",
+                "Conditional statements and loops"
             ]
         }
     },
@@ -147,14 +121,8 @@ const questions = [
         "explanation": "The loop runs while i < 3, starting from 0. It executes for i = 0, 1, 2 (3 times total).",
         "topic": {
             "topics": [
-                {
-                    "topicName": "Variable declarations (var, let, const)",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#declaring_variables"
-                },
-                {
-                    "topicName": "Conditional statements and loops",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Control_flow_and_error_handling"
-                }
+                "Variable declarations (var, let, const)",
+                "Conditional statements and loops"
             ]
         }
     },
@@ -171,10 +139,7 @@ const questions = [
         "explanation": "Both dot notation (person.name) and bracket notation (person['name']) can access object properties.",
         "topic": {
             "topics": [
-                {
-                    "topicName": "Object properties and creation",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_Objects"
-                }
+                "Object properties and creation"
             ]
         }
     },
@@ -191,14 +156,8 @@ const questions = [
         "explanation": "This is a known quirk in JavaScript - typeof null returns 'object', even though null is not an object.",
         "topic": {
             "topics": [
-                {
-                    "topicName": "Function basics and scope",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions"
-                },
-                {
-                    "topicName": "Object properties and creation",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_Objects"
-                }
+                "Function basics and scope",
+                "Object properties and creation"
             ]
         }
     },
@@ -215,14 +174,8 @@ const questions = [
         "explanation": "The array has 5 elements including the empty slot at index 3, so length is 5.",
         "topic": {
             "topics": [
-                {
-                    "topicName": "Variable declarations (var, let, const)",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#declaring_variables"
-                },
-                {
-                    "topicName": "Array and string methods",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array"
-                }
+                "Variable declarations (var, let, const)",
+                "Array and string methods"
             ]
         }
     },
@@ -239,10 +192,7 @@ const questions = [
         "explanation": "Due to operator precedence, this evaluates as [CODE](true && false) || true = false || true = true[/CODE].",
         "topic": {
             "topics": [
-                {
-                    "topicName": "Variable declarations (var, let, const)",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#declaring_variables"
-                }
+                "Variable declarations (var, let, const)"
             ]
         }
     },
@@ -259,10 +209,7 @@ const questions = [
         "explanation": "Missing parameters are automatically set to undefined in JavaScript.",
         "topic": {
             "topics": [
-                {
-                    "topicName": "Function basics and scope",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions"
-                }
+                "Function basics and scope"
             ]
         }
     },
@@ -279,10 +226,7 @@ const questions = [
         "explanation": "JavaScript converts the number 3 to a string and concatenates it with '5', resulting in '53'.",
         "topic": {
             "topics": [
-                {
-                    "topicName": "Array and string methods",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array"
-                }
+                "Array and string methods"
             ]
         }
     },
@@ -299,14 +243,8 @@ const questions = [
         "explanation": "The local variable x (2) inside the function shadows the global variable x (1).",
         "topic": {
             "topics": [
-                {
-                    "topicName": "Variable declarations (var, let, const)",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#declaring_variables"
-                },
-                {
-                    "topicName": "Function basics and scope",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions"
-                }
+                "Variable declarations (var, let, const)",
+                "Function basics and scope"
             ]
         }
     },
@@ -323,14 +261,8 @@ const questions = [
         "explanation": "The pop() method removes and returns the last element from an array.",
         "topic": {
             "topics": [
-                {
-                    "topicName": "Array and string methods",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array"
-                },
-                {
-                    "topicName": "Function basics and scope",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions"
-                }
+                "Array and string methods",
+                "Function basics and scope"
             ]
         }
     },
@@ -347,10 +279,7 @@ const questions = [
         "explanation": "== performs type coercion before comparison, while === checks both value and type without coercion.",
         "topic": {
             "topics": [
-                {
-                    "topicName": "Conditional statements and loops",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Control_flow_and_error_handling"
-                }
+                "Conditional statements and loops"
             ]
         }
     },
@@ -367,14 +296,8 @@ const questions = [
         "explanation": "All three methods create objects, though with slight differences in their prototype chain.",
         "topic": {
             "topics": [
-                {
-                    "topicName": "Object properties and creation",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_Objects"
-                },
-                {
-                    "topicName": "Conditional statements and loops",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Control_flow_and_error_handling"
-                }
+                "Object properties and creation",
+                "Conditional statements and loops"
             ]
         }
     },
@@ -391,10 +314,7 @@ const questions = [
         "explanation": "try...catch is used for error handling, allowing you to catch and handle exceptions without crashing the program.",
         "topic": {
             "topics": [
-                {
-                    "topicName": "Variable declarations (var, let, const)",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#declaring_variables"
-                }
+                "Variable declarations (var, let, const)"
             ]
         }
     },
@@ -411,10 +331,7 @@ const questions = [
         "explanation": "[CODE]Math.floor()[/CODE] rounds down to the nearest integer, so 4.7 becomes 4.",
         "topic": {
             "topics": [
-                {
-                    "topicName": "Variable declarations (var, let, const)",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#declaring_variables"
-                }
+                "Variable declarations (var, let, const)"
             ]
         }
     },
@@ -431,10 +348,7 @@ const questions = [
         "explanation": "document.getElementById() is the standard method to select an element by its ID.",
         "topic": {
             "topics": [
-                {
-                    "topicName": "DOM manipulation basics",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Manipulating_documents"
-                }
+                "DOM manipulation basics"
             ]
         }
     },
@@ -451,10 +365,7 @@ const questions = [
         "explanation": "addEventListener() is the standard method to attach event handlers to elements.",
         "topic": {
             "topics": [
-                {
-                    "topicName": "Event handling fundamentals",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener"
-                }
+                "Event handling fundamentals"
             ]
         }
     }

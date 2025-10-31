@@ -14,7 +14,37 @@ const metadata = {
         "Control flow statements",
         "Object creation methods"
     ],
-    "assessmentId": 2
+    "assessmentId": 2,
+    "topicLinks": [
+        {
+            "topicName": "Type coercion and typeof operator",
+            "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof"
+        },
+        {
+            "topicName": "Array methods (unshift, pop, includes, filter, map)",
+            "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array"
+        },
+        {
+            "topicName": "String methods (toLowerCase, trim, length)",
+            "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"
+        },
+        {
+            "topicName": "Control flow statements",
+            "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Control_flow_and_error_handling"
+        },
+        {
+            "topicName": "Boolean logic and NaN handling",
+            "mdnLink": "https://developer.mozilla.org/en-US/docs/Glossary/Falsy"
+        },
+        {
+            "topicName": "Variable scoping (let, const, block scope)",
+            "mdnLink": "https://developer.mozilla.org/en-US/docs/Glossary/Scope"
+        },
+        {
+            "topicName": "Object creation methods",
+            "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_Objects"
+        }
+    ]
 };
 
 const questions = [
@@ -31,22 +61,10 @@ const questions = [
         "explanation": "In JavaScript, arrays are actually objects, so typeof returns 'object'. To check if something is specifically an array, use Array.isArray().",
         "topic": {
             "topics": [
-                {
-                    "topicName": "Type coercion and typeof operator",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof"
-                },
-                {
-                    "topicName": "Array methods (unshift, pop, includes, filter, map)",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array"
-                },
-                {
-                    "topicName": "String methods (toLowerCase, trim, length)",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"
-                },
-                {
-                    "topicName": "Control flow statements",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Control_flow_and_error_handling"
-                }
+                "Type coercion and typeof operator",
+                "Array methods (unshift, pop, includes, filter, map)",
+                "String methods (toLowerCase, trim, length)",
+                "Control flow statements"
             ]
         }
     },
@@ -63,18 +81,9 @@ const questions = [
         "explanation": "unshift() adds elements to the beginning of an array and returns the new length. push() adds to the end.",
         "topic": {
             "topics": [
-                {
-                    "topicName": "Array methods (unshift, pop, includes, filter, map)",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array"
-                },
-                {
-                    "topicName": "String methods (toLowerCase, trim, length)",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"
-                },
-                {
-                    "topicName": "Control flow statements",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Control_flow_and_error_handling"
-                }
+                "Array methods (unshift, pop, includes, filter, map)",
+                "String methods (toLowerCase, trim, length)",
+                "Control flow statements"
             ]
         }
     },
@@ -91,18 +100,9 @@ const questions = [
         "explanation": "JavaScript performs type coercion. When adding a number and string, the number is converted to a string, resulting in '53'.",
         "topic": {
             "topics": [
-                {
-                    "topicName": "Type coercion and typeof operator",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof"
-                },
-                {
-                    "topicName": "String methods (toLowerCase, trim, length)",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"
-                },
-                {
-                    "topicName": "Control flow statements",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Control_flow_and_error_handling"
-                }
+                "Type coercion and typeof operator",
+                "String methods (toLowerCase, trim, length)",
+                "Control flow statements"
             ]
         }
     },
@@ -119,14 +119,8 @@ const questions = [
         "explanation": "All three loop types continue until their condition becomes false. The difference is when and how often the condition is checked.",
         "topic": {
             "topics": [
-                {
-                    "topicName": "Boolean logic and NaN handling",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Glossary/Falsy"
-                },
-                {
-                    "topicName": "Control flow statements",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Control_flow_and_error_handling"
-                }
+                "Boolean logic and NaN handling",
+                "Control flow statements"
             ]
         }
     },
@@ -143,18 +137,9 @@ const questions = [
         "explanation": "The strict equality operator (===) checks both value and type without type coercion, while == only checks value with type coercion.",
         "topic": {
             "topics": [
-                {
-                    "topicName": "Type coercion and typeof operator",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof"
-                },
-                {
-                    "topicName": "String methods (toLowerCase, trim, length)",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"
-                },
-                {
-                    "topicName": "Control flow statements",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Control_flow_and_error_handling"
-                }
+                "Type coercion and typeof operator",
+                "String methods (toLowerCase, trim, length)",
+                "Control flow statements"
             ]
         }
     },
@@ -162,23 +147,16 @@ const questions = [
         "id": 6,
         "question": "Which method removes the last element from an array?",
         "options": {
-            "A": "pop()",
-            "B": "shift()",
-            "C": "splice()",
-            "D": "slice()"
+            "A": "array.pop()",
+            "B": "array.removeLast()",
+            "C": "array.delete()",
+            "D": "array.shift()"
         },
         "correct": "A",
         "explanation": "pop() removes and returns the last element from an array. shift() removes the first element.",
         "topic": {
             "topics": [
-                {
-                    "topicName": "Array methods (unshift, pop, includes, filter, map)",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array"
-                },
-                {
-                    "topicName": "Control flow statements",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Control_flow_and_error_handling"
-                }
+                "Array methods (unshift, pop, includes, filter, map)"
             ]
         }
     },
@@ -195,18 +173,9 @@ const questions = [
         "explanation": "All three methods create new objects. {} is the most common literal syntax, new Object() uses constructor, Object.create() allows prototype specification.",
         "topic": {
             "topics": [
-                {
-                    "topicName": "Variable scoping (let, const, block scope)",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Glossary/Scope"
-                },
-                {
-                    "topicName": "Control flow statements",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Control_flow_and_error_handling"
-                },
-                {
-                    "topicName": "Object creation methods",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_Objects"
-                }
+                "Variable scoping (let, const, block scope)",
+                "Control flow statements",
+                "Object creation methods"
             ]
         }
     },
@@ -223,18 +192,9 @@ const questions = [
         "explanation": "const declares a constant variable that cannot be reassigned. However, objects and arrays declared with const can still be modified.",
         "topic": {
             "topics": [
-                {
-                    "topicName": "Array methods (unshift, pop, includes, filter, map)",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array"
-                },
-                {
-                    "topicName": "Variable scoping (let, const, block scope)",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Glossary/Scope"
-                },
-                {
-                    "topicName": "Control flow statements",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Control_flow_and_error_handling"
-                }
+                "Array methods (unshift, pop, includes, filter, map)",
+                "Variable scoping (let, const, block scope)",
+                "Control flow statements"
             ]
         }
     },
@@ -251,14 +211,8 @@ const questions = [
         "explanation": "The length property returns the number of characters in a string. 'Hello' has 5 characters, so it returns 5.",
         "topic": {
             "topics": [
-                {
-                    "topicName": "String methods (toLowerCase, trim, length)",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"
-                },
-                {
-                    "topicName": "Control flow statements",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Control_flow_and_error_handling"
-                }
+                "String methods (toLowerCase, trim, length)",
+                "Control flow statements"
             ]
         }
     },
@@ -275,10 +229,7 @@ const questions = [
         "explanation": "The logical AND operator in JavaScript is &&. The single & is a bitwise AND operator.",
         "topic": {
             "topics": [
-                {
-                    "topicName": "Control flow statements",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Control_flow_and_error_handling"
-                }
+                "Control flow statements"
             ]
         }
     },
@@ -295,14 +246,8 @@ const questions = [
         "explanation": "An empty string is a falsy value in JavaScript, so Boolean('') returns false. Other falsy values include 0, null, undefined, NaN.",
         "topic": {
             "topics": [
-                {
-                    "topicName": "String methods (toLowerCase, trim, length)",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"
-                },
-                {
-                    "topicName": "Boolean logic and NaN handling",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Glossary/Falsy"
-                }
+                "String methods (toLowerCase, trim, length)",
+                "Boolean logic and NaN handling"
             ]
         }
     },
@@ -319,10 +264,7 @@ const questions = [
         "explanation": "toLowerCase() converts all characters in a string to lowercase. toUpperCase() does the opposite.",
         "topic": {
             "topics": [
-                {
-                    "topicName": "String methods (toLowerCase, trim, length)",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"
-                }
+                "String methods (toLowerCase, trim, length)"
             ]
         }
     },
@@ -339,14 +281,8 @@ const questions = [
         "explanation": "null represents an intentional absence of any object value. It's different from undefined, which means a variable hasn't been assigned.",
         "topic": {
             "topics": [
-                {
-                    "topicName": "String methods (toLowerCase, trim, length)",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"
-                },
-                {
-                    "topicName": "Control flow statements",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Control_flow_and_error_handling"
-                }
+                "String methods (toLowerCase, trim, length)",
+                "Control flow statements"
             ]
         }
     },
@@ -363,18 +299,9 @@ const questions = [
         "explanation": "join() creates and returns a new string by concatenating all array elements, separated by a specified separator (comma by default).",
         "topic": {
             "topics": [
-                {
-                    "topicName": "Array methods (unshift, pop, includes, filter, map)",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array"
-                },
-                {
-                    "topicName": "String methods (toLowerCase, trim, length)",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"
-                },
-                {
-                    "topicName": "Control flow statements",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Control_flow_and_error_handling"
-                }
+                "Array methods (unshift, pop, includes, filter, map)",
+                "String methods (toLowerCase, trim, length)",
+                "Control flow statements"
             ]
         }
     },
@@ -391,14 +318,8 @@ const questions = [
         "explanation": "Variables declared with 'let' have block scope, meaning they're only accessible within the block where they're defined.",
         "topic": {
             "topics": [
-                {
-                    "topicName": "String methods (toLowerCase, trim, length)",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"
-                },
-                {
-                    "topicName": "Variable scoping (let, const, block scope)",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Glossary/Scope"
-                }
+                "String methods (toLowerCase, trim, length)",
+                "Variable scoping (let, const, block scope)"
             ]
         }
     },
@@ -415,18 +336,9 @@ const questions = [
         "explanation": "includes() determines whether an array includes a certain element, returning true or false. It was introduced in ES2016.",
         "topic": {
             "topics": [
-                {
-                    "topicName": "Array methods (unshift, pop, includes, filter, map)",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array"
-                },
-                {
-                    "topicName": "Boolean logic and NaN handling",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Glossary/Falsy"
-                },
-                {
-                    "topicName": "Control flow statements",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Control_flow_and_error_handling"
-                }
+                "Array methods (unshift, pop, includes, filter, map)",
+                "Boolean logic and NaN handling",
+                "Control flow statements"
             ]
         }
     },
@@ -443,10 +355,7 @@ const questions = [
         "explanation": "The modulus operator (%) returns the remainder of a division. 10 divided by 3 is 3 with remainder 1.",
         "topic": {
             "topics": [
-                {
-                    "topicName": "Type coercion and typeof operator",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof"
-                }
+                "Type coercion and typeof operator"
             ]
         }
     },
@@ -463,10 +372,7 @@ const questions = [
         "explanation": "filter() creates a new array with all elements that pass the test implemented by the provided function.",
         "topic": {
             "topics": [
-                {
-                    "topicName": "Array methods (unshift, pop, includes, filter, map)",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array"
-                }
+                "Array methods (unshift, pop, includes, filter, map)"
             ]
         }
     },
@@ -483,22 +389,10 @@ const questions = [
         "explanation": "NaN stands for 'Not a Number' and represents a value that is not a legal number. Ironically, typeof NaN returns 'number'.",
         "topic": {
             "topics": [
-                {
-                    "topicName": "Type coercion and typeof operator",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof"
-                },
-                {
-                    "topicName": "String methods (toLowerCase, trim, length)",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"
-                },
-                {
-                    "topicName": "Boolean logic and NaN handling",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Glossary/Falsy"
-                },
-                {
-                    "topicName": "Control flow statements",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Control_flow_and_error_handling"
-                }
+                "Type coercion and typeof operator",
+                "String methods (toLowerCase, trim, length)",
+                "Boolean logic and NaN handling",
+                "Control flow statements"
             ]
         }
     },
@@ -515,18 +409,9 @@ const questions = [
         "explanation": "splice() changes the contents of an array by removing existing elements and/or adding new elements. slice() doesn't modify the original array.",
         "topic": {
             "topics": [
-                {
-                    "topicName": "Array methods (unshift, pop, includes, filter, map)",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array"
-                },
-                {
-                    "topicName": "String methods (toLowerCase, trim, length)",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"
-                },
-                {
-                    "topicName": "Control flow statements",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Control_flow_and_error_handling"
-                }
+                "Array methods (unshift, pop, includes, filter, map)",
+                "String methods (toLowerCase, trim, length)",
+                "Control flow statements"
             ]
         }
     },
@@ -543,10 +428,7 @@ const questions = [
         "explanation": "JavaScript supports two comment styles: // for single-line comments and /* */ for multi-line comments. Both C and D are correct, but C is more common for single lines.",
         "topic": {
             "topics": [
-                {
-                    "topicName": "Control flow statements",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Control_flow_and_error_handling"
-                }
+                "Control flow statements"
             ]
         }
     },
@@ -563,14 +445,8 @@ const questions = [
         "explanation": "find() returns the first element in an array that satisfies the provided testing function. If no element is found, it returns undefined.",
         "topic": {
             "topics": [
-                {
-                    "topicName": "Array methods (unshift, pop, includes, filter, map)",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array"
-                },
-                {
-                    "topicName": "Control flow statements",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Control_flow_and_error_handling"
-                }
+                "Array methods (unshift, pop, includes, filter, map)",
+                "Control flow statements"
             ]
         }
     },
@@ -587,18 +463,9 @@ const questions = [
         "explanation": "typeof undefined returns the string 'undefined'. This is different from null, where typeof null returns 'object' (a known quirk).",
         "topic": {
             "topics": [
-                {
-                    "topicName": "Type coercion and typeof operator",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof"
-                },
-                {
-                    "topicName": "String methods (toLowerCase, trim, length)",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"
-                },
-                {
-                    "topicName": "Control flow statements",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Control_flow_and_error_handling"
-                }
+                "Type coercion and typeof operator",
+                "String methods (toLowerCase, trim, length)",
+                "Control flow statements"
             ]
         }
     },
@@ -615,10 +482,7 @@ const questions = [
         "explanation": "map() creates a new array populated with the results of calling a provided function on every element in the calling array.",
         "topic": {
             "topics": [
-                {
-                    "topicName": "Array methods (unshift, pop, includes, filter, map)",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array"
-                }
+                "Array methods (unshift, pop, includes, filter, map)"
             ]
         }
     },
@@ -635,14 +499,8 @@ const questions = [
         "explanation": "The 'break' statement terminates the current loop completely. 'continue' skips the current iteration and moves to the next one.",
         "topic": {
             "topics": [
-                {
-                    "topicName": "String methods (toLowerCase, trim, length)",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"
-                },
-                {
-                    "topicName": "Variable scoping (let, const, block scope)",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Glossary/Scope"
-                }
+                "String methods (toLowerCase, trim, length)",
+                "Variable scoping (let, const, block scope)"
             ]
         }
     },
@@ -659,26 +517,11 @@ const questions = [
         "explanation": "toString() method returns a string representing the specified number. You can also use String() constructor or template literals.",
         "topic": {
             "topics": [
-                {
-                    "topicName": "Type coercion and typeof operator",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof"
-                },
-                {
-                    "topicName": "String methods (toLowerCase, trim, length)",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"
-                },
-                {
-                    "topicName": "Variable scoping (let, const, block scope)",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Glossary/Scope"
-                },
-                {
-                    "topicName": "Control flow statements",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Control_flow_and_error_handling"
-                },
-                {
-                    "topicName": "Object creation methods",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_Objects"
-                }
+                "Type coercion and typeof operator",
+                "String methods (toLowerCase, trim, length)",
+                "Variable scoping (let, const, block scope)",
+                "Control flow statements",
+                "Object creation methods"
             ]
         }
     },
@@ -695,18 +538,9 @@ const questions = [
         "explanation": "== allows type coercion and compares values after converting types if needed. === (strict equality) compares both value and type without coercion.",
         "topic": {
             "topics": [
-                {
-                    "topicName": "Type coercion and typeof operator",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof"
-                },
-                {
-                    "topicName": "String methods (toLowerCase, trim, length)",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"
-                },
-                {
-                    "topicName": "Control flow statements",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Control_flow_and_error_handling"
-                }
+                "Type coercion and typeof operator",
+                "String methods (toLowerCase, trim, length)",
+                "Control flow statements"
             ]
         }
     },
@@ -723,10 +557,7 @@ const questions = [
         "explanation": "trim() removes whitespace from both ends of a string. trimStart() and trimEnd() remove whitespace from the beginning or end respectively.",
         "topic": {
             "topics": [
-                {
-                    "topicName": "String methods (toLowerCase, trim, length)",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"
-                }
+                "String methods (toLowerCase, trim, length)"
             ]
         }
     },
@@ -743,14 +574,8 @@ const questions = [
         "explanation": "The length property of an array returns the number of elements. The array [1, 2, 3] has 3 elements, so length is 3.",
         "topic": {
             "topics": [
-                {
-                    "topicName": "Array methods (unshift, pop, includes, filter, map)",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array"
-                },
-                {
-                    "topicName": "String methods (toLowerCase, trim, length)",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"
-                }
+                "Array methods (unshift, pop, includes, filter, map)",
+                "String methods (toLowerCase, trim, length)"
             ]
         }
     },
@@ -767,10 +592,7 @@ const questions = [
         "explanation": "The 'function' keyword is used to declare functions in JavaScript. You can also use arrow functions (=>) or function expressions.",
         "topic": {
             "topics": [
-                {
-                    "topicName": "String methods (toLowerCase, trim, length)",
-                    "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"
-                }
+                "String methods (toLowerCase, trim, length)"
             ]
         }
     }
