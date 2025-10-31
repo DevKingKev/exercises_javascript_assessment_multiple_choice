@@ -1,4 +1,4 @@
-import type { Question } from './question';
+import type { Question, TopicLink } from './question';
 
 export interface AssessmentMetadata {
     id?: string;
@@ -8,6 +8,9 @@ export interface AssessmentMetadata {
     timeLimit: number;
     questionCount: number;
     topics?: string[];
+
+    // Mapping of unique topic name -> mdnLink used to avoid duplicating mdnLink on each question
+    topicLinks?: TopicLink[];
 }
 
 export interface Assessment {

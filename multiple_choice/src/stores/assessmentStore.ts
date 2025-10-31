@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia';
 import { ref, computed } from 'vue';
 import type { Assessment, AvailableAssessments, AssessmentMetadata } from '@/models';
+import resolveTopics from '../utils/topicResolver';
 
 export const useAssessmentStore = defineStore( 'assessment', () => {
     // State
@@ -80,6 +81,18 @@ export const useAssessmentStore = defineStore( 'assessment', () => {
                 throw new Error( 'Failed to load assessment' );
             }
             const assessmentData: Assessment = await response.json();
+
+            // Enrich each question with resolvedTopics using metadata.topicLinks.
+            // Support assessments where questions may not have topic data (tests/mocks).
+            const topicLinks = ( assessmentData.metadata && ( assessmentData.metadata as any ).topicLinks ) || [];
+
+            if ( Array.isArray( assessmentData.questions ) ) {
+                for ( const q of assessmentData.questions ) {
+                    // topic names might be stored at q.topic.topics or q.topics depending on source
+                    const names: string[] = ( q && ( ( q as any ).topic && ( q as any ).topic.topics ) ) || ( ( q as any ).topics ) || [];
+                    ( q as any ).resolvedTopics = resolveTopics( names, topicLinks );
+                }
+            }
 
             currentAssessment.value = assessmentData;
             currentDifficulty.value = difficulty;
