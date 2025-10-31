@@ -33,33 +33,26 @@
       <!-- Topic Breakdown with Color Grading -->
       <div v-if="result.topicBreakdown && Object.keys(result.topicBreakdown).length > 0" class="topic-breakdown">
         <span class="topic-breakdown-label">Topic Performance:</span>
-          <div class="topics-inline">
-          <template v-for="([topicName, topic], index) in Object.entries(result.topicBreakdown)" :key="`${result.date}-${index}`">
-            <a
-              v-if="getTopicLink(topicName)"
-              :href="getTopicLink(topicName)"
-              target="_blank"
-              rel="noopener noreferrer"
-              :title="`Learn more about ${topicName} (opens in a new tab)`"
-              :aria-label="`Learn more about ${topicName} (opens in a new tab)`"
-              :class="[getTopicClass(topic.correct, topic.total), 'topic-tag']"
-              @click.stop
-            >
-              {{ topicName }}<span class="sr-only"> (opens in a new tab)</span>{{ index < Object.keys(result.topicBreakdown).length - 1 ? ', ' : '' }}
-            </a>
-            <span
-              v-else
-              :class="[getTopicClass(topic.correct, topic.total), 'topic-tag']"
-            >
-              {{ topicName }}{{ index < Object.keys(result.topicBreakdown).length - 1 ? ', ' : '' }}
-            </span>
-          </template>
-        </div>
+              <div class="topics-inline">
+                <TopicTags
+                  :items="result.topicBreakdown"
+                  :getTopicLink="getTopicLink"
+                  :getTopicClass="getTopicClass"
+                  :keyPrefix="result.date"
+                />
+              </div>
       </div>
       
       <div v-if="result.improvementTopics && result.improvementTopics.length > 0" class="improvement-topics">
         <div class="improvement-topics-label">Topics needing improvement:</div>
-        <div class="topics-list">{{ result.improvementTopics.join(', ') }}</div>
+        <div class="topics-list">
+          <TopicTags
+            :items="improvementTopicBreakdown"
+            :getTopicLink="getTopicLink"
+            :getTopicClass="getTopicClass"
+            :keyPrefix="result.date + '-improve'"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -72,6 +65,7 @@ import type { ResultRecord } from '@/models';
 import { formatDate } from '@/utils/dateUtils';
 import { getScoreBadgeClass } from '@/utils/resultsUtils';
 import { formatAssessmentLabel } from '@/utils/assessmentUtils';
+import TopicTags from './TopicTags.vue';
 
 interface Props {
   result: ResultRecord;
@@ -147,6 +141,24 @@ function getTopicLink(topicName: string): string | undefined {
     return undefined;
   }
 }
+
+// Build a topic breakdown object for improvement topics so they can be
+// colour-graded the same way as the main topicBreakdown. If grading data
+// for a topic is missing we fall back to 0/0 which renders as neutral.
+
+const improvementTopicBreakdown = computed(() => {
+  const tb = (props.result as any).topicBreakdown || {};
+  const improvements = (props.result as any).improvementTopics || [];
+  const out: Record<string, { correct: number; total: number }> = {};
+  for (const name of improvements) {
+    if (tb && Object.prototype.hasOwnProperty.call(tb, name)) {
+      out[name] = { correct: tb[name].correct ?? 0, total: tb[name].total ?? 0 };
+    } else {
+      out[name] = { correct: 0, total: 0 };
+    }
+  }
+  return out;
+});
 
 // Compute the href for a topic tag. Prefer an explicit mdnLink from metadata,
 // otherwise fall back to an MDN search for the topic name so the tag is still
@@ -266,80 +278,8 @@ function getTopicLink(topicName: string): string | undefined {
   font-weight: 600;
 }
 
-.topic-breakdown {
-  margin-top: 16px;
-  padding-top: 16px;
-  border-top: 1px solid #ecf0f1;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 6px;
-}
-
-.topic-breakdown-label {
-  font-size: 0.85rem;
-  color: #7f8c8d;
-  font-weight: 600;
-}
-
-.topics-inline {
-  display: inline;
-  font-size: 0.9rem;
-}
-
-.topic-tag {
-  font-weight: 500;
-  
-  &.topic-perfect {
-    color: #28a745;
-  }
-  
-  &.topic-good {
-    color: #17a2b8;
-  }
-  
-  &.topic-fair {
-    color: #d39e00;
-  }
-  
-  &.topic-poor {
-    color: #fd7e14;
-  }
-  
-  &.topic-fail {
-    color: #dc3545;
-  }
-  
-  &.topic-neutral {
-    color: #6c757d;
-  }
-
-  // If the topic tag is an anchor, keep color but remove underline by default
-  // and show underline on hover/focus for affordance and keyboard users.
-  a {
-    text-decoration: none;
-    color: inherit;
-  }
-
-  a:hover,
-  a:focus {
-    text-decoration: underline;
-    outline: none;
-  }
-}
-
-/* Visually-hidden helper for screen readers */
-.sr-only {
-  position: absolute !important;
-  width: 1px !important;
-  height: 1px !important;
-  padding: 0 !important;
-  margin: -1px !important;
-  overflow: hidden !important;
-  clip: rect(0 0 0 0) !important;
-  white-space: nowrap !important;
-  border: 0 !important;
-}
+/* Topic presentation moved into TopicTags.vue (component-scoped)
+   The parent retains container and layout styles only. */
 
 .improvement-topics {
   margin-top: 16px;
@@ -348,14 +288,12 @@ function getTopicLink(topicName: string): string | undefined {
 }
 
 .improvement-topics-label {
-  font-size: 0.85rem;
   color: #7f8c8d;
   margin-bottom: 8px;
   font-weight: 600;
 }
 
 .topics-list {
-  font-size: 0.9rem;
   color: #e74c3c;
   font-weight: 500;
 }
@@ -443,37 +381,6 @@ function getTopicLink(topicName: string): string | undefined {
   
   .topics-list {
     color: #f87171;
-  }
-}
-</style>
-
-<style lang="scss">
-// Unscoped dark mode styles for topic tags
-:root[data-theme="dark"] {
-  .assessment-result-item .topic-tag {
-    &.topic-perfect {
-      color: #4ade80 !important;
-    }
-    
-    &.topic-good {
-      color: #22d3ee !important;
-    }
-    
-    &.topic-fair {
-      color: #fbbf24 !important;
-    }
-    
-    &.topic-poor {
-      color: #fb923c !important;
-    }
-    
-    &.topic-fail {
-      color: #ef8e8e !important;
-    }
-    
-    &.topic-neutral {
-      color: #9ca3af !important;
-    }
   }
 }
 </style>
