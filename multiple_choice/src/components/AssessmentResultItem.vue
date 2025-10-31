@@ -54,12 +54,16 @@
           />
         </div>
       </div>
+        <div class="result-item-actions">
+          <button class="view-assessment-btn" @click="viewAssessment">View assessment</button>
+        </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref, computed } from 'vue';
+import { useRouter } from 'vue-router';
 import { useAssessmentStore } from '@/stores/assessmentStore';
 import type { ResultRecord } from '@/models';
 import { formatDate } from '@/utils/dateUtils';
@@ -76,6 +80,7 @@ const props = defineProps<Props>();
 const isExpanded = ref(false);
 
 const scoreBadgeClass = computed(() => getScoreBadgeClass(props.result.percentage));
+const router = useRouter();
 
 function toggleExpanded() {
   isExpanded.value = !isExpanded.value;
@@ -159,6 +164,19 @@ const improvementTopicBreakdown = computed(() => {
   }
   return out;
 });
+
+function viewAssessment() {
+  try {
+    // Navigate to the assessment-result view and supply the saved resultRecordId
+    // so the ResultsView will locate and restore this saved attempt.
+    router.push({
+      name: 'assessment-result',
+      query: { resultRecordId: String(props.result.resultRecordId) }
+    });
+  } catch (e) {
+    console.debug('Navigation to assessment failed', e);
+  }
+}
 
 // Compute the href for a topic tag. Prefer an explicit mdnLink from metadata,
 // otherwise fall back to an MDN search for the topic name so the tag is still
@@ -296,6 +314,24 @@ const improvementTopicBreakdown = computed(() => {
   color: #e74c3c;
   font-weight: 500;
 }
+
+.result-item-actions {
+  margin-top: 16px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.view-assessment-btn {
+  padding: 8px 14px;
+  background: transparent;
+  border: 1px solid #3498db;
+  color: #3498db;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.view-assessment-btn:hover { background: rgba(52,152,219,0.06); }
 
 // Additional dark mode support for the component
 // Stronger dark mode override for assessment-result-item-header hover
