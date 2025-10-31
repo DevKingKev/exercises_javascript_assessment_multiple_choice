@@ -219,7 +219,7 @@ multiple_choice/
 ├── server.ts               # TypeScript Express server with dev proxy
 ├── app.ts                  # Legacy compatibility shim
 ├── index.html              # Main application interface with dynamic loader
-├── styles.css              # Complete styling
+├── styles/main.scss        # SCSS entrypoint (imports partials under styles/)
 ├── vite.config.ts          # Vite configuration
 ├── tsconfig.json           # Base TypeScript configuration
 ├── tsconfig.client.json    # Client-side TypeScript config (ES2020)
