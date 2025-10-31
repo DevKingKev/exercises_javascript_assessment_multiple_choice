@@ -112,8 +112,7 @@
     border: 1px solid $gray-200;
     border-radius: $radius-lg;
     padding: $spacing-lg;
-    margin-bottom: $spacing-lg;
-    cursor: pointer;
+    margin-bottom: $spacing-lg;    
     transition: all $transition-base;
 
     &:hover {
@@ -219,3 +218,4 @@
     font-size: 0.8rem;
     line-height: 1.4;
 }
+

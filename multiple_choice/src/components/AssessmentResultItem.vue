@@ -33,15 +33,27 @@
       <!-- Topic Breakdown with Color Grading -->
       <div v-if="result.topicBreakdown && Object.keys(result.topicBreakdown).length > 0" class="topic-breakdown">
         <span class="topic-breakdown-label">Topic Performance:</span>
-        <div class="topics-inline">
-          <span 
-            v-for="([topicName, topic], index) in Object.entries(result.topicBreakdown)" 
-            :key="`${result.date}-${index}`"
-            :class="getTopicClass(topic.correct, topic.total)"
-            class="topic-tag"
-          >
-            {{ topicName }}{{ index < Object.keys(result.topicBreakdown).length - 1 ? ', ' : '' }}
-          </span>
+          <div class="topics-inline">
+          <template v-for="([topicName, topic], index) in Object.entries(result.topicBreakdown)" :key="`${result.date}-${index}`">
+            <a
+              v-if="getTopicLink(topicName)"
+              :href="getTopicLink(topicName)"
+              target="_blank"
+              rel="noopener noreferrer"
+              :title="`Learn more about ${topicName} (opens in a new tab)`"
+              :aria-label="`Learn more about ${topicName} (opens in a new tab)`"
+              :class="[getTopicClass(topic.correct, topic.total), 'topic-tag']"
+              @click.stop
+            >
+              {{ topicName }}<span class="sr-only"> (opens in a new tab)</span>{{ index < Object.keys(result.topicBreakdown).length - 1 ? ', ' : '' }}
+            </a>
+            <span
+              v-else
+              :class="[getTopicClass(topic.correct, topic.total), 'topic-tag']"
+            >
+              {{ topicName }}{{ index < Object.keys(result.topicBreakdown).length - 1 ? ', ' : '' }}
+            </span>
+          </template>
         </div>
       </div>
       
@@ -55,6 +67,7 @@
 
 <script setup lang="ts">
 import { ref, computed } from 'vue';
+import { useAssessmentStore } from '@/stores/assessmentStore';
 import type { ResultRecord } from '@/models';
 import { formatDate } from '@/utils/dateUtils';
 import { getScoreBadgeClass } from '@/utils/resultsUtils';
@@ -88,6 +101,60 @@ function getTopicClass(correct: number, total: number): string {
   if (percentage >= 40) return 'topic-poor';
   return 'topic-fail';
 }
+
+// Resolve a topic name to an mdnLink (if available) by looking up the assessment metadata.
+const assessmentStore = useAssessmentStore();
+
+function getTopicLink(topicName: string): string | undefined {
+  try {
+    // Prefer any persisted topicLinks stored with the result. This makes
+    // the results view resilient when the app hasn't loaded assessment
+    // metadata (for example when the user navigates directly to results).
+    if ((props.result as any).topicLinks && (props.result as any).topicLinks[topicName]) {
+      return (props.result as any).topicLinks[topicName];
+    }
+    // Try multiple ways to locate the assessment metadata because saved results sometimes
+    // contain an assessment identifier that doesn't exactly match the metadata `id` field
+    // (some assessments use `metadata.assessmentId`, or the saved value may be a number
+    // while the metadata stores a string). We attempt, in order:
+    // 1) use the store helper that looks in availableAssessments by difficulty/id
+    // 2) check currentAssessment.metadata for either `id` or `assessmentId`
+    // 3) search availableAssessments[difficulty] for a matching id/assessmentId
+    let meta: any = assessmentStore.getAssessmentMetadata(props.result.difficulty, props.result.assessmentId);
+
+    if (!meta && assessmentStore.currentAssessment) {
+      const cm = (assessmentStore.currentAssessment as any).metadata;
+      if (cm && (String(cm.id) === String(props.result.assessmentId) || String(cm.assessmentId) === String(props.result.assessmentId))) {
+        meta = cm;
+      }
+    }
+
+    if (!meta) {
+      try {
+        const list = (assessmentStore as any).availableAssessments?.[props.result.difficulty] || [];
+        const found = list.find((a: any) => String(a.id) === String(props.result.assessmentId) || String(a.assessmentId) === String(props.result.assessmentId));
+        if (found) meta = (found as any).metadata || found;
+      } catch (e) {
+        // If availableAssessments isn't the expected shape, ignore and continue
+      }
+    }
+
+    const topicLinks = (meta && (meta as any).topicLinks) || [];
+    const found = (topicLinks as Array<any>).find((t: any) => t.topicName === topicName);
+    return found?.mdnLink;
+  } catch (e) {
+    // Fail gracefully — return undefined when no link is available
+    return undefined;
+  }
+}
+
+// Compute the href for a topic tag. Prefer an explicit mdnLink from metadata,
+// otherwise fall back to an MDN search for the topic name so the tag is still
+// a useful, clickable link.
+// NOTE: We intentionally do NOT provide a search fallback here. The
+// canonical mdnLink should be provided in the assessment metadata for each
+// topic. If a link is missing, we render a non-interactive <span> so we don't
+// lead users to generic search results unexpectedly.
 </script>
 
 <style scoped lang="scss">
@@ -246,6 +313,32 @@ function getTopicClass(correct: number, total: number): string {
   &.topic-neutral {
     color: #6c757d;
   }
+
+  // If the topic tag is an anchor, keep color but remove underline by default
+  // and show underline on hover/focus for affordance and keyboard users.
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  a:hover,
+  a:focus {
+    text-decoration: underline;
+    outline: none;
+  }
+}
+
+/* Visually-hidden helper for screen readers */
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0 0 0 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
 }
 
 .improvement-topics {

@@ -30,6 +30,12 @@ export interface ResultRecord {
     timeTaken: string;
     improvementTopics: string[];
     topicBreakdown: TopicBreakdown;
+    /**
+     * Optional map of topicName -> mdnLink persisted at save-time.
+     * This makes results self-contained so the Results view can render
+     * topic links even if assessment metadata isn't loaded later.
+     */
+    topicLinks?: { [topicName: string]: string; };
 }
 
 export interface ResultsHistory {

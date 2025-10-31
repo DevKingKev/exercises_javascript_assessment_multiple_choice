@@ -75,6 +75,20 @@ onMounted(() => {
   if (expandParam && ['easy', 'medium', 'hard'].includes(expandParam)) {
     expandedDifficulty.value = expandParam;
   }
+  // Ensure available assessments are loaded so result items can resolve topic mdn links.
+  // This covers the case when the user navigates directly to the results view (no prior Home load).
+  (async () => {
+    try {
+      if (!assessmentStore.assessmentsLoaded) {
+        await assessmentStore.loadAvailableAssessments();
+      }
+    } catch (e) {
+      // Swallow errors — failing to load metadata should not break the results UI.
+      // Developers can inspect console if links are missing.
+      // eslint-disable-next-line no-console
+      console.debug('Could not load available assessments for results view:', e);
+    }
+  })();
 });
 
 function hasResultsForDifficulty(difficulty: string): boolean {

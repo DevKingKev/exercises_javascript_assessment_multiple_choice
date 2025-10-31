@@ -169,7 +169,24 @@ async function submitAssessment() {
     percentage: results.percentage,
     timeTaken,
     improvementTopics: getImprovementTopics(results.topicBreakdown),
-    topicBreakdown: results.topicBreakdown
+    topicBreakdown: results.topicBreakdown,
+    // Persist mdn links for the topics seen in this result so the
+    // Results view can render anchors even if assessment metadata
+    // isn't available when the user later views their history.
+    topicLinks: ((): { [topicName: string]: string } => {
+      const map: { [topicName: string]: string } = {};
+      try {
+        const meta = assessmentStore.currentAssessment!.metadata as any;
+        const tlinks: Array<any> = (meta && meta.topicLinks) || [];
+        Object.keys(results.topicBreakdown).forEach((topicName) => {
+          const found = tlinks.find((t: any) => t.topicName === topicName);
+          if (found && found.mdnLink) map[topicName] = found.mdnLink;
+        });
+      } catch (e) {
+        // ignore and continue — topicLinks will simply be empty
+      }
+      return map;
+    })()
   };
 
   resultsStore.saveResult(resultRecord);
