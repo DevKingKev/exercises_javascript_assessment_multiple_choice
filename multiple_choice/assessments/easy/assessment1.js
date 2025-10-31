@@ -14,7 +14,36 @@ const metadata = {
         "DOM manipulation basics",
         "Event handling fundamentals"
     ],
-    "topicLinks": [],
+    "topicLinks": [
+        {
+            "topicName": "Variable declarations (var, let, const)",
+            "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#Declarations"
+        },
+        {
+            "topicName": "Array and string methods",
+            "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array"
+        },
+        {
+            "topicName": "Function basics and scope",
+            "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions"
+        },
+        {
+            "topicName": "Object properties and creation",
+            "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_Objects"
+        },
+        {
+            "topicName": "Conditional statements and loops",
+            "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Control_flow_and_error_handling"
+        },
+        {
+            "topicName": "DOM manipulation basics",
+            "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction"
+        },
+        {
+            "topicName": "Event handling fundamentals",
+            "mdnLink": "https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events"
+        }
+    ],
     "assessmentId": 1
 };
 

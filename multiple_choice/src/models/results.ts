@@ -24,6 +24,8 @@ export interface ResultRecord {
     difficulty: string;
     assessmentTitle: string;
     date: string;
+    /** Unique id for this saved result (timestamp from Date.now()) */
+    resultRecordId: number;
     correct: number;
     total: number;
     percentage: number;
@@ -36,6 +38,12 @@ export interface ResultRecord {
      * topic links even if assessment metadata isn't loaded later.
      */
     topicLinks?: { [topicName: string]: string; };
+    /**
+     * List of wrong answers to allow reconstructing the assessment result.
+     * Each entry contains the question id (questionNr) and the answer choice made.
+     * If a user left an answer blank, the answer will be saved as an empty string.
+     */
+    wrongAnswers?: { questionNr: number; answer: string; }[];
 }
 
 export interface ResultsHistory {

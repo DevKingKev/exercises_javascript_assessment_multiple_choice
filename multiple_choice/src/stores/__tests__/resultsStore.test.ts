@@ -82,6 +82,7 @@ describe( 'resultsStore', () => {
             const store = useResultsStore();
             const mockResults: ResultRecord[] = [
                 {
+                    resultRecordId: 1,
                     assessmentId: 'test-1',
                     difficulty: 'easy',
                     assessmentTitle: 'Test',
@@ -108,6 +109,7 @@ describe( 'resultsStore', () => {
         it( 'getLatestResult returns most recent result', () => {
             const store = useResultsStore();
             const result1: ResultRecord = {
+                resultRecordId: 10,
                 assessmentId: 'test-1',
                 difficulty: 'easy',
                 assessmentTitle: 'Test',
@@ -120,9 +122,17 @@ describe( 'resultsStore', () => {
                 topicBreakdown: {}
             };
             const result2: ResultRecord = {
-                ...result1,
+                resultRecordId: 11,
+                assessmentId: 'test-1',
+                difficulty: 'easy',
+                assessmentTitle: 'Test',
                 date: '2025-10-30',
-                percentage: 90
+                correct: 7,
+                total: 10,
+                percentage: 90,
+                timeTaken: '5:00',
+                improvementTopics: [],
+                topicBreakdown: {}
             };
 
             store.resultsHistory = {
@@ -148,11 +158,11 @@ describe( 'resultsStore', () => {
             store.resultsHistory = {
                 easy: {
                     'test-1': [
-                        { assessmentId: 'test-1', difficulty: 'easy', assessmentTitle: 'Test', date: '2025-10-30', correct: 8, total: 10, percentage: 80, timeTaken: '5:00', improvementTopics: [], topicBreakdown: {} },
-                        { assessmentId: 'test-1', difficulty: 'easy', assessmentTitle: 'Test', date: '2025-10-31', correct: 9, total: 10, percentage: 90, timeTaken: '5:00', improvementTopics: [], topicBreakdown: {} }
+                        { resultRecordId: 100, assessmentId: 'test-1', difficulty: 'easy', assessmentTitle: 'Test', date: '2025-10-30', correct: 8, total: 10, percentage: 80, timeTaken: '5:00', improvementTopics: [], topicBreakdown: {} },
+                        { resultRecordId: 101, assessmentId: 'test-1', difficulty: 'easy', assessmentTitle: 'Test', date: '2025-10-31', correct: 9, total: 10, percentage: 90, timeTaken: '5:00', improvementTopics: [], topicBreakdown: {} }
                     ],
                     'test-2': [
-                        { assessmentId: 'test-2', difficulty: 'easy', assessmentTitle: 'Test 2', date: '2025-10-30', correct: 7, total: 10, percentage: 70, timeTaken: '5:00', improvementTopics: [], topicBreakdown: {} }
+                        { resultRecordId: 102, assessmentId: 'test-2', difficulty: 'easy', assessmentTitle: 'Test 2', date: '2025-10-30', correct: 7, total: 10, percentage: 70, timeTaken: '5:00', improvementTopics: [], topicBreakdown: {} }
                     ]
                 }
             };
@@ -172,14 +182,18 @@ describe( 'resultsStore', () => {
 
     describe( 'Actions - loadResultsHistory', () => {
         it( 'loads results from localStorage', () => {
+            const dateIso = '2025-10-30T12:00:00.000Z';
+            const ts = Number( Date.parse( dateIso ) );
+
             const mockData = {
                 easy: {
                     'test-1': [
                         {
+                            resultRecordId: ts,
                             assessmentId: 'test-1',
                             difficulty: 'easy',
                             assessmentTitle: 'Test',
-                            date: '2025-10-30',
+                            date: dateIso,
                             correct: 8,
                             total: 10,
                             percentage: 80,
@@ -244,12 +258,138 @@ describe( 'resultsStore', () => {
 
             expect( store.resultsHistory ).toEqual( {} );
         } );
+
+        it( 'adds resultRecordId for records missing it (from date)', () => {
+            const dateIso = '2025-10-30T12:34:56.127Z';
+            const ts = Number( Date.parse( dateIso ) );
+
+            const mockData: any = {
+                easy: {
+                    'test-1': [
+                        {
+                            assessmentId: 'test-1',
+                            difficulty: 'easy',
+                            assessmentTitle: 'Test',
+                            date: dateIso,
+                            correct: 8,
+                            total: 10,
+                            percentage: 80,
+                            timeTaken: '5:00',
+                            improvementTopics: [],
+                            topicBreakdown: {}
+                        }
+                    ]
+                }
+            };
+
+            localStorage.setItem( 'assessmentResults', JSON.stringify( mockData ) );
+
+            const store = useResultsStore();
+            store.loadResultsHistory();
+
+            const rec = store.resultsHistory.easy['test-1'][0] as any;
+            expect( typeof rec.resultRecordId ).toBe( 'number' );
+            // Should match parse of ISO date
+            expect( rec.resultRecordId ).toBe( ts );
+        } );
+
+        it( 'avoids duplicate resultRecordId values when dates collide', () => {
+            // Two records with identical date -> same timestamp initially
+            const dateIso = '2025-10-30T12:34:56.127Z';
+            const ts = Number( Date.parse( dateIso ) );
+
+            const mockData: any = {
+                easy: {
+                    'test-1': [
+                        {
+                            assessmentId: 'test-1',
+                            difficulty: 'easy',
+                            assessmentTitle: 'Test',
+                            date: dateIso,
+                            correct: 7,
+                            total: 10,
+                            percentage: 70,
+                            timeTaken: '5:00',
+                            improvementTopics: [],
+                            topicBreakdown: {}
+                        },
+                        {
+                            assessmentId: 'test-1',
+                            difficulty: 'easy',
+                            assessmentTitle: 'Test',
+                            date: dateIso,
+                            correct: 9,
+                            total: 10,
+                            percentage: 90,
+                            timeTaken: '4:50',
+                            improvementTopics: [],
+                            topicBreakdown: {}
+                        }
+                    ]
+                }
+            };
+
+            localStorage.setItem( 'assessmentResults', JSON.stringify( mockData ) );
+
+            const store = useResultsStore();
+            store.loadResultsHistory();
+
+            const recs = store.resultsHistory.easy['test-1'] as any[];
+            expect( recs.length ).toBe( 2 );
+
+            const id0 = recs[0].resultRecordId;
+            const id1 = recs[1].resultRecordId;
+
+            expect( typeof id0 ).toBe( 'number' );
+            expect( typeof id1 ).toBe( 'number' );
+            // Both should be numbers; original timestamp should be used for at least one
+            expect( id0 === ts || id1 === ts ).toBeTruthy();
+            // They must not be equal (duplicates avoided)
+            expect( id0 ).not.toBe( id1 );
+        } );
+
+        it( 'persists migrated resultRecordId values into localStorage', () => {
+            const dateIso = '2025-10-30T12:34:56.127Z';
+
+            const mockData: any = {
+                easy: {
+                    'test-1': [
+                        {
+                            assessmentId: 'test-1',
+                            difficulty: 'easy',
+                            assessmentTitle: 'Test',
+                            date: dateIso,
+                            correct: 8,
+                            total: 10,
+                            percentage: 80,
+                            timeTaken: '5:00',
+                            improvementTopics: [],
+                            topicBreakdown: {}
+                        }
+                    ]
+                }
+            };
+
+            localStorage.setItem( 'assessmentResults', JSON.stringify( mockData ) );
+
+            const store = useResultsStore();
+            store.loadResultsHistory();
+
+            const persistedRaw = localStorage.getItem( 'assessmentResults' );
+            expect( persistedRaw ).not.toBeNull();
+
+            const parsed = JSON.parse( persistedRaw as string );
+            const rec = parsed.easy['test-1'][0];
+            expect( rec ).toBeTruthy();
+            expect( typeof rec.resultRecordId ).toBe( 'number' );
+        } );
     } );
 
     describe( 'Actions - saveResult', () => {
         it( 'saves result to history and localStorage', () => {
             const store = useResultsStore();
             const result: ResultRecord = {
+                resultRecordId: 200,
                 assessmentId: 'test-1',
                 difficulty: 'easy',
                 assessmentTitle: 'Test Assessment',
@@ -277,6 +417,7 @@ describe( 'resultsStore', () => {
         it( 'appends to existing results', () => {
             const store = useResultsStore();
             const result1: ResultRecord = {
+                resultRecordId: 300,
                 assessmentId: 'test-1',
                 difficulty: 'easy',
                 assessmentTitle: 'Test',
@@ -346,6 +487,7 @@ describe( 'resultsStore', () => {
                 easy: {
                     'test-1': [
                         {
+                            resultRecordId: 400,
                             assessmentId: 'test-1',
                             difficulty: 'easy',
                             assessmentTitle: 'Test',

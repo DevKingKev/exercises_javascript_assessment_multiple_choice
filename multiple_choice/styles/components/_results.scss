@@ -180,6 +180,8 @@
 
     .review-answer.correct { background: rgba(34,197,94,0.08) !important; color: var(--success-dark, #166534) !important; }
     .review-answer.incorrect { background: rgba(239,68,68,0.08) !important; color: var(--danger, #e74c3c) !important; }
+    /* Ensure the user's answer uses a visible, low-contrast background in dark mode */
+    .review-answer.user { background: rgba(255,255,255,0.03) !important; color: var(--text-secondary, #cbd5e0) !important; }
 
     .review-explanation { background: var(--bg-secondary, #252b3b) !important; color: var(--text-secondary, #cbd5e0) !important; }
 }

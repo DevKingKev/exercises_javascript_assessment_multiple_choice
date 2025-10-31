@@ -29,21 +29,12 @@
         @jump-to="assessmentStore.jumpToQuestion"
       />
 
-      <div class="question-container" v-if="assessmentStore.currentQuestion">
-        <h3 class="question-text" v-html="formatQuestion(assessmentStore.currentQuestion.question)"></h3>
-        <div class="options-container">
-          <div
-            v-for="(text, letter) in assessmentStore.currentQuestion.options"
-            :key="letter"
-            class="option"
-            :class="{ selected: assessmentStore.userAnswers[assessmentStore.currentQuestionIndex] === letter }"
-            @click="assessmentStore.selectAnswer(letter)"
-          >
-            <div class="option-letter">{{ letter }}</div>
-            <div class="option-text">{{ text }}</div>
-          </div>
-        </div>
-      </div>
+      <Question
+        v-if="assessmentStore.currentQuestion"
+        :question="assessmentStore.currentQuestion"
+        :answer="assessmentStore.userAnswers[assessmentStore.currentQuestionIndex]"
+        @select="assessmentStore.selectAnswer"
+      />
 
       <div class="navigation-buttons">
         <button
@@ -79,7 +70,7 @@ import { useAssessmentStore } from '@/stores/assessmentStore';
 import { useResultsStore } from '@/stores/resultsStore';
 import { useUiStore } from '@/stores/uiStore';
 import { useTimer } from '@/composables/useTimer';
-import { formatTextWithCode } from '@/utils/formatUtils';
+import Question from '@/components/Question.vue';
 import { formatTimeTaken, getImprovementTopics } from '@/utils/resultsUtils';
 import { formatAssessmentLabel } from '@/utils/assessmentUtils';
 import ProgressBar from '@/components/ProgressBar.vue';
@@ -102,9 +93,8 @@ const displayHeader = computed(() => {
   return formatAssessmentLabel(meta.id, meta.title);
 });
 
-function formatQuestion(text: string): string {
-  return formatTextWithCode(text);
-}
+// Question formatting is handled by the extracted `Question` component.
+// Kept here only as a placeholder in case other logic is added later.
 
 async function handleTimeUp() {
   await uiStore.showAlert('Time Up', 'Time is up! Your assessment will be submitted.');
@@ -163,6 +153,8 @@ async function submitAssessment() {
     assessmentId: assessmentStore.currentAssessment!.metadata.id || 'test1',
     difficulty: assessmentStore.currentDifficulty,
     assessmentTitle: assessmentStore.currentAssessment!.metadata.title,
+    // Unique id for this saved result so it can be referenced/ restored later
+    resultRecordId: Date.now(),
     date: new Date().toISOString(),
     correct: results.correct,
     total: results.total,
@@ -187,6 +179,25 @@ async function submitAssessment() {
       }
       return map;
     })()
+      ,
+      // Store wrong answers so the assessment-result view can reconstruct the
+      // user's session. We save only the questions answered incorrectly and
+      // the answer they provided (empty string if unanswered).
+      wrongAnswers: ((): { questionNr: number; answer: string }[] => {
+        try {
+          const out: { questionNr: number; answer: string }[] = [];
+          const questions = assessmentStore.currentAssessment!.questions || [];
+          questions.forEach((q: any, idx: number) => {
+            const userAnswer = assessmentStore.userAnswers[idx];
+            if (userAnswer !== q.correct) {
+              out.push({ questionNr: Number(q.id), answer: userAnswer == null ? '' : String(userAnswer) });
+            }
+          });
+          return out;
+        } catch (e) {
+          return [];
+        }
+      })()
   };
 
   resultsStore.saveResult(resultRecord);
@@ -360,82 +371,7 @@ onUnmounted(() => {
     box-shadow: var(--shadow-md);
   }
 }
-
-.question-container {
-  margin: 30px 0;
-  padding: 30px;
-  background: var(--card-bg);
-  border-radius: 12px;
-  box-shadow: var(--shadow-md);
-  border: 1px solid var(--card-border);
-}
-
-.question-text {
-  font-size: 1.3rem;
-  line-height: 1.6;
-  color: var(--text-primary);
-  margin-bottom: 24px;
-}
-
-.options-container {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.option {
-  background: var(--bg-secondary);
-  border: 2px solid var(--border-base);
-  color: var(--text-primary);
-  transition: background 0.2s, border-color 0.2s, color 0.2s;
-}
-
-.option:hover,
-.option.selected {
-  background: var(--bg-hover);
-  border-color: #3498db;
-  color: var(--text-primary);
-}
-
-.option {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding: 16px;
-  border: 2px solid var(--border-base);
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  background: var(--bg-secondary);
-  color: var(--text-primary);
-  &:hover {
-    border-color: #3498db;
-    background: var(--bg-hover);
-  }
-  &.selected {
-    border-color: #3498db;
-    background: var(--bg-hover);
-  }
-}
-
-.option-letter {
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--bg-tertiary);
-  border-radius: 8px;
-  font-weight: 700;
-  font-size: 1.1rem;
-  color: var(--text-primary);
-}
-
-.option-text {
-  flex: 1;
-  font-size: 1.05rem;
-  color: var(--text-secondary);
-}
+ 
 
 .navigation-buttons {
   display: flex;
@@ -491,23 +427,6 @@ onUnmounted(() => {
   }
 }
 
-  // Dark mode overrides for options
-:root[data-theme="dark"] .option {
-  background: var(--bg-tertiary) !important;
-  border-color: var(--border-medium) !important;
-  color: var(--text-primary) !important;
-}
-
-:root[data-theme="dark"] .option:hover,
-:root[data-theme="dark"] .option.selected {
-  background: var(--bg-hover) !important;
-  border-color: #3498db !important;
-  color: var(--text-primary) !important;
-}
-
-:root[data-theme="dark"] .options-container {
-  background: transparent !important;
-}
 // Dark mode override for .progress-info
 :root[data-theme="dark"] .progress-info {
   background: var(--bg-secondary) !important;

@@ -14,7 +14,10 @@
               out of
               <span class="highlight">{{ resultsStore.currentResults.total }}</span>
             </p>
-            <p class="time-taken">Time taken: {{ resultsStore.currentResults.timeTaken }}</p>
+            <p class="time-taken">
+              Time taken: {{ resultsStore.currentResults.timeTaken }}
+              <span v-if="savedResultDate">&nbsp;•&nbsp;Taken: {{ formatDate(savedResultDate) }}</span>
+            </p>
           </div>
         </div>
       </div>
@@ -73,17 +76,20 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted } from 'vue';
-import { useRouter } from 'vue-router';
+import { onMounted, ref } from 'vue';
+import { useRouter, useRoute } from 'vue-router';
 import { useAssessmentStore } from '@/stores/assessmentStore';
 import { useResultsStore } from '@/stores/resultsStore';
 import { formatTextWithCode } from '@/utils/formatUtils';
+import { formatDate } from '@/utils/dateUtils';
 import { getScoreBadgeClass } from '@/utils/resultsUtils';
 import type { QuestionReview } from '@/models';
 
 const router = useRouter();
+const route = useRoute();
 const assessmentStore = useAssessmentStore();
 const resultsStore = useResultsStore();
+const savedResultDate = ref<string | null>( null );
 
 function formatQuestion(text: string): string {
   return formatTextWithCode(text);
@@ -120,10 +126,91 @@ function newAssessment() {
 }
 
 onMounted(() => {
-  // If no results, redirect to home
-  if (!resultsStore.currentResults) {
-    router.push({ name: 'home' });
+  // If a resultRecordId is present in the URL, try to find the saved
+  // ResultRecord in localStorage so we can show the saved date and (when
+  // necessary) reconstruct the currentResults from persisted data.
+  const idParam = (route.query.resultRecordId || (route.params as any).resultRecordId) as string | undefined;
+
+  async function findAndRestore(idStr?: string) {
+    if (!idStr) return;
+    const id = Number(idStr);
+    if (Number.isNaN(id)) return;
+
+    // Search resultsHistory for the matching record
+    const history = resultsStore.resultsHistory || {};
+    let found: { rec: any; difficulty: string; assessmentId: string } | null = null;
+
+    for (const difficulty of Object.keys(history)) {
+      const assessmentsMap = history[difficulty] || {};
+      for (const aid of Object.keys(assessmentsMap)) {
+        const arr = assessmentsMap[aid] || [];
+        for (const rec of arr) {
+          if (rec && rec.resultRecordId === id) {
+            found = { rec, difficulty, assessmentId: aid };
+            break;
+          }
+        }
+        if (found) break;
+      }
+      if (found) break;
+    }
+
+    if (!found) return;
+
+    // Expose saved date for display
+    savedResultDate.value = found.rec.date || null;
+
+    // If we already have transient currentResults (recent submission), keep it.
+    // Otherwise, attempt to reconstruct using the saved wrongAnswers and the
+    // original assessment questions (load assessment if necessary).
+    if (!resultsStore.currentResults) {
+      try {
+        // Ensure assessment is loaded so we can access questions
+        await assessmentStore.loadAssessment(found.difficulty, found.rec.assessmentId);
+      } catch (e) {
+        // Non-fatal: if we can't load assessment, we cannot reconstruct.
+        console.debug('Could not load assessment for reconstruction', e);
+      }
+
+      const assessment = assessmentStore.currentAssessment;
+      if (assessment && Array.isArray(assessment.questions)) {
+        const wrongs: { questionNr: number; answer: string }[] = found.rec.wrongAnswers || [];
+
+        const questionReview = assessment.questions.map((q: any) => {
+          const wrong = wrongs.find(w => Number(w.questionNr) === Number(q.id));
+          const userAnswer = wrong ? String(wrong.answer) : String(q.correct);
+          const isCorrect = userAnswer === q.correct;
+          return {
+            question: q.question,
+            userAnswer,
+            correctAnswer: q.correct,
+            isCorrect,
+            explanation: q.explanation,
+            options: q.options
+          };
+        });
+
+        const built = {
+          correct: found.rec.correct,
+          total: found.rec.total,
+          percentage: found.rec.percentage,
+          topicBreakdown: found.rec.topicBreakdown || {},
+          questionReview,
+          timeTaken: found.rec.timeTaken
+        };
+
+        resultsStore.setCurrentResults(built);
+      }
+    }
   }
+
+  // Always try to find the saved record if an id was provided in the URL.
+  findAndRestore(idParam).then(() => {
+    // If no transient results and no id provided, redirect home.
+    if (!resultsStore.currentResults && !idParam) {
+      router.push({ name: 'home' });
+    }
+  });
 });
 </script>
 

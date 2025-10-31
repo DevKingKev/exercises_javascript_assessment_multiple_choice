@@ -148,9 +148,29 @@ export const useAssessmentStore = defineStore( 'assessment', () => {
 
     function getAssessmentMetadata ( difficulty: string, assessmentId: string ): ( AssessmentMetadata & { id: string; } ) | null {
         const assessments = availableAssessments.value[difficulty];
-        if ( assessments ) {
-            return assessments.find( ( assessment: AssessmentMetadata & { id: string; } ) => assessment.id === assessmentId ) || null;
+        if ( !assessments || !Array.isArray( assessments ) ) return null;
+
+        const target = String( assessmentId );
+
+        for ( const item of assessments ) {
+            // item may be either the metadata object itself or a wrapper that contains `metadata`.
+            const candidateMeta: any = ( item && ( item as any ).metadata ) ? ( item as any ).metadata : item;
+
+            if ( !candidateMeta ) continue;
+
+            // Try a few possible id fields that might appear in different assessment sources
+            const candidates = [candidateMeta.id, candidateMeta.assessmentId, ( item as any ).id, ( item as any ).assessmentId];
+
+            for ( const c of candidates ) {
+                if ( c !== undefined && c !== null && String( c ) === target ) {
+                    // Ensure returned metadata has an `id` property (some sources only provide assessmentId)
+                    const out: any = Object.assign( {}, candidateMeta );
+                    out.id = out.id || ( item as any ).id || String( target );
+                    return out as AssessmentMetadata & { id: string; };
+                }
+            }
         }
+
         return null;
     }
 

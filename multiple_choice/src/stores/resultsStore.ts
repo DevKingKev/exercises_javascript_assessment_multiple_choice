@@ -101,7 +101,146 @@ export const useResultsStore = defineStore( 'results', () => {
 
             resultsHistory.value = migrated;
 
-            // Save migrated data back to localStorage
+            // Populate missing resultRecordId for legacy records. Some older
+            // saved ResultRecord entries were persisted before we added the
+            // `resultRecordId` field. Construct one from the record's `date`
+            // when present (use the timestamp). This makes URL-based lookup
+            // possible for older records. Persist only when we make changes.
+            try {
+                let updated = false;
+
+                // Collect existing ids so we avoid duplicates when assigning
+                const existingIds = new Set<number>();
+                for ( const difficulty in resultsHistory.value ) {
+                    for ( const aid in resultsHistory.value[difficulty] ) {
+                        const list = resultsHistory.value[difficulty][aid];
+                        for ( const rec of list ) {
+                            if ( rec && ( rec.resultRecordId !== undefined && rec.resultRecordId !== null ) ) {
+                                const n = Number( rec.resultRecordId );
+                                if ( !Number.isNaN( n ) ) existingIds.add( n );
+                            }
+                        }
+                    }
+                }
+
+                for ( const difficulty in resultsHistory.value ) {
+                    for ( const aid in resultsHistory.value[difficulty] ) {
+                        const list = resultsHistory.value[difficulty][aid];
+                        for ( const rec of list ) {
+                            if ( rec && ( rec.resultRecordId === undefined || rec.resultRecordId === null ) ) {
+                                // Try to derive id from date
+                                let idFromDate: number | null = null;
+                                if ( rec.date ) {
+                                    const parsedTs = Number( Date.parse( rec.date ) );
+                                    if ( !Number.isNaN( parsedTs ) ) idFromDate = parsedTs;
+                                }
+
+                                // Fallback to Date.now() if date missing/invalid
+                                if ( idFromDate === null ) {
+                                    idFromDate = Date.now();
+                                }
+
+                                // Ensure uniqueness: increment until we find a free id
+                                let candidate = Number( idFromDate );
+                                while ( existingIds.has( candidate ) ) {
+                                    candidate += 1; // small increment to avoid collision
+                                }
+
+                                rec.resultRecordId = candidate;
+                                existingIds.add( candidate );
+                                updated = true;
+                            }
+                        }
+                    }
+                }
+
+                if ( updated ) {
+                    try {
+                        localStorage.setItem( 'assessmentResults', JSON.stringify( resultsHistory.value ) );
+                    } catch ( e ) {
+                        console.warn( 'Failed to persist migrated resultRecordId values:', e );
+                    }
+                }
+            } catch ( e ) {
+                console.debug( 'resultRecordId migration skipped due to error:', e );
+            }
+
+            // Try to populate missing topicLinks for older results so the
+            // Results view can render MDN anchors even if those records were
+            // saved before we persisted topicLinks at save time.
+            // Do this in a best-effort, non-blocking way: attempt to resolve
+            // using any already-loaded assessment metadata; if assessments
+            // aren't loaded yet, load them in the background and retry.
+            ( async () => {
+                try {
+                    // Import assessment store lazily to avoid startup coupling
+                    const { useAssessmentStore } = await import( '@/stores/assessmentStore' );
+                    const assessmentStore = useAssessmentStore();
+
+                    function buildMapFromMeta ( meta: any ): { [k: string]: string; } {
+                        const m: { [k: string]: string; } = {};
+                        if ( !meta ) return m;
+                        const tlinks: Array<any> = ( meta && meta.topicLinks ) || [];
+                        if ( Array.isArray( tlinks ) ) {
+                            for ( const t of tlinks ) {
+                                if ( t && t.topicName && t.mdnLink ) m[String( t.topicName )] = t.mdnLink;
+                            }
+                        }
+                        return m;
+                    }
+
+                    async function populateOnce () {
+                        let changed = false;
+                        for ( const difficulty in resultsHistory.value ) {
+                            for ( const aid in resultsHistory.value[difficulty] ) {
+                                const list = resultsHistory.value[difficulty][aid];
+                                // Try to get metadata for this assessment
+                                const meta = assessmentStore.getAssessmentMetadata ? assessmentStore.getAssessmentMetadata( difficulty, aid ) : null;
+                                const topicMap = buildMapFromMeta( meta );
+
+                                for ( const rec of list ) {
+                                    if ( rec && !rec.topicLinks ) {
+                                        // If we have a non-empty map, attach it.
+                                        if ( Object.keys( topicMap ).length > 0 ) {
+                                            rec.topicLinks = Object.assign( {}, topicMap );
+                                            changed = true;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        if ( changed ) {
+                            try {
+                                localStorage.setItem( 'assessmentResults', JSON.stringify( resultsHistory.value ) );
+                            } catch ( e ) {
+                                console.warn( 'Failed to persist migrated topicLinks:', e );
+                            }
+                        }
+                    }
+
+                    // First try immediately (may succeed if assessments were loaded earlier)
+                    await populateOnce();
+
+                    // If assessments not loaded, load them once in background and retry
+                    if ( !assessmentStore.assessmentsLoaded ) {
+                        try {
+                            await assessmentStore.loadAvailableAssessments();
+                            await populateOnce();
+                        } catch ( e ) {
+                            // Non-fatal: leave results as-is. We'll still render using
+                            // persisted topicLinks when present or fall back to runtime lookup.
+                            console.debug( 'Background load of assessments failed (topicLinks migration skipped):', e );
+                        }
+                    }
+                } catch ( e ) {
+                    // If anything goes wrong, don't block startup — the app will
+                    // still render results (persisted links take precedence).
+                    console.debug( 'TopicLinks migration skipped due to error:', e );
+                }
+            } )();
+
+            // Save migrated data back to localStorage (initial, may be updated later by background pass)
             localStorage.setItem( 'assessmentResults', JSON.stringify( migrated ) );
         } catch ( error ) {
             console.error( 'Error loading results history:', error );
