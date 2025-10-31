@@ -305,7 +305,7 @@ const improvementTopicBreakdown = computed(() => {
   border-bottom: 1px solid #334155 !important;
 }
 
-:global(:root[data-theme="dark"]) {
+:root[data-theme="dark"] {
   .assessment-result-item {
     background: #1e293b;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
@@ -313,7 +313,13 @@ const improvementTopicBreakdown = computed(() => {
   /* Remove .assessment-result-item-header hover here, now handled above */
   
   .assessment-result-item.expanded .assessment-result-item-header {
-    border-bottom-color: #334155;
+    border-bottom: 1px solid #334155;
+  }
+
+  /* Ensure the header's bottom border in dark mode matches the improvement-topics
+     top border so separators look consistent between sections. */
+  .assessment-result-item-header {
+    border-bottom: none;
   }
   
   .expand-icon {
