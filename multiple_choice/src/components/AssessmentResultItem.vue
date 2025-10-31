@@ -167,11 +167,11 @@ const improvementTopicBreakdown = computed(() => {
 
 function viewAssessment() {
   try {
-    // Navigate to the assessment-result view and supply the saved resultRecordId
-    // so the ResultsView will locate and restore this saved attempt.
+    // Navigate to the assessment-result route using a path param so the URL
+    // becomes /assessment-result/<id> and ResultsView can read it from params.
     router.push({
       name: 'assessment-result',
-      query: { resultRecordId: String(props.result.resultRecordId) }
+      params: { resultRecordId: String(props.result.resultRecordId) }
     });
   } catch (e) {
     console.debug('Navigation to assessment failed', e);

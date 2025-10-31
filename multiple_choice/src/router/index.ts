@@ -28,9 +28,10 @@ const routes: RouteRecordRaw[] = [
         }
     },
     {
-        path: '/assessment-result',
+        path: '/assessment-result/:resultRecordId',
         name: 'assessment-result',
         component: () => import( '@/views/ResultsView.vue' ),
+        props: true,
         meta: {
             title: 'Assessment Results'
         }

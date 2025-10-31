@@ -125,10 +125,10 @@ function newAssessment() {
   router.push({ name: 'home' });
 }
 
-// Search and restore a saved result record by id string. This is declared
-// at top-level so we can call it from onMounted and also watch for route
-// changes (when user navigates to a different resultRecordId without a full
-// route remount).
+// Search and restore a saved result record by id string. Declared at
+// top-level so we can call it from onMounted and also watch for route
+// param changes (when user navigates to a different resultRecordId without
+// a full component remount).
 const findAndRestore = async (idStr?: string) => {
   if (!idStr) return;
   const id = Number(idStr);
@@ -211,7 +211,8 @@ const findAndRestore = async (idStr?: string) => {
 };
 
 onMounted(() => {
-  const idParam = (route.query.resultRecordId || (route.params as any).resultRecordId) as string | undefined;
+  // Prefer params for the resultRecordId; router now uses a path param.
+  const idParam = (route.params as any).resultRecordId as string | undefined;
   findAndRestore(idParam).then(() => {
     if (!resultsStore.currentResults && !idParam) {
       router.push({ name: 'home' });
@@ -219,10 +220,10 @@ onMounted(() => {
   });
 });
 
-// Watch for route changes so navigating to another `resultRecordId` reloads
-// the appropriate saved result without requiring a full component remount.
+// Watch route params so navigating to another `resultRecordId` updates the view
+// without a full remount.
 watch(
-  () => (route.query.resultRecordId || (route.params as any).resultRecordId) as string | undefined,
+  () => (route.params as any).resultRecordId as string | undefined,
   (newVal, oldVal) => {
     if (newVal && newVal !== oldVal) {
       findAndRestore(newVal);
