@@ -64,6 +64,15 @@ function resolvedGetTopicClass(correct: number, total: number) {
 /* Topic tag presentation moved here so this component is self-contained.
    Styles are scoped to avoid leaking into other parts of the app. */
 
+   a.topic-tag{
+    text-decoration: none;
+
+     &:hover,
+  &:focus {
+    text-decoration: underline;
+    outline: none;
+  }
+   }
 .topic-tag {
   font-weight: 500;
   margin-right: 6px;
@@ -74,17 +83,8 @@ function resolvedGetTopicClass(correct: number, total: number) {
   &.topic-poor    { color: #fd7e14; }
   &.topic-fail    { color: #dc3545; }
   &.topic-neutral { color: #6c757d; }
-
-  a {
-    text-decoration: none;
-    color: inherit;
-  }
-
-  a:hover,
-  a:focus {
-    text-decoration: underline;
-    outline: none;
-  }
+ 
+ 
 }
 
 /* Utility used for screen-reader only text (used by template) */

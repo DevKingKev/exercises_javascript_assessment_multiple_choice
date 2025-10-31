@@ -265,7 +265,6 @@ const improvementTopicBreakdown = computed(() => {
 .detail-item {
   display: flex;
   gap: 8px;
-  font-size: 0.9rem;
 }
 
 .detail-label {
