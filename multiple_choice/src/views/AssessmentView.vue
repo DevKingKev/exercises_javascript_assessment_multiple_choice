@@ -235,8 +235,11 @@ function calculateResults() {
     if (isCorrect) correct++;
 
     // Track topic performance
-    const topics = assessment.metadata.topics || ['General'];
-    const questionTopic = topics[index % topics.length] || 'General';
+    const topics = assessment.metadata && assessment.metadata.topics ? assessment.metadata.topics : ['General'];
+    // Prefer an explicit per-question topic when present on the question object
+    const questionTopic = ((question as any).topic && (Array.isArray((question as any).topic.topics) ? (question as any).topic.topics[0] : (question as any).topic)) || topics[index % topics.length] || 'General';
+
+    // (no debug logging) — prefer explicit per-question topic when available
 
     if (!topicScores[questionTopic]) {
       topicScores[questionTopic] = { correct: 0, total: 0 };

@@ -432,6 +432,8 @@ body {
 }
 
 .difficulty-badge {
+  padding: 10px;
+  
   &.badge-easy {
     background: var(--bg-tertiary) !important;
     color: #34d399 !important;

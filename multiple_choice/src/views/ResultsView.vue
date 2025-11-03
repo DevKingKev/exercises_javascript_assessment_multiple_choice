@@ -5,6 +5,9 @@
     <div class="screen active">
       <div class="results-header">
         <h1>Assessment Results</h1>
+          <div class="results-header-left">
+            <span class="difficulty-badge" :class="`badge-${difficultyRaw}`">{{ displayDifficulty }}</span>
+          </div>
           <h2 class="assessment-name">{{ assessmentLabel }}</h2>
         <div class="score-display">
           <div class="score-circle" :class="getScoreBadgeClass(resultsStore.currentResults.percentage)">
@@ -118,6 +121,12 @@ const assessmentLabel = computed(() => {
   const id = savedResultRecord.value?.assessmentId ?? (assessmentStore.currentAssessment as any)?.metadata?.id ?? null;
   const title = savedResultRecord.value?.assessmentTitle ?? (assessmentStore.currentAssessment as any)?.metadata?.title ?? null;
   return formatAssessmentLabel(id, title);
+});
+
+const difficultyRaw = computed(() => (savedResultRecord.value && savedResultRecord.value.difficulty) || assessmentStore.currentDifficulty || 'easy');
+const displayDifficulty = computed(() => {
+  const d = String(difficultyRaw.value || 'easy');
+  return d.charAt(0).toUpperCase() + d.slice(1);
 });
 
 function formatQuestion(text: string): string {
@@ -263,15 +272,24 @@ const findAndRestore = async (idStr?: string) => {
   if (assessment && Array.isArray(assessment.questions)) {
     const wrongs: { questionNr: number; answer: string }[] = found.rec.wrongAnswers || [];
 
-    const questionReview = assessment.questions.map((q: any) => {
+    // Use the question index (zero-based) when mapping topics so the
+    // reconstruction matches the calculation performed in
+    // AssessmentView.calculateResults (which used index % topics.length).
+
+    const questionReview = assessment.questions.map((q: any, idx: number) => {
       const wrong = wrongs.find(w => Number(w.questionNr) === Number(q.id));
       const userAnswer = wrong ? String(wrong.answer) : String(q.correct);
       const isCorrect = userAnswer === q.correct;
-      // Determine the topic for this question using the same logic as
-      // AssessmentView.calculateResults so topic assignment matches saved
-      // result behaviour. Fall back to 'General' when metadata is missing.
+      // Determine the topic for this question: prefer an explicit per-question
+      // topic when present on the question object (some assessments provide
+      // question.topic.topics), otherwise fall back to rotating the
+      // assessment metadata topics (index % topics.length).
       const topics = (assessment.metadata && assessment.metadata.topics) || ['General'];
-      const questionTopic = topics.length > 0 ? topics[Number(q.id) % topics.length] || topics[0] : 'General';
+      const perQuestion = (q && (q.topic && (Array.isArray(q.topic.topics) ? q.topic.topics[0] : q.topic)));
+      const questionTopic = perQuestion || (topics.length > 0 ? topics[idx % topics.length] || topics[0] : 'General');
+
+      // (no debug logging)
+
       return {
         question: q.question,
         userAnswer,
@@ -354,6 +372,7 @@ watch(
     font-size: 1.75rem;
     font-weight: 600;
     color: #2c3e50;
+    margin-top: $spacing-lg;
     margin-bottom: 4px;
   }
 }
