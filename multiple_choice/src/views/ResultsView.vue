@@ -413,13 +413,14 @@ watch(
 .performance-breakdown {
   margin: 40px 0;
   padding: 24px;
-  background: #f8f9fa;
+  /* use theme variables so this surface respects light/dark themes */
+  background: var(--bg-secondary);
   border-radius: 12px;
 
   h3 {
     font-size: 1.5rem;
     margin-bottom: 20px;
-    color: #2c3e50;
+    color: var(--text-primary);
   }
 }
 
@@ -436,6 +437,11 @@ watch(
   padding: 12px 16px;
   background: white;
   border-radius: 8px;
+}
+
+/* Dark-mode override: slightly translucent surface for topic items */
+:root[data-theme="dark"] .topic-item {
+  background: rgba(255, 255, 255, 0.03) !important;
 }
 
 .topic-name {
