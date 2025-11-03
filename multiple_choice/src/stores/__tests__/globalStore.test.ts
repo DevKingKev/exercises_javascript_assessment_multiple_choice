@@ -31,7 +31,7 @@ describe( 'globalStore initLanguage resolution', () => {
 
         const mod = await import( '../globalStore' );
         const store = mod.useGlobalStore();
-            await store.initLanguage();
+        await store.initLanguage();
 
         expect( store.language ).toBeDefined();
         expect( store.languageNormalized ).toBe( 'ruby' );
@@ -42,12 +42,12 @@ describe( 'globalStore initLanguage resolution', () => {
         delete process.env.VITE_DEFAULT_LANGUAGE;
         process.env.VITE_DEFAULT_LANGUAGE = 'python';
 
-    // hostname should not provide a subdomain so env can be chosen
-    Object.defineProperty( window, 'location', { value: { hostname: 'localhost' }, configurable: true } );
+        // hostname should not provide a subdomain so env can be chosen
+        Object.defineProperty( window, 'location', { value: { hostname: 'localhost' }, configurable: true } );
 
         const mod = await import( '../globalStore' );
         const store = mod.useGlobalStore();
-            await store.initLanguage();
+        await store.initLanguage();
 
         expect( store.languageNormalized ).toBe( 'python' );
     } );
@@ -62,7 +62,7 @@ describe( 'globalStore initLanguage resolution', () => {
 
         const mod = await import( '../globalStore' );
         const store = mod.useGlobalStore();
-            await store.initLanguage();
+        await store.initLanguage();
 
         expect( store.languageNormalized ).toBe( 'php' );
     } );
@@ -76,7 +76,7 @@ describe( 'globalStore initLanguage resolution', () => {
 
         const mod = await import( '../globalStore' );
         const store = mod.useGlobalStore();
-            await store.initLanguage();
+        await store.initLanguage();
 
         expect( store.languageNormalized ).toBe( 'javascript' );
     } );

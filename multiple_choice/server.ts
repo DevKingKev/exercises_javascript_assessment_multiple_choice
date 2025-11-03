@@ -65,11 +65,23 @@ app.get( '/api/assessments', ( req: Request, res: Response ) => {
             return res.status( 404 ).json( { error: 'Assessments directory not found' } );
         }
 
-        const difficulties = fs.readdirSync( assessmentsDir );
-        console.log( '📋 Found difficulties:', difficulties );
+        // Require a language query param in the new layout: /assessments?language=javascript
+        const lang = ( req.query.language || '' ).toString().trim();
+        if ( !lang ) {
+            return res.status( 400 ).json( { error: 'language query parameter is required' } );
+        }
+
+        const langDir = path.join( assessmentsDir, lang );
+        if ( !fs.existsSync( langDir ) ) {
+            console.error( `❌ Language directory not found for '${lang}':`, langDir );
+            return res.status( 404 ).json( { error: 'Language not found' } );
+        }
+
+        const difficulties = fs.readdirSync( langDir );
+        console.log( '📋 Found difficulties for', lang, ':', difficulties );
 
         for ( const difficulty of difficulties ) {
-            const difficultyPath = path.join( assessmentsDir, difficulty );
+            const difficultyPath = path.join( langDir, difficulty );
 
             if ( fs.statSync( difficultyPath ).isDirectory() ) {
                 console.log( `📂 Processing difficulty: ${difficulty}` );
@@ -105,7 +117,7 @@ app.get( '/api/assessments', ( req: Request, res: Response ) => {
             }
         }
 
-        console.log( '📊 Final assessment structure:', JSON.stringify( assessmentStructure, null, 2 ) );
+        console.log( '📊 Final assessment structure for', lang, ':', JSON.stringify( assessmentStructure, null, 2 ) );
         res.json( assessmentStructure );
     } catch ( error ) {
         console.error( '💥 Error in /api/assessments:', error );
@@ -114,16 +126,108 @@ app.get( '/api/assessments', ( req: Request, res: Response ) => {
     return;
 } );
 
-// API endpoint to get specific assessment questions
-app.get( '/api/assessment/:difficulty/:assessmentId', ( req: Request, res: Response ) => {
-    const { difficulty, assessmentId } = req.params;
-    const assessmentPath = path.resolve( projectRoot, 'assessments', difficulty, `${assessmentId}.js` );
+// Backwards/alternate route that accepts language as a path segment: /api/assessments/:language
+app.get( '/api/assessments/:language', ( req: Request, res: Response ) => {
+    console.log( '🔍 API /assessments/:language endpoint called' );
 
-    console.log( `🎯 Loading specific assessment: ${difficulty}/${assessmentId}` );
+    const assessmentsDir = path.resolve( projectRoot, 'assessments' );
+    console.log( '📁 Looking for assessments in:', assessmentsDir );
+
+    const assessmentStructure: AssessmentStructure = {};
+
+    try {
+        if ( !fs.existsSync( assessmentsDir ) ) {
+            console.error( '❌ Assessments directory not found:', assessmentsDir );
+            return res.status( 404 ).json( { error: 'Assessments directory not found' } );
+        }
+
+        const lang = ( req.params.language || '' ).toString().trim();
+        if ( !lang ) {
+            return res.status( 400 ).json( { error: 'language path parameter is required' } );
+        }
+
+        const langDir = path.join( assessmentsDir, lang );
+        if ( !fs.existsSync( langDir ) ) {
+            console.error( `❌ Language directory not found for '${lang}':`, langDir );
+            return res.status( 404 ).json( { error: 'Language not found' } );
+        }
+
+        const difficulties = fs.readdirSync( langDir );
+        console.log( '📋 Found difficulties for', lang, ':', difficulties );
+
+        for ( const difficulty of difficulties ) {
+            const difficultyPath = path.join( langDir, difficulty );
+
+            if ( fs.statSync( difficultyPath ).isDirectory() ) {
+                assessmentStructure[difficulty] = [];
+
+                const assessmentFiles = fs.readdirSync( difficultyPath );
+
+                for ( const file of assessmentFiles ) {
+                    if ( file.endsWith( '.js' ) ) {
+                        const assessmentPath = path.join( difficultyPath, file );
+                        try {
+                            delete require.cache[require.resolve( assessmentPath )];
+                            const assessmentData = require( assessmentPath ) as AssessmentData;
+
+                            if ( assessmentData.metadata ) {
+                                assessmentStructure[difficulty].push( {
+                                    id: file.replace( '.js', '' ),
+                                    ...assessmentData.metadata
+                                } );
+                            }
+                        } catch ( error ) {
+                            console.error( `❌ Error loading assessment ${file}:`, ( error as Error ).message );
+                        }
+                    }
+                }
+            }
+        }
+
+        res.json( assessmentStructure );
+    } catch ( error ) {
+        console.error( '💥 Error in /api/assessments/:language:', error );
+        res.status( 500 ).json( { error: 'Failed to load assessments' } );
+    }
+    return;
+} );
+
+// API endpoint to get specific assessment questions
+// New route expects language, difficulty, and assessment id: /api/assessment/:language/:difficulty/:assessmentId
+app.get( '/api/assessment/:language/:difficulty/:assessmentId', ( req: Request, res: Response ) => {
+    const { language, difficulty, assessmentId } = req.params;
+    const assessmentPath = path.resolve( projectRoot, 'assessments', language, difficulty, `${assessmentId}.js` );
+
+    console.log( `🎯 Loading specific assessment: ${language}/${difficulty}/${assessmentId}` );
     console.log( `📁 Assessment path: ${assessmentPath}` );
 
     try {
         // Clear require cache to ensure fresh data
+        delete require.cache[require.resolve( assessmentPath )];
+        const assessmentData = require( assessmentPath ) as AssessmentData;
+
+        // Attach language into metadata for downstream usage
+        const metadata = Object.assign( {}, assessmentData.metadata || {}, { id: assessmentId, language } );
+
+        res.json( {
+            metadata,
+            questions: assessmentData.questions
+        } );
+    } catch ( error ) {
+        console.error( `❌ Error loading assessment ${language}/${difficulty}/${assessmentId}:`, error );
+        res.status( 404 ).json( { error: 'Assessment not found' } );
+    }
+} );
+
+// Backwards-compatible route for older layout: /api/assessment/:difficulty/:assessmentId
+app.get( '/api/assessment/:difficulty/:assessmentId', ( req: Request, res: Response ) => {
+    const { difficulty, assessmentId } = req.params;
+    const assessmentPath = path.resolve( projectRoot, 'assessments', difficulty, `${assessmentId}.js` );
+
+    console.log( `🎯 Loading specific assessment (legacy): ${difficulty}/${assessmentId}` );
+    console.log( `📁 Assessment path (legacy): ${assessmentPath}` );
+
+    try {
         delete require.cache[require.resolve( assessmentPath )];
         const assessmentData = require( assessmentPath ) as AssessmentData;
 

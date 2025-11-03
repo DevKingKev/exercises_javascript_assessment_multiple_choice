@@ -2,6 +2,7 @@ import { defineStore } from 'pinia';
 import { ref, computed } from 'vue';
 import type { Assessment, AvailableAssessments, AssessmentMetadata } from '@/models';
 import resolveTopics from '../utils/topicResolver';
+import { useGlobalStore } from '@/stores/globalStore';
 
 export const useAssessmentStore = defineStore( 'assessment', () => {
     // State
@@ -54,14 +55,27 @@ export const useAssessmentStore = defineStore( 'assessment', () => {
     } );
 
     // Actions
-    async function loadAvailableAssessments ( force = false ) {
+    async function loadAvailableAssessments ( force = false, language?: string ) {
         // Skip if already loaded and not forcing a refresh
         if ( assessmentsLoaded.value && !force ) {
             return;
         }
 
         try {
-            const response = await fetch( '/api/assessments' );
+            // Resolve language: prefer explicit param, then global store, then fallback
+            let lang = language;
+            try {
+                if ( !lang ) {
+                    const gs = useGlobalStore();
+                    lang = gs.languageNormalized || undefined;
+                }
+            } catch ( e ) {
+                // ignore and fall back
+            }
+            if ( !lang ) lang = 'javascript';
+
+            // Use path-style language endpoint (e.g. /api/assessments/javascript)
+            const response = await fetch( `/api/assessments/${encodeURIComponent( lang )}` );
             if ( !response.ok ) {
                 throw new Error( 'Failed to load assessments' );
             }
@@ -74,9 +88,21 @@ export const useAssessmentStore = defineStore( 'assessment', () => {
         }
     }
 
-    async function loadAssessment ( difficulty: string, assessmentId: string ) {
+    async function loadAssessment ( difficulty: string, assessmentId: string, language?: string ) {
         try {
-            const response = await fetch( `/api/assessment/${difficulty}/${assessmentId}` );
+            // resolve language similar to loadAvailableAssessments
+            let lang = language;
+            try {
+                if ( !lang ) {
+                    const gs = useGlobalStore();
+                    lang = gs.languageNormalized || undefined;
+                }
+            } catch ( e ) {
+                // ignore
+            }
+            if ( !lang ) lang = 'javascript';
+
+            const response = await fetch( `/api/assessment/${encodeURIComponent( lang )}/${encodeURIComponent( difficulty )}/${encodeURIComponent( assessmentId )}` );
             if ( !response.ok ) {
                 throw new Error( 'Failed to load assessment' );
             }
@@ -178,7 +204,10 @@ export const useAssessmentStore = defineStore( 'assessment', () => {
         const meta = assessment.metadata || {};
         const unique = meta.assessmentUniqueId || meta.assessmentId || meta.id || assessment.id;
         const diff = assessment.metadata?.difficulty || currentDifficulty.value || 'unknown';
-        return `assessment-progress:${diff}:${String( unique )}`;
+        const lang = assessment.metadata?.language || ( () => {
+            try { return useGlobalStore().languageNormalized || 'javascript'; } catch { return 'javascript'; }
+        } )();
+        return `assessment-progress:${String( lang )}:${diff}:${String( unique )}`;
     }
 
     function previousQuestion () {

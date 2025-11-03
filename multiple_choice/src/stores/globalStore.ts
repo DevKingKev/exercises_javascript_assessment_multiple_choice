@@ -84,15 +84,15 @@ export const useGlobalStore = defineStore( 'global', () => {
 
         const paths = envPaths
             ? String( envPaths )
-                  .split( ',' )
-                  .map( p => p.trim() )
-                  .filter( Boolean )
+                .split( ',' )
+                .map( p => p.trim() )
+                .filter( Boolean )
             : [
-                  '/deploy/app-config.yaml',
-                  '/app-config.yaml',
-                  '/deploy/app-config.yml',
-                  '/app-config.yml'
-              ];
+                '/deploy/app-config.yaml',
+                '/app-config.yaml',
+                '/deploy/app-config.yml',
+                '/app-config.yml'
+            ];
 
         for ( const p of paths ) {
             try {

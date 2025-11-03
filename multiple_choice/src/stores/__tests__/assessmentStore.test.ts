@@ -11,6 +11,8 @@ function createMockAssessment ( questionCount: number = 3 ): any {
         id: 'test-1',
         metadata: {
             title: 'Test Assessment',
+            // default language for new layout
+            language: 'javascript',
             description: 'Test description',
             difficulty: 'easy',
             timeLimit: 30,
@@ -158,7 +160,7 @@ describe( 'assessmentStore', () => {
 
             await store.loadAvailableAssessments();
 
-            expect( global.fetch ).toHaveBeenCalledWith( '/api/assessments' );
+            expect( global.fetch ).toHaveBeenCalledWith( '/api/assessments/javascript' );
             expect( store.availableAssessments ).toEqual( mockData );
             expect( store.assessmentsLoaded ).toBe( true );
         } );
@@ -229,7 +231,7 @@ describe( 'assessmentStore', () => {
 
             const result = await store.loadAssessment( 'medium', 'test-1' );
 
-            expect( global.fetch ).toHaveBeenCalledWith( '/api/assessment/medium/test-1' );
+            expect( global.fetch ).toHaveBeenCalledWith( '/api/assessment/javascript/medium/test-1' );
             expect( result ).toEqual( mockAssessment );
             expect( store.currentAssessment ).toEqual( mockAssessment );
             expect( store.currentDifficulty ).toBe( 'medium' );
@@ -358,7 +360,7 @@ describe( 'assessmentStore', () => {
 
             store.nextQuestion();
 
-            const raw = global.localStorage.getItem( 'assessment-progress:easy:test-1' );
+            const raw = global.localStorage.getItem( 'assessment-progress:javascript:easy:test-1' );
             expect( raw ).not.toBeNull();
             const saved = JSON.parse( raw as string );
             expect( saved.currentQuestionIndex ).toBe( 0 ); // saved before increment
@@ -379,7 +381,7 @@ describe( 'assessmentStore', () => {
                 elapsedMs: 5000
             };
 
-            const key = `assessment-progress:easy:test-1`;
+            const key = `assessment-progress:javascript:easy:test-1`;
             global.localStorage.setItem( key, JSON.stringify( savedPayload ) );
 
             ( global.fetch as any ).mockResolvedValueOnce( {

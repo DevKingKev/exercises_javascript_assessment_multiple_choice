@@ -2,8 +2,8 @@ import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import { setActivePinia, createPinia } from 'pinia';
 import useGlobalStore from '../globalStore';
 
-describe('globalStore - deployment YAML fallback', () => {
-    beforeEach(() => {
+describe( 'globalStore - deployment YAML fallback', () => {
+    beforeEach( () => {
         setActivePinia( createPinia() );
 
         // ensure localStorage override is cleared
@@ -18,13 +18,13 @@ describe('globalStore - deployment YAML fallback', () => {
             value: { hostname: 'localhost' },
             configurable: true
         } );
-    });
+    } );
 
-    afterEach(() => {
+    afterEach( () => {
         vi.resetAllMocks();
-    });
+    } );
 
-    it('uses defaultLanguage from deployment YAML when present', async () => {
+    it( 'uses defaultLanguage from deployment YAML when present', async () => {
         const yaml = 'defaultLanguage: php\n';
 
         // stub global fetch to return the YAML for any path
@@ -40,5 +40,5 @@ describe('globalStore - deployment YAML fallback', () => {
         await store.initLanguage();
 
         expect( store.languageNormalized ).toBe( 'php' );
-    });
-});
+    } );
+} );
