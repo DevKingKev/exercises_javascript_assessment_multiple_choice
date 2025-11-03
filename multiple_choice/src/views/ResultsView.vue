@@ -64,6 +64,14 @@
             <div v-if="review.explanation" class="review-explanation">
               <strong>Explanation:</strong>
               <span v-html="formatQuestion(review.explanation)"></span>
+              <div class="explanation-topics" v-if="(review as any).topic">
+                <TopicTags
+                  :items="getTopicItemsForReview(review)"
+                  :getTopicLink="getTopicLink"
+                  :getTopicClass="getTopicClass"
+                  :keyPrefix="String(savedResultDate || index)"
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -81,6 +89,7 @@
 <script setup lang="ts">
 import { onMounted, ref, watch } from 'vue';
 import LoadingSpinner from '@/components/LoadingSpinner.vue';
+import TopicTags from '@/components/TopicTags.vue';
 import { useRouter, useRoute } from 'vue-router';
 import { useAssessmentStore } from '@/stores/assessmentStore';
 import { useResultsStore } from '@/stores/resultsStore';
@@ -94,6 +103,9 @@ const route = useRoute();
 const assessmentStore = useAssessmentStore();
 const resultsStore = useResultsStore();
 const savedResultDate = ref<string | null>( null );
+// Keep a reference to the saved result record when restoring so topicLinks
+// persisted on the record can be used to resolve MDN anchors.
+const savedResultRecord = ref<any>( null );
 const isLoading = ref(false);
 
 function formatQuestion(text: string): string {
@@ -109,6 +121,62 @@ function getUserAnswerText(review: QuestionReview): string {
     return 'No answer selected';
   }
   return `${review.userAnswer}: ${review.options[review.userAnswer]}`;
+}
+
+// Colour grading for topic tags (same rules as AssessmentResultItem)
+function getTopicClass(correct: number, total: number): string {
+  if (total === 0) return 'topic-neutral';
+  const percentage = (correct / total) * 100;
+  if (percentage === 100) return 'topic-perfect';
+  if (percentage >= 80) return 'topic-good';
+  if (percentage >= 60) return 'topic-fair';
+  if (percentage >= 40) return 'topic-poor';
+  return 'topic-fail';
+}
+
+// Resolve MDN link for a topic using persisted topicLinks on the saved
+// result record first, then the assessment metadata (same behaviour as
+// AssessmentResultItem.getTopicLink).
+function getTopicLink(topicName: string): string | undefined {
+  try {
+    if (savedResultRecord.value && savedResultRecord.value.topicLinks && savedResultRecord.value.topicLinks[topicName]) {
+      return savedResultRecord.value.topicLinks[topicName];
+    }
+
+    // Try to find metadata for the assessment
+    let meta: any = assessmentStore.getAssessmentMetadata ? assessmentStore.getAssessmentMetadata((savedResultRecord.value && savedResultRecord.value.difficulty) || assessmentStore.currentDifficulty, (savedResultRecord.value && savedResultRecord.value.assessmentId) || assessmentStore.currentAssessment?.metadata?.id) : null;
+
+    if (!meta && assessmentStore.currentAssessment) {
+      const cm = (assessmentStore.currentAssessment as any).metadata;
+      if (cm && (String(cm.id) === String((savedResultRecord.value && savedResultRecord.value.assessmentId)) || String(cm.assessmentId) === String((savedResultRecord.value && savedResultRecord.value.assessmentId)))) {
+        meta = cm;
+      }
+    }
+
+    if (!meta) {
+      try {
+        const list = (assessmentStore as any).availableAssessments?.[(savedResultRecord.value && savedResultRecord.value.difficulty) || assessmentStore.currentDifficulty] || [];
+        const found = list.find((a: any) => String(a.id) === String((savedResultRecord.value && savedResultRecord.value.assessmentId)) || String(a.assessmentId) === String((savedResultRecord.value && savedResultRecord.value.assessmentId)));
+        if (found) meta = (found as any).metadata || found;
+      } catch (e) {
+        // ignore
+      }
+    }
+
+    const topicLinks = (meta && (meta as any).topicLinks) || [];
+    const found = (topicLinks as Array<any>).find((t: any) => t.topicName === topicName);
+    return found?.mdnLink;
+  } catch (e) {
+    return undefined;
+  }
+}
+
+function getTopicItemsForReview(review: QuestionReview) {
+  const tb = (resultsStore.currentResults && resultsStore.currentResults.topicBreakdown) || {};
+  const name = (review as any).topic;
+  if (!name) return [] as string[];
+  const scores = tb[name] || { correct: 0, total: 0 };
+  return { [name]: { correct: scores.correct ?? 0, total: scores.total ?? 0 } };
 }
 
 function retakeAssessment() {
@@ -165,6 +233,7 @@ const findAndRestore = async (idStr?: string) => {
 
   // Expose saved date for display
   savedResultDate.value = found.rec.date || null;
+  savedResultRecord.value = found.rec || null;
 
   // Attempt to reconstruct using the saved wrongAnswers and the original
   // assessment questions (load assessment if necessary). Unlike the previous
@@ -184,11 +253,17 @@ const findAndRestore = async (idStr?: string) => {
       const wrong = wrongs.find(w => Number(w.questionNr) === Number(q.id));
       const userAnswer = wrong ? String(wrong.answer) : String(q.correct);
       const isCorrect = userAnswer === q.correct;
+      // Determine the topic for this question using the same logic as
+      // AssessmentView.calculateResults so topic assignment matches saved
+      // result behaviour. Fall back to 'General' when metadata is missing.
+      const topics = (assessment.metadata && assessment.metadata.topics) || ['General'];
+      const questionTopic = topics.length > 0 ? topics[Number(q.id) % topics.length] || topics[0] : 'General';
       return {
         question: q.question,
         userAnswer,
         correctAnswer: q.correct,
         isCorrect,
+        topic: questionTopic,
         explanation: q.explanation,
         options: q.options
       };

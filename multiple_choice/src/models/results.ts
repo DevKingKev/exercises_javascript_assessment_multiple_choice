@@ -9,6 +9,8 @@ export interface QuestionReview {
     isCorrect: boolean;
     explanation?: string;
     options: { [key: string]: string; };
+    // Optional topic name for the question (used by results UI to show tags)
+    topic?: string;
 }
 
 export interface AssessmentResults {

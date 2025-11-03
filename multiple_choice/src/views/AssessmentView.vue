@@ -249,6 +249,7 @@ function calculateResults() {
       userAnswer,
       correctAnswer: question.correct,
       isCorrect,
+      topic: questionTopic,
       explanation: question.explanation,
       options: question.options
     });
