@@ -68,6 +68,7 @@ import { useAssessmentStore } from '@/stores/assessmentStore';
 import type { ResultRecord } from '@/models';
 import { formatDate } from '@/utils/dateUtils';
 import { getScoreBadgeClass } from '@/utils/resultsUtils';
+import { getTopicClass as utilGetTopicClass, findTopicMdnLink } from '@/utils/topicUtils';
 import { formatAssessmentLabel } from '@/utils/assessmentUtils';
 import TopicTags from './TopicTags.vue';
 
@@ -90,15 +91,9 @@ const displayAssessmentLabel = computed(() =>
   formatAssessmentLabel(props.result.assessmentId, props.result.assessmentTitle)
 );
 
+// Delegate to shared util
 function getTopicClass(correct: number, total: number): string {
-  if (total === 0) return 'topic-neutral';
-  const percentage = (correct / total) * 100;
-  
-  if (percentage === 100) return 'topic-perfect';
-  if (percentage >= 80) return 'topic-good';
-  if (percentage >= 60) return 'topic-fair';
-  if (percentage >= 40) return 'topic-poor';
-  return 'topic-fail';
+  return utilGetTopicClass(correct, total);
 }
 
 // Resolve a topic name to an mdnLink (if available) by looking up the assessment metadata.
@@ -138,9 +133,18 @@ function getTopicLink(topicName: string): string | undefined {
       }
     }
 
-    const topicLinks = (meta && (meta as any).topicLinks) || [];
-    const found = (topicLinks as Array<any>).find((t: any) => t.topicName === topicName);
-    return found?.mdnLink;
+    // Build metas array: prefer meta if found, otherwise search availableAssessments
+    const metas: any[] = [];
+    if (meta) metas.push(meta);
+    try {
+      const list = (assessmentStore as any).availableAssessments?.[props.result.difficulty] || [];
+      const found = list.find((a: any) => String(a.id) === String(props.result.assessmentId) || String(a.assessmentId) === String(props.result.assessmentId));
+      if (found) metas.push((found as any).metadata || found);
+    } catch (e) {
+      // ignore
+    }
+
+    return findTopicMdnLink(topicName, (props.result as any).topicLinks, metas);
   } catch (e) {
     // Fail gracefully — return undefined when no link is available
     return undefined;

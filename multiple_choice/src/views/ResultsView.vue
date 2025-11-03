@@ -96,6 +96,7 @@ import { useResultsStore } from '@/stores/resultsStore';
 import { formatTextWithCode } from '@/utils/formatUtils';
 import { formatDate } from '@/utils/dateUtils';
 import { getScoreBadgeClass } from '@/utils/resultsUtils';
+import { getTopicClass as utilGetTopicClass, findTopicMdnLink } from '@/utils/topicUtils';
 import type { QuestionReview } from '@/models';
 
 const router = useRouter();
@@ -123,15 +124,8 @@ function getUserAnswerText(review: QuestionReview): string {
   return `${review.userAnswer}: ${review.options[review.userAnswer]}`;
 }
 
-// Colour grading for topic tags (same rules as AssessmentResultItem)
 function getTopicClass(correct: number, total: number): string {
-  if (total === 0) return 'topic-neutral';
-  const percentage = (correct / total) * 100;
-  if (percentage === 100) return 'topic-perfect';
-  if (percentage >= 80) return 'topic-good';
-  if (percentage >= 60) return 'topic-fair';
-  if (percentage >= 40) return 'topic-poor';
-  return 'topic-fail';
+  return utilGetTopicClass(correct, total);
 }
 
 // Resolve MDN link for a topic using persisted topicLinks on the saved
@@ -163,9 +157,18 @@ function getTopicLink(topicName: string): string | undefined {
       }
     }
 
-    const topicLinks = (meta && (meta as any).topicLinks) || [];
-    const found = (topicLinks as Array<any>).find((t: any) => t.topicName === topicName);
-    return found?.mdnLink;
+    // Build metas array and delegate to shared util
+    const metas: any[] = [];
+    if (meta) metas.push(meta);
+    try {
+      const list = (assessmentStore as any).availableAssessments?.[(savedResultRecord.value && savedResultRecord.value.difficulty) || assessmentStore.currentDifficulty] || [];
+      const found = list.find((a: any) => String(a.id) === String((savedResultRecord.value && savedResultRecord.value.assessmentId)) || String(a.assessmentId) === String((savedResultRecord.value && savedResultRecord.value.assessmentId)));
+      if (found) metas.push((found as any).metadata || found);
+    } catch (e) {
+      // ignore
+    }
+
+    return findTopicMdnLink(topicName, savedResultRecord.value && savedResultRecord.value.topicLinks ? savedResultRecord.value.topicLinks : undefined, metas);
   } catch (e) {
     return undefined;
   }
