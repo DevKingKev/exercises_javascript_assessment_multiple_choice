@@ -30,6 +30,8 @@ describe( 'assessmentStore', () => {
     beforeEach( () => {
         setActivePinia( createPinia() );
         vi.clearAllMocks();
+        // ensure a clean localStorage between tests
+        try { localStorage.clear(); } catch ( e ) { /* ignore in non-jsdom envs */ }
     } );
 
     describe( 'Initial State', () => {
@@ -337,6 +339,63 @@ describe( 'assessmentStore', () => {
 
             store.jumpToQuestion( 10 );
             expect( store.currentQuestionIndex ).toBe( 2 );
+        } );
+    } );
+
+    describe( 'Persistence', () => {
+        it( 'nextQuestion persists progress to localStorage', () => {
+            const store = useAssessmentStore();
+            const assessment = createMockAssessment( 3 );
+            // identification used by storage key
+            assessment.id = 'test-1';
+            assessment.metadata.difficulty = 'easy';
+
+            store.currentAssessment = assessment as any;
+            store.currentQuestionIndex = 0;
+            store.userAnswers = ['B', null, null] as any;
+            // set a start time 1.5s in the past
+            store.startTime = new Date( Date.now() - 1500 ) as any;
+
+            store.nextQuestion();
+
+            const raw = global.localStorage.getItem( 'assessment-progress:easy:test-1' );
+            expect( raw ).not.toBeNull();
+            const saved = JSON.parse( raw as string );
+            expect( saved.currentQuestionIndex ).toBe( 0 ); // saved before increment
+            expect( saved.userAnswers ).toEqual( ['B', null, null] );
+            expect( typeof saved.elapsedMs ).toBe( 'number' );
+            expect( saved.elapsedMs ).toBeGreaterThanOrEqual( 1400 );
+        } );
+
+        it( 'loadAssessment restores saved progress from localStorage', async () => {
+            const store = useAssessmentStore();
+            const assessment = createMockAssessment( 4 );
+            assessment.id = 'test-1';
+            assessment.metadata.difficulty = 'easy';
+
+            const savedPayload = {
+                currentQuestionIndex: 2,
+                userAnswers: ['A', 'B', 'C', null],
+                elapsedMs: 5000
+            };
+
+            const key = `assessment-progress:easy:test-1`;
+            global.localStorage.setItem( key, JSON.stringify( savedPayload ) );
+
+            ( global.fetch as any ).mockResolvedValueOnce( {
+                ok: true,
+                json: async () => assessment
+            } );
+
+            const result = await store.loadAssessment( 'easy', 'test-1' );
+
+            expect( result ).toBeTruthy();
+            expect( store.userAnswers ).toEqual( savedPayload.userAnswers );
+            expect( store.currentQuestionIndex ).toBe( savedPayload.currentQuestionIndex );
+            // elapsed time should be approximately restored by adjusting startTime
+            expect( store.startTime ).toBeInstanceOf( Date );
+            const delta = Math.abs( ( Date.now() - ( store.startTime as any ).getTime() ) - savedPayload.elapsedMs );
+            expect( delta ).toBeLessThan( 200 );
         } );
     } );
 

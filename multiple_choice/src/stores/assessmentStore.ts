@@ -101,6 +101,35 @@ export const useAssessmentStore = defineStore( 'assessment', () => {
             timeLimit.value = assessmentData.metadata.timeLimit;
             startTime.value = new Date();
 
+            // Try to restore any saved progress for this assessment from localStorage
+            try {
+                const key = getProgressKeyForAssessment( assessmentData );
+                const raw = localStorage.getItem( key );
+                if ( raw ) {
+                    const saved = JSON.parse( raw );
+                    // Only restore if shapes look correct
+                    if ( saved && Array.isArray( saved.userAnswers ) ) {
+                        // ensure length matches
+                        if ( saved.userAnswers.length === assessmentData.questions.length ) {
+                            userAnswers.value = saved.userAnswers;
+                        }
+                    }
+                    if ( typeof saved.currentQuestionIndex === 'number' ) {
+                        // clamp to valid range
+                        const idx = Math.max( 0, Math.min( saved.currentQuestionIndex, assessmentData.questions.length - 1 ) );
+                        currentQuestionIndex.value = idx;
+                    }
+                    if ( typeof saved.elapsedMs === 'number' ) {
+                        // adjust startTime so that elapsedMs have already passed
+                        startTime.value = new Date( Date.now() - saved.elapsedMs );
+                    }
+                }
+            } catch ( e ) {
+                // ignore parse errors and continue with fresh state
+                // keep the existing startTime and userAnswers
+                console.error( 'Error restoring assessment progress:', e );
+            }
+
             return assessmentData;
         } catch ( error ) {
             console.error( 'Error loading assessment:', error );
@@ -114,8 +143,42 @@ export const useAssessmentStore = defineStore( 'assessment', () => {
 
     function nextQuestion () {
         if ( currentQuestionIndex.value < totalQuestions.value - 1 ) {
+            // Before advancing, persist current progress (including the selected answer and elapsed time)
+            try {
+                saveCurrentProgress();
+            } catch ( e ) {
+                console.error( 'Error saving assessment progress:', e );
+            }
+
             currentQuestionIndex.value++;
         }
+    }
+
+    function saveCurrentProgress () {
+        if ( !currentAssessment.value ) return;
+
+        const key = getProgressKeyForAssessment( currentAssessment.value );
+        const elapsedMs = startTime.value ? ( Date.now() - startTime.value.getTime() ) : 0;
+        const payload = {
+            currentQuestionIndex: currentQuestionIndex.value,
+            userAnswers: userAnswers.value,
+            elapsedMs
+        };
+        localStorage.setItem( key, JSON.stringify( payload ) );
+    }
+
+    function clearSavedProgressForCurrent () {
+        if ( !currentAssessment.value ) return;
+        const key = getProgressKeyForAssessment( currentAssessment.value );
+        localStorage.removeItem( key );
+    }
+
+    function getProgressKeyForAssessment ( assessment: any ) {
+        // Prefer assessment.metadata.assessmentUniqueId if present, fallback to id/assessmentId and difficulty
+        const meta = assessment.metadata || {};
+        const unique = meta.assessmentUniqueId || meta.assessmentId || meta.id || assessment.id;
+        const diff = assessment.metadata?.difficulty || currentDifficulty.value || 'unknown';
+        return `assessment-progress:${diff}:${String( unique )}`;
     }
 
     function previousQuestion () {
@@ -140,6 +203,13 @@ export const useAssessmentStore = defineStore( 'assessment', () => {
 
     function retakeAssessment () {
         if ( currentAssessment.value ) {
+            // Clear any saved progress for this assessment (we're starting fresh)
+            try {
+                clearSavedProgressForCurrent();
+            } catch ( e ) {
+                console.error( 'Error clearing saved progress on retake:', e );
+            }
+
             currentQuestionIndex.value = 0;
             userAnswers.value = new Array( currentAssessment.value.questions.length ).fill( null );
             startTime.value = new Date();
@@ -205,6 +275,7 @@ export const useAssessmentStore = defineStore( 'assessment', () => {
         jumpToQuestion,
         resetAssessment,
         retakeAssessment,
+        clearSavedProgressForCurrent,
         getAssessmentMetadata
     };
 } );

@@ -113,6 +113,13 @@ async function handleQuit() {
   const confirmed = await uiStore.showConfirm('Quit Assessment', message, true);
   if (confirmed) {
     timer.stop();
+    // Clear any saved progress for this assessment since the user quit
+    try {
+      assessmentStore.clearSavedProgressForCurrent();
+    } catch (e) {
+      console.error('Error clearing saved progress on quit:', e);
+    }
+
     assessmentStore.resetAssessment();
     router.push({ name: 'home' });
   }
@@ -201,6 +208,14 @@ async function submitAssessment() {
   };
 
   resultsStore.saveResult(resultRecord);
+
+  // Clear any saved in-progress state for this assessment (we've finished it)
+  try {
+    assessmentStore.clearSavedProgressForCurrent();
+  } catch (e) {
+    // non-fatal: proceed to navigation even if clearing fails
+    console.error('Error clearing saved progress after submit:', e);
+  }
 
   // Navigate to results
   router.push({ name: 'assessment-result' });
