@@ -49,82 +49,10 @@ const vitePort = process.env.VITE_PORT || '5173';
 // API ROUTES - Must be registered BEFORE proxy middleware!
 // ============================================================================
 
-// API endpoint to get available assessments
-app.get( '/api/assessments', ( req: Request, res: Response ) => {
-    console.log( '🔍 API /assessments endpoint called' );
-
-    const assessmentsDir = path.resolve( projectRoot, 'assessments' );
-    console.log( '📁 Looking for assessments in:', assessmentsDir );
-
-    const assessmentStructure: AssessmentStructure = {};
-
-    try {
-        // Check if assessments directory exists
-        if ( !fs.existsSync( assessmentsDir ) ) {
-            console.error( '❌ Assessments directory not found:', assessmentsDir );
-            return res.status( 404 ).json( { error: 'Assessments directory not found' } );
-        }
-
-        // Require a language query param in the new layout: /assessments?language=javascript
-        const lang = ( req.query.language || '' ).toString().trim();
-        if ( !lang ) {
-            return res.status( 400 ).json( { error: 'language query parameter is required' } );
-        }
-
-        const langDir = path.join( assessmentsDir, lang );
-        if ( !fs.existsSync( langDir ) ) {
-            console.error( `❌ Language directory not found for '${lang}':`, langDir );
-            return res.status( 404 ).json( { error: 'Language not found' } );
-        }
-
-        const difficulties = fs.readdirSync( langDir );
-        console.log( '📋 Found difficulties for', lang, ':', difficulties );
-
-        for ( const difficulty of difficulties ) {
-            const difficultyPath = path.join( langDir, difficulty );
-
-            if ( fs.statSync( difficultyPath ).isDirectory() ) {
-                console.log( `📂 Processing difficulty: ${difficulty}` );
-                assessmentStructure[difficulty] = [];
-
-                const assessmentFiles = fs.readdirSync( difficultyPath );
-                console.log( `📄 Files in ${difficulty}:`, assessmentFiles );
-
-                for ( const file of assessmentFiles ) {
-                    if ( file.endsWith( '.js' ) ) {
-                        const assessmentPath = path.join( difficultyPath, file );
-                        console.log( `🔄 Loading assessment file: ${assessmentPath}` );
-
-                        try {
-                            // Clear require cache to ensure fresh data
-                            delete require.cache[require.resolve( assessmentPath )];
-                            const assessmentData = require( assessmentPath ) as AssessmentData;
-
-                            if ( assessmentData.metadata ) {
-                                assessmentStructure[difficulty].push( {
-                                    id: file.replace( '.js', '' ),
-                                    ...assessmentData.metadata
-                                } );
-                                console.log( `✅ Successfully loaded: ${file}` );
-                            } else {
-                                console.warn( `⚠️  No metadata found in: ${file}` );
-                            }
-                        } catch ( error ) {
-                            console.error( `❌ Error loading assessment ${file}:`, ( error as Error ).message );
-                        }
-                    }
-                }
-            }
-        }
-
-        console.log( '📊 Final assessment structure for', lang, ':', JSON.stringify( assessmentStructure, null, 2 ) );
-        res.json( assessmentStructure );
-    } catch ( error ) {
-        console.error( '💥 Error in /api/assessments:', error );
-        res.status( 500 ).json( { error: 'Failed to load assessments' } );
-    }
-    return;
-} );
+// NOTE: The server now exposes language-scoped assessment listings via
+// `GET /api/assessments/:language` (e.g. `/api/assessments/javascript`).
+// The old query-param form `/api/assessments?language=...` has been removed
+// to avoid ambiguity. Use the path-style endpoint instead.
 
 // Backwards/alternate route that accepts language as a path segment: /api/assessments/:language
 app.get( '/api/assessments/:language', ( req: Request, res: Response ) => {

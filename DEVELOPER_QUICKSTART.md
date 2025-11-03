@@ -100,8 +100,12 @@ Alternatively, use polling-based watchers which are less efficient but avoid ker
 - **Composables**: useTimer for assessment countdown
 
 ### API Endpoints (Express Server)
-- `GET http://localhost:3001/api/assessments` — List all available assessments
-- `GET http://localhost:3001/api/assessment/:difficulty/:id` — Load specific assessment
+- `GET http://localhost:3001/api/assessments/:language` — List assessments for a language (e.g. `/api/assessments/javascript`)
+- `GET http://localhost:3001/api/assessment/:language/:difficulty/:id` — Load specific assessment (preferred)
+
+Notes:
+- The server previously supported a query-style `GET /api/assessments?language=...` endpoint; that form has been removed. Use the path-style endpoints above.
+- For backwards compatibility, the server still exposes a legacy single-assessment route `GET /api/assessment/:difficulty/:id` which will look for assessments in the older non-language layout.
 
 ### State Management
 - **Pinia stores** handle all application state
