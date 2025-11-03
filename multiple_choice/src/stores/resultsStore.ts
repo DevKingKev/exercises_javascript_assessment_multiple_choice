@@ -290,6 +290,39 @@ export const useResultsStore = defineStore( 'results', () => {
         }
     }
 
+    /**
+     * Delete a single saved result record.
+     * Params:
+     *  - difficulty: string
+     *  - assessmentId: string
+     *  - resultRecordId: number | string
+     * Returns true when a record was removed, false otherwise.
+     */
+    function deleteResult ( difficulty: string, assessmentId: string, resultRecordId: number | string ): boolean {
+        try {
+            const list = resultsHistory.value?.[difficulty]?.[assessmentId];
+            if ( !list || list.length === 0 ) return false;
+
+            const before = list.length;
+            const idToRemove = Number( resultRecordId );
+            resultsHistory.value[difficulty][assessmentId] = list.filter( ( r: any ) => Number( r.resultRecordId ) !== idToRemove );
+
+            const after = resultsHistory.value[difficulty][assessmentId].length;
+            if ( after < before ) {
+                try {
+                    localStorage.setItem( 'assessmentResults', JSON.stringify( resultsHistory.value ) );
+                } catch ( e ) {
+                    console.error( 'Error persisting results after delete:', e );
+                }
+                return true;
+            }
+            return false;
+        } catch ( e ) {
+            console.error( 'Error deleting result record:', e );
+            return false;
+        }
+    }
+
     // Initialize
     loadResultsHistory();
 
@@ -310,6 +343,7 @@ export const useResultsStore = defineStore( 'results', () => {
         saveResult,
         setCurrentResults,
         clearCurrentResults,
-        clearAllHistory
+        clearAllHistory,
+        deleteResult
     };
 } );

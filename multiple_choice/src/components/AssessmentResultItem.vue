@@ -55,7 +55,22 @@
         </div>
       </div>
         <div class="result-item-actions">
-          <button class="view-assessment-btn" @click="viewAssessment">View assessment</button>
+          <button
+            class="delete-result-btn"
+            @click.stop="onDelete"
+            title="Delete this assignment result from history"
+            aria-label="Delete this assignment result from history"
+          >
+            🗑️ Delete
+          </button>
+          <button
+            class="view-assessment-btn"
+            @click="viewAssessment"
+            title="View assessment"
+            aria-label="View assessment"
+          >
+            View assessment
+          </button>
         </div>
     </div>
   </div>
@@ -65,6 +80,8 @@
 import { ref, computed } from 'vue';
 import { useRouter } from 'vue-router';
 import { useAssessmentStore } from '@/stores/assessmentStore';
+import { useResultsStore } from '@/stores/resultsStore';
+import { useUiStore } from '@/stores/uiStore';
 import type { ResultRecord } from '@/models';
 import { formatDate } from '@/utils/dateUtils';
 import { getScoreBadgeClass } from '@/utils/resultsUtils';
@@ -82,6 +99,8 @@ const isExpanded = ref(false);
 
 const scoreBadgeClass = computed(() => getScoreBadgeClass(props.result.percentage));
 const router = useRouter();
+const resultsStore = useResultsStore();
+const uiStore = useUiStore();
 
 function toggleExpanded() {
   isExpanded.value = !isExpanded.value;
@@ -179,6 +198,29 @@ function viewAssessment() {
     });
   } catch (e) {
     console.debug('Navigation to assessment failed', e);
+  }
+}
+
+async function onDelete() {
+  try {
+    // Use the app-level confirm modal for consistent UX and accessibility
+    const confirmed = await uiStore.showConfirm(
+      'Delete Result',
+      'Delete this saved result? This action cannot be undone.',
+      true
+    );
+    if (!confirmed) return;
+
+    const removed = resultsStore.deleteResult(String(props.result.difficulty), String(props.result.assessmentId), props.result.resultRecordId as any);
+    if (removed) {
+      // Close the expanded view if it's open so UI updates feel immediate.
+      isExpanded.value = false;
+    } else {
+      // Could show a user-facing toast here; for now keep simple.
+      console.debug('Result delete returned false — record may not have been found');
+    }
+  } catch (e) {
+    console.error('Error deleting result:', e);
   }
 }
 
@@ -322,7 +364,8 @@ function viewAssessment() {
 .result-item-actions {
   margin-top: 16px;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+  gap: 12px;
 }
 
 .view-assessment-btn {
@@ -336,6 +379,39 @@ function viewAssessment() {
 }
 
 .view-assessment-btn:hover { background: rgba(52,152,219,0.06); }
+
+.view-assessment-btn:focus-visible {
+  outline: 2px solid #3498db;
+  outline-offset: 2px;
+}
+
+.delete-result-btn {
+  /* Match Clear All History button styling exactly */
+  padding: 12px 25px;
+  color: #fca5a5 ;
+  background: none;
+  border: 1px solid #e53e3e;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all .2s ease;
+}
+
+.delete-result-btn:hover {
+  background: var(--bg-hover) !important;
+  border-color: #e53e3e;
+  transform: translateY(-1px);
+}
+
+.delete-result-btn:focus-visible {
+  outline: 2px solid #e53e3e;
+  outline-offset: 2px;
+}
+
+.delete-result-btn:active {
+  transform: translateY(0);
+}
 
 // Additional dark mode support for the component
 // Stronger dark mode override for assessment-result-item-header hover
