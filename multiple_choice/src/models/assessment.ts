@@ -9,6 +9,12 @@ export interface AssessmentMetadata {
     questionCount: number;
     topics?: string[];
 
+    // New fields added for assessment identification and type
+    // Millisecond-precision integer timestamp representing when the assessment file was created/added
+    assessmentUniqueId?: number;
+    // Test type (e.g. 'multiple-choice'). Kept as string to allow future types.
+    testType?: string;
+
     // Mapping of unique topic name -> mdnLink used to avoid duplicating mdnLink on each question
     topicLinks?: TopicLink[];
 }

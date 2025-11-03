@@ -13,6 +13,10 @@ interface AssessmentMetadata {
     timeLimit: number;
     questionCount: number;
     topics?: string[];
+    // Millisecond timestamp representing when the assessment file was created/added
+    assessmentUniqueId?: number;
+    // Type of the assessment (e.g. 'multiple-choice')
+    testType?: string;
 }
 
 interface AssessmentQuestion {
