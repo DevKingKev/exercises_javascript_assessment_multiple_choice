@@ -1,0 +1,7 @@
+# Deployment configuration for assessment app (example)
+# This file can be used by your deployment tooling to set a default language.
+# Note: runtime hostname subdomain detection still takes precedence so a single
+# deployment can serve multiple languages by using subdomains like
+# javascript.example.com, php.example.com, etc.
+
+defaultLanguage: javascript
