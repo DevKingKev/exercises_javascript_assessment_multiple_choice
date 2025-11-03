@@ -18,6 +18,8 @@ const metadata = {
         "Principle of least privilege"
     ],
     "assessmentId": 4,
+    "assessmentUniqueId": 1761906616000,
+    "testType": "multiple-choice",
     "topicLinks": [
         { "topicName": "Cross-Site Scripting (XSS)", "mdnLink": "https://developer.mozilla.org/en-US/docs/Glossary/Cross-site_scripting" },
         { "topicName": "Content Security Policy (CSP)", "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP" },

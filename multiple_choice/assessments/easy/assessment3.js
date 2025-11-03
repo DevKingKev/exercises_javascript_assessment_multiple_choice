@@ -15,6 +15,8 @@ const metadata = {
         "String indexing and character access"
     ],
     "assessmentId": 3,
+    "assessmentUniqueId": 1761243439000,
+    "testType": "multiple-choice",
     "topicLinks": [
         {
             "topicName": "Math object methods (Math.max, Math.min, Math.pow)",

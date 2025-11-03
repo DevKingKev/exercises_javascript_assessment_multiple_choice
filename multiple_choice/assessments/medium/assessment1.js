@@ -18,6 +18,8 @@ const metadata = {
         "Higher-order functions"
     ],
     "assessmentId": 1,
+    "assessmentUniqueId": 1761349899000,
+    "testType": "multiple-choice",
     "topicLinks": [
         {
             "topicName": "Closures and lexical scope",

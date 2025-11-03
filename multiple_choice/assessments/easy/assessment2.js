@@ -15,6 +15,8 @@ const metadata = {
         "Object creation methods"
     ],
     "assessmentId": 2,
+    "assessmentUniqueId": 1761243439000,
+    "testType": "multiple-choice",
     "topicLinks": [
         {
             "topicName": "Type coercion and typeof operator",

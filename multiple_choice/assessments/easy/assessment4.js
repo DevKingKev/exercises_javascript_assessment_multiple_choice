@@ -16,6 +16,8 @@ const metadata = {
         "Modern JavaScript syntax and best practices"
     ],
     "assessmentId": 4,
+    "assessmentUniqueId": 1761243439000,
+    "testType": "multiple-choice",
     "topicLinks": [
         {
             "topicName": "ES6+ Features (arrow functions, template literals, destructuring)",

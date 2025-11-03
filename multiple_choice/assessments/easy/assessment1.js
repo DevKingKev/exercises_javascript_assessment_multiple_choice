@@ -44,7 +44,9 @@ const metadata = {
             "mdnLink": "https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events"
         }
     ],
-    "assessmentId": 1
+    "assessmentId": 1,
+    "assessmentUniqueId": 1761243439000,
+    "testType": "multiple-choice"
 };
 
 const questions = [

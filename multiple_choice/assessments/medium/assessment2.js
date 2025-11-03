@@ -18,6 +18,8 @@ const metadata = {
         "Stream APIs"
     ],
     "assessmentId": 2,
+    "assessmentUniqueId": 1761906616000,
+    "testType": "multiple-choice",
     "topicLinks": [
         { "topicName": "Event loop and call stack", "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop" },
         { "topicName": "Microtasks vs macrotasks", "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/API/HTML_DOM_API/Microtask_and_macrotask_queues" },

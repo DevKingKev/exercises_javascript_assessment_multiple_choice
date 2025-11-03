@@ -18,6 +18,8 @@ const metadata = {
         "Element.getBoundingClientRect"
     ],
     "assessmentId": 3,
+    "assessmentUniqueId": 1761906616000,
+    "testType": "multiple-choice",
     "topicLinks": [
         { "topicName": "DOM traversal and manipulation", "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction" },
         { "topicName": "Event delegation", "mdnLink": "https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events#event_delegation" },
