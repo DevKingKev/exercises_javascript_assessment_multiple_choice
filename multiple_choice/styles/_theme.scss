@@ -431,24 +431,7 @@ body {
   color: var(--text-primary) !important;
 }
 
-.difficulty-badge {
-  padding: 10px;
-  
-  &.badge-easy {
-    background: var(--bg-tertiary) !important;
-    color: #34d399 !important;
-  }
-  
-  &.badge-medium {
-    background: var(--bg-tertiary) !important;
-    color: #60a5fa !important;
-  }
-  
-  &.badge-hard {
-    background: var(--bg-tertiary) !important;
-    color: #f87171 !important;
-  }
-}
+
 
 .difficulty-stats {
   color: var(--text-secondary) !important;

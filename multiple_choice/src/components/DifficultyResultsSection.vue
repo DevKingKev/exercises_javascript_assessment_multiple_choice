@@ -13,9 +13,7 @@
     >
       <div class="difficulty-info">
         <div class="difficulty-title">
-          <span class="difficulty-badge" :class="`badge-${difficulty}`">
-            {{ capitalizedDifficulty }}
-          </span>
+          <DifficultyBadge :difficulty="difficulty" :label="capitalizedDifficulty" />
         </div>
         <div class="difficulty-stats">
           <span class="stat-item">
@@ -45,6 +43,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
+import DifficultyBadge from '@/components/DifficultyBadge.vue';
 
 interface Props {
   difficulty: string;
@@ -113,29 +112,7 @@ const capitalizedDifficulty = computed(() => {
   gap: $spacing-md;
 }
 
-.difficulty-badge {
-  padding: $spacing-sm $spacing-lg;
-  border-radius: $radius-lg;
-  font-size: $font-size-base;
-  font-weight: $font-weight-semibold;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-
-  &.badge-easy {
-    background: $success-light;
-    color: $success-dark;
-  }
-
-  &.badge-medium {
-    background: $blue-light;
-    color: $blue-border;
-  }
-
-  &.badge-hard {
-    background: $danger-light;
-    color: $danger-dark;
-  }
-}
+/* difficulty-badge styles moved to the dedicated DifficultyBadge component */
 
 .difficulty-stats {
   display: flex;
@@ -179,10 +156,7 @@ const capitalizedDifficulty = computed(() => {
     padding: $spacing-lg $spacing-xl;
   }
 
-  .difficulty-badge {
-    font-size: $font-size-sm;
-    padding: $spacing-xs $spacing-md;
-  }
+  /* responsive badge sizing handled by DifficultyBadge component */
 
   .difficulty-stats {
     flex-direction: column;

@@ -4,11 +4,11 @@
     <div class="container" v-if="resultsStore.currentResults">
     <div class="screen active">
       <div class="results-header">
-        <h1>Assessment Results</h1>
-          <div class="results-header-left">
-            <span class="difficulty-badge" :class="`badge-${difficultyRaw}`">{{ displayDifficulty }}</span>
-          </div>
-          <h2 class="assessment-name">{{ assessmentLabel }}</h2>
+          <h1>Assessment Results</h1>
+            <div class="results-header-left">
+              <DifficultyBadge :difficulty="difficultyRaw" :label="displayDifficulty" />
+            </div>
+            <h2 class="assessment-name">{{ assessmentLabel }}</h2>
         <div class="score-display">
           <div class="score-circle" :class="getScoreBadgeClass(resultsStore.currentResults.percentage)">
             <span class="score-percentage">{{ resultsStore.currentResults.percentage }}%</span>
@@ -94,6 +94,7 @@
 import { onMounted, ref, watch, computed } from 'vue';
 import LoadingSpinner from '@/components/LoadingSpinner.vue';
 import TopicTags from '@/components/TopicTags.vue';
+import DifficultyBadge from '@/components/DifficultyBadge.vue';
 import { useRouter, useRoute } from 'vue-router';
 import { useAssessmentStore } from '@/stores/assessmentStore';
 import { useResultsStore } from '@/stores/resultsStore';
