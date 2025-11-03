@@ -4,7 +4,8 @@
     <div class="container" v-if="resultsStore.currentResults">
     <div class="screen active">
       <div class="results-header">
-        <h2>Assessment Results</h2>
+        <h1>Assessment Results</h1>
+          <h2 class="assessment-name">{{ assessmentLabel }}</h2>
         <div class="score-display">
           <div class="score-circle" :class="getScoreBadgeClass(resultsStore.currentResults.percentage)">
             <span class="score-percentage">{{ resultsStore.currentResults.percentage }}%</span>
@@ -87,7 +88,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref, watch } from 'vue';
+import { onMounted, ref, watch, computed } from 'vue';
 import LoadingSpinner from '@/components/LoadingSpinner.vue';
 import TopicTags from '@/components/TopicTags.vue';
 import { useRouter, useRoute } from 'vue-router';
@@ -97,6 +98,7 @@ import { formatTextWithCode } from '@/utils/formatUtils';
 import { formatDate } from '@/utils/dateUtils';
 import { getScoreBadgeClass } from '@/utils/resultsUtils';
 import { getTopicClass as utilGetTopicClass, findTopicMdnLink } from '@/utils/topicUtils';
+import { formatAssessmentLabel } from '@/utils/assessmentUtils';
 import type { QuestionReview } from '@/models';
 
 const router = useRouter();
@@ -108,6 +110,15 @@ const savedResultDate = ref<string | null>( null );
 // persisted on the record can be used to resolve MDN anchors.
 const savedResultRecord = ref<any>( null );
 const isLoading = ref(false);
+
+// Display label for the assessment shown on this results page. Prefer
+// any persisted title on the saved result record, otherwise derive from
+// the currently loaded assessment metadata.
+const assessmentLabel = computed(() => {
+  const id = savedResultRecord.value?.assessmentId ?? (assessmentStore.currentAssessment as any)?.metadata?.id ?? null;
+  const title = savedResultRecord.value?.assessmentTitle ?? (assessmentStore.currentAssessment as any)?.metadata?.title ?? null;
+  return formatAssessmentLabel(id, title);
+});
 
 function formatQuestion(text: string): string {
   return formatTextWithCode(text);
@@ -334,10 +345,16 @@ watch(
   text-align: center;
   margin-bottom: 40px;
 
-  h2 {
+  h1 {
     font-size: 2rem;
     margin-bottom: 30px;
     color: #2c3e50;
+  }
+  .assessment-name {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 4px;
   }
 }
 
