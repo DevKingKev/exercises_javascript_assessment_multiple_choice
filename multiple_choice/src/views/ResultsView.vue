@@ -56,39 +56,45 @@
       <div class="question-review">
         <h3>Question Review</h3>
         <div class="review-container">
-          <div
-            v-for="(review, index) in resultsStore.currentResults.questionReview"
-            :key="index"
-            class="review-item"
-          >
-            <div class="review-question">
-              <strong>Question {{ index + 1 }}:</strong>
-              <span v-html="formatQuestion(review.question)"></span>
-            </div>
-            <div class="review-answer user">
-              <strong>Your answer:</strong>
-              {{ getUserAnswerText(review) }}
-            </div>
-            <div class="review-answer" :class="review.isCorrect ? 'correct' : 'incorrect'">
-              <strong>Correct answer:</strong>
-              {{ review.correctAnswer }}: {{ review.options[review.correctAnswer] }}
-            </div>
-            <div v-if="review.explanation" class="review-explanation">
-              <strong>Explanation:</strong>
-              <p v-html="formatQuestion(review.explanation)"></p>
+          <div v-if="assessmentLoadFailed" class="load-failed" role="status" aria-live="polite">
+            <span class="load--failed-icon" aria-hidden="true">⚠️</span>
+            <span class="load--failed-text">Failed to load assessment</span>
+          </div>
+          <div v-else>
+            <div
+              v-for="(review, index) in resultsStore.currentResults.questionReview"
+              :key="index"
+              class="review-item"
+            >
+              <div class="review-question">
+                <strong>Question {{ index + 1 }}:</strong>
+                <span v-html="formatQuestion(review.question)"></span>
+              </div>
+              <div class="review-answer user">
+                <strong>Your answer:</strong>
+                {{ getUserAnswerText(review) }}
+              </div>
+              <div class="review-answer" :class="review.isCorrect ? 'correct' : 'incorrect'">
+                <strong>Correct answer:</strong>
+                {{ review.correctAnswer }}: {{ review.options[review.correctAnswer] }}
+              </div>
+              <div v-if="review.explanation" class="review-explanation">
+                <strong>Explanation:</strong>
+                <p v-html="formatQuestion(review.explanation)"></p>
 
-              <div class="explanation-topics" v-if="(review as any).topic">
-                <strong class="explanation-topics-heading">
-                  {{ Object.keys(getTopicItemsForReview(review)).length === 1 ? 'Topic:' : 'Topics:' }}
-                </strong>
+                <div class="explanation-topics" v-if="(review as any).topic">
+                  <strong class="explanation-topics-heading">
+                    {{ Object.keys(getTopicItemsForReview(review)).length === 1 ? 'Topic:' : 'Topics:' }}
+                  </strong>
 
-                <!-- TopicTags now renders as a paragraph (so the tags are wrapped in a <p>) -->
-                <TopicTags
-                  :items="getTopicItemsForReview(review)"
-                  :getTopicLink="getTopicLink"
-                  :getTopicClass="getTopicClass"
-                  :keyPrefix="String(savedResultDate || index)"
-                />
+                  <!-- TopicTags now renders as a paragraph (so the tags are wrapped in a <p>) -->
+                  <TopicTags
+                    :items="getTopicItemsForReview(review)"
+                    :getTopicLink="getTopicLink"
+                    :getTopicClass="getTopicClass"
+                    :keyPrefix="String(savedResultDate || index)"
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -128,6 +134,7 @@ const savedResultDate = ref<string | null>( null );
 // persisted on the record can be used to resolve MDN anchors.
 const savedResultRecord = ref<any>( null );
 const isLoading = ref(false);
+const assessmentLoadFailed = ref(false);
 
 // Display label for the assessment shown on this results page. Prefer
 // any persisted title on the saved result record, otherwise derive from
@@ -247,6 +254,8 @@ const findAndRestore = async (idStr?: string) => {
   if (Number.isNaN(id)) return;
   // show spinner while we attempt restoration
   isLoading.value = true;
+  // reset load-failure flag for each attempt
+  assessmentLoadFailed.value = false;
   try {
 
   // Search resultsHistory for the matching record
@@ -282,6 +291,8 @@ const findAndRestore = async (idStr?: string) => {
     await assessmentStore.loadAssessment(found.difficulty, found.rec.assessmentId);
   } catch (e) {
     console.debug('Could not load assessment for reconstruction', e);
+    // mark that we couldn't load the assessment — UI should show fallback
+    assessmentLoadFailed.value = true;
   }
 
   const assessment = assessmentStore.currentAssessment;
@@ -328,6 +339,10 @@ const findAndRestore = async (idStr?: string) => {
 
     resultsStore.setCurrentResults(built);
     } else {
+    // If assessment is missing after the load attempt, indicate failure
+    if (!assessment) {
+      assessmentLoadFailed.value = true;
+    }
     // If we cannot reconstruct question-level review (missing assessment),
     // still set a minimal currentResults so the UI can show the saved summary.
     resultsStore.setCurrentResults({
@@ -541,6 +556,34 @@ watch(
   }
 }
 
+.load-failed {
+  padding: 24px;
+  background: #fff3f2;
+  color: #c0392b;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+.load-failed {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.load-failed .load--failed-icon {
+  width: 20px;
+  height: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  line-height: 1;
+}
+
+.load-failed .load--failed-text {
+  line-height: 1;
+}
+
 .review-container {
   display: flex;
   flex-direction: column;
@@ -663,6 +706,17 @@ watch(
       margin-right: 8px;
       font-weight: 700;
     }
+  }
+
+  .load-failed {
+    background: rgba(255, 255, 255, 0.03) !important;
+    color: #ffd6d1 !important; /* softer red/pink for contrast */
+    // color: #c0392b !important;  
+    border: 1px solid rgba(255, 255, 255, 0.06) !important;
+  }
+
+  .load-failed .load--failed-icon {
+    color: inherit !important;
   }
 }
 </style>
