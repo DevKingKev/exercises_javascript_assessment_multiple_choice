@@ -80,7 +80,7 @@ const questions = [
         "question": "Which measure helps prevent CSRF attacks?",
         "options": { "A": "Use SameSite cookies, CSRF tokens, or require custom headers on state-changing requests", "B": "Accept all POST requests", "C": "Disable cookies", "D": "Only use GET requests for actions" },
         "correct": "A",
-        "explanation": "CSRF mitigations include SameSite cookies, anti-CSRF tokens, and requiring custom headers such as X-Requested-With which cannot be sent cross-origin without CORS permission.",
+        "explanation": "Cross-site request forgery (CSRF) mitigations include SameSite cookies, anti-CSRF tokens, and requiring custom headers such as X-Requested-With which cannot be sent cross-origin without CORS permission.",
         "topic": { "topics": ["CSRF prevention"] }
     },
     {
