@@ -5,18 +5,19 @@
     <div class="screen active">
       <div class="results-header">
           <h1>Assessment Results</h1>
-            <div class="results-header-left">
-              <RouterLink
-                class="difficulty-badge-link"
-                :to="{ name: 'results', query: { expand: String(difficultyRaw) } }"
-                @click.stop
-                :title="`View ${displayDifficulty} results`"
-                :aria-label="`View ${displayDifficulty} results`"
-              >
-                <DifficultyBadge :difficulty="difficultyRaw" :label="displayDifficulty" />
-              </RouterLink>
-            </div>
-            <h2 class="assessment-name">{{ assessmentLabel }}</h2>
+          <div class="results-header-left">
+            <RouterLink
+              class="difficulty-badge-link"
+              :to="{ name: 'results', query: { expand: String(difficultyRaw) } }"
+              @click.stop
+              :title="`View ${displayDifficulty} results`"
+              :aria-label="`View ${displayDifficulty} results`"
+            >
+              <DifficultyBadge :difficulty="difficultyRaw" :label="displayDifficulty" />
+            </RouterLink>
+          </div>
+          <h2 class="assessment-name">{{ assessmentLabel }}</h2>
+      
         <div class="score-display">
           <div class="score-circle" :class="getScoreBadgeClass(resultsStore.currentResults.percentage)">
             <span class="score-percentage">{{ resultsStore.currentResults.percentage }}%</span>
@@ -35,7 +36,6 @@
           </div>
         </div>
       </div>
-
       <div class="performance-breakdown">
         <h3>Performance by Topic</h3>
         <div class="topic-breakdown">
@@ -52,7 +52,6 @@
           </div>
         </div>
       </div>
-
       <div class="question-review">
         <h3>Question Review</h3>
         <div class="review-container">
@@ -66,36 +65,16 @@
               :key="index"
               class="review-item"
             >
-              <div class="review-question">
-                <strong>Question {{ index + 1 }}:</strong>
-                <span v-html="formatQuestion(review.question)"></span>
-              </div>
-              <div class="review-answer user">
-                <strong>Your answer:</strong>
-                {{ getUserAnswerText(review) }}
-              </div>
-              <div class="review-answer" :class="review.isCorrect ? 'correct' : 'incorrect'">
-                <strong>Correct answer:</strong>
-                {{ review.correctAnswer }}: {{ review.options[review.correctAnswer] }}
-              </div>
-              <div v-if="review.explanation" class="review-explanation">
-                <strong>Explanation:</strong>
-                <p v-html="formatQuestion(review.explanation)"></p>
-
-                <div class="explanation-topics" v-if="(review as any).topic">
-                  <strong class="explanation-topics-heading">
-                    {{ Object.keys(getTopicItemsForReview(review)).length === 1 ? 'Topic:' : 'Topics:' }}
-                  </strong>
-
-                  <!-- TopicTags now renders as a paragraph (so the tags are wrapped in a <p>) -->
-                  <TopicTags
-                    :items="getTopicItemsForReview(review)"
-                    :getTopicLink="getTopicLink"
-                    :getTopicClass="getTopicClass"
-                    :keyPrefix="String(savedResultDate || index)"
-                  />
-                </div>
-              </div>
+              <QuestionReviewComponent
+                :review="review"
+                :index="index"
+                :savedResultDate="savedResultDate"
+                :formatQuestion="formatQuestion"
+                :getUserAnswerText="getUserAnswerText"
+                :topicItems="getTopicItemsForReview(review)"
+                :getTopicLink="getTopicLink"
+                :getTopicClass="getTopicClass"
+              />
             </div>
           </div>
         </div>
@@ -113,7 +92,7 @@
 <script setup lang="ts">
 import { onMounted, ref, watch, computed } from 'vue';
 import LoadingSpinner from '@/components/LoadingSpinner.vue';
-import TopicTags from '@/components/TopicTags.vue';
+import QuestionReviewComponent from '@/components/QuestionReview.vue';
 import DifficultyBadge from '@/components/DifficultyBadge.vue';
 import { useRouter, useRoute } from 'vue-router';
 import { useAssessmentStore } from '@/stores/assessmentStore';
@@ -398,55 +377,6 @@ watch(
   cursor: pointer;
   text-decoration: none;
   color: inherit;
-}
-
-.difficulty-badge-link:focus-visible {
-  outline: 2px solid #60a5fa;
-  outline-offset: 2px;
-  border-radius: 6px;
-}
-
-.score-display {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 40px;
-  margin: 30px 0;
-
-  @media (max-width: 768px) {
-    flex-direction: column;
-    gap: 20px;
-  }
-}
-
-.score-circle {
-  width: 160px;
-  height: 160px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 8px solid;
-  
-  &.excellent {
-    border-color: #2ecc71;
-    background: #e8f8f5;
-  }
-
-  &.good {
-    border-color: #3498db;
-    background: #ebf5fb;
-  }
-
-  &.fair {
-    border-color: #f39c12;
-    background: #fef5e7;
-  }
-
-  &.needs-improvement {
-    border-color: #e74c3c;
-    background: #fadbd8;
-  }
 }
 
 .score-percentage {
