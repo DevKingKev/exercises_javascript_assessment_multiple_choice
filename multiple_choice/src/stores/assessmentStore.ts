@@ -54,6 +54,10 @@ export const useAssessmentStore = defineStore( 'assessment', () => {
         return ( difficulty: string ) => availableAssessments.value[difficulty]?.length || 0;
     } );
 
+    // In-memory cache for fetched assessments to avoid refetching within a session.
+    // Structure: { [language]: { [difficulty]: { [assessmentId]: Assessment } } }
+    const assessmentsCache = ref<Record<string, Record<string, Record<string, any>>>>( {} );
+
     // Actions
     async function loadAvailableAssessments ( force = false, language?: string ) {
         // Skip if already loaded and not forcing a refresh
@@ -102,6 +106,46 @@ export const useAssessmentStore = defineStore( 'assessment', () => {
             }
             if ( !lang ) lang = 'javascript';
 
+            // Check cache first
+            const langCache = assessmentsCache.value[lang] || {};
+            const difficultyCache = langCache[difficulty] || {};
+            if ( difficultyCache[assessmentId] ) {
+                const cached: Assessment = difficultyCache[assessmentId];
+
+                // Re-initialize store state from cached assessment
+                currentAssessment.value = cached;
+                currentDifficulty.value = difficulty;
+                currentQuestionIndex.value = 0;
+                userAnswers.value = new Array( cached.questions.length ).fill( null );
+                timeLimit.value = cached.metadata.timeLimit;
+                startTime.value = new Date();
+
+                // Attempt to restore saved progress from localStorage (if any)
+                try {
+                    const key = getProgressKeyForAssessment( cached );
+                    const raw = localStorage.getItem( key );
+                    if ( raw ) {
+                        const saved = JSON.parse( raw );
+                        if ( saved && Array.isArray( saved.userAnswers ) ) {
+                            if ( saved.userAnswers.length === cached.questions.length ) {
+                                userAnswers.value = saved.userAnswers;
+                            }
+                        }
+                        if ( typeof saved.currentQuestionIndex === 'number' ) {
+                            const idx = Math.max( 0, Math.min( saved.currentQuestionIndex, cached.questions.length - 1 ) );
+                            currentQuestionIndex.value = idx;
+                        }
+                        if ( typeof saved.elapsedMs === 'number' ) {
+                            startTime.value = new Date( Date.now() - saved.elapsedMs );
+                        }
+                    }
+                } catch ( e ) {
+                    console.error( 'Error restoring assessment progress from cache path:', e );
+                }
+
+                return cached;
+            }
+
             const response = await fetch( `/api/assessment/${encodeURIComponent( lang )}/${encodeURIComponent( difficulty )}/${encodeURIComponent( assessmentId )}` );
             if ( !response.ok ) {
                 throw new Error( 'Failed to load assessment' );
@@ -126,6 +170,11 @@ export const useAssessmentStore = defineStore( 'assessment', () => {
             userAnswers.value = new Array( assessmentData.questions.length ).fill( null );
             timeLimit.value = assessmentData.metadata.timeLimit;
             startTime.value = new Date();
+
+            // Store in cache for this session so future requests don't refetch
+            assessmentsCache.value[lang] = assessmentsCache.value[lang] || {};
+            assessmentsCache.value[lang][difficulty] = assessmentsCache.value[lang][difficulty] || {};
+            assessmentsCache.value[lang][difficulty][assessmentId] = assessmentData;
 
             // Try to restore any saved progress for this assessment from localStorage
             try {

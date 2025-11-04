@@ -242,6 +242,54 @@ describe( 'assessmentStore', () => {
             expect( store.startTime ).toBeInstanceOf( Date );
         } );
 
+        it( 'caches fetched assessments and avoids refetch within same session', async () => {
+            const store = useAssessmentStore();
+            const mockAssessment = createMockAssessment( 3 );
+            mockAssessment.metadata.difficulty = 'easy';
+
+            // First fetch resolves with the assessment
+            ( global.fetch as any ).mockResolvedValueOnce( {
+                ok: true,
+                json: async () => mockAssessment
+            } );
+
+            const first = await store.loadAssessment( 'easy', 'test-1' );
+            expect( global.fetch ).toHaveBeenCalledTimes( 1 );
+            expect( first ).toEqual( mockAssessment );
+
+            // Second call for same difficulty and id should use cache and not call fetch again
+            const second = await store.loadAssessment( 'easy', 'test-1' );
+            expect( global.fetch ).toHaveBeenCalledTimes( 1 );
+            expect( second ).toEqual( mockAssessment );
+        } );
+
+        it( 'fetches different assessments or different difficulties separately', async () => {
+            const store = useAssessmentStore();
+            const a1 = createMockAssessment( 2 );
+            a1.id = 'a1';
+            a1.metadata.difficulty = 'easy';
+
+            const a2 = createMockAssessment( 2 );
+            a2.id = 'a2';
+            a2.metadata.difficulty = 'easy';
+
+            // a1 returned first
+            ( global.fetch as any ).mockResolvedValueOnce( { ok: true, json: async () => a1 } );
+            const resA1 = await store.loadAssessment( 'easy', 'a1' );
+            expect( global.fetch ).toHaveBeenCalledTimes( 1 );
+
+            // a2 should cause another fetch
+            ( global.fetch as any ).mockResolvedValueOnce( { ok: true, json: async () => a2 } );
+            const resA2 = await store.loadAssessment( 'easy', 'a2' );
+            expect( global.fetch ).toHaveBeenCalledTimes( 2 );
+            expect( resA2 ).toEqual( a2 );
+
+            // requesting a1 again should not trigger fetch
+            const resA1Again = await store.loadAssessment( 'easy', 'a1' );
+            expect( global.fetch ).toHaveBeenCalledTimes( 2 );
+            expect( resA1Again ).toEqual( a1 );
+        } );
+
         it( 'throws error when assessment fails to load', async () => {
             const store = useAssessmentStore();
 
