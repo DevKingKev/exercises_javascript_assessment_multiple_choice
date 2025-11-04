@@ -72,4 +72,8 @@ const topicItems = computed(() => {
 .review-answer { padding: 12px 16px; margin: 8px 0; border-radius: 6px; }
 .review-answer.user { background: #f8f9fa; }
 .review-explanation { margin-top: 12px; padding: 12px 16px; background: #ebf5fb; border-left: 4px solid #3498db; border-radius: 6px; }
+/* Ensure review-answer.user uses the same dark-mode surface as topic items */
+:root[data-theme="dark"] .review-answer.user {
+  background: rgba(255, 255, 255, 0.03) !important;
+}
 </style>

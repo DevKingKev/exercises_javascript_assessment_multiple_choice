@@ -31,27 +31,14 @@
             </p>
             <p class="time-taken">
               Time taken: {{ resultsStore.currentResults.timeTaken }}
-              <span v-if="savedResultDate">&nbsp;•&nbsp;Taken: {{ formatDate(savedResultDate) }}</span>
+            </p>
+            <p class="test-when-taken">
+              <span v-if="savedResultDate">Test taken on: {{ formatDate(savedResultDate) }}</span>
             </p>
           </div>
         </div>
       </div>
-      <div class="performance-breakdown">
-        <h3>Performance by Topic</h3>
-        <div class="topic-breakdown">
-          <div
-            v-for="(scores, topic) in resultsStore.currentResults.topicBreakdown"
-            :key="topic"
-            class="topic-item"
-          >
-            <span class="topic-name">{{ topic }}</span>
-            <span class="topic-score">
-              {{ scores.correct }}/{{ scores.total }}
-              ({{ getPercentage(scores.correct, scores.total) }}%)
-            </span>
-          </div>
-        </div>
-      </div>
+      <TopicPerformanceBreakdown :items="resultsStore.currentResults.topicBreakdown" />
       <div class="question-review">
         <h3>Question Review</h3>
         <div class="review-container">
@@ -71,7 +58,7 @@
                 :savedResultDate="savedResultDate"
                 :formatQuestion="formatQuestion"
                 :getUserAnswerText="getUserAnswerText"
-                :topicItems="getTopicItemsForReview(review)"
+                :topicItems="(getTopicItemsForReview(review) as Record<string, { correct: number; total: number }>)"
                 :getTopicLink="getTopicLink"
                 :getTopicClass="getTopicClass"
               />
@@ -94,6 +81,7 @@ import { onMounted, ref, watch, computed } from 'vue';
 import LoadingSpinner from '@/components/LoadingSpinner.vue';
 import QuestionReviewComponent from '@/components/QuestionReview.vue';
 import DifficultyBadge from '@/components/DifficultyBadge.vue';
+import TopicPerformanceBreakdown from '@/components/TopicPerformanceBreakdown.vue';
 import { useRouter, useRoute } from 'vue-router';
 import { useAssessmentStore } from '@/stores/assessmentStore';
 import { useResultsStore } from '@/stores/resultsStore';
@@ -399,7 +387,7 @@ watch(
     color: #3498db;
   }
 
-  .time-taken {
+  .time-taken, .test-when-taken {
     color: #7f8c8d;
     font-size: 1rem;
   }
