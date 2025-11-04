@@ -102,13 +102,20 @@ Each question must have the following structure:
 ## Code Formatting Rules
 
 ### In Questions (`question` property)
-- **Always use `[CODE]...[/CODE]` tags** for code snippets
-- Use for both inline code and code blocks
-- Example: `"What does [CODE]console.log('Hello')[/CODE] do?"`
-- Example with block:
-  ```
-  "What does this code do?\n[CODE]function test() {\n  return 42;\n}[/CODE]"
-  ```
+- **Use `<pre>...<pre>` for single words, function names, or simple inline references**
+  - Example: `"What is the difference between <pre>fetch()</pre> and <pre>XMLHttpRequest</pre>?"`
+  - Example: `"What does the <pre>typeof</pre> operator return?"`
+  - Example: `"How does <pre>Array.from()</pre> work?"`
+  
+- **Use `[CODE]...[/CODE]` for code snippets with statements, expressions, or multi-line code**
+  - Example: `"What does [CODE]console.log('Hello')[/CODE] do?"`
+  - Example with block:
+    ```
+    "What does this code do?\n[CODE]function test() {\n  return 42;\n}[/CODE]"
+    ```
+  - Example: `"What is the result of [CODE]typeof null[/CODE]?"`
+
+**Rule of thumb**: If it's just a word, function name, or API reference without code logic, use `<pre>`. If it contains actual code execution, expressions, or multiple statements, use `[CODE]`.
 
 ### In Options (`options` property)
 - **Always use `<pre>...<pre>` tags** for code snippets
