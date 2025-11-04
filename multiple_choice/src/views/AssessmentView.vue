@@ -218,7 +218,10 @@ async function submitAssessment() {
   }
 
   // Navigate to results
-  router.push({ name: 'assessment-result' });
+  router.push({ 
+    name: 'assessment-result',
+    params: { resultRecordId: resultRecord.resultRecordId.toString() }
+  });
 }
 
 function calculateResults() {
