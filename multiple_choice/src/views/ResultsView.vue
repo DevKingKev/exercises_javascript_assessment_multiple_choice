@@ -67,8 +67,14 @@
             </div>
             <div v-if="review.explanation" class="review-explanation">
               <strong>Explanation:</strong>
-              <span v-html="formatQuestion(review.explanation)"></span>
+              <p v-html="formatQuestion(review.explanation)"></p>
+
               <div class="explanation-topics" v-if="(review as any).topic">
+                <strong class="explanation-topics-heading">
+                  {{ Object.keys(getTopicItemsForReview(review)).length === 1 ? 'Topic:' : 'Topics:' }}
+                </strong>
+
+                <!-- TopicTags now renders as a paragraph (so the tags are wrapped in a <p>) -->
                 <TopicTags
                   :items="getTopicItemsForReview(review)"
                   :getTopicLink="getTopicLink"
@@ -606,6 +612,24 @@ watch(
 
     &:hover {
       background: #27ae60;
+    }
+  }
+}
+</style>
+
+<!-- Non-scoped dark-mode overrides so headings in the explanation block stand out -->
+<style lang="scss">
+:root[data-theme="dark"] {
+  .review-explanation {
+    strong {
+      color: #93c5fd !important; /* lighter blue to increase contrast */
+    }
+
+    .explanation-topics-heading {
+      color: #93c5fd !important;
+      display: inline-block;
+      margin-right: 8px;
+      font-weight: 700;
     }
   }
 }

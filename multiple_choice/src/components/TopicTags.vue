@@ -1,5 +1,5 @@
 <template>
-  <span>
+  <p class="topic-tags">
     <template v-for="(item, index) in normalizedItems" :key="`${keyPrefix}-${item.name}-${index}`">
       <a
         v-if="resolvedGetTopicLink(item.name)"
@@ -21,7 +21,7 @@
         {{ item.name }}{{ index < normalizedItems.length - 1 ? ', ' : '' }}
       </span>
     </template>
-  </span>
+  </p>
 </template>
 
 <script setup lang="ts">
