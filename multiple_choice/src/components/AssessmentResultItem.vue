@@ -126,7 +126,7 @@ function getTopicLink(topicName: string): string | undefined {
       assessmentId: (props.result as any).assessmentId || undefined,
       availableAssessments: (assessmentStore as any).availableAssessments || undefined,
       currentAssessment: assessmentStore.currentAssessment || undefined,
-      getAssessmentMetadata: assessmentStore.getAssessmentMetadata ? (assessmentStore.getAssessmentMetadata.bind(assessmentStore) as any) : undefined,
+  getAssessmentMetadata: assessmentStore.getAssessmentMetadata ? assessmentStore.getAssessmentMetadata.bind(assessmentStore) : undefined,
       currentDifficulty: assessmentStore.currentDifficulty || undefined
     });
   } catch (e) {

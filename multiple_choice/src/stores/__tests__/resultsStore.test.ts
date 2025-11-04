@@ -213,35 +213,7 @@ describe( 'resultsStore', () => {
             expect( store.resultsHistory ).toEqual( mockData );
         } );
 
-        it.skip( 'migrates old format (testId/testTitle) to new format', () => {
-            const oldFormatData = {
-                easy: {
-                    'test-1': [
-                        {
-                            testId: 'test-1',
-                            testTitle: 'Old Test',
-                            difficulty: 'easy',
-                            date: '2025-10-30',
-                            correct: 8,
-                            total: 10,
-                            percentage: 80,
-                            timeTaken: '5:00'
-                        }
-                    ]
-                }
-            };
-
-            localStorage.setItem( 'assessmentResults', JSON.stringify( oldFormatData ) );
-
-            const store = useResultsStore();
-            store.loadResultsHistory();
-
-            const result = store.resultsHistory.easy['test-1'][0];
-            expect( result.assessmentId ).toBe( 'test-1' );
-            expect( result.assessmentTitle ).toBe( 'Old Test' );
-            expect( result.improvementTopics ).toEqual( [] );
-            expect( result.topicBreakdown ).toEqual( {} );
-        } );
+        // Migration-related tests removed per current non-migration policy
 
         it( 'handles missing localStorage data', () => {
             const store = useResultsStore();
@@ -259,130 +231,11 @@ describe( 'resultsStore', () => {
             expect( store.resultsHistory ).toEqual( {} );
         } );
 
-        it.skip( 'adds resultRecordId for records missing it (from date)', () => {
-            const dateIso = '2025-10-30T12:34:56.127Z';
-            const ts = Number( Date.parse( dateIso ) );
+        // Migration-related tests removed per current non-migration policy
 
-            const mockData: any = {
-                easy: {
-                    'test-1': [
-                        {
-                            assessmentId: 'test-1',
-                            difficulty: 'easy',
-                            assessmentTitle: 'Test',
-                            date: dateIso,
-                            correct: 8,
-                            total: 10,
-                            percentage: 80,
-                            timeTaken: '5:00',
-                            improvementTopics: [],
-                            topicBreakdown: {}
-                        }
-                    ]
-                }
-            };
+        // Migration-related tests removed per current non-migration policy
 
-            localStorage.setItem( 'assessmentResults', JSON.stringify( mockData ) );
-
-            const store = useResultsStore();
-            store.loadResultsHistory();
-
-            const rec = store.resultsHistory.easy['test-1'][0] as any;
-            expect( typeof rec.resultRecordId ).toBe( 'number' );
-            // Should match parse of ISO date
-            expect( rec.resultRecordId ).toBe( ts );
-        } );
-
-        it.skip( 'avoids duplicate resultRecordId values when dates collide', () => {
-            // Two records with identical date -> same timestamp initially
-            const dateIso = '2025-10-30T12:34:56.127Z';
-            const ts = Number( Date.parse( dateIso ) );
-
-            const mockData: any = {
-                easy: {
-                    'test-1': [
-                        {
-                            assessmentId: 'test-1',
-                            difficulty: 'easy',
-                            assessmentTitle: 'Test',
-                            date: dateIso,
-                            correct: 7,
-                            total: 10,
-                            percentage: 70,
-                            timeTaken: '5:00',
-                            improvementTopics: [],
-                            topicBreakdown: {}
-                        },
-                        {
-                            assessmentId: 'test-1',
-                            difficulty: 'easy',
-                            assessmentTitle: 'Test',
-                            date: dateIso,
-                            correct: 9,
-                            total: 10,
-                            percentage: 90,
-                            timeTaken: '4:50',
-                            improvementTopics: [],
-                            topicBreakdown: {}
-                        }
-                    ]
-                }
-            };
-
-            localStorage.setItem( 'assessmentResults', JSON.stringify( mockData ) );
-
-            const store = useResultsStore();
-            store.loadResultsHistory();
-
-            const recs = store.resultsHistory.easy['test-1'] as any[];
-            expect( recs.length ).toBe( 2 );
-
-            const id0 = recs[0].resultRecordId;
-            const id1 = recs[1].resultRecordId;
-
-            expect( typeof id0 ).toBe( 'number' );
-            expect( typeof id1 ).toBe( 'number' );
-            // Both should be numbers; original timestamp should be used for at least one
-            expect( id0 === ts || id1 === ts ).toBeTruthy();
-            // They must not be equal (duplicates avoided)
-            expect( id0 ).not.toBe( id1 );
-        } );
-
-        it.skip( 'persists migrated resultRecordId values into localStorage', () => {
-            const dateIso = '2025-10-30T12:34:56.127Z';
-
-            const mockData: any = {
-                easy: {
-                    'test-1': [
-                        {
-                            assessmentId: 'test-1',
-                            difficulty: 'easy',
-                            assessmentTitle: 'Test',
-                            date: dateIso,
-                            correct: 8,
-                            total: 10,
-                            percentage: 80,
-                            timeTaken: '5:00',
-                            improvementTopics: [],
-                            topicBreakdown: {}
-                        }
-                    ]
-                }
-            };
-
-            localStorage.setItem( 'assessmentResults', JSON.stringify( mockData ) );
-
-            const store = useResultsStore();
-            store.loadResultsHistory();
-
-            const persistedRaw = localStorage.getItem( 'assessmentResults' );
-            expect( persistedRaw ).not.toBeNull();
-
-            const parsed = JSON.parse( persistedRaw as string );
-            const rec = parsed.easy['test-1'][0];
-            expect( rec ).toBeTruthy();
-            expect( typeof rec.resultRecordId ).toBe( 'number' );
-        } );
+        // Migration-related tests removed per current non-migration policy
     } );
 
     describe( 'Actions - saveResult', () => {

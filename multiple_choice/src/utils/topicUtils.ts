@@ -78,7 +78,10 @@ export function resolveTopicRefLink (
         assessmentId?: string | null;
         availableAssessments?: Record<string, any[]> | null;
         currentAssessment?: any | null;
-        getAssessmentMetadata?: ( ( difficulty: string | undefined, assessmentId: string | undefined ) => any ) | null;
+        // Accept a permissive function signature so callers with stricter
+        // concrete signatures (like the assessment store) can be passed
+        // without needing to cast to `any`.
+        getAssessmentMetadata?: ( ( ...args: any[] ) => any ) | null;
         currentDifficulty?: string | null;
     }
 ): string | undefined {
