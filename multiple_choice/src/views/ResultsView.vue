@@ -121,7 +121,7 @@ import { useResultsStore } from '@/stores/resultsStore';
 import { formatTextWithCode } from '@/utils/formatUtils';
 import { formatDate } from '@/utils/dateUtils';
 import { getScoreBadgeClass } from '@/utils/resultsUtils';
-import { getTopicClass as utilGetTopicClass, findTopicRefLink } from '@/utils/topicUtils';
+import { getTopicClass as utilGetTopicClass, resolveTopicRefLink } from '@/utils/topicUtils';
 import { formatAssessmentLabel } from '@/utils/assessmentUtils';
 import type { QuestionReview } from '@/models';
 
@@ -175,42 +175,15 @@ function getTopicClass(correct: number, total: number): string {
 // AssessmentResultItem.getTopicLink).
 function getTopicLink(topicName: string): string | undefined {
   try {
-    if (savedResultRecord.value && savedResultRecord.value.topicLinks && savedResultRecord.value.topicLinks[topicName]) {
-      return savedResultRecord.value.topicLinks[topicName];
-    }
-
-    // Try to find metadata for the assessment
-    let meta: any = assessmentStore.getAssessmentMetadata ? assessmentStore.getAssessmentMetadata((savedResultRecord.value && savedResultRecord.value.difficulty) || assessmentStore.currentDifficulty, (savedResultRecord.value && savedResultRecord.value.assessmentId) || assessmentStore.currentAssessment?.metadata?.id) : null;
-
-    if (!meta && assessmentStore.currentAssessment) {
-      const cm = (assessmentStore.currentAssessment as any).metadata;
-      if (cm && (String(cm.id) === String((savedResultRecord.value && savedResultRecord.value.assessmentId)) || String(cm.assessmentId) === String((savedResultRecord.value && savedResultRecord.value.assessmentId)))) {
-        meta = cm;
-      }
-    }
-
-    if (!meta) {
-      try {
-        const list = (assessmentStore as any).availableAssessments?.[(savedResultRecord.value && savedResultRecord.value.difficulty) || assessmentStore.currentDifficulty] || [];
-        const found = list.find((a: any) => String(a.id) === String((savedResultRecord.value && savedResultRecord.value.assessmentId)) || String(a.assessmentId) === String((savedResultRecord.value && savedResultRecord.value.assessmentId)));
-        if (found) meta = (found as any).metadata || found;
-      } catch (e) {
-        // ignore
-      }
-    }
-
-    // Build metas array and delegate to shared util
-    const metas: any[] = [];
-    if (meta) metas.push(meta);
-    try {
-      const list = (assessmentStore as any).availableAssessments?.[(savedResultRecord.value && savedResultRecord.value.difficulty) || assessmentStore.currentDifficulty] || [];
-      const found = list.find((a: any) => String(a.id) === String((savedResultRecord.value && savedResultRecord.value.assessmentId)) || String(a.assessmentId) === String((savedResultRecord.value && savedResultRecord.value.assessmentId)));
-      if (found) metas.push((found as any).metadata || found);
-    } catch (e) {
-      // ignore
-    }
-
-  return findTopicRefLink(topicName, savedResultRecord.value && savedResultRecord.value.topicLinks ? savedResultRecord.value.topicLinks : undefined, metas);
+    return resolveTopicRefLink(topicName, {
+      resultTopicLinks: savedResultRecord.value && savedResultRecord.value.topicLinks ? savedResultRecord.value.topicLinks : undefined,
+      difficulty: (savedResultRecord.value && savedResultRecord.value.difficulty) || assessmentStore.currentDifficulty || undefined,
+      assessmentId: (savedResultRecord.value && savedResultRecord.value.assessmentId) || assessmentStore.currentAssessment?.metadata?.id || undefined,
+      availableAssessments: (assessmentStore as any).availableAssessments || undefined,
+      currentAssessment: assessmentStore.currentAssessment || undefined,
+  getAssessmentMetadata: assessmentStore.getAssessmentMetadata ? (assessmentStore.getAssessmentMetadata.bind(assessmentStore) as any) : undefined,
+      currentDifficulty: assessmentStore.currentDifficulty || undefined
+    });
   } catch (e) {
     return undefined;
   }

@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { getTopicClass, findTopicRefLink } from '../topicUtils';
+import { resolveTopicRefLink } from '../topicUtils';
 
 describe( 'getTopicClass', () => {
     it( 'returns neutral when total is 0', () => {
@@ -25,6 +26,40 @@ describe( 'getTopicClass', () => {
 
     it( 'returns fail for <40', () => {
         expect( getTopicClass( 1, 5 ) ).toBe( 'topic-fail' );
+    } );
+} );
+
+describe( 'resolveTopicRefLink', () => {
+    it( 'prefers resultTopicLinks first', () => {
+        const resultMap = { 'Arrays': 'https://developer.mozilla.org/arrays' };
+        const metas = [{ topicLinks: [{ topicName: 'Arrays', refLink: 'https://mdn.arrays/old' }] }];
+        expect( resolveTopicRefLink( 'Arrays', { resultTopicLinks: resultMap, availableAssessments: undefined } ) ).toBe( 'https://developer.mozilla.org/arrays' );
+    } );
+
+    it( 'uses getAssessmentMetadata when provided', () => {
+        const meta = { topicLinks: { 'Promises': 'https://developer.mozilla.org/promises' } };
+        const res = resolveTopicRefLink( 'Promises', { getAssessmentMetadata: () => meta, difficulty: 'easy', assessmentId: 'test-1' } );
+        expect( res ).toBe( 'https://developer.mozilla.org/promises' );
+    } );
+
+    it( 'uses currentAssessment metadata when getAssessmentMetadata not present', () => {
+        const currentAssessment = { metadata: { topicLinks: { 'Closure': 'https://developer.mozilla.org/closure' }, id: 'test-1' } };
+        const res = resolveTopicRefLink( 'Closure', { currentAssessment, assessmentId: 'test-1' } );
+        expect( res ).toBe( 'https://developer.mozilla.org/closure' );
+    } );
+
+    it( 'searches availableAssessments when needed', () => {
+        const available = {
+            easy: [{ id: 'test-1', metadata: { topicLinks: { 'TopicA': 'https://a' } } }]
+        };
+
+        const res = resolveTopicRefLink( 'TopicA', { availableAssessments: available, difficulty: 'easy', assessmentId: 'test-1' } );
+        expect( res ).toBe( 'https://a' );
+    } );
+
+    it( 'returns undefined when nothing found', () => {
+        const res = resolveTopicRefLink( 'Nope', {} );
+        expect( res ).toBeUndefined();
     } );
 } );
 

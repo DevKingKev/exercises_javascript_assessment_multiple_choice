@@ -85,7 +85,7 @@ import { useUiStore } from '@/stores/uiStore';
 import type { ResultRecord } from '@/models';
 import { formatDate } from '@/utils/dateUtils';
 import { getScoreBadgeClass } from '@/utils/resultsUtils';
-import { getTopicClass as utilGetTopicClass, findTopicRefLink } from '@/utils/topicUtils';
+import { getTopicClass as utilGetTopicClass, resolveTopicRefLink } from '@/utils/topicUtils';
 import { formatAssessmentLabel } from '@/utils/assessmentUtils';
 import TopicTags from './TopicTags.vue';
 
@@ -120,52 +120,16 @@ const assessmentStore = useAssessmentStore();
 
 function getTopicLink(topicName: string): string | undefined {
   try {
-    // Prefer any persisted topicLinks stored with the result. This makes
-    // the results view resilient when the app hasn't loaded assessment
-    // metadata (for example when the user navigates directly to results).
-    if ((props.result as any).topicLinks && (props.result as any).topicLinks[topicName]) {
-      return (props.result as any).topicLinks[topicName];
-    }
-    // Try multiple ways to locate the assessment metadata because saved results sometimes
-    // contain an assessment identifier that doesn't exactly match the metadata `id` field
-    // (some assessments use `metadata.assessmentId`, or the saved value may be a number
-    // while the metadata stores a string). We attempt, in order:
-    // 1) use the store helper that looks in availableAssessments by difficulty/id
-    // 2) check currentAssessment.metadata for either `id` or `assessmentId`
-    // 3) search availableAssessments[difficulty] for a matching id/assessmentId
-    let meta: any = assessmentStore.getAssessmentMetadata(props.result.difficulty, props.result.assessmentId);
-
-    if (!meta && assessmentStore.currentAssessment) {
-      const cm = (assessmentStore.currentAssessment as any).metadata;
-      if (cm && (String(cm.id) === String(props.result.assessmentId) || String(cm.assessmentId) === String(props.result.assessmentId))) {
-        meta = cm;
-      }
-    }
-
-    if (!meta) {
-      try {
-        const list = (assessmentStore as any).availableAssessments?.[props.result.difficulty] || [];
-        const found = list.find((a: any) => String(a.id) === String(props.result.assessmentId) || String(a.assessmentId) === String(props.result.assessmentId));
-        if (found) meta = (found as any).metadata || found;
-      } catch (e) {
-        // If availableAssessments isn't the expected shape, ignore and continue
-      }
-    }
-
-    // Build metas array: prefer meta if found, otherwise search availableAssessments
-    const metas: any[] = [];
-    if (meta) metas.push(meta);
-    try {
-      const list = (assessmentStore as any).availableAssessments?.[props.result.difficulty] || [];
-      const found = list.find((a: any) => String(a.id) === String(props.result.assessmentId) || String(a.assessmentId) === String(props.result.assessmentId));
-      if (found) metas.push((found as any).metadata || found);
-    } catch (e) {
-      // ignore
-    }
-
-  return findTopicRefLink(topicName, (props.result as any).topicLinks, metas);
+    return resolveTopicRefLink(topicName, {
+      resultTopicLinks: (props.result as any).topicLinks || undefined,
+      difficulty: (props.result as any).difficulty || undefined,
+      assessmentId: (props.result as any).assessmentId || undefined,
+      availableAssessments: (assessmentStore as any).availableAssessments || undefined,
+      currentAssessment: assessmentStore.currentAssessment || undefined,
+      getAssessmentMetadata: assessmentStore.getAssessmentMetadata ? (assessmentStore.getAssessmentMetadata.bind(assessmentStore) as any) : undefined,
+      currentDifficulty: assessmentStore.currentDifficulty || undefined
+    });
   } catch (e) {
-    // Fail gracefully — return undefined when no link is available
     return undefined;
   }
 }
