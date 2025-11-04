@@ -352,6 +352,8 @@ watch(
 </script>
 
 <style scoped lang="scss">
+@use '../../styles/variables' as *;
+
 .screen {
   display: none;
 

@@ -57,3 +57,31 @@ const labelText = computed(() => {
   }
 }
 </style>
+
+<!-- Non-scoped dark-mode overrides so the badge respects the app theme when
+     :root[data-theme="dark"] is active. We keep these rules outside of the
+     scoped block so they can match the class selectors without the scoped
+     attribute and reliably override static colors from the component. -->
+<style lang="scss">
+// Use CSS custom properties defined in _theme.scss where possible so these
+// rules follow the global theme palette. The fallbacks keep reasonable
+// contrast if the theme variables aren't present.
+:root[data-theme="dark"] {
+  .difficulty-badge {
+    // Keep a muted card-like background for badges in dark mode for contrast
+    background: var(--bg-tertiary, #2d3548) !important;
+
+    &.badge-easy {
+      color: #34d399 !important; // green-400
+    }
+
+    &.badge-medium {
+      color: #60a5fa !important; // blue-400
+    }
+
+    &.badge-hard {
+      color: #f87171 !important; // red-400
+    }
+  }
+}
+</style>
