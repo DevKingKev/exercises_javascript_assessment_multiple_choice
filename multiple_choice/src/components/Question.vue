@@ -10,7 +10,7 @@
         @click="onSelect(letter)"
       >
         <div class="option-letter">{{ letter }}</div>
-        <div class="option-text">{{ text }}</div>
+        <div class="option-text" v-html="text"></div>
       </div>
     </div>
   </div>
@@ -110,6 +110,17 @@ const formattedQuestion = computed(() => formatTextWithCode(props.question.quest
     flex: 1;
     font-size: 1.05rem;
     color: var(--text-secondary);
+
+    ::v-deep pre {
+      display: inline;
+      background: var(--bg-tertiary);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+      font-size: 0.95rem;
+      color: var(--text-primary);
+      border: 1px solid var(--border-light);
+    }
     }
 }
 
