@@ -1,4 +1,4 @@
-# Virtuarama - Multiple Choice Assessment Platform
+# BuildWithHTML5 - Multiple Choice Assessment Platform
 
 A comprehensive multiple choice assessment platform built with **Vite and TypeScript**, featuring instant hot module replacement, type safety, modern build tooling, and comprehensive progress tracking.
 

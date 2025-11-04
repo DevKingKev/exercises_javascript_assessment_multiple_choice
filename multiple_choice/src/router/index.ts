@@ -7,7 +7,7 @@ const routes: RouteRecordRaw[] = [
         name: 'home',
         component: () => import( '@/views/HomeView.vue' ),
         meta: {
-            title: 'Virtuarama - Multiple Choice Assessment Platform'
+            title: 'BuildWithHTML5 - Multiple Choice Assessment Platform'
         }
     },
     {

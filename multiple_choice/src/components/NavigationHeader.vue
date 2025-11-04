@@ -2,8 +2,8 @@
   <nav class="nav-header" role="navigation" aria-label="Main navigation">
     <div class="nav-container">
       <div class="nav-brand">
-        <RouterLink to="/" class="brand-link" aria-label="Virtuarama home">
-          <h1>Virtuarama</h1>
+        <RouterLink to="/" class="brand-link" aria-label="BuildWithHTML5 home">
+          <h1>BuildWithHTML5</h1>
         </RouterLink>
       </div>
       

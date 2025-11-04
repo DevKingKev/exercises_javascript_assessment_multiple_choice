@@ -18,7 +18,7 @@
             <div class="setting-info">
               <h3 class="setting-label">Theme</h3>
               <p class="setting-description">
-                Choose how Virtuarama looks. Auto mode follows your system preference.
+                Choose how BuildWithHTML5 looks. Auto mode follows your system preference.
               </p>
             </div>
             

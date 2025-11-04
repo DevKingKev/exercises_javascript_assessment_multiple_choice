@@ -230,7 +230,7 @@ if ( viteDev ) {
 
 // Start server with proper error handling
 const server = app.listen( PORT, () => {
-    console.log( `🚀 Virtuarama - Multiple Choice Assessment Platform running at http://localhost:${PORT}` );
+    console.log( `🚀 BuildWithHTML5 - Multiple Choice Assessment Platform running at http://localhost:${PORT}` );
     console.log( `📂 Project root: ${projectRoot}` );
     console.log( `📋 Assessments directory: ${path.resolve( projectRoot, 'assessments' )}` );
     console.log( '⏹️  Press Ctrl+C to stop the server' );

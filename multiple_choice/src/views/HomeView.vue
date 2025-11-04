@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <header>
-      <h1>Virtuarama - Multiple Choice Assessment Platform</h1>
+      <h1>BuildWithHTML5 - Multiple Choice Assessment Platform</h1>
       <p>Choose your difficulty level and assessment to begin</p>
     </header>
 
