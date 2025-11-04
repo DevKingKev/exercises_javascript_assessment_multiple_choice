@@ -109,6 +109,14 @@ export const useResultsStore = defineStore( 'results', () => {
 
         resultsHistory.value[result.difficulty][result.assessmentId].push( result );
 
+        // Ensure top-level ref change so derived computed values and UI
+        // bindings that depend on the resultsHistory object reliably
+        // react to additions. Some consumers read Object.keys() on the
+        // difficulty map which can sometimes miss nested mutations when
+        // Vite/hmr or serialization has produced non-proxied shapes; a
+        // shallow copy forces Vue to observe the update.
+        resultsHistory.value = { ...resultsHistory.value };
+
         try {
             localStorage.setItem( 'assessmentResults', JSON.stringify( resultsHistory.value ) );
         } catch ( error ) {
@@ -187,6 +195,11 @@ export const useResultsStore = defineStore( 'results', () => {
             }
 
             if ( after < before ) {
+                // As with saveResult, ensure the top-level ref is updated so
+                // any UI components depending on the resultsHistory shape
+                // update their counts/averages immediately.
+                resultsHistory.value = { ...resultsHistory.value };
+
                 try {
                     localStorage.setItem( 'assessmentResults', JSON.stringify( resultsHistory.value ) );
                 } catch ( e ) {

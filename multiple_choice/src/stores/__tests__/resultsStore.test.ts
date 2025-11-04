@@ -293,6 +293,37 @@ describe( 'resultsStore', () => {
 
             expect( store.resultsHistory.easy['test-1'] ).toHaveLength( 2 );
         } );
+
+        it( 'saving a completed assessment updates the total count and average for the difficulty', () => {
+            const store = useResultsStore();
+
+            // Initially there should be no assessments for 'medium'
+            expect( Object.keys( store.getResultsByDifficulty( 'medium' ) ) ).toHaveLength( 0 );
+            expect( store.averageScoreByDifficulty( 'medium' ) ).toBe( 0 );
+
+            const completed: ResultRecord = {
+                resultRecordId: 700,
+                assessmentId: 'completed-test',
+                difficulty: 'medium',
+                assessmentTitle: 'Completed Test',
+                date: '2025-11-04',
+                correct: 7,
+                total: 10,
+                percentage: 75,
+                timeTaken: '4:00',
+                improvementTopics: [],
+                topicBreakdown: {}
+            };
+
+            // Save the completed assessment
+            store.saveResult( completed );
+
+            // The difficulty should now have one assessment key
+            expect( Object.keys( store.getResultsByDifficulty( 'medium' ) ) ).toHaveLength( 1 );
+
+            // The averageScoreByDifficulty should reflect the newly-saved percentage
+            expect( store.averageScoreByDifficulty( 'medium' ) ).toBe( 75 );
+        } );
     } );
 
     describe( 'Actions - setCurrentResults', () => {
