@@ -115,7 +115,7 @@ import { useResultsStore } from '@/stores/resultsStore';
 import { formatTextWithCode } from '@/utils/formatUtils';
 import { formatDate } from '@/utils/dateUtils';
 import { getScoreBadgeClass } from '@/utils/resultsUtils';
-import { getTopicClass as utilGetTopicClass, findTopicMdnLink } from '@/utils/topicUtils';
+import { getTopicClass as utilGetTopicClass, findTopicRefLink } from '@/utils/topicUtils';
 import { formatAssessmentLabel } from '@/utils/assessmentUtils';
 import type { QuestionReview } from '@/models';
 
@@ -163,7 +163,7 @@ function getTopicClass(correct: number, total: number): string {
   return utilGetTopicClass(correct, total);
 }
 
-// Resolve MDN link for a topic using persisted topicLinks on the saved
+// Resolve reference link for a topic using persisted topicLinks on the saved
 // result record first, then the assessment metadata (same behaviour as
 // AssessmentResultItem.getTopicLink).
 function getTopicLink(topicName: string): string | undefined {
@@ -203,7 +203,7 @@ function getTopicLink(topicName: string): string | undefined {
       // ignore
     }
 
-    return findTopicMdnLink(topicName, savedResultRecord.value && savedResultRecord.value.topicLinks ? savedResultRecord.value.topicLinks : undefined, metas);
+  return findTopicRefLink(topicName, savedResultRecord.value && savedResultRecord.value.topicLinks ? savedResultRecord.value.topicLinks : undefined, metas);
   } catch (e) {
     return undefined;
   }

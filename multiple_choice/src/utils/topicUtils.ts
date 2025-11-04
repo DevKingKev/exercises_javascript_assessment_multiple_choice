@@ -14,16 +14,16 @@ export function getTopicClass ( correct: number, total: number ): string {
 }
 
 /**
- * Resolve an MDN link for a topic.
+ * Resolve a reference link for a topic.
  *
  * Priority order:
  * 1. resultTopicLinks (explicitly persisted with a saved ResultRecord)
  * 2. any metadata objects provided in `metas` (search order)
  *
- * Each metadata object may contain `topicLinks: Array<{ topicName, mdnLink }>` or
+ * Each metadata object may contain `topicLinks: Array<{ topicName, refLink }>` or
  * `topicLinks` keyed map; both are supported for compatibility.
  */
-export function findTopicMdnLink ( topicName: string, resultTopicLinks?: Record<string, string> | null, metas?: any[] | null ): string | undefined {
+export function findTopicRefLink ( topicName: string, resultTopicLinks?: Record<string, string> | null, metas?: any[] | null ): string | undefined {
     if ( !topicName ) return undefined;
 
     if ( resultTopicLinks && resultTopicLinks[topicName] ) return resultTopicLinks[topicName];
@@ -36,11 +36,11 @@ export function findTopicMdnLink ( topicName: string, resultTopicLinks?: Record<
         // Support both array and map shapes
         const tlinksArr: any[] = Array.isArray( meta.topicLinks ) ? meta.topicLinks : [];
         if ( tlinksArr.length > 0 ) {
-            const found = tlinksArr.find( ( t: any ) => t && t.topicName === topicName && t.mdnLink );
-            if ( found && found.mdnLink ) return found.mdnLink;
+            const found = tlinksArr.find( ( t: any ) => t && t.topicName === topicName && t.refLink );
+            if ( found && found.refLink ) return found.refLink;
         }
 
-        // Also support object map: { topicName: mdnLink }
+        // Also support object map: { topicName: refLink }
         if ( typeof meta.topicLinks === 'object' && !Array.isArray( meta.topicLinks ) ) {
             const map = meta.topicLinks as Record<string, string>;
             if ( map && map[topicName] ) return map[topicName];
@@ -52,5 +52,5 @@ export function findTopicMdnLink ( topicName: string, resultTopicLinks?: Record<
 
 export default {
     getTopicClass,
-    findTopicMdnLink
+    findTopicRefLink
 };

@@ -169,7 +169,7 @@ async function submitAssessment() {
     timeTaken,
     improvementTopics: getImprovementTopics(results.topicBreakdown),
     topicBreakdown: results.topicBreakdown,
-    // Persist mdn links for the topics seen in this result so the
+    // Persist reference links for the topics seen in this result so the
     // Results view can render anchors even if assessment metadata
     // isn't available when the user later views their history.
     topicLinks: ((): { [topicName: string]: string } => {
@@ -179,7 +179,7 @@ async function submitAssessment() {
         const tlinks: Array<any> = (meta && meta.topicLinks) || [];
         Object.keys(results.topicBreakdown).forEach((topicName) => {
           const found = tlinks.find((t: any) => t.topicName === topicName);
-          if (found && found.mdnLink) map[topicName] = found.mdnLink;
+          if (found && found.refLink) map[topicName] = found.refLink;
         });
       } catch (e) {
         // ignore and continue — topicLinks will simply be empty

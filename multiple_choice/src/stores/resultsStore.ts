@@ -183,7 +183,7 @@ export const useResultsStore = defineStore( 'results', () => {
                         const tlinks: Array<any> = ( meta && meta.topicLinks ) || [];
                         if ( Array.isArray( tlinks ) ) {
                             for ( const t of tlinks ) {
-                                if ( t && t.topicName && t.mdnLink ) m[String( t.topicName )] = t.mdnLink;
+                                if ( t && t.topicName && t.refLink ) m[String( t.topicName )] = t.refLink;
                             }
                         }
                         return m;

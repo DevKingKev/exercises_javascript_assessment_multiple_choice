@@ -28,20 +28,20 @@ function normalizeFile (filePath) {
     const data = require(filePath);
     const { metadata, questions } = data;
 
-    // collect unique topicName -> mdnLink
+    // collect unique topicName -> refLink
     const map = new Map();
     questions.forEach(q => {
         if (q.topic && Array.isArray(q.topic.topics)) {
             q.topic.topics.forEach(t => {
                 if (typeof t === 'string') return; // already normalized
                 if (t && t.topicName) {
-                    if (!map.has(t.topicName)) map.set(t.topicName, t.mdnLink || null);
+                    if (!map.has(t.topicName)) map.set(t.topicName, t.refLink || null);
                 }
             });
         }
     });
 
-    const topicLinks = Array.from(map.entries()).map(([topicName, mdnLink]) => ({ topicName, mdnLink }));
+    const topicLinks = Array.from(map.entries()).map(([topicName, refLink]) => ({ topicName, refLink }));
 
     // attach into metadata as topicLinks (but don't overwrite if already present)
     metadata.topicLinks = topicLinks;

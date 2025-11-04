@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { getTopicClass, findTopicMdnLink } from '../topicUtils';
+import { getTopicClass, findTopicRefLink } from '../topicUtils';
 
 describe( 'getTopicClass', () => {
     it( 'returns neutral when total is 0', () => {
@@ -28,40 +28,40 @@ describe( 'getTopicClass', () => {
     } );
 } );
 
-describe( 'findTopicMdnLink', () => {
+describe( 'findTopicRefLink', () => {
     it( 'prefers resultTopicLinks when present', () => {
         const resultMap = { 'Arrays': 'https://developer.mozilla.org/arrays' };
         const metas = [
-            { topicLinks: [{ topicName: 'Arrays', mdnLink: 'https://mdn.arrays/old' }] }
+            { topicLinks: [{ topicName: 'Arrays', refLink: 'https://mdn.arrays/old' }] }
         ];
-        expect( findTopicMdnLink( 'Arrays', resultMap, metas ) ).toBe( 'https://developer.mozilla.org/arrays' );
+        expect( findTopicRefLink( 'Arrays', resultMap, metas ) ).toBe( 'https://developer.mozilla.org/arrays' );
     } );
 
     it( 'finds in metadata array shape', () => {
         const metas = [
-            { topicLinks: [{ topicName: 'Promises', mdnLink: 'https://developer.mozilla.org/promises' }] }
+            { topicLinks: [{ topicName: 'Promises', refLink: 'https://developer.mozilla.org/promises' }] }
         ];
-        expect( findTopicMdnLink( 'Promises', undefined, metas ) ).toBe( 'https://developer.mozilla.org/promises' );
+        expect( findTopicRefLink( 'Promises', undefined, metas ) ).toBe( 'https://developer.mozilla.org/promises' );
     } );
 
     it( 'finds in metadata map shape', () => {
         const metas = [
             { topicLinks: { 'Closure': 'https://developer.mozilla.org/closure' } }
         ];
-        expect( findTopicMdnLink( 'Closure', undefined, metas ) ).toBe( 'https://developer.mozilla.org/closure' );
+        expect( findTopicRefLink( 'Closure', undefined, metas ) ).toBe( 'https://developer.mozilla.org/closure' );
     } );
 
     it( 'searches metas in order and returns first match', () => {
         const metas = [
-            { topicLinks: [{ topicName: 'X', mdnLink: 'first' }] },
-            { topicLinks: [{ topicName: 'X', mdnLink: 'second' }] }
+            { topicLinks: [{ topicName: 'X', refLink: 'first' }] },
+            { topicLinks: [{ topicName: 'X', refLink: 'second' }] }
         ];
-        expect( findTopicMdnLink( 'X', undefined, metas ) ).toBe( 'first' );
+        expect( findTopicRefLink( 'X', undefined, metas ) ).toBe( 'first' );
     } );
 
     it( 'returns undefined when nothing found', () => {
-        expect( findTopicMdnLink( 'NonExistent', undefined, [{ topicLinks: [{ topicName: 'Y', mdnLink: 'a' }] }] ) ).toBeUndefined();
-        expect( findTopicMdnLink( '', undefined, null ) ).toBeUndefined();
-        expect( findTopicMdnLink( 'A', undefined, [] ) ).toBeUndefined();
+        expect( findTopicRefLink( 'NonExistent', undefined, [{ topicLinks: [{ topicName: 'Y', refLink: 'a' }] }] ) ).toBeUndefined();
+        expect( findTopicRefLink( '', undefined, null ) ).toBeUndefined();
+        expect( findTopicRefLink( 'A', undefined, [] ) ).toBeUndefined();
     } );
 } );

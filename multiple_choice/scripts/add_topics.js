@@ -172,11 +172,11 @@ const TOPIC_MAP = {
     }
 };
 
-function buildMdnTopic (topicName) {
+function buildRefTopic (topicName) {
     const entry = TOPIC_MAP[topicName];
-    if (entry) return { topicName, mdnLink: entry.mdn };
+    if (entry) return { topicName, refLink: entry.mdn };
     const search = 'https://developer.mozilla.org/en-US/search?q=' + encodeURIComponent(topicName);
-    return { topicName, mdnLink: search };
+    return { topicName, refLink: search };
 }
 
 function detectTopicsForQuestion (qText, metadataTopics) {
@@ -200,7 +200,7 @@ function detectTopicsForQuestion (qText, metadataTopics) {
         matched.add(metadataTopics[0]);
     }
 
-    return Array.from(matched).map(buildMdnTopic);
+    return Array.from(matched).map(buildRefTopic);
 }
 
 function processAssessmentFile (filePath) {
@@ -223,6 +223,7 @@ function processAssessmentFile (filePath) {
     questions.forEach(q => {
         const qText = (q.question || '') + '\n' + (q.explanation || '');
         const topicsForQ = detectTopicsForQuestion(qText, metadata.topics || []);
+        // topicsForQ items are objects { topicName, refLink }
         q.topic = { topics: topicsForQ };
     });
 

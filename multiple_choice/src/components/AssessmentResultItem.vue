@@ -85,7 +85,7 @@ import { useUiStore } from '@/stores/uiStore';
 import type { ResultRecord } from '@/models';
 import { formatDate } from '@/utils/dateUtils';
 import { getScoreBadgeClass } from '@/utils/resultsUtils';
-import { getTopicClass as utilGetTopicClass, findTopicMdnLink } from '@/utils/topicUtils';
+import { getTopicClass as utilGetTopicClass, findTopicRefLink } from '@/utils/topicUtils';
 import { formatAssessmentLabel } from '@/utils/assessmentUtils';
 import TopicTags from './TopicTags.vue';
 
@@ -115,7 +115,7 @@ function getTopicClass(correct: number, total: number): string {
   return utilGetTopicClass(correct, total);
 }
 
-// Resolve a topic name to an mdnLink (if available) by looking up the assessment metadata.
+// Resolve a topic name to a reference link (if available) by looking up the assessment metadata.
 const assessmentStore = useAssessmentStore();
 
 function getTopicLink(topicName: string): string | undefined {
@@ -163,7 +163,7 @@ function getTopicLink(topicName: string): string | undefined {
       // ignore
     }
 
-    return findTopicMdnLink(topicName, (props.result as any).topicLinks, metas);
+  return findTopicRefLink(topicName, (props.result as any).topicLinks, metas);
   } catch (e) {
     // Fail gracefully — return undefined when no link is available
     return undefined;
@@ -224,11 +224,9 @@ async function onDelete() {
   }
 }
 
-// Compute the href for a topic tag. Prefer an explicit mdnLink from metadata,
-// otherwise fall back to an MDN search for the topic name so the tag is still
-// a useful, clickable link.
-// NOTE: We intentionally do NOT provide a search fallback here. The
-// canonical mdnLink should be provided in the assessment metadata for each
+// Compute the href for a topic tag. Prefer an explicit refLink from metadata.
+// NOTE: We intentionally do NOT provide a generic search fallback here. The
+// canonical refLink should be provided in the assessment metadata for each
 // topic. If a link is missing, we render a non-interactive <span> so we don't
 // lead users to generic search results unexpectedly.
 </script>

@@ -15,7 +15,7 @@ export interface AssessmentMetadata {
     // Test type (e.g. 'multiple-choice'). Kept as string to allow future types.
     testType?: string;
 
-    // Mapping of unique topic name -> mdnLink used to avoid duplicating mdnLink on each question
+    // Mapping of unique topic name -> refLink used to avoid duplicating refLink on each question
     topicLinks?: TopicLink[];
 }
 

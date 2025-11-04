@@ -1,6 +1,6 @@
 export interface TopicLink {
     topicName: string;
-    mdnLink?: string;
+    refLink?: string;
 }
 
 export interface Question {
