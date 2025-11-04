@@ -24,7 +24,7 @@ const metadata = {
         },
         {
             "topicName": "Mathematical operations and precedence",
-            "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence"
+            "refLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence"
         },
         {
             "topicName": "Array methods (push, slice, reverse, sort, concat)",
@@ -32,7 +32,7 @@ const metadata = {
         },
         {
             "topicName": "Array operations and manipulation",
-            "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Indexed_collections"
+            "refLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Indexed_collections"
         },
         {
             "topicName": "String methods (slice, charAt, substring, indexOf)",
@@ -40,7 +40,7 @@ const metadata = {
         },
         {
             "topicName": "String indexing and character access",
-            "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"
+            "refLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String"
         },
         {
             "topicName": "Function declaration and invocation",

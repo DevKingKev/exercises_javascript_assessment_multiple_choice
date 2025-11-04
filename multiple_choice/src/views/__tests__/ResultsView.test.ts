@@ -9,9 +9,19 @@ describe( 'ResultsView - topic tags under explanations', () => {
     let pinia: any;
     let router: any;
 
-    beforeEach( () => {
+    beforeEach( async () => {
         pinia = createPinia();
-        router = createRouter( { history: createMemoryHistory(), routes: [] } );
+        router = createRouter( {
+            history: createMemoryHistory(),
+            routes: [
+                { name: 'home', path: '/', component: { template: '<div />' } },
+                { name: 'results', path: '/results', component: { template: '<div />' } }
+            ]
+        } );
+
+        // Initialize navigation to a known route so RouterLink resolution succeeds
+        await router.push( '/' );
+        await router.isReady();
     } );
 
     it( 'renders a topic tag under the explanation when question has a topic', async () => {

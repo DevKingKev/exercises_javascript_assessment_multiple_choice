@@ -32,11 +32,11 @@ const metadata = {
         },
         {
             "topicName": "Control flow statements",
-            "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Control_flow_and_error_handling"
+            "refLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Control_flow_and_error_handling"
         },
         {
             "topicName": "Boolean logic and NaN handling",
-            "mdnLink": "https://developer.mozilla.org/en-US/docs/Glossary/Falsy"
+            "refLink": "https://developer.mozilla.org/en-US/docs/Glossary/Falsy"
         },
         {
             "topicName": "Variable scoping (let, const, block scope)",
@@ -44,7 +44,7 @@ const metadata = {
         },
         {
             "topicName": "Object creation methods",
-            "mdnLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_Objects"
+            "refLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_Objects"
         {
             "topicName": "Boolean logic and NaN handling",
             "refLink": "https://developer.mozilla.org/en-US/docs/Glossary/Falsy"

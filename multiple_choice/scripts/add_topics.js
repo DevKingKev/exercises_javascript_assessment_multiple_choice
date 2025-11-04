@@ -219,7 +219,7 @@ function processAssessmentFile (filePath) {
     // add assessmentId
     metadata.assessmentId = assessmentId;
 
-    // for each question, add topic: { topics: [ {topicName, mdnLink}, ... ] }
+    // for each question, add topic: { topics: [ {topicName, refLink}, ... ] }
     questions.forEach(q => {
         const qText = (q.question || '') + '\n' + (q.explanation || '');
         const topicsForQ = detectTopicsForQuestion(qText, metadata.topics || []);
