@@ -6,7 +6,15 @@
       <div class="results-header">
           <h1>Assessment Results</h1>
             <div class="results-header-left">
-              <DifficultyBadge :difficulty="difficultyRaw" :label="displayDifficulty" />
+              <RouterLink
+                class="difficulty-badge-link"
+                :to="{ name: 'results', query: { expand: String(difficultyRaw) } }"
+                @click.stop
+                :title="`View ${displayDifficulty} results`"
+                :aria-label="`View ${displayDifficulty} results`"
+              >
+                <DifficultyBadge :difficulty="difficultyRaw" :label="displayDifficulty" />
+              </RouterLink>
             </div>
             <h2 class="assessment-name">{{ assessmentLabel }}</h2>
         <div class="score-display">
@@ -228,6 +236,7 @@ function newAssessment() {
   router.push({ name: 'home' });
 }
 
+
 // Search and restore a saved result record by id string. Declared at
 // top-level so we can call it from onMounted and also watch for route
 // param changes (when user navigates to a different resultRecordId without
@@ -384,6 +393,29 @@ watch(
     margin-top: $spacing-lg;
     margin-bottom: 4px;
   }
+}
+
+.results-header-left {
+  display: inline-block;
+}
+
+.difficulty-badge-link {
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+}
+
+.difficulty-badge-link:focus-visible {
+  outline: 2px solid #60a5fa;
+  outline-offset: 2px;
+  border-radius: 6px;
 }
 
 .score-display {

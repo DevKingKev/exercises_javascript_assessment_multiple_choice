@@ -53,7 +53,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
-import { RouterLink, useRoute } from 'vue-router';
+import { RouterLink, useRoute, useRouter } from 'vue-router';
 import { useAssessmentStore } from '../stores/assessmentStore';
 import { useResultsStore } from '../stores/resultsStore';
 import { useUiStore } from '../stores/uiStore';
@@ -63,6 +63,7 @@ import type { ResultRecord } from '../models';
 import { formatAssessmentLabel } from '@/utils/assessmentUtils';
 
 const route = useRoute();
+const router = useRouter();
 const assessmentStore = useAssessmentStore();
 const resultsStore = useResultsStore();
 const uiStore = useUiStore();
@@ -125,7 +126,23 @@ function getAssessmentTitle(difficulty: string, assessmentId: string): string {
 }
 
 function toggleDifficulty(difficulty: string) {
-  expandedDifficulty.value = expandedDifficulty.value === difficulty ? null : difficulty;
+  const newVal = expandedDifficulty.value === difficulty ? null : difficulty;
+  expandedDifficulty.value = newVal;
+
+  // Update the URL query parameter `expand` to reflect the currently expanded difficulty.
+  // Preserve other existing query params.
+  const newQuery: Record<string, any> = Object.assign({}, route.query as Record<string, any>);
+  if (newVal) {
+    newQuery.expand = newVal;
+  } else {
+    // remove the expand param when collapsing
+    delete newQuery.expand;
+  }
+
+  // Use replace so toggling doesn't create lots of history entries
+  router.replace({ path: route.path, query: newQuery }).catch(() => {
+    // ignore navigation errors (same route)
+  });
 }
 
 async function handleClearHistory() {
