@@ -6,14 +6,6 @@
         <div class="assessment-date">{{ formatDate(result.date) }}</div>
       </div>
       <div class="header-right">
-        <button
-          class="difficulty-badge-btn"
-          @click.stop.prevent="goToResultsForDifficulty"
-          :title="`View results for ${capitalizedDifficulty}`"
-          :aria-label="`View results for ${capitalizedDifficulty}`"
-        >
-          <DifficultyBadge :difficulty="props.result.difficulty" :label="shortDifficulty" />
-        </button>
         <div class="score-badge" :class="scoreBadgeClass">
           {{ result.percentage }}%
         </div>
@@ -96,7 +88,6 @@ import { getScoreBadgeClass } from '@/utils/resultsUtils';
 import { getTopicClass as utilGetTopicClass, findTopicMdnLink } from '@/utils/topicUtils';
 import { formatAssessmentLabel } from '@/utils/assessmentUtils';
 import TopicTags from './TopicTags.vue';
-import DifficultyBadge from '@/components/DifficultyBadge.vue';
 
 interface Props {
   result: ResultRecord;
@@ -110,28 +101,6 @@ const scoreBadgeClass = computed(() => getScoreBadgeClass(props.result.percentag
 const router = useRouter();
 const resultsStore = useResultsStore();
 const uiStore = useUiStore();
-
-const capitalizedDifficulty = computed(() => {
-  const d = String(props.result.difficulty || 'easy');
-  return d.charAt(0).toUpperCase() + d.slice(1);
-});
-
-const shortDifficulty = computed(() => {
-  // Short label for use in the small badge inside the result item
-  const d = String(props.result.difficulty || 'easy').toLowerCase();
-  if (d === 'easy') return 'Easy';
-  if (d === 'medium') return 'Med';
-  if (d === 'hard') return 'Hard';
-  return d.charAt(0).toUpperCase() + d.slice(1);
-});
-
-function goToResultsForDifficulty() {
-  try {
-    router.push({ name: 'results', query: { expand: String(props.result.difficulty) } });
-  } catch (e) {
-    console.debug('Navigation to results failed', e);
-  }
-}
 
 function toggleExpanded() {
   isExpanded.value = !isExpanded.value;
@@ -298,23 +267,6 @@ async function onDelete() {
   display: flex;
   align-items: center;
   gap: 12px;
-}
-
-.difficulty-badge-btn {
-  background: transparent;
-  border: none;
-  padding: 0;
-  margin: 0;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-}
-
-.difficulty-badge-btn:focus-visible {
-  outline: 2px solid #60a5fa;
-  outline-offset: 2px;
-  border-radius: 6px;
 }
 
 .expand-icon {
