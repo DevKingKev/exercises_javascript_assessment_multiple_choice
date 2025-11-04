@@ -145,6 +145,15 @@ Each question must have the following structure:
 - Include context when showing code examples
 - Use realistic scenarios when applicable
 
+### Explanations - Acronyms and Technical Terms
+- **Always spell out acronyms on first use in explanations**
+  - Example: ✅ "Cross-Site Request Forgery (CSRF) mitigations include..."
+  - Example: ❌ "CSRF mitigations include..." (assumes reader knows the acronym)
+- After defining an acronym, you may use the acronym alone in subsequent sentences
+- This applies to all technical acronyms: XSS, CORS, CSP, CSRF, API, DOM, etc.
+- Exception: Well-known acronyms like HTML, CSS, JavaScript, HTTP, URL don't need to be spelled out
+- Goal: Make explanations educational and accessible without assuming prior knowledge
+
 ### Options
 - All options should be plausible
 - Incorrect options should represent common misconceptions
