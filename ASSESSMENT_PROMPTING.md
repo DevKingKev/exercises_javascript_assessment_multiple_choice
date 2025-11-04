@@ -1,0 +1,314 @@
+# Assessment Creation Guidelines
+
+This document outlines the rules and standards for creating JavaScript multiple-choice assessments in this project.
+
+## File Structure
+
+Assessments are organized by difficulty level:
+```
+/assessments/javascript/
+  ├── easy/
+  │   ├── assessment1.js
+  │   ├── assessment2.js
+  │   └── ...
+  ├── medium/
+  │   ├── assessment1.js
+  │   ├── assessment2.js
+  │   └── ...
+  └── hard/
+      ├── assessment1.js
+      └── ...
+```
+
+## Assessment Structure
+
+Each assessment file must export a module with the following structure:
+
+```javascript
+module.exports = {
+  metadata: {
+    title: "Assessment Title",
+    description: "Brief description of what this assessment covers",
+    difficulty: "easy|medium|hard",
+    timeLimit: 30, // in minutes
+    questionCount: 30, // number of questions
+    topics: [
+      "Topic 1",
+      "Topic 2",
+      // ... up to 10 topics
+    ],
+    topicLinks: [
+      {
+        topic: "Topic 1",
+        refLink: "https://developer.mozilla.org/en-US/docs/..."
+      },
+      // ... must match all topics above
+    ],
+    assessmentId: 1, // unique number for this difficulty level
+    assessmentUniqueId: 1730726400000, // unique timestamp
+    testType: "javascript-easy|javascript-medium|javascript-hard"
+  },
+  questions: [
+    // Array of question objects
+  ]
+};
+```
+
+## Difficulty Level Specifications
+
+### Easy
+- **Questions**: 30
+- **Time Limit**: 30 minutes
+- **Topics**: 7-10 fundamental JavaScript concepts
+- **Complexity**: Basic syntax, simple concepts, straightforward scenarios
+- **Examples**: Variables, data types, basic operators, simple functions, array methods
+
+### Medium
+- **Questions**: 25
+- **Time Limit**: 45 minutes
+- **Topics**: 7-10 advanced JavaScript concepts
+- **Complexity**: Advanced patterns, deeper understanding, complex scenarios
+- **Examples**: Closures, prototypes, async patterns, proxies, generators, functional programming
+
+### Hard
+- **Questions**: 20
+- **Time Limit**: 60 minutes
+- **Topics**: 7-10 expert-level concepts
+- **Complexity**: Expert patterns, edge cases, performance optimization, architectural decisions
+- **Examples**: Advanced async patterns, metaprogramming, memory optimization, security
+
+## Question Structure
+
+Each question must have the following structure:
+
+```javascript
+{
+  id: 1, // Sequential number starting from 1
+  question: "Question text with [CODE]code syntax[/CODE] for inline code",
+  options: {
+    A: "First option with <pre>inline code</pre> if needed",
+    B: "Second option",
+    C: "Third option",
+    D: "Fourth option"
+  },
+  correct: "A", // The correct answer letter
+  explanation: "Detailed explanation with <pre>short code</pre> or [CODE]longer code blocks[/CODE]",
+  topic: {
+    topics: ["Topic Name", "Optional Second Topic"] // Max 2 topics
+  }
+}
+```
+
+## Code Formatting Rules
+
+### In Questions (`question` property)
+- **Always use `[CODE]...[/CODE]` tags** for code snippets
+- Use for both inline code and code blocks
+- Example: `"What does [CODE]console.log('Hello')[/CODE] do?"`
+- Example with block:
+  ```
+  "What does this code do?\n[CODE]function test() {\n  return 42;\n}[/CODE]"
+  ```
+
+### In Options (`options` property)
+- **Always use `<pre>...<pre>` tags** for code snippets
+- Keep code short and inline where possible
+- Example: `"It returns <pre>undefined</pre>"`
+- Example: `"The <pre>Array.from()</pre> method creates a new array"`
+
+### In Explanations (`explanation` property)
+- **Use `<pre>...<pre>` for short inline code** (single values, method names, short expressions)
+  - Example: `"The <pre>typeof</pre> operator returns a string"`
+  - Example: `"This returns <pre>null</pre> because..."`
+  
+- **Use `[CODE]...[/CODE]` for longer code blocks** (multi-line code, complete examples, code snippets)
+  - Example: 
+    ```
+    "Here's how it works:\n[CODE]const arr = [1, 2, 3];\nconst doubled = arr.map(x => x * 2);\nconsole.log(doubled); // [2, 4, 6][/CODE]\nThe map method..."
+    ```
+
+**General Rule**: If the code is more than a single line or contains multiple statements, use `[CODE]`. Otherwise, use `<pre>`.
+
+## Content Quality Standards
+
+### Question Text
+- Must be clear and unambiguous
+- Should test understanding, not memorization
+- Avoid trick questions
+- Include context when showing code examples
+- Use realistic scenarios when applicable
+
+### Options
+- All options should be plausible
+- Incorrect options should represent common misconceptions
+- Keep options roughly similar in length
+- Avoid "All of the above" or "None of the above" unless necessary
+- Ensure only one correct answer
+
+### Explanations
+- **Must be detailed and educational** (2-4 paragraphs for medium/hard)
+- Explain why the correct answer is right
+- Explain why other options are wrong (when relevant)
+- Provide additional context and use cases
+- Include code examples to illustrate concepts
+- Reference best practices and common pitfalls
+- Easy: 1-2 paragraphs
+- Medium: 2-3 paragraphs with deeper technical details
+- Hard: 3-4 paragraphs with comprehensive analysis
+
+### Topics
+- Each question should have 1-2 topics maximum
+- Topics must be from the metadata topics list
+- Choose the most relevant topic(s) for the question
+
+## MDN Documentation Links
+
+All topics in metadata must have corresponding MDN documentation links:
+
+```javascript
+topicLinks: [
+  {
+    topic: "Topic Name", // Must match exactly with topics array
+    refLink: "https://developer.mozilla.org/en-US/docs/Web/JavaScript/..."
+  }
+]
+```
+
+Use official MDN documentation links for all JavaScript concepts.
+
+## Assessment ID Guidelines
+
+### assessmentId
+- Sequential number within the same difficulty level
+- Easy assessments: 1, 2, 3, 4, 5...
+- Medium assessments: 1, 2, 3, 4, 5...
+- Hard assessments: 1, 2, 3, 4, 5...
+
+### assessmentUniqueId
+- Unique timestamp for each assessment
+- Use Unix timestamp in milliseconds
+- Example: `1730726400000`
+- Should be unique across all assessments globally
+
+### testType
+- Format: `"javascript-{difficulty}"`
+- Easy: `"javascript-easy"`
+- Medium: `"javascript-medium"`
+- Hard: `"javascript-hard"`
+
+## Topic Coverage Guidelines
+
+### Avoid Duplication
+- Before creating a new assessment, review existing assessments
+- Ensure questions don't duplicate existing content
+- Cover new aspects or angles of topics already addressed
+- Build upon concepts from easier difficulty levels
+
+### Topic Distribution
+- Distribute questions evenly across topics
+- Each topic should have 2-4 questions
+- Balance foundational and advanced aspects
+- Include practical application questions
+
+## Best Practices
+
+1. **Progressive Difficulty**: Within an assessment, arrange questions from easier to harder
+2. **Real-World Relevance**: Use practical scenarios developers encounter
+3. **Modern JavaScript**: Focus on ES6+ features and current best practices
+4. **Consistency**: Follow the exact structure and formatting rules
+5. **Educational Value**: Every question should teach something valuable
+6. **Accuracy**: Verify all technical information is correct
+7. **Code Quality**: Use clean, idiomatic JavaScript in examples
+
+## Example Question (Easy)
+
+```javascript
+{
+  id: 1,
+  question: "What is the result of [CODE]typeof null[/CODE]?",
+  options: {
+    A: "<pre>\"null\"</pre>",
+    B: "<pre>\"object\"</pre>",
+    C: "<pre>\"undefined\"</pre>",
+    D: "<pre>\"number\"</pre>"
+  },
+  correct: "B",
+  explanation: "The <pre>typeof null</pre> returns <pre>\"object\"</pre>, which is actually a long-standing bug in JavaScript that has been kept for backward compatibility. Despite <pre>null</pre> representing the intentional absence of a value, the typeof operator incorrectly identifies it as an object. This is one of JavaScript's quirks that developers need to be aware of when checking for null values.",
+  topic: {
+    topics: ["Data Types and Primitives"]
+  }
+}
+```
+
+## Example Question (Medium)
+
+```javascript
+{
+  id: 1,
+  question: "What happens when you call [CODE]next()[/CODE] on a generator that has already completed?",
+  options: {
+    A: "It throws a TypeError",
+    B: "It returns <pre>{ value: undefined, done: true }</pre>",
+    C: "It restarts the generator from the beginning",
+    D: "It returns the last yielded value"
+  },
+  correct: "B",
+  explanation: "Once a generator has completed (reached a return statement or the end of the function), calling <pre>next()</pre> will always return <pre>{ value: undefined, done: true }</pre>. The generator doesn't restart, throw errors, or return previous values. If the generator had an explicit return value, subsequent calls to <pre>next()</pre> after completion will still return <pre>undefined</pre> as the value, not the return value. This behavior allows you to safely call <pre>next()</pre> multiple times without error handling.",
+  topic: {
+    topics: ["Generators and Iterators"]
+  }
+}
+```
+
+## Example Question with Longer Code (Medium/Hard)
+
+```javascript
+{
+  id: 15,
+  question: "What will this code output?\n[CODE]const obj = {\n  value: 42,\n  getValue() {\n    return this.value;\n  }\n};\nconst fn = obj.getValue;\nconsole.log(fn());[/CODE]",
+  options: {
+    A: "<pre>42</pre>",
+    B: "<pre>undefined</pre>",
+    C: "<pre>null</pre>",
+    D: "It throws a TypeError"
+  },
+  correct: "B",
+  explanation: "The code outputs <pre>undefined</pre> because when you extract a method from an object and call it as a standalone function, it loses its context (<pre>this</pre> binding). Here's what happens:\n[CODE]// Method extraction\nconst fn = obj.getValue; // fn is now a standalone function\n// When called, 'this' is undefined (strict mode) or global object\nfn(); // this.value is undefined[/CODE]\nTo preserve the context, you can use <pre>bind()</pre>, arrow functions, or call it directly on the object. Example fix:\n[CODE]const fn = obj.getValue.bind(obj);\nconsole.log(fn()); // Now outputs 42[/CODE]\nThis is a common gotcha when passing methods as callbacks or extracting them for later use.",
+  topic: {
+    topics: ["this Binding", "Object Methods"]
+  }
+}
+```
+
+## Validation Checklist
+
+Before submitting a new assessment, verify:
+
+- [ ] Metadata is complete with all required fields
+- [ ] Number of questions matches `questionCount` in metadata
+- [ ] Time limit is appropriate for difficulty level
+- [ ] All topics have corresponding MDN links
+- [ ] `[CODE]` tags used in questions for all code
+- [ ] `<pre>` tags used in options for all code
+- [ ] `<pre>` for short code, `[CODE]` for blocks in explanations
+- [ ] Each question has unique ID (1 to N)
+- [ ] All questions have exactly 4 options (A, B, C, D)
+- [ ] Correct answer is specified and valid
+- [ ] Explanations are detailed and educational
+- [ ] Topics are from the metadata list (max 2 per question)
+- [ ] No duplicate questions from existing assessments
+- [ ] Code examples are tested and accurate
+- [ ] Consistent formatting throughout
+
+## Notes
+
+- The UI will automatically style `[CODE]` blocks with proper syntax highlighting and larger code blocks
+- The UI will style `<pre>` as inline code snippets with subtle background
+- Always prefer MDN documentation over other sources
+- When in doubt about a concept, verify with official ECMAScript specification
+- Keep the tone professional but accessible
+- Focus on practical knowledge that developers will use
+
+---
+
+**Last Updated**: November 4, 2025
