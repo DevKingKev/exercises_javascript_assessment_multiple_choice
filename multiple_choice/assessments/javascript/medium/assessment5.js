@@ -61,7 +61,7 @@ module.exports = {
         ],
         assessmentId: 5,
         assessmentUniqueId: 1730812800000,
-        testType: "javascript-medium"
+        testType: "multiple-choice"
     },
     questions: [
         {
