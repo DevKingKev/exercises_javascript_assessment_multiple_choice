@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia';
 import { ref, computed } from 'vue';
 import type { Assessment, AvailableAssessments, AssessmentMetadata } from '@/models';
-import resolveTopics from '../utils/topicResolver';
+import resolveTopics from '../utils/topicResolveUtils';
 import { useGlobalStore } from '@/stores/globalStore';
 
 export const useAssessmentStore = defineStore( 'assessment', () => {
