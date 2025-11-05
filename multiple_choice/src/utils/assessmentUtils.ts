@@ -18,3 +18,18 @@ export function formatAssessmentLabel ( id: string | undefined | null, title?: s
     if ( id ) return `Assessment ${id}`;
     return 'Assessment';
 }
+
+import type { Assessment } from '@/models/assessment';
+import type { TopicLink } from '@/models/question';
+
+/**
+ * Find a reference link for a topic from an Assessment's metadata.topicLinks.
+ * Returns undefined if not found.
+ */
+export function findTopicRefLinkFromAssessment ( assessment: Assessment | null | undefined, topicName: string ): string | undefined {
+    if ( !assessment || !assessment.metadata ) return undefined;
+    const tlinks: TopicLink[] = ( assessment.metadata as any ).topicLinks || [];
+    if ( !Array.isArray( tlinks ) ) return undefined;
+    const found = tlinks.find( t => t && String( t.topicName ) === String( topicName ) );
+    return found ? found.refLink : undefined;
+}

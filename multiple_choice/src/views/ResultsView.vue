@@ -38,7 +38,10 @@
           </div>
         </div>
       </div>
-      <TopicPerformanceBreakdown :items="resultsStore.currentResults.topicBreakdown" />
+      <TopicPerformanceBreakdown
+        :items="resultsStore.currentResults.topicBreakdown"
+        :assessment="assessmentStore.currentAssessment"
+      />
       <div class="question-review">
         <h3>Question Review</h3>
         <div class="review-container">

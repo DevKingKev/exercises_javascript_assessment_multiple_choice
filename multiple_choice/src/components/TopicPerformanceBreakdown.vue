@@ -6,8 +6,17 @@
         v-for="(scores, topic) in items"
         :key="topic"
         class="topic-item"
-      >
-        <span class="topic-name">{{ topic }}</span>
+        >
+        <a
+          v-if="topicRefLink(topic)"
+          :href="topicRefLink(topic)"
+          class="topic-name"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {{ topic }}
+        </a>
+        <span v-else class="topic-name">{{ topic }}</span>
         <span class="topic-score">
           {{ scores.correct }}/{{ scores.total }}
           ({{ percentage(scores.correct, scores.total) }}%)
@@ -18,13 +27,23 @@
 </template>
 
 <script setup lang="ts">
+import type { Assessment } from '@/models/assessment';
+import { findTopicRefLinkFromAssessment } from '@/utils/assessmentUtils';
+
 const props = defineProps<{
+  // topic score map (kept for backwards compatibility / usage)
   items: Record<string, { correct: number; total: number }> | null | undefined;
+  // optional assessment so component can resolve topic refLinks
+  assessment?: Assessment | null;
 }>();
 
 function percentage(correct: number, total: number) {
   if (!total || total === 0) return 0;
   return Math.round((correct / total) * 100);
+}
+
+function topicRefLink(topicName: string): string | undefined {
+  return findTopicRefLinkFromAssessment(props.assessment, topicName);
 }
 </script>
 
