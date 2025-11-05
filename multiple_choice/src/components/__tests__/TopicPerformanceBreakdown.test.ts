@@ -42,6 +42,47 @@ describe( 'TopicPerformanceBreakdown.vue', () => {
         }
     } );
 
+    it( 'applies correct grading classes based on scores', () => {
+        const items = {
+            PerfectTopic: { correct: 5, total: 5 }, // 100% => topic-perfect
+            GoodTopic: { correct: 4, total: 5 },    // 80% => topic-good
+            FairTopic: { correct: 3, total: 5 },    // 60% => topic-fair
+            PoorTopic: { correct: 2, total: 5 },    // 40% => topic-poor
+            FailTopic: { correct: 1, total: 5 },    // 20% => topic-fail
+            NeutralTopic: { correct: 0, total: 0 }  // 0 total => topic-neutral
+        };
+
+        const wrapper = mount( TopicPerformanceBreakdown as any, {
+            props: { items }
+        } );
+
+        const findItem = ( name: string ) => wrapper.findAll( '.topic-item' ).find( w => w.text().includes( name ) );
+
+        const perfect = findItem( 'PerfectTopic' );
+        expect( perfect ).toBeTruthy();
+        expect( perfect?.classes() ).toContain( 'topic-perfect' );
+
+        const good = findItem( 'GoodTopic' );
+        expect( good ).toBeTruthy();
+        expect( good?.classes() ).toContain( 'topic-good' );
+
+        const fair = findItem( 'FairTopic' );
+        expect( fair ).toBeTruthy();
+        expect( fair?.classes() ).toContain( 'topic-fair' );
+
+        const poor = findItem( 'PoorTopic' );
+        expect( poor ).toBeTruthy();
+        expect( poor?.classes() ).toContain( 'topic-poor' );
+
+        const fail = findItem( 'FailTopic' );
+        expect( fail ).toBeTruthy();
+        expect( fail?.classes() ).toContain( 'topic-fail' );
+
+        const neutral = findItem( 'NeutralTopic' );
+        expect( neutral ).toBeTruthy();
+        expect( neutral?.classes() ).toContain( 'topic-neutral' );
+    } );
+
     it( 'renders spans when no assessment prop is provided', () => {
         const items = {
             Loops: { correct: 3, total: 5 }

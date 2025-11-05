@@ -30,6 +30,20 @@
   --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.15);
   --shadow-lg: 0 8px 25px rgba(0, 0, 0, 0.15);
   --shadow-xl: 0 10px 30px rgba(0, 0, 0, 0.2);
+
+  /* Topic grading colours (exposed as variables so components can reuse) */
+  --topic-perfect-bg: #d4edda;
+  --topic-perfect-color: #155724;
+  --topic-good-bg: #d1ecf1;
+  --topic-good-color: #0c5460;
+  --topic-fair-bg: #fff3cd;
+  --topic-fair-color: #856404;
+  --topic-poor-bg: #ffeaa7;
+  --topic-poor-color: #d63031;
+  --topic-fail-bg: #f8d7da;
+  --topic-fail-color: #721c24;
+  --topic-neutral-bg: #e9ecef;
+  --topic-neutral-color: #6c757d;
 }
 
 // Dark theme
@@ -61,6 +75,20 @@
   --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.5);
   --shadow-lg: 0 8px 25px rgba(0, 0, 0, 0.6);
   --shadow-xl: 0 10px 30px rgba(0, 0, 0, 0.7);
+
+  /* Topic grading colours - dark theme overrides */
+  --topic-perfect-bg: rgba(74, 222, 128, 0.08);
+  --topic-perfect-color: #4ade80;
+  --topic-good-bg: rgba(34, 211, 238, 0.06);
+  --topic-good-color: #22d3ee;
+  --topic-fair-bg: rgba(251, 191, 36, 0.06);
+  --topic-fair-color: #fbbf24;
+  --topic-poor-bg: rgba(251, 146, 60, 0.06);
+  --topic-poor-color: #fb923c;
+  --topic-fail-bg: rgba(239, 142, 142, 0.06);
+  --topic-fail-color: #ef8e8e;
+  --topic-neutral-bg: transparent;
+  --topic-neutral-color: #9ca3af;
 }
 
 // Apply theme globally
@@ -550,39 +578,39 @@ body {
 :root:not([data-theme]) {
   .topic-item {
     &.topic-perfect {
-      background: #d4edda !important;
+      background: var(--topic-perfect-bg) !important;
       border-color: #28a745 !important;
-      color: #155724 !important;
+      color: var(--topic-perfect-color) !important;
     }
     
     &.topic-good {
-      background: #d1ecf1 !important;
+      background: var(--topic-good-bg) !important;
       border-color: #17a2b8 !important;
-      color: #0c5460 !important;
+      color: var(--topic-good-color) !important;
     }
     
     &.topic-fair {
-      background: #fff3cd !important;
+      background: var(--topic-fair-bg) !important;
       border-color: #ffc107 !important;
-      color: #856404 !important;
+      color: var(--topic-fair-color) !important;
     }
     
     &.topic-poor {
-      background: #ffe5d0 !important;
+      background: var(--topic-poor-bg) !important;
       border-color: #fd7e14 !important;
-      color: #8b4513 !important;
+      color: var(--topic-poor-color) !important;
     }
     
     &.topic-fail {
-      background: #f8d7da !important;
+      background: var(--topic-fail-bg) !important;
       border-color: #dc3545 !important;
-      color: #721c24 !important;
+      color: var(--topic-fail-color) !important;
     }
     
     &.topic-neutral {
-      background: #e2e8f0 !important;
+      background: var(--topic-neutral-bg) !important;
       border-color: #cbd5e0 !important;
-      color: #4a5568 !important;
+      color: var(--topic-neutral-color) !important;
     }
   }
 }
@@ -591,39 +619,39 @@ body {
 :root[data-theme="dark"] {
   .topic-item {
     &.topic-perfect {
-      background: rgba(74, 222, 128, 0.15) !important;
+      background: var(--topic-perfect-bg) !important;
       border-color: #4ade80 !important;
-      color: #86efac !important;
+      color: var(--topic-perfect-color) !important;
     }
     
     &.topic-good {
-      background: rgba(56, 189, 248, 0.15) !important;
+      background: var(--topic-good-bg) !important;
       border-color: #38bdf8 !important;
-      color: #7dd3fc !important;
+      color: var(--topic-good-color) !important;
     }
     
     &.topic-fair {
-      background: rgba(251, 191, 36, 0.15) !important;
+      background: var(--topic-fair-bg) !important;
       border-color: #fbbf24 !important;
-      color: #fcd34d !important;
+      color: var(--topic-fair-color) !important;
     }
     
     &.topic-poor {
-      background: rgba(251, 146, 60, 0.15) !important;
+      background: var(--topic-poor-bg) !important;
       border-color: #fb923c !important;
-      color: #fdba74 !important;
+      color: var(--topic-poor-color) !important;
     }
     
     &.topic-fail {
-      background: rgba(248, 113, 113, 0.15) !important;
+      background: var(--topic-fail-bg) !important;
       border-color: #f87171 !important;
-      color: #fca5a5 !important;
+      color: var(--topic-fail-color) !important;
     }
     
     &.topic-neutral {
-      background: var(--bg-tertiary) !important;
+      background: var(--topic-neutral-bg) !important;
       border-color: var(--border-medium) !important;
-      color: var(--text-secondary) !important;
+      color: var(--topic-neutral-color) !important;
     }
   }
 }
