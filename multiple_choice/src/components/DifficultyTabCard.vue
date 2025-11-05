@@ -1,9 +1,7 @@
 <template>
-  <RouterLink
-    :to="{ name: 'results', query: { expand: difficulty } }"
-    class="difficulty-tab"
+  <div
+    class="comp-difficulty-tab-card difficulty-tab"
     :class="[`difficulty-${difficulty}`, { 'has-results': hasResults }]"
-    :aria-label="`View ${difficulty} difficulty results`"
   >
     <div class="tab-header">
       <span class="difficulty-name">{{ capitalizedDifficulty }}</span>
@@ -20,9 +18,17 @@
       </div>
     </div>
     <div class="tab-footer">
-      <span class="view-link">View Details →</span>
+      <RouterLink
+        v-if="hasResults"
+        :to="{ name: 'results', query: { expand: difficulty } }"
+        class="view-link"
+        :aria-label="`View ${difficulty} difficulty results`"
+      >
+        View Details →
+      </RouterLink>
+      <span v-else class="view-link" aria-hidden="true">View Details →</span>
     </div>
-  </RouterLink>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -67,7 +73,6 @@ const capitalizedDifficulty = computed(() => {
   }
 
   &.has-results {
-    cursor: pointer;
 
     &:hover {
       border-color: currentColor;
