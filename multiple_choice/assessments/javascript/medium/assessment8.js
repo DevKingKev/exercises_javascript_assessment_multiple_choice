@@ -19,43 +19,43 @@ module.exports = {
         ],
         topicLinks: [
             {
-                topic: "Execution Context and Call Stack",
+                topicName: "Execution Context and Call Stack",
                 refLink: "https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop"
             },
             {
-                topic: "Scope Chain and Variable Lookup",
+                topicName: "Scope Chain and Variable Lookup",
                 refLink: "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures"
             },
             {
-                topic: "Module Systems (CommonJS vs ES6)",
+                topicName: "Module Systems (CommonJS vs ES6)",
                 refLink: "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules"
             },
             {
-                topic: "Error Propagation and Stack Traces",
+                topicName: "Error Propagation and Stack Traces",
                 refLink: "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error"
             },
             {
-                topic: "Immediately Invoked Function Expressions (IIFE)",
+                topicName: "Immediately Invoked Function Expressions (IIFE)",
                 refLink: "https://developer.mozilla.org/en-US/docs/Glossary/IIFE"
             },
             {
-                topic: "Currying and Partial Application",
+                topicName: "Currying and Partial Application",
                 refLink: "https://developer.mozilla.org/en-US/docs/Glossary/Currying"
             },
             {
-                topic: "Function Composition",
+                topicName: "Function Composition",
                 refLink: "https://developer.mozilla.org/en-US/docs/Glossary/Function_composition"
             },
             {
-                topic: "Immutable Patterns",
+                topicName: "Immutable Patterns",
                 refLink: "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze"
             },
             {
-                topic: "Lazy Evaluation",
+                topicName: "Lazy Evaluation",
                 refLink: "https://developer.mozilla.org/en-US/docs/Glossary/Lazy_evaluation"
             },
             {
-                topic: "Coercion Rules and Type Conversion",
+                topicName: "Coercion Rules and Type Conversion",
                 refLink: "https://developer.mozilla.org/en-US/docs/Glossary/Type_coercion"
             }
         ],

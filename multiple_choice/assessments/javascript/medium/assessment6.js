@@ -19,43 +19,43 @@ module.exports = {
         ],
         topicLinks: [
             {
-                topic: "Fetch API and Request/Response",
+                topicName: "Fetch API and Request/Response",
                 refLink: "https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API"
             },
             {
-                topic: "Intersection Observer API",
+                topicName: "Intersection Observer API",
                 refLink: "https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API"
             },
             {
-                topic: "Resize Observer API",
+                topicName: "Resize Observer API",
                 refLink: "https://developer.mozilla.org/en-US/docs/Web/API/Resize_Observer_API"
             },
             {
-                topic: "Local Storage and Session Storage",
+                topicName: "Local Storage and Session Storage",
                 refLink: "https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API"
             },
             {
-                topic: "IndexedDB",
+                topicName: "IndexedDB",
                 refLink: "https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API"
             },
             {
-                topic: "Service Workers and Caching",
+                topicName: "Service Workers and Caching",
                 refLink: "https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API"
             },
             {
-                topic: "Object.defineProperty and Descriptors",
+                topicName: "Object.defineProperty and Descriptors",
                 refLink: "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty"
             },
             {
-                topic: "Object.create and Prototypal Patterns",
+                topicName: "Object.create and Prototypal Patterns",
                 refLink: "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create"
             },
             {
-                topic: "Array.from and Iterable Protocol",
+                topicName: "Array.from and Iterable Protocol",
                 refLink: "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from"
             },
             {
-                topic: "Template Literals and Tagged Templates",
+                topicName: "Template Literals and Tagged Templates",
                 refLink: "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals"
             }
         ],

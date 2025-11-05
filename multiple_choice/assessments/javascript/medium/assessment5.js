@@ -19,43 +19,43 @@ module.exports = {
         ],
         topicLinks: [
             {
-                topic: "Generators and Iterators",
+                topicName: "Generators and Iterators",
                 refLink: "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Iterators_and_generators"
             },
             {
-                topic: "Proxies and Reflect API",
+                topicName: "Proxies and Reflect API",
                 refLink: "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy"
             },
             {
-                topic: "Symbols and Well-known Symbols",
+                topicName: "Symbols and Well-known Symbols",
                 refLink: "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol"
             },
             {
-                topic: "Functional Programming Patterns",
+                topicName: "Functional Programming Patterns",
                 refLink: "https://developer.mozilla.org/en-US/docs/Glossary/First-class_Function"
             },
             {
-                topic: "Memory Management and Optimization",
+                topicName: "Memory Management and Optimization",
                 refLink: "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Memory_management"
             },
             {
-                topic: "Advanced Regular Expressions",
+                topicName: "Advanced Regular Expressions",
                 refLink: "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions"
             },
             {
-                topic: "Error Handling Strategies",
+                topicName: "Error Handling Strategies",
                 refLink: "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch"
             },
             {
-                topic: "Module Patterns and Dynamic Imports",
+                topicName: "Module Patterns and Dynamic Imports",
                 refLink: "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules"
             },
             {
-                topic: "WeakMap and WeakSet",
+                topicName: "WeakMap and WeakSet",
                 refLink: "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap"
             },
             {
-                topic: "Memoization and Caching",
+                topicName: "Memoization and Caching",
                 refLink: "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures"
             }
         ],

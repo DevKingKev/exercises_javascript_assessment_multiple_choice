@@ -19,43 +19,43 @@ module.exports = {
         ],
         topicLinks: [
             {
-                topic: "Type Coercion and Conversion",
+                topicName: "Type Coercion and Conversion",
                 refLink: "https://developer.mozilla.org/en-US/docs/Glossary/Type_coercion"
             },
             {
-                topic: "Equality Operators and Comparison",
+                topicName: "Equality Operators and Comparison",
                 refLink: "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness"
             },
             {
-                topic: "Variable Hoisting and TDZ",
+                topicName: "Variable Hoisting and TDZ",
                 refLink: "https://developer.mozilla.org/en-US/docs/Glossary/Hoisting"
             },
             {
-                topic: "Optional Chaining and Nullish Coalescing",
+                topicName: "Optional Chaining and Nullish Coalescing",
                 refLink: "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining"
             },
             {
-                topic: "Private Class Fields and Methods",
+                topicName: "Private Class Fields and Methods",
                 refLink: "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Private_class_fields"
             },
             {
-                topic: "BigInt and Numeric Operations",
+                topicName: "BigInt and Numeric Operations",
                 refLink: "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt"
             },
             {
-                topic: "Logical Assignment Operators",
+                topicName: "Logical Assignment Operators",
                 refLink: "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_OR_assignment"
             },
             {
-                topic: "Numeric Separators and Literals",
+                topicName: "Numeric Separators and Literals",
                 refLink: "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Lexical_grammar#numeric_separators"
             },
             {
-                topic: "Top-level Await",
+                topicName: "Top-level Await",
                 refLink: "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/await#top_level_await"
             },
             {
-                topic: "Static Initialization Blocks",
+                topicName: "Static Initialization Blocks",
                 refLink: "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Static_initialization_blocks"
             }
         ],
