@@ -8,18 +8,14 @@ export function escapeHtml ( text: string ): string {
 }
 
 export function formatWithMarkers ( text: string ): string {
-    // Split by code markers [CODE]...[/CODE] and <pre>...</pre> tags
-    const parts = text.split( /(\[CODE\][\s\S]*?\[\/CODE\]|<pre>[\s\S]*?<\/pre>)/g );
+    // Split by code markers [CODE]...[/CODE] (but not <pre> tags yet)
+    const parts = text.split( /(\[CODE\][\s\S]*?\[\/CODE\])/g );
 
     return parts.map( part => {
         if ( part.startsWith( '[CODE]' ) && part.endsWith( '[/CODE]' ) ) {
             // Extract code content between markers
             const code = part.slice( 6, -7 ).trim(); // Remove [CODE] and [/CODE]
-            return `<pre><code>${escapeHtml( code )}</code></pre>`;
-        } else if ( part.startsWith( '<pre>' ) && part.endsWith( '</pre>' ) ) {
-            // Preserve <pre> tags as-is (already HTML, no escaping)
-            // return `<pre> ${escapeHtml( part.slice( 5, -6 ) )} </pre>`;
-            return `${part}`;
+            return `<pre class="formatted-with-markers"><code>${escapeHtml( code )}</code></pre>`;
         } else {
             // Regular text - wrap non-empty paragraphs
             const trimmed = part.trim();
@@ -28,7 +24,27 @@ export function formatWithMarkers ( text: string ): string {
             // Split by double newlines for multiple paragraphs
             return trimmed.split( /\n\n+/ ).map( p => {
                 const paragraph = p.trim();
-                return paragraph ? `<p>${escapeHtml( paragraph )}</p>` : '';
+                if ( !paragraph ) return '';
+
+                // Handle inline <pre>...</pre> tags within the paragraph
+                // Convert them to <span class="pre"> for valid inline styling
+                const codeTags: string[] = [];
+                const uniqueMarker = '\x00PRETAGMARKER\x00'; // Use null bytes as unique markers
+                const withPlaceholders = paragraph.replace( /<pre>([\s\S]*?)<\/pre>/g, ( match, content ) => {
+                    const index = codeTags.length;
+                    codeTags.push( `<span class="pre">${content}</span>` );
+                    return `${uniqueMarker}${index}${uniqueMarker}`;
+                } );
+
+                // Escape the text (now without <pre> tags)
+                const escaped = escapeHtml( withPlaceholders );
+
+                // Restore code spans (unescaped)
+                const restored = escaped.replace( new RegExp( `${uniqueMarker}(\\d+)${uniqueMarker}`, 'g' ), ( match, index ) => {
+                    return codeTags[parseInt( index )];
+                } );
+
+                return `<p class="formatted-with-markers">${restored}</p>`;
             } ).join( '' );
         }
     } ).join( '' );
@@ -58,8 +74,12 @@ export function formatAutoDetect ( text: string ): string {
 }
 
 export function formatTextWithCode ( text: string ): string {
-    // Check if text uses explicit code markers [CODE]...[/CODE]
+    // Check if text uses explicit code markers [CODE]...[/CODE] or inline <pre> tags
     if ( text.includes( '[CODE]' ) && text.includes( '[/CODE]' ) ) {
+        return formatWithMarkers( text );
+    }
+
+    if ( text.includes( '<pre>' ) && text.includes( '</pre>' ) ) {
         return formatWithMarkers( text );
     }
 

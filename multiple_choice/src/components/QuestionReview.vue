@@ -6,7 +6,9 @@
     </div>
     <div class="review-answer user">
       <strong>Your answer:</strong>
-      {{ getUserAnswerText(review) }}
+      <div class="review-answer-option">
+                <span class="review-answer-option-choice">{{ review.userAnswer }}:</span> 
+        <span v-html="review.userAnswer !== null ? review.options[review.userAnswer] : ''" class="review-answer-option-text"></span></div>
     </div>
     <div class="review-answer" :class="review.isCorrect ? 'correct' : 'incorrect'">
       <strong>Correct answer:</strong>
@@ -42,6 +44,7 @@ import type { QuestionReview } from '@/models';
 import { useResultsStore } from '@/stores/resultsStore';
 import { computed } from 'vue';
 import TopicTags from './TopicTags.vue';
+import { afterEach } from 'vitest';
 
 const props = defineProps<{
   review: QuestionReview & Record<string, any>;
@@ -70,6 +73,17 @@ const topicItems = computed(() => {
 </script>
 
 <style scoped lang="scss">
+.review-question-block {
+  ::v-deep p.formatted-with-markers{
+     span.pre{
+      font-family:"Consolas", "Monaco", "Courier New", monospace;
+      display: inline-flex;
+      padding: 0 10px;
+  }
+  }
+
+  
+}
 .review-question { margin-bottom: 16px; }
 .review-answer { padding: 12px 16px; margin: 8px 0; border-radius: 6px; }
 .review-answer.user { background: #f8f9fa; }
@@ -79,6 +93,10 @@ const topicItems = computed(() => {
 
   .review-answer-option-choice{
     padding-right: 10px;
+
+   ::v-deep &.with-text{
+      vp{display: inline-flex;}
+    }
 
   }
   .review-answer-option-text{
@@ -94,6 +112,14 @@ const topicItems = computed(() => {
       display: inline-flex;
       padding:0 5px;
       border-radius: 2px;
+    }
+  }
+
+  .explanation-topics {
+    margin-top: 15px;
+
+    .explanation-topics-heading {
+ 
     }
   }
 }

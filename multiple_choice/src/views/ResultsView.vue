@@ -130,7 +130,10 @@ function getUserAnswerText(review: QuestionReview): string {
   if (!review.userAnswer) {
     return 'No answer selected';
   }
-  return `${review.userAnswer}: ${review.options[review.userAnswer]}`;
+  const optionText = review.options[review.userAnswer];
+  // Format option text to handle inline <pre> tags
+  const formattedOption = formatTextWithCode(optionText);
+  return `${review.userAnswer}: ${formattedOption}`;
 }
 
 function getTopicClass(correct: number, total: number): string {
