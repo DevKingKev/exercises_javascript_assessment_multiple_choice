@@ -112,27 +112,48 @@ export const useAssessmentStore = defineStore( 'assessment', () => {
             if ( difficultyCache[assessmentId] ) {
                 const cached: Assessment = difficultyCache[assessmentId];
 
-                // Re-initialize store state from cached assessment
-                currentAssessment.value = cached;
+                // Use a deep-clone of the cached assessment before attaching it
+                // to the reactive store. This prevents shared/mutated objects from
+                // causing stale or cross-request contamination when the cached
+                // payload is referenced elsewhere in the app.
+                let cachedCopy: Assessment;
+                try {
+                    cachedCopy = JSON.parse( JSON.stringify( cached ) );
+                } catch ( e ) {
+                    // Fallback to using the original if cloning fails (should be rare)
+                    cachedCopy = cached as Assessment;
+                }
+
+                // Ensure per-question resolvedTopics are present for the cloned copy
+                const topicLinks = ( cachedCopy.metadata && ( cachedCopy.metadata as any ).topicLinks ) || [];
+                if ( Array.isArray( cachedCopy.questions ) ) {
+                    for ( const q of cachedCopy.questions ) {
+                        const names: string[] = ( q && ( ( q as any ).topic && ( q as any ).topic.topics ) ) || ( ( q as any ).topics ) || [];
+                        ( q as any ).resolvedTopics = resolveTopics( names, topicLinks );
+                    }
+                }
+
+                // Re-initialize store state from cloned assessment
+                currentAssessment.value = cachedCopy;
                 currentDifficulty.value = difficulty;
                 currentQuestionIndex.value = 0;
-                userAnswers.value = new Array( cached.questions.length ).fill( null );
-                timeLimit.value = cached.metadata.timeLimit;
+                userAnswers.value = new Array( cachedCopy.questions.length ).fill( null );
+                timeLimit.value = cachedCopy.metadata.timeLimit;
                 startTime.value = new Date();
 
                 // Attempt to restore saved progress from localStorage (if any)
                 try {
-                    const key = getProgressKeyForAssessment( cached );
+                    const key = getProgressKeyForAssessment( cachedCopy );
                     const raw = localStorage.getItem( key );
                     if ( raw ) {
                         const saved = JSON.parse( raw );
                         if ( saved && Array.isArray( saved.userAnswers ) ) {
-                            if ( saved.userAnswers.length === cached.questions.length ) {
+                            if ( saved.userAnswers.length === cachedCopy.questions.length ) {
                                 userAnswers.value = saved.userAnswers;
                             }
                         }
                         if ( typeof saved.currentQuestionIndex === 'number' ) {
-                            const idx = Math.max( 0, Math.min( saved.currentQuestionIndex, cached.questions.length - 1 ) );
+                            const idx = Math.max( 0, Math.min( saved.currentQuestionIndex, cachedCopy.questions.length - 1 ) );
                             currentQuestionIndex.value = idx;
                         }
                         if ( typeof saved.elapsedMs === 'number' ) {
@@ -143,7 +164,7 @@ export const useAssessmentStore = defineStore( 'assessment', () => {
                     console.error( 'Error restoring assessment progress from cache path:', e );
                 }
 
-                return cached;
+                return cachedCopy;
             }
 
             const response = await fetch( `/api/assessment/${encodeURIComponent( lang )}/${encodeURIComponent( difficulty )}/${encodeURIComponent( assessmentId )}` );

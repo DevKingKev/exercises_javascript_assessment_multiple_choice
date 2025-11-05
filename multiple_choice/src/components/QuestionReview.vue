@@ -42,9 +42,8 @@
 <script setup lang="ts">
 import type { QuestionReview } from '@/models';
 import { useResultsStore } from '@/stores/resultsStore';
-import { computed } from 'vue';
+import { computed, toRef } from 'vue';
 import TopicTags from './TopicTags.vue';
-import { afterEach } from 'vitest';
 
 const props = defineProps<{
   review: QuestionReview & Record<string, any>;
@@ -58,14 +57,24 @@ const props = defineProps<{
   topicItems?: Record<string, { correct: number; total: number }> | null;
 }>();
 
-const { review, index, savedResultDate, formatQuestion, getUserAnswerText, getTopicLink, getTopicClass } = props;
+// Use toRef for props that may change so we keep reactivity instead of
+// destructuring the props object (destructuring loses reactivity in Vue).
+const review = toRef(props, 'review');
+const index = toRef(props, 'index');
+const savedResultDate = toRef(props, 'savedResultDate');
+
+// Function props are stable references and can be accessed directly from props.
+const formatQuestion = props.formatQuestion;
+const getUserAnswerText = props.getUserAnswerText;
+const getTopicLink = props.getTopicLink;
+const getTopicClass = props.getTopicClass;
 
 const resultsStore = useResultsStore();
 
 const topicItems = computed(() => {
   if (props.topicItems && Object.keys(props.topicItems).length > 0) return props.topicItems as Record<string, { correct: number; total: number }>;
   const tb = (resultsStore.currentResults && resultsStore.currentResults.topicBreakdown) || {};
-  const name = (review as any).topic;
+  const name = (review.value as any).topic;
   if (!name) return {} as Record<string, { correct: number; total: number }>;
   const scores = tb[name] || { correct: 0, total: 0 };
   return { [name]: { correct: scores.correct ?? 0, total: scores.total ?? 0 } };
@@ -119,7 +128,7 @@ const topicItems = computed(() => {
     margin-top: 15px;
 
     .explanation-topics-heading {
- 
+      font-weight: 700;
     }
   }
 }

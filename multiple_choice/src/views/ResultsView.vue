@@ -50,21 +50,26 @@
             <span class="load--failed-text">Failed to load assessment</span>
           </div>
           <div v-else>
-            <div
-              v-for="(review, index) in resultsStore.currentResults.questionReview"
-              :key="index"
-              class="review-item"
-            >
-              <QuestionReviewComponent
-                :review="review"
-                :index="index"
-                :savedResultDate="savedResultDate"
-                :formatQuestion="formatQuestion"
-                :getUserAnswerText="getUserAnswerText"
-                :topicItems="(getTopicItemsForReview(review) as Record<string, { correct: number; total: number }>)"
-                :getTopicLink="getTopicLink"
-                :getTopicClass="getTopicClass"
-              />
+            <div v-if="canShowQuestionReview">
+              <div
+                v-for="(review, index) in resultsStore.currentResults.questionReview"
+                :key="index"
+                class="review-item"
+              >
+                <QuestionReviewComponent
+                  :review="review"
+                  :index="index"
+                  :savedResultDate="savedResultDate"
+                  :formatQuestion="formatQuestion"
+                  :getUserAnswerText="getUserAnswerText"
+                  :topicItems="(getTopicItemsForReview(review) as Record<string, { correct: number; total: number }>)"
+                  :getTopicLink="getTopicLink"
+                  :getTopicClass="getTopicClass"
+                />
+              </div>
+            </div>
+            <div v-else class="review-loading" role="status" aria-live="polite">
+              <em>Loading question review…</em>
             </div>
           </div>
         </div>
@@ -105,6 +110,19 @@ const savedResultDate = ref<string | null>( null );
 const savedResultRecord = ref<any>( null );
 const isLoading = ref(false);
 const assessmentLoadFailed = ref(false);
+
+// Computed guards to ensure the Question Review is only rendered when the
+// currently loaded assessment matches the saved result's assessment id.
+const currentAssessmentId = computed(() => (assessmentStore.currentAssessment as any)?.metadata?.id ?? null);
+const savedAssessmentId = computed(() => savedResultRecord.value?.assessmentId ?? null);
+const canShowQuestionReview = computed(() => {
+  // If there are no current results, nothing to show
+  if (!resultsStore.currentResults) return false;
+  // If we don't have a saved assessment id (unlikely for restored results), allow rendering
+  if (!savedAssessmentId.value) return true;
+  // Only show review when the loaded assessment id matches the saved result id
+  return !!currentAssessmentId.value && String(currentAssessmentId.value) === String(savedAssessmentId.value);
+});
 
 // Display label for the assessment shown on this results page. Prefer
 // any persisted title on the saved result record, otherwise derive from
@@ -223,7 +241,7 @@ const findAndRestore = async (idStr?: string) => {
     if (found) break;
   }
 
-    if (!found) return;
+  if (!found) return;
 
   // Expose saved date for display
   savedResultDate.value = found.rec.date || null;
@@ -233,8 +251,17 @@ const findAndRestore = async (idStr?: string) => {
   // assessment questions (load assessment if necessary). Unlike the previous
   // implementation, always reconstruct the saved record when a resultRecordId
   // is provided — do not skip when transient currentResults already exist.
-  try {
+    try {
+    // Debug: log which assessment id we're attempting to load
+    console.debug('[ResultsView] attempting to load assessment', { requestedDifficulty: found.difficulty, requestedAssessmentId: found.rec.assessmentId });
+    // Clear any existing currentAssessment so components reading the store
+    // don't momentarily see stale data from a previous assessment while the
+    // requested one is being loaded (especially when loadAssessment returns
+    // a cached object quickly).
+    assessmentStore.currentAssessment = null;
+    console.debug('[ResultsView] cleared assessmentStore.currentAssessment before load');
     await assessmentStore.loadAssessment(found.difficulty, found.rec.assessmentId);
+  console.debug('[ResultsView] after loadAssessment, currentAssessment id:', (assessmentStore.currentAssessment as any)?.metadata?.id, 'title:', (assessmentStore.currentAssessment as any)?.metadata?.title);
   } catch (e) {
     console.debug('Could not load assessment for reconstruction', e);
     // mark that we couldn't load the assessment — UI should show fallback
@@ -283,6 +310,8 @@ const findAndRestore = async (idStr?: string) => {
       timeTaken: found.rec.timeTaken
     };
 
+    // Debug: log which assessment was used to build questionReview and the first question text
+    console.debug('[ResultsView] built questionReview using assessment id:', assessmentStore.currentAssessment?.metadata?.id, 'questionsCount:', assessmentStore.currentAssessment?.questions?.length, 'firstQuestion:', assessmentStore.currentAssessment?.questions?.[0]?.question);
     resultsStore.setCurrentResults(built);
     } else {
     // If assessment is missing after the load attempt, indicate failure
