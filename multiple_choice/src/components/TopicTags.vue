@@ -76,13 +76,14 @@ function resolvedGetTopicClass(correct: number, total: number) {
 .topic-tag {
   font-weight: 500;
   margin-right: 6px;
-
-  &.topic-perfect { color: #28a745; }
-  &.topic-good    { color: #17a2b8; }
-  &.topic-fair    { color: #d39e00; }
-  &.topic-poor    { color: #fd7e14; }
-  &.topic-fail    { color: #dc3545; }
-  &.topic-neutral { color: #6c757d; }
+  /* Use centralized theme variables for grading colors so the palette
+     (including dark-mode overrides) is controlled from `styles/_theme.scss`. */
+  &.topic-perfect { color: var(--topic-perfect-color); }
+  &.topic-good    { color: var(--topic-good-color); }
+  &.topic-fair    { color: var(--topic-fair-color); }
+  &.topic-poor    { color: var(--topic-poor-color); }
+  &.topic-fail    { color: var(--topic-fail-color); }
+  &.topic-neutral { color: var(--topic-neutral-color); }
  
  
 }
@@ -101,14 +102,6 @@ function resolvedGetTopicClass(correct: number, total: number) {
 }
 
 /* Dark mode adjustments for topic tags — keep low-contrast but visible colors */
-:root[data-theme="dark"] {
-  .topic-tag {
-    &.topic-perfect { color: #4ade80 !important; }
-    &.topic-good    { color: #22d3ee !important; }
-    &.topic-fair    { color: #fbbf24 !important; }
-    &.topic-poor    { color: #fb923c !important; }
-    &.topic-fail    { color: #ef8e8e !important; }
-    &.topic-neutral { color: #9ca3af !important; }
-  }
-}
+/* Dark-mode color overrides are provided by the central theme variables
+   in `styles/_theme.scss`. No component-level dark overrides are needed. */
 </style>
