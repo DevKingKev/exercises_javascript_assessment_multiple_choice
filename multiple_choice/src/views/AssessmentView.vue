@@ -259,6 +259,13 @@ function calculateResults() {
       explanation: question.explanation,
       options: question.options
     });
+    
+    // Attach a stable question id when available so results can key items
+    // deterministically when rendering question review lists.
+    if (questionReview.length > 0) {
+      const last = questionReview[questionReview.length - 1] as any;
+      last.questionId = question.id ?? index;
+    }
   });
 
   const percentage = Math.round((correct / questions.length) * 100);

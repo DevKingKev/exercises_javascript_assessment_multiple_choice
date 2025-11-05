@@ -45,9 +45,17 @@ describe( 'ResultsView restoration', () => {
             return mockAssessment;
         } ) as any;
 
+        // Minimal router with the routes referenced by ResultsView to avoid
+        // runtime resolve errors from RouterLink/useLink during mounting.
+        const Dummy = { template: '<div />' };
         const router = createRouter( {
             history: createMemoryHistory(),
-            routes: [{ name: 'assessment-result', path: '/assessment-result/:resultRecordId', component: ResultsView }]
+            routes: [
+                { name: 'assessment-result', path: '/assessment-result/:resultRecordId', component: ResultsView },
+                { name: 'results', path: '/results', component: Dummy },
+                { name: 'assessment', path: '/assessment/:difficulty/:id', component: Dummy },
+                { name: 'home', path: '/', component: Dummy }
+            ]
         } );
 
         // Navigate to the result route before mounting so the component reads params on mount

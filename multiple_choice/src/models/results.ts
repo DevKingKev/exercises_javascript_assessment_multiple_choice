@@ -11,6 +11,8 @@ export interface QuestionReview {
     options: { [key: string]: string; };
     // Optional topic name for the question (used by results UI to show tags)
     topic?: string;
+    // Optional stable id for this question (comes from assessment question id when available)
+    questionId?: string | number;
 }
 
 export interface AssessmentResults {

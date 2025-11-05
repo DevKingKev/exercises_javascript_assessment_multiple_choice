@@ -193,6 +193,10 @@ function getReviewKey(review: any, index: number) {
   // switching between different saved records. Fall back to the current
   // assessment id and finally the index/question snippet.
   const base = savedResultRecord.value?.resultRecordId ?? savedResultRecord.value?.assessmentId ?? (assessmentStore.currentAssessment as any)?.metadata?.id ?? 'no-assess';
+  // Prefer explicit question id when present; fall back to a short snippet
+  // of the question text or finally the numeric index.
+  const qid = (review && ((review.questionId !== undefined && review.questionId !== null) ? String((review as any).questionId) : undefined)) || (review && review.id ? String((review as any).id) : undefined);
+  if (qid) return `${String(base)}:q:${qid}`;
   const q = review && (review.question ? String((review as any).question).slice(0, 40) : undefined);
   return `${String(base)}:${q ?? String(index)}`;
 }
@@ -307,6 +311,8 @@ const findAndRestore = async (idStr?: string) => {
         topic: questionTopic,
         explanation: q.explanation,
         options: q.options
+        ,
+        questionId: q.id ?? idx
       };
     });
 
