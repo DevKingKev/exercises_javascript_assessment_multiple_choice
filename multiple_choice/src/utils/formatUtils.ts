@@ -8,14 +8,18 @@ export function escapeHtml ( text: string ): string {
 }
 
 export function formatWithMarkers ( text: string ): string {
-    // Split by code markers
-    const parts = text.split( /(\[CODE\][\s\S]*?\[\/CODE\])/g );
+    // Split by code markers [CODE]...[/CODE] and <pre>...</pre> tags
+    const parts = text.split( /(\[CODE\][\s\S]*?\[\/CODE\]|<pre>[\s\S]*?<\/pre>)/g );
 
     return parts.map( part => {
         if ( part.startsWith( '[CODE]' ) && part.endsWith( '[/CODE]' ) ) {
             // Extract code content between markers
             const code = part.slice( 6, -7 ).trim(); // Remove [CODE] and [/CODE]
             return `<pre><code>${escapeHtml( code )}</code></pre>`;
+        } else if ( part.startsWith( '<pre>' ) && part.endsWith( '</pre>' ) ) {
+            // Preserve <pre> tags as-is (already HTML, no escaping)
+            // return `<pre> ${escapeHtml( part.slice( 5, -6 ) )} </pre>`;
+            return `${part}`;
         } else {
             // Regular text - wrap non-empty paragraphs
             const trimmed = part.trim();

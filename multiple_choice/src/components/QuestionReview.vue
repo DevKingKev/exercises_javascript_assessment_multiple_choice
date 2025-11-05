@@ -2,7 +2,7 @@
   <div class="review-question-block">
     <div class="review-question">
       <strong>Question {{ index + 1 }}:</strong>
-      <span v-html="formatQuestion(review.question)"></span>
+      <div v-html="formatQuestion(review.question)"></div>
     </div>
     <div class="review-answer user">
       <strong>Your answer:</strong>
@@ -10,12 +10,14 @@
     </div>
     <div class="review-answer" :class="review.isCorrect ? 'correct' : 'incorrect'">
       <strong>Correct answer:</strong>
-      {{ review.correctAnswer }}: {{ review.options[review.correctAnswer] }}
+      <div class="review-answer-option">
+        <span class="review-answer-option-choice">{{ review.correctAnswer }}:</span> 
+        <span v-html="review.options[review.correctAnswer]" class="review-answer-option-text"></span></div>
     </div>
 
     <div v-if="review.explanation" class="review-explanation">
       <strong>Explanation:</strong>
-      <p v-html="formatQuestion(review.explanation)"></p>
+      <div v-html="formatQuestion(review.explanation)" class="review-explanation-text"></div>
 
       <div class="explanation-topics" v-if="(review as any).topic">
         <strong class="explanation-topics-heading">
@@ -71,7 +73,30 @@ const topicItems = computed(() => {
 .review-question { margin-bottom: 16px; }
 .review-answer { padding: 12px 16px; margin: 8px 0; border-radius: 6px; }
 .review-answer.user { background: #f8f9fa; }
-.review-explanation { margin-top: 12px; padding: 12px 16px; background: #ebf5fb; border-left: 4px solid #3498db; border-radius: 6px; }
+.review-answer-option{
+  display: inline-flex;
+  padding: 0 10px;
+
+  .review-answer-option-choice{
+    padding-right: 10px;
+
+  }
+  .review-answer-option-text{
+      ::v-deep pre{
+    line-height: 19px;
+    font-size: 1rem;
+    }
+    } 
+}
+.review-explanation { margin-top: 12px; padding: 12px 16px; background: #ebf5fb; border-left: 4px solid #3498db; border-radius: 6px;
+  .review-explanation-text {
+    ::v-deep pre{
+      display: inline-flex;
+      padding:0 5px;
+      border-radius: 2px;
+    }
+  }
+}
 /* Ensure review-answer.user uses the same dark-mode surface as topic items */
 :root[data-theme="dark"] .review-answer.user {
   background: rgba(255, 255, 255, 0.03) !important;
