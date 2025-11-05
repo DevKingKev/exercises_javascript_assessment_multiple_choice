@@ -53,7 +53,7 @@
             <div v-if="canShowQuestionReview">
               <div
                 v-for="(review, index) in resultsStore.currentResults.questionReview"
-                :key="index"
+                :key="getReviewKey(review, index)"
                 class="review-item"
               >
                 <QuestionReviewComponent
@@ -186,6 +186,15 @@ function getTopicItemsForReview(review: QuestionReview) {
   if (!name) return [] as string[];
   const scores = tb[name] || { correct: 0, total: 0 };
   return { [name]: { correct: scores.correct ?? 0, total: scores.total ?? 0 } };
+}
+
+function getReviewKey(review: any, index: number) {
+  // Prefer the saved result record id (when present) so keys change when
+  // switching between different saved records. Fall back to the current
+  // assessment id and finally the index/question snippet.
+  const base = savedResultRecord.value?.resultRecordId ?? savedResultRecord.value?.assessmentId ?? (assessmentStore.currentAssessment as any)?.metadata?.id ?? 'no-assess';
+  const q = review && (review.question ? String((review as any).question).slice(0, 40) : undefined);
+  return `${String(base)}:${q ?? String(index)}`;
 }
 
 function retakeAssessment() {
