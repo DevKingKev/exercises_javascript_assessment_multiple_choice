@@ -110,8 +110,21 @@ export const useAssessmentStore = defineStore( 'assessment', () => {
             // numeric assessments to be addressed as `assessment{n}` (e.g. 'assessment3').
             const normalizePathId = ( id: string ) => {
                 if ( id == null ) return '';
-                const s = String( id );
-                if ( /^\d+$/.test( s ) ) return `assessment${s}`;
+                const s = String( id ).trim();
+
+                // Pure numeric ids -> assessment{n}
+                const onlyDigits = /^\d+$/.exec( s );
+                if ( onlyDigits ) return `assessment${onlyDigits[0]}`;
+
+                // Old-style 'testN' or 'test-N' -> assessment{N}
+                const testMatch = /^test[-_]?([0-9]+)$/i.exec( s );
+                if ( testMatch ) return `assessment${testMatch[1]}`;
+
+                // Already 'assessmentN' or 'assessment-N' -> normalize to assessment{N}
+                const assessMatch = /^assessment[-_]?([0-9]+)$/i.exec( s );
+                if ( assessMatch ) return `assessment${assessMatch[1]}`;
+
+                // Otherwise return as-is (e.g. 'custom-id')
                 return s;
             };
 

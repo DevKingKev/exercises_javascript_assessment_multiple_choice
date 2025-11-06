@@ -157,7 +157,20 @@ async function submitAssessment() {
   // Save to history
   const timeTaken = formatTimeTaken(assessmentStore.startTime);
   const resultRecord: ResultRecord = {
-    assessmentId: assessmentStore.currentAssessment!.metadata.fileId || 'test1',
+    // Choose a stable canonical id for storing results. Prefer explicit unique
+    // identifiers if present, then assessmentId, then fileId, then legacy id.
+    assessmentId: ((): string => {
+      try {
+        const meta: any = assessmentStore.currentAssessment!.metadata || {};
+        // For persisted result buckets we prefer the stable assignment identifier
+        // (assessmentId or fileId). assessmentUniqueId is intended for URLs
+        // and internal keys and should not be used as the saved assessment
+        // bucket key.
+        return meta.assessmentId || meta.fileId || meta.id || (assessmentStore.currentAssessment as any).id || '';
+      } catch (e) {
+        return '';
+      }
+    })(),
     difficulty: assessmentStore.currentDifficulty,
     assessmentTitle: assessmentStore.currentAssessment!.metadata.title,
     // Unique id for this saved result so it can be referenced/ restored later
@@ -176,11 +189,22 @@ async function submitAssessment() {
       const map: { [topicName: string]: string } = {};
       try {
         const meta = assessmentStore.currentAssessment!.metadata as any;
-        const tlinks: Array<any> = (meta && meta.topicLinks) || [];
-        Object.keys(results.topicBreakdown).forEach((topicName) => {
-          const found = tlinks.find((t: any) => t.topicName === topicName);
-          if (found && found.refLink) map[topicName] = found.refLink;
-        });
+        const tlinks = (meta && meta.topicLinks) || [];
+
+        // Support both array-of-objects [{ topicName, refLink }] and
+        // object map { topicName: refLink } shapes.
+        if (Array.isArray(tlinks)) {
+          Object.keys(results.topicBreakdown).forEach((topicName) => {
+            const found = (tlinks as any[]).find((t: any) => t && t.topicName === topicName && t.refLink);
+            if (found && found.refLink) map[topicName] = found.refLink;
+          });
+        } else if (tlinks && typeof tlinks === 'object') {
+          Object.keys(results.topicBreakdown).forEach((topicName) => {
+            if ((tlinks as Record<string, string>)[topicName]) {
+              map[topicName] = (tlinks as Record<string, string>)[topicName];
+            }
+          });
+        }
       } catch (e) {
         // ignore and continue — topicLinks will simply be empty
       }

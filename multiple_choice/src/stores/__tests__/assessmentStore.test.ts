@@ -235,7 +235,8 @@ describe( 'assessmentStore', () => {
 
             const result = await store.loadAssessment( 'medium', 'test-1' );
 
-            expect( global.fetch ).toHaveBeenCalledWith( '/api/assessment/javascript/medium/test-1' );
+            // old id 'test-1' should be normalized to 'assessment1' in the request path
+            expect( global.fetch ).toHaveBeenCalledWith( '/api/assessment/javascript/medium/assessment1' );
             expect( result ).toEqual( mockAssessment );
             expect( store.currentAssessment ).toEqual( mockAssessment );
             expect( store.currentDifficulty ).toBe( 'medium' );

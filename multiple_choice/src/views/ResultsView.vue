@@ -115,13 +115,37 @@ const assessmentLoadFailed = ref(false);
 // currently loaded assessment matches the saved result's assessment id.
 const currentAssessmentId = computed(() => (assessmentStore.currentAssessment as any)?.metadata?.id ?? null);
 const savedAssessmentId = computed(() => savedResultRecord.value?.assessmentId ?? null);
+
+// Normalize various legacy id forms to a canonical comparison form so the
+// Question Review UI does not remain stuck when saved results use numeric or
+// legacy 'testN' ids while the loaded assessment metadata uses the
+// canonical filename-style id (e.g. 'assessment3').
+function normalizeIdForComparison(id: string | number | null | undefined) {
+  if (id === null || id === undefined) return null;
+  const s = String(id).trim();
+  if (!s) return null;
+  // Pure numeric -> assessment{n}
+  const digits = /^\d+$/.exec(s);
+  if (digits) return `assessment${digits[0]}`;
+  // testN or test-N -> assessment{N}
+  const testMatch = /^test[-_]?([0-9]+)$/i.exec(s);
+  if (testMatch) return `assessment${testMatch[1]}`;
+  // assessmentN or assessment-N -> normalized assessment{N}
+  const assessMatch = /^assessment[-_]?([0-9]+)$/i.exec(s);
+  if (assessMatch) return `assessment${assessMatch[1]}`;
+  // otherwise return string as-is
+  return s;
+}
+
 const canShowQuestionReview = computed(() => {
   // If there are no current results, nothing to show
   if (!resultsStore.currentResults) return false;
   // If we don't have a saved assessment id (unlikely for restored results), allow rendering
   if (!savedAssessmentId.value) return true;
-  // Only show review when the loaded assessment id matches the saved result id
-  return !!currentAssessmentId.value && String(currentAssessmentId.value) === String(savedAssessmentId.value);
+  // Compare normalized forms so '3', 'test1' and 'assessment1' are considered equal
+  const normCurrent = normalizeIdForComparison(currentAssessmentId.value);
+  const normSaved = normalizeIdForComparison(savedAssessmentId.value);
+  return !!normCurrent && !!normSaved && String(normCurrent) === String(normSaved);
 });
 
 // Display label for the assessment shown on this results page. Prefer
@@ -204,11 +228,14 @@ function getReviewKey(review: any, index: number) {
 function retakeAssessment() {
   if (assessmentStore.currentAssessment) {
     assessmentStore.retakeAssessment();
+    // Compute a stable id to navigate to; prefer explicit unique id fields
+    const _meta: any = assessmentStore.currentAssessment?.metadata || {};
+    const stableId = _meta.assessmentUniqueId || _meta.assessmentId || _meta.fileId || _meta.id || (assessmentStore.currentAssessment as any).id || '';
     router.push({
       name: 'assessment',
       params: {
         difficulty: assessmentStore.currentDifficulty,
-        id: assessmentStore.currentAssessment.metadata.fileId || 'test1'
+        id: stableId
       }
     });
   }

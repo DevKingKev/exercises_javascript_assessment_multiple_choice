@@ -22,8 +22,11 @@
           </span>
           <span class="stat-divider">•</span>
           <span class="stat-item">
-            Average: <strong>{{ averageScore }}%</strong>
+            Average: <strong>{{ averageComputed }}%</strong>
           </span>
+                <span class="stat-divider">•</span>
+                <span class="stat-item"> <strong>{{ resultsCount }}</strong>{{ resultsCount === 1 ? ' result' : ' results' }}</span>
+
         </div>
       </div>
       <div class="expand-icon" aria-hidden="true">▶</div>
@@ -43,13 +46,14 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
+import { useResultsStore } from '@/stores/resultsStore';
 import DifficultyBadge from '@/components/DifficultyBadge.vue';
 
 interface Props {
   difficulty: string;
   isExpanded: boolean;
   assessmentCount: number;
-  averageScore: number | string;
+  averageScore?: number | string; // optional — we compute a more accurate average here
 }
 
 const props = defineProps<Props>();
@@ -58,8 +62,43 @@ defineEmits<{
   toggle: [];
 }>();
 
+const resultsStore = useResultsStore();
+
 const capitalizedDifficulty = computed(() => {
   return props.difficulty.charAt(0).toUpperCase() + props.difficulty.slice(1);
+});
+
+// Compute average across all attempts for this difficulty and the total
+// number of result records. We intentionally keep `assessmentCount` as the
+// distinct-assessment count (passed in), and compute the other stats here
+// so they live in the difficulty-stats area as requested.
+const resultsMap = computed(() => resultsStore.getResultsByDifficulty(props.difficulty));
+
+const resultsCount = computed(() => {
+  const map = resultsMap.value || {};
+  let count = 0;
+  Object.values(map).forEach((arr: any) => {
+    if ( Array.isArray(arr) ) count += arr.length;
+  });
+  return count;
+});
+
+const averageComputed = computed(() => {
+  const map = resultsMap.value || {};
+  let total = 0;
+  let cnt = 0;
+  Object.values(map).forEach((arr: any) => {
+    if ( Array.isArray(arr) ) {
+      for ( const rec of arr ) {
+        if ( rec && typeof rec.percentage === 'number' ) {
+          total += rec.percentage;
+          cnt += 1;
+        }
+      }
+    }
+  });
+  if ( cnt === 0 ) return 0;
+  return Math.round( total / cnt );
 });
 </script>
 
