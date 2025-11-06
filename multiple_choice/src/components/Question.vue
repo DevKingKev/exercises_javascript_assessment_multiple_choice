@@ -62,6 +62,14 @@ const formattedQuestion = computed(() => formatTextWithCode(props.question.quest
             overflow-x: auto;
         }
 
+      ::v-deep p.formatted-with-markers{
+        span.pre{
+          font-family:"Consolas", "Monaco", "Courier New", monospace;
+          display: inline-flex;
+          padding: 0 10px;
+        }
+     }  
+        
     }
 
     .options-container {

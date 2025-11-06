@@ -89,10 +89,9 @@ const topicItems = computed(() => {
       display: inline-flex;
       padding: 0 10px;
   }
-  }
-
-  
+  }  
 }
+
 .review-question { margin-bottom: 16px; }
 .review-answer { padding: 12px 16px; margin: 8px 0; border-radius: 6px; }
 .review-answer.user { background: #f8f9fa; }

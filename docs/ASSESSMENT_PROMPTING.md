@@ -39,7 +39,7 @@ module.exports = {
     ],
     topicLinks: [
       {
-        topic: "Topic 1",
+        topicName: "Topic 1",
         refLink: "https://developer.mozilla.org/en-US/docs/..."
       },
       // ... must match all topics above
@@ -184,7 +184,7 @@ All topics in metadata must have corresponding MDN documentation links:
 ```javascript
 topicLinks: [
   {
-    topic: "Topic Name", // Must match exactly with topics array
+    topicName: "Topic Name", // Must match exactly with topics array
     refLink: "https://developer.mozilla.org/en-US/docs/Web/JavaScript/..."
   }
 ]
@@ -304,7 +304,7 @@ Before submitting a new assessment, verify:
 - [ ] Number of questions matches `questionCount` in metadata
 - [ ] Time limit is appropriate for difficulty level
 - [ ] All topics have corresponding MDN links
-- [ ] `[CODE]` tags used in questions for all code
+- [ ] `[CODE]` tags used in questions for code generally, but `<pre>` can be used if we are just referring to a word or extremely short phrase, for example `<pre>undefined</pre>`
 - [ ] `<pre>` tags used in options for all code
 - [ ] `<pre>` for short code, `[CODE]` for blocks in explanations
 - [ ] Each question has unique ID (1 to N)
