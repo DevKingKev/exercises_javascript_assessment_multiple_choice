@@ -1,6 +1,36 @@
 import { defineStore } from 'pinia';
 import { ref, computed } from 'vue';
 
+export enum ASSESSMENT_DOMAINS {
+    JAVASCRIPT = 'javascript',
+    PYTHON = 'python',
+    PHP = 'php',
+    RUBY = 'ruby',
+    JAVA = 'java',
+    CSHARP = 'csharp',
+    CPP = 'cpp',
+    HTML = 'html',
+    CSS = 'css',
+    SQL = 'sql'
+}
+
+/**
+ * Human-friendly display names for language/domain keys.
+ * Use these in the UI when showing product/assessment titles.
+ */
+export const ASSESSMENT_DOMAIN_DISPLAY_NAMES: Record<string, string> = {
+    javascript: 'JavaScript',
+    python: 'Python',
+    php: 'PHP',
+    ruby: 'Ruby',
+    java: 'Java',
+    csharp: 'C#',
+    cpp: 'C++',
+    html: 'HTML',
+    css: 'CSS',
+    sql: 'SQL'
+};
+
 /**
  * Global store for app-wide settings such as the current assessment language.
  *
@@ -19,6 +49,17 @@ export const useGlobalStore = defineStore( 'global', () => {
     };
 
     const languageNormalized = computed( () => normalized( language.value ) );
+
+    /**
+     * Computed human-friendly display name for the currently selected language.
+     * Falls back to a capitalized form of the normalized key or 'JavaScript'.
+     */
+    const displayLanguageName = computed( () => {
+        const key = languageNormalized.value;
+        if ( key && ASSESSMENT_DOMAIN_DISPLAY_NAMES[key] ) return ASSESSMENT_DOMAIN_DISPLAY_NAMES[key];
+        if ( key ) return key.charAt( 0 ).toUpperCase() + key.slice( 1 );
+        return 'JavaScript';
+    } );
 
     function detectFromHostname (): string | null {
         try {
@@ -185,6 +226,7 @@ export const useGlobalStore = defineStore( 'global', () => {
     return {
         language,
         languageNormalized,
+        displayLanguageName,
         initLanguage,
         setLanguage,
         clearLocalOverride,

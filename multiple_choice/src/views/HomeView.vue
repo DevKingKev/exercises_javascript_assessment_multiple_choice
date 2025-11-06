@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <header>
-      <h1>BuildWithHTML5 - Multiple Choice Assessment Platform</h1>
+      <h1>{{ title }}</h1>
       <p>Choose your difficulty level and assessment to begin</p>
     </header>
 
@@ -43,11 +43,12 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue';
+import { ref, computed, onMounted, watch } from 'vue';
 import { useRouter } from 'vue-router';
 import { useAssessmentStore } from '@/stores/assessmentStore';
 import { useResultsStore } from '@/stores/resultsStore';
 import { useUiStore } from '@/stores/uiStore';
+import { useGlobalStore } from '@/stores/globalStore';
 import DifficultySelector from '@/components/DifficultySelector.vue';
 import AssessmentCard from '@/components/AssessmentCard.vue';
 import ResultsOverview from '@/components/ResultsOverview.vue';
@@ -56,6 +57,12 @@ const router = useRouter();
 const assessmentStore = useAssessmentStore();
 const resultsStore = useResultsStore();
 const uiStore = useUiStore();
+const globalStore = useGlobalStore();
+
+const title = computed(() => {
+  // Use the human-friendly display name from the global store
+  return `BuildWithHTML5 - ${globalStore.displayLanguageName} Assessment Platform`;
+});
 
 const selectedDifficulty = ref<string>('easy');
 
@@ -120,6 +127,19 @@ onMounted(async () => {
     }
   }
 });
+
+// Keep the HTML document title in sync with the computed title (browser only).
+watch(
+  title,
+  (v) => {
+    try {
+      if (typeof document !== 'undefined' && v) document.title = v;
+    } catch (e) {
+      /* ignore */
+    }
+  },
+  { immediate: true }
+);
 </script>
 
 <style scoped lang="scss">
