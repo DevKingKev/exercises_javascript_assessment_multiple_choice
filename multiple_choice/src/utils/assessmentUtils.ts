@@ -1,8 +1,12 @@
 // Small helper utilities for formatting assessment display names
-export function extractAssessmentNumber ( id: string | undefined | null ): number | null {
-    if ( !id || typeof id !== 'string' ) return null;
+export function extractAssessmentNumber ( id: string | number | undefined | null ): number | null {
+    if ( id === undefined || id === null ) return null;
+    // If a number was provided directly, return it if finite
+    if ( typeof id === 'number' ) return Number.isFinite( id ) ? Math.trunc( id ) : null;
+    const str = String( id );
+    if ( !str ) return null;
     // Find the last continuous group of digits in the id
-    const matches = id.match( /(\d+)/g );
+    const matches = str.match( /(\d+)/g );
     if ( !matches || matches.length === 0 ) return null;
     const last = matches[matches.length - 1];
     const n = parseInt( last, 10 );

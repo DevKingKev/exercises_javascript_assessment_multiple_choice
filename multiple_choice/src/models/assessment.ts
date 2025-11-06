@@ -1,6 +1,7 @@
 import type { Question, TopicLink } from './question';
 
 export interface AssessmentMetadata {
+    assessmentId: number;
     id?: string;
     title: string;
     description: string;

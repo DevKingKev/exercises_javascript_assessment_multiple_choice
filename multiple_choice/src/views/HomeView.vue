@@ -21,13 +21,13 @@
           <template v-if="currentAssessments.length > 0">
             <AssessmentCard
               v-for="assessment in currentAssessments"
-              :key="assessment.id"
+              :key="assessment.assessmentId ?? assessment.id"
               :title="assessment.title"
               :description="assessment.description"
               :question-count="assessment.questionCount"
               :time-limit="assessment.timeLimit"
-              :assessment-id="assessment.id"
-              @select="startAssessment(assessment.id)"
+              :assessment-id="assessment.assessmentId ?? assessment.id"
+              @select="startAssessment( (assessment.assessmentId ?? assessment.id) + '' )"
             />
           </template>
           <template v-else>
@@ -66,7 +66,23 @@ const difficultyCounts = computed(() => ({
 }));
 
 const currentAssessments = computed(() => {
-  return assessmentStore.assessmentsByDifficulty(selectedDifficulty.value);
+  // Return assessments for the chosen difficulty sorted by numeric assessment id.
+  const list = assessmentStore.assessmentsByDifficulty(selectedDifficulty.value) || [];
+  // Normalize candidate id from either `assessmentId` or legacy `id` fields.
+  const normalizeId = (a: any) => {
+    if (a && a.assessmentId !== undefined && a.assessmentId !== null) return Number(a.assessmentId);
+    if (a && a.id !== undefined && a.id !== null) {
+      const n = parseInt(String(a.id).replace(/[^0-9]/g, ''), 10);
+      return Number.isFinite(n) ? n : null;
+    }
+    return null;
+  };
+
+  return [...list].sort((a: any, b: any) => {
+    const na = normalizeId(a) ?? Number.POSITIVE_INFINITY;
+    const nb = normalizeId(b) ?? Number.POSITIVE_INFINITY;
+    return na - nb;
+  });
 });
 
 async function startAssessment(assessmentId: string) {

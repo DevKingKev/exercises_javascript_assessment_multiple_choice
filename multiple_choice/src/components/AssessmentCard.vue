@@ -22,7 +22,7 @@ interface Props {
   description: string;
   questionCount: number;
   timeLimit: number;
-  assessmentId?: string | null;
+  assessmentId?: string | number | null;
 }
 
 const props = defineProps<Props>();
