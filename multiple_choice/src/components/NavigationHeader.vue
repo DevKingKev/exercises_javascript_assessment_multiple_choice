@@ -6,6 +6,10 @@
           <h1>BuildWithHTML5</h1>
         </RouterLink>
       </div>
+      <!-- Centered domain display (e.g. "JavaScript") -->
+      <div class="nav-domain" aria-hidden="true">
+        <span class="nav-domain-inner">{{ domainName }}</span>
+      </div>
       
       <div class="nav-content">
         <ul class="nav-links" role="menubar">
@@ -53,6 +57,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useRoute, RouterLink } from 'vue-router';
+import { useGlobalStore } from '@/stores/globalStore';
 
 const route = useRoute();
 
@@ -64,6 +69,10 @@ const isActive = computed(() => {
     return route.path.startsWith(path);
   };
 });
+
+// Global display name for the current assessment domain (e.g. "JavaScript")
+const globalStore = useGlobalStore();
+const domainName = computed(() => globalStore.displayLanguageName || 'JavaScript');
 </script>
 
 <style lang="scss" scoped>
@@ -76,6 +85,64 @@ const isActive = computed(() => {
   position: sticky;
   top: 0;
   z-index: 50;
+}
+
+/* Centered domain label between brand and nav content */
+.nav-domain {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%) translateY(0);
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 12px;
+  font-size: $font-size-2xl;
+  color: $gray-700;
+  border-radius: $radius-md;
+  transition: background $transition-fast, color $transition-fast, transform $transition-fast;
+  cursor: default;
+  pointer-events: none; /* keep non-interactive so it doesn't block nav clicks */
+  will-change: transform;
+}
+
+/* Inner element animates so we can still keep outer element non-interactive */
+.nav-domain-inner {
+  display: inline-block;
+  pointer-events: none;
+  /* Use a slow pulsing animation instead of the floating animation */
+  // animation: navPulse 4s ease-in-out infinite;
+  transform-origin: center;
+}
+
+/* Floating keyframes: small vertical + horizontal oscillation to mimic a cork on a wave */
+@keyframes navFloat {
+  0%   { transform: translateX(0) translateY(0); }
+  8%   { transform: translateX(-1px) translateY(-1px); }
+  16%  { transform: translateX(-2px) translateY(-2px); }
+  24%  { transform: translateX(-1.5px) translateY(-3px); }
+  32%  { transform: translateX(0.5px) translateY(-3.5px); }
+  40%  { transform: translateX(1.5px) translateY(-4px); }
+  50%  { transform: translateX(0.5px) translateY(-3.5px); }
+  64%  { transform: translateX(-0.5px) translateY(-3px); }
+  76%  { transform: translateX(0.5px) translateY(-2px); }
+  88%  { transform: translateX(0.25px) translateY(-1px); }
+  100% { transform: translateX(0) translateY(0); }
+}
+
+/* Slow pulsing keyframes: subtle scale + shadow to mimic a gentle heartbeat */
+@keyframes navPulse {
+  0% { transform: scale(1); filter: drop-shadow(0 0 0 rgba(0,0,0,0)); }
+  30% { transform: scale(1.06); filter: drop-shadow(0 4px 12px rgba(0,0,0,0.06)); }
+  55% { transform: scale(1.02); filter: drop-shadow(0 2px 8px rgba(0,0,0,0.04)); }
+  100% { transform: scale(1); filter: drop-shadow(0 0 0 rgba(0,0,0,0)); }
+}
+
+/* Mild hover effect triggered when the nav header is hovered (keeps element non-blocking) */
+.nav-header:hover .nav-domain {
+  /* Do not apply a background on hover; only adjust color/position */
+  color: $primary;
+  transform: translateX(-50%) translateY(-1px);
 }
 
 .nav-container {
