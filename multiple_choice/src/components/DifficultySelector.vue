@@ -43,18 +43,19 @@ function getDifficultyLabel(difficulty: string): string {
 <style scoped lang="scss">
 .difficulty-section {
   margin-bottom: 30px;
+  padding: 24px;
 }
 
 h2 {
   font-size: 1.5rem;
   margin-bottom: 20px;
-  color: #2c3e50;
-}
+ }
 
 .difficulty-buttons {
   display: flex;
   gap: 15px;
   flex-wrap: wrap;
+    margin-bottom: 30px;
 }
 
 .difficulty-btn {
@@ -80,6 +81,49 @@ h2 {
     background: #3498db;
     color: white;
     box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+  }
+}
+// ============================================
+// DIFFICULTY SELECTOR
+// ============================================
+
+
+.difficulty-buttons {
+  button {
+    background: var(--card-bg) !important;
+    color: #3498db !important;
+    border-color: #3498db !important;
+    
+    &:hover:not(:disabled):not(.active) {
+      background: var(--bg-hover) !important;
+    }
+    
+    &.active {
+      background: #3498db !important;
+      color: white !important;
+      border-color: #3498db !important;
+    }
+  }
+}
+
+// Dark mode specific for difficulty selector
+:root[data-theme="dark"] {
+  .difficulty-buttons button {
+    &:not(.active) {
+      background: var(--card-bg) !important;
+      color: #60a5fa !important;
+      border-color: #60a5fa !important;
+      
+      &:hover {
+        background: var(--bg-hover) !important;
+      }
+    }
+    
+    &.active {
+      background: #3b82f6 !important;
+      color: white !important;
+      border-color: #3b82f6 !important;
+    }
   }
 }
 </style>

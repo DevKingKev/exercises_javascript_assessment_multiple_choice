@@ -221,53 +221,7 @@ body {
   }
 }
 
-// ============================================
-// DIFFICULTY SELECTOR
-// ============================================
-.difficulty-section {
-  h2 {
-    color: var(--text-primary) !important;
-  }
-}
 
-.difficulty-buttons {
-  button {
-    background: var(--card-bg) !important;
-    color: #3498db !important;
-    border-color: #3498db !important;
-    
-    &:hover:not(:disabled):not(.active) {
-      background: var(--bg-hover) !important;
-    }
-    
-    &.active {
-      background: #3498db !important;
-      color: white !important;
-      border-color: #3498db !important;
-    }
-  }
-}
-
-// Dark mode specific for difficulty selector
-:root[data-theme="dark"] {
-  .difficulty-buttons button {
-    &:not(.active) {
-      background: var(--card-bg) !important;
-      color: #60a5fa !important;
-      border-color: #60a5fa !important;
-      
-      &:hover {
-        background: var(--bg-hover) !important;
-      }
-    }
-    
-    &.active {
-      background: #3b82f6 !important;
-      color: white !important;
-      border-color: #3b82f6 !important;
-    }
-  }
-}
 
 // ============================================
 // RESULTS OVERVIEW
