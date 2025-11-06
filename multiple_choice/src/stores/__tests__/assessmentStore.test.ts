@@ -13,8 +13,8 @@ function createMockAssessment ( questionCount: number = 3 ): any {
             title: 'Test Assessment',
             // default language for new layout
             language: 'javascript',
-            // unique identifier derived from the file (present but falsy so legacy id is used for storage keys in tests)
-            assessmentUniqueId: 0,
+            // unique identifier derived from the file (used for storage keys in tests)
+            assessmentUniqueId: 12345,
             description: 'Test description',
             difficulty: 'easy',
             timeLimit: 30,
@@ -412,7 +412,7 @@ describe( 'assessmentStore', () => {
 
             store.nextQuestion();
 
-            const raw = global.localStorage.getItem( 'assessment-progress:javascript:easy:test-1' );
+            const raw = global.localStorage.getItem( 'assessment-progress:javascript:easy:12345' );
             expect( raw ).not.toBeNull();
             const saved = JSON.parse( raw as string );
             expect( saved.currentQuestionIndex ).toBe( 0 ); // saved before increment
@@ -433,7 +433,7 @@ describe( 'assessmentStore', () => {
                 elapsedMs: 5000
             };
 
-            const key = `assessment-progress:javascript:easy:test-1`;
+            const key = `assessment-progress:javascript:easy:12345`;
             global.localStorage.setItem( key, JSON.stringify( savedPayload ) );
 
             ( global.fetch as any ).mockResolvedValueOnce( {
