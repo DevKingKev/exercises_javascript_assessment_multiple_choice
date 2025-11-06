@@ -202,6 +202,8 @@
 .review-question {
     pre {
         @include code-block;
+                max-width: 100%;
+
     }
 
     p {

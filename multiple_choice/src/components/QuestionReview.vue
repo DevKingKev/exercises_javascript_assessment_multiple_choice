@@ -115,7 +115,8 @@ const topicItems = computed(() => {
     }
     } 
 }
-.review-explanation { margin-top: 12px; padding: 12px 16px; background: #ebf5fb; border-left: 4px solid #3498db; border-radius: 6px;
+.review-explanation { 
+  margin-top: 12px; padding: 12px 16px; background: #ebf5fb; border-left: 4px solid #3498db; border-radius: 6px;
   .review-explanation-text {
     ::v-deep pre{
       display: inline-flex;

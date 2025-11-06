@@ -336,6 +336,7 @@ async function onDelete() {
   border: 1px solid #3498db;
   color: #3498db;
   border-radius: 6px;
+  font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
 }
