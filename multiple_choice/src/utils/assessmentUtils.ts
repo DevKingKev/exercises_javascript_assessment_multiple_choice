@@ -37,3 +37,28 @@ export function findTopicRefLinkFromAssessment ( assessment: Assessment | null |
     const found = tlinks.find( t => t && String( t.topicName ) === String( topicName ) );
     return found ? found.refLink : undefined;
 }
+
+/**
+ * Normalize various assessment id formats into the canonical storage bucket key.
+ * Examples:
+ *  - '1' -> 'assessment1'
+ *  - 'assessment-2' -> 'assessment2'
+ *  - 'assignment_3' -> 'assessment3'
+ *  - '' -> 'unknown'
+ */
+export function normalizeAssessmentId ( s: string | null | undefined ): string {
+    if ( s === null || s === undefined ) return 'unknown';
+    const str = String( s ).trim();
+    if ( !str ) return 'unknown';
+
+    const onlyDigits = /^([0-9]+)$/.exec( str );
+    if ( onlyDigits ) return `assessment${onlyDigits[1]}`;
+
+    const assessMatch = /^assessment[-_]?([0-9]+)$/i.exec( str );
+    if ( assessMatch ) return `assessment${assessMatch[1]}`;
+
+    const assignMatch = /^assignment[-_]?([0-9]+)$/i.exec( str );
+    if ( assignMatch ) return `assessment${assignMatch[1]}`;
+
+    return str;
+}

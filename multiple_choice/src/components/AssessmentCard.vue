@@ -1,5 +1,6 @@
 <template>
   <div class="assessment-card" @click="$emit('select')">
+    <div v-if="hasCompletedResults" class="completion-badge" aria-hidden="true">✓</div>
     <div class="number-wrapper" v-if="displayNumber !== null" :aria-hidden="true">
       <span class="number-bubble">{{ displayNumber }}</span>
     </div>
@@ -15,7 +16,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import { extractAssessmentNumber } from '@/utils/assessmentUtils';
+import { extractAssessmentNumber, normalizeAssessmentId } from '@/utils/assessmentUtils';
 
 interface Props {
   title: string;
@@ -23,6 +24,8 @@ interface Props {
   questionCount: number;
   timeLimit: number;
   assessmentId?: string | number | null;
+  // difficulty is optional; when provided it is used to look up saved results
+  difficulty?: string | null;
 }
 
 const props = defineProps<Props>();
@@ -33,6 +36,24 @@ defineEmits<{
 
 const displayNumber = computed<number | null>(() => {
   return extractAssessmentNumber(props.assessmentId ?? null);
+});
+
+// Show completed-result tick when any saved ResultRecord exists for this
+// assessment (requires `difficulty` prop to be provided by the caller).
+import { useResultsStore } from '@/stores/resultsStore';
+const resultsStore = useResultsStore();
+const hasCompletedResults = computed<boolean>(() => {
+  try {
+    const difficulty = props.difficulty ?? '';
+    const rawAid = String(props.assessmentId ?? '');
+    if (!difficulty) return false;
+
+    const aid = normalizeAssessmentId(rawAid);
+    const list: any = (resultsStore.getResultsByAssessment as any)(difficulty, aid);
+    return Array.isArray(list) && list.length > 0;
+  } catch (e) {
+    return false;
+  }
 });
 </script>
 
@@ -67,6 +88,24 @@ const displayNumber = computed<number | null>(() => {
     margin-bottom: 15px; // $spacing-lg
     margin-top: 0;
   }
+}
+
+.completion-badge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  width: 30px;
+  height: 30px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #10b981, #059669); /* green */
+  color: white;
+  border-radius: 999px;
+  font-weight: 700;
+  box-shadow: 0 6px 14px rgba(5, 150, 105, 0.18);
+  z-index: 5;
+  font-size: 0.95rem;
 }
 
 .assessment-meta {
@@ -133,5 +172,10 @@ const displayNumber = computed<number | null>(() => {
   background: linear-gradient(135deg, #7c3aed, #2563eb);
   box-shadow: 0 6px 18px rgba(15, 23, 42, 0.5);
   color: #fff;
+}
+
+:root[data-theme="dark"] .completion-badge {
+  background: linear-gradient(135deg, #059669, #065f46);
+  box-shadow: 0 6px 14px rgba(2, 6, 23, 0.6);
 }
 </style>

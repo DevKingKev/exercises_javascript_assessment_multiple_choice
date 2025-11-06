@@ -27,6 +27,7 @@
               :question-count="assessment.questionCount"
               :time-limit="assessment.timeLimit"
               :assessment-id="assessment.assessmentId ?? assessment.fileId"
+              :difficulty="selectedDifficulty"
               @select="startAssessment( (assessment.assessmentId ?? assessment.fileId) + '' )"
             />
           </template>

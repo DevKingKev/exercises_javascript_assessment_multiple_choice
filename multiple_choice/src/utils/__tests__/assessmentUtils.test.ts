@@ -1,30 +1,31 @@
 import { describe, it, expect } from 'vitest';
-import { extractAssessmentNumber, formatAssessmentLabel } from '../assessmentUtils';
+import { normalizeAssessmentId } from '@/utils/assessmentUtils';
 
-describe( 'assessmentUtils', () => {
-    it( 'extractAssessmentNumber returns the last numeric group or null', () => {
-        expect( extractAssessmentNumber( 'assessment1' ) ).toBe( 1 );
-        expect( extractAssessmentNumber( 'assessment-10' ) ).toBe( 10 );
-        // Multiple numeric groups -> returns last
-        expect( extractAssessmentNumber( 'prefix12suffix34' ) ).toBe( 34 );
-        expect( extractAssessmentNumber( 'noDigits' ) ).toBeNull();
-        expect( extractAssessmentNumber( undefined as any ) ).toBeNull();
-        expect( extractAssessmentNumber( null as any ) ).toBeNull();
+describe( 'assessmentUtils.normalizeAssessmentId', () => {
+    it( 'normalizes plain digits to assessmentN', () => {
+        expect( normalizeAssessmentId( '1' ) ).toBe( 'assessment1' );
+        expect( normalizeAssessmentId( '42' ) ).toBe( 'assessment42' );
     } );
 
-    it( 'formatAssessmentLabel prefers number + title, then title, then id, then generic', () => {
-        expect( formatAssessmentLabel( 'assessment1', 'JavaScript Fundamentals' ) ).toBe(
-            'Assessment 1 - JavaScript Fundamentals'
-        );
+    it( 'normalizes assessment- and assessment_ prefixed ids', () => {
+        expect( normalizeAssessmentId( 'assessment-2' ) ).toBe( 'assessment2' );
+        expect( normalizeAssessmentId( 'assessment_3' ) ).toBe( 'assessment3' );
+        expect( normalizeAssessmentId( 'Assessment4' ) ).toBe( 'assessment4' );
+    } );
 
-        // When title is provided without numeric id, title should be used
-        expect( formatAssessmentLabel( 'someId', 'Custom Title' ) ).toBe( 'Custom Title' );
+    it( 'normalizes assignment- and assignment_ prefixed ids to assessmentN', () => {
+        expect( normalizeAssessmentId( 'assignment-5' ) ).toBe( 'assessment5' );
+        expect( normalizeAssessmentId( 'assignment_6' ) ).toBe( 'assessment6' );
+    } );
 
-        // When title is null/undefined, fallback is Assessment {id}
-        expect( formatAssessmentLabel( 'test12', null ) ).toBe( 'Assessment test12' );
-        expect( formatAssessmentLabel( undefined, 'Only Title' ) ).toBe( 'Only Title' );
+    it( 'returns unknown for empty or null values', () => {
+        expect( normalizeAssessmentId( '' ) ).toBe( 'unknown' );
+        expect( normalizeAssessmentId( null as any ) ).toBe( 'unknown' );
+        expect( normalizeAssessmentId( undefined as any ) ).toBe( 'unknown' );
+    } );
 
-        // Nothing provided -> generic
-        expect( formatAssessmentLabel( null, null ) ).toBe( 'Assessment' );
+    it( 'returns original string for non-matching values', () => {
+        expect( normalizeAssessmentId( 'custom-slug' ) ).toBe( 'custom-slug' );
     } );
 } );
+
