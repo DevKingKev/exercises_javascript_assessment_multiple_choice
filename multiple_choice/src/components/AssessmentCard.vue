@@ -85,8 +85,8 @@ const displayNumber = computed<number | null>(() => {
 
 .number-wrapper {
   position: absolute;
-  top: 12px;
-  right: 12px;
+  top: 5px;
+  right: 5px;
 }
 
 .number-bubble {
