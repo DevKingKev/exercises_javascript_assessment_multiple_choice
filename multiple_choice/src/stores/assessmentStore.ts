@@ -272,7 +272,8 @@ export const useAssessmentStore = defineStore( 'assessment', () => {
     function getProgressKeyForAssessment ( assessment: any ) {
         // Prefer assessment.metadata.assessmentUniqueId if present, fallback to id/assessmentId and difficulty
         const meta = assessment.metadata || {};
-        const unique = meta.assessmentUniqueId || meta.assessmentId || meta.id || assessment.id;
+        // Prefer assessmentUniqueId, then numeric assessmentId, then fileId (derived from filename), then legacy id
+        const unique = meta.assessmentUniqueId || meta.assessmentId || meta.fileId || meta.id || assessment.id;
         const diff = assessment.metadata?.difficulty || currentDifficulty.value || 'unknown';
         const lang = assessment.metadata?.language || ( () => {
             try { return useGlobalStore().languageNormalized || 'javascript'; } catch { return 'javascript'; }
@@ -328,13 +329,16 @@ export const useAssessmentStore = defineStore( 'assessment', () => {
             if ( !candidateMeta ) continue;
 
             // Try a few possible id fields that might appear in different assessment sources
-            const candidates = [candidateMeta.id, candidateMeta.assessmentId, ( item as any ).id, ( item as any ).assessmentId];
+            // Consider multiple possible id fields: new `fileId`, `assessmentId`, legacy `id`.
+            const candidates = [candidateMeta.assessmentId, candidateMeta.fileId, candidateMeta.id, ( item as any ).id, ( item as any ).fileId, ( item as any ).assessmentId];
 
             for ( const c of candidates ) {
                 if ( c !== undefined && c !== null && String( c ) === target ) {
                     // Ensure returned metadata has an `id` property (some sources only provide assessmentId)
                     const out: any = Object.assign( {}, candidateMeta );
-                    out.id = out.id || ( item as any ).id || String( target );
+                    // Ensure returned metadata contains both `id` for legacy code paths and `fileId` for clarity.
+                    out.fileId = out.fileId || ( item as any ).fileId || out.id || String( target );
+                    out.id = out.id || ( item as any ).id || out.fileId || String( target );
                     return out as AssessmentMetadata & { id: string; };
                 }
             }

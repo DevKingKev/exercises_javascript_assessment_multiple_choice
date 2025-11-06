@@ -2,7 +2,7 @@ import type { Question, TopicLink } from './question';
 
 export interface AssessmentMetadata {
     assessmentId: number;
-    id?: string;
+    fileId?: string;
     title: string;
     description: string;
     difficulty: string;
@@ -26,7 +26,7 @@ export interface Assessment {
 }
 
 export interface AvailableAssessments {
-    [difficulty: string]: ( AssessmentMetadata & { id: string; } )[];
+    [difficulty: string]: ( AssessmentMetadata & { id?: string; fileId?: string; } )[];
 }
 
 export type ScreenId = 'assessment-selection' | 'assessment' | 'results';

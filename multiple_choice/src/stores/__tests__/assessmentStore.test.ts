@@ -13,11 +13,15 @@ function createMockAssessment ( questionCount: number = 3 ): any {
             title: 'Test Assessment',
             // default language for new layout
             language: 'javascript',
+            // unique identifier derived from the file (present but falsy so legacy id is used for storage keys in tests)
+            assessmentUniqueId: 0,
             description: 'Test description',
             difficulty: 'easy',
             timeLimit: 30,
             questionCount,
-            topics: ['Test']
+            topics: ['Test'],
+            // topicLinks mapping used by client to resolve topic references
+            topicLinks: [{ topicName: 'Test', refLink: '/topics/test' }]
         },
         questions: Array.from( { length: questionCount }, ( _, i ) => ( {
             id: i + 1,
@@ -487,12 +491,15 @@ describe( 'assessmentStore', () => {
             const store = useAssessmentStore();
             const mockMetadata: any = {
                 id: 'test-1',
+                fileId: 'test-1',
+                assessmentUniqueId: 67890,
                 title: 'Test Assessment',
                 description: 'Test description',
                 difficulty: 'easy',
                 timeLimit: 30,
                 questionCount: 10,
-                topics: ['JavaScript']
+                topics: ['JavaScript'],
+                topicLinks: [{ topicName: 'JavaScript', refLink: '/topics/js' }]
             };
 
             store.availableAssessments = {

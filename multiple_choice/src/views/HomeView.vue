@@ -21,13 +21,13 @@
           <template v-if="currentAssessments.length > 0">
             <AssessmentCard
               v-for="assessment in currentAssessments"
-              :key="assessment.assessmentId ?? assessment.id"
+              :key="assessment.assessmentId ?? assessment.fileId"
               :title="assessment.title"
               :description="assessment.description"
               :question-count="assessment.questionCount"
               :time-limit="assessment.timeLimit"
-              :assessment-id="assessment.assessmentId ?? assessment.id"
-              @select="startAssessment( (assessment.assessmentId ?? assessment.id) + '' )"
+              :assessment-id="assessment.assessmentId ?? assessment.fileId"
+              @select="startAssessment( (assessment.assessmentId ?? assessment.fileId) + '' )"
             />
           </template>
           <template v-else>

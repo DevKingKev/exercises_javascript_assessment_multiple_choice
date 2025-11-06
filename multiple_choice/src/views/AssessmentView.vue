@@ -90,7 +90,7 @@ import { computed } from 'vue';
 const displayHeader = computed(() => {
   const meta = assessmentStore.currentAssessment?.metadata;
   if (!meta) return '';
-  return formatAssessmentLabel(meta.id, meta.title);
+  return formatAssessmentLabel(meta.fileId, meta.title);
 });
 
 // Question formatting is handled by the extracted `Question` component.
@@ -157,7 +157,7 @@ async function submitAssessment() {
   // Save to history
   const timeTaken = formatTimeTaken(assessmentStore.startTime);
   const resultRecord: ResultRecord = {
-    assessmentId: assessmentStore.currentAssessment!.metadata.id || 'test1',
+    assessmentId: assessmentStore.currentAssessment!.metadata.fileId || 'test1',
     difficulty: assessmentStore.currentDifficulty,
     assessmentTitle: assessmentStore.currentAssessment!.metadata.title,
     // Unique id for this saved result so it can be referenced/ restored later

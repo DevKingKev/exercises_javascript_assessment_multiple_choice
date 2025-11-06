@@ -169,7 +169,7 @@ function getTopicLink(topicName: string): string | undefined {
     return resolveTopicRefLink(topicName, {
       resultTopicLinks: savedResultRecord.value && savedResultRecord.value.topicLinks ? savedResultRecord.value.topicLinks : undefined,
       difficulty: (savedResultRecord.value && savedResultRecord.value.difficulty) || assessmentStore.currentDifficulty || undefined,
-      assessmentId: (savedResultRecord.value && savedResultRecord.value.assessmentId) || assessmentStore.currentAssessment?.metadata?.id || undefined,
+      assessmentId: (savedResultRecord.value && savedResultRecord.value.assessmentId) || assessmentStore.currentAssessment?.metadata?.fileId || undefined,
       availableAssessments: (assessmentStore as any).availableAssessments || undefined,
       currentAssessment: assessmentStore.currentAssessment || undefined,
   getAssessmentMetadata: assessmentStore.getAssessmentMetadata ? assessmentStore.getAssessmentMetadata.bind(assessmentStore) : undefined,
@@ -208,7 +208,7 @@ function retakeAssessment() {
       name: 'assessment',
       params: {
         difficulty: assessmentStore.currentDifficulty,
-        id: assessmentStore.currentAssessment.metadata.id || 'test1'
+        id: assessmentStore.currentAssessment.metadata.fileId || 'test1'
       }
     });
   }
@@ -326,7 +326,7 @@ const findAndRestore = async (idStr?: string) => {
     };
 
     // Debug: log which assessment was used to build questionReview and the first question text
-    console.debug('[ResultsView] built questionReview using assessment id:', assessmentStore.currentAssessment?.metadata?.id, 'questionsCount:', assessmentStore.currentAssessment?.questions?.length, 'firstQuestion:', assessmentStore.currentAssessment?.questions?.[0]?.question);
+    console.debug('[ResultsView] built questionReview using assessment id:', assessmentStore.currentAssessment?.metadata?.fileId, 'questionsCount:', assessmentStore.currentAssessment?.questions?.length, 'firstQuestion:', assessmentStore.currentAssessment?.questions?.[0]?.question);
     resultsStore.setCurrentResults(built);
     } else {
     // If assessment is missing after the load attempt, indicate failure
