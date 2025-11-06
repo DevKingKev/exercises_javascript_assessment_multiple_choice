@@ -304,7 +304,7 @@ Before submitting a new assessment, verify:
 - [ ] Number of questions matches `questionCount` in metadata
 - [ ] Time limit is appropriate for difficulty level
 - [ ] All topics have corresponding MDN links
-- [ ] `[CODE]` tags used in questions for code generally, but `<pre>` can be used if we are just referring to a word or extremely short phrase, for example `<pre>undefined</pre>`
+- [ ] `[CODE]` tags used in questions for code generally, but `<pre>` can be used if we are just referring to a word , for example `<pre>undefined</pre>`. A code example "2 * 3 + 4" or "'hello'.charAt(1)" should be rendered in `[CODE]`. A code "Math.max()" asking about the function can be in  `<pre>`  but "Math.max(5, 10, 3)" should be in `[CODE]` since it is a code statement and not a mere reference to a function.
 - [ ] `<pre>` tags used in options for all code
 - [ ] `<pre>` for short code, `[CODE]` for blocks in explanations
 - [ ] Each question has unique ID (1 to N)

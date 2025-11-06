@@ -106,11 +106,22 @@ export const useAssessmentStore = defineStore( 'assessment', () => {
             }
             if ( !lang ) lang = 'javascript';
 
+            // Normalize assessmentId for path and cache keys. The server expects
+            // numeric assessments to be addressed as `assessment{n}` (e.g. 'assessment3').
+            const normalizePathId = ( id: string ) => {
+                if ( id == null ) return '';
+                const s = String( id );
+                if ( /^\d+$/.test( s ) ) return `assessment${s}`;
+                return s;
+            };
+
+            const pathId = normalizePathId( assessmentId );
+
             // Check cache first
             const langCache = assessmentsCache.value[lang] || {};
             const difficultyCache = langCache[difficulty] || {};
-            if ( difficultyCache[assessmentId] ) {
-                const cached: Assessment = difficultyCache[assessmentId];
+            if ( difficultyCache[pathId] ) {
+                const cached: Assessment = difficultyCache[pathId];
 
                 // Use a deep-clone of the cached assessment before attaching it
                 // to the reactive store. This prevents shared/mutated objects from
@@ -167,7 +178,7 @@ export const useAssessmentStore = defineStore( 'assessment', () => {
                 return cachedCopy;
             }
 
-            const response = await fetch( `/api/assessment/${encodeURIComponent( lang )}/${encodeURIComponent( difficulty )}/${encodeURIComponent( assessmentId )}` );
+            const response = await fetch( `/api/assessment/${encodeURIComponent( lang )}/${encodeURIComponent( difficulty )}/${encodeURIComponent( pathId )}` );
             if ( !response.ok ) {
                 throw new Error( 'Failed to load assessment' );
             }
@@ -195,7 +206,12 @@ export const useAssessmentStore = defineStore( 'assessment', () => {
             // Store in cache for this session so future requests don't refetch
             assessmentsCache.value[lang] = assessmentsCache.value[lang] || {};
             assessmentsCache.value[lang][difficulty] = assessmentsCache.value[lang][difficulty] || {};
-            assessmentsCache.value[lang][difficulty][assessmentId] = assessmentData;
+            assessmentsCache.value[lang][difficulty][pathId] = assessmentData;
+
+            // Ensure legacy `id` field exists so older code paths that reference
+            // `assessment.id` continue to work even when the server returns a
+            // different identifier format.
+            if ( !( assessmentData as any ).id ) ( assessmentData as any ).id = pathId;
 
             // Try to restore any saved progress for this assessment from localStorage
             try {
