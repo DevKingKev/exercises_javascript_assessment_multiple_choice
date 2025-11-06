@@ -72,34 +72,9 @@ const capitalizedDifficulty = computed(() => {
 // number of result records. We intentionally keep `assessmentCount` as the
 // distinct-assessment count (passed in), and compute the other stats here
 // so they live in the difficulty-stats area as requested.
-const resultsMap = computed(() => resultsStore.getResultsByDifficulty(props.difficulty));
+const resultsCount = computed(() => resultsStore.resultsCountByDifficulty(props.difficulty));
 
-const resultsCount = computed(() => {
-  const map = resultsMap.value || {};
-  let count = 0;
-  Object.values(map).forEach((arr: any) => {
-    if ( Array.isArray(arr) ) count += arr.length;
-  });
-  return count;
-});
-
-const averageComputed = computed(() => {
-  const map = resultsMap.value || {};
-  let total = 0;
-  let cnt = 0;
-  Object.values(map).forEach((arr: any) => {
-    if ( Array.isArray(arr) ) {
-      for ( const rec of arr ) {
-        if ( rec && typeof rec.percentage === 'number' ) {
-          total += rec.percentage;
-          cnt += 1;
-        }
-      }
-    }
-  });
-  if ( cnt === 0 ) return 0;
-  return Math.round( total / cnt );
-});
+const averageComputed = computed(() => resultsStore.averageAcrossAllAttemptsByDifficulty(props.difficulty));
 </script>
 
 <style scoped lang="scss">

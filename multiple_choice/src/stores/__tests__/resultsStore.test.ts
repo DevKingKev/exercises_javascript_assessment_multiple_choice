@@ -178,6 +178,33 @@ describe( 'resultsStore', () => {
 
             expect( store.averageScoreByDifficulty( 'easy' ) ).toBe( 0 );
         } );
+
+        it( 'resultsCountByDifficulty counts all attempts across assessments', () => {
+            const store = useResultsStore();
+            store.resultsHistory = {
+                easy: {
+                    'a': [{ resultRecordId: 1, assessmentId: 'a', difficulty: 'easy', assessmentTitle: 'A', date: '2025-11-01', correct: 5, total: 10, percentage: 50, timeTaken: '3:00', improvementTopics: [], topicBreakdown: {} }],
+                    'b': [{ resultRecordId: 2, assessmentId: 'b', difficulty: 'easy', assessmentTitle: 'B', date: '2025-11-02', correct: 8, total: 10, percentage: 80, timeTaken: '3:00', improvementTopics: [], topicBreakdown: {} }, { resultRecordId: 3, assessmentId: 'b', difficulty: 'easy', assessmentTitle: 'B', date: '2025-11-03', correct: 9, total: 10, percentage: 90, timeTaken: '3:00', improvementTopics: [], topicBreakdown: {} }]
+                }
+            };
+
+            expect( store.resultsCountByDifficulty( 'easy' ) ).toBe( 3 );
+            expect( store.resultsCountByDifficulty( 'medium' ) ).toBe( 0 );
+        } );
+
+        it( 'averageAcrossAllAttemptsByDifficulty averages all saved attempts', () => {
+            const store = useResultsStore();
+            store.resultsHistory = {
+                easy: {
+                    'a': [{ resultRecordId: 1, assessmentId: 'a', difficulty: 'easy', assessmentTitle: 'A', date: '2025-11-01', correct: 5, total: 10, percentage: 50, timeTaken: '3:00', improvementTopics: [], topicBreakdown: {} }],
+                    'b': [{ resultRecordId: 2, assessmentId: 'b', difficulty: 'easy', assessmentTitle: 'B', date: '2025-11-02', correct: 8, total: 10, percentage: 80, timeTaken: '3:00', improvementTopics: [], topicBreakdown: {} }, { resultRecordId: 3, assessmentId: 'b', difficulty: 'easy', assessmentTitle: 'B', date: '2025-11-03', correct: 9, total: 10, percentage: 90, timeTaken: '3:00', improvementTopics: [], topicBreakdown: {} }]
+                }
+            };
+
+            // percentages: 50,80,90 -> avg = 220/3 = 73.333... -> 73
+            expect( store.averageAcrossAllAttemptsByDifficulty( 'easy' ) ).toBe( 73 );
+            expect( store.averageAcrossAllAttemptsByDifficulty( 'medium' ) ).toBe( 0 );
+        } );
     } );
 
     describe( 'Actions - loadResultsHistory', () => {

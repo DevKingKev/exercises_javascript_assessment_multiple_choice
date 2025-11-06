@@ -1,6 +1,10 @@
 import { defineStore } from 'pinia';
 import { ref, computed } from 'vue';
 import type { ResultRecord, ResultsHistory, TopicBreakdown, QuestionReview } from '@/models';
+import {
+    countResultsInHistoryByDifficulty,
+    averageAcrossAllAttemptsInHistoryByDifficulty
+} from '@/utils/resultsUtils';
 
 export const useResultsStore = defineStore( 'results', () => {
     // State
@@ -17,6 +21,18 @@ export const useResultsStore = defineStore( 'results', () => {
     // Computed
     const hasHistory = computed( () => {
         return Object.keys( resultsHistory.value ).length > 0;
+    } );
+
+    const resultsCountByDifficulty = computed( () => {
+        return ( difficulty: string ): number => {
+            return countResultsInHistoryByDifficulty( resultsHistory.value as ResultsHistory, difficulty );
+        };
+    } );
+
+    const averageAcrossAllAttemptsByDifficulty = computed( () => {
+        return ( difficulty: string ): number => {
+            return averageAcrossAllAttemptsInHistoryByDifficulty( resultsHistory.value as ResultsHistory, difficulty );
+        };
     } );
 
     const getResultsByDifficulty = computed( () => {
@@ -414,6 +430,8 @@ export const useResultsStore = defineStore( 'results', () => {
         getResultsByAssessment,
         getLatestResult,
         averageScoreByDifficulty,
+        resultsCountByDifficulty,
+        averageAcrossAllAttemptsByDifficulty,
 
         // Actions
         loadResultsHistory,

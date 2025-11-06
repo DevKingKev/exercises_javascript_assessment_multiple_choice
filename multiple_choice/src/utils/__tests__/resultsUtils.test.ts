@@ -1,5 +1,11 @@
 import { describe, it, expect } from 'vitest';
-import { getScoreBadgeClass, getImprovementTopics, formatTimeTaken } from '../resultsUtils';
+import {
+    getScoreBadgeClass, getImprovementTopics, formatTimeTaken,
+    countResultsForDifficulty,
+    averageAcrossAllAttemptsForDifficulty,
+    countResultsInHistoryByDifficulty,
+    averageAcrossAllAttemptsInHistoryByDifficulty
+} from '../resultsUtils';
 
 describe( 'resultsUtils', () => {
     it( 'getScoreBadgeClass returns correct classes for boundaries', () => {
@@ -29,5 +35,49 @@ describe( 'resultsUtils', () => {
         const out = formatTimeTaken( start );
         // Accept 1:05 or 1:06 depending on execution timing; match pattern
         expect( out ).toMatch( /^1:0[0-9]$/ );
+    } );
+} );
+
+describe( 'resultsUtils aggregates', () => {
+    it( 'counts results correctly for a difficulty map', () => {
+        const map = {
+            a: [{ percentage: 80 }, { percentage: 90 }],
+            b: [{ percentage: 70 }]
+        } as any;
+
+        expect( countResultsForDifficulty( map ) ).toBe( 3 );
+    } );
+
+    it( 'returns 0 for empty or missing maps', () => {
+        expect( countResultsForDifficulty( {} ) ).toBe( 0 );
+        expect( countResultsForDifficulty( null as any ) ).toBe( 0 );
+    } );
+
+    it( 'averages all attempts across assessments', () => {
+        const map = {
+            a: [{ percentage: 80 }, { percentage: 90 }],
+            b: [{ percentage: 60 }]
+        } as any;
+
+        // (80 + 90 + 60) / 3 = 76.666... -> rounded to 77
+        expect( averageAcrossAllAttemptsForDifficulty( map ) ).toBe( 77 );
+    } );
+
+    it( 'average returns 0 when no attempts', () => {
+        expect( averageAcrossAllAttemptsForDifficulty( {} ) ).toBe( 0 );
+        expect( averageAcrossAllAttemptsForDifficulty( null as any ) ).toBe( 0 );
+    } );
+
+    it( 'history convenience wrappers operate on ResultsHistory', () => {
+        const history = {
+            easy: {
+                test1: [{ percentage: 50 }, { percentage: 100 }],
+                test2: [{ percentage: 75 }]
+            }
+        } as any;
+
+        expect( countResultsInHistoryByDifficulty( history, 'easy' ) ).toBe( 3 );
+        // (50+100+75)/3 = 75
+        expect( averageAcrossAllAttemptsInHistoryByDifficulty( history, 'easy' ) ).toBe( 75 );
     } );
 } );
