@@ -45,8 +45,8 @@ module.exports = {
       // ... must match all topics above
     ],
     assessmentId: 1, // unique number for this difficulty level
-    assessmentUniqueId: 1730726400000, // unique timestamp
-    testType: "javascript-easy|javascript-medium|javascript-hard"
+    assessmentUniqueId: 1730726400000, // unique timestamp, matching the time of creation of the file
+    testType: "multiple-choice|coding"
   },
   questions: [
     // Array of question objects
@@ -206,11 +206,20 @@ Use official MDN documentation links for all JavaScript concepts.
 - Example: `1730726400000`
 - Should be unique across all assessments globally
 
+Clarification: the `assessmentUniqueId` must be the exact millisecond value produced by calling `Date.now()` at the moment the assessment file is created (i.e., the Unix epoch time in milliseconds). In practice this means:
+
+- When you create a new assessment file, run `Date.now()` (or read the millisecond value from your editor/IDE or a quick Node/console snippet) and paste that integer into `assessmentUniqueId`.
+- The value should represent the creation moment of the file, not an arbitrary timestamp.
+- If you create multiple assessment files sequentially, make sure later files have larger `assessmentUniqueId` values than earlier files (this preserves ordering like `assessment5` > `assessment4`).
+- Keep `assessmentUniqueId` unique across all assessments (easy/medium/hard). Do not reuse values.
+
+Why this matters: the UI and some tooling may use this millisecond timestamp as a unique identifier and to infer ordering. Using `Date.now()` at creation time produces a precise, machine-sortable value and avoids collisions from reusing placeholder timestamps.
+
 ### testType
-- Format: `"javascript-{difficulty}"`
-- Easy: `"javascript-easy"`
-- Medium: `"javascript-medium"`
-- Hard: `"javascript-hard"`
+
+- Multiple choice: `"multiple-choice"`
+- Coding: `"coding"`
+
 
 ## Topic Coverage Guidelines
 
