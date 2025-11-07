@@ -94,18 +94,20 @@ const hasCompletedResults = computed<boolean>(() => {
   position: absolute;
   top: 8px;
   left: 8px;
-  width: 30px;
-  height: 30px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #10b981, #059669); /* green */
-  color: white;
-  border-radius: 999px;
+  background: transparent; /* no heavy background */
+  color: #10b981; /* green tick */
+  width: auto;
+  height: auto;
+  padding: 0;
+  border-radius: 0;
   font-weight: 700;
-  box-shadow: 0 6px 14px rgba(5, 150, 105, 0.18);
+  box-shadow: none;
   z-index: 5;
-  font-size: 0.95rem;
+  font-size: 1.75rem; /* compact but visible */
+  line-height: 1;
 }
 
 .assessment-meta {
@@ -175,7 +177,8 @@ const hasCompletedResults = computed<boolean>(() => {
 }
 
 :root[data-theme="dark"] .completion-badge {
-  background: linear-gradient(135deg, #059669, #065f46);
-  box-shadow: 0 6px 14px rgba(2, 6, 23, 0.6);
+  background: transparent;
+  color: #34d399 !important; /* lighter green on dark */
+  box-shadow: none;
 }
 </style>
