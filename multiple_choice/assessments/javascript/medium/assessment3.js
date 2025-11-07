@@ -18,7 +18,7 @@ const metadata = {
         "Element.getBoundingClientRect"
     ],
     "assessmentId": 3,
-    "assessmentUniqueId": 1761906616000,
+    "assessmentUniqueId": 1762254854230,
     "testType": "multiple-choice",
     "topicLinks": [
         { "topicName": "DOM traversal and manipulation", "refLink": "https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction" },
