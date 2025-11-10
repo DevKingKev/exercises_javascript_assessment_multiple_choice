@@ -3,6 +3,7 @@ const metadata = {
     "title": "JavaScript ES Module Import/Export Basics",
     "description": "Fundamental concepts of ES module syntax including default and named exports and imports.",
     "difficulty": "easy",
+    "domain": "javascript",
     "timeLimit": 30,
     "questionCount": 30,
     "topics": [

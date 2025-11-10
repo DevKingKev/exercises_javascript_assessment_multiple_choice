@@ -3,6 +3,7 @@ const metadata = {
     "title": "JavaScript Map and Set Fundamentals",
     "description": "Basic concepts of Map and Set collections, when to use each, and their fundamental characteristics in JavaScript.",
     "difficulty": "easy",
+    "domain": "javascript",
     "timeLimit": 30,
     "questionCount": 30,
     "topics": [

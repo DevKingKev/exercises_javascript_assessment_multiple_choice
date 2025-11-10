@@ -3,6 +3,7 @@ const metadata = {
     "title": "JavaScript Promises and Async/Await Basics",
     "description": "Fundamental concepts of Promises, async/await syntax, and basic asynchronous programming patterns in JavaScript.",
     "difficulty": "easy",
+    "domain": "javascript",
     "timeLimit": 30,
     "questionCount": 30,
     "topics": [

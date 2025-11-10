@@ -3,6 +3,7 @@ const metadata = {
     "title": "JavaScript Debugging and Console Basics",
     "description": "Fundamental debugging techniques, console methods, and basic troubleshooting skills for JavaScript developers.",
     "difficulty": "easy",
+    "domain": "javascript",
     "timeLimit": 30,
     "questionCount": 30,
     "topics": [

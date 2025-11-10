@@ -3,6 +3,7 @@ const metadata = {
     "title": "JavaScript Map and Set Usage Patterns",
     "description": "Practical applications and fundamental characteristics of Map and Set collections in JavaScript.",
     "difficulty": "easy",
+    "domain": "javascript",
     "timeLimit": 30,
     "questionCount": 30,
     "topics": [

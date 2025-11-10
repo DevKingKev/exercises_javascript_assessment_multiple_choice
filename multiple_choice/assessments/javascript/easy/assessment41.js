@@ -3,6 +3,7 @@ const metadata = {
     "title": "JavaScript Accessibility & Security Basics",
     "description": "Fundamental accessibility practices and security considerations for safe and inclusive web development.",
     "difficulty": "easy",
+    "domain": "javascript",
     "timeLimit": 30,
     "questionCount": 30,
     "topics": [

@@ -3,6 +3,7 @@ const metadata = {
     "title": "JavaScript Event Delegation Patterns",
     "description": "Practical event delegation techniques for efficient DOM event handling with dynamic content and multiple elements.",
     "difficulty": "easy",
+    "domain": "javascript",
     "timeLimit": 30,
     "questionCount": 30,
     "topics": [

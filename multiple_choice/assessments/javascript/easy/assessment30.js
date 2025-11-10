@@ -3,6 +3,7 @@ const metadata = {
     "title": "JavaScript Map/Set vs Object Key Handling",
     "description": "Common pitfalls and differences in key handling between Maps, Sets, and plain Objects in JavaScript.",
     "difficulty": "easy",
+    "domain": "javascript",
     "timeLimit": 30,
     "questionCount": 30,
     "topics": [

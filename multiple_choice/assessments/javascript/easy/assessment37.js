@@ -3,6 +3,7 @@ const metadata = {
     "title": "JavaScript Event Delegation Basics",
     "description": "Fundamental concepts of event delegation, event bubbling, and efficient DOM event handling patterns.",
     "difficulty": "easy",
+    "domain": "javascript",
     "timeLimit": 30,
     "questionCount": 30,
     "topics": [

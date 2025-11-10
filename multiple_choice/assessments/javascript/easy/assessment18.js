@@ -3,6 +3,7 @@ const metadata = {
     "title": "JavaScript String Fundamentals",
     "description": "Core string concepts, character handling, and basic string operations in JavaScript. This assessment covers essential string knowledge that forms the foundation of text manipulation in JavaScript.",
     "difficulty": "easy",
+    "domain": "javascript",
     "timeLimit": 30,
     "questionCount": 30,
     "topics": [

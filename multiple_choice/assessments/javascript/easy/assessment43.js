@@ -3,6 +3,7 @@ const metadata = {
     "title": "Unit Testing Basics for Beginners",
     "description": "Fundamental concepts of unit testing, test assertions, and testing methodology for JavaScript developers starting with testing.",
     "difficulty": "easy",
+    "domain": "javascript",
     "timeLimit": 30,
     "questionCount": 30,
     "topics": [

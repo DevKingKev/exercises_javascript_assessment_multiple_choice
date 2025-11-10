@@ -3,6 +3,7 @@ const metadata = {
     "title": "JavaScript Object Essentials",
     "description": "Fundamental object concepts, property management, and practical object usage patterns in JavaScript. This assessment covers core object operations that are essential for effective JavaScript development.",
     "difficulty": "easy",
+    "domain": "javascript",
     "timeLimit": 30,
     "questionCount": 30,
     "topics": [

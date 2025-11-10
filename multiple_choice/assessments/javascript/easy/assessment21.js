@@ -3,6 +3,7 @@ const metadata = {
     "title": "JavaScript Prototype Chain Fundamentals",
     "description": "Basic concepts of prototype inheritance, object creation, and property lookup in JavaScript. Focuses on practical understanding of how prototypes work.",
     "difficulty": "easy",
+    "domain": "javascript",
     "timeLimit": 30,
     "questionCount": 30,
     "topics": [

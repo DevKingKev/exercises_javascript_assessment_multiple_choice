@@ -3,6 +3,7 @@ const metadata = {
     "title": "JavaScript Event Delegation Essentials",
     "description": "Core concepts and practical implementations of event delegation for efficient DOM event handling.",
     "difficulty": "easy",
+    "domain": "javascript",
     "timeLimit": 30,
     "questionCount": 30,
     "topics": [

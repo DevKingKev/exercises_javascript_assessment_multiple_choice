@@ -3,6 +3,7 @@ const metadata = {
     "title": "JavaScript Browser Storage Basics",
     "description": "Fundamental concepts of localStorage, sessionStorage, and basic client-side storage operations in the browser.",
     "difficulty": "easy",
+    "domain": "javascript",
     "timeLimit": 30,
     "questionCount": 30,
     "topics": [

@@ -3,6 +3,7 @@ const metadata = {
     "title": "JavaScript Object Creation and Inheritance",
     "description": "Basic patterns for creating objects, understanding inheritance, and working with constructors and prototypes in JavaScript.",
     "difficulty": "easy",
+    "domain": "javascript",
     "timeLimit": 30,
     "questionCount": 30,
     "topics": [

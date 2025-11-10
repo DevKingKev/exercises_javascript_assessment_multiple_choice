@@ -3,6 +3,7 @@ const metadata = {
     "title": "JavaScript Event Loop Basics",
     "description": "Fundamental concepts of the JavaScript event loop, microtasks, and macrotasks for understanding asynchronous execution.",
     "difficulty": "easy",
+    "domain": "javascript",
     "timeLimit": 30,
     "questionCount": 30,
     "topics": [

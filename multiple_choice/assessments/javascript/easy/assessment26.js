@@ -3,6 +3,7 @@ const metadata = {
     "title": "JavaScript Fetch API Basics",
     "description": "Fundamental concepts of making HTTP requests with Fetch API, handling responses, and basic error handling in browser JavaScript.",
     "difficulty": "easy",
+    "domain": "javascript",
     "timeLimit": 30,
     "questionCount": 30,
     "topics": [

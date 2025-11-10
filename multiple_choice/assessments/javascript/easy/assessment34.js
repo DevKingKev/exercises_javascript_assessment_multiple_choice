@@ -3,6 +3,7 @@ const metadata = {
     "title": "JavaScript Browser Storage Operations",
     "description": "Practical usage of localStorage and sessionStorage for client-side data persistence in web applications.",
     "difficulty": "easy",
+    "domain": "javascript",
     "timeLimit": 30,
     "questionCount": 30,
     "topics": [
