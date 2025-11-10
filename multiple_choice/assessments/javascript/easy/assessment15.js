@@ -3,6 +3,7 @@ const metadata = {
     "title": "JavaScript Object Operations",
     "description": "Practical object manipulation, property handling, and common object patterns in JavaScript. This assessment focuses on everyday object operations that developers use regularly.",
     "difficulty": "easy",
+    "domain": "javascript",
     "timeLimit": 30,
     "questionCount": 30,
     "topics": [

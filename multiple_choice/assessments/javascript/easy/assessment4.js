@@ -3,6 +3,7 @@ const metadata = {
     "title": "Modern JavaScript & Programming Concepts",
     "description": "ES6+ features, error handling, JSON operations, dates, regular expressions, and iteration methods",
     "difficulty": "easy",
+    "domain": "javascript",
     "timeLimit": 30,
     "questionCount": 30,
     "topics": [

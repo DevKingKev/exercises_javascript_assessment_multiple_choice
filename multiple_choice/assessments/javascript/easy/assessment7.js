@@ -3,6 +3,7 @@ const metadata = {
     "title": "JavaScript Functions & Scope",
     "description": "Deep dive into JavaScript function concepts including declarations, expressions, arrow functions, parameters, return values, scope chains, closures, and the 'this' keyword. Understanding these concepts is fundamental to mastering JavaScript and building robust applications with proper encapsulation and data flow.",
     "difficulty": "easy",
+    "domain": "javascript",
     "timeLimit": 30,
     "questionCount": 30,
     "topics": [

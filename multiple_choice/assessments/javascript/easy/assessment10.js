@@ -3,6 +3,7 @@ const metadata = {
     "title": "JavaScript String Manipulation",
     "description": "String methods, manipulation techniques, pattern matching, and text processing in JavaScript. This assessment covers essential string operations including searching, extracting, modifying, and transforming text data using built-in string methods and regular expressions.",
     "difficulty": "easy",
+    "domain": "javascript",
     "timeLimit": 30,
     "questionCount": 30,
     "topics": [

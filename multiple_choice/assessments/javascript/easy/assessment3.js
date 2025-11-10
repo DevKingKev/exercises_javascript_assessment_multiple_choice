@@ -3,6 +3,7 @@ const metadata = {
     "title": "JavaScript Methods & Operations",
     "description": "Mathematical operations, array methods, string methods, and function fundamentals",
     "difficulty": "easy",
+    "domain": "javascript",
     "timeLimit": 30,
     "questionCount": 30,
     "topics": [

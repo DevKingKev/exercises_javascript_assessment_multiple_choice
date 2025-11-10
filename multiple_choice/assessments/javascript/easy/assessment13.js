@@ -3,6 +3,7 @@ const metadata = {
     "title": "JavaScript Array Fundamentals",
     "description": "Core array concepts, basic operations, and essential methods for working with arrays in JavaScript. This assessment covers foundational array knowledge that every JavaScript developer should master.",
     "difficulty": "easy",
+    "domain": "javascript",
     "timeLimit": 30,
     "questionCount": 30,
     "topics": [

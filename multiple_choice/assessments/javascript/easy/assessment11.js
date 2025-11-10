@@ -3,6 +3,7 @@ const metadata = {
     "title": "JavaScript Array Methods",
     "description": "Comprehensive coverage of JavaScript array operations including manipulation, iteration, transformation, and common patterns. This assessment focuses on practical array methods that developers use daily for data processing and collection management.",
     "difficulty": "easy",
+    "domain": "javascript",
     "timeLimit": 30,
     "questionCount": 30,
     "topics": [

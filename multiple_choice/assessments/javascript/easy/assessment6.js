@@ -3,6 +3,7 @@ const metadata = {
     "title": "JavaScript Fundamentals II",
     "description": "Essential JavaScript concepts including type conversion, comparison operators, truthiness and falsiness, number operations, and basic programming logic. This assessment tests understanding of how JavaScript handles different data types, performs comparisons, and evaluates expressions in various contexts.",
     "difficulty": "easy",
+    "domain": "javascript",
     "timeLimit": 30,
     "questionCount": 30,
     "topics": [

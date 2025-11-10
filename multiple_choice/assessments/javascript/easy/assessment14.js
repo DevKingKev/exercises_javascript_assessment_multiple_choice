@@ -3,6 +3,7 @@ const metadata = {
     "title": "JavaScript Object Fundamentals",
     "description": "Core object concepts, property access, methods, and basic object manipulation in JavaScript. This assessment covers essential object operations that form the foundation of working with objects in JavaScript.",
     "difficulty": "easy",
+    "domain": "javascript",
     "timeLimit": 30,
     "questionCount": 30,
     "topics": [

@@ -3,6 +3,7 @@ const metadata = {
     "title": "JavaScript Array Operations",
     "description": "Advanced array manipulation techniques, iteration patterns, and practical array usage scenarios. This assessment covers array methods and patterns that are essential for efficient data processing in JavaScript applications.",
     "difficulty": "easy",
+    "domain": "javascript",
     "timeLimit": 30,
     "questionCount": 30,
     "topics": [

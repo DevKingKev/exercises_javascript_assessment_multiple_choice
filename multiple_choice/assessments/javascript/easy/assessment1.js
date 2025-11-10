@@ -3,6 +3,7 @@ const metadata = {
     "title": "JavaScript Fundamentals",
     "description": "Basic JavaScript concepts including variables, functions, arrays, objects, and control flow",
     "difficulty": "easy",
+    "domain": "javascript",
     "timeLimit": 30,
     "questionCount": 20,
     "topics": [

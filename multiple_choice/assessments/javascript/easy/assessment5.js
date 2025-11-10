@@ -3,6 +3,7 @@ const metadata = {
     "title": "JavaScript Data Structures & Algorithms",
     "description": "Core data structure operations, basic algorithm concepts, and problem-solving techniques in JavaScript. This assessment covers array manipulation, object operations, string processing, and foundational algorithm patterns commonly used in coding challenges and real-world applications.",
     "difficulty": "easy",
+    "domain": "javascript",
     "timeLimit": 30,
     "questionCount": 30,
     "topics": [

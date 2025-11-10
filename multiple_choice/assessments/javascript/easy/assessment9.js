@@ -3,6 +3,7 @@ const metadata = {
     "title": "JavaScript DOM and Events",
     "description": "Document Object Model manipulation, event handling, element selection, and dynamic content updates. This assessment covers essential browser APIs for interacting with web page elements, handling user interactions, and creating dynamic web experiences.",
     "difficulty": "easy",
+    "domain": "javascript",
     "timeLimit": 30,
     "questionCount": 30,
     "topics": [

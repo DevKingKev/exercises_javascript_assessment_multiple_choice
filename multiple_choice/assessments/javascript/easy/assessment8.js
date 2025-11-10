@@ -3,6 +3,7 @@ const metadata = {
     "title": "JavaScript Objects and Prototypes",
     "description": "Comprehensive exploration of JavaScript objects, including object creation patterns, property manipulation, methods, prototypal inheritance, constructors, and the prototype chain. This assessment covers essential concepts for understanding how JavaScript implements object-oriented programming and how objects interact with each other through the prototype system.",
     "difficulty": "easy",
+    "domain": "javascript",
     "timeLimit": 30,
     "questionCount": 30,
     "topics": [
