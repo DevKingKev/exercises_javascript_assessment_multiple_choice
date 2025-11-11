@@ -3,166 +3,166 @@
     "file": "assessments/html/easy/assessment1.js",
     "total": 30,
     "counts": {
-      "A": 30,
-      "B": 0,
-      "C": 0,
-      "D": 0
+      "A": 8,
+      "B": 8,
+      "C": 7,
+      "D": 7
     },
-    "skew": 1
+    "skew": 0.26666666666666666
   },
   {
     "file": "assessments/html/easy/assessment10.js",
     "total": 30,
     "counts": {
-      "A": 30,
-      "B": 0,
-      "C": 0,
-      "D": 0
+      "A": 8,
+      "B": 8,
+      "C": 7,
+      "D": 7
     },
-    "skew": 1
+    "skew": 0.26666666666666666
   },
   {
     "file": "assessments/html/easy/assessment11.js",
     "total": 30,
     "counts": {
-      "A": 30,
-      "B": 0,
-      "C": 0,
-      "D": 0
+      "A": 8,
+      "B": 8,
+      "C": 7,
+      "D": 7
     },
-    "skew": 1
+    "skew": 0.26666666666666666
   },
   {
     "file": "assessments/html/easy/assessment12.js",
     "total": 30,
     "counts": {
-      "A": 30,
-      "B": 0,
-      "C": 0,
-      "D": 0
+      "A": 8,
+      "B": 8,
+      "C": 7,
+      "D": 7
     },
-    "skew": 1
+    "skew": 0.26666666666666666
   },
   {
     "file": "assessments/html/easy/assessment13.js",
     "total": 30,
     "counts": {
-      "A": 30,
-      "B": 0,
-      "C": 0,
-      "D": 0
+      "A": 8,
+      "B": 8,
+      "C": 7,
+      "D": 7
     },
-    "skew": 1
+    "skew": 0.26666666666666666
   },
   {
     "file": "assessments/html/easy/assessment14.js",
     "total": 30,
     "counts": {
-      "A": 30,
-      "B": 0,
-      "C": 0,
-      "D": 0
+      "A": 8,
+      "B": 8,
+      "C": 7,
+      "D": 7
     },
-    "skew": 1
+    "skew": 0.26666666666666666
   },
   {
     "file": "assessments/html/easy/assessment15.js",
     "total": 29,
     "counts": {
-      "A": 29,
-      "B": 0,
-      "C": 0,
-      "D": 0
+      "A": 8,
+      "B": 8,
+      "C": 6,
+      "D": 7
     },
-    "skew": 1
+    "skew": 0.27586206896551724
   },
   {
     "file": "assessments/html/easy/assessment2.js",
     "total": 30,
     "counts": {
-      "A": 30,
-      "B": 0,
-      "C": 0,
-      "D": 0
+      "A": 8,
+      "B": 8,
+      "C": 7,
+      "D": 7
     },
-    "skew": 1
+    "skew": 0.26666666666666666
   },
   {
     "file": "assessments/html/easy/assessment3.js",
     "total": 30,
     "counts": {
-      "A": 30,
-      "B": 0,
-      "C": 0,
-      "D": 0
+      "A": 8,
+      "B": 8,
+      "C": 7,
+      "D": 7
     },
-    "skew": 1
+    "skew": 0.26666666666666666
   },
   {
     "file": "assessments/html/easy/assessment4.js",
     "total": 30,
     "counts": {
       "A": 8,
-      "B": 16,
-      "C": 3,
-      "D": 3
+      "B": 8,
+      "C": 7,
+      "D": 7
     },
-    "skew": 0.5333333333333333
+    "skew": 0.26666666666666666
   },
   {
     "file": "assessments/html/easy/assessment5.js",
     "total": 30,
     "counts": {
-      "A": 30,
-      "B": 0,
-      "C": 0,
-      "D": 0
+      "A": 8,
+      "B": 8,
+      "C": 7,
+      "D": 7
     },
-    "skew": 1
+    "skew": 0.26666666666666666
   },
   {
     "file": "assessments/html/easy/assessment6.js",
     "total": 30,
     "counts": {
-      "A": 30,
-      "B": 0,
-      "C": 0,
-      "D": 0
+      "A": 8,
+      "B": 8,
+      "C": 7,
+      "D": 7
     },
-    "skew": 1
+    "skew": 0.26666666666666666
   },
   {
     "file": "assessments/html/easy/assessment7.js",
     "total": 30,
     "counts": {
-      "A": 30,
-      "B": 0,
-      "C": 0,
-      "D": 0
+      "A": 8,
+      "B": 8,
+      "C": 7,
+      "D": 7
     },
-    "skew": 1
+    "skew": 0.26666666666666666
   },
   {
     "file": "assessments/html/easy/assessment8.js",
     "total": 30,
     "counts": {
-      "A": 30,
-      "B": 0,
-      "C": 0,
-      "D": 0
+      "A": 8,
+      "B": 8,
+      "C": 7,
+      "D": 7
     },
-    "skew": 1
+    "skew": 0.26666666666666666
   },
   {
     "file": "assessments/html/easy/assessment9.js",
     "total": 30,
     "counts": {
-      "A": 30,
-      "B": 0,
-      "C": 0,
-      "D": 0
+      "A": 8,
+      "B": 8,
+      "C": 7,
+      "D": 7
     },
-    "skew": 1
+    "skew": 0.26666666666666666
   },
   {
     "file": "assessments/javascript/easy/assessment1.js",
