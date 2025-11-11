@@ -4,8 +4,8 @@ import { setActivePinia, createPinia } from 'pinia';
 /**
  * Tests for initLanguage resolution order in globalStore
  * Resolution order expected:
- * 1. localStorage override (app:language)
- * 2. VITE_DEFAULT_LANGUAGE (process.env -> import.meta.env during module load)
+ * 1. VITE_ASSESSMENT_DOMAIN (process.env -> import.meta.env during module load)
+ * 2. localStorage override (app:language)
  * 3. hostname subdomain (eg. php.domain.com -> php)
  * 4. fallback 'javascript'
  */
@@ -18,14 +18,14 @@ describe( 'globalStore initLanguage resolution', () => {
         // clear localStorage between tests
         try { localStorage.clear(); } catch ( e ) { /* ignore in non-jsdom envs */ }
         // clear any lingering VITE env var
-        delete process.env.VITE_DEFAULT_LANGUAGE;
+        delete process.env.VITE_ASSESSMENT_DOMAIN;
     } );
 
-    it( 'prefers localStorage override over env/hostname', async () => {
+    it( 'env var overrides localStorage when present', async () => {
         localStorage.setItem( 'app:language', 'ruby' );
 
         // ensure env and hostname would be different if used
-        process.env.VITE_DEFAULT_LANGUAGE = 'python';
+        process.env.VITE_ASSESSMENT_DOMAIN = 'python';
         // set hostname (avoid jsdom navigation implementation by replacing location)
         Object.defineProperty( window, 'location', { value: { hostname: 'javascript.example.com' }, configurable: true } );
 
@@ -34,13 +34,13 @@ describe( 'globalStore initLanguage resolution', () => {
         await store.initLanguage();
 
         expect( store.language ).toBeDefined();
-        expect( store.languageNormalized ).toBe( 'ruby' );
+        expect( store.languageNormalized ).toBe( 'python' );
     } );
 
-    it( 'uses VITE_DEFAULT_LANGUAGE when no local override', async () => {
+    it( 'uses VITE_ASSESSMENT_DOMAIN when no local override', async () => {
         // no localStorage
-        delete process.env.VITE_DEFAULT_LANGUAGE;
-        process.env.VITE_DEFAULT_LANGUAGE = 'python';
+        delete process.env.VITE_ASSESSMENT_DOMAIN;
+        process.env.VITE_ASSESSMENT_DOMAIN = 'python';
 
         // hostname should not provide a subdomain so env can be chosen
         Object.defineProperty( window, 'location', { value: { hostname: 'localhost' }, configurable: true } );
@@ -54,7 +54,7 @@ describe( 'globalStore initLanguage resolution', () => {
 
     it( 'uses hostname subdomain when no local override or env', async () => {
         // clear both
-        delete process.env.VITE_DEFAULT_LANGUAGE;
+        delete process.env.VITE_ASSESSMENT_DOMAIN;
         try { localStorage.removeItem( 'app:language' ); } catch ( e ) { /* ignore */ }
 
         // hostname with subdomain (replace location to avoid jsdom navigation)
@@ -68,7 +68,7 @@ describe( 'globalStore initLanguage resolution', () => {
     } );
 
     it( 'falls back to javascript when nothing else applies', async () => {
-        delete process.env.VITE_DEFAULT_LANGUAGE;
+        delete process.env.VITE_ASSESSMENT_DOMAIN;
         try { localStorage.removeItem( 'app:language' ); } catch ( e ) { /* ignore */ }
 
         // local dev host should not be treated as subdomain

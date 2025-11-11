@@ -12,6 +12,15 @@ const path = require('path');
 const PROJECT_ROOT = path.resolve(__dirname, '..');
 const DIST_SERVER = path.join(PROJECT_ROOT, 'dist', 'server.js');
 
+// Environment mapping: prefer a Vite-prefixed variable to make intent
+// clearer for client-side consumption. Developers should set
+// `VITE_ASSESSMENT_DOMAIN` (e.g. `VITE_ASSESSMENT_DOMAIN=html pnpm run dev`).
+if (process.env.VITE_ASSESSMENT_DOMAIN) {
+    // If a Vite-prefixed var is present, also set the legacy-supported
+    // VITE_DEFAULT_LANGUAGE so older code paths still see the value.
+    if (!process.env.VITE_DEFAULT_LANGUAGE) process.env.VITE_DEFAULT_LANGUAGE = process.env.VITE_ASSESSMENT_DOMAIN;
+}
+
 function prefixStream (name, stream, isErr = false) {
     stream.on('data', chunk => {
         const lines = chunk.toString().split(/\r?\n/).filter(Boolean);

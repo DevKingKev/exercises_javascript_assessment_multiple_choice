@@ -35,10 +35,11 @@ export const ASSESSMENT_DOMAIN_DISPLAY_NAMES: Record<string, string> = {
  * Global store for app-wide settings such as the current assessment language.
  *
  * Language resolution order (best-effort):
- * 1. localStorage override (key: 'app:language')
- * 2. Vite env var VITE_DEFAULT_LANGUAGE (useful for local testing)
+ * 1. Vite env var `VITE_ASSESSMENT_DOMAIN` (useful for local testing)
+ * 2. localStorage override (key: 'app:language')
  * 3. Hostname subdomain (eg. 'javascript.domain.com' -> 'javascript')
- * 4. fallback: 'javascript'
+ * 4. deployment YAML (fetched from common paths)
+ * 5. fallback: 'javascript'
  */
 export const useGlobalStore = defineStore( 'global', () => {
     const language = ref<string>( 'javascript' );
@@ -93,7 +94,7 @@ export const useGlobalStore = defineStore( 'global', () => {
             // Use a fallback of undefined when not available
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore
-            const v = import.meta.env && import.meta.env.VITE_DEFAULT_LANGUAGE;
+            const v = import.meta.env && import.meta.env.VITE_ASSESSMENT_DOMAIN;
             return normalized( v ) || null;
         } catch ( e ) {
             return null;
@@ -160,12 +161,22 @@ export const useGlobalStore = defineStore( 'global', () => {
      * 1. localStorage override
      * 2. hostname subdomain
      * 3. deployment YAML (fetched from common paths)
-     * 4. Vite env var VITE_DEFAULT_LANGUAGE
+    * 4. Vite env var `VITE_ASSESSMENT_DOMAIN`
      * 5. fallback 'javascript'
      *
      * This function is async because it may need to fetch the deployment YAML.
      */
     async function initLanguage (): Promise<void> {
+        // Prefer an explicit Vite-provided environment override for scripted
+        // development and CI. This allows `VITE_ASSESSMENT_DOMAIN=html` to
+        // reliably select the domain even if a developer previously set a
+        // browser localStorage override during manual testing.
+        const env = getEnvDefault();
+        if ( env ) {
+            language.value = env;
+            return;
+        }
+
         // local override
         const local = getLocalOverride();
         if ( local ) {
@@ -173,7 +184,7 @@ export const useGlobalStore = defineStore( 'global', () => {
             return;
         }
 
-        // try hostname first (URL subdomain has highest runtime priority)
+        // try hostname (URL subdomain has priority after local overrides)
         const hostLang = detectFromHostname();
         if ( hostLang ) {
             language.value = hostLang;
@@ -184,13 +195,6 @@ export const useGlobalStore = defineStore( 'global', () => {
         const deployLang = await getDeployDefault();
         if ( deployLang ) {
             language.value = deployLang;
-            return;
-        }
-
-        // explicit env default (useful for local testing)
-        const env = getEnvDefault();
-        if ( env ) {
-            language.value = env;
             return;
         }
 

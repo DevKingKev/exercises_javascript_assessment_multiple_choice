@@ -58,6 +58,89 @@ This orchestrates:
 - 🎯 Single port for development (3001)
 - 📝 Clear console logging for debugging
 
+### Setting the Assessment Domain for Local Testing
+
+The application supports multiple assessment domains (JavaScript, HTML, CSS, PHP, Python, etc.). By default, it uses **JavaScript**. You can override this for local testing in several ways:
+
+#### Option 1: Environment Variable (Recommended for Development)
+
+Set the `VITE_ASSESSMENT_DOMAIN` environment variable to change the default domain. This is the Vite-prefixed variable the client will read via `import.meta.env.VITE_ASSESSMENT_DOMAIN`:
+
+```bash
+# Test HTML assessments
+VITE_ASSESSMENT_DOMAIN=html pnpm run dev
+
+# Test CSS assessments
+VITE_ASSESSMENT_DOMAIN=css pnpm run dev
+
+# Test PHP assessments
+VITE_ASSESSMENT_DOMAIN=php pnpm run dev
+```
+
+**Supported domains**: `javascript`, `html`, `css`, `python`, `php`, `ruby`, `java`, `csharp`, `cpp`, `sql`
+
+#### Option 2: Browser localStorage Override
+
+You can dynamically change the domain in the browser console:
+
+```javascript
+// Switch to HTML assessments
+localStorage.setItem('app:language', 'html');
+location.reload();
+
+// Switch to CSS assessments
+localStorage.setItem('app:language', 'css');
+location.reload();
+
+// Switch back to JavaScript
+localStorage.setItem('app:language', 'javascript');
+location.reload();
+
+// Clear override (use default)
+localStorage.removeItem('app:language');
+location.reload();
+```
+
+This is useful for:
+- Quick testing without restarting the dev server
+- Testing domain switching in the UI
+- Debugging domain-specific issues
+
+#### Option 3: Subdomain Detection (Production)
+
+In production deployments, the domain is auto-detected from the subdomain:
+- `javascript.yourdomain.com` → JavaScript assessments
+- `html.yourdomain.com` → HTML assessments
+- `css.yourdomain.com` → CSS assessments
+
+**Note**: localhost and IP addresses are excluded from subdomain detection.
+
+#### Domain Resolution Priority
+
+The application resolves the domain in this order:
+1. **localStorage override** (`app:language` key) — highest priority
+2. **Environment variable** (`VITE_ASSESSMENT_DOMAIN`)
+3. **Hostname subdomain** (production deployments)
+4. **Fallback** to `javascript`
+
+#### API Endpoints by Domain
+
+The Express server serves assessments from domain-specific directories:
+
+```
+GET /api/assessments/javascript     → assessments/javascript/{easy,medium,hard}/
+GET /api/assessments/html           → assessments/html/{easy,medium,hard}/
+GET /api/assessments/css            → assessments/css/{easy,medium,hard}/
+GET /api/assessments/php            → assessments/php/{easy,medium,hard}/
+```
+
+Individual assessment endpoint:
+```
+GET /api/assessment/:domain/:difficulty/:id
+```
+
+Example: `GET /api/assessment/html/easy/assessment1`
+
 ### Production Build
 
 ```bash
