@@ -641,88 +641,88 @@
     "file": "assessments/javascript/medium/assessment1.js",
     "total": 25,
     "counts": {
-      "A": 0,
-      "B": 21,
-      "C": 4,
-      "D": 0
+      "A": 7,
+      "B": 6,
+      "C": 6,
+      "D": 6
     },
-    "skew": 0.84
+    "skew": 0.28
   },
   {
     "file": "assessments/javascript/medium/assessment2.js",
     "total": 25,
     "counts": {
-      "A": 3,
-      "B": 19,
-      "C": 3,
-      "D": 0
+      "A": 7,
+      "B": 6,
+      "C": 6,
+      "D": 6
     },
-    "skew": 0.76
+    "skew": 0.28
   },
   {
     "file": "assessments/javascript/medium/assessment3.js",
     "total": 25,
     "counts": {
-      "A": 9,
-      "B": 11,
-      "C": 5,
-      "D": 0
+      "A": 7,
+      "B": 6,
+      "C": 6,
+      "D": 6
     },
-    "skew": 0.44
+    "skew": 0.28
   },
   {
     "file": "assessments/javascript/medium/assessment4.js",
     "total": 25,
     "counts": {
-      "A": 4,
-      "B": 19,
-      "C": 2,
-      "D": 0
+      "A": 7,
+      "B": 6,
+      "C": 6,
+      "D": 6
     },
-    "skew": 0.76
+    "skew": 0.28
   },
   {
     "file": "assessments/javascript/medium/assessment5.js",
     "total": 25,
     "counts": {
-      "A": 5,
-      "B": 20,
-      "C": 0,
-      "D": 0
+      "A": 7,
+      "B": 6,
+      "C": 6,
+      "D": 6
     },
-    "skew": 0.8
+    "skew": 0.28
   },
   {
     "file": "assessments/javascript/medium/assessment6.js",
     "total": 25,
     "counts": {
-      "A": 2,
-      "B": 21,
-      "C": 2,
-      "D": 0
+      "A": 7,
+      "B": 6,
+      "C": 6,
+      "D": 6
     },
-    "skew": 0.84
+    "skew": 0.28
   },
   {
     "file": "assessments/javascript/medium/assessment7.js",
     "total": 25,
     "counts": {
-      "A": 0,
-      "B": 25,
-      "C": 0,
-      "D": 0
+      "A": 7,
+      "B": 6,
+      "C": 6,
+      "D": 6
     },
-    "skew": 1
+    "skew": 0.28
   },
   {
     "file": "assessments/javascript/medium/assessment8.js",
     "total": 25,
     "counts": {
-      "A": 9,
-      "B": 14,
-      "C": 2,
-      "D": 0
+      "A": 7,
+      "B": 6,
+      "C": 6,
+      "D": 6
     },
-    "skew": 0.56
+    "skew": 0.28
   }
 ]
