@@ -16,7 +16,10 @@
               <DifficultyBadge :difficulty="difficultyRaw" :label="displayDifficulty" />
             </RouterLink>
           </div>
-          <h2 class="assessment-name">{{ assessmentLabel }}</h2>
+          <div class="assessment-title-row">
+            <NumberBubble :value="displayNumber" :size="44" aria-hidden />
+            <h2 class="assessment-name">{{ assessmentLabel }}</h2>
+          </div>
       
         <div class="score-display">
           <div class="score-circle" :class="getScoreBadgeClass(resultsStore.currentResults.percentage)">
@@ -90,6 +93,8 @@ import { onMounted, ref, watch, computed } from 'vue';
 import LoadingSpinner from '@/components/LoadingSpinner.vue';
 import QuestionReviewComponent from '@/components/QuestionReview.vue';
 import DifficultyBadge from '@/components/DifficultyBadge.vue';
+import NumberBubble from '@/components/NumberBubble.vue';
+import { extractAssessmentNumber } from '@/utils/assessmentUtils';
 import TopicPerformanceBreakdown from '@/components/TopicPerformanceBreakdown.vue';
 import { useRouter, useRoute } from 'vue-router';
 import { useAssessmentStore } from '@/stores/assessmentStore';
@@ -156,6 +161,15 @@ const assessmentLabel = computed(() => {
   const id = savedResultRecord.value?.assessmentId ?? (assessmentStore.currentAssessment as any)?.metadata?.id ?? null;
   const title = savedResultRecord.value?.assessmentTitle ?? (assessmentStore.currentAssessment as any)?.metadata?.title ?? null;
   return formatAssessmentLabel(id, title);
+});
+
+const displayNumber = computed<number | null>(() => {
+  try {
+    const id = savedResultRecord.value?.assessmentId ?? (assessmentStore.currentAssessment as any)?.metadata?.fileId ?? (assessmentStore.currentAssessment as any)?.metadata?.id ?? null;
+    return extractAssessmentNumber(id);
+  } catch (e) {
+    return null;
+  }
 });
 
 const difficultyRaw = computed(() => (savedResultRecord.value && savedResultRecord.value.difficulty) || assessmentStore.currentDifficulty || 'easy');
@@ -441,6 +455,12 @@ watch(
     color: #2c3e50;
     margin-top: $spacing-lg;
     margin-bottom: 4px;
+  }
+  .assessment-title-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
   }
 }
 

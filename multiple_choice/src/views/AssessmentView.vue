@@ -4,9 +4,12 @@
     <div class="screen active">
       <div class="assessment-header">
         <div class="assessment-info">
-          <h2>{{ displayHeader }}</h2>
-          <p>{{ assessmentStore.currentAssessment.metadata.description }}</p>
-        </div>
+            <div class="assessment-title-row">
+              <NumberBubble :value="displayNumber" :size="40" aria-hidden />
+              <h2>{{ displayHeader }}</h2>
+            </div>
+            <p>{{ assessmentStore.currentAssessment.metadata.description }}</p>
+          </div>
         <div class="progress-info">
           <div class="question-counter">
             Question {{ assessmentStore.currentQuestionIndex + 1 }} of {{ assessmentStore.totalQuestions }}
@@ -72,7 +75,8 @@ import { useUiStore } from '@/stores/uiStore';
 import { useTimer } from '@/composables/useTimer';
 import Question from '@/components/Question.vue';
 import { formatTimeTaken, getImprovementTopics } from '@/utils/resultsUtils';
-import { formatAssessmentLabel } from '@/utils/assessmentUtils';
+import { formatAssessmentLabel, extractAssessmentNumber } from '@/utils/assessmentUtils';
+import NumberBubble from '@/components/NumberBubble.vue';
 import ProgressBar from '@/components/ProgressBar.vue';
 import QuestionGrid from '@/components/QuestionGrid.vue';
 import type { TopicBreakdown, QuestionReview, ResultRecord } from '@/models';
@@ -91,6 +95,15 @@ const displayHeader = computed(() => {
   const meta = assessmentStore.currentAssessment?.metadata;
   if (!meta) return '';
   return formatAssessmentLabel(meta.fileId, meta.title);
+});
+
+const displayNumber = computed<number | null>(() => {
+  try {
+    const meta: any = assessmentStore.currentAssessment?.metadata || {};
+    return extractAssessmentNumber(meta.fileId || meta.assessmentId || meta.id || null);
+  } catch (e) {
+    return null;
+  }
 });
 
 // Question formatting is handled by the extracted `Question` component.
@@ -365,6 +378,11 @@ onUnmounted(() => {
 
 .assessment-info {
   flex: 1;
+  .assessment-title-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
   h2 {
     margin: 0 0 8px 0;
     font-size: 1.8rem;

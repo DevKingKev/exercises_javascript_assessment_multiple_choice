@@ -1,8 +1,8 @@
 <template>
   <div class="assessment-card" @click="$emit('select')">
     <div v-if="hasCompletedResults" class="completion-badge" aria-hidden="true">✓</div>
-    <div class="number-wrapper" v-if="displayNumber !== null" :aria-hidden="true">
-      <span class="number-bubble">{{ displayNumber }}</span>
+    <div class="number-slot">
+      <NumberBubble :value="displayNumber" aria-hidden />
     </div>
 
     <h4 class="assessment-card-title">{{ title }}</h4>
@@ -17,6 +17,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { extractAssessmentNumber, normalizeAssessmentId } from '@/utils/assessmentUtils';
+import NumberBubble from '@/components/NumberBubble.vue';
 
 interface Props {
   title: string;
@@ -123,26 +124,10 @@ const hasCompletedResults = computed<boolean>(() => {
     font-weight: 500; // $font-weight-medium
   }
 }
-
-.number-wrapper {
+.number-slot {
   position: absolute;
   top: 5px;
   right: 5px;
-}
-
-.number-bubble {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 36px;
-  height: 36px;
-  padding: 0 8px;
-  border-radius: 999px;
-  background: linear-gradient(135deg, #6b46c1, #5a67d8);
-  color: #fff;
-  font-weight: 700;
-  box-shadow: 0 6px 18px rgba(88, 87, 223, 0.28);
-  font-size: 0.95rem;
 }
 </style>
 
@@ -168,12 +153,6 @@ const hasCompletedResults = computed<boolean>(() => {
 :root[data-theme="dark"] .assessment-meta span {
   background: #1f2937;
   color: #9aa7b8;
-}
-
-:root[data-theme="dark"] .number-bubble {
-  background: linear-gradient(135deg, #7c3aed, #2563eb);
-  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.5);
-  color: #fff;
 }
 
 :root[data-theme="dark"] .completion-badge {
