@@ -1,0 +1,728 @@
+[
+  {
+    "file": "multiple_choice/assessments/html/easy/assessment1.js",
+    "total": 30,
+    "counts": {
+      "A": 8,
+      "B": 8,
+      "C": 7,
+      "D": 7
+    },
+    "skew": 0.26666666666666666
+  },
+  {
+    "file": "multiple_choice/assessments/html/easy/assessment10.js",
+    "total": 30,
+    "counts": {
+      "A": 8,
+      "B": 8,
+      "C": 7,
+      "D": 7
+    },
+    "skew": 0.26666666666666666
+  },
+  {
+    "file": "multiple_choice/assessments/html/easy/assessment11.js",
+    "total": 30,
+    "counts": {
+      "A": 8,
+      "B": 8,
+      "C": 7,
+      "D": 7
+    },
+    "skew": 0.26666666666666666
+  },
+  {
+    "file": "multiple_choice/assessments/html/easy/assessment12.js",
+    "total": 30,
+    "counts": {
+      "A": 8,
+      "B": 8,
+      "C": 7,
+      "D": 7
+    },
+    "skew": 0.26666666666666666
+  },
+  {
+    "file": "multiple_choice/assessments/html/easy/assessment13.js",
+    "total": 30,
+    "counts": {
+      "A": 8,
+      "B": 8,
+      "C": 7,
+      "D": 7
+    },
+    "skew": 0.26666666666666666
+  },
+  {
+    "file": "multiple_choice/assessments/html/easy/assessment14.js",
+    "total": 30,
+    "counts": {
+      "A": 8,
+      "B": 8,
+      "C": 7,
+      "D": 7
+    },
+    "skew": 0.26666666666666666
+  },
+  {
+    "file": "multiple_choice/assessments/html/easy/assessment15.js",
+    "total": 29,
+    "counts": {
+      "A": 8,
+      "B": 8,
+      "C": 6,
+      "D": 7
+    },
+    "skew": 0.27586206896551724
+  },
+  {
+    "file": "multiple_choice/assessments/html/easy/assessment2.js",
+    "total": 30,
+    "counts": {
+      "A": 8,
+      "B": 8,
+      "C": 7,
+      "D": 7
+    },
+    "skew": 0.26666666666666666
+  },
+  {
+    "file": "multiple_choice/assessments/html/easy/assessment3.js",
+    "total": 30,
+    "counts": {
+      "A": 8,
+      "B": 8,
+      "C": 7,
+      "D": 7
+    },
+    "skew": 0.26666666666666666
+  },
+  {
+    "file": "multiple_choice/assessments/html/easy/assessment4.js",
+    "total": 30,
+    "counts": {
+      "A": 8,
+      "B": 8,
+      "C": 7,
+      "D": 7
+    },
+    "skew": 0.26666666666666666
+  },
+  {
+    "file": "multiple_choice/assessments/html/easy/assessment5.js",
+    "total": 30,
+    "counts": {
+      "A": 8,
+      "B": 8,
+      "C": 7,
+      "D": 7
+    },
+    "skew": 0.26666666666666666
+  },
+  {
+    "file": "multiple_choice/assessments/html/easy/assessment6.js",
+    "total": 30,
+    "counts": {
+      "A": 8,
+      "B": 8,
+      "C": 7,
+      "D": 7
+    },
+    "skew": 0.26666666666666666
+  },
+  {
+    "file": "multiple_choice/assessments/html/easy/assessment7.js",
+    "total": 30,
+    "counts": {
+      "A": 8,
+      "B": 8,
+      "C": 7,
+      "D": 7
+    },
+    "skew": 0.26666666666666666
+  },
+  {
+    "file": "multiple_choice/assessments/html/easy/assessment8.js",
+    "total": 30,
+    "counts": {
+      "A": 8,
+      "B": 8,
+      "C": 7,
+      "D": 7
+    },
+    "skew": 0.26666666666666666
+  },
+  {
+    "file": "multiple_choice/assessments/html/easy/assessment9.js",
+    "total": 30,
+    "counts": {
+      "A": 8,
+      "B": 8,
+      "C": 7,
+      "D": 7
+    },
+    "skew": 0.26666666666666666
+  },
+  {
+    "file": "multiple_choice/assessments/javascript/easy/assessment1.js",
+    "total": 20,
+    "counts": {
+      "A": 5,
+      "B": 5,
+      "C": 5,
+      "D": 5
+    },
+    "skew": 0.25
+  },
+  {
+    "file": "multiple_choice/assessments/javascript/easy/assessment10.js",
+    "total": 30,
+    "counts": {
+      "A": 8,
+      "B": 8,
+      "C": 7,
+      "D": 7
+    },
+    "skew": 0.26666666666666666
+  },
+  {
+    "file": "multiple_choice/assessments/javascript/easy/assessment11.js",
+    "total": 30,
+    "counts": {
+      "A": 8,
+      "B": 8,
+      "C": 7,
+      "D": 7
+    },
+    "skew": 0.26666666666666666
+  },
+  {
+    "file": "multiple_choice/assessments/javascript/easy/assessment12.js",
+    "total": 30,
+    "counts": {
+      "A": 8,
+      "B": 8,
+      "C": 7,
+      "D": 7
+    },
+    "skew": 0.26666666666666666
+  },
+  {
+    "file": "multiple_choice/assessments/javascript/easy/assessment13.js",
+    "total": 30,
+    "counts": {
+      "A": 8,
+      "B": 8,
+      "C": 7,
+      "D": 7
+    },
+    "skew": 0.26666666666666666
+  },
+  {
+    "file": "multiple_choice/assessments/javascript/easy/assessment14.js",
+    "total": 30,
+    "counts": {
+      "A": 8,
+      "B": 8,
+      "C": 7,
+      "D": 7
+    },
+    "skew": 0.26666666666666666
+  },
+  {
+    "file": "multiple_choice/assessments/javascript/easy/assessment15.js",
+    "total": 29,
+    "counts": {
+      "A": 8,
+      "B": 7,
+      "C": 7,
+      "D": 7
+    },
+    "skew": 0.27586206896551724
+  },
+  {
+    "file": "multiple_choice/assessments/javascript/easy/assessment16.js",
+    "total": 30,
+    "counts": {
+      "A": 8,
+      "B": 8,
+      "C": 7,
+      "D": 7
+    },
+    "skew": 0.26666666666666666
+  },
+  {
+    "file": "multiple_choice/assessments/javascript/easy/assessment17.js",
+    "total": 30,
+    "counts": {
+      "A": 8,
+      "B": 8,
+      "C": 7,
+      "D": 7
+    },
+    "skew": 0.26666666666666666
+  },
+  {
+    "file": "multiple_choice/assessments/javascript/easy/assessment18.js",
+    "total": 30,
+    "counts": {
+      "A": 8,
+      "B": 8,
+      "C": 7,
+      "D": 7
+    },
+    "skew": 0.26666666666666666
+  },
+  {
+    "file": "multiple_choice/assessments/javascript/easy/assessment19.js",
+    "total": 30,
+    "counts": {
+      "A": 8,
+      "B": 8,
+      "C": 7,
+      "D": 7
+    },
+    "skew": 0.26666666666666666
+  },
+  {
+    "file": "multiple_choice/assessments/javascript/easy/assessment2.js",
+    "total": 30,
+    "counts": {
+      "A": 8,
+      "B": 8,
+      "C": 7,
+      "D": 7
+    },
+    "skew": 0.26666666666666666
+  },
+  {
+    "file": "multiple_choice/assessments/javascript/easy/assessment20.js",
+    "total": 30,
+    "counts": {
+      "A": 8,
+      "B": 8,
+      "C": 7,
+      "D": 7
+    },
+    "skew": 0.26666666666666666
+  },
+  {
+    "file": "multiple_choice/assessments/javascript/easy/assessment21.js",
+    "total": 30,
+    "counts": {
+      "A": 8,
+      "B": 8,
+      "C": 7,
+      "D": 7
+    },
+    "skew": 0.26666666666666666
+  },
+  {
+    "file": "multiple_choice/assessments/javascript/easy/assessment22.js",
+    "total": 30,
+    "counts": {
+      "A": 8,
+      "B": 8,
+      "C": 7,
+      "D": 7
+    },
+    "skew": 0.26666666666666666
+  },
+  {
+    "file": "multiple_choice/assessments/javascript/easy/assessment23.js",
+    "total": 30,
+    "counts": {
+      "A": 8,
+      "B": 8,
+      "C": 7,
+      "D": 7
+    },
+    "skew": 0.26666666666666666
+  },
+  {
+    "file": "multiple_choice/assessments/javascript/easy/assessment24.js",
+    "total": 30,
+    "counts": {
+      "A": 8,
+      "B": 8,
+      "C": 7,
+      "D": 7
+    },
+    "skew": 0.26666666666666666
+  },
+  {
+    "file": "multiple_choice/assessments/javascript/easy/assessment25.js",
+    "total": 30,
+    "counts": {
+      "A": 8,
+      "B": 8,
+      "C": 7,
+      "D": 7
+    },
+    "skew": 0.26666666666666666
+  },
+  {
+    "file": "multiple_choice/assessments/javascript/easy/assessment26.js",
+    "total": 30,
+    "counts": {
+      "A": 8,
+      "B": 8,
+      "C": 7,
+      "D": 7
+    },
+    "skew": 0.26666666666666666
+  },
+  {
+    "file": "multiple_choice/assessments/javascript/easy/assessment27.js",
+    "total": 30,
+    "counts": {
+      "A": 8,
+      "B": 8,
+      "C": 7,
+      "D": 7
+    },
+    "skew": 0.26666666666666666
+  },
+  {
+    "file": "multiple_choice/assessments/javascript/easy/assessment28.js",
+    "total": 30,
+    "counts": {
+      "A": 8,
+      "B": 8,
+      "C": 7,
+      "D": 7
+    },
+    "skew": 0.26666666666666666
+  },
+  {
+    "file": "multiple_choice/assessments/javascript/easy/assessment29.js",
+    "total": 30,
+    "counts": {
+      "A": 8,
+      "B": 8,
+      "C": 7,
+      "D": 7
+    },
+    "skew": 0.26666666666666666
+  },
+  {
+    "file": "multiple_choice/assessments/javascript/easy/assessment3.js",
+    "total": 30,
+    "counts": {
+      "A": 8,
+      "B": 8,
+      "C": 7,
+      "D": 7
+    },
+    "skew": 0.26666666666666666
+  },
+  {
+    "file": "multiple_choice/assessments/javascript/easy/assessment30.js",
+    "total": 30,
+    "counts": {
+      "A": 8,
+      "B": 8,
+      "C": 7,
+      "D": 7
+    },
+    "skew": 0.26666666666666666
+  },
+  {
+    "file": "multiple_choice/assessments/javascript/easy/assessment31.js",
+    "total": 30,
+    "counts": {
+      "A": 8,
+      "B": 8,
+      "C": 7,
+      "D": 7
+    },
+    "skew": 0.26666666666666666
+  },
+  {
+    "file": "multiple_choice/assessments/javascript/easy/assessment32.js",
+    "total": 30,
+    "counts": {
+      "A": 8,
+      "B": 8,
+      "C": 7,
+      "D": 7
+    },
+    "skew": 0.26666666666666666
+  },
+  {
+    "file": "multiple_choice/assessments/javascript/easy/assessment33.js",
+    "total": 30,
+    "counts": {
+      "A": 8,
+      "B": 8,
+      "C": 7,
+      "D": 7
+    },
+    "skew": 0.26666666666666666
+  },
+  {
+    "file": "multiple_choice/assessments/javascript/easy/assessment34.js",
+    "total": 30,
+    "counts": {
+      "A": 8,
+      "B": 8,
+      "C": 7,
+      "D": 7
+    },
+    "skew": 0.26666666666666666
+  },
+  {
+    "file": "multiple_choice/assessments/javascript/easy/assessment35.js",
+    "total": 30,
+    "counts": {
+      "A": 8,
+      "B": 8,
+      "C": 7,
+      "D": 7
+    },
+    "skew": 0.26666666666666666
+  },
+  {
+    "file": "multiple_choice/assessments/javascript/easy/assessment36.js",
+    "total": 30,
+    "counts": {
+      "A": 8,
+      "B": 8,
+      "C": 7,
+      "D": 7
+    },
+    "skew": 0.26666666666666666
+  },
+  {
+    "file": "multiple_choice/assessments/javascript/easy/assessment37.js",
+    "total": 30,
+    "counts": {
+      "A": 8,
+      "B": 8,
+      "C": 7,
+      "D": 7
+    },
+    "skew": 0.26666666666666666
+  },
+  {
+    "file": "multiple_choice/assessments/javascript/easy/assessment38.js",
+    "total": 30,
+    "counts": {
+      "A": 8,
+      "B": 8,
+      "C": 7,
+      "D": 7
+    },
+    "skew": 0.26666666666666666
+  },
+  {
+    "file": "multiple_choice/assessments/javascript/easy/assessment39.js",
+    "total": 30,
+    "counts": {
+      "A": 8,
+      "B": 8,
+      "C": 7,
+      "D": 7
+    },
+    "skew": 0.26666666666666666
+  },
+  {
+    "file": "multiple_choice/assessments/javascript/easy/assessment4.js",
+    "total": 30,
+    "counts": {
+      "A": 8,
+      "B": 8,
+      "C": 7,
+      "D": 7
+    },
+    "skew": 0.26666666666666666
+  },
+  {
+    "file": "multiple_choice/assessments/javascript/easy/assessment40.js",
+    "total": 30,
+    "counts": {
+      "A": 8,
+      "B": 8,
+      "C": 7,
+      "D": 7
+    },
+    "skew": 0.26666666666666666
+  },
+  {
+    "file": "multiple_choice/assessments/javascript/easy/assessment41.js",
+    "total": 30,
+    "counts": {
+      "A": 8,
+      "B": 8,
+      "C": 7,
+      "D": 7
+    },
+    "skew": 0.26666666666666666
+  },
+  {
+    "file": "multiple_choice/assessments/javascript/easy/assessment42.js",
+    "total": 30,
+    "counts": {
+      "A": 8,
+      "B": 8,
+      "C": 7,
+      "D": 7
+    },
+    "skew": 0.26666666666666666
+  },
+  {
+    "file": "multiple_choice/assessments/javascript/easy/assessment43.js",
+    "total": 30,
+    "counts": {
+      "A": 8,
+      "B": 8,
+      "C": 7,
+      "D": 7
+    },
+    "skew": 0.26666666666666666
+  },
+  {
+    "file": "multiple_choice/assessments/javascript/easy/assessment5.js",
+    "total": 30,
+    "counts": {
+      "A": 8,
+      "B": 8,
+      "C": 7,
+      "D": 7
+    },
+    "skew": 0.26666666666666666
+  },
+  {
+    "file": "multiple_choice/assessments/javascript/easy/assessment6.js",
+    "total": 30,
+    "counts": {
+      "A": 8,
+      "B": 8,
+      "C": 7,
+      "D": 7
+    },
+    "skew": 0.26666666666666666
+  },
+  {
+    "file": "multiple_choice/assessments/javascript/easy/assessment7.js",
+    "total": 30,
+    "counts": {
+      "A": 8,
+      "B": 8,
+      "C": 7,
+      "D": 7
+    },
+    "skew": 0.26666666666666666
+  },
+  {
+    "file": "multiple_choice/assessments/javascript/easy/assessment8.js",
+    "total": 30,
+    "counts": {
+      "A": 8,
+      "B": 8,
+      "C": 7,
+      "D": 7
+    },
+    "skew": 0.26666666666666666
+  },
+  {
+    "file": "multiple_choice/assessments/javascript/easy/assessment9.js",
+    "total": 30,
+    "counts": {
+      "A": 8,
+      "B": 8,
+      "C": 7,
+      "D": 7
+    },
+    "skew": 0.26666666666666666
+  },
+  {
+    "file": "multiple_choice/assessments/javascript/medium/assessment1.js",
+    "total": 25,
+    "counts": {
+      "A": 7,
+      "B": 6,
+      "C": 6,
+      "D": 6
+    },
+    "skew": 0.28
+  },
+  {
+    "file": "multiple_choice/assessments/javascript/medium/assessment2.js",
+    "total": 25,
+    "counts": {
+      "A": 7,
+      "B": 6,
+      "C": 6,
+      "D": 6
+    },
+    "skew": 0.28
+  },
+  {
+    "file": "multiple_choice/assessments/javascript/medium/assessment3.js",
+    "total": 25,
+    "counts": {
+      "A": 7,
+      "B": 6,
+      "C": 6,
+      "D": 6
+    },
+    "skew": 0.28
+  },
+  {
+    "file": "multiple_choice/assessments/javascript/medium/assessment4.js",
+    "total": 25,
+    "counts": {
+      "A": 7,
+      "B": 6,
+      "C": 6,
+      "D": 6
+    },
+    "skew": 0.28
+  },
+  {
+    "file": "multiple_choice/assessments/javascript/medium/assessment5.js",
+    "total": 25,
+    "counts": {
+      "A": 7,
+      "B": 6,
+      "C": 6,
+      "D": 6
+    },
+    "skew": 0.28
+  },
+  {
+    "file": "multiple_choice/assessments/javascript/medium/assessment6.js",
+    "total": 25,
+    "counts": {
+      "A": 7,
+      "B": 6,
+      "C": 6,
+      "D": 6
+    },
+    "skew": 0.28
+  },
+  {
+    "file": "multiple_choice/assessments/javascript/medium/assessment7.js",
+    "total": 25,
+    "counts": {
+      "A": 7,
+      "B": 6,
+      "C": 6,
+      "D": 6
+    },
+    "skew": 0.28
+  },
+  {
+    "file": "multiple_choice/assessments/javascript/medium/assessment8.js",
+    "total": 25,
+    "counts": {
+      "A": 7,
+      "B": 6,
+      "C": 6,
+      "D": 6
+    },
+    "skew": 0.28
+  }
+]
