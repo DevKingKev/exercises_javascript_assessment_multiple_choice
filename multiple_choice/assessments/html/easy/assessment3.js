@@ -55,13 +55,13 @@ const questions = [
         "id": 1,
         "question": "What is the correct syntax for embedding an image in HTML?",
         "options": {
-            "A": "[CODE]<img src=\"photo.jpg\" alt=\"Description\">[/CODE]",
-            "B": "[CODE]<image src=\"photo.jpg\">[/CODE]",
-            "C": "[CODE]<img href=\"photo.jpg\">[/CODE]",
-            "D": "[CODE]<picture src=\"photo.jpg\">[/CODE]"
+            "A": "<pre><img src=\"photo.jpg\" alt=\"Description\"></pre>",
+            "B": "<pre><image src=\"photo.jpg\"></pre>",
+            "C": "<pre><img href=\"photo.jpg\"></pre>",
+            "D": "<pre><picture src=\"photo.jpg\"></pre>"
         },
         "correct": "A",
-        "explanation": "The <pre>&lt;img&gt;</pre> element requires the <pre>src</pre> attribute (source file path) and should include an <pre>alt</pre> attribute (alternative text) for accessibility. The element is self-closing and doesn't use <pre>href</pre>.",
+        "explanation": "The <pre><img></pre> element requires the <pre>src</pre> attribute (source file path) and should include an <pre>alt</pre> attribute (alternative text) for accessibility. The element is self-closing and doesn't use <pre>href</pre>.",
         "topic": {
             "topics": ["Image elements and attributes"]
         }
@@ -83,7 +83,7 @@ const questions = [
     },
     {
         "id": 3,
-        "question": "What is the purpose of the <pre>&lt;iframe&gt;</pre> element?",
+        "question": "What is the purpose of the <pre><iframe/></pre> element?",
         "options": {
             "A": "Embeds another HTML page or external content",
             "B": "Creates an internal frame border",
@@ -91,7 +91,7 @@ const questions = [
             "D": "Creates a window popup"
         },
         "correct": "A",
-        "explanation": "The <pre>&lt;iframe&gt;</pre> (inline frame) element embeds another HTML document or external content within the current page. Common uses include embedding maps, videos, or content from other websites. Use the <pre>src</pre> attribute to specify the URL.",
+        "explanation": "The <pre><iframe></pre> (inline frame) element embeds another HTML document or external content within the current page. Common uses include embedding maps, videos, or content from other websites. Use the <pre>src</pre> attribute to specify the URL.",
         "topic": {
             "topics": ["Iframe and embedded content"]
         }
@@ -121,7 +121,7 @@ const questions = [
             "D": "Makes the image responsive"
         },
         "correct": "A",
-        "explanation": "The <pre>&lt;figure&gt;</pre> element groups self-contained content (like images, diagrams, or code) with an optional <pre>&lt;figcaption&gt;</pre> that provides a caption or description. This creates a semantic relationship between the content and its caption.",
+        "explanation": "The <pre><figure></pre> element groups self-contained content (like images, diagrams, or code) with an optional <pre><figcaption></pre> that provides a caption or description. This creates a semantic relationship between the content and its caption.",
         "topic": {
             "topics": ["Figure and figcaption"]
         }
@@ -143,7 +143,7 @@ const questions = [
     },
     {
         "id": 7,
-        "question": "What is the purpose of the <pre>&lt;source&gt;</pre> element inside [CODE]<video>[/CODE]?",
+        "question": "What is the purpose of the <pre><source></pre> element inside [CODE]<video>[/CODE]?",
         "options": {
             "A": "Provides multiple video formats for browser compatibility",
             "B": "Specifies the video source code",
@@ -151,7 +151,7 @@ const questions = [
             "D": "Creates a video playlist"
         },
         "correct": "A",
-        "explanation": "The <pre>&lt;source&gt;</pre> element allows providing multiple video/audio formats. Browsers play the first format they support. Example: [CODE]<video controls>\n  <source src=\"vid.mp4\" type=\"video/mp4\">\n  <source src=\"vid.webm\" type=\"video/webm\">\n</video>[/CODE]",
+        "explanation": "The <pre><source></pre> element allows providing multiple video/audio formats. Browsers play the first format they support. Example: [CODE]<video controls>\n  <source src=\"vid.mp4\" type=\"video/mp4\">\n  <source src=\"vid.webm\" type=\"video/webm\">\n</video>[/CODE]",
         "topic": {
             "topics": ["Source and track elements"]
         }
@@ -190,20 +190,20 @@ const questions = [
         "id": 10,
         "question": "How do you embed a YouTube video using an iframe?",
         "options": {
-            "A": "[CODE]<iframe src=\"https://www.youtube.com/embed/VIDEO_ID\"></iframe>[/CODE]",
-            "B": "[CODE]<video src=\"youtube.com/VIDEO_ID\"></video>[/CODE]",
-            "C": "[CODE]<embed src=\"youtube.com/VIDEO_ID\">[/CODE]",
-            "D": "[CODE]<youtube id=\"VIDEO_ID\"></youtube>[/CODE]"
+            "A": "<pre><iframe src=\"https://www.youtube.com/embed/VIDEO_ID\"></iframe></pre>",
+            "B": "<pre><video src=\"youtube.com/VIDEO_ID\"></video></pre>",
+            "C": "<pre><embed src=\"youtube.com/VIDEO_ID\"></embed></pre>",
+            "D": "<pre><youtube id=\"VIDEO_ID\"></youtube></pre>"
         },
         "correct": "A",
-        "explanation": "YouTube provides an embed URL format [CODE]https://www.youtube.com/embed/VIDEO_ID[/CODE] to use with <pre>&lt;iframe&gt;</pre>. Set <pre>width</pre> and <pre>height</pre> attributes for sizing. YouTube's share menu provides the complete embed code.",
+        "explanation": "YouTube provides an embed URL format [CODE]https://www.youtube.com/embed/VIDEO_ID[/CODE] to use with <pre><iframe></pre>. Set <pre>width</pre> and <pre>height</pre> attributes for sizing. YouTube's share menu provides the complete embed code.",
         "topic": {
             "topics": ["Iframe and embedded content"]
         }
     },
     {
         "id": 11,
-        "question": "What does the <pre>&lt;track&gt;</pre> element provide in [CODE]<video>[/CODE]?",
+        "question": "What does the <pre><track></pre> element provide in [CODE]<video>[/CODE]?",
         "options": {
             "A": "Subtitles, captions, or other timed text tracks",
             "B": "Audio tracks for the video",
@@ -211,7 +211,7 @@ const questions = [
             "D": "Playback tracking analytics"
         },
         "correct": "A",
-        "explanation": "The <pre>&lt;track&gt;</pre> element specifies text tracks for video/audio (subtitles, captions, descriptions). Example: [CODE]<video controls>\n  <source src=\"movie.mp4\">\n  <track kind=\"subtitles\" src=\"subs.vtt\" srclang=\"en\">\n</video>[/CODE]",
+        "explanation": "The <pre><track></pre> element specifies text tracks for video/audio (subtitles, captions, descriptions). Example: [CODE]<video controls>\n  <source src=\"movie.mp4\">\n  <track kind=\"subtitles\" src=\"subs.vtt\" srclang=\"en\">\n</video>[/CODE]",
         "topic": {
             "topics": ["Media accessibility"]
         }
@@ -241,7 +241,7 @@ const questions = [
             "D": "Allows users to choose which format to play"
         },
         "correct": "A",
-        "explanation": "Multiple <pre>&lt;source&gt;</pre> elements provide fallback formats. The browser plays the first supported format. MP3 has broad support; OGG is an open alternative. This ensures audio works across different browsers.",
+        "explanation": "Multiple <pre><source></pre> elements provide fallback formats. The browser plays the first supported format. MP3 has broad support; OGG is an open alternative. This ensures audio works across different browsers.",
         "topic": {
             "topics": ["Source and track elements"]
         }
@@ -263,7 +263,7 @@ const questions = [
     },
     {
         "id": 15,
-        "question": "What is the purpose of the <pre>&lt;embed&gt;</pre> element?",
+        "question": "What is the purpose of the <pre><embed></pre> element?",
         "options": {
             "A": "Embeds external content like PDFs or Flash (deprecated)",
             "B": "Embeds videos only",
@@ -271,7 +271,7 @@ const questions = [
             "D": "Embeds CSS styles"
         },
         "correct": "A",
-        "explanation": "The <pre>&lt;embed&gt;</pre> element embeds external content or plugins. It was commonly used for Flash but is now rarely needed. For most cases, use <pre>&lt;iframe&gt;</pre>, <pre>&lt;video&gt;</pre>, or <pre>&lt;audio&gt;</pre> instead. Example: [CODE]<embed src=\"document.pdf\" type=\"application/pdf\">[/CODE]",
+        "explanation": "The <pre><embed></pre> element embeds external content or plugins. It was commonly used for Flash but is now rarely needed. For most cases, use <pre><iframe></pre>, <pre><video></pre>, or <pre><audio></pre> instead. Example: [CODE]<embed src=\"document.pdf\" type=\"application/pdf\">[/CODE]",
         "topic": {
             "topics": ["Iframe and embedded content"]
         }
@@ -301,7 +301,7 @@ const questions = [
             "D": "Creates a slideshow"
         },
         "correct": "A",
-        "explanation": "The <pre>&lt;picture&gt;</pre> element enables responsive images by serving different images based on conditions like screen size or resolution. The browser picks the first matching <pre>&lt;source&gt;</pre>, falling back to <pre>&lt;img&gt;</pre>. This optimizes images for different devices.",
+        "explanation": "The <pre><picture></pre> element enables responsive images by serving different images based on conditions like screen size or resolution. The browser picks the first matching <pre><source></pre>, falling back to <pre><img></pre>. This optimizes images for different devices.",
         "topic": {
             "topics": ["Responsive images"]
         }
@@ -338,15 +338,15 @@ const questions = [
     },
     {
         "id": 20,
-        "question": "What does the <pre>&lt;figcaption&gt;</pre> element do?",
+        "question": "What does the <pre><figcaption></pre> element do?",
         "options": {
-            "A": "Provides a caption for content inside <pre>&lt;figure&gt;</pre>",
+            "A": "Provides a caption for content inside <pre><figure></figure></pre>",
             "B": "Creates figure captions for any element",
             "C": "Adds figure numbers automatically",
             "D": "Styles captions with special formatting"
         },
         "correct": "A",
-        "explanation": "The <pre>&lt;figcaption&gt;</pre> element defines a caption or legend for a <pre>&lt;figure&gt;</pre>. It must be the first or last child of <pre>&lt;figure&gt;</pre>. This creates an accessible association between content and its description.",
+        "explanation": "The <pre><figcaption></pre> element defines a caption or legend for a <pre><figure></pre>. It must be the first or last child of <pre><figure></pre>. This creates an accessible association between content and its description.",
         "topic": {
             "topics": ["Figure and figcaption"]
         }
@@ -368,15 +368,15 @@ const questions = [
     },
     {
         "id": 22,
-        "question": "What is the difference between <pre>&lt;video&gt;</pre> and <pre>&lt;iframe&gt;</pre> for videos?",
+        "question": "What is the difference between <pre><video></pre> and <pre><iframe></pre> for videos?",
         "options": {
-            "A": "<pre>&lt;video&gt;</pre> plays local files; <pre>&lt;iframe&gt;</pre> embeds external players",
+            "A": "<pre><video></pre> plays local files; <pre><iframe></pre> embeds external players",
             "B": "They work identically",
-            "C": "<pre>&lt;iframe&gt;</pre> has better quality",
-            "D": "<pre>&lt;video&gt;</pre> only works on mobile"
+            "C": "<pre><iframe></pre> has better quality",
+            "D": "<pre><video></pre> only works on mobile"
         },
         "correct": "A",
-        "explanation": "Use <pre>&lt;video&gt;</pre> for self-hosted video files with full control over playback and styling. Use <pre>&lt;iframe&gt;</pre> to embed videos from platforms like YouTube or Vimeo, which handle hosting and provide their own player interface.",
+        "explanation": "Use <pre><video></pre> for self-hosted video files with full control over playback and styling. Use <pre><iframe></pre> to embed videos from platforms like YouTube or Vimeo, which handle hosting and provide their own player interface.",
         "topic": {
             "topics": ["Audio and video elements", "Iframe and embedded content"]
         }
@@ -460,13 +460,13 @@ const questions = [
         "id": 28,
         "question": "What is the correct way to specify an image map area?",
         "options": {
-            "A": "Use <pre>&lt;map&gt;</pre> with <pre>&lt;area&gt;</pre> elements",
+            "A": "Use <pre><map></pre> with <pre><area></pre> elements",
             "B": "Use CSS to define clickable regions",
-            "C": "Use <pre>&lt;imagemap&gt;</pre> element",
+            "C": "Use <pre><imagemap></pre> element",
             "D": "Use JavaScript only"
         },
         "correct": "A",
-        "explanation": "Image maps use the <pre>&lt;map&gt;</pre> element containing <pre>&lt;area&gt;</pre> elements that define clickable regions. Link the map to an image using [CODE]<img src=\"map.jpg\" usemap=\"#mapname\">\n<map name=\"mapname\">\n  <area shape=\"rect\" coords=\"0,0,100,100\" href=\"link.html\">\n</map>[/CODE]",
+        "explanation": "Image maps use the <pre><map></pre> element containing <pre><area></pre> elements that define clickable regions. Link the map to an image using [CODE]<img src=\"map.jpg\" usemap=\"#mapname\">\n<map name=\"mapname\">\n  <area shape=\"rect\" coords=\"0,0,100,100\" href=\"link.html\">\n</map>[/CODE]",
         "topic": {
             "topics": ["Image elements and attributes"]
         }

@@ -7,7 +7,7 @@ export function escapeHtml ( text: string ): string {
     return div.innerHTML;
 }
 
-export function formatWithMarkers ( text: string ): string {
+export function formatWithMarkers ( text: string, domain: string = 'javascript' ): string {
     // Split by code markers [CODE]...[/CODE] (but not <pre> tags yet)
     const parts = text.split( /(\[CODE\][\s\S]*?\[\/CODE\])/g );
 
@@ -27,12 +27,21 @@ export function formatWithMarkers ( text: string ): string {
                 if ( !paragraph ) return '';
 
                 // Handle inline <pre>...</pre> tags within the paragraph
-                // Convert them to <span class="pre"> for valid inline styling
+                // Convert outer <pre> into a real <pre> element, but ensure
+                // the inner content is escaped so any HTML inside it is
+                // shown as text (not executed). We use placeholders so
+                // the paragraph text can be escaped safely then restored.
                 const codeTags: string[] = [];
                 const uniqueMarker = '\x00PRETAGMARKER\x00'; // Use null bytes as unique markers
                 const withPlaceholders = paragraph.replace( /<pre>([\s\S]*?)<\/pre>/g, ( match, content ) => {
                     const index = codeTags.length;
-                    codeTags.push( `<span class="pre">${content}</span>` );
+                    // If domain is html, render a real <pre> with escaped inner content.
+                    // Otherwise preserve previous behaviour: convert to inline span.pre
+                    if ( String( domain ).toLowerCase() === 'html' ) {
+                        codeTags.push( `<pre>${escapeHtml( content )}</pre>` );
+                    } else {
+                        codeTags.push( `<span class="pre">${content}</span>` );
+                    }
                     return `${uniqueMarker}${index}${uniqueMarker}`;
                 } );
 
@@ -73,14 +82,14 @@ export function formatAutoDetect ( text: string ): string {
     } ).join( '' );
 }
 
-export function formatTextWithCode ( text: string ): string {
+export function formatTextWithCode ( text: string, domain: string = 'javascript' ): string {
     // Check if text uses explicit code markers [CODE]...[/CODE] or inline <pre> tags
     if ( text.includes( '[CODE]' ) && text.includes( '[/CODE]' ) ) {
-        return formatWithMarkers( text );
+        return formatWithMarkers( text, domain );
     }
 
     if ( text.includes( '<pre>' ) && text.includes( '</pre>' ) ) {
-        return formatWithMarkers( text );
+        return formatWithMarkers( text, domain );
     }
 
     // Fallback: auto-detect code blocks (legacy support)

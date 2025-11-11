@@ -55,13 +55,13 @@ const questions = [
         "id": 1,
         "question": "Which HTML element defines the root of an HTML document?",
         "options": {
-            "A": "<pre>&lt;html&gt;</pre>",
-            "B": "<pre>&lt;head&gt;</pre>",
-            "C": "<pre>&lt;body&gt;</pre>",
-            "D": "<pre>&lt;DOCTYPE&gt;</pre>"
+            "A": "<pre><html></pre>",
+            "B": "<pre><head></pre>",
+            "C": "<pre><body></pre>",
+            "D": "<pre><DOCTYPE></pre>"
         },
         "correct": "A",
-        "explanation": "The <pre>&lt;html&gt;</pre> element is the root element of an HTML document. It contains all other elements on the page. The <pre>&lt;!DOCTYPE html&gt;</pre> declaration comes before it but is not an element. The <pre>&lt;head&gt;</pre> and <pre>&lt;body&gt;</pre> elements are children of <pre>&lt;html&gt;</pre>.",
+        "explanation": "The <pre><html></pre> element is the root element of an HTML document. It contains all other elements on the page. The <pre><!DOCTYPE html></pre> declaration comes before it but is not an element. The <pre><head></pre> and <pre><body></pre> elements are children of <pre><html></pre>.",
         "topic": {
             "topics": ["HTML document structure"]
         }
@@ -85,13 +85,13 @@ const questions = [
         "id": 3,
         "question": "Which element is used to create a hyperlink?",
         "options": {
-            "A": "<pre>&lt;a&gt;</pre>",
-            "B": "<pre>&lt;link&gt;</pre>",
-            "C": "<pre>&lt;href&gt;</pre>",
-            "D": "<pre>&lt;url&gt;</pre>"
+            "A": "<pre><a></pre>",
+            "B": "<pre><link></pre>",
+            "C": "<pre><href></pre>",
+            "D": "<pre><url></pre>"
         },
         "correct": "A",
-        "explanation": "The <pre>&lt;a&gt;</pre> (anchor) element creates hyperlinks using the <pre>href</pre> attribute. The <pre>&lt;link&gt;</pre> element is used in the <pre>&lt;head&gt;</pre> to link external resources like stylesheets.",
+        "explanation": "The <pre><a></pre> (anchor) element creates hyperlinks using the <pre>href</pre> attribute. The <pre><link></pre> element is used in the <pre><head></pre> to link external resources like stylesheets.",
         "topic": {
             "topics": ["Links and navigation"]
         }
@@ -106,7 +106,7 @@ const questions = [
             "D": "A table"
         },
         "correct": "A",
-        "explanation": "The <pre>&lt;ul&gt;</pre> (unordered list) element creates a bulleted list. Each <pre>&lt;li&gt;</pre> (list item) represents one bullet point. For numbered lists, use <pre>&lt;ol&gt;</pre> (ordered list) instead.",
+        "explanation": "The <pre><ul></pre> (unordered list) element creates a bulleted list. Each <pre><li></pre> (list item) represents one bullet point. For numbered lists, use <pre><ol></pre> (ordered list) instead.",
         "topic": {
             "topics": ["Lists and tables"]
         }
@@ -115,13 +115,13 @@ const questions = [
         "id": 5,
         "question": "Which HTML5 element is used to define a header section of a page or section?",
         "options": {
-            "A": "<pre>&lt;header&gt;</pre>",
-            "B": "<pre>&lt;head&gt;</pre>",
-            "C": "<pre>&lt;top&gt;</pre>",
-            "D": "<pre>&lt;section&gt;</pre>"
+            "A": "<pre><header></pre>",
+            "B": "<pre><head></pre>",
+            "C": "<pre><top></pre>",
+            "D": "<pre><section></pre>"
         },
         "correct": "A",
-        "explanation": "The <pre>&lt;header&gt;</pre> element represents introductory content, typically containing headings, logos, or navigation. Don't confuse it with <pre>&lt;head&gt;</pre>, which contains metadata and is not visible on the page.",
+        "explanation": "The <pre><header></pre> element represents introductory content, typically containing headings, logos, or navigation. Don't confuse it with <pre><head></pre>, which contains metadata and is not visible on the page.",
         "topic": {
             "topics": ["Semantic HTML"]
         }
@@ -130,28 +130,28 @@ const questions = [
         "id": 6,
         "question": "What is the correct way to make text bold in HTML?",
         "options": {
-            "A": "<pre>&lt;strong&gt;</pre> or <pre>&lt;b&gt;</pre>",
-            "B": "<pre>&lt;bold&gt;</pre>",
-            "C": "<pre>&lt;em&gt;</pre>",
-            "D": "<pre>&lt;i&gt;</pre>"
+            "A": "<pre><strong></pre> or <pre><b></pre>",
+            "B": "<pre><bold></pre>",
+            "C": "<pre><em></pre>",
+            "D": "<pre><i></pre>"
         },
         "correct": "A",
-        "explanation": "Both <pre>&lt;strong&gt;</pre> and <pre>&lt;b&gt;</pre> make text bold. <pre>&lt;strong&gt;</pre> indicates strong importance (semantic), while <pre>&lt;b&gt;</pre> is purely stylistic. <pre>&lt;em&gt;</pre> and <pre>&lt;i&gt;</pre> create italic text instead.",
+        "explanation": "Both <pre><strong></pre> and <pre><b></pre> make text bold. <pre><strong></pre> indicates strong importance (semantic), while <pre><b></pre> is purely stylistic. <pre><em></pre> and <pre><i></pre> create italic text instead.",
         "topic": {
             "topics": ["Text formatting"]
         }
     },
     {
         "id": 7,
-        "question": "Where should the <pre>&lt;title&gt;</pre> element be placed in an HTML document?",
+        "question": "Where should the <pre><title></pre> element be placed in an HTML document?",
         "options": {
-            "A": "Inside the <pre>&lt;head&gt;</pre> section",
-            "B": "Inside the <pre>&lt;body&gt;</pre> section",
-            "C": "Before the <pre>&lt;html&gt;</pre> tag",
+            "A": "Inside the <pre><head></pre> section",
+            "B": "Inside the <pre><body></pre> section",
+            "C": "Before the <pre><html></pre> tag",
             "D": "Anywhere in the document"
         },
         "correct": "A",
-        "explanation": "The <pre>&lt;title&gt;</pre> element must be placed inside the <pre>&lt;head&gt;</pre> section. It defines the document title shown in the browser tab and is required for valid HTML. It's not displayed in the page body.",
+        "explanation": "The <pre><title></pre> element must be placed inside the <pre><head></pre> section. It defines the document title shown in the browser tab and is required for valid HTML. It's not displayed in the page body.",
         "topic": {
             "topics": ["HTML document structure"]
         }
@@ -175,20 +175,20 @@ const questions = [
         "id": 9,
         "question": "Which element is used to define the most important heading?",
         "options": {
-            "A": "<pre>&lt;h1&gt;</pre>",
-            "B": "<pre>&lt;h6&gt;</pre>",
-            "C": "<pre>&lt;heading&gt;</pre>",
-            "D": "<pre>&lt;header&gt;</pre>"
+            "A": "<pre><h1></pre>",
+            "B": "<pre><h6></pre>",
+            "C": "<pre><heading></pre>",
+            "D": "<pre><header></pre>"
         },
         "correct": "A",
-        "explanation": "The <pre>&lt;h1&gt;</pre> element defines the most important heading. Headings range from <pre>&lt;h1&gt;</pre> (most important) to <pre>&lt;h6&gt;</pre> (least important). Use only one <pre>&lt;h1&gt;</pre> per page for best SEO and accessibility.",
+        "explanation": "The <pre><h1></pre> element defines the most important heading. Headings range from <pre><h1></pre> (most important) to <pre><h6></pre> (least important). Use only one <pre><h1></pre> per page for best SEO and accessibility.",
         "topic": {
             "topics": ["Common HTML elements"]
         }
     },
     {
         "id": 10,
-        "question": "What is the purpose of the <pre>&lt;br&gt;</pre> tag?",
+        "question": "What is the purpose of the <pre><br></pre> tag?",
         "options": {
             "A": "Inserts a single line break",
             "B": "Makes text bold",
@@ -196,7 +196,7 @@ const questions = [
             "D": "Adds a border"
         },
         "correct": "A",
-        "explanation": "The <pre>&lt;br&gt;</pre> tag inserts a single line break. It's an empty (self-closing) tag. For paragraphs, use <pre>&lt;p&gt;</pre> instead. Avoid using multiple <pre>&lt;br&gt;</pre> tags for spacing; use CSS instead.",
+        "explanation": "The <pre><br></pre> tag inserts a single line break. It's an empty (self-closing) tag. For paragraphs, use <pre><p></pre> instead. Avoid using multiple <pre><br></pre> tags for spacing; use CSS instead.",
         "topic": {
             "topics": ["Common HTML elements"]
         }
@@ -205,13 +205,13 @@ const questions = [
         "id": 11,
         "question": "Which HTML element defines a paragraph?",
         "options": {
-            "A": "<pre>&lt;p&gt;</pre>",
-            "B": "<pre>&lt;para&gt;</pre>",
-            "C": "<pre>&lt;paragraph&gt;</pre>",
-            "D": "<pre>&lt;text&gt;</pre>"
+            "A": "<pre><p></pre>",
+            "B": "<pre><para></pre>",
+            "C": "<pre><paragraph></pre>",
+            "D": "<pre><text></pre>"
         },
         "correct": "A",
-        "explanation": "The <pre>&lt;p&gt;</pre> element defines a paragraph of text. Browsers automatically add spacing before and after paragraphs. It's a block-level element.",
+        "explanation": "The <pre><p></pre> element defines a paragraph of text. Browsers automatically add spacing before and after paragraphs. It's a block-level element.",
         "topic": {
             "topics": ["Common HTML elements"]
         }
@@ -226,14 +226,14 @@ const questions = [
             "D": "Three paragraphs"
         },
         "correct": "A",
-        "explanation": "The <pre>&lt;ol&gt;</pre> (ordered list) element creates a numbered list. By default, items are numbered 1, 2, 3, etc. You can change the numbering style with the <pre>type</pre> attribute.",
+        "explanation": "The <pre><ol></pre> (ordered list) element creates a numbered list. By default, items are numbered 1, 2, 3, etc. You can change the numbering style with the <pre>type</pre> attribute.",
         "topic": {
             "topics": ["Lists and tables"]
         }
     },
     {
         "id": 13,
-        "question": "Which attribute is required for the <pre>&lt;img&gt;</pre> tag to be valid?",
+        "question": "Which attribute is required for the <pre><img></pre> tag to be valid?",
         "options": {
             "A": "<pre>src</pre>",
             "B": "<pre>alt</pre>",
@@ -241,14 +241,14 @@ const questions = [
             "D": "<pre>height</pre>"
         },
         "correct": "A",
-        "explanation": "The <pre>src</pre> (source) attribute is required for the <pre>&lt;img&gt;</pre> tag, as it specifies the image file path. While <pre>alt</pre> is highly recommended for accessibility, only <pre>src</pre> is technically required for the tag to function.",
+        "explanation": "The <pre>src</pre> (source) attribute is required for the <pre><img></pre> tag, as it specifies the image file path. While <pre>alt</pre> is highly recommended for accessibility, only <pre>src</pre> is technically required for the tag to function.",
         "topic": {
             "topics": ["Attributes and their usage"]
         }
     },
     {
         "id": 14,
-        "question": "What is the semantic purpose of the <pre>&lt;nav&gt;</pre> element?",
+        "question": "What is the semantic purpose of the <pre><nav></pre> element?",
         "options": {
             "A": "Defines a section of navigation links",
             "B": "Creates a navigation button",
@@ -256,7 +256,7 @@ const questions = [
             "D": "Adds a menu bar"
         },
         "correct": "A",
-        "explanation": "The <pre>&lt;nav&gt;</pre> element is a semantic HTML5 element that defines a section containing navigation links. It helps screen readers and search engines identify the main navigation areas of a page.",
+        "explanation": "The <pre><nav></pre> element is a semantic HTML5 element that defines a section containing navigation links. It helps screen readers and search engines identify the main navigation areas of a page.",
         "topic": {
             "topics": ["Semantic HTML"]
         }
@@ -265,20 +265,20 @@ const questions = [
         "id": 15,
         "question": "Which element is used to emphasize text with italic style?",
         "options": {
-            "A": "<pre>&lt;em&gt;</pre> or <pre>&lt;i&gt;</pre>",
-            "B": "<pre>&lt;italic&gt;</pre>",
-            "C": "<pre>&lt;strong&gt;</pre>",
-            "D": "<pre>&lt;b&gt;</pre>"
+            "A": "<pre><em></pre> or <pre><i></pre>",
+            "B": "<pre><italic></pre>",
+            "C": "<pre><strong></pre>",
+            "D": "<pre><b></pre>"
         },
         "correct": "A",
-        "explanation": "Both <pre>&lt;em&gt;</pre> (emphasis) and <pre>&lt;i&gt;</pre> (italic) create italic text. <pre>&lt;em&gt;</pre> indicates semantic emphasis, while <pre>&lt;i&gt;</pre> is stylistic. <pre>&lt;strong&gt;</pre> and <pre>&lt;b&gt;</pre> create bold text.",
+        "explanation": "Both <pre><em></pre> (emphasis) and <pre><i></pre> (italic) create italic text. <pre><em></pre> indicates semantic emphasis, while <pre><i></pre> is stylistic. <pre><strong></pre> and <pre><b></pre> create bold text.",
         "topic": {
             "topics": ["Text formatting"]
         }
     },
     {
         "id": 16,
-        "question": "What is the purpose of the <pre>&lt;footer&gt;</pre> element?",
+        "question": "What is the purpose of the <pre><footer></pre> element?",
         "options": {
             "A": "Defines footer content for a page or section",
             "B": "Adds footnotes to text",
@@ -286,7 +286,7 @@ const questions = [
             "D": "Displays copyright text only"
         },
         "correct": "A",
-        "explanation": "The <pre>&lt;footer&gt;</pre> element represents footer content, typically containing copyright, contact info, or related links. It can be used for the page footer or section footers. It's a semantic HTML5 element.",
+        "explanation": "The <pre><footer></pre> element represents footer content, typically containing copyright, contact info, or related links. It can be used for the page footer or section footers. It's a semantic HTML5 element.",
         "topic": {
             "topics": ["Semantic HTML"]
         }
@@ -310,13 +310,13 @@ const questions = [
         "id": 18,
         "question": "Which element creates a table row?",
         "options": {
-            "A": "<pre>&lt;tr&gt;</pre>",
-            "B": "<pre>&lt;td&gt;</pre>",
-            "C": "<pre>&lt;th&gt;</pre>",
-            "D": "<pre>&lt;table&gt;</pre>"
+            "A": "<pre><tr></pre>",
+            "B": "<pre><td></pre>",
+            "C": "<pre><th></pre>",
+            "D": "<pre><table></pre>"
         },
         "correct": "A",
-        "explanation": "The <pre>&lt;tr&gt;</pre> (table row) element creates a row in a table. Inside <pre>&lt;tr&gt;</pre>, use <pre>&lt;td&gt;</pre> for data cells or <pre>&lt;th&gt;</pre> for header cells.",
+        "explanation": "The <pre><tr></pre> (table row) element creates a row in a table. Inside <pre><tr></pre>, use <pre><td></pre> for data cells or <pre><th></pre> for header cells.",
         "topic": {
             "topics": ["Lists and tables"]
         }
@@ -325,13 +325,13 @@ const questions = [
         "id": 19,
         "question": "What is the correct HTML for creating a horizontal line?",
         "options": {
-            "A": "<pre>&lt;hr&gt;</pre>",
-            "B": "<pre>&lt;line&gt;</pre>",
-            "C": "<pre>&lt;horizontal&gt;</pre>",
-            "D": "<pre>&lt;br&gt;</pre>"
+            "A": "<pre><hr></pre>",
+            "B": "<pre><line></pre>",
+            "C": "<pre><horizontal></pre>",
+            "D": "<pre><br></pre>"
         },
         "correct": "A",
-        "explanation": "The <pre>&lt;hr&gt;</pre> (horizontal rule) element creates a thematic break, typically displayed as a horizontal line. It's an empty element. Use it to separate content sections.",
+        "explanation": "The <pre><hr></pre> (horizontal rule) element creates a thematic break, typically displayed as a horizontal line. It's an empty element. Use it to separate content sections.",
         "topic": {
             "topics": ["Common HTML elements"]
         }
@@ -340,20 +340,20 @@ const questions = [
         "id": 20,
         "question": "Which HTML element is used to define the main content of a document?",
         "options": {
-            "A": "<pre>&lt;main&gt;</pre>",
-            "B": "<pre>&lt;content&gt;</pre>",
-            "C": "<pre>&lt;body&gt;</pre>",
-            "D": "<pre>&lt;article&gt;</pre>"
+            "A": "<pre><main></pre>",
+            "B": "<pre><content></pre>",
+            "C": "<pre><body></pre>",
+            "D": "<pre><article></pre>"
         },
         "correct": "A",
-        "explanation": "The <pre>&lt;main&gt;</pre> element represents the main content of the <pre>&lt;body&gt;</pre>. There should be only one <pre>&lt;main&gt;</pre> per page, and it should not be inside <pre>&lt;header&gt;</pre>, <pre>&lt;footer&gt;</pre>, <pre>&lt;nav&gt;</pre>, or <pre>&lt;aside&gt;</pre>.",
+        "explanation": "The <pre><main></pre> element represents the main content of the <pre><body></pre>. There should be only one <pre><main></pre> per page, and it should not be inside <pre><header></pre>, <pre><footer></pre>, <pre><nav></pre>, or <pre><aside></pre>.",
         "topic": {
             "topics": ["Semantic HTML"]
         }
     },
     {
         "id": 21,
-        "question": "What does the <pre>&lt;span&gt;</pre> element do?",
+        "question": "What does the <pre><span></pre> element do?",
         "options": {
             "A": "Defines an inline container for styling text",
             "B": "Creates a paragraph",
@@ -361,7 +361,7 @@ const questions = [
             "D": "Makes text span multiple lines"
         },
         "correct": "A",
-        "explanation": "The <pre>&lt;span&gt;</pre> element is an inline container used to group text for styling with CSS or manipulation with JavaScript. It has no semantic meaning and doesn't change layout by default.",
+        "explanation": "The <pre><span></pre> element is an inline container used to group text for styling with CSS or manipulation with JavaScript. It has no semantic meaning and doesn't change layout by default.",
         "topic": {
             "topics": ["Common HTML elements"]
         }
@@ -370,13 +370,13 @@ const questions = [
         "id": 22,
         "question": "Which element represents a self-contained piece of content like a blog post?",
         "options": {
-            "A": "<pre>&lt;article&gt;</pre>",
-            "B": "<pre>&lt;section&gt;</pre>",
-            "C": "<pre>&lt;div&gt;</pre>",
-            "D": "<pre>&lt;content&gt;</pre>"
+            "A": "<pre><article></pre>",
+            "B": "<pre><section></pre>",
+            "C": "<pre><div></pre>",
+            "D": "<pre><content></pre>"
         },
         "correct": "A",
-        "explanation": "The <pre>&lt;article&gt;</pre> element represents self-contained, independently distributable content like blog posts, news articles, or forum posts. It should make sense on its own when syndicated.",
+        "explanation": "The <pre><article></pre> element represents self-contained, independently distributable content like blog posts, news articles, or forum posts. It should make sense on its own when syndicated.",
         "topic": {
             "topics": ["Semantic HTML"]
         }
@@ -415,20 +415,20 @@ const questions = [
         "id": 25,
         "question": "Which element defines a table header cell?",
         "options": {
-            "A": "<pre>&lt;th&gt;</pre>",
-            "B": "<pre>&lt;td&gt;</pre>",
-            "C": "<pre>&lt;tr&gt;</pre>",
-            "D": "<pre>&lt;thead&gt;</pre>"
+            "A": "<pre><th></pre>",
+            "B": "<pre><td></pre>",
+            "C": "<pre><tr></pre>",
+            "D": "<pre><thead></pre>"
         },
         "correct": "A",
-        "explanation": "The <pre>&lt;th&gt;</pre> (table header) element defines a header cell in a table. It's typically bold and centered by default. <pre>&lt;td&gt;</pre> is for regular data cells, and <pre>&lt;thead&gt;</pre> groups header rows.",
+        "explanation": "The <pre><th></pre> (table header) element defines a header cell in a table. It's typically bold and centered by default. <pre><td></pre> is for regular data cells, and <pre><thead></pre> groups header rows.",
         "topic": {
             "topics": ["Lists and tables"]
         }
     },
     {
         "id": 26,
-        "question": "What does the <pre>&lt;div&gt;</pre> element represent?",
+        "question": "What does the <pre><div></pre> element represent?",
         "options": {
             "A": "A generic block-level container",
             "B": "A division sign",
@@ -436,7 +436,7 @@ const questions = [
             "D": "A diverse element"
         },
         "correct": "A",
-        "explanation": "The <pre>&lt;div&gt;</pre> element is a generic block-level container with no semantic meaning. It's used to group elements for styling or layout purposes. Prefer semantic elements like <pre>&lt;section&gt;</pre> or <pre>&lt;article&gt;</pre> when appropriate.",
+        "explanation": "The <pre><div></pre> element is a generic block-level container with no semantic meaning. It's used to group elements for styling or layout purposes. Prefer semantic elements like <pre><section></pre> or <pre><article></pre> when appropriate.",
         "topic": {
             "topics": ["Common HTML elements"]
         }
@@ -458,7 +458,7 @@ const questions = [
     },
     {
         "id": 28,
-        "question": "What is the semantic meaning of <pre>&lt;aside&gt;</pre>?",
+        "question": "What is the semantic meaning of <pre><aside></pre>?",
         "options": {
             "A": "Content indirectly related to main content, like sidebars",
             "B": "Content on the side of the page",
@@ -466,7 +466,7 @@ const questions = [
             "D": "Additional paragraphs"
         },
         "correct": "A",
-        "explanation": "The <pre>&lt;aside&gt;</pre> element represents content tangentially related to the main content, such as sidebars, pull quotes, or related links. It's separate from but related to the main content.",
+        "explanation": "The <pre><aside></pre> element represents content tangentially related to the main content, such as sidebars, pull quotes, or related links. It's separate from but related to the main content.",
         "topic": {
             "topics": ["Semantic HTML"]
         }
@@ -490,13 +490,13 @@ const questions = [
         "id": 30,
         "question": "Which element creates a clickable button?",
         "options": {
-            "A": "<pre>&lt;button&gt;</pre>",
-            "B": "<pre>&lt;click&gt;</pre>",
-            "C": "<pre>&lt;input&gt;</pre>",
-            "D": "<pre>&lt;submit&gt;</pre>"
+            "A": "<pre><button></pre>",
+            "B": "<pre><click></pre>",
+            "C": "<pre><input></pre>",
+            "D": "<pre><submit></pre>"
         },
         "correct": "A",
-        "explanation": "The <pre>&lt;button&gt;</pre> element creates a clickable button. It's more flexible than <pre>&lt;input type=\"button\"&gt;</pre> because it can contain HTML content like images or formatted text. Use <pre>type=\"button\"</pre>, <pre>\"submit\"</pre>, or <pre>\"reset\"</pre> to specify button behavior.",
+        "explanation": "The <pre><button></pre> element creates a clickable button. It's more flexible than <pre><input type=\"button\"></pre> because it can contain HTML content like images or formatted text. Use <pre>type=\"button\"</pre>, <pre>\"submit\"</pre>, or <pre>\"reset\"</pre> to specify button behavior.",
         "topic": {
             "topics": ["Common HTML elements"]
         }

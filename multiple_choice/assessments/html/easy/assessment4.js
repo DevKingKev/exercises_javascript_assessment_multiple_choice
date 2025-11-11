@@ -70,13 +70,13 @@ const questions = [
         "id": 1,
         "question": "What is the correct HTML5 document type declaration?",
         "options": {
-            "A": "<pre>&lt;!DOCTYPE html&gt;</pre>",
-            "B": "<pre>&lt;!DOCTYPE HTML5&gt;</pre>",
-            "C": "<pre>&lt;!DOCTYPE html5&gt;</pre>",
-            "D": "<pre>&lt;DOCTYPE html&gt;</pre>"
+            "A": "<pre><!DOCTYPE html></pre>",
+            "B": "<pre><!DOCTYPE HTML5></pre>",
+            "C": "<pre><!DOCTYPE html5></pre>",
+            "D": "<pre><DOCTYPE html></pre>"
         },
         "correct": "A",
-        "explanation": "The correct HTML5 document type declaration is <pre>&lt;!DOCTYPE html&gt;</pre>. This declaration tells the browser which version of HTML the document is using. HTML5 simplified this to just <pre>&lt;!DOCTYPE html&gt;</pre>, making it case-insensitive and much simpler than previous HTML versions. It must be the very first thing in your HTML document, before the <pre>&lt;html&gt;</pre> tag.",
+        "explanation": "The correct HTML5 document type declaration is <pre><!DOCTYPE html></pre>. This declaration tells the browser which version of HTML the document is using. HTML5 simplified this to just <pre><!DOCTYPE html></pre>, making it case-insensitive and much simpler than previous HTML versions. It must be the very first thing in your HTML document, before the <pre><html></pre> tag.",
         "topic": {
             "topics": ["HTML Document Structure"]
         }
@@ -85,20 +85,20 @@ const questions = [
         "id": 2,
         "question": "Which HTML element is used to create a hyperlink?",
         "options": {
-            "A": "<pre>&lt;link&gt;</pre>",
-            "B": "<pre>&lt;a&gt;</pre>",
-            "C": "<pre>&lt;href&gt;</pre>",
-            "D": "<pre>&lt;hyper&gt;</pre>"
+            "A": "<pre><link></pre>",
+            "B": "<pre><a></pre>",
+            "C": "<pre><href></pre>",
+            "D": "<pre><hyper></pre>"
         },
         "correct": "B",
-        "explanation": "The <pre>&lt;a&gt;</pre> element (anchor element) is used to create hyperlinks in HTML. It requires the <pre>href</pre> attribute to specify the destination URL. Example: <pre>&lt;a href=\"https://example.com\"&gt;Visit Example&lt;/a&gt;</pre>. The <pre>&lt;link&gt;</pre> element is used for linking external resources like CSS files, not for creating clickable links in the document content.",
+        "explanation": "The <pre><a></pre> element (anchor element) is used to create hyperlinks in HTML. It requires the <pre>href</pre> attribute to specify the destination URL. Example: <pre><a href=\"https://example.com\">Visit Example</a></pre>. The <pre><link></pre> element is used for linking external resources like CSS files, not for creating clickable links in the document content.",
         "topic": {
             "topics": ["Links and Anchors"]
         }
     },
     {
         "id": 3,
-        "question": "What does this HTML code create? [CODE]&lt;input type=\"text\" required&gt;[/CODE]",
+        "question": "What does this HTML code create? [CODE]<input type=\"text\" required>[/CODE]",
         "options": {
             "A": "A text input that must be filled out",
             "B": "A password input field",
@@ -121,14 +121,14 @@ const questions = [
             "D": "<pre>description</pre>"
         },
         "correct": "B",
-        "explanation": "The <pre>alt</pre> attribute provides alternative text for images. This text is displayed if the image cannot be loaded, and is essential for accessibility as screen readers use it to describe images to visually impaired users. Example: <pre>&lt;img src=\"photo.jpg\" alt=\"A beautiful sunset over mountains\"&gt;</pre>. The <pre>title</pre> attribute provides additional information that appears as a tooltip, while <pre>src</pre> specifies the image source.",
+        "explanation": "The <pre>alt</pre> attribute provides alternative text for images. This text is displayed if the image cannot be loaded, and is essential for accessibility as screen readers use it to describe images to visually impaired users. Example: <pre><img src=\"photo.jpg\" alt=\"A beautiful sunset over mountains\"></pre>. The <pre>title</pre> attribute provides additional information that appears as a tooltip, while <pre>src</pre> specifies the image source.",
         "topic": {
             "topics": ["Accessibility Basics", "HTML Attributes"]
         }
     },
     {
         "id": 5,
-        "question": "What is the purpose of the &lt;head&gt; element in HTML?",
+        "question": "What is the purpose of the <head> element in HTML?",
         "options": {
             "A": "To display the main content of the page",
             "B": "To contain metadata and links to external resources",
@@ -136,7 +136,7 @@ const questions = [
             "D": "To define the page footer"
         },
         "correct": "B",
-        "explanation": "The <pre>&lt;head&gt;</pre> element contains metadata (data about the document) and links to external resources like CSS files, scripts, and the page title. It does not display visible content to users. Common elements inside <pre>&lt;head&gt;</pre> include <pre>&lt;title&gt;</pre>, <pre>&lt;meta&gt;</pre>, <pre>&lt;link&gt;</pre>, and <pre>&lt;style&gt;</pre>. The visible content goes in the <pre>&lt;body&gt;</pre> element.",
+        "explanation": "The <pre><head></pre> element contains metadata (data about the document) and links to external resources like CSS files, scripts, and the page title. It does not display visible content to users. Common elements inside <pre><head></pre> include <pre><title></pre>, <pre><meta></pre>, <pre><link></pre>, and <pre><style></pre>. The visible content goes in the <pre><body></pre> element.",
         "topic": {
             "topics": ["HTML Document Structure"]
         }
@@ -145,13 +145,13 @@ const questions = [
         "id": 6,
         "question": "Which HTML element is used to define the most important heading?",
         "options": {
-            "A": "<pre>&lt;heading&gt;</pre>",
-            "B": "<pre>&lt;h1&gt;</pre>",
-            "C": "<pre>&lt;head&gt;</pre>",
-            "D": "<pre>&lt;header&gt;</pre>"
+            "A": "<pre><heading></pre>",
+            "B": "<pre><h1></pre>",
+            "C": "<pre><head></pre>",
+            "D": "<pre><header></pre>"
         },
         "correct": "B",
-        "explanation": "The <pre>&lt;h1&gt;</pre> element defines the most important heading on the page. HTML provides six levels of headings from <pre>&lt;h1&gt;</pre> (most important) to <pre>&lt;h6&gt;</pre> (least important). Headings create a document structure and are crucial for both SEO and accessibility. Each page should typically have only one <pre>&lt;h1&gt;</pre> element representing the main topic.",
+        "explanation": "The <pre><h1></pre> element defines the most important heading on the page. HTML provides six levels of headings from <pre><h1></pre> (most important) to <pre><h6></pre> (least important). Headings create a document structure and are crucial for both SEO and accessibility. Each page should typically have only one <pre><h1></pre> element representing the main topic.",
         "topic": {
             "topics": ["Text Formatting", "Semantic HTML"]
         }
@@ -160,13 +160,13 @@ const questions = [
         "id": 7,
         "question": "How do you create an unordered list in HTML?",
         "options": {
-            "A": "<pre>&lt;ul&gt;</pre>",
-            "B": "<pre>&lt;ol&gt;</pre>",
-            "C": "<pre>&lt;list&gt;</pre>",
-            "D": "<pre>&lt;li&gt;</pre>"
+            "A": "<pre><ul></pre>",
+            "B": "<pre><ol></pre>",
+            "C": "<pre><list></pre>",
+            "D": "<pre><li></pre>"
         },
         "correct": "A",
-        "explanation": "The <pre>&lt;ul&gt;</pre> element creates an unordered list (bulleted list). Each item in the list is defined with <pre>&lt;li&gt;</pre> elements. Example: [CODE]&lt;ul&gt;\n  &lt;li&gt;Coffee&lt;/li&gt;\n  &lt;li&gt;Tea&lt;/li&gt;\n  &lt;li&gt;Milk&lt;/li&gt;\n&lt;/ul&gt;[/CODE] For ordered lists (numbered), use <pre>&lt;ol&gt;</pre> instead.",
+        "explanation": "The <pre><ul></pre> element creates an unordered list (bulleted list). Each item in the list is defined with <pre><li></pre> elements. Example: [CODE]<ul>\n  <li>Coffee</li>\n  <li>Tea</li>\n  <li>Milk</li>\n</ul>[/CODE] For ordered lists (numbered), use <pre><ol></pre> instead.",
         "topic": {
             "topics": ["Lists and Tables"]
         }
@@ -175,13 +175,13 @@ const questions = [
         "id": 8,
         "question": "What is the correct way to comment out HTML code?",
         "options": {
-            "A": "<pre>&lt;!-- This is a comment --&gt;</pre>",
+            "A": "<pre><!-- This is a comment --></pre>",
             "B": "<pre>// This is a comment</pre>",
-            "C": "<pre>&lt;comment&gt;This is a comment&lt;/comment&gt;</pre>",
+            "C": "<pre><comment>This is a comment</comment></pre>",
             "D": "<pre>/* This is a comment */</pre>"
         },
         "correct": "A",
-        "explanation": "HTML comments are written using <pre>&lt;!-- comment text --&gt;</pre> syntax. Comments are not displayed in the browser and are useful for documenting code or temporarily disabling elements. Example: <pre>&lt;!-- This menu is under construction --&gt;</pre>. The other options are comment syntax from other languages: <pre>//</pre> is JavaScript, <pre>/* */</pre> is CSS.",
+        "explanation": "HTML comments are written using <pre><!-- comment text --></pre> syntax. Comments are not displayed in the browser and are useful for documenting code or temporarily disabling elements. Example: <pre><!-- This menu is under construction --></pre>. The other options are comment syntax from other languages: <pre>//</pre> is JavaScript, <pre>/* */</pre> is CSS.",
         "topic": {
             "topics": ["HTML Comments"]
         }
@@ -190,20 +190,20 @@ const questions = [
         "id": 9,
         "question": "Which HTML element defines a table row?",
         "options": {
-            "A": "<pre>&lt;table&gt;</pre>",
-            "B": "<pre>&lt;tr&gt;</pre>",
-            "C": "<pre>&lt;td&gt;</pre>",
-            "D": "<pre>&lt;th&gt;</pre>"
+            "A": "<pre><table></pre>",
+            "B": "<pre><tr></pre>",
+            "C": "<pre><td></pre>",
+            "D": "<pre><th></pre>"
         },
         "correct": "B",
-        "explanation": "The <pre>&lt;tr&gt;</pre> element defines a table row. Tables are structured with <pre>&lt;table&gt;</pre> containing <pre>&lt;tr&gt;</pre> (table rows), which contain <pre>&lt;td&gt;</pre> (table data cells) or <pre>&lt;th&gt;</pre> (table header cells). Example: [CODE]&lt;table&gt;\n  &lt;tr&gt;\n    &lt;th&gt;Name&lt;/th&gt;\n    &lt;th&gt;Age&lt;/th&gt;\n  &lt;/tr&gt;\n  &lt;tr&gt;\n    &lt;td&gt;John&lt;/td&gt;\n    &lt;td&gt;25&lt;/td&gt;\n  &lt;/tr&gt;\n&lt;/table&gt;[/CODE]",
+        "explanation": "The <pre><tr></pre> element defines a table row. Tables are structured with <pre><table></pre> containing <pre><tr></pre> (table rows), which contain <pre><td></pre> (table data cells) or <pre><th></pre> (table header cells). Example: [CODE]<table>\n  <tr>\n    <th>Name</th>\n    <th>Age</th>\n  </tr>\n  <tr>\n    <td>John</td>\n    <td>25</td>\n  </tr>\n</table>[/CODE]",
         "topic": {
             "topics": ["Lists and Tables"]
         }
     },
     {
         "id": 10,
-        "question": "What is the purpose of the &lt;meta charset=\"UTF-8\"&gt; tag?",
+        "question": "What is the purpose of the <meta charset=\"UTF-8\"> tag?",
         "options": {
             "A": "To set the page title",
             "B": "To define the character encoding for the document",
@@ -211,7 +211,7 @@ const questions = [
             "D": "To create a metadata section"
         },
         "correct": "B",
-        "explanation": "The <pre>&lt;meta charset=\"UTF-8\"&gt;</pre> tag specifies the character encoding for the HTML document. UTF-8 is the recommended encoding as it supports most characters from all human languages. This ensures that special characters, emojis, and non-Latin scripts display correctly. It should be included in the <pre>&lt;head&gt;</pre> section of every HTML document.",
+        "explanation": "The <pre><meta charset=\"UTF-8\"></pre> tag specifies the character encoding for the HTML document. UTF-8 is the recommended encoding as it supports most characters from all human languages. This ensures that special characters, emojis, and non-Latin scripts display correctly. It should be included in the <pre><head></pre> section of every HTML document.",
         "topic": {
             "topics": ["HTML Document Structure"]
         }
@@ -220,20 +220,20 @@ const questions = [
         "id": 11,
         "question": "Which HTML element is used to create a drop-down list?",
         "options": {
-            "A": "<pre>&lt;input type=\"dropdown\"&gt;</pre>",
-            "B": "<pre>&lt;select&gt;</pre>",
-            "C": "<pre>&lt;list&gt;</pre>",
-            "D": "<pre>&lt;option&gt;</pre>"
+            "A": "<pre><input type=\"dropdown\"></pre>",
+            "B": "<pre><select></pre>",
+            "C": "<pre><list></pre>",
+            "D": "<pre><option></pre>"
         },
         "correct": "B",
-        "explanation": "The <pre>&lt;select&gt;</pre> element creates a drop-down list. It contains <pre>&lt;option&gt;</pre> elements for each item in the list. Example: [CODE]&lt;select name=\"cars\"&gt;\n  &lt;option value=\"volvo\"&gt;Volvo&lt;/option&gt;\n  &lt;option value=\"saab\"&gt;Saab&lt;/option&gt;\n  &lt;option value=\"mercedes\"&gt;Mercedes&lt;/option&gt;\n&lt;/select&gt;[/CODE] Users can select one option from the drop-down list.",
+        "explanation": "The <pre><select></pre> element creates a drop-down list. It contains <pre><option></pre> elements for each item in the list. Example: [CODE]<select name=\"cars\">\n  <option value=\"volvo\">Volvo</option>\n  <option value=\"saab\">Saab</option>\n  <option value=\"mercedes\">Mercedes</option>\n</select>[/CODE] Users can select one option from the drop-down list.",
         "topic": {
             "topics": ["Forms and Input Elements"]
         }
     },
     {
         "id": 12,
-        "question": "What does the &lt;br&gt; element do?",
+        "question": "What does the <br> element do?",
         "options": {
             "A": "Creates a bold text",
             "B": "Adds a line break",
@@ -241,7 +241,7 @@ const questions = [
             "D": "Makes text bigger"
         },
         "correct": "B",
-        "explanation": "The <pre>&lt;br&gt;</pre> element inserts a single line break. It's an empty element (doesn't have a closing tag) and is useful for creating line breaks in addresses, poems, or anywhere you need text to break to the next line. Example: <pre>First line&lt;br&gt;Second line</pre> would display as two separate lines. For thematic breaks, use <pre>&lt;hr&gt;</pre> (horizontal rule) instead.",
+        "explanation": "The <pre><br></pre> element inserts a single line break. It's an empty element (doesn't have a closing tag) and is useful for creating line breaks in addresses, poems, or anywhere you need text to break to the next line. Example: <pre>First line<br>Second line</pre> would display as two separate lines. For thematic breaks, use <pre><hr></pre> (horizontal rule) instead.",
         "topic": {
             "topics": ["Text Formatting"]
         }
@@ -256,14 +256,14 @@ const questions = [
             "D": "<pre>link</pre>"
         },
         "correct": "C",
-        "explanation": "The <pre>target</pre> attribute specifies where to open the linked document. Common values include <pre>_blank</pre> (new window/tab), <pre>_self</pre> (same frame), <pre>_parent</pre> (parent frame), and <pre>_top</pre> (full body of window). Example: <pre>&lt;a href=\"https://example.com\" target=\"_blank\"&gt;Open in new tab&lt;/a&gt;</pre>. The <pre>href</pre> attribute specifies the link destination.",
+        "explanation": "The <pre>target</pre> attribute specifies where to open the linked document. Common values include <pre>_blank</pre> (new window/tab), <pre>_self</pre> (same frame), <pre>_parent</pre> (parent frame), and <pre>_top</pre> (full body of window). Example: <pre><a href=\"https://example.com\" target=\"_blank\">Open in new tab</a></pre>. The <pre>href</pre> attribute specifies the link destination.",
         "topic": {
             "topics": ["Links and Anchors", "HTML Attributes"]
         }
     },
     {
         "id": 14,
-        "question": "What is the semantic purpose of the &lt;footer&gt; element?",
+        "question": "What is the semantic purpose of the <footer> element?",
         "options": {
             "A": "To create a page header",
             "B": "To define a footer for a document or section",
@@ -271,7 +271,7 @@ const questions = [
             "D": "To create a form footer"
         },
         "correct": "B",
-        "explanation": "The <pre>&lt;footer&gt;</pre> element defines a footer for its nearest sectioning content or root element. It typically contains information about the author, copyright data, related documents, or links. This is a semantic HTML5 element that helps search engines and screen readers understand the page structure better. A page can have multiple <pre>&lt;footer&gt;</pre> elements for different sections.",
+        "explanation": "The <pre><footer></pre> element defines a footer for its nearest sectioning content or root element. It typically contains information about the author, copyright data, related documents, or links. This is a semantic HTML5 element that helps search engines and screen readers understand the page structure better. A page can have multiple <pre><footer></pre> elements for different sections.",
         "topic": {
             "topics": ["Semantic HTML"]
         }
@@ -280,13 +280,13 @@ const questions = [
         "id": 15,
         "question": "Which input type creates a checkbox?",
         "options": {
-            "A": "<pre>&lt;input type=\"check\"&gt;</pre>",
-            "B": "<pre>&lt;input type=\"checkbox\"&gt;</pre>",
-            "C": "<pre>&lt;checkbox&gt;</pre>",
-            "D": "<pre>&lt;input type=\"radio\"&gt;</pre>"
+            "A": "<pre><input type=\"check\"></pre>",
+            "B": "<pre><input type=\"checkbox\"></pre>",
+            "C": "<pre><checkbox></pre>",
+            "D": "<pre><input type=\"radio\"></pre>"
         },
         "correct": "B",
-        "explanation": "The <pre>&lt;input type=\"checkbox\"&gt;</pre> creates a checkbox that users can select or deselect. Checkboxes allow multiple selections in a group. Example: <pre>&lt;input type=\"checkbox\" id=\"vehicle1\" name=\"vehicle1\" value=\"Bike\"&gt;</pre>. For single selection from a group, use <pre>type=\"radio\"</pre> instead. Checkboxes are commonly used in forms for multiple-choice questions or feature selections.",
+        "explanation": "The <pre><input type=\"checkbox\"></pre> creates a checkbox that users can select or deselect. Checkboxes allow multiple selections in a group. Example: <pre><input type=\"checkbox\" id=\"vehicle1\" name=\"vehicle1\" value=\"Bike\"></pre>. For single selection from a group, use <pre>type=\"radio\"</pre> instead. Checkboxes are commonly used in forms for multiple-choice questions or feature selections.",
         "topic": {
             "topics": ["Forms and Input Elements"]
         }
@@ -295,13 +295,13 @@ const questions = [
         "id": 16,
         "question": "What is the correct way to make text bold in HTML?",
         "options": {
-            "A": "<pre>&lt;bold&gt;text&lt;/bold&gt;</pre>",
-            "B": "<pre>&lt;strong&gt;text&lt;/strong&gt;</pre>",
-            "C": "<pre>&lt;b&gt;text&lt;/b&gt;</pre>",
+            "A": "<pre><bold>text</bold></pre>",
+            "B": "<pre><strong>text</strong></pre>",
+            "C": "<pre><b>text</b></pre>",
             "D": "Both B and C"
         },
         "correct": "D",
-        "explanation": "Both <pre>&lt;strong&gt;</pre> and <pre>&lt;b&gt;</pre> can make text bold, but they have different semantic meanings. <pre>&lt;strong&gt;</pre> indicates that the text has strong importance, while <pre>&lt;b&gt;</pre> is used to draw attention without implying importance. Visually, both typically render as bold text, but screen readers may emphasize <pre>&lt;strong&gt;</pre> content more strongly. <pre>&lt;bold&gt;</pre> is not a valid HTML element.",
+        "explanation": "Both <pre><strong></pre> and <pre><b></pre> can make text bold, but they have different semantic meanings. <pre><strong></pre> indicates that the text has strong importance, while <pre><b></pre> is used to draw attention without implying importance. Visually, both typically render as bold text, but screen readers may emphasize <pre><strong></pre> content more strongly. <pre><bold></pre> is not a valid HTML element.",
         "topic": {
             "topics": ["Text Formatting", "Semantic HTML"]
         }
@@ -310,20 +310,20 @@ const questions = [
         "id": 17,
         "question": "Which HTML element is used to define a paragraph?",
         "options": {
-            "A": "<pre>&lt;para&gt;</pre>",
-            "B": "<pre>&lt;p&gt;</pre>",
-            "C": "<pre>&lt;paragraph&gt;</pre>",
-            "D": "<pre>&lt;text&gt;</pre>"
+            "A": "<pre><para></pre>",
+            "B": "<pre><p></pre>",
+            "C": "<pre><paragraph></pre>",
+            "D": "<pre><text></pre>"
         },
         "correct": "B",
-        "explanation": "The <pre>&lt;p&gt;</pre> element defines a paragraph in HTML. Browsers automatically add some margin before and after each paragraph. Example: <pre>&lt;p&gt;This is a paragraph of text.&lt;/p&gt;</pre>. Using proper paragraph elements helps create a semantic document structure and improves accessibility for screen reader users.",
+        "explanation": "The <pre><p></pre> element defines a paragraph in HTML. Browsers automatically add some margin before and after each paragraph. Example: <pre><p>This is a paragraph of text.</p></pre>. Using proper paragraph elements helps create a semantic document structure and improves accessibility for screen reader users.",
         "topic": {
             "topics": ["Text Formatting"]
         }
     },
     {
         "id": 18,
-        "question": "What does the &lt;label&gt; element do in a form?",
+        "question": "What does the <label> element do in a form?",
         "options": {
             "A": "Creates a title for the form",
             "B": "Defines a caption for an input element",
@@ -331,7 +331,7 @@ const questions = [
             "D": "Validates form input"
         },
         "correct": "B",
-        "explanation": "The <pre>&lt;label&gt;</pre> element defines a label for form elements. It improves accessibility and usability by providing a clickable label for the associated input. Labels can be associated with inputs using the <pre>for</pre> attribute matching the input's <pre>id</pre>, or by nesting the input inside the label. Example: <pre>&lt;label for=\"username\"&gt;Username:&lt;/label&gt;&lt;input id=\"username\" type=\"text\"&gt;</pre>",
+        "explanation": "The <pre><label></pre> element defines a label for form elements. It improves accessibility and usability by providing a clickable label for the associated input. Labels can be associated with inputs using the <pre>for</pre> attribute matching the input's <pre>id</pre>, or by nesting the input inside the label. Example: <pre><label for=\"username\">Username:</label><input id=\"username\" type=\"text\"></pre>",
         "topic": {
             "topics": ["Forms and Input Elements", "Accessibility Basics"]
         }
@@ -353,7 +353,7 @@ const questions = [
     },
     {
         "id": 20,
-        "question": "What is the purpose of the &lt;nav&gt; element?",
+        "question": "What is the purpose of the <nav> element?",
         "options": {
             "A": "To create a navigation menu",
             "B": "To define a naval chart",
@@ -361,7 +361,7 @@ const questions = [
             "D": "To create a navigation bar at the bottom"
         },
         "correct": "A",
-        "explanation": "The <pre>&lt;nav&gt;</pre> element defines a section of navigation links. It's a semantic HTML5 element that should contain major navigation blocks, such as the main menu, table of contents, or pagination controls. Using <pre>&lt;nav&gt;</pre> helps search engines and screen readers identify the primary navigation areas of your website. Not all groups of links need to be in a <pre>&lt;nav&gt;</pre> element - only major navigation sections.",
+        "explanation": "The <pre><nav></pre> element defines a section of navigation links. It's a semantic HTML5 element that should contain major navigation blocks, such as the main menu, table of contents, or pagination controls. Using <pre><nav></pre> helps search engines and screen readers identify the primary navigation areas of your website. Not all groups of links need to be in a <pre><nav></pre> element - only major navigation sections.",
         "topic": {
             "topics": ["Semantic HTML"]
         }
@@ -370,20 +370,20 @@ const questions = [
         "id": 21,
         "question": "Which input type should be used for email addresses?",
         "options": {
-            "A": "<pre>&lt;input type=\"text\"&gt;</pre>",
-            "B": "<pre>&lt;input type=\"email\"&gt;</pre>",
-            "C": "<pre>&lt;input type=\"mail\"&gt;</pre>",
-            "D": "<pre>&lt;email&gt;</pre>"
+            "A": "<pre><input type=\"text\"></pre>",
+            "B": "<pre><input type=\"email\"></pre>",
+            "C": "<pre><input type=\"mail\"></pre>",
+            "D": "<pre><email></pre>"
         },
         "correct": "B",
-        "explanation": "The <pre>&lt;input type=\"email\"&gt;</pre> is specifically designed for email addresses. It provides built-in validation in modern browsers to ensure the input looks like a valid email address. On mobile devices, it often triggers a specialized keyboard with the @ symbol readily available. While <pre>type=\"text\"</pre> would work, using <pre>type=\"email\"</pre> provides better user experience and validation.",
+        "explanation": "The <pre><input type=\"email\"></pre> is specifically designed for email addresses. It provides built-in validation in modern browsers to ensure the input looks like a valid email address. On mobile devices, it often triggers a specialized keyboard with the @ symbol readily available. While <pre>type=\"text\"</pre> would work, using <pre>type=\"email\"</pre> provides better user experience and validation.",
         "topic": {
             "topics": ["Forms and Input Elements"]
         }
     },
     {
         "id": 22,
-        "question": "What does the &lt;div&gt; element represent?",
+        "question": "What does the <div> element represent?",
         "options": {
             "A": "A division or section in a document",
             "B": "A dynamic content area",
@@ -391,7 +391,7 @@ const questions = [
             "D": "A document version"
         },
         "correct": "A",
-        "explanation": "The <pre>&lt;div&gt;</pre> element defines a division or section in an HTML document. It's a generic container with no semantic meaning, used to group elements for styling purposes or because they share attribute values. While <pre>&lt;div&gt;</pre> is very useful for layout and styling with CSS, modern HTML5 encourages using semantic elements like <pre>&lt;header&gt;</pre>, <pre>&lt;nav&gt;</pre>, <pre>&lt;section&gt;</pre>, etc., when they better describe the content.",
+        "explanation": "The <pre><div></pre> element defines a division or section in an HTML document. It's a generic container with no semantic meaning, used to group elements for styling purposes or because they share attribute values. While <pre><div></pre> is very useful for layout and styling with CSS, modern HTML5 encourages using semantic elements like <pre><header></pre>, <pre><nav></pre>, <pre><section></pre>, etc., when they better describe the content.",
         "topic": {
             "topics": ["Basic HTML Elements"]
         }
@@ -406,14 +406,14 @@ const questions = [
             "D": "<pre>fixed</pre>"
         },
         "correct": "B",
-        "explanation": "The <pre>readonly</pre> attribute makes an input field read-only, meaning users can see the value but cannot modify it. The field is still included in form submissions. Example: <pre>&lt;input type=\"text\" value=\"Cannot change this\" readonly&gt;</pre>. This differs from <pre>disabled</pre>, which also prevents modification but excludes the field from form submission and typically grays out the input.",
+        "explanation": "The <pre>readonly</pre> attribute makes an input field read-only, meaning users can see the value but cannot modify it. The field is still included in form submissions. Example: <pre><input type=\"text\" value=\"Cannot change this\" readonly></pre>. This differs from <pre>disabled</pre>, which also prevents modification but excludes the field from form submission and typically grays out the input.",
         "topic": {
             "topics": ["Forms and Input Elements", "HTML Attributes"]
         }
     },
     {
         "id": 24,
-        "question": "What is the purpose of the &lt;title&gt; element?",
+        "question": "What is the purpose of the <title> element?",
         "options": {
             "A": "To create a heading on the page",
             "B": "To define the browser tab title",
@@ -421,7 +421,7 @@ const questions = [
             "D": "To style text as a title"
         },
         "correct": "B",
-        "explanation": "The <pre>&lt;title&gt;</pre> element defines the title of the document, which is shown in the browser's title bar or tab. It's also used as the default title when bookmarking the page and is important for SEO as search engines display it in search results. The <pre>&lt;title&gt;</pre> must be placed within the <pre>&lt;head&gt;</pre> section and should be descriptive and concise.",
+        "explanation": "The <pre><title></pre> element defines the title of the document, which is shown in the browser's title bar or tab. It's also used as the default title when bookmarking the page and is important for SEO as search engines display it in search results. The <pre><title></pre> must be placed within the <pre><head></pre> section and should be descriptive and concise.",
         "topic": {
             "topics": ["HTML Document Structure"]
         }
@@ -430,20 +430,20 @@ const questions = [
         "id": 25,
         "question": "Which HTML element is used for quoted content from another source?",
         "options": {
-            "A": "<pre>&lt;quote&gt;</pre>",
-            "B": "<pre>&lt;blockquote&gt;</pre>",
-            "C": "<pre>&lt;q&gt;</pre>",
+            "A": "<pre><quote></pre>",
+            "B": "<pre><blockquote></pre>",
+            "C": "<pre><q></pre>",
             "D": "Both B and C"
         },
         "correct": "D",
-        "explanation": "Both <pre>&lt;blockquote&gt;</pre> and <pre>&lt;q&gt;</pre> are used for quoted content. <pre>&lt;blockquote&gt;</pre> is for longer quotations that form their own block, typically displayed as indented text. <pre>&lt;q&gt;</pre> is for shorter, inline quotations that browsers typically surround with quotation marks. Both can use the <pre>cite</pre> attribute to reference the source URL. <pre>&lt;quote&gt;</pre> is not a valid HTML element.",
+        "explanation": "Both <pre><blockquote></pre> and <pre><q></pre> are used for quoted content. <pre><blockquote></pre> is for longer quotations that form their own block, typically displayed as indented text. <pre><q></pre> is for shorter, inline quotations that browsers typically surround with quotation marks. Both can use the <pre>cite</pre> attribute to reference the source URL. <pre><quote></pre> is not a valid HTML element.",
         "topic": {
             "topics": ["Text Formatting", "Semantic HTML"]
         }
     },
     {
         "id": 26,
-        "question": "What does the &lt;span&gt; element do?",
+        "question": "What does the <span> element do?",
         "options": {
             "A": "Creates a horizontal space",
             "B": "Defines an inline container for text",
@@ -451,7 +451,7 @@ const questions = [
             "D": "Creates a span of columns"
         },
         "correct": "B",
-        "explanation": "The <pre>&lt;span&gt;</pre> element is an inline container used to mark up part of a text or part of a document. It has no visual representation on its own but is commonly used with CSS to style specific portions of text or with JavaScript to manipulate specific text segments. Unlike <pre>&lt;div&gt;</pre> which is block-level, <pre>&lt;span&gt;</pre> is inline and doesn't cause line breaks.",
+        "explanation": "The <pre><span></pre> element is an inline container used to mark up part of a text or part of a document. It has no visual representation on its own but is commonly used with CSS to style specific portions of text or with JavaScript to manipulate specific text segments. Unlike <pre><div></pre> which is block-level, <pre><span></pre> is inline and doesn't cause line breaks.",
         "topic": {
             "topics": ["Basic HTML Elements"]
         }
@@ -466,7 +466,7 @@ const questions = [
             "D": "<pre>href</pre>"
         },
         "correct": "C",
-        "explanation": "The <pre>src</pre> attribute specifies the source (URL or path) of an image for the <pre>&lt;img&gt;</pre> element. Example: <pre>&lt;img src=\"images/photo.jpg\" alt=\"Description\"&gt;</pre>. The <pre>src</pre> attribute is required for <pre>&lt;img&gt;</pre> elements to display an image. For links, the <pre>href</pre> attribute is used instead to specify the destination URL.",
+        "explanation": "The <pre>src</pre> attribute specifies the source (URL or path) of an image for the <pre><img></pre> element. Example: <pre><img src=\"images/photo.jpg\" alt=\"Description\"></pre>. The <pre>src</pre> attribute is required for <pre><img></pre> elements to display an image. For links, the <pre>href</pre> attribute is used instead to specify the destination URL.",
         "topic": {
             "topics": ["HTML Attributes", "Basic HTML Elements"]
         }
@@ -475,13 +475,13 @@ const questions = [
         "id": 28,
         "question": "What is the correct way to create a submit button in HTML?",
         "options": {
-            "A": "<pre>&lt;button type=\"submit\"&gt;Submit&lt;/button&gt;</pre>",
-            "B": "<pre>&lt;input type=\"submit\" value=\"Submit\"&gt;</pre>",
-            "C": "<pre>&lt;submit&gt;Submit&lt;/submit&gt;</pre>",
+            "A": "<pre><button type=\"submit\">Submit</button></pre>",
+            "B": "<pre><input type=\"submit\" value=\"Submit\"></pre>",
+            "C": "<pre><submit>Submit</submit></pre>",
             "D": "Both A and B"
         },
         "correct": "D",
-        "explanation": "Both <pre>&lt;button type=\"submit\"&gt;</pre> and <pre>&lt;input type=\"submit\"&gt;</pre> create submit buttons. The <pre>&lt;button&gt;</pre> element allows HTML content between the tags, while <pre>&lt;input&gt;</pre> uses the <pre>value</pre> attribute for the button text. Example A: <pre>&lt;button type=\"submit\"&gt;&lt;strong&gt;Submit&lt;/strong&gt; Form&lt;/button&gt;</pre>. Example B: <pre>&lt;input type=\"submit\" value=\"Submit\"&gt;</pre>.",
+        "explanation": "Both <pre><button type=\"submit\"></pre> and <pre><input type=\"submit\"></pre> create submit buttons. The <pre><button></pre> element allows HTML content between the tags, while <pre><input></pre> uses the <pre>value</pre> attribute for the button text. Example A: <pre><button type=\"submit\"><strong>Submit</strong> Form</button></pre>. Example B: <pre><input type=\"submit\" value=\"Submit\"></pre>.",
         "topic": {
             "topics": ["Forms and Input Elements"]
         }
@@ -490,20 +490,20 @@ const questions = [
         "id": 29,
         "question": "Which HTML element defines important text?",
         "options": {
-            "A": "<pre>&lt;important&gt;</pre>",
-            "B": "<pre>&lt;em&gt;</pre>",
-            "C": "<pre>&lt;strong&gt;</pre>",
-            "D": "<pre>&lt;highlight&gt;</pre>"
+            "A": "<pre><important></pre>",
+            "B": "<pre><em></pre>",
+            "C": "<pre><strong></pre>",
+            "D": "<pre><highlight></pre>"
         },
         "correct": "C",
-        "explanation": "The <pre>&lt;strong&gt;</pre> element defines text with strong importance. Browsers typically render this as bold text, but the semantic meaning is about importance, not just visual styling. Screen readers may emphasize <pre>&lt;strong&gt;</pre> content. For text that should be emphasized but not necessarily important, use <pre>&lt;em&gt;</pre> (emphasis) instead, which typically renders as italic.",
+        "explanation": "The <pre><strong></pre> element defines text with strong importance. Browsers typically render this as bold text, but the semantic meaning is about importance, not just visual styling. Screen readers may emphasize <pre><strong></pre> content. For text that should be emphasized but not necessarily important, use <pre><em></pre> (emphasis) instead, which typically renders as italic.",
         "topic": {
             "topics": ["Text Formatting", "Semantic HTML"]
         }
     },
     {
         "id": 30,
-        "question": "What is the purpose of the &lt;main&gt; element?",
+        "question": "What is the purpose of the <main> element?",
         "options": {
             "A": "To indicate the main content of a document",
             "B": "To create the main navigation",
@@ -511,7 +511,7 @@ const questions = [
             "D": "To contain the main heading"
         },
         "correct": "A",
-        "explanation": "The <pre>&lt;main&gt;</pre> element represents the dominant content of the <pre>&lt;body&gt;</pre> of a document. It should contain content that is unique to that document and not repeated across pages (like navigation, headers, or footers). There should be only one <pre>&lt;main&gt;</pre> element per page that is not hidden. This semantic element helps screen readers and search engines identify the primary content of the page.",
+        "explanation": "The <pre><main></pre> element represents the dominant content of the <pre><body></pre> of a document. It should contain content that is unique to that document and not repeated across pages (like navigation, headers, or footers). There should be only one <pre><main></pre> element per page that is not hidden. This semantic element helps screen readers and search engines identify the primary content of the page.",
         "topic": {
             "topics": ["Semantic HTML", "HTML Document Structure"]
         }

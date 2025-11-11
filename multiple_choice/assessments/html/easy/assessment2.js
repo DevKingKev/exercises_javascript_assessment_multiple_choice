@@ -53,7 +53,7 @@ const metadata = {
 const questions = [
     {
         "id": 1,
-        "question": "What is the purpose of the <pre>&lt;form&gt;</pre> element?",
+        "question": "What is the purpose of the <pre><form></pre> element?",
         "options": {
             "A": "Groups form controls and defines how to submit data",
             "B": "Creates a formatted text area",
@@ -61,7 +61,7 @@ const questions = [
             "D": "Validates user input"
         },
         "correct": "A",
-        "explanation": "The <pre>&lt;form&gt;</pre> element groups related form controls and defines how to submit the collected data using attributes like <pre>action</pre> (URL to submit to) and <pre>method</pre> (HTTP method like GET or POST).",
+        "explanation": "The <pre><form></pre> element groups related form controls and defines how to submit the collected data using attributes like <pre>action</pre> (URL to submit to) and <pre>method</pre> (HTTP method like GET or POST).",
         "topic": {
             "topics": ["Form elements"]
         }
@@ -106,7 +106,7 @@ const questions = [
             "D": "Use the <pre>link</pre> attribute"
         },
         "correct": "A",
-        "explanation": "Connect a <pre>&lt;label&gt;</pre> to an input using [CODE]<label for=\"email\">Email:</label>\n<input type=\"email\" id=\"email\">[/CODE]. The <pre>for</pre> attribute must match the input's <pre>id</pre>. This improves accessibility and makes the label clickable to focus the input.",
+        "explanation": "Connect a <pre><label></pre> to an input using [CODE]<label for=\"email\">Email:</label>\n<input type=\"email\" id=\"email\">[/CODE]. The <pre>for</pre> attribute must match the input's <pre>id</pre>. This improves accessibility and makes the label clickable to focus the input.",
         "topic": {
             "topics": ["Labels and accessibility"]
         }
@@ -121,7 +121,7 @@ const questions = [
             "D": "A list of links"
         },
         "correct": "A",
-        "explanation": "The <pre>&lt;select&gt;</pre> element creates a dropdown menu. Each <pre>&lt;option&gt;</pre> element represents a choice in the dropdown. Users can select one option at a time by default.",
+        "explanation": "The <pre><select></pre> element creates a dropdown menu. Each <pre><option></pre> element represents a choice in the dropdown. Users can select one option at a time by default.",
         "topic": {
             "topics": ["Select and option elements"]
         }
@@ -143,7 +143,7 @@ const questions = [
     },
     {
         "id": 7,
-        "question": "What is the purpose of the <pre>&lt;textarea&gt;</pre> element?",
+        "question": "What is the purpose of the <pre><textarea></pre> element?",
         "options": {
             "A": "Creates a multi-line text input field",
             "B": "Displays read-only text",
@@ -151,7 +151,7 @@ const questions = [
             "D": "Formats text with styling"
         },
         "correct": "A",
-        "explanation": "The <pre>&lt;textarea&gt;</pre> element creates a resizable multi-line text input field. Use <pre>rows</pre> and <pre>cols</pre> attributes to set initial size, or use CSS for better control.",
+        "explanation": "The <pre><textarea></pre> element creates a resizable multi-line text input field. Use <pre>rows</pre> and <pre>cols</pre> attributes to set initial size, or use CSS for better control.",
         "topic": {
             "topics": ["Textarea and buttons"]
         }
@@ -196,7 +196,7 @@ const questions = [
             "D": "Validates the input format"
         },
         "correct": "A",
-        "explanation": "The <pre>placeholder</pre> attribute shows temporary hint text inside the input field. It disappears when the user starts typing. It's not a substitute for a <pre>&lt;label&gt;</pre> element, which should always be used for accessibility.",
+        "explanation": "The <pre>placeholder</pre> attribute shows temporary hint text inside the input field. It disappears when the user starts typing. It's not a substitute for a <pre><label></pre> element, which should always be used for accessibility.",
         "topic": {
             "topics": ["Form attributes"]
         }
@@ -266,7 +266,7 @@ const questions = [
         "question": "How do you create a radio button group where only one can be selected?",
         "options": {
             "A": "Give all radio buttons the same <pre>name</pre> attribute",
-            "B": "Place them in the same <pre>&lt;div&gt;</pre>",
+            "B": "Place them in the same <pre><div></pre>",
             "C": "Use the <pre>group</pre> attribute",
             "D": "Give them sequential IDs"
         },
@@ -400,13 +400,13 @@ const questions = [
         "id": 24,
         "question": "How do you create a multi-select dropdown?",
         "options": {
-            "A": "Add <pre>multiple</pre> attribute to <pre>&lt;select&gt;</pre>",
+            "A": "Add <pre>multiple</pre> attribute to <pre><select></pre>",
             "B": "Use <pre>type=\"multiple\"</pre>",
-            "C": "Use multiple <pre>&lt;select&gt;</pre> elements",
+            "C": "Use multiple <pre><select></pre> elements",
             "D": "Use checkboxes instead"
         },
         "correct": "A",
-        "explanation": "Adding the <pre>multiple</pre> boolean attribute to <pre>&lt;select&gt;</pre> allows selecting multiple options by holding Ctrl/Cmd while clicking. Example: [CODE]<select multiple>\n  <option>Red</option>\n  <option>Blue</option>\n</select>[/CODE]",
+        "explanation": "Adding the <pre>multiple</pre> boolean attribute to <pre><select></pre> allows selecting multiple options by holding Ctrl/Cmd while clicking. Example: [CODE]<select multiple>\n  <option>Red</option>\n  <option>Blue</option>\n</select>[/CODE]",
         "topic": {
             "topics": ["Select and option elements"]
         }

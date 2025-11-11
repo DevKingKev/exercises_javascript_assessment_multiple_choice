@@ -145,6 +145,7 @@ Each question must have the following structure:
 - Keep code short and inline where possible
 - Example: `"It returns <pre>undefined</pre>"`
 - Example: `"The <pre>Array.from()</pre> method creates a new array"`
+- We should never have `[CODE]` in the options, always `<pre></pre>` where there are code snippets.
 
 ### In Explanations (`explanation` property)
 - **Use `<pre>...<pre>` for short inline code** (single values, method names, short expressions)

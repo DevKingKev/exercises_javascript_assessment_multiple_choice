@@ -24,7 +24,7 @@ console.log(a);
 
 Another paragraph.`;
 
-        const out = formatWithMarkers( input );
+        const out = formatWithMarkers( input, 'html' );
         expect( out ).toContain( '<p class="formatted-with-markers">This is a paragraph.</p>' );
         expect( out ).toContain( '<pre class="formatted-with-markers"><code>' );
         expect( out ).toContain( 'const a = 1;' );
@@ -75,7 +75,7 @@ Another paragraph.`;
     describe( 'formatWithMarkers', () => {
         it( 'should format text with [CODE] blocks', () => {
             const input = 'Here is some code:\n\n[CODE]const x = 5;\nconsole.log(x);[/CODE]\n\nThat was code.';
-            const result = formatWithMarkers( input );
+            const result = formatWithMarkers( input, 'html' );
 
             expect( result ).toContain( '<pre class="formatted-with-markers"><code>' );
             expect( result ).toContain( 'const x = 5;' );
@@ -86,68 +86,68 @@ Another paragraph.`;
 
         it( 'should escape HTML in [CODE] blocks', () => {
             const input = '[CODE]<script>alert("XSS")</script>[/CODE]';
-            const result = formatWithMarkers( input );
+            const result = formatWithMarkers( input, 'html' );
 
             expect( result ).toContain( '&lt;script&gt;' );
             expect( result ).toContain( '&lt;/script&gt;' );
             expect( result ).not.toContain( '<script>' );
         } );
 
-        it( 'should convert inline <pre> tags to <span class="pre">', () => {
+        it( 'should convert inline <pre> tags to <pre> elements with escaped inner content', () => {
             const input = 'The <pre>Array.map()</pre> method returns a new array.';
-            const result = formatWithMarkers( input );
+            const result = formatWithMarkers( input, 'html' );
 
             expect( result ).toContain( '<p class="formatted-with-markers">' );
-            expect( result ).toContain( '<span class="pre">Array.map()</span>' );
-            expect( result ).not.toContain( '<pre>Array.map()</pre>' );
+            expect( result ).toContain( '<pre>Array.map()</pre>' );
+            expect( result ).not.toContain( '<span class="pre">' );
             expect( result ).toContain( 'method returns a new array.' );
         } );
 
         it( 'should handle multiple inline <pre> tags in one paragraph', () => {
             const input = 'Use <pre>const</pre> or <pre>let</pre> instead of <pre>var</pre>.';
-            const result = formatWithMarkers( input );
+            const result = formatWithMarkers( input, 'html' );
 
-            expect( result ).toContain( '<span class="pre">const</span>' );
-            expect( result ).toContain( '<span class="pre">let</span>' );
-            expect( result ).toContain( '<span class="pre">var</span>' );
+            expect( result ).toContain( '<pre>const</pre>' );
+            expect( result ).toContain( '<pre>let</pre>' );
+            expect( result ).toContain( '<pre>var</pre>' );
             expect( result ).toContain( '<p class="formatted-with-markers">' );
         } );
 
         it( 'should handle inline <pre> tags with special characters', () => {
             const input = 'The output is <pre>10, 20</pre> and <pre>x > y</pre>.';
-            const result = formatWithMarkers( input );
+            const result = formatWithMarkers( input, 'html' );
 
-            expect( result ).toContain( '<span class="pre">10, 20</span>' );
-            // Content inside <pre> is preserved as-is (not escaped) for inline code
-            expect( result ).toContain( '<span class="pre">x > y</span>' );
+            expect( result ).toContain( '<pre>10, 20</pre>' );
+            // Content inside <pre> is escaped so characters like > are shown literally
+            expect( result ).toContain( '<pre>x &gt; y</pre>' );
             expect( result ).toContain( '<p class="formatted-with-markers">' );
         } );
 
         it( 'should handle multiple paragraphs with inline <pre> tags', () => {
             const input = 'First paragraph with <pre>code1</pre> here.\n\nSecond paragraph with <pre>code2</pre> there.';
-            const result = formatWithMarkers( input );
+            const result = formatWithMarkers( input, 'html' );
 
-            expect( result ).toContain( '<span class="pre">code1</span>' );
-            expect( result ).toContain( '<span class="pre">code2</span>' );
+            expect( result ).toContain( '<pre>code1</pre>' );
+            expect( result ).toContain( '<pre>code2</pre>' );
             // Should have two separate <p> tags
             expect( ( result.match( /<p class="formatted-with-markers">/g ) || [] ).length ).toBe( 2 );
         } );
 
         it( 'should handle mixed [CODE] blocks and inline <pre> tags', () => {
             const input = 'The <pre>count</pre> variable is private.\n\n[CODE]let count = 0;\nfunction inc() { count++; }[/CODE]\n\nUse <pre>inc()</pre> to increment.';
-            const result = formatWithMarkers( input );
+            const result = formatWithMarkers( input, 'html' );
 
-            expect( result ).toContain( '<span class="pre">count</span>' );
-            expect( result ).toContain( '<span class="pre">inc()</span>' );
+            expect( result ).toContain( '<pre>count</pre>' );
+            expect( result ).toContain( '<pre>inc()</pre>' );
             expect( result ).toContain( '<pre class="formatted-with-markers"><code>' );
             expect( result ).toContain( 'let count = 0;' );
         } );
 
         it( 'should escape text outside of <pre> tags', () => {
             const input = 'Use <pre>Array.map()</pre> when you need <div>test</div> functionality.';
-            const result = formatWithMarkers( input );
+            const result = formatWithMarkers( input, 'html' );
 
-            expect( result ).toContain( '<span class="pre">Array.map()</span>' );
+            expect( result ).toContain( '<pre>Array.map()</pre>' );
             expect( result ).toContain( '&lt;div&gt;test&lt;/div&gt;' );
             expect( result ).not.toContain( '<div>test</div>' );
         } );
@@ -158,7 +158,7 @@ Another paragraph.`;
 
         it( 'should handle text with no markers', () => {
             const input = 'Just plain text.\n\nAnother paragraph.';
-            const result = formatWithMarkers( input );
+            const result = formatWithMarkers( input, 'html' );
 
             expect( result ).toContain( '<p class="formatted-with-markers">Just plain text.</p>' );
             expect( result ).toContain( '<p class="formatted-with-markers">Another paragraph.</p>' );
@@ -166,7 +166,7 @@ Another paragraph.`;
 
         it( 'should trim whitespace in paragraphs', () => {
             const input = '  \n\n  Some text  \n\n  ';
-            const result = formatWithMarkers( input );
+            const result = formatWithMarkers( input, 'html' );
 
             expect( result ).toBe( '<p class="formatted-with-markers">Some text</p>' );
         } );
@@ -175,8 +175,8 @@ Another paragraph.`;
             const input = '<pre>start</pre> middle text <pre>end</pre>';
             const result = formatWithMarkers( input );
 
-            expect( result ).toContain( '<span class="pre">start</span>' );
-            expect( result ).toContain( '<span class="pre">end</span>' );
+            expect( result ).toContain( '<pre>start</pre>' );
+            expect( result ).toContain( '<pre>end</pre>' );
             expect( result ).toContain( 'middle text' );
         } );
 
@@ -184,8 +184,8 @@ Another paragraph.`;
             const input = 'Check <pre>x < y && a > b</pre> condition.';
             const result = formatWithMarkers( input );
 
-            // The content inside <pre> should be preserved as-is when converted to span
-            expect( result ).toContain( '<span class="pre">x < y && a > b</span>' );
+            // The content inside <pre> should be escaped when rendered inside a real <pre>
+            expect( result ).toContain( '<pre>x &lt; y &amp;&amp; a &gt; b</pre>' );
         } );
     } );
 

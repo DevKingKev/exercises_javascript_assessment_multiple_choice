@@ -10,7 +10,7 @@
         @click="onSelect(letter)"
       >
         <div class="option-letter">{{ letter }}</div>
-        <div class="option-text" v-html="text"></div>
+    <div class="option-text" v-html="formatOption(text)"></div>
       </div>
     </div>
   </div>
@@ -20,6 +20,7 @@
 import type { Question } from '@/models';
 import { computed } from 'vue';
 import { formatTextWithCode } from '@/utils/formatUtils';
+import { useAssessmentStore } from '@/stores/assessmentStore';
 
 const props = defineProps<{
   question: Question;
@@ -34,7 +35,32 @@ function onSelect(letter: string | number) {
   emit('select', String(letter));
 }
 
-const formattedQuestion = computed(() => formatTextWithCode(props.question.question));
+const assessmentStore = useAssessmentStore();
+const currentDomain = computed(() => {
+  // assessmentStore.currentAssessment may be a proxied object; guard access
+  try {
+    const meta = (assessmentStore as any).currentAssessment?.metadata;
+    return (meta && meta.domain) ? String(meta.domain).toLowerCase() : 'javascript';
+  } catch (e) {
+    return 'javascript';
+  }
+});
+
+const formattedQuestion = computed(() => formatTextWithCode(props.question.question, currentDomain.value));
+
+/**
+ * Format option text the same way we format question text so code blocks
+ * (including HTML snippets) are escaped/wrapped consistently and can be
+ * rendered via v-html. This avoids raw HTML inside <pre> being interpreted
+ * by the browser and ensures consistent styling.
+ */
+function formatOption (s: string | null | undefined) {
+  try {
+  return formatTextWithCode(s || '', currentDomain.value);
+  } catch (e) {
+    return String(s || '');
+  }
+}
 </script>
 
 <style scoped lang="scss">
@@ -120,14 +146,20 @@ const formattedQuestion = computed(() => formatTextWithCode(props.question.quest
     color: var(--text-secondary);
 
     ::v-deep pre {
-      display: inline;
+      /* Code blocks inside options should behave like typical code blocks
+         (block-level, scrollable). Previously these were inline which
+         prevented proper rendering of multi-line HTML snippets. */
+      display: block;
       background: var(--bg-tertiary);
-      padding: 2px 8px;
-      border-radius: 4px;
+      padding: 12px;
+      border-radius: 6px;
       font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
       font-size: 0.95rem;
       color: var(--text-primary);
       border: 1px solid var(--border-light);
+      overflow-x: auto;
+      white-space: pre;
+      margin: 8px 0;
     }
     }
 }
