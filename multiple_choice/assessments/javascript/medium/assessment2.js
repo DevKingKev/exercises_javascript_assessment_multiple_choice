@@ -3,6 +3,7 @@ const metadata = {
     "title": "Asynchronous JavaScript & Performance",
     "description": "In-depth questions on async patterns, event loop, timers, Promise utilities, microtasks vs macrotasks, and performance considerations",
     "difficulty": "medium",
+    "domain": "javascript",
     "timeLimit": 45,
     "questionCount": 25,
     "topics": [

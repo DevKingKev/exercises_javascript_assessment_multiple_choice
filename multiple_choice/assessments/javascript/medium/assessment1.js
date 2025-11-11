@@ -3,6 +3,7 @@ const metadata = {
     "title": "Advanced JavaScript Concepts",
     "description": "Closures, prototypes, asynchronous programming, promises, async/await, this keyword, classes, and advanced ES6+ features",
     "difficulty": "medium",
+    "domain": "javascript",
     "timeLimit": 45,
     "questionCount": 25,
     "topics": [

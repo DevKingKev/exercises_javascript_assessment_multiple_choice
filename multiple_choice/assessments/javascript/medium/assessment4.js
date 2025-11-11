@@ -3,6 +3,7 @@ const metadata = {
     "title": "Security, Networking & Best Practices",
     "description": "Medium-level questions on web security, CORS, CSP, cookies, input validation, and safe coding practices.",
     "difficulty": "medium",
+    "domain": "javascript",
     "timeLimit": 45,
     "questionCount": 25,
     "topics": [

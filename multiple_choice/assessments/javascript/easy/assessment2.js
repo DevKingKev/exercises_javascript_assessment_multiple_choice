@@ -3,6 +3,7 @@ const metadata = {
     "title": "Advanced JavaScript Basics",
     "description": "More advanced JavaScript fundamentals including type coercion, array methods, and scope concepts",
     "difficulty": "easy",
+    "domain": "javascript",
     "timeLimit": 30,
     "questionCount": 30,
     "topics": [

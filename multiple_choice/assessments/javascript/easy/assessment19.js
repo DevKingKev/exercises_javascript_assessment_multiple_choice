@@ -3,6 +3,7 @@ const metadata = {
     "title": "JavaScript String Operations and Methods",
     "description": "Essential string operations, common methods, and practical string manipulation techniques in JavaScript. Focuses on everyday string tasks developers encounter.",
     "difficulty": "easy",
+    "domain": "javascript",
     "timeLimit": 30,
     "questionCount": 30,
     "topics": [

@@ -3,6 +3,7 @@ const metadata = {
     "title": "DOM APIs & Advanced Browser Features",
     "description": "Questions cover DOM traversal/manipulation, events, Shadow DOM, custom elements, template, selectors, and mutation observers.",
     "difficulty": "medium",
+    "domain": "javascript",
     "timeLimit": 45,
     "questionCount": 25,
     "topics": [

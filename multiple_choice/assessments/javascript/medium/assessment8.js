@@ -3,6 +3,7 @@ module.exports = {
         title: "JavaScript Execution Context & Advanced Patterns",
         description: "Test your understanding of JavaScript execution context, scope chains, module systems, error propagation, and advanced programming patterns.",
         difficulty: "medium",
+        domain: "javascript",
         timeLimit: 45,
         questionCount: 25,
         topics: [

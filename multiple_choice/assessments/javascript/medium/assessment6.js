@@ -3,6 +3,7 @@ module.exports = {
         title: "Modern JavaScript APIs & Advanced Techniques",
         description: "Test your knowledge of modern JavaScript APIs including Fetch, Observables, Intersection Observer, Local Storage, IndexedDB, Service Workers, and advanced object manipulation techniques.",
         difficulty: "medium",
+        domain: "javascript",
         timeLimit: 45,
         questionCount: 25,
         topics: [

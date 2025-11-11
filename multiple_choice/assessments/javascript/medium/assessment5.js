@@ -3,6 +3,7 @@ module.exports = {
         title: "Advanced JavaScript Patterns & Optimization",
         description: "Test your knowledge of advanced JavaScript patterns including generators, iterators, proxies, symbols, functional programming, and performance optimization techniques.",
         difficulty: "medium",
+        domain: "javascript",
         timeLimit: 45,
         questionCount: 25,
         topics: [

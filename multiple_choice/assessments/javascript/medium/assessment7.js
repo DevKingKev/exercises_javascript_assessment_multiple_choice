@@ -3,6 +3,7 @@ module.exports = {
         title: "JavaScript Type System & Modern Features",
         description: "Deep dive into JavaScript's type system, coercion rules, modern ES2020+ features including optional chaining, nullish coalescing, private fields, BigInt, and advanced variable scoping.",
         difficulty: "medium",
+        domain: "javascript",
         timeLimit: 45,
         questionCount: 25,
         topics: [
