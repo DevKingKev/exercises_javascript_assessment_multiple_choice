@@ -478,12 +478,12 @@ module.exports = {
       "id": 26,
       "question": "How can you create an object with specific initial properties and methods?",
       "options": {
-        "A": "All of the above",
+        "A": "Use a constructor function",
         "B": "Use object literal with methods",
         "C": "Use <pre>Object.create()</pre> with property descriptors",
-        "D": "Use a constructor function"
+        "D": "All of the above"
       },
-      "correct": "A",
+      "correct": "D",
       "explanation": "All three methods can create objects with properties and methods: constructor functions for multiple instances, object literals for single objects, and <pre>Object.create()</pre> with property descriptors for fine control.",
       "topic": {
         "topics": [
@@ -560,4 +560,4 @@ module.exports = {
       }
     }
   ]
-}
+};
