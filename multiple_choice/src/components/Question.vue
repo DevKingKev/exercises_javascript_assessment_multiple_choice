@@ -71,6 +71,7 @@ function formatOption (s: string | null | undefined) {
   border-radius: 12px;
   box-shadow: var(--shadow-md);
   border: 1px solid var(--card-border);
+  min-height: 580px; // To stop it changing height so much on small differences in height between questions
 
 
   .question-text {

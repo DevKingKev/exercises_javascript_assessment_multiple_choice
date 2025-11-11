@@ -145,7 +145,7 @@ const questions = [
         "id": 6,
         "question": "Which element provides a caption for a <pre><fieldset></pre>?",
         "options": {
-            "A": "<pre><legend></legend></pre>",
+            "A": "<pre><legend></pre>",
             "B": "<pre><caption></pre>",
             "C": "<pre><label></pre>",
             "D": "<pre><title></pre>"

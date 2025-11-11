@@ -78,6 +78,7 @@
       <div class="results-actions">
         <button class="action-btn" @click="retakeAssessment">Retake Assessment</button>
         <button class="action-btn" @click="newAssessment">Choose New Assessment</button>
+        <button class="action-btn" @click="goToResults">Go to Results</button>
       </div>
     </div>
   </div>
@@ -255,6 +256,12 @@ function newAssessment() {
   assessmentStore.resetAssessment();
   resultsStore.clearCurrentResults();
   router.push({ name: 'home' });
+}
+
+function goToResults() {
+  // Navigate to the aggregated results page and request the current
+  // difficulty be expanded via query param. Use the computed value.
+  router.push({ name: 'results', query: { expand: String(difficultyRaw.value) } });
 }
 
 
