@@ -37,7 +37,7 @@ export function formatWithMarkers ( text: string, domain: string = 'javascript' 
                     const index = codeTags.length;
                     // If domain is html, render a real <pre> with escaped inner content.
                     // Otherwise preserve previous behaviour: convert to inline span.pre
-                    if ( String( domain ).toLowerCase() === 'html' ) {
+                    if ( String( domain ).trim().toLowerCase() === 'html' ) {
                         codeTags.push( `<pre>${escapeHtml( content )}</pre>` );
                     } else {
                         codeTags.push( `<span class="pre">${content}</span>` );

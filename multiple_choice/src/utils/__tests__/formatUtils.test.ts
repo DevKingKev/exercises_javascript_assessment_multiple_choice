@@ -173,19 +173,21 @@ Another paragraph.`;
 
         it( 'should handle inline <pre> at start and end of paragraph', () => {
             const input = '<pre>start</pre> middle text <pre>end</pre>';
+            // Without domain parameter, defaults to 'javascript' (span.pre behavior)
             const result = formatWithMarkers( input );
 
-            expect( result ).toContain( '<pre>start</pre>' );
-            expect( result ).toContain( '<pre>end</pre>' );
+            expect( result ).toContain( '<span class="pre">start</span>' );
+            expect( result ).toContain( '<span class="pre">end</span>' );
             expect( result ).toContain( 'middle text' );
         } );
 
         it( 'should preserve content inside <pre> tags without escaping', () => {
             const input = 'Check <pre>x < y && a > b</pre> condition.';
+            // Without domain parameter, defaults to 'javascript' (span.pre behavior)
             const result = formatWithMarkers( input );
 
-            // The content inside <pre> should be escaped when rendered inside a real <pre>
-            expect( result ).toContain( '<pre>x &lt; y &amp;&amp; a &gt; b</pre>' );
+            // The content inside <pre> should NOT be escaped for javascript domain (span.pre)
+            expect( result ).toContain( '<span class="pre">x < y && a > b</span>' );
         } );
     } );
 
@@ -384,6 +386,251 @@ Another paragraph.`;
 
             expect( result ).toContain( '<span class="pre">Array.prototype.map()</span>' );
             expect( result ).toContain( 'creates a new array' );
+        } );
+    } );
+
+    describe( 'HTML domain formatting', () => {
+        describe( 'formatWithMarkers with HTML domain', () => {
+            it( 'should render inline <pre> as real <pre> elements with escaped content for HTML domain', () => {
+                const input = 'The <pre><img src="photo.jpg" alt="Description"></pre> element embeds images.';
+                const result = formatWithMarkers( input, 'html' );
+
+                expect( result ).toContain( '<pre>&lt;img src="photo.jpg" alt="Description"&gt;</pre>' );
+                expect( result ).not.toContain( '<span class="pre">' );
+                expect( result ).toContain( '<p class="formatted-with-markers">' );
+            } );
+
+            it( 'should handle multiple inline <pre> tags with HTML content for HTML domain', () => {
+                const input = 'Use <pre><div></pre> or <pre><span></pre> for layout.';
+                const result = formatWithMarkers( input, 'html' );
+
+                expect( result ).toContain( '<pre>&lt;div&gt;</pre>' );
+                expect( result ).toContain( '<pre>&lt;span&gt;</pre>' );
+                expect( result ).not.toContain( '<span class="pre">' );
+            } );
+
+            it( 'should escape HTML attributes inside <pre> for HTML domain', () => {
+                const input = 'The <pre><a href="url" target="_blank"></pre> opens in new tab.';
+                const result = formatWithMarkers( input, 'html' );
+
+                expect( result ).toContain( '<pre>&lt;a href="url" target="_blank"&gt;</pre>' );
+                expect( result ).not.toContain( '<a href="url"' );
+            } );
+
+            it( 'should handle <pre> with special HTML entities for HTML domain', () => {
+                const input = 'Check <pre><div class="test" id="main"></pre> syntax.';
+                const result = formatWithMarkers( input, 'html' );
+
+                expect( result ).toContain( '<pre>&lt;div class="test" id="main"&gt;</pre>' );
+                expect( result ).not.toContain( '<div class="test"' );
+            } );
+
+            it( 'should handle self-closing HTML tags in <pre> for HTML domain', () => {
+                const input = 'Use <pre><br /></pre> for line breaks.';
+                const result = formatWithMarkers( input, 'html' );
+
+                expect( result ).toContain( '<pre>&lt;br /&gt;</pre>' );
+            } );
+
+            it( 'should handle complete HTML snippets in <pre> for HTML domain', () => {
+                const input = 'Example: <pre><form action="/submit" method="POST"></pre> creates a form.';
+                const result = formatWithMarkers( input, 'html' );
+
+                expect( result ).toContain( '<pre>&lt;form action="/submit" method="POST"&gt;</pre>' );
+            } );
+
+            it( 'should handle mixed JavaScript and HTML in [CODE] blocks for HTML domain', () => {
+                const input = '[CODE]<script>\n  console.log("test");\n</script>[/CODE]';
+                const result = formatWithMarkers( input, 'html' );
+
+                expect( result ).toContain( '<pre class="formatted-with-markers"><code>' );
+                expect( result ).toContain( '&lt;script&gt;' );
+                expect( result ).toContain( '&lt;/script&gt;' );
+                expect( result ).toContain( 'console.log("test");' );
+            } );
+        } );
+
+        describe( 'formatWithMarkers with JavaScript domain (default)', () => {
+            it( 'should render inline <pre> as <span class="pre"> for JavaScript domain', () => {
+                const input = 'Use <pre>Array.map()</pre> for transformations.';
+                const result = formatWithMarkers( input, 'javascript' );
+
+                expect( result ).toContain( '<span class="pre">Array.map()</span>' );
+                expect( result ).not.toContain( '<pre>Array.map()</pre>' );
+            } );
+
+            it( 'should use default JavaScript domain when no domain specified', () => {
+                const input = 'Use <pre>const</pre> instead of <pre>var</pre>.';
+                const result = formatWithMarkers( input ); // No domain parameter
+
+                expect( result ).toContain( '<span class="pre">const</span>' );
+                expect( result ).toContain( '<span class="pre">var</span>' );
+            } );
+
+            it( 'should preserve legacy behavior for non-HTML domains', () => {
+                const input = 'The <pre>filter()</pre> method filters arrays.';
+                const result = formatWithMarkers( input, 'javascript' );
+
+                expect( result ).toContain( '<span class="pre">filter()</span>' );
+                expect( result ).toContain( '<p class="formatted-with-markers">' );
+            } );
+        } );
+
+        describe( 'formatTextWithCode with HTML domain', () => {
+            it( 'should pass HTML domain to formatWithMarkers for <pre> tags', () => {
+                const input = 'Use <pre><img src="test.jpg"></pre> to embed images.';
+                const result = formatTextWithCode( input, 'html' );
+
+                expect( result ).toContain( '<pre>&lt;img src="test.jpg"&gt;</pre>' );
+                expect( result ).not.toContain( '<span class="pre">' );
+            } );
+
+            it( 'should pass HTML domain to formatWithMarkers for [CODE] blocks', () => {
+                const input = '[CODE]<div class="container">\n  <p>Content</p>\n</div>[/CODE]';
+                const result = formatTextWithCode( input, 'html' );
+
+                expect( result ).toContain( '<pre class="formatted-with-markers"><code>' );
+                expect( result ).toContain( '&lt;div class="container"&gt;' );
+                expect( result ).toContain( '&lt;p&gt;Content&lt;/p&gt;' );
+            } );
+
+            it( 'should handle mixed inline <pre> and [CODE] blocks for HTML domain', () => {
+                const input = 'The <pre><iframe></pre> element:\n\n[CODE]<iframe src="page.html"></iframe>[/CODE]';
+                const result = formatTextWithCode( input, 'html' );
+
+                expect( result ).toContain( '<pre>&lt;iframe&gt;</pre>' );
+                expect( result ).toContain( '&lt;iframe src="page.html"&gt;&lt;/iframe&gt;' );
+            } );
+        } );
+
+        describe( 'Negative tests - incorrect usage', () => {
+            it( 'should handle null text input gracefully', () => {
+                const result = formatTextWithCode( null as any, 'html' );
+                expect( result ).toBe( '' );
+            } );
+
+            it( 'should handle undefined text input gracefully', () => {
+                const result = formatTextWithCode( undefined as any, 'html' );
+                expect( result ).toBe( '' );
+            } );
+
+            it( 'should handle empty string for HTML domain', () => {
+                const result = formatTextWithCode( '', 'html' );
+                expect( result ).toBe( '' );
+            } );
+
+            it( 'should not render HTML when domain is javascript (security)', () => {
+                const input = 'Use <pre><script>alert("XSS")</script></pre> carefully.';
+                const result = formatTextWithCode( input, 'javascript' );
+
+                // Should be inline span, and content inside should NOT be escaped in the same way
+                expect( result ).toContain( '<span class="pre">' );
+                expect( result ).not.toContain( '<pre>&lt;script&gt;' );
+                // The script tag inside should be preserved as-is inside the span
+                expect( result ).toContain( '<script>alert("XSS")</script>' );
+            } );
+
+            it( 'should handle malformed <pre> tags gracefully', () => {
+                const input = 'Incomplete <pre>tag here';
+                const result = formatTextWithCode( input, 'html' );
+
+                // Should fall through to autodetect since <pre> is not closed
+                expect( result ).toContain( '<p>' );
+                expect( result ).toContain( '&lt;pre&gt;' );
+            } );
+
+            it( 'should handle nested <pre> tags (edge case)', () => {
+                const input = 'Text <pre>outer <pre>inner</pre> outer</pre> text.';
+                const result = formatTextWithCode( input, 'html' );
+
+                // The regex will match the first occurrence
+                expect( result ).toContain( '<pre>' );
+            } );
+
+            it( 'should handle <pre> tags without content for HTML domain', () => {
+                const input = 'Empty tag: <pre></pre> here.';
+                const result = formatTextWithCode( input, 'html' );
+
+                expect( result ).toContain( '<pre></pre>' );
+            } );
+
+            it( 'should handle case-sensitive domain parameter', () => {
+                const input = 'Use <pre><div></pre> for layout.';
+
+                // HTML (lowercase)
+                const htmlResult = formatTextWithCode( input, 'html' );
+                expect( htmlResult ).toContain( '<pre>&lt;div&gt;</pre>' );
+
+                // HTML (uppercase) - should still work due to toLowerCase
+                const upperResult = formatTextWithCode( input, 'HTML' );
+                expect( upperResult ).toContain( '<pre>&lt;div&gt;</pre>' );
+
+                // Mixed case
+                const mixedResult = formatTextWithCode( input, 'HtMl' );
+                expect( mixedResult ).toContain( '<pre>&lt;div&gt;</pre>' );
+            } );
+
+            it( 'should handle unknown domain as non-HTML (fallback to javascript behavior)', () => {
+                const input = 'Use <pre><div></pre> element.';
+                const result = formatTextWithCode( input, 'python' );
+
+                // Should use span.pre (default non-HTML behavior)
+                expect( result ).toContain( '<span class="pre">' );
+                expect( result ).not.toContain( '<pre>&lt;div&gt;</pre>' );
+            } );
+
+            it( 'should not execute JavaScript in HTML snippets', () => {
+                const input = '<pre><img src="x" onerror="alert(1)"></pre>';
+                const result = formatTextWithCode( input, 'html' );
+
+                // Should be fully escaped (the inner content of <pre> is escaped)
+                expect( result ).toContain( '&lt;img src="x"' );
+                expect( result ).toContain( '&lt;img src="x" onerror="alert(1)"&gt;' );
+                // The onerror attribute should be escaped, not executable
+                expect( result ).not.toContain( '<img src="x" onerror' );
+            } );
+
+            it( 'should handle very long HTML snippets', () => {
+                const longTag = '<pre>' + '<div class="container" id="main" data-test="value" role="region" aria-label="Main content">'.repeat( 5 ) + '</pre>';
+                const result = formatTextWithCode( longTag, 'html' );
+
+                expect( result ).toContain( '<pre>' );
+                expect( result ).toContain( '&lt;div class="container"' );
+                expect( result ).toContain( '</pre>' );
+            } );
+
+            it( 'should preserve whitespace in HTML code blocks', () => {
+                const input = '[CODE]<div>\n    <p>Indented content</p>\n</div>[/CODE]';
+                const result = formatTextWithCode( input, 'html' );
+
+                expect( result ).toContain( '<pre class="formatted-with-markers"><code>' );
+                // Whitespace should be preserved in the escaped output
+                expect( result ).toContain( '&lt;p&gt;Indented content&lt;/p&gt;' );
+            } );
+        } );
+
+        describe( 'Domain parameter edge cases', () => {
+            it( 'should handle empty domain string as non-HTML', () => {
+                const input = 'Use <pre>test</pre> here.';
+                const result = formatTextWithCode( input, '' );
+
+                expect( result ).toContain( '<span class="pre">test</span>' );
+            } );
+
+            it( 'should handle whitespace-only domain as non-HTML', () => {
+                const input = 'Use <pre>test</pre> here.';
+                const result = formatTextWithCode( input, '   ' );
+
+                expect( result ).toContain( '<span class="pre">test</span>' );
+            } );
+
+            it( 'should handle domain with leading/trailing whitespace', () => {
+                const input = 'Use <pre><div></pre> element.';
+                const result = formatTextWithCode( input, '  html  ' );
+
+                // Should trim and match 'html'
+                expect( result ).toContain( '<pre>&lt;div&gt;</pre>' );
+            } );
         } );
     } );
 } );
