@@ -70,6 +70,31 @@ function rebalanceFile (file, apply = false) {
         const target = balancedTargetLetters(n);
 
         const actions = [];
+        // First: ensure any option containing the phrase "All of the above" lives in slot D
+        for (let i = 0; i < n; i++) {
+            const q = questions[i];
+            const opts = q.options || {};
+            try {
+                for (const letter of ['A', 'B', 'C', 'D']) {
+                    const text = opts[letter];
+                    if (typeof text === 'string' && /all of the above/i.test(text)) {
+                        if (letter !== 'D') {
+                            // swap letter <-> D so the 'All of the above' text sits in D
+                            swapOptions(opts, letter, 'D');
+                            const cur = String(q.correct || '').toUpperCase();
+                            if (cur === letter) q.correct = 'D';
+                            else if (cur === 'D') q.correct = letter;
+                            actions.push({ index: i, from: letter, to: 'D', reason: 'ensureAllOfTheAbove' });
+                        }
+                        break; // found the special option for this question
+                    }
+                }
+            } catch (e) {
+                // ignore per-question failure and continue
+            }
+        }
+
+        // Now perform the normal balancing swaps
         for (let i = 0; i < n; i++) {
             const q = questions[i];
             const current = String(q.correct || '').toUpperCase();

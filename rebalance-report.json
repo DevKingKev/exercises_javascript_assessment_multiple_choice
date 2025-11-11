@@ -1,100 +1,239 @@
 [
   {
     "file": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment1.js",
-    "applied": true,
-    "backup": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment1.js.bak.1762900619365",
+    "applied": false,
     "actions": [
       {
         "index": 0,
         "from": "D",
+        "to": "C"
+      },
+      {
+        "index": 1,
+        "from": "A",
         "to": "B"
       },
       {
-        "index": 2,
+        "index": 5,
         "from": "B",
-        "to": "C"
-      },
-      {
-        "index": 3,
-        "from": "B",
-        "to": "C"
-      },
-      {
-        "index": 4,
-        "from": "A",
         "to": "D"
       },
       {
-        "index": 7,
-        "from": "B",
+        "index": 6,
+        "from": "D",
         "to": "C"
       },
       {
         "index": 8,
-        "from": "B",
-        "to": "C"
-      },
-      {
-        "index": 9,
-        "from": "A",
+        "from": "C",
         "to": "B"
       },
       {
+        "index": 9,
+        "from": "B",
+        "to": "A"
+      },
+      {
         "index": 10,
+        "from": "A",
+        "to": "D"
+      },
+      {
+        "index": 12,
         "from": "B",
         "to": "A"
       },
       {
         "index": 13,
-        "from": "A",
-        "to": "D"
+        "from": "D",
+        "to": "A"
       },
       {
-        "index": 14,
-        "from": "B",
-        "to": "D"
+        "index": 15,
+        "from": "D",
+        "to": "B"
       },
       {
         "index": 16,
-        "from": "B",
-        "to": "A"
-      },
-      {
-        "index": 18,
-        "from": "B",
-        "to": "A"
+        "from": "A",
+        "to": "B"
       },
       {
         "index": 19,
-        "from": "A",
-        "to": "C"
+        "from": "C",
+        "to": "D"
       }
     ]
   },
   {
     "file": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment10.js",
-    "applied": true,
-    "backup": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment10.js.bak.1762900619366",
+    "applied": false,
     "actions": [
       {
-        "index": 0,
+        "index": 1,
         "from": "A",
         "to": "C"
+      },
+      {
+        "index": 2,
+        "from": "B",
+        "to": "D"
       },
       {
         "index": 4,
-        "from": "A",
-        "to": "C"
+        "from": "C",
+        "to": "B"
       },
       {
         "index": 5,
-        "from": "A",
-        "to": "C"
+        "from": "C",
+        "to": "D"
       },
       {
         "index": 6,
         "from": "D",
         "to": "B"
+      },
+      {
+        "index": 7,
+        "from": "B",
+        "to": "D"
+      },
+      {
+        "index": 8,
+        "from": "D",
+        "to": "C"
+      },
+      {
+        "index": 9,
+        "from": "C",
+        "to": "B"
+      },
+      {
+        "index": 10,
+        "from": "B",
+        "to": "A"
+      },
+      {
+        "index": 11,
+        "from": "A",
+        "to": "D"
+      },
+      {
+        "index": 12,
+        "from": "D",
+        "to": "A"
+      },
+      {
+        "index": 14,
+        "from": "B",
+        "to": "A"
+      },
+      {
+        "index": 15,
+        "from": "B",
+        "to": "C"
+      },
+      {
+        "index": 16,
+        "from": "A",
+        "to": "B"
+      },
+      {
+        "index": 17,
+        "from": "A",
+        "to": "D"
+      },
+      {
+        "index": 18,
+        "from": "D",
+        "to": "C"
+      },
+      {
+        "index": 19,
+        "from": "A",
+        "to": "B"
+      },
+      {
+        "index": 20,
+        "from": "C",
+        "to": "D"
+      },
+      {
+        "index": 21,
+        "from": "D",
+        "to": "C"
+      },
+      {
+        "index": 22,
+        "from": "B",
+        "to": "A"
+      },
+      {
+        "index": 23,
+        "from": "C",
+        "to": "A"
+      },
+      {
+        "index": 25,
+        "from": "C",
+        "to": "A"
+      },
+      {
+        "index": 27,
+        "from": "D",
+        "to": "C"
+      },
+      {
+        "index": 28,
+        "from": "D",
+        "to": "B"
+      },
+      {
+        "index": 29,
+        "from": "D",
+        "to": "B"
+      }
+    ]
+  },
+  {
+    "file": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment11.js",
+    "applied": false,
+    "actions": [
+      {
+        "index": 0,
+        "from": "A",
+        "to": "D"
+      },
+      {
+        "index": 1,
+        "from": "C",
+        "to": "B"
+      },
+      {
+        "index": 2,
+        "from": "D",
+        "to": "B"
+      },
+      {
+        "index": 3,
+        "from": "C",
+        "to": "D"
+      },
+      {
+        "index": 4,
+        "from": "D",
+        "to": "A"
+      },
+      {
+        "index": 5,
+        "from": "C",
+        "to": "A"
+      },
+      {
+        "index": 6,
+        "from": "B",
+        "to": "C"
       },
       {
         "index": 7,
@@ -114,11 +253,354 @@
       {
         "index": 10,
         "from": "A",
+        "to": "C"
+      },
+      {
+        "index": 11,
+        "from": "A",
         "to": "B"
       },
       {
         "index": 13,
+        "from": "D",
+        "to": "B"
+      },
+      {
+        "index": 14,
         "from": "A",
+        "to": "C"
+      },
+      {
+        "index": 15,
+        "from": "B",
+        "to": "A"
+      },
+      {
+        "index": 18,
+        "from": "C",
+        "to": "D"
+      },
+      {
+        "index": 21,
+        "from": "B",
+        "to": "C"
+      },
+      {
+        "index": 22,
+        "from": "C",
+        "to": "A"
+      },
+      {
+        "index": 24,
+        "from": "C",
+        "to": "A"
+      },
+      {
+        "index": 25,
+        "from": "B",
+        "to": "C"
+      },
+      {
+        "index": 28,
+        "from": "D",
+        "to": "A"
+      }
+    ]
+  },
+  {
+    "file": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment12.js",
+    "applied": false,
+    "actions": [
+      {
+        "index": 0,
+        "from": "C",
+        "to": "A"
+      },
+      {
+        "index": 1,
+        "from": "C",
+        "to": "A"
+      },
+      {
+        "index": 3,
+        "from": "D",
+        "to": "A"
+      },
+      {
+        "index": 4,
+        "from": "A",
+        "to": "B"
+      },
+      {
+        "index": 5,
+        "from": "D",
+        "to": "B"
+      },
+      {
+        "index": 6,
+        "from": "D",
+        "to": "B"
+      },
+      {
+        "index": 7,
+        "from": "B",
+        "to": "C"
+      },
+      {
+        "index": 9,
+        "from": "B",
+        "to": "A"
+      },
+      {
+        "index": 11,
+        "from": "A",
+        "to": "C"
+      },
+      {
+        "index": 12,
+        "from": "D",
+        "to": "A"
+      },
+      {
+        "index": 13,
+        "from": "C",
+        "to": "D"
+      },
+      {
+        "index": 14,
+        "from": "A",
+        "to": "C"
+      },
+      {
+        "index": 15,
+        "from": "C",
+        "to": "D"
+      },
+      {
+        "index": 16,
+        "from": "B",
+        "to": "D"
+      },
+      {
+        "index": 18,
+        "from": "A",
+        "to": "B"
+      },
+      {
+        "index": 19,
+        "from": "C",
+        "to": "D"
+      },
+      {
+        "index": 20,
+        "from": "B",
+        "to": "A"
+      },
+      {
+        "index": 21,
+        "from": "A",
+        "to": "D"
+      },
+      {
+        "index": 23,
+        "from": "A",
+        "to": "B"
+      },
+      {
+        "index": 24,
+        "from": "C",
+        "to": "D"
+      },
+      {
+        "index": 26,
+        "from": "D",
+        "to": "C"
+      },
+      {
+        "index": 28,
+        "from": "D",
+        "to": "C"
+      },
+      {
+        "index": 29,
+        "from": "D",
+        "to": "C"
+      }
+    ]
+  },
+  {
+    "file": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment13.js",
+    "applied": false,
+    "actions": [
+      {
+        "index": 0,
+        "from": "B",
+        "to": "A"
+      },
+      {
+        "index": 1,
+        "from": "B",
+        "to": "A"
+      },
+      {
+        "index": 3,
+        "from": "A",
+        "to": "D"
+      },
+      {
+        "index": 4,
+        "from": "C",
+        "to": "A"
+      },
+      {
+        "index": 6,
+        "from": "B",
+        "to": "C"
+      },
+      {
+        "index": 7,
+        "from": "C",
+        "to": "A"
+      },
+      {
+        "index": 8,
+        "from": "B",
+        "to": "A"
+      },
+      {
+        "index": 9,
+        "from": "C",
+        "to": "A"
+      },
+      {
+        "index": 12,
+        "from": "A",
+        "to": "B"
+      },
+      {
+        "index": 14,
+        "from": "A",
+        "to": "B"
+      },
+      {
+        "index": 15,
+        "from": "D",
+        "to": "C"
+      },
+      {
+        "index": 16,
+        "from": "A",
+        "to": "B"
+      },
+      {
+        "index": 18,
+        "from": "A",
+        "to": "B"
+      },
+      {
+        "index": 20,
+        "from": "C",
+        "to": "D"
+      },
+      {
+        "index": 21,
+        "from": "D",
+        "to": "C"
+      },
+      {
+        "index": 22,
+        "from": "C",
+        "to": "B"
+      },
+      {
+        "index": 23,
+        "from": "D",
+        "to": "C"
+      },
+      {
+        "index": 24,
+        "from": "D",
+        "to": "B"
+      },
+      {
+        "index": 25,
+        "from": "B",
+        "to": "C"
+      },
+      {
+        "index": 26,
+        "from": "D",
+        "to": "A"
+      },
+      {
+        "index": 27,
+        "from": "D",
+        "to": "C"
+      },
+      {
+        "index": 28,
+        "from": "C",
+        "to": "D"
+      }
+    ]
+  },
+  {
+    "file": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment14.js",
+    "applied": false,
+    "actions": [
+      {
+        "index": 0,
+        "from": "B",
+        "to": "A"
+      },
+      {
+        "index": 1,
+        "from": "C",
+        "to": "B"
+      },
+      {
+        "index": 3,
+        "from": "B",
+        "to": "C"
+      },
+      {
+        "index": 4,
+        "from": "D",
+        "to": "A"
+      },
+      {
+        "index": 5,
+        "from": "D",
+        "to": "B"
+      },
+      {
+        "index": 6,
+        "from": "B",
+        "to": "C"
+      },
+      {
+        "index": 7,
+        "from": "C",
+        "to": "A"
+      },
+      {
+        "index": 10,
+        "from": "B",
+        "to": "A"
+      },
+      {
+        "index": 11,
+        "from": "A",
+        "to": "B"
+      },
+      {
+        "index": 12,
+        "from": "C",
+        "to": "D"
+      },
+      {
+        "index": 13,
+        "from": "C",
         "to": "D"
       },
       {
@@ -127,131 +609,29 @@
         "to": "B"
       },
       {
+        "index": 15,
+        "from": "D",
+        "to": "A"
+      },
+      {
+        "index": 16,
+        "from": "B",
+        "to": "D"
+      },
+      {
         "index": 17,
         "from": "D",
         "to": "A"
       },
       {
         "index": 18,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 20,
-        "from": "A",
-        "to": "C"
-      },
-      {
-        "index": 21,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 22,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 23,
-        "from": "A",
-        "to": "C"
-      },
-      {
-        "index": 24,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 28,
-        "from": "B",
-        "to": "D"
-      },
-      {
-        "index": 29,
         "from": "D",
-        "to": "A"
-      }
-    ]
-  },
-  {
-    "file": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment11.js",
-    "applied": true,
-    "backup": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment11.js.bak.1762900619373",
-    "actions": [
-      {
-        "index": 1,
-        "from": "B",
-        "to": "C"
-      },
-      {
-        "index": 2,
-        "from": "B",
-        "to": "D"
-      },
-      {
-        "index": 3,
-        "from": "B",
-        "to": "C"
-      },
-      {
-        "index": 4,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 5,
-        "from": "A",
-        "to": "C"
-      },
-      {
-        "index": 6,
-        "from": "A",
         "to": "B"
-      },
-      {
-        "index": 9,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 10,
-        "from": "B",
-        "to": "A"
-      },
-      {
-        "index": 12,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 13,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 15,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 17,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 18,
-        "from": "A",
-        "to": "C"
       },
       {
         "index": 19,
         "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 20,
-        "from": "D",
-        "to": "B"
+        "to": "D"
       },
       {
         "index": 21,
@@ -259,388 +639,17 @@
         "to": "B"
       },
       {
-        "index": 22,
-        "from": "A",
-        "to": "C"
-      },
-      {
-        "index": 23,
-        "from": "A",
-        "to": "C"
-      },
-      {
         "index": 24,
-        "from": "A",
-        "to": "C"
+        "from": "B",
+        "to": "D"
       },
       {
         "index": 25,
         "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 27,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 28,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 29,
-        "from": "A",
-        "to": "B"
-      }
-    ]
-  },
-  {
-    "file": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment12.js",
-    "applied": true,
-    "backup": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment12.js.bak.1762900619374",
-    "actions": [
-      {
-        "index": 0,
-        "from": "A",
         "to": "C"
-      },
-      {
-        "index": 1,
-        "from": "A",
-        "to": "C"
-      },
-      {
-        "index": 2,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 3,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 5,
-        "from": "D",
-        "to": "B"
-      },
-      {
-        "index": 6,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 7,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 8,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 9,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 10,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 12,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 13,
-        "from": "A",
-        "to": "C"
-      },
-      {
-        "index": 15,
-        "from": "A",
-        "to": "C"
-      },
-      {
-        "index": 16,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 19,
-        "from": "A",
-        "to": "C"
-      },
-      {
-        "index": 20,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 22,
-        "from": "D",
-        "to": "C"
-      },
-      {
-        "index": 24,
-        "from": "D",
-        "to": "C"
-      },
-      {
-        "index": 25,
-        "from": "D",
-        "to": "A"
       },
       {
         "index": 26,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 27,
-        "from": "A",
-        "to": "B"
-      }
-    ]
-  },
-  {
-    "file": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment13.js",
-    "applied": true,
-    "backup": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment13.js.bak.1762900619376",
-    "actions": [
-      {
-        "index": 0,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 1,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 2,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 4,
-        "from": "A",
-        "to": "C"
-      },
-      {
-        "index": 5,
-        "from": "D",
-        "to": "B"
-      },
-      {
-        "index": 6,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 7,
-        "from": "A",
-        "to": "C"
-      },
-      {
-        "index": 8,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 9,
-        "from": "A",
-        "to": "C"
-      },
-      {
-        "index": 10,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 11,
-        "from": "D",
-        "to": "A"
-      },
-      {
-        "index": 15,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 19,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 20,
-        "from": "A",
-        "to": "C"
-      },
-      {
-        "index": 21,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 22,
-        "from": "A",
-        "to": "C"
-      },
-      {
-        "index": 23,
-        "from": "D",
-        "to": "A"
-      },
-      {
-        "index": 24,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 25,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 26,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 27,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 28,
-        "from": "A",
-        "to": "C"
-      },
-      {
-        "index": 29,
-        "from": "A",
-        "to": "C"
-      }
-    ]
-  },
-  {
-    "file": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment14.js",
-    "applied": true,
-    "backup": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment14.js.bak.1762900619376",
-    "actions": [
-      {
-        "index": 0,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 1,
-        "from": "A",
-        "to": "C"
-      },
-      {
-        "index": 2,
-        "from": "A",
-        "to": "C"
-      },
-      {
-        "index": 3,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 4,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 5,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 6,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 7,
-        "from": "A",
-        "to": "C"
-      },
-      {
-        "index": 8,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 9,
-        "from": "D",
-        "to": "A"
-      },
-      {
-        "index": 10,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 12,
-        "from": "A",
-        "to": "C"
-      },
-      {
-        "index": 13,
-        "from": "A",
-        "to": "C"
-      },
-      {
-        "index": 15,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 16,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 18,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 20,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 23,
-        "from": "A",
-        "to": "C"
-      },
-      {
-        "index": 24,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 27,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 28,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 29,
         "from": "A",
         "to": "C"
       }
@@ -648,106 +657,120 @@
   },
   {
     "file": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment15.js",
-    "applied": true,
-    "backup": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment15.js.bak.1762900619377",
+    "applied": false,
     "actions": [
       {
         "index": 0,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 1,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 2,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 3,
-        "from": "A",
+        "from": "D",
         "to": "C"
       },
       {
+        "index": 1,
+        "from": "B",
+        "to": "C"
+      },
+      {
+        "index": 3,
+        "from": "C",
+        "to": "B"
+      },
+      {
         "index": 4,
+        "from": "B",
+        "to": "A"
+      },
+      {
+        "index": 6,
         "from": "A",
         "to": "B"
       },
       {
         "index": 7,
+        "from": "C",
+        "to": "A"
+      },
+      {
+        "index": 9,
         "from": "A",
         "to": "C"
       },
       {
-        "index": 8,
-        "from": "A",
-        "to": "D"
-      },
-      {
         "index": 10,
-        "from": "A",
-        "to": "D"
+        "from": "D",
+        "to": "A"
       },
       {
         "index": 11,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 12,
-        "from": "A",
+        "from": "D",
         "to": "B"
       },
       {
+        "index": 12,
+        "from": "B",
+        "to": "C"
+      },
+      {
         "index": 13,
+        "from": "B",
+        "to": "C"
+      },
+      {
+        "index": 14,
         "from": "A",
         "to": "B"
       },
       {
         "index": 15,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 16,
-        "from": "A",
-        "to": "C"
+        "from": "B",
+        "to": "A"
       },
       {
         "index": 19,
-        "from": "A",
-        "to": "C"
+        "from": "C",
+        "to": "D"
       },
       {
         "index": 20,
-        "from": "A",
-        "to": "C"
+        "from": "C",
+        "to": "B"
       },
       {
         "index": 21,
-        "from": "A",
-        "to": "C"
+        "from": "C",
+        "to": "A"
       },
       {
-        "index": 22,
+        "index": 23,
         "from": "A",
         "to": "D"
       },
       {
         "index": 24,
-        "from": "A",
-        "to": "C"
+        "from": "C",
+        "to": "D"
+      },
+      {
+        "index": 25,
+        "from": "D",
+        "to": "B"
       },
       {
         "index": 26,
+        "from": "B",
+        "to": "C"
+      },
+      {
+        "index": 27,
+        "from": "B",
+        "to": "A"
+      },
+      {
+        "index": 28,
         "from": "A",
         "to": "B"
       },
       {
-        "index": 27,
+        "index": 29,
         "from": "A",
         "to": "B"
       }
@@ -755,1900 +778,1781 @@
   },
   {
     "file": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment16.js",
-    "applied": true,
-    "backup": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment16.js.bak.1762900619378",
+    "applied": false,
     "actions": [
       {
         "index": 0,
-        "from": "A",
-        "to": "D"
+        "from": "D",
+        "to": "B"
       },
       {
-        "index": 1,
+        "index": 2,
         "from": "A",
         "to": "D"
       },
       {
         "index": 3,
+        "from": "B",
+        "to": "D"
+      },
+      {
+        "index": 4,
         "from": "A",
-        "to": "B"
+        "to": "C"
       },
       {
         "index": 5,
-        "from": "A",
-        "to": "C"
-      },
-      {
-        "index": 6,
-        "from": "A",
-        "to": "C"
+        "from": "C",
+        "to": "D"
       },
       {
         "index": 7,
-        "from": "A",
-        "to": "C"
-      },
-      {
-        "index": 9,
-        "from": "A",
-        "to": "B"
+        "from": "C",
+        "to": "A"
       },
       {
         "index": 10,
+        "from": "C",
+        "to": "A"
+      },
+      {
+        "index": 11,
         "from": "A",
         "to": "C"
       },
       {
         "index": 12,
+        "from": "C",
+        "to": "A"
+      },
+      {
+        "index": 13,
         "from": "A",
-        "to": "C"
+        "to": "D"
       },
       {
         "index": 14,
-        "from": "A",
-        "to": "D"
+        "from": "D",
+        "to": "C"
       },
       {
         "index": 15,
-        "from": "A",
-        "to": "C"
-      },
-      {
-        "index": 16,
-        "from": "A",
-        "to": "C"
+        "from": "C",
+        "to": "D"
       },
       {
         "index": 17,
-        "from": "A",
-        "to": "D"
+        "from": "D",
+        "to": "B"
       },
       {
         "index": 18,
-        "from": "A",
-        "to": "D"
+        "from": "D",
+        "to": "B"
       },
       {
-        "index": 19,
+        "index": 20,
         "from": "A",
         "to": "B"
+      },
+      {
+        "index": 21,
+        "from": "A",
+        "to": "C"
       },
       {
         "index": 22,
-        "from": "A",
-        "to": "B"
+        "from": "B",
+        "to": "D"
       },
       {
-        "index": 23,
+        "index": 24,
         "from": "A",
         "to": "B"
       },
       {
         "index": 25,
-        "from": "A",
-        "to": "D"
+        "from": "D",
+        "to": "A"
       },
       {
         "index": 26,
-        "from": "A",
-        "to": "B"
+        "from": "B",
+        "to": "A"
       },
       {
         "index": 27,
-        "from": "A",
-        "to": "D"
+        "from": "D",
+        "to": "C"
       },
       {
         "index": 28,
-        "from": "A",
-        "to": "B"
+        "from": "B",
+        "to": "A"
       },
       {
         "index": 29,
-        "from": "A",
-        "to": "B"
+        "from": "B",
+        "to": "A"
       }
     ]
   },
   {
     "file": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment17.js",
-    "applied": true,
-    "backup": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment17.js.bak.1762900619380",
+    "applied": false,
     "actions": [
       {
-        "index": 1,
+        "index": 0,
         "from": "A",
-        "to": "B"
+        "to": "D"
       },
       {
-        "index": 2,
-        "from": "A",
-        "to": "B"
+        "index": 1,
+        "from": "B",
+        "to": "D"
       },
       {
         "index": 3,
-        "from": "A",
-        "to": "B"
+        "from": "B",
+        "to": "C"
       },
       {
         "index": 4,
-        "from": "A",
-        "to": "D"
+        "from": "D",
+        "to": "A"
       },
       {
         "index": 5,
+        "from": "D",
+        "to": "C"
+      },
+      {
+        "index": 7,
         "from": "A",
         "to": "D"
       },
       {
-        "index": 6,
+        "index": 8,
+        "from": "A",
+        "to": "D"
+      },
+      {
+        "index": 11,
         "from": "A",
         "to": "C"
       },
       {
-        "index": 9,
+        "index": 12,
         "from": "A",
         "to": "B"
       },
       {
-        "index": 13,
+        "index": 14,
         "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 15,
-        "from": "A",
-        "to": "C"
+        "to": "B"
       },
       {
         "index": 16,
-        "from": "A",
-        "to": "C"
+        "from": "C",
+        "to": "B"
       },
       {
         "index": 17,
-        "from": "A",
-        "to": "C"
+        "from": "C",
+        "to": "A"
       },
       {
         "index": 18,
-        "from": "A",
-        "to": "C"
+        "from": "C",
+        "to": "D"
       },
       {
         "index": 20,
-        "from": "A",
-        "to": "B"
+        "from": "B",
+        "to": "A"
       },
       {
         "index": 21,
-        "from": "A",
-        "to": "D"
+        "from": "D",
+        "to": "C"
       },
       {
         "index": 22,
-        "from": "A",
-        "to": "B"
+        "from": "B",
+        "to": "A"
       },
       {
         "index": 23,
-        "from": "A",
-        "to": "C"
+        "from": "C",
+        "to": "A"
       },
       {
         "index": 24,
-        "from": "A",
-        "to": "C"
+        "from": "C",
+        "to": "B"
       },
       {
         "index": 25,
-        "from": "A",
-        "to": "D"
+        "from": "D",
+        "to": "B"
       },
       {
         "index": 26,
-        "from": "A",
-        "to": "B"
+        "from": "B",
+        "to": "A"
       },
       {
         "index": 27,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 28,
-        "from": "A",
+        "from": "D",
         "to": "B"
       },
       {
-        "index": 29,
-        "from": "A",
+        "index": 28,
+        "from": "B",
         "to": "D"
+      },
+      {
+        "index": 29,
+        "from": "D",
+        "to": "C"
       }
     ]
   },
   {
     "file": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment18.js",
-    "applied": true,
-    "backup": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment18.js.bak.1762900619381",
+    "applied": false,
     "actions": [
       {
         "index": 0,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 1,
-        "from": "A",
+        "from": "B",
         "to": "C"
       },
       {
-        "index": 3,
+        "index": 1,
+        "from": "C",
+        "to": "A"
+      },
+      {
+        "index": 2,
         "from": "A",
         "to": "D"
+      },
+      {
+        "index": 3,
+        "from": "D",
+        "to": "C"
       },
       {
         "index": 4,
-        "from": "A",
-        "to": "B"
+        "from": "B",
+        "to": "A"
       },
       {
         "index": 5,
-        "from": "A",
-        "to": "D"
+        "from": "D",
+        "to": "B"
       },
       {
         "index": 6,
+        "from": "D",
+        "to": "A"
+      },
+      {
+        "index": 7,
         "from": "A",
         "to": "D"
       },
       {
         "index": 8,
-        "from": "A",
-        "to": "B"
+        "from": "B",
+        "to": "A"
       },
       {
-        "index": 10,
+        "index": 9,
         "from": "A",
         "to": "D"
       },
       {
-        "index": 11,
-        "from": "A",
-        "to": "C"
+        "index": 10,
+        "from": "D",
+        "to": "B"
       },
       {
-        "index": 13,
+        "index": 11,
+        "from": "C",
+        "to": "A"
+      },
+      {
+        "index": 12,
         "from": "A",
         "to": "B"
       },
       {
         "index": 14,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 15,
-        "from": "A",
+        "from": "B",
         "to": "C"
       },
       {
-        "index": 17,
-        "from": "D",
+        "index": 15,
+        "from": "C",
+        "to": "D"
+      },
+      {
+        "index": 16,
+        "from": "A",
         "to": "C"
       },
       {
         "index": 18,
+        "from": "B",
+        "to": "C"
+      },
+      {
+        "index": 19,
+        "from": "D",
+        "to": "B"
+      },
+      {
+        "index": 20,
+        "from": "D",
+        "to": "B"
+      },
+      {
+        "index": 21,
         "from": "A",
         "to": "B"
       },
       {
-        "index": 19,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 20,
-        "from": "A",
-        "to": "D"
-      },
-      {
         "index": 22,
-        "from": "A",
-        "to": "D"
+        "from": "D",
+        "to": "C"
       },
       {
         "index": 23,
+        "from": "C",
+        "to": "A"
+      },
+      {
+        "index": 25,
         "from": "A",
         "to": "C"
       },
       {
         "index": 26,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 27,
-        "from": "A",
-        "to": "B"
+        "from": "B",
+        "to": "D"
       },
       {
         "index": 28,
-        "from": "A",
-        "to": "C"
+        "from": "C",
+        "to": "A"
       },
       {
         "index": 29,
-        "from": "A",
-        "to": "C"
+        "from": "C",
+        "to": "D"
       }
     ]
   },
   {
     "file": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment19.js",
-    "applied": true,
-    "backup": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment19.js.bak.1762900619381",
+    "applied": false,
     "actions": [
       {
         "index": 0,
-        "from": "A",
-        "to": "B"
+        "from": "B",
+        "to": "A"
       },
       {
-        "index": 3,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 4,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 5,
+        "index": 1,
         "from": "A",
         "to": "C"
       },
       {
-        "index": 6,
+        "index": 2,
         "from": "A",
         "to": "D"
       },
       {
-        "index": 7,
-        "from": "A",
+        "index": 3,
+        "from": "B",
+        "to": "A"
+      },
+      {
+        "index": 5,
+        "from": "C",
+        "to": "A"
+      },
+      {
+        "index": 6,
+        "from": "D",
         "to": "B"
       },
       {
         "index": 8,
+        "from": "B",
+        "to": "C"
+      },
+      {
+        "index": 9,
+        "from": "C",
+        "to": "B"
+      },
+      {
+        "index": 10,
         "from": "A",
         "to": "B"
       },
       {
-        "index": 9,
-        "from": "A",
-        "to": "C"
-      },
-      {
-        "index": 13,
+        "index": 11,
         "from": "A",
         "to": "D"
       },
       {
+        "index": 12,
+        "from": "A",
+        "to": "C"
+      },
+      {
         "index": 14,
+        "from": "C",
+        "to": "A"
+      },
+      {
+        "index": 15,
         "from": "A",
         "to": "C"
       },
       {
         "index": 16,
-        "from": "A",
-        "to": "B"
+        "from": "B",
+        "to": "A"
       },
       {
         "index": 17,
-        "from": "A",
-        "to": "C"
-      },
-      {
-        "index": 18,
-        "from": "A",
-        "to": "D"
+        "from": "C",
+        "to": "B"
       },
       {
         "index": 19,
-        "from": "A",
-        "to": "B"
+        "from": "B",
+        "to": "A"
       },
       {
         "index": 20,
-        "from": "A",
-        "to": "D"
+        "from": "D",
+        "to": "C"
       },
       {
         "index": 21,
-        "from": "A",
-        "to": "C"
+        "from": "C",
+        "to": "A"
       },
       {
         "index": 22,
-        "from": "A",
-        "to": "B"
+        "from": "B",
+        "to": "C"
       },
       {
         "index": 23,
-        "from": "A",
-        "to": "C"
+        "from": "C",
+        "to": "D"
       },
       {
         "index": 24,
+        "from": "D",
+        "to": "C"
+      },
+      {
+        "index": 25,
         "from": "A",
         "to": "D"
       },
       {
-        "index": 27,
+        "index": 26,
         "from": "A",
         "to": "B"
       },
       {
+        "index": 27,
+        "from": "B",
+        "to": "A"
+      },
+      {
         "index": 28,
-        "from": "A",
-        "to": "D"
+        "from": "D",
+        "to": "B"
       },
       {
         "index": 29,
-        "from": "A",
-        "to": "C"
+        "from": "C",
+        "to": "B"
       }
     ]
   },
   {
     "file": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment2.js",
-    "applied": true,
-    "backup": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment2.js.bak.1762900619382",
+    "applied": false,
     "actions": [
       {
-        "index": 1,
+        "index": 0,
         "from": "B",
+        "to": "A"
+      },
+      {
+        "index": 1,
+        "from": "A",
+        "to": "C"
+      },
+      {
+        "index": 3,
+        "from": "D",
         "to": "A"
       },
       {
         "index": 4,
-        "from": "C",
-        "to": "B"
+        "from": "B",
+        "to": "C"
       },
       {
-        "index": 5,
-        "from": "A",
+        "index": 6,
+        "from": "D",
         "to": "B"
-      },
-      {
-        "index": 7,
-        "from": "C",
-        "to": "A"
       },
       {
         "index": 8,
-        "from": "B",
-        "to": "A"
+        "from": "A",
+        "to": "D"
+      },
+      {
+        "index": 9,
+        "from": "C",
+        "to": "B"
       },
       {
         "index": 10,
-        "from": "B",
-        "to": "D"
+        "from": "D",
+        "to": "A"
       },
       {
         "index": 11,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 12,
-        "from": "B",
-        "to": "A"
-      },
-      {
-        "index": 13,
-        "from": "B",
-        "to": "A"
-      },
-      {
-        "index": 15,
         "from": "B",
         "to": "D"
       },
       {
-        "index": 17,
-        "from": "B",
-        "to": "A"
-      },
-      {
-        "index": 18,
+        "index": 12,
         "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 19,
-        "from": "B",
-        "to": "A"
-      },
-      {
-        "index": 24,
-        "from": "B",
         "to": "C"
       },
       {
-        "index": 26,
+        "index": 13,
+        "from": "A",
+        "to": "C"
+      },
+      {
+        "index": 15,
+        "from": "D",
+        "to": "B"
+      },
+      {
+        "index": 16,
+        "from": "C",
+        "to": "B"
+      },
+      {
+        "index": 17,
+        "from": "A",
+        "to": "D"
+      },
+      {
+        "index": 18,
+        "from": "B",
+        "to": "A"
+      },
+      {
+        "index": 19,
+        "from": "A",
+        "to": "D"
+      },
+      {
+        "index": 20,
         "from": "C",
         "to": "D"
       },
       {
-        "index": 27,
+        "index": 21,
         "from": "B",
         "to": "D"
+      },
+      {
+        "index": 22,
+        "from": "B",
+        "to": "D"
+      },
+      {
+        "index": 24,
+        "from": "C",
+        "to": "B"
+      },
+      {
+        "index": 26,
+        "from": "D",
+        "to": "A"
+      },
+      {
+        "index": 27,
+        "from": "D",
+        "to": "B"
       },
       {
         "index": 28,
-        "from": "B",
-        "to": "C"
+        "from": "C",
+        "to": "A"
       },
       {
         "index": 29,
-        "from": "A",
-        "to": "D"
+        "from": "D",
+        "to": "C"
       }
     ]
   },
   {
     "file": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment20.js",
-    "applied": true,
-    "backup": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment20.js.bak.1762900619383",
+    "applied": false,
     "actions": [
       {
         "index": 0,
-        "from": "A",
-        "to": "C"
+        "from": "C",
+        "to": "D"
       },
       {
         "index": 1,
-        "from": "A",
-        "to": "C"
-      },
-      {
-        "index": 3,
-        "from": "A",
-        "to": "C"
+        "from": "C",
+        "to": "B"
       },
       {
         "index": 4,
-        "from": "A",
-        "to": "B"
+        "from": "B",
+        "to": "A"
       },
       {
-        "index": 6,
+        "index": 5,
         "from": "A",
         "to": "C"
       },
       {
+        "index": 6,
+        "from": "C",
+        "to": "D"
+      },
+      {
+        "index": 7,
+        "from": "A",
+        "to": "B"
+      },
+      {
         "index": 9,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 10,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 11,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 12,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 13,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 14,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 15,
         "from": "D",
         "to": "A"
       },
       {
-        "index": 16,
-        "from": "A",
+        "index": 10,
+        "from": "B",
+        "to": "A"
+      },
+      {
+        "index": 11,
+        "from": "D",
+        "to": "B"
+      },
+      {
+        "index": 12,
+        "from": "B",
         "to": "C"
+      },
+      {
+        "index": 13,
+        "from": "B",
+        "to": "D"
+      },
+      {
+        "index": 14,
+        "from": "B",
+        "to": "D"
+      },
+      {
+        "index": 15,
+        "from": "A",
+        "to": "B"
+      },
+      {
+        "index": 16,
+        "from": "C",
+        "to": "B"
       },
       {
         "index": 17,
-        "from": "A",
-        "to": "C"
+        "from": "C",
+        "to": "B"
       },
       {
         "index": 18,
-        "from": "A",
-        "to": "D"
+        "from": "D",
+        "to": "A"
       },
       {
         "index": 19,
+        "from": "C",
+        "to": "B"
+      },
+      {
+        "index": 20,
+        "from": "D",
+        "to": "C"
+      },
+      {
+        "index": 21,
         "from": "A",
         "to": "C"
       },
       {
-        "index": 20,
-        "from": "A",
-        "to": "D"
-      },
-      {
         "index": 22,
-        "from": "A",
-        "to": "D"
+        "from": "D",
+        "to": "C"
       },
       {
         "index": 23,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 25,
-        "from": "A",
-        "to": "B"
+        "from": "B",
+        "to": "D"
       },
       {
         "index": 26,
-        "from": "A",
-        "to": "B"
+        "from": "B",
+        "to": "D"
       },
       {
         "index": 28,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 29,
-        "from": "A",
-        "to": "D"
+        "from": "D",
+        "to": "C"
       }
     ]
   },
   {
     "file": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment21.js",
-    "applied": true,
-    "backup": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment21.js.bak.1762900619384",
+    "applied": false,
     "actions": [
       {
-        "index": 1,
-        "from": "A",
-        "to": "C"
-      },
-      {
-        "index": 2,
-        "from": "A",
-        "to": "C"
-      },
-      {
-        "index": 3,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 4,
+        "index": 0,
         "from": "A",
         "to": "B"
       },
       {
-        "index": 9,
+        "index": 3,
+        "from": "D",
+        "to": "A"
+      },
+      {
+        "index": 6,
         "from": "A",
         "to": "C"
+      },
+      {
+        "index": 7,
+        "from": "A",
+        "to": "C"
+      },
+      {
+        "index": 9,
+        "from": "C",
+        "to": "A"
       },
       {
         "index": 10,
-        "from": "A",
-        "to": "C"
-      },
-      {
-        "index": 11,
-        "from": "D",
+        "from": "C",
         "to": "B"
       },
       {
         "index": 12,
-        "from": "A",
-        "to": "C"
-      },
-      {
-        "index": 13,
-        "from": "A",
-        "to": "D"
+        "from": "C",
+        "to": "B"
       },
       {
         "index": 14,
+        "from": "B",
+        "to": "D"
+      },
+      {
+        "index": 15,
         "from": "A",
         "to": "B"
       },
       {
         "index": 16,
-        "from": "A",
-        "to": "D"
+        "from": "D",
+        "to": "A"
       },
       {
         "index": 17,
-        "from": "A",
-        "to": "B"
+        "from": "B",
+        "to": "A"
       },
       {
         "index": 18,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 19,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 20,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 21,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 22,
-        "from": "A",
+        "from": "D",
         "to": "C"
       },
       {
-        "index": 23,
-        "from": "A",
+        "index": 19,
+        "from": "B",
+        "to": "D"
+      },
+      {
+        "index": 20,
+        "from": "D",
+        "to": "B"
+      },
+      {
+        "index": 21,
+        "from": "B",
         "to": "D"
       },
       {
         "index": 24,
-        "from": "A",
-        "to": "C"
-      },
-      {
-        "index": 25,
-        "from": "A",
-        "to": "B"
+        "from": "C",
+        "to": "D"
       },
       {
         "index": 26,
-        "from": "A",
-        "to": "B"
+        "from": "B",
+        "to": "D"
       },
       {
         "index": 28,
-        "from": "A",
-        "to": "D"
+        "from": "D",
+        "to": "C"
       }
     ]
   },
   {
     "file": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment22.js",
-    "applied": true,
-    "backup": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment22.js.bak.1762900619386",
+    "applied": false,
     "actions": [
       {
-        "index": 0,
+        "index": 1,
         "from": "A",
-        "to": "C"
+        "to": "D"
       },
       {
         "index": 2,
+        "from": "B",
+        "to": "C"
+      },
+      {
+        "index": 3,
+        "from": "A",
+        "to": "B"
+      },
+      {
+        "index": 4,
         "from": "A",
         "to": "B"
       },
       {
         "index": 5,
-        "from": "A",
-        "to": "B"
+        "from": "B",
+        "to": "A"
       },
       {
         "index": 6,
-        "from": "A",
-        "to": "C"
+        "from": "C",
+        "to": "B"
       },
       {
         "index": 7,
+        "from": "D",
+        "to": "B"
+      },
+      {
+        "index": 8,
+        "from": "C",
+        "to": "D"
+      },
+      {
+        "index": 9,
+        "from": "C",
+        "to": "A"
+      },
+      {
+        "index": 10,
+        "from": "C",
+        "to": "B"
+      },
+      {
+        "index": 11,
         "from": "A",
         "to": "D"
       },
       {
-        "index": 8,
-        "from": "A",
+        "index": 12,
+        "from": "B",
         "to": "C"
       },
       {
-        "index": 9,
-        "from": "A",
-        "to": "C"
-      },
-      {
-        "index": 10,
-        "from": "A",
-        "to": "C"
-      },
-      {
-        "index": 11,
+        "index": 13,
         "from": "D",
         "to": "A"
       },
       {
-        "index": 12,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 13,
-        "from": "A",
-        "to": "D"
-      },
-      {
         "index": 14,
-        "from": "A",
-        "to": "D"
+        "from": "D",
+        "to": "A"
       },
       {
         "index": 15,
-        "from": "A",
-        "to": "C"
+        "from": "C",
+        "to": "A"
       },
       {
-        "index": 16,
-        "from": "A",
-        "to": "D"
+        "index": 17,
+        "from": "D",
+        "to": "C"
       },
       {
         "index": 18,
-        "from": "A",
-        "to": "B"
+        "from": "B",
+        "to": "D"
       },
       {
-        "index": 21,
-        "from": "A",
-        "to": "C"
-      },
-      {
-        "index": 22,
+        "index": 19,
         "from": "A",
         "to": "D"
       },
       {
-        "index": 25,
+        "index": 21,
+        "from": "C",
+        "to": "D"
+      },
+      {
+        "index": 22,
+        "from": "D",
+        "to": "C"
+      },
+      {
+        "index": 23,
+        "from": "A",
+        "to": "C"
+      },
+      {
+        "index": 24,
         "from": "A",
         "to": "B"
       },
       {
         "index": 26,
-        "from": "A",
-        "to": "B"
+        "from": "B",
+        "to": "A"
       },
       {
         "index": 27,
-        "from": "A",
-        "to": "D"
+        "from": "D",
+        "to": "C"
       },
       {
         "index": 28,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 29,
-        "from": "A",
-        "to": "B"
+        "from": "B",
+        "to": "A"
       }
     ]
   },
   {
     "file": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment23.js",
-    "applied": true,
-    "backup": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment23.js.bak.1762900619387",
+    "applied": false,
     "actions": [
       {
         "index": 0,
-        "from": "A",
-        "to": "B"
+        "from": "B",
+        "to": "A"
       },
       {
         "index": 1,
+        "from": "D",
+        "to": "A"
+      },
+      {
+        "index": 4,
         "from": "A",
         "to": "D"
       },
       {
-        "index": 2,
-        "from": "A",
-        "to": "C"
-      },
-      {
-        "index": 3,
-        "from": "A",
+        "index": 5,
+        "from": "C",
         "to": "B"
       },
       {
-        "index": 5,
+        "index": 7,
         "from": "A",
         "to": "C"
       },
       {
         "index": 8,
-        "from": "A",
-        "to": "B"
+        "from": "B",
+        "to": "D"
       },
       {
         "index": 9,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 10,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 11,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 12,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 14,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 15,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 16,
-        "from": "A",
-        "to": "C"
-      },
-      {
-        "index": 18,
-        "from": "A",
-        "to": "C"
-      },
-      {
-        "index": 19,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 20,
-        "from": "A",
-        "to": "C"
-      },
-      {
-        "index": 23,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 24,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 25,
         "from": "D",
         "to": "A"
       },
       {
-        "index": 26,
+        "index": 10,
+        "from": "D",
+        "to": "C"
+      },
+      {
+        "index": 11,
+        "from": "B",
+        "to": "D"
+      },
+      {
+        "index": 12,
+        "from": "B",
+        "to": "A"
+      },
+      {
+        "index": 13,
         "from": "A",
         "to": "C"
       },
       {
+        "index": 14,
+        "from": "D",
+        "to": "B"
+      },
+      {
+        "index": 18,
+        "from": "C",
+        "to": "A"
+      },
+      {
+        "index": 19,
+        "from": "B",
+        "to": "A"
+      },
+      {
+        "index": 20,
+        "from": "C",
+        "to": "B"
+      },
+      {
+        "index": 22,
+        "from": "A",
+        "to": "B"
+      },
+      {
+        "index": 23,
+        "from": "B",
+        "to": "C"
+      },
+      {
+        "index": 25,
+        "from": "D",
+        "to": "B"
+      },
+      {
+        "index": 26,
+        "from": "C",
+        "to": "D"
+      },
+      {
         "index": 27,
+        "from": "D",
+        "to": "C"
+      },
+      {
+        "index": 28,
         "from": "A",
         "to": "D"
       },
       {
         "index": 29,
-        "from": "A",
-        "to": "C"
+        "from": "C",
+        "to": "B"
       }
     ]
   },
   {
     "file": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment24.js",
-    "applied": true,
-    "backup": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment24.js.bak.1762900619388",
+    "applied": false,
     "actions": [
       {
         "index": 0,
-        "from": "A",
-        "to": "B"
+        "from": "B",
+        "to": "C"
       },
       {
         "index": 1,
-        "from": "A",
-        "to": "B"
+        "from": "B",
+        "to": "C"
       },
       {
         "index": 2,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 3,
-        "from": "A",
-        "to": "B"
+        "from": "D",
+        "to": "A"
       },
       {
         "index": 4,
-        "from": "A",
-        "to": "D"
+        "from": "D",
+        "to": "A"
       },
       {
         "index": 5,
+        "from": "D",
+        "to": "B"
+      },
+      {
+        "index": 6,
         "from": "A",
         "to": "D"
       },
       {
-        "index": 7,
-        "from": "A",
-        "to": "B"
-      },
-      {
         "index": 8,
-        "from": "A",
-        "to": "B"
+        "from": "B",
+        "to": "D"
       },
       {
         "index": 9,
+        "from": "C",
+        "to": "D"
+      },
+      {
+        "index": 10,
         "from": "A",
         "to": "C"
       },
       {
         "index": 11,
-        "from": "A",
-        "to": "C"
-      },
-      {
-        "index": 13,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 14,
-        "from": "A",
-        "to": "C"
-      },
-      {
-        "index": 15,
-        "from": "A",
+        "from": "C",
         "to": "D"
       },
       {
-        "index": 16,
-        "from": "A",
-        "to": "C"
+        "index": 13,
+        "from": "B",
+        "to": "D"
+      },
+      {
+        "index": 14,
+        "from": "C",
+        "to": "D"
+      },
+      {
+        "index": 15,
+        "from": "D",
+        "to": "A"
       },
       {
         "index": 17,
+        "from": "B",
+        "to": "A"
+      },
+      {
+        "index": 18,
         "from": "A",
         "to": "B"
       },
       {
         "index": 19,
-        "from": "C",
-        "to": "D"
+        "from": "D",
+        "to": "C"
       },
       {
-        "index": 23,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 25,
+        "index": 20,
         "from": "A",
         "to": "C"
       },
       {
-        "index": 26,
-        "from": "A",
-        "to": "C"
-      },
-      {
-        "index": 27,
+        "index": 22,
         "from": "A",
         "to": "B"
       },
       {
-        "index": 28,
+        "index": 23,
+        "from": "D",
+        "to": "B"
+      },
+      {
+        "index": 24,
         "from": "A",
-        "to": "D"
+        "to": "C"
+      },
+      {
+        "index": 25,
+        "from": "C",
+        "to": "A"
+      },
+      {
+        "index": 26,
+        "from": "C",
+        "to": "B"
+      },
+      {
+        "index": 27,
+        "from": "B",
+        "to": "A"
       },
       {
         "index": 29,
-        "from": "A",
-        "to": "C"
+        "from": "C",
+        "to": "B"
       }
     ]
   },
   {
     "file": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment25.js",
-    "applied": true,
-    "backup": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment25.js.bak.1762900619388",
+    "applied": false,
     "actions": [
       {
         "index": 0,
-        "from": "A",
-        "to": "B"
+        "from": "B",
+        "to": "D"
       },
       {
         "index": 1,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 2,
-        "from": "A",
-        "to": "B"
+        "from": "B",
+        "to": "D"
       },
       {
         "index": 3,
-        "from": "C",
-        "to": "B"
+        "from": "B",
+        "to": "C"
       },
       {
         "index": 4,
-        "from": "A",
-        "to": "C"
+        "from": "C",
+        "to": "A"
       },
       {
-        "index": 6,
+        "index": 5,
         "from": "A",
-        "to": "C"
+        "to": "D"
       },
       {
         "index": 7,
-        "from": "A",
-        "to": "C"
+        "from": "C",
+        "to": "A"
       },
       {
         "index": 9,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 11,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 12,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 13,
-        "from": "A",
+        "from": "B",
         "to": "C"
       },
       {
-        "index": 14,
-        "from": "A",
+        "index": 11,
+        "from": "B",
+        "to": "A"
+      },
+      {
+        "index": 13,
+        "from": "C",
         "to": "D"
       },
       {
         "index": 15,
-        "from": "A",
-        "to": "D"
+        "from": "D",
+        "to": "B"
       },
       {
-        "index": 17,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 18,
+        "index": 16,
         "from": "A",
         "to": "C"
       },
       {
-        "index": 21,
-        "from": "A",
+        "index": 17,
+        "from": "D",
+        "to": "A"
+      },
+      {
+        "index": 18,
+        "from": "C",
         "to": "B"
       },
       {
-        "index": 22,
+        "index": 19,
         "from": "A",
         "to": "D"
       },
       {
-        "index": 24,
-        "from": "A",
+        "index": 20,
+        "from": "D",
+        "to": "A"
+      },
+      {
+        "index": 21,
+        "from": "B",
+        "to": "D"
+      },
+      {
+        "index": 22,
+        "from": "D",
         "to": "C"
       },
       {
         "index": 25,
+        "from": "D",
+        "to": "B"
+      },
+      {
+        "index": 26,
         "from": "A",
-        "to": "D"
+        "to": "C"
       },
       {
         "index": 27,
-        "from": "A",
-        "to": "D"
+        "from": "D",
+        "to": "B"
       },
       {
         "index": 28,
+        "from": "C",
+        "to": "B"
+      },
+      {
+        "index": 29,
         "from": "A",
-        "to": "C"
+        "to": "B"
       }
     ]
   },
   {
     "file": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment26.js",
-    "applied": true,
-    "backup": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment26.js.bak.1762900619389",
+    "applied": false,
     "actions": [
       {
         "index": 0,
-        "from": "A",
-        "to": "C"
+        "from": "C",
+        "to": "B"
       },
       {
         "index": 1,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 2,
-        "from": "A",
+        "from": "D",
         "to": "B"
       },
       {
         "index": 3,
+        "from": "D",
+        "to": "A"
+      },
+      {
+        "index": 4,
+        "from": "D",
+        "to": "A"
+      },
+      {
+        "index": 5,
         "from": "A",
         "to": "D"
       },
       {
         "index": 6,
-        "from": "A",
-        "to": "B"
+        "from": "B",
+        "to": "D"
       },
       {
         "index": 7,
-        "from": "A",
-        "to": "C"
+        "from": "C",
+        "to": "A"
       },
       {
         "index": 8,
-        "from": "A",
-        "to": "B"
+        "from": "B",
+        "to": "C"
       },
       {
         "index": 9,
+        "from": "D",
+        "to": "B"
+      },
+      {
+        "index": 11,
+        "from": "C",
+        "to": "B"
+      },
+      {
+        "index": 12,
         "from": "A",
         "to": "D"
       },
       {
-        "index": 11,
+        "index": 13,
         "from": "A",
         "to": "C"
       },
       {
         "index": 14,
-        "from": "A",
-        "to": "C"
+        "from": "C",
+        "to": "A"
       },
       {
         "index": 15,
+        "from": "D",
+        "to": "B"
+      },
+      {
+        "index": 16,
         "from": "A",
-        "to": "D"
+        "to": "C"
       },
       {
         "index": 17,
-        "from": "A",
-        "to": "B"
+        "from": "B",
+        "to": "C"
       },
       {
         "index": 18,
+        "from": "B",
+        "to": "D"
+      },
+      {
+        "index": 19,
         "from": "A",
-        "to": "B"
+        "to": "D"
       },
       {
         "index": 20,
-        "from": "A",
-        "to": "B"
+        "from": "B",
+        "to": "C"
       },
       {
         "index": 21,
-        "from": "A",
-        "to": "D"
+        "from": "D",
+        "to": "C"
       },
       {
         "index": 22,
-        "from": "A",
-        "to": "C"
-      },
-      {
-        "index": 23,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 24,
-        "from": "A",
-        "to": "C"
-      },
-      {
-        "index": 25,
-        "from": "A",
+        "from": "C",
         "to": "D"
       },
       {
-        "index": 27,
-        "from": "A",
+        "index": 23,
+        "from": "B",
         "to": "C"
       },
       {
-        "index": 28,
+        "index": 24,
+        "from": "C",
+        "to": "A"
+      },
+      {
+        "index": 26,
         "from": "A",
         "to": "B"
+      },
+      {
+        "index": 27,
+        "from": "C",
+        "to": "B"
+      },
+      {
+        "index": 28,
+        "from": "B",
+        "to": "A"
       }
     ]
   },
   {
     "file": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment27.js",
-    "applied": true,
-    "backup": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment27.js.bak.1762900619390",
+    "applied": false,
     "actions": [
       {
-        "index": 1,
+        "index": 0,
         "from": "A",
         "to": "B"
       },
       {
+        "index": 1,
+        "from": "B",
+        "to": "D"
+      },
+      {
         "index": 2,
+        "from": "B",
+        "to": "C"
+      },
+      {
+        "index": 3,
         "from": "A",
         "to": "B"
       },
       {
         "index": 4,
-        "from": "A",
-        "to": "C"
+        "from": "C",
+        "to": "A"
       },
       {
         "index": 5,
-        "from": "A",
-        "to": "B"
+        "from": "B",
+        "to": "D"
       },
       {
         "index": 6,
-        "from": "A",
-        "to": "C"
+        "from": "C",
+        "to": "B"
       },
       {
         "index": 7,
-        "from": "A",
-        "to": "B"
+        "from": "B",
+        "to": "C"
       },
       {
         "index": 8,
+        "from": "B",
+        "to": "A"
+      },
+      {
+        "index": 9,
         "from": "A",
-        "to": "B"
+        "to": "C"
       },
       {
         "index": 10,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 11,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 13,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 14,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 15,
-        "from": "A",
-        "to": "C"
-      },
-      {
-        "index": 16,
-        "from": "A",
-        "to": "C"
-      },
-      {
-        "index": 17,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 18,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 19,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 22,
         "from": "D",
         "to": "A"
       },
       {
-        "index": 23,
-        "from": "A",
+        "index": 11,
+        "from": "D",
         "to": "C"
+      },
+      {
+        "index": 12,
+        "from": "A",
+        "to": "B"
+      },
+      {
+        "index": 13,
+        "from": "D",
+        "to": "C"
+      },
+      {
+        "index": 14,
+        "from": "B",
+        "to": "D"
+      },
+      {
+        "index": 15,
+        "from": "C",
+        "to": "A"
+      },
+      {
+        "index": 16,
+        "from": "C",
+        "to": "A"
+      },
+      {
+        "index": 17,
+        "from": "D",
+        "to": "A"
+      },
+      {
+        "index": 19,
+        "from": "B",
+        "to": "D"
+      },
+      {
+        "index": 20,
+        "from": "D",
+        "to": "C"
+      },
+      {
+        "index": 23,
+        "from": "C",
+        "to": "B"
       },
       {
         "index": 24,
-        "from": "A",
-        "to": "C"
+        "from": "C",
+        "to": "D"
       },
       {
         "index": 25,
+        "from": "D",
+        "to": "B"
+      },
+      {
+        "index": 28,
         "from": "A",
         "to": "D"
       },
       {
-        "index": 27,
+        "index": 29,
         "from": "A",
-        "to": "C"
+        "to": "B"
       }
     ]
   },
   {
     "file": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment28.js",
-    "applied": true,
-    "backup": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment28.js.bak.1762900619391",
+    "applied": false,
     "actions": [
       {
+        "index": 0,
+        "from": "A",
+        "to": "B"
+      },
+      {
         "index": 2,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 3,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 4,
-        "from": "A",
+        "from": "B",
         "to": "D"
       },
       {
-        "index": 5,
-        "from": "A",
+        "index": 3,
+        "from": "B",
+        "to": "D"
+      },
+      {
+        "index": 4,
+        "from": "D",
         "to": "C"
       },
       {
         "index": 7,
-        "from": "A",
-        "to": "C"
+        "from": "C",
+        "to": "A"
       },
       {
         "index": 8,
-        "from": "A",
-        "to": "D"
+        "from": "D",
+        "to": "B"
       },
       {
         "index": 9,
-        "from": "A",
-        "to": "C"
+        "from": "C",
+        "to": "A"
       },
       {
-        "index": 11,
+        "index": 10,
         "from": "A",
         "to": "B"
       },
       {
+        "index": 11,
+        "from": "B",
+        "to": "D"
+      },
+      {
         "index": 12,
+        "from": "C",
+        "to": "B"
+      },
+      {
+        "index": 13,
         "from": "A",
-        "to": "C"
+        "to": "B"
       },
       {
         "index": 14,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 15,
-        "from": "A",
-        "to": "C"
+        "from": "D",
+        "to": "B"
       },
       {
         "index": 16,
-        "from": "A",
-        "to": "D"
+        "from": "D",
+        "to": "C"
       },
       {
-        "index": 17,
+        "index": 18,
         "from": "A",
         "to": "D"
       },
       {
         "index": 19,
-        "from": "A",
-        "to": "B"
+        "from": "B",
+        "to": "C"
       },
       {
         "index": 20,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 21,
-        "from": "A",
-        "to": "B"
+        "from": "B",
+        "to": "C"
       },
       {
         "index": 22,
-        "from": "A",
-        "to": "C"
+        "from": "C",
+        "to": "D"
       },
       {
         "index": 23,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 24,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 25,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 26,
-        "from": "A",
+        "from": "B",
         "to": "C"
       },
       {
-        "index": 28,
+        "index": 24,
+        "from": "D",
+        "to": "A"
+      },
+      {
+        "index": 25,
+        "from": "D",
+        "to": "A"
+      },
+      {
+        "index": 26,
+        "from": "C",
+        "to": "A"
+      },
+      {
+        "index": 29,
         "from": "A",
-        "to": "B"
+        "to": "D"
       }
     ]
   },
   {
     "file": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment29.js",
-    "applied": true,
-    "backup": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment29.js.bak.1762900619393",
-    "actions": [
-      {
-        "index": 0,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 1,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 3,
-        "from": "A",
-        "to": "C"
-      },
-      {
-        "index": 4,
-        "from": "A",
-        "to": "C"
-      },
-      {
-        "index": 5,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 6,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 8,
-        "from": "A",
-        "to": "C"
-      },
-      {
-        "index": 9,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 10,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 11,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 13,
-        "from": "A",
-        "to": "C"
-      },
-      {
-        "index": 14,
-        "from": "A",
-        "to": "C"
-      },
-      {
-        "index": 16,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 17,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 18,
-        "from": "A",
-        "to": "C"
-      },
-      {
-        "index": 19,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 20,
-        "from": "A",
-        "to": "C"
-      },
-      {
-        "index": 22,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 23,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 24,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 25,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 27,
-        "from": "A",
-        "to": "D"
-      }
-    ]
-  },
-  {
-    "file": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment3.js",
-    "applied": true,
-    "backup": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment3.js.bak.1762900619395",
+    "applied": false,
     "actions": [
       {
         "index": 0,
         "from": "B",
         "to": "D"
-      },
-      {
-        "index": 3,
-        "from": "B",
-        "to": "D"
-      },
-      {
-        "index": 4,
-        "from": "B",
-        "to": "A"
-      },
-      {
-        "index": 5,
-        "from": "C",
-        "to": "B"
-      },
-      {
-        "index": 7,
-        "from": "D",
-        "to": "B"
-      },
-      {
-        "index": 8,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 9,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 10,
-        "from": "B",
-        "to": "C"
-      },
-      {
-        "index": 12,
-        "from": "B",
-        "to": "D"
-      },
-      {
-        "index": 13,
-        "from": "B",
-        "to": "A"
-      },
-      {
-        "index": 14,
-        "from": "C",
-        "to": "B"
-      },
-      {
-        "index": 15,
-        "from": "B",
-        "to": "D"
-      },
-      {
-        "index": 16,
-        "from": "A",
-        "to": "C"
-      },
-      {
-        "index": 17,
-        "from": "B",
-        "to": "C"
-      },
-      {
-        "index": 18,
-        "from": "B",
-        "to": "A"
-      },
-      {
-        "index": 19,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 20,
-        "from": "B",
-        "to": "A"
-      },
-      {
-        "index": 23,
-        "from": "B",
-        "to": "A"
-      },
-      {
-        "index": 24,
-        "from": "C",
-        "to": "A"
-      },
-      {
-        "index": 25,
-        "from": "B",
-        "to": "A"
-      },
-      {
-        "index": 26,
-        "from": "B",
-        "to": "C"
-      },
-      {
-        "index": 28,
-        "from": "B",
-        "to": "C"
-      },
-      {
-        "index": 29,
-        "from": "B",
-        "to": "D"
-      }
-    ]
-  },
-  {
-    "file": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment30.js",
-    "applied": true,
-    "backup": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment30.js.bak.1762900619397",
-    "actions": [
-      {
-        "index": 1,
-        "from": "A",
-        "to": "B"
       },
       {
         "index": 2,
         "from": "A",
-        "to": "C"
+        "to": "B"
       },
       {
         "index": 4,
-        "from": "A",
+        "from": "C",
+        "to": "A"
+      },
+      {
+        "index": 5,
+        "from": "D",
         "to": "B"
       },
       {
-        "index": 6,
+        "index": 7,
         "from": "A",
-        "to": "B"
+        "to": "C"
       },
       {
-        "index": 9,
-        "from": "A",
-        "to": "B"
+        "index": 8,
+        "from": "C",
+        "to": "A"
       },
       {
         "index": 10,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 11,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 12,
-        "from": "A",
+        "from": "D",
         "to": "B"
       },
       {
-        "index": 13,
-        "from": "A",
+        "index": 11,
+        "from": "B",
         "to": "C"
+      },
+      {
+        "index": 14,
+        "from": "C",
+        "to": "D"
       },
       {
         "index": 15,
@@ -2657,89 +2561,68 @@
       },
       {
         "index": 16,
-        "from": "A",
-        "to": "C"
+        "from": "B",
+        "to": "A"
       },
       {
         "index": 17,
-        "from": "A",
-        "to": "B"
+        "from": "B",
+        "to": "A"
       },
       {
-        "index": 19,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 20,
-        "from": "A",
+        "index": 18,
+        "from": "C",
         "to": "D"
       },
       {
         "index": 21,
         "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 22,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 23,
-        "from": "A",
         "to": "B"
       },
       {
+        "index": 22,
+        "from": "D",
+        "to": "C"
+      },
+      {
+        "index": 23,
+        "from": "B",
+        "to": "C"
+      },
+      {
         "index": 24,
-        "from": "A",
-        "to": "C"
-      },
-      {
-        "index": 25,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 26,
-        "from": "A",
-        "to": "C"
-      },
-      {
-        "index": 27,
-        "from": "A",
-        "to": "C"
-      },
-      {
-        "index": 29,
-        "from": "A",
-        "to": "C"
-      }
-    ]
-  },
-  {
-    "file": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment31.js",
-    "applied": true,
-    "backup": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment31.js.bak.1762900619399",
-    "actions": [
-      {
-        "index": 0,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 1,
-        "from": "A",
-        "to": "C"
-      },
-      {
-        "index": 2,
         "from": "D",
         "to": "A"
       },
       {
-        "index": 3,
+        "index": 26,
         "from": "A",
+        "to": "D"
+      },
+      {
+        "index": 27,
+        "from": "D",
+        "to": "A"
+      },
+      {
+        "index": 28,
+        "from": "A",
+        "to": "B"
+      }
+    ]
+  },
+  {
+    "file": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment3.js",
+    "applied": false,
+    "actions": [
+      {
+        "index": 1,
+        "from": "C",
+        "to": "B"
+      },
+      {
+        "index": 2,
+        "from": "B",
         "to": "C"
       },
       {
@@ -2748,84 +2631,59 @@
         "to": "C"
       },
       {
-        "index": 5,
-        "from": "A",
-        "to": "D"
-      },
-      {
         "index": 6,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 7,
-        "from": "A",
-        "to": "B"
+        "from": "D",
+        "to": "A"
       },
       {
         "index": 8,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 9,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 11,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 12,
-        "from": "A",
-        "to": "C"
-      },
-      {
-        "index": 13,
-        "from": "A",
-        "to": "C"
-      },
-      {
-        "index": 14,
-        "from": "D",
-        "to": "C"
-      },
-      {
-        "index": 15,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 16,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 17,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 18,
         "from": "B",
         "to": "A"
       },
       {
-        "index": 20,
+        "index": 9,
+        "from": "B",
+        "to": "A"
+      },
+      {
+        "index": 11,
+        "from": "C",
+        "to": "B"
+      },
+      {
+        "index": 13,
         "from": "A",
+        "to": "B"
+      },
+      {
+        "index": 14,
+        "from": "B",
         "to": "D"
       },
       {
-        "index": 22,
+        "index": 17,
+        "from": "C",
+        "to": "A"
+      },
+      {
+        "index": 19,
         "from": "D",
         "to": "C"
       },
       {
-        "index": 23,
+        "index": 20,
+        "from": "A",
+        "to": "C"
+      },
+      {
+        "index": 21,
         "from": "A",
         "to": "B"
+      },
+      {
+        "index": 22,
+        "from": "B",
+        "to": "A"
       },
       {
         "index": 24,
@@ -2835,10 +2693,282 @@
       {
         "index": 25,
         "from": "A",
-        "to": "B"
+        "to": "C"
       },
       {
         "index": 26,
+        "from": "C",
+        "to": "D"
+      },
+      {
+        "index": 27,
+        "from": "B",
+        "to": "A"
+      },
+      {
+        "index": 28,
+        "from": "C",
+        "to": "B"
+      }
+    ]
+  },
+  {
+    "file": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment30.js",
+    "applied": false,
+    "actions": [
+      {
+        "index": 1,
+        "from": "B",
+        "to": "C"
+      },
+      {
+        "index": 2,
+        "from": "C",
+        "to": "A"
+      },
+      {
+        "index": 3,
+        "from": "A",
+        "to": "D"
+      },
+      {
+        "index": 5,
+        "from": "A",
+        "to": "C"
+      },
+      {
+        "index": 7,
+        "from": "A",
+        "to": "D"
+      },
+      {
+        "index": 8,
+        "from": "A",
+        "to": "D"
+      },
+      {
+        "index": 9,
+        "from": "B",
+        "to": "C"
+      },
+      {
+        "index": 11,
+        "from": "D",
+        "to": "B"
+      },
+      {
+        "index": 12,
+        "from": "B",
+        "to": "A"
+      },
+      {
+        "index": 13,
+        "from": "C",
+        "to": "B"
+      },
+      {
+        "index": 14,
+        "from": "A",
+        "to": "D"
+      },
+      {
+        "index": 15,
+        "from": "D",
+        "to": "A"
+      },
+      {
+        "index": 16,
+        "from": "C",
+        "to": "D"
+      },
+      {
+        "index": 17,
+        "from": "B",
+        "to": "D"
+      },
+      {
+        "index": 18,
+        "from": "A",
+        "to": "B"
+      },
+      {
+        "index": 19,
+        "from": "B",
+        "to": "C"
+      },
+      {
+        "index": 20,
+        "from": "D",
+        "to": "C"
+      },
+      {
+        "index": 21,
+        "from": "D",
+        "to": "A"
+      },
+      {
+        "index": 22,
+        "from": "D",
+        "to": "C"
+      },
+      {
+        "index": 23,
+        "from": "B",
+        "to": "A"
+      },
+      {
+        "index": 24,
+        "from": "C",
+        "to": "A"
+      },
+      {
+        "index": 25,
+        "from": "D",
+        "to": "A"
+      },
+      {
+        "index": 26,
+        "from": "C",
+        "to": "B"
+      },
+      {
+        "index": 27,
+        "from": "C",
+        "to": "B"
+      },
+      {
+        "index": 28,
+        "from": "A",
+        "to": "C"
+      },
+      {
+        "index": 29,
+        "from": "C",
+        "to": "B"
+      }
+    ]
+  },
+  {
+    "file": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment31.js",
+    "applied": false,
+    "actions": [
+      {
+        "index": 0,
+        "from": "D",
+        "to": "C"
+      },
+      {
+        "index": 1,
+        "from": "C",
+        "to": "D"
+      },
+      {
+        "index": 2,
+        "from": "A",
+        "to": "D"
+      },
+      {
+        "index": 3,
+        "from": "C",
+        "to": "B"
+      },
+      {
+        "index": 5,
+        "from": "D",
+        "to": "A"
+      },
+      {
+        "index": 6,
+        "from": "B",
+        "to": "C"
+      },
+      {
+        "index": 7,
+        "from": "B",
+        "to": "A"
+      },
+      {
+        "index": 9,
+        "from": "D",
+        "to": "C"
+      },
+      {
+        "index": 10,
+        "from": "A",
+        "to": "B"
+      },
+      {
+        "index": 11,
+        "from": "D",
+        "to": "A"
+      },
+      {
+        "index": 12,
+        "from": "C",
+        "to": "A"
+      },
+      {
+        "index": 13,
+        "from": "C",
+        "to": "A"
+      },
+      {
+        "index": 14,
+        "from": "C",
+        "to": "D"
+      },
+      {
+        "index": 15,
+        "from": "D",
+        "to": "A"
+      },
+      {
+        "index": 17,
+        "from": "D",
+        "to": "B"
+      },
+      {
+        "index": 18,
+        "from": "A",
+        "to": "B"
+      },
+      {
+        "index": 20,
+        "from": "D",
+        "to": "C"
+      },
+      {
+        "index": 21,
+        "from": "A",
+        "to": "C"
+      },
+      {
+        "index": 22,
+        "from": "C",
+        "to": "D"
+      },
+      {
+        "index": 23,
+        "from": "B",
+        "to": "D"
+      },
+      {
+        "index": 24,
+        "from": "B",
+        "to": "D"
+      },
+      {
+        "index": 25,
+        "from": "B",
+        "to": "D"
+      },
+      {
+        "index": 28,
+        "from": "A",
+        "to": "C"
+      },
+      {
+        "index": 29,
         "from": "A",
         "to": "B"
       }
@@ -2846,364 +2976,320 @@
   },
   {
     "file": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment32.js",
-    "applied": true,
-    "backup": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment32.js.bak.1762900619401",
+    "applied": false,
     "actions": [
       {
         "index": 0,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 1,
-        "from": "A",
-        "to": "C"
-      },
-      {
-        "index": 2,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 4,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 6,
-        "from": "A",
-        "to": "C"
-      },
-      {
-        "index": 7,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 8,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 11,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 12,
-        "from": "A",
-        "to": "C"
-      },
-      {
-        "index": 13,
         "from": "D",
         "to": "B"
       },
       {
-        "index": 14,
-        "from": "A",
+        "index": 1,
+        "from": "C",
+        "to": "D"
+      },
+      {
+        "index": 5,
+        "from": "D",
+        "to": "B"
+      },
+      {
+        "index": 6,
+        "from": "C",
+        "to": "B"
+      },
+      {
+        "index": 7,
+        "from": "D",
+        "to": "B"
+      },
+      {
+        "index": 11,
+        "from": "B",
+        "to": "D"
+      },
+      {
+        "index": 12,
+        "from": "C",
+        "to": "A"
+      },
+      {
+        "index": 13,
+        "from": "B",
         "to": "C"
       },
       {
         "index": 15,
-        "from": "A",
-        "to": "D"
+        "from": "D",
+        "to": "B"
       },
       {
         "index": 16,
-        "from": "A",
-        "to": "C"
-      },
-      {
-        "index": 17,
-        "from": "A",
+        "from": "C",
         "to": "D"
       },
       {
         "index": 20,
         "from": "D",
-        "to": "B"
+        "to": "C"
       },
       {
         "index": 21,
-        "from": "A",
-        "to": "B"
+        "from": "B",
+        "to": "C"
       },
       {
         "index": 22,
-        "from": "A",
-        "to": "B"
+        "from": "B",
+        "to": "A"
       },
       {
         "index": 23,
-        "from": "A",
-        "to": "B"
+        "from": "B",
+        "to": "D"
       },
       {
         "index": 24,
+        "from": "C",
+        "to": "A"
+      },
+      {
+        "index": 25,
+        "from": "A",
+        "to": "B"
+      },
+      {
+        "index": 26,
         "from": "A",
         "to": "C"
       },
       {
-        "index": 27,
-        "from": "D",
-        "to": "C"
+        "index": 28,
+        "from": "A",
+        "to": "B"
       },
       {
         "index": 29,
-        "from": "A",
-        "to": "B"
+        "from": "B",
+        "to": "C"
       }
     ]
   },
   {
     "file": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment33.js",
-    "applied": true,
-    "backup": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment33.js.bak.1762900619403",
+    "applied": false,
     "actions": [
       {
         "index": 0,
-        "from": "A",
-        "to": "C"
+        "from": "C",
+        "to": "A"
       },
       {
         "index": 2,
-        "from": "A",
-        "to": "B"
+        "from": "B",
+        "to": "A"
       },
       {
         "index": 3,
-        "from": "A",
-        "to": "D"
+        "from": "D",
+        "to": "B"
       },
       {
         "index": 4,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 5,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 8,
-        "from": "A",
+        "from": "B",
         "to": "C"
       },
       {
-        "index": 9,
+        "index": 5,
+        "from": "D",
+        "to": "B"
+      },
+      {
+        "index": 7,
         "from": "A",
         "to": "B"
+      },
+      {
+        "index": 8,
+        "from": "C",
+        "to": "D"
+      },
+      {
+        "index": 9,
+        "from": "B",
+        "to": "C"
       },
       {
         "index": 10,
-        "from": "A",
-        "to": "B"
+        "from": "B",
+        "to": "C"
       },
       {
         "index": 11,
+        "from": "C",
+        "to": "D"
+      },
+      {
+        "index": 12,
         "from": "A",
         "to": "C"
       },
       {
         "index": 13,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 14,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 15,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 16,
-        "from": "A",
-        "to": "B"
+        "from": "D",
+        "to": "A"
       },
       {
         "index": 17,
-        "from": "A",
-        "to": "C"
-      },
-      {
-        "index": 18,
-        "from": "A",
+        "from": "C",
         "to": "B"
       },
       {
         "index": 19,
+        "from": "C",
+        "to": "A"
+      },
+      {
+        "index": 20,
         "from": "A",
-        "to": "C"
+        "to": "D"
       },
       {
         "index": 21,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 22,
-        "from": "A",
-        "to": "D"
+        "from": "D",
+        "to": "C"
       },
       {
         "index": 23,
-        "from": "A",
-        "to": "C"
-      },
-      {
-        "index": 24,
-        "from": "A",
-        "to": "C"
-      },
-      {
-        "index": 27,
-        "from": "A",
+        "from": "C",
         "to": "D"
       },
       {
-        "index": 29,
+        "index": 25,
         "from": "A",
         "to": "B"
+      },
+      {
+        "index": 26,
+        "from": "A",
+        "to": "C"
+      },
+      {
+        "index": 29,
+        "from": "B",
+        "to": "A"
       }
     ]
   },
   {
     "file": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment34.js",
-    "applied": true,
-    "backup": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment34.js.bak.1762900619404",
+    "applied": false,
     "actions": [
       {
         "index": 0,
-        "from": "A",
-        "to": "C"
+        "from": "C",
+        "to": "B"
       },
       {
         "index": 1,
+        "from": "B",
+        "to": "A"
+      },
+      {
+        "index": 2,
+        "from": "A",
+        "to": "B"
+      },
+      {
+        "index": 4,
         "from": "D",
         "to": "B"
       },
       {
-        "index": 3,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 4,
-        "from": "A",
-        "to": "D"
-      },
-      {
         "index": 5,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 6,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 8,
         "from": "D",
         "to": "A"
       },
       {
-        "index": 10,
+        "index": 6,
+        "from": "B",
+        "to": "A"
+      },
+      {
+        "index": 7,
+        "from": "A",
+        "to": "D"
+      },
+      {
+        "index": 8,
+        "from": "A",
+        "to": "C"
+      },
+      {
+        "index": 9,
         "from": "A",
         "to": "C"
       },
       {
         "index": 11,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 13,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 14,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 17,
-        "from": "A",
-        "to": "C"
-      },
-      {
-        "index": 18,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 19,
         "from": "D",
-        "to": "C"
+        "to": "B"
       },
       {
         "index": 20,
+        "from": "D",
+        "to": "B"
+      },
+      {
+        "index": 21,
+        "from": "A",
+        "to": "C"
+      },
+      {
+        "index": 22,
+        "from": "B",
+        "to": "A"
+      },
+      {
+        "index": 23,
+        "from": "B",
+        "to": "D"
+      },
+      {
+        "index": 24,
+        "from": "B",
+        "to": "A"
+      },
+      {
+        "index": 25,
+        "from": "B",
+        "to": "D"
+      },
+      {
+        "index": 27,
+        "from": "C",
+        "to": "A"
+      },
+      {
+        "index": 28,
         "from": "A",
         "to": "D"
       },
       {
-        "index": 22,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 23,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 24,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 25,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 26,
-        "from": "A",
-        "to": "C"
-      },
-      {
-        "index": 27,
-        "from": "A",
-        "to": "C"
-      },
-      {
         "index": 29,
-        "from": "A",
-        "to": "C"
+        "from": "C",
+        "to": "B"
       }
     ]
   },
   {
     "file": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment35.js",
-    "applied": true,
-    "backup": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment35.js.bak.1762900619406",
+    "applied": false,
     "actions": [
       {
         "index": 1,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 2,
-        "from": "A",
-        "to": "B"
+        "from": "D",
+        "to": "C"
       },
       {
         "index": 3,
@@ -3211,1520 +3297,1481 @@
         "to": "A"
       },
       {
-        "index": 4,
-        "from": "A",
+        "index": 6,
+        "from": "C",
         "to": "D"
       },
       {
-        "index": 6,
+        "index": 7,
+        "from": "A",
+        "to": "C"
+      },
+      {
+        "index": 8,
         "from": "A",
         "to": "C"
       },
       {
         "index": 9,
-        "from": "A",
-        "to": "C"
+        "from": "C",
+        "to": "A"
       },
       {
         "index": 10,
-        "from": "A",
-        "to": "D"
+        "from": "D",
+        "to": "C"
       },
       {
         "index": 11,
-        "from": "A",
-        "to": "C"
+        "from": "C",
+        "to": "D"
       },
       {
         "index": 12,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 13,
-        "from": "A",
-        "to": "B"
+        "from": "B",
+        "to": "A"
       },
       {
         "index": 14,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 15,
-        "from": "A",
-        "to": "B"
+        "from": "B",
+        "to": "C"
       },
       {
         "index": 16,
-        "from": "A",
-        "to": "D"
+        "from": "D",
+        "to": "C"
       },
       {
         "index": 18,
-        "from": "A",
-        "to": "C"
+        "from": "C",
+        "to": "B"
       },
       {
-        "index": 20,
-        "from": "A",
-        "to": "C"
-      },
-      {
-        "index": 21,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 22,
-        "from": "A",
-        "to": "C"
-      },
-      {
-        "index": 23,
-        "from": "A",
-        "to": "C"
-      },
-      {
-        "index": 24,
+        "index": 19,
         "from": "A",
         "to": "B"
       },
       {
-        "index": 25,
-        "from": "A",
+        "index": 20,
+        "from": "C",
+        "to": "B"
+      },
+      {
+        "index": 23,
+        "from": "C",
         "to": "D"
       },
       {
+        "index": 25,
+        "from": "D",
+        "to": "A"
+      },
+      {
         "index": 26,
+        "from": "B",
+        "to": "D"
+      },
+      {
+        "index": 27,
         "from": "A",
         "to": "B"
       },
       {
         "index": 28,
-        "from": "A",
-        "to": "B"
+        "from": "B",
+        "to": "A"
       }
     ]
   },
   {
     "file": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment36.js",
-    "applied": true,
-    "backup": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment36.js.bak.1762900619409",
+    "applied": false,
     "actions": [
       {
-        "index": 0,
-        "from": "A",
-        "to": "D"
-      },
-      {
         "index": 1,
-        "from": "A",
-        "to": "C"
+        "from": "C",
+        "to": "D"
       },
       {
         "index": 2,
-        "from": "A",
-        "to": "D"
+        "from": "D",
+        "to": "B"
       },
       {
         "index": 3,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 5,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 6,
-        "from": "A",
-        "to": "C"
-      },
-      {
-        "index": 7,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 8,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 9,
-        "from": "A",
-        "to": "C"
-      },
-      {
-        "index": 11,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 12,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 13,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 14,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 15,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 16,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 18,
-        "from": "A",
-        "to": "C"
-      },
-      {
-        "index": 19,
-        "from": "D",
-        "to": "C"
-      },
-      {
-        "index": 21,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 23,
-        "from": "A",
-        "to": "C"
-      },
-      {
-        "index": 24,
-        "from": "A",
-        "to": "C"
-      },
-      {
-        "index": 26,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 27,
-        "from": "D",
+        "from": "B",
         "to": "A"
       },
       {
-        "index": 28,
+        "index": 4,
         "from": "A",
         "to": "D"
+      },
+      {
+        "index": 7,
+        "from": "D",
+        "to": "C"
+      },
+      {
+        "index": 8,
+        "from": "B",
+        "to": "C"
+      },
+      {
+        "index": 9,
+        "from": "C",
+        "to": "A"
+      },
+      {
+        "index": 10,
+        "from": "A",
+        "to": "B"
+      },
+      {
+        "index": 11,
+        "from": "B",
+        "to": "A"
+      },
+      {
+        "index": 15,
+        "from": "B",
+        "to": "D"
+      },
+      {
+        "index": 16,
+        "from": "B",
+        "to": "A"
+      },
+      {
+        "index": 17,
+        "from": "A",
+        "to": "C"
+      },
+      {
+        "index": 18,
+        "from": "C",
+        "to": "D"
+      },
+      {
+        "index": 20,
+        "from": "A",
+        "to": "B"
+      },
+      {
+        "index": 21,
+        "from": "D",
+        "to": "B"
+      },
+      {
+        "index": 24,
+        "from": "C",
+        "to": "D"
+      },
+      {
+        "index": 26,
+        "from": "D",
+        "to": "B"
+      },
+      {
+        "index": 28,
+        "from": "D",
+        "to": "C"
       }
     ]
   },
   {
     "file": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment37.js",
-    "applied": true,
-    "backup": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment37.js.bak.1762900619410",
+    "applied": false,
     "actions": [
       {
         "index": 0,
-        "from": "A",
-        "to": "D"
+        "from": "D",
+        "to": "A"
       },
       {
         "index": 1,
-        "from": "A",
-        "to": "D"
+        "from": "D",
+        "to": "A"
       },
       {
         "index": 2,
-        "from": "A",
-        "to": "B"
+        "from": "B",
+        "to": "D"
       },
       {
         "index": 3,
+        "from": "B",
+        "to": "D"
+      },
+      {
+        "index": 4,
         "from": "A",
         "to": "B"
       },
       {
         "index": 5,
+        "from": "D",
+        "to": "B"
+      },
+      {
+        "index": 6,
         "from": "A",
         "to": "D"
       },
       {
         "index": 7,
+        "from": "D",
+        "to": "C"
+      },
+      {
+        "index": 9,
+        "from": "A",
+        "to": "B"
+      },
+      {
+        "index": 11,
+        "from": "A",
+        "to": "C"
+      },
+      {
+        "index": 13,
         "from": "A",
         "to": "D"
-      },
-      {
-        "index": 8,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 12,
-        "from": "A",
-        "to": "C"
-      },
-      {
-        "index": 14,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 15,
-        "from": "A",
-        "to": "C"
       },
       {
         "index": 16,
-        "from": "A",
-        "to": "B"
+        "from": "B",
+        "to": "C"
       },
       {
         "index": 18,
-        "from": "A",
-        "to": "C"
+        "from": "C",
+        "to": "A"
       },
       {
         "index": 19,
-        "from": "A",
-        "to": "D"
+        "from": "D",
+        "to": "A"
       },
       {
         "index": 20,
-        "from": "A",
-        "to": "D"
+        "from": "D",
+        "to": "B"
       },
       {
         "index": 21,
-        "from": "A",
-        "to": "C"
-      },
-      {
-        "index": 22,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 23,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 24,
-        "from": "A",
+        "from": "C",
         "to": "D"
       },
       {
-        "index": 26,
-        "from": "A",
+        "index": 22,
+        "from": "B",
+        "to": "A"
+      },
+      {
+        "index": 23,
+        "from": "B",
         "to": "C"
       },
       {
-        "index": 27,
-        "from": "A",
+        "index": 24,
+        "from": "D",
         "to": "B"
       },
       {
-        "index": 28,
-        "from": "A",
-        "to": "C"
+        "index": 26,
+        "from": "C",
+        "to": "D"
       },
       {
-        "index": 29,
-        "from": "A",
-        "to": "C"
+        "index": 28,
+        "from": "C",
+        "to": "D"
       }
     ]
   },
   {
     "file": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment38.js",
-    "applied": true,
-    "backup": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment38.js.bak.1762900619412",
+    "applied": false,
     "actions": [
       {
         "index": 0,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 1,
-        "from": "A",
+        "from": "D",
         "to": "B"
       },
       {
-        "index": 2,
-        "from": "A",
-        "to": "D"
+        "index": 1,
+        "from": "B",
+        "to": "A"
       },
       {
-        "index": 4,
+        "index": 2,
+        "from": "D",
+        "to": "C"
+      },
+      {
+        "index": 3,
         "from": "A",
         "to": "C"
       },
       {
         "index": 5,
-        "from": "A",
-        "to": "B"
+        "from": "B",
+        "to": "D"
       },
       {
         "index": 6,
-        "from": "A",
-        "to": "C"
+        "from": "C",
+        "to": "A"
       },
       {
         "index": 7,
-        "from": "A",
-        "to": "D"
+        "from": "D",
+        "to": "C"
       },
       {
         "index": 9,
-        "from": "A",
-        "to": "C"
+        "from": "C",
+        "to": "B"
       },
       {
         "index": 10,
+        "from": "C",
+        "to": "B"
+      },
+      {
+        "index": 11,
         "from": "A",
-        "to": "C"
+        "to": "D"
       },
       {
         "index": 12,
+        "from": "D",
+        "to": "A"
+      },
+      {
+        "index": 13,
         "from": "A",
-        "to": "D"
+        "to": "B"
       },
       {
         "index": 14,
-        "from": "A",
-        "to": "C"
+        "from": "C",
+        "to": "B"
       },
       {
         "index": 15,
-        "from": "A",
-        "to": "B"
+        "from": "B",
+        "to": "A"
       },
       {
         "index": 16,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 17,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 18,
-        "from": "A",
+        "from": "B",
         "to": "C"
       },
       {
-        "index": 19,
-        "from": "A",
+        "index": 17,
+        "from": "D",
         "to": "B"
       },
       {
-        "index": 20,
+        "index": 18,
+        "from": "C",
+        "to": "B"
+      },
+      {
+        "index": 19,
+        "from": "B",
+        "to": "A"
+      },
+      {
+        "index": 21,
         "from": "A",
         "to": "D"
       },
       {
         "index": 22,
-        "from": "A",
-        "to": "B"
+        "from": "B",
+        "to": "C"
       },
       {
-        "index": 26,
+        "index": 23,
         "from": "A",
-        "to": "B"
+        "to": "C"
       },
       {
-        "index": 27,
+        "index": 25,
         "from": "A",
         "to": "D"
       },
       {
-        "index": 28,
-        "from": "A",
-        "to": "B"
+        "index": 26,
+        "from": "B",
+        "to": "D"
+      },
+      {
+        "index": 27,
+        "from": "D",
+        "to": "A"
       },
       {
         "index": 29,
-        "from": "A",
-        "to": "C"
+        "from": "C",
+        "to": "D"
       }
     ]
   },
   {
     "file": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment39.js",
-    "applied": true,
-    "backup": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment39.js.bak.1762900619413",
+    "applied": false,
     "actions": [
       {
         "index": 0,
-        "from": "A",
-        "to": "D"
+        "from": "D",
+        "to": "A"
       },
       {
         "index": 1,
-        "from": "A",
-        "to": "B"
+        "from": "B",
+        "to": "A"
       },
       {
         "index": 2,
-        "from": "A",
-        "to": "C"
+        "from": "C",
+        "to": "B"
       },
       {
         "index": 3,
+        "from": "D",
+        "to": "C"
+      },
+      {
+        "index": 4,
         "from": "A",
         "to": "D"
       },
       {
         "index": 5,
-        "from": "A",
-        "to": "B"
+        "from": "B",
+        "to": "A"
       },
       {
         "index": 6,
-        "from": "A",
-        "to": "B"
+        "from": "B",
+        "to": "C"
       },
       {
         "index": 7,
-        "from": "A",
-        "to": "D"
+        "from": "D",
+        "to": "A"
       },
       {
         "index": 8,
+        "from": "C",
+        "to": "B"
+      },
+      {
+        "index": 9,
         "from": "A",
         "to": "C"
       },
       {
         "index": 10,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 11,
         "from": "D",
         "to": "B"
       },
       {
-        "index": 13,
-        "from": "A",
+        "index": 11,
+        "from": "B",
         "to": "C"
+      },
+      {
+        "index": 12,
+        "from": "A",
+        "to": "B"
       },
       {
         "index": 14,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 15,
-        "from": "A",
+        "from": "B",
         "to": "C"
       },
       {
-        "index": 16,
-        "from": "A",
-        "to": "B"
+        "index": 15,
+        "from": "C",
+        "to": "D"
       },
       {
-        "index": 18,
+        "index": 16,
+        "from": "B",
+        "to": "A"
+      },
+      {
+        "index": 17,
         "from": "A",
         "to": "D"
       },
       {
-        "index": 19,
-        "from": "A",
-        "to": "B"
+        "index": 18,
+        "from": "D",
+        "to": "A"
       },
       {
-        "index": 20,
+        "index": 19,
+        "from": "B",
+        "to": "D"
+      },
+      {
+        "index": 21,
         "from": "A",
         "to": "B"
       },
       {
         "index": 22,
-        "from": "A",
-        "to": "C"
+        "from": "C",
+        "to": "D"
       },
       {
         "index": 23,
-        "from": "A",
-        "to": "C"
+        "from": "C",
+        "to": "B"
       },
       {
         "index": 24,
+        "from": "D",
+        "to": "C"
+      },
+      {
+        "index": 25,
         "from": "A",
         "to": "D"
       },
       {
         "index": 27,
-        "from": "A",
-        "to": "D"
+        "from": "D",
+        "to": "B"
       },
       {
         "index": 29,
-        "from": "A",
-        "to": "C"
+        "from": "C",
+        "to": "D"
       }
     ]
   },
   {
     "file": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment4.js",
-    "applied": true,
-    "backup": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment4.js.bak.1762900619414",
+    "applied": false,
     "actions": [
       {
         "index": 0,
-        "from": "B",
-        "to": "C"
+        "from": "C",
+        "to": "D"
       },
       {
         "index": 1,
-        "from": "B",
-        "to": "A"
-      },
-      {
-        "index": 2,
-        "from": "C",
-        "to": "B"
-      },
-      {
-        "index": 3,
         "from": "A",
         "to": "D"
       },
       {
         "index": 4,
-        "from": "B",
-        "to": "A"
+        "from": "A",
+        "to": "D"
       },
       {
         "index": 5,
-        "from": "C",
-        "to": "B"
-      },
-      {
-        "index": 6,
-        "from": "B",
-        "to": "C"
-      },
-      {
-        "index": 7,
         "from": "B",
         "to": "A"
       },
       {
-        "index": 9,
+        "index": 6,
         "from": "C",
-        "to": "B"
+        "to": "A"
       },
       {
-        "index": 10,
-        "from": "B",
+        "index": 8,
+        "from": "D",
         "to": "C"
       },
       {
         "index": 11,
-        "from": "C",
-        "to": "B"
+        "from": "B",
+        "to": "C"
       },
       {
         "index": 12,
         "from": "D",
-        "to": "C"
-      },
-      {
-        "index": 13,
-        "from": "D",
-        "to": "A"
-      },
-      {
-        "index": 15,
-        "from": "B",
-        "to": "A"
-      },
-      {
-        "index": 18,
-        "from": "C",
-        "to": "D"
-      },
-      {
-        "index": 19,
-        "from": "D",
-        "to": "C"
-      },
-      {
-        "index": 21,
-        "from": "D",
-        "to": "C"
-      },
-      {
-        "index": 22,
-        "from": "C",
         "to": "B"
       },
       {
-        "index": 23,
-        "from": "A",
-        "to": "C"
-      },
-      {
-        "index": 25,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 26,
+        "index": 14,
         "from": "B",
         "to": "D"
       },
       {
-        "index": 28,
+        "index": 15,
+        "from": "A",
+        "to": "C"
+      },
+      {
+        "index": 16,
+        "from": "D",
+        "to": "B"
+      },
+      {
+        "index": 17,
+        "from": "A",
+        "to": "C"
+      },
+      {
+        "index": 18,
+        "from": "D",
+        "to": "C"
+      },
+      {
+        "index": 20,
+        "from": "B",
+        "to": "A"
+      },
+      {
+        "index": 21,
         "from": "C",
         "to": "A"
+      },
+      {
+        "index": 22,
+        "from": "B",
+        "to": "D"
+      },
+      {
+        "index": 25,
+        "from": "D",
+        "to": "A"
+      },
+      {
+        "index": 26,
+        "from": "D",
+        "to": "B"
+      },
+      {
+        "index": 28,
+        "from": "A",
+        "to": "B"
+      },
+      {
+        "index": 29,
+        "from": "D",
+        "to": "B"
       }
     ]
   },
   {
     "file": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment40.js",
-    "applied": true,
-    "backup": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment40.js.bak.1762900619415",
+    "applied": false,
     "actions": [
       {
         "index": 0,
-        "from": "A",
-        "to": "C"
+        "from": "C",
+        "to": "A"
       },
       {
         "index": 1,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 2,
-        "from": "A",
+        "from": "B",
         "to": "D"
       },
       {
         "index": 3,
-        "from": "A",
-        "to": "D"
+        "from": "D",
+        "to": "C"
       },
       {
         "index": 4,
-        "from": "A",
-        "to": "C"
+        "from": "C",
+        "to": "B"
       },
       {
         "index": 5,
-        "from": "A",
-        "to": "B"
+        "from": "B",
+        "to": "A"
       },
       {
         "index": 6,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 7,
-        "from": "A",
+        "from": "B",
         "to": "C"
-      },
-      {
-        "index": 8,
-        "from": "A",
-        "to": "B"
       },
       {
         "index": 9,
+        "from": "C",
+        "to": "A"
+      },
+      {
+        "index": 10,
+        "from": "D",
+        "to": "A"
+      },
+      {
+        "index": 11,
+        "from": "C",
+        "to": "D"
+      },
+      {
+        "index": 12,
+        "from": "A",
+        "to": "B"
+      },
+      {
+        "index": 13,
         "from": "A",
         "to": "C"
       },
       {
-        "index": 10,
+        "index": 14,
         "from": "A",
-        "to": "D"
+        "to": "C"
       },
       {
-        "index": 11,
+        "index": 15,
         "from": "A",
         "to": "C"
       },
       {
         "index": 16,
-        "from": "A",
-        "to": "D"
+        "from": "D",
+        "to": "B"
       },
       {
         "index": 17,
-        "from": "A",
-        "to": "C"
+        "from": "C",
+        "to": "D"
       },
       {
         "index": 19,
+        "from": "D",
+        "to": "A"
+      },
+      {
+        "index": 20,
+        "from": "A",
+        "to": "B"
+      },
+      {
+        "index": 21,
         "from": "A",
         "to": "D"
       },
       {
-        "index": 22,
+        "index": 23,
         "from": "A",
         "to": "B"
       },
       {
         "index": 24,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 25,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 26,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 27,
-        "from": "A",
+        "from": "B",
         "to": "C"
       },
       {
+        "index": 26,
+        "from": "B",
+        "to": "A"
+      },
+      {
+        "index": 27,
+        "from": "C",
+        "to": "D"
+      },
+      {
         "index": 28,
-        "from": "A",
-        "to": "B"
+        "from": "B",
+        "to": "A"
       },
       {
         "index": 29,
-        "from": "A",
-        "to": "D"
+        "from": "D",
+        "to": "B"
       }
     ]
   },
   {
     "file": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment41.js",
-    "applied": true,
-    "backup": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment41.js.bak.1762900619417",
+    "applied": false,
     "actions": [
       {
         "index": 0,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 1,
-        "from": "A",
-        "to": "C"
+        "from": "D",
+        "to": "B"
       },
       {
         "index": 2,
+        "from": "B",
+        "to": "A"
+      },
+      {
+        "index": 3,
         "from": "A",
         "to": "B"
       },
       {
         "index": 4,
+        "from": "B",
+        "to": "C"
+      },
+      {
+        "index": 5,
+        "from": "C",
+        "to": "D"
+      },
+      {
+        "index": 6,
         "from": "A",
         "to": "B"
       },
       {
-        "index": 5,
-        "from": "A",
-        "to": "C"
-      },
-      {
         "index": 7,
-        "from": "A",
-        "to": "C"
+        "from": "C",
+        "to": "A"
       },
       {
         "index": 8,
+        "from": "D",
+        "to": "A"
+      },
+      {
+        "index": 9,
         "from": "A",
         "to": "D"
       },
       {
-        "index": 11,
+        "index": 12,
         "from": "A",
         "to": "D"
       },
       {
         "index": 13,
-        "from": "A",
-        "to": "C"
+        "from": "C",
+        "to": "A"
       },
       {
-        "index": 15,
+        "index": 14,
         "from": "A",
         "to": "B"
       },
       {
         "index": 16,
-        "from": "A",
-        "to": "C"
-      },
-      {
-        "index": 17,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 18,
-        "from": "A",
+        "from": "C",
         "to": "B"
       },
       {
+        "index": 17,
+        "from": "D",
+        "to": "A"
+      },
+      {
+        "index": 18,
+        "from": "B",
+        "to": "C"
+      },
+      {
         "index": 19,
+        "from": "B",
+        "to": "D"
+      },
+      {
+        "index": 20,
         "from": "A",
         "to": "B"
       },
       {
         "index": 21,
+        "from": "D",
+        "to": "A"
+      },
+      {
+        "index": 22,
         "from": "A",
-        "to": "D"
+        "to": "C"
       },
       {
         "index": 23,
-        "from": "A",
-        "to": "B"
+        "from": "B",
+        "to": "D"
       },
       {
         "index": 24,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 25,
-        "from": "A",
-        "to": "C"
+        "from": "D",
+        "to": "A"
       },
       {
         "index": 26,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 27,
-        "from": "A",
+        "from": "D",
         "to": "C"
       },
       {
-        "index": 28,
-        "from": "A",
+        "index": 27,
+        "from": "C",
         "to": "B"
       },
       {
+        "index": 28,
+        "from": "B",
+        "to": "D"
+      },
+      {
         "index": 29,
-        "from": "A",
-        "to": "B"
+        "from": "B",
+        "to": "C"
       }
     ]
   },
   {
     "file": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment42.js",
-    "applied": true,
-    "backup": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment42.js.bak.1762900619418",
+    "applied": false,
     "actions": [
       {
         "index": 0,
-        "from": "A",
-        "to": "D"
+        "from": "D",
+        "to": "A"
       },
       {
         "index": 1,
-        "from": "A",
-        "to": "C"
+        "from": "C",
+        "to": "A"
       },
       {
         "index": 2,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 4,
-        "from": "A",
-        "to": "B"
+        "from": "D",
+        "to": "A"
       },
       {
         "index": 5,
-        "from": "A",
-        "to": "B"
+        "from": "B",
+        "to": "C"
       },
       {
         "index": 6,
-        "from": "A",
-        "to": "B"
+        "from": "B",
+        "to": "C"
       },
       {
-        "index": 7,
+        "index": 8,
         "from": "A",
         "to": "C"
       },
       {
         "index": 9,
-        "from": "A",
-        "to": "D"
+        "from": "D",
+        "to": "B"
       },
       {
         "index": 10,
-        "from": "A",
-        "to": "D"
+        "from": "D",
+        "to": "A"
       },
       {
         "index": 11,
-        "from": "A",
-        "to": "B"
+        "from": "B",
+        "to": "D"
       },
       {
         "index": 12,
-        "from": "A",
-        "to": "B"
+        "from": "B",
+        "to": "A"
       },
       {
-        "index": 14,
+        "index": 13,
         "from": "A",
         "to": "D"
       },
       {
-        "index": 15,
-        "from": "A",
-        "to": "C"
+        "index": 14,
+        "from": "D",
+        "to": "A"
       },
       {
-        "index": 16,
-        "from": "A",
-        "to": "B"
+        "index": 15,
+        "from": "C",
+        "to": "D"
       },
       {
         "index": 17,
+        "from": "C",
+        "to": "D"
+      },
+      {
+        "index": 18,
         "from": "A",
-        "to": "C"
+        "to": "D"
       },
       {
         "index": 19,
         "from": "D",
-        "to": "C"
+        "to": "B"
       },
       {
-        "index": 20,
+        "index": 21,
         "from": "A",
-        "to": "C"
+        "to": "B"
       },
       {
         "index": 22,
+        "from": "B",
+        "to": "A"
+      },
+      {
+        "index": 23,
+        "from": "C",
+        "to": "D"
+      },
+      {
+        "index": 25,
         "from": "A",
         "to": "B"
       },
       {
-        "index": 23,
+        "index": 26,
+        "from": "A",
+        "to": "D"
+      },
+      {
+        "index": 27,
         "from": "A",
         "to": "C"
       },
       {
-        "index": 24,
-        "from": "A",
+        "index": 28,
+        "from": "D",
         "to": "B"
       },
       {
-        "index": 28,
-        "from": "A",
-        "to": "D"
-      },
-      {
         "index": 29,
-        "from": "A",
-        "to": "D"
+        "from": "D",
+        "to": "C"
       }
     ]
   },
   {
     "file": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment43.js",
-    "applied": true,
-    "backup": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment43.js.bak.1762900619419",
+    "applied": false,
     "actions": [
       {
-        "index": 0,
+        "index": 1,
         "from": "A",
         "to": "C"
       },
       {
         "index": 2,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 3,
-        "from": "A",
-        "to": "D"
+        "from": "B",
+        "to": "A"
       },
       {
         "index": 4,
-        "from": "A",
-        "to": "C"
+        "from": "C",
+        "to": "B"
       },
       {
         "index": 5,
-        "from": "A",
-        "to": "C"
+        "from": "C",
+        "to": "A"
       },
       {
-        "index": 7,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 8,
+        "index": 6,
         "from": "A",
         "to": "B"
       },
       {
-        "index": 9,
-        "from": "A",
-        "to": "C"
+        "index": 7,
+        "from": "D",
+        "to": "A"
       },
       {
-        "index": 10,
-        "from": "A",
-        "to": "D"
+        "index": 8,
+        "from": "B",
+        "to": "A"
+      },
+      {
+        "index": 9,
+        "from": "C",
+        "to": "B"
       },
       {
         "index": 11,
+        "from": "D",
+        "to": "B"
+      },
+      {
+        "index": 12,
         "from": "A",
         "to": "D"
       },
       {
         "index": 13,
-        "from": "A",
-        "to": "D"
+        "from": "D",
+        "to": "B"
       },
       {
         "index": 14,
-        "from": "A",
-        "to": "B"
+        "from": "B",
+        "to": "D"
       },
       {
         "index": 15,
+        "from": "C",
+        "to": "B"
+      },
+      {
+        "index": 16,
         "from": "A",
-        "to": "C"
+        "to": "B"
+      },
+      {
+        "index": 17,
+        "from": "A",
+        "to": "D"
       },
       {
         "index": 18,
-        "from": "A",
-        "to": "C"
+        "from": "C",
+        "to": "D"
       },
       {
         "index": 19,
-        "from": "A",
-        "to": "B"
+        "from": "B",
+        "to": "C"
       },
       {
-        "index": 21,
+        "index": 20,
         "from": "A",
-        "to": "D"
+        "to": "C"
       },
       {
         "index": 23,
-        "from": "A",
-        "to": "B"
+        "from": "B",
+        "to": "A"
       },
       {
         "index": 24,
+        "from": "D",
+        "to": "A"
+      },
+      {
+        "index": 25,
         "from": "A",
-        "to": "D"
+        "to": "C"
       },
       {
         "index": 26,
-        "from": "A",
-        "to": "B"
+        "from": "B",
+        "to": "C"
       },
       {
         "index": 27,
-        "from": "A",
-        "to": "B"
+        "from": "B",
+        "to": "C"
       },
       {
         "index": 28,
-        "from": "A",
-        "to": "B"
+        "from": "B",
+        "to": "A"
       },
       {
         "index": 29,
-        "from": "A",
-        "to": "C"
+        "from": "C",
+        "to": "B"
       }
     ]
   },
   {
     "file": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment5.js",
-    "applied": true,
-    "backup": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment5.js.bak.1762900619420",
+    "applied": false,
     "actions": [
       {
         "index": 0,
+        "from": "C",
+        "to": "A"
+      },
+      {
+        "index": 1,
+        "from": "A",
+        "to": "D"
+      },
+      {
+        "index": 2,
+        "from": "A",
+        "to": "B"
+      },
+      {
+        "index": 3,
         "from": "B",
         "to": "C"
       },
       {
-        "index": 2,
-        "from": "B",
-        "to": "A"
+        "index": 4,
+        "from": "A",
+        "to": "C"
       },
       {
-        "index": 3,
+        "index": 5,
         "from": "C",
         "to": "B"
       },
       {
         "index": 6,
-        "from": "B",
-        "to": "D"
+        "from": "D",
+        "to": "C"
       },
       {
-        "index": 7,
+        "index": 8,
+        "from": "D",
+        "to": "C"
+      },
+      {
+        "index": 9,
+        "from": "B",
+        "to": "C"
+      },
+      {
+        "index": 10,
+        "from": "A",
+        "to": "B"
+      },
+      {
+        "index": 11,
         "from": "C",
         "to": "A"
       },
       {
-        "index": 8,
+        "index": 12,
         "from": "B",
-        "to": "D"
+        "to": "A"
       },
       {
-        "index": 9,
+        "index": 13,
+        "from": "A",
+        "to": "C"
+      },
+      {
+        "index": 14,
+        "from": "D",
+        "to": "A"
+      },
+      {
+        "index": 15,
+        "from": "B",
+        "to": "C"
+      },
+      {
+        "index": 16,
         "from": "D",
         "to": "B"
       },
       {
-        "index": 10,
-        "from": "B",
-        "to": "A"
-      },
-      {
-        "index": 11,
-        "from": "A",
-        "to": "C"
-      },
-      {
-        "index": 13,
-        "from": "B",
-        "to": "A"
-      },
-      {
-        "index": 14,
-        "from": "B",
-        "to": "D"
-      },
-      {
-        "index": 15,
-        "from": "A",
-        "to": "B"
-      },
-      {
         "index": 17,
-        "from": "B",
-        "to": "C"
-      },
-      {
-        "index": 18,
-        "from": "A",
+        "from": "C",
         "to": "D"
       },
       {
-        "index": 21,
+        "index": 20,
+        "from": "C",
+        "to": "D"
+      },
+      {
+        "index": 22,
         "from": "B",
         "to": "A"
+      },
+      {
+        "index": 23,
+        "from": "B",
+        "to": "D"
       },
       {
         "index": 24,
-        "from": "B",
-        "to": "A"
-      },
-      {
-        "index": 25,
-        "from": "B",
-        "to": "C"
-      },
-      {
-        "index": 26,
         "from": "A",
         "to": "B"
       },
       {
-        "index": 27,
+        "index": 25,
+        "from": "C",
+        "to": "B"
+      },
+      {
+        "index": 26,
         "from": "B",
         "to": "D"
       },
       {
         "index": 28,
-        "from": "B",
-        "to": "D"
+        "from": "D",
+        "to": "B"
       },
       {
         "index": 29,
         "from": "D",
-        "to": "C"
+        "to": "A"
       }
     ]
   },
   {
     "file": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment6.js",
-    "applied": true,
-    "backup": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment6.js.bak.1762900619422",
+    "applied": false,
     "actions": [
       {
         "index": 0,
-        "from": "B",
-        "to": "A"
+        "from": "A",
+        "to": "C"
       },
       {
         "index": 1,
         "from": "D",
-        "to": "B"
+        "to": "A"
+      },
+      {
+        "index": 2,
+        "from": "A",
+        "to": "D"
       },
       {
         "index": 3,
-        "from": "A",
-        "to": "D"
+        "from": "D",
+        "to": "A"
       },
       {
         "index": 4,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 5,
-        "from": "B",
+        "from": "D",
         "to": "C"
       },
       {
-        "index": 7,
-        "from": "B",
+        "index": 5,
+        "from": "C",
+        "to": "A"
+      },
+      {
+        "index": 6,
+        "from": "A",
         "to": "D"
       },
       {
         "index": 8,
-        "from": "A",
-        "to": "C"
-      },
-      {
-        "index": 10,
-        "from": "B",
-        "to": "D"
-      },
-      {
-        "index": 12,
         "from": "C",
         "to": "B"
       },
       {
-        "index": 13,
+        "index": 9,
         "from": "B",
         "to": "A"
       },
       {
-        "index": 14,
-        "from": "A",
+        "index": 10,
+        "from": "D",
+        "to": "C"
+      },
+      {
+        "index": 12,
+        "from": "B",
         "to": "D"
       },
       {
+        "index": 13,
+        "from": "A",
+        "to": "B"
+      },
+      {
+        "index": 14,
+        "from": "D",
+        "to": "B"
+      },
+      {
         "index": 15,
-        "from": "B",
+        "from": "C",
+        "to": "A"
+      },
+      {
+        "index": 16,
+        "from": "A",
         "to": "C"
       },
       {
         "index": 17,
-        "from": "B",
-        "to": "A"
-      },
-      {
-        "index": 19,
-        "from": "B",
+        "from": "A",
         "to": "D"
       },
       {
+        "index": 18,
+        "from": "C",
+        "to": "B"
+      },
+      {
+        "index": 19,
+        "from": "D",
+        "to": "B"
+      },
+      {
         "index": 20,
+        "from": "A",
+        "to": "B"
+      },
+      {
+        "index": 21,
+        "from": "B",
+        "to": "C"
+      },
+      {
+        "index": 22,
         "from": "B",
         "to": "A"
       },
       {
-        "index": 21,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 22,
-        "from": "A",
-        "to": "B"
-      },
-      {
         "index": 23,
-        "from": "A",
+        "from": "D",
+        "to": "C"
+      },
+      {
+        "index": 24,
+        "from": "C",
         "to": "D"
       },
       {
         "index": 26,
         "from": "D",
+        "to": "A"
+      },
+      {
+        "index": 27,
+        "from": "B",
         "to": "C"
       },
       {
         "index": 28,
-        "from": "A",
-        "to": "C"
+        "from": "C",
+        "to": "B"
+      },
+      {
+        "index": 29,
+        "from": "B",
+        "to": "D"
       }
     ]
   },
   {
     "file": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment7.js",
-    "applied": true,
-    "backup": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment7.js.bak.1762900619423",
-    "actions": [
-      {
-        "index": 1,
-        "from": "B",
-        "to": "D"
-      },
-      {
-        "index": 2,
-        "from": "B",
-        "to": "C"
-      },
-      {
-        "index": 5,
-        "from": "D",
-        "to": "C"
-      },
-      {
-        "index": 6,
-        "from": "B",
-        "to": "A"
-      },
-      {
-        "index": 7,
-        "from": "C",
-        "to": "B"
-      },
-      {
-        "index": 8,
-        "from": "B",
-        "to": "C"
-      },
-      {
-        "index": 9,
-        "from": "D",
-        "to": "B"
-      },
-      {
-        "index": 11,
-        "from": "C",
-        "to": "D"
-      },
-      {
-        "index": 13,
-        "from": "A",
-        "to": "C"
-      },
-      {
-        "index": 14,
-        "from": "B",
-        "to": "A"
-      },
-      {
-        "index": 15,
-        "from": "B",
-        "to": "D"
-      },
-      {
-        "index": 16,
-        "from": "B",
-        "to": "C"
-      },
-      {
-        "index": 17,
-        "from": "C",
-        "to": "A"
-      },
-      {
-        "index": 18,
-        "from": "C",
-        "to": "A"
-      },
-      {
-        "index": 19,
-        "from": "B",
-        "to": "D"
-      },
-      {
-        "index": 20,
-        "from": "D",
-        "to": "A"
-      },
-      {
-        "index": 21,
-        "from": "B",
-        "to": "C"
-      },
-      {
-        "index": 22,
-        "from": "C",
-        "to": "B"
-      },
-      {
-        "index": 24,
-        "from": "C",
-        "to": "A"
-      },
-      {
-        "index": 25,
-        "from": "B",
-        "to": "A"
-      },
-      {
-        "index": 27,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 28,
-        "from": "B",
-        "to": "D"
-      },
-      {
-        "index": 29,
-        "from": "B",
-        "to": "A"
-      }
-    ]
-  },
-  {
-    "file": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment8.js",
-    "applied": true,
-    "backup": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment8.js.bak.1762900619424",
+    "applied": false,
     "actions": [
       {
         "index": 0,
-        "from": "D",
+        "from": "B",
         "to": "C"
       },
       {
         "index": 1,
-        "from": "B",
-        "to": "A"
+        "from": "D",
+        "to": "B"
+      },
+      {
+        "index": 2,
+        "from": "C",
+        "to": "B"
       },
       {
         "index": 3,
         "from": "B",
-        "to": "A"
+        "to": "C"
       },
       {
         "index": 4,
@@ -4733,18 +4780,23 @@
       },
       {
         "index": 6,
-        "from": "D",
-        "to": "C"
+        "from": "A",
+        "to": "D"
       },
       {
         "index": 7,
+        "from": "B",
+        "to": "D"
+      },
+      {
+        "index": 8,
         "from": "C",
-        "to": "B"
+        "to": "A"
       },
       {
         "index": 9,
         "from": "B",
-        "to": "C"
+        "to": "A"
       },
       {
         "index": 10,
@@ -4754,87 +4806,148 @@
       {
         "index": 11,
         "from": "D",
-        "to": "A"
-      },
-      {
-        "index": 12,
-        "from": "D",
-        "to": "C"
-      },
-      {
-        "index": 13,
-        "from": "B",
-        "to": "D"
-      },
-      {
-        "index": 14,
-        "from": "C",
-        "to": "B"
-      },
-      {
-        "index": 15,
-        "from": "B",
-        "to": "D"
-      },
-      {
-        "index": 16,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 17,
-        "from": "B",
         "to": "C"
       },
       {
         "index": 18,
         "from": "A",
-        "to": "C"
+        "to": "B"
       },
       {
         "index": 19,
-        "from": "B",
-        "to": "A"
-      },
-      {
-        "index": 20,
-        "from": "B",
-        "to": "A"
-      },
-      {
-        "index": 21,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 22,
-        "from": "C",
-        "to": "D"
-      },
-      {
-        "index": 23,
         "from": "D",
         "to": "B"
       },
       {
-        "index": 24,
+        "index": 20,
+        "from": "D",
+        "to": "A"
+      },
+      {
+        "index": 21,
+        "from": "C",
+        "to": "B"
+      },
+      {
+        "index": 22,
         "from": "B",
         "to": "D"
       },
       {
-        "index": 25,
-        "from": "C",
-        "to": "B"
+        "index": 23,
+        "from": "B",
+        "to": "D"
       },
       {
-        "index": 26,
-        "from": "C",
+        "index": 27,
+        "from": "D",
         "to": "B"
       },
       {
         "index": 28,
+        "from": "D",
+        "to": "B"
+      },
+      {
+        "index": 29,
+        "from": "A",
+        "to": "C"
+      }
+    ]
+  },
+  {
+    "file": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment8.js",
+    "applied": false,
+    "actions": [
+      {
+        "index": 0,
+        "from": "D",
+        "to": "A"
+      },
+      {
+        "index": 1,
+        "from": "A",
+        "to": "D"
+      },
+      {
+        "index": 3,
+        "from": "A",
+        "to": "B"
+      },
+      {
+        "index": 4,
+        "from": "D",
+        "to": "C"
+      },
+      {
+        "index": 6,
+        "from": "D",
+        "to": "A"
+      },
+      {
+        "index": 8,
         "from": "B",
         "to": "A"
+      },
+      {
+        "index": 9,
+        "from": "C",
+        "to": "B"
+      },
+      {
+        "index": 10,
+        "from": "A",
+        "to": "B"
+      },
+      {
+        "index": 12,
+        "from": "D",
+        "to": "B"
+      },
+      {
+        "index": 13,
+        "from": "D",
+        "to": "A"
+      },
+      {
+        "index": 14,
+        "from": "B",
+        "to": "C"
+      },
+      {
+        "index": 15,
+        "from": "D",
+        "to": "C"
+      },
+      {
+        "index": 18,
+        "from": "C",
+        "to": "D"
+      },
+      {
+        "index": 20,
+        "from": "A",
+        "to": "B"
+      },
+      {
+        "index": 23,
+        "from": "B",
+        "to": "A"
+      },
+      {
+        "index": 24,
+        "from": "D",
+        "to": "C"
+      },
+      {
+        "index": 26,
+        "from": "B",
+        "to": "D"
+      },
+      {
+        "index": 27,
+        "from": "B",
+        "to": "C"
       },
       {
         "index": 29,
@@ -4845,123 +4958,102 @@
   },
   {
     "file": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment9.js",
-    "applied": true,
-    "backup": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment9.js.bak.1762900619425",
+    "applied": false,
     "actions": [
       {
         "index": 0,
-        "from": "A",
-        "to": "D"
+        "from": "D",
+        "to": "C"
       },
       {
         "index": 1,
-        "from": "A",
-        "to": "D"
+        "from": "D",
+        "to": "C"
+      },
+      {
+        "index": 2,
+        "from": "C",
+        "to": "A"
       },
       {
         "index": 3,
-        "from": "B",
-        "to": "C"
-      },
-      {
-        "index": 4,
         "from": "C",
-        "to": "B"
-      },
-      {
-        "index": 5,
-        "from": "B",
-        "to": "A"
+        "to": "D"
       },
       {
         "index": 6,
-        "from": "A",
-        "to": "B"
+        "from": "B",
+        "to": "A"
       },
       {
         "index": 7,
-        "from": "C",
-        "to": "A"
+        "from": "A",
+        "to": "D"
       },
       {
         "index": 8,
-        "from": "C",
-        "to": "A"
-      },
-      {
-        "index": 9,
-        "from": "C",
-        "to": "B"
-      },
-      {
-        "index": 10,
-        "from": "B",
-        "to": "A"
+        "from": "A",
+        "to": "D"
       },
       {
         "index": 11,
-        "from": "B",
-        "to": "D"
-      },
-      {
-        "index": 12,
-        "from": "B",
-        "to": "C"
-      },
-      {
-        "index": 17,
-        "from": "B",
-        "to": "D"
-      },
-      {
-        "index": 18,
-        "from": "B",
-        "to": "A"
-      },
-      {
-        "index": 19,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 20,
-        "from": "B",
-        "to": "C"
-      },
-      {
-        "index": 22,
         "from": "D",
-        "to": "C"
-      },
-      {
-        "index": 23,
-        "from": "B",
-        "to": "D"
-      },
-      {
-        "index": 24,
-        "from": "B",
-        "to": "C"
-      },
-      {
-        "index": 25,
-        "from": "A",
         "to": "B"
       },
       {
-        "index": 26,
-        "from": "A",
-        "to": "D"
+        "index": 12,
+        "from": "C",
+        "to": "A"
       },
       {
-        "index": 28,
-        "from": "D",
+        "index": 13,
+        "from": "A",
         "to": "C"
       },
       {
-        "index": 29,
+        "index": 14,
         "from": "B",
+        "to": "C"
+      },
+      {
+        "index": 18,
+        "from": "A",
+        "to": "C"
+      },
+      {
+        "index": 20,
+        "from": "C",
+        "to": "B"
+      },
+      {
+        "index": 21,
+        "from": "B",
+        "to": "D"
+      },
+      {
+        "index": 23,
+        "from": "D",
+        "to": "B"
+      },
+      {
+        "index": 25,
+        "from": "B",
+        "to": "D"
+      },
+      {
+        "index": 26,
+        "from": "D",
         "to": "A"
+      },
+      {
+        "index": 28,
+        "from": "C",
+        "to": "A"
+      },
+      {
+        "index": 29,
+        "from": "A",
+        "to": "B"
       }
     ]
   }
