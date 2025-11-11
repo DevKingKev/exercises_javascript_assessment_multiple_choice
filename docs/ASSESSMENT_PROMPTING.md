@@ -30,6 +30,7 @@ module.exports = {
     title: "Assessment Title",
     description: "Brief description of what this assessment covers",
     difficulty: "easy|medium|hard",
+    domain: "javascript", // short identifier for the assessment domain (see note below)
     timeLimit: 30, // in minutes
     questionCount: 30, // number of questions
     topics: [
@@ -53,6 +54,28 @@ module.exports = {
   ]
 };
 ```
+
+### domain (new)
+
+A mandatory metadata property `domain` is used to declare the subject area or technology the assessment covers. For this repository, all JavaScript assessments should set:
+
+```javascript
+domain: "javascript"
+```
+For HTML it should be:
+```javascript
+domain: "html"
+```
+and so on. 
+
+Why this helps:
+- UI filters and listing pages can group and filter assessments by domain.
+- Back-end indexing, analytics, and import/export tooling can use the domain field to route or validate content.
+
+Guidance:
+- Use a short, lowercase identifier (for example: `javascript`, `python`, `html`).
+- If your file uses JSON-style quoted keys, use `"domain": "javascript"` to match the file's style.
+- This field is optional for now but recommended for all new assessments.
 
 ## Difficulty Level Specifications
 
