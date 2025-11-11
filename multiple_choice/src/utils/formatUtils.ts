@@ -83,6 +83,9 @@ export function formatAutoDetect ( text: string ): string {
 }
 
 export function formatTextWithCode ( text: string, domain: string = 'javascript' ): string {
+    // Guard against null/undefined text
+    if ( !text ) return '';
+
     // Check if text uses explicit code markers [CODE]...[/CODE] or inline <pre> tags
     if ( text.includes( '[CODE]' ) && text.includes( '[/CODE]' ) ) {
         return formatWithMarkers( text, domain );

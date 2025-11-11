@@ -163,8 +163,18 @@ const displayDifficulty = computed(() => {
   return d.charAt(0).toUpperCase() + d.slice(1);
 });
 
+const currentDomain = computed(() => {
+  // Get domain from assessment metadata; guard access for proxy objects
+  try {
+    const meta = (assessmentStore as any).currentAssessment?.metadata;
+    return (meta && meta.domain) ? String(meta.domain).toLowerCase() : 'javascript';
+  } catch (e) {
+    return 'javascript';
+  }
+});
+
 function formatQuestion(text: string): string {
-  return formatTextWithCode(text);
+  return formatTextWithCode(text, currentDomain.value);
 }
 
 function getPercentage(correct: number, total: number): number {
@@ -176,8 +186,8 @@ function getUserAnswerText(review: QuestionReview): string {
     return 'No answer selected';
   }
   const optionText = review.options[review.userAnswer];
-  // Format option text to handle inline <pre> tags
-  const formattedOption = formatTextWithCode(optionText);
+  // Format option text to handle inline <pre> tags and pass domain
+  const formattedOption = formatTextWithCode(optionText, currentDomain.value);
   return `${review.userAnswer}: ${formattedOption}`;
 }
 

@@ -8,13 +8,13 @@
       <strong>Your answer:</strong>
       <div class="review-answer-option">
                 <span class="review-answer-option-choice">{{ review.userAnswer }}:</span> 
-        <span v-html="review.userAnswer !== null ? review.options[review.userAnswer] : ''" class="review-answer-option-text"></span></div>
+        <span v-html="review.userAnswer !== null ? formatQuestion(review.options[review.userAnswer]) : ''" class="review-answer-option-text"></span></div>
     </div>
     <div class="review-answer" :class="review.isCorrect ? 'correct' : 'incorrect'">
       <strong>Correct answer:</strong>
       <div class="review-answer-option">
         <span class="review-answer-option-choice">{{ review.correctAnswer }}:</span> 
-        <span v-html="review.options[review.correctAnswer]" class="review-answer-option-text"></span></div>
+        <span v-html="formatQuestion(review.options[review.correctAnswer])" class="review-answer-option-text"></span></div>
     </div>
 
     <div v-if="review.explanation" class="review-explanation">
@@ -109,8 +109,18 @@ const topicItems = computed(() => {
   }
   .review-answer-option-text{
       ::v-deep pre{
-    line-height: 19px;
-    font-size: 1rem;
+    display: block;
+    background: var(--bg-tertiary);
+    padding: 12px;
+    border-radius: 6px;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-size: 0.95rem;
+    color: var(--text-primary);
+    border: 1px solid var(--border-light);
+    overflow-x: auto;
+    white-space: pre;
+    margin: 8px 0;
+    line-height: 1.4;
     }
     } 
 }
@@ -118,9 +128,17 @@ const topicItems = computed(() => {
   margin-top: 12px; padding: 12px 16px; background: #ebf5fb; border-left: 4px solid #3498db; border-radius: 6px;
   .review-explanation-text {
     ::v-deep pre{
-      display: inline-flex;
-      padding:0 5px;
-      border-radius: 2px;
+      display: block;
+      background: var(--bg-tertiary);
+      padding: 12px;
+      border-radius: 6px;
+      font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+      font-size: 0.95rem;
+      color: var(--text-primary);
+      border: 1px solid var(--border-light);
+      overflow-x: auto;
+      white-space: pre;
+      margin: 8px 0;
     }
   }
 
