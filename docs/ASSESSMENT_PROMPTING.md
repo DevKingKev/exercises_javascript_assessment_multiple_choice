@@ -185,6 +185,18 @@ Each question must have the following structure:
 - Avoid "All of the above" or "None of the above" unless necessary
 - Ensure only one correct answer
 
+### Answer Distribution and Option Randomization
+
+- Aim for a largely equitable distribution of correct-answer letters (A, B, C, D) across each assessment. For an assessment with N questions the target is roughly N/4 correct answers per letter (use floor/ceil as needed). Small deviations are acceptable, but avoid heavy bias (for example: >50% of correct answers being the same letter) and avoid long runs where the same letter is correct repeatedly.
+- When authoring manually:
+  - Track correct-letter counts as you add questions and choose correct letters so the final distribution is balanced.
+  - Avoid assigning the same correct letter more than 3 times in a row unless there is a strong pedagogical reason.
+- When generating content programmatically:
+  - After generating all questions, compute the frequency of correct letters and rebalance by swapping option contents between questions or by shuffling options and updating the `correct` property accordingly.
+  - Prefer an automated post-processing step that enforces near-uniform distribution (difference between most/least frequent correct-letter counts ≤ 1 where possible).
+- Presentation-time randomization: the UI may randomize option order when showing the question to the learner; when shuffling, ensure the persisted `correct` value (A/B/C/D) is updated to match the shuffled order or store the correct index separately so rendering can map it safely.
+- Manual review: always do a quick manual pass for newly created assessments to verify there is no obvious pattern (e.g., all "A" answers) and that distractors remain plausible after any rebalancing.
+
 ### Explanations
 - **Must be detailed and educational** (2-4 paragraphs for medium/hard)
 - Explain why the correct answer is right
