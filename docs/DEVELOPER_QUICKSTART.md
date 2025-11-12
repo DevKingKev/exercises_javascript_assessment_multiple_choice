@@ -141,6 +141,56 @@ GET /api/assessment/:domain/:difficulty/:id
 
 Example: `GET /api/assessment/html/easy/assessment1`
 
+### Checking individual assessment files with the scripts
+
+Two helper scripts live in `scripts/` to help inspect and (optionally) rebalance individual assessment files.
+
+- `scripts/analysis_assessments.js` — analyzes assessment files and produces a JSON report (`assessment-report.json`) containing per-file counts and per-question notes (structural warnings, missing fields, etc.).
+- `scripts/rebalance_assessments.js` — proposes symmetric option swaps to even A/B/C/D distributions. By default it runs in dry-run mode and writes a `rebalance-report.json`. Use `--apply` to make changes in-place; the script creates timestamped backups (e.g. `assessment10.js.bak.<timestamp>`).
+
+Quick per-file workflow and examples (run from the repository root for predictable report locations):
+
+1) Analyze a single file
+
+```bash
+node ./scripts/analysis_assessments.js --file=multiple_choice/assessments/javascript/easy/assessment10.js
+# Console output will show per-file counts; a JSON report (assessment-report.json) is written as indicated by the script output.
+```
+
+2) Dry-run a rebalance for a single file
+
+```bash
+node ./scripts/rebalance_assessments.js --file=multiple_choice/assessments/javascript/easy/assessment10.js
+# Default is dry-run. The script prints DRY-RUN lines and writes rebalance-report.json (dry-run results).
+```
+
+3) Apply a rebalance for a single file (creates a backup)
+
+```bash
+node ./scripts/rebalance_assessments.js --file=multiple_choice/assessments/javascript/easy/assessment10.js --apply
+# On apply the script will create a backup next to the file (e.g. assessment10.js.bak.<timestamp>) and update the file in-place.
+```
+
+4) Scan backups for combinational-answer candidates (dry-run)
+
+```bash
+node ./scripts/rebalance_assessments.js --scan-backups-combinational
+# Writes restore-report.json listing candidate indices found inside .bak.* backups.
+```
+
+5) Restore combinational questions from the scan (apply)
+
+```bash
+node ./scripts/rebalance_assessments.js --restore-combinational --apply
+# Applies restores listed in restore-report.json; creates a second backup before writing modified files.
+```
+
+Notes and tips
+- Report file location can vary depending on working directory; check the console output for the exact path the script wrote.
+- Backups are created next to the assessment file as `<filename>.bak.<timestamp>` when `--apply` is used — keep these until you confirm the changes.
+- The rebalance script protects questions that contain combinational language (for example, the word "both") and enforces that "All of the above" / "None of the above" are placed into option D. Always inspect `rebalance-report.json` and `restore-report.json` before applying wide changes.
+- To operate on a whole folder use `--dir=multiple_choice/assessments/javascript/easy` instead of `--file=`.
+
 ### Production Build
 
 ```bash

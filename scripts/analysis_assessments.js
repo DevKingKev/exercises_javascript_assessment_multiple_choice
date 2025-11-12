@@ -36,9 +36,27 @@ function countCorrectLetters (questions) {
 }
 
 function analyze () {
+    const args = process.argv.slice(2);
+    const fileArg = args.find(a => a.startsWith('--file='));
+    const help = args.includes('--help') || args.includes('-h');
+    if (help) {
+        console.log('Usage: node analysis_assessments.js [--file=path/to/assessment.js]');
+        console.log('Scans assessments and writes assessment-report.json. Use --file to analyze a single file.');
+        process.exit(0);
+    }
     const files = findAssessmentFiles(ASSESSMENTS_DIR);
+    let targetFiles = files;
+    if (fileArg) {
+        const p = fileArg.split('=')[1];
+        const abs = path.resolve(process.cwd(), p);
+        if (!fs.existsSync(abs)) {
+            console.error('Specified file does not exist:', abs);
+            process.exit(1);
+        }
+        targetFiles = [abs];
+    }
     const report = [];
-    for (const f of files) {
+    for (const f of targetFiles) {
         const relative = path.relative(process.cwd(), f);
         const loaded = loadAssessment(f);
         if (!loaded) {
@@ -49,11 +67,29 @@ function analyze () {
             report.push({ file: relative, error: loaded.error });
             continue;
         }
+        // Validate each question for structural issues and collect per-question notes
+        const perQuestionNotes = [];
+        for (let i = 0; i < loaded.length; i++) {
+            const q = loaded[i];
+            const notes = [];
+            if (!q || typeof q !== 'object') notes.push('missing_question_object');
+            else {
+                if (!q.question) notes.push('missing_question_text');
+                if (!q.options || typeof q.options !== 'object') notes.push('missing_options');
+                else {
+                    const keys = Object.keys(q.options).filter(k => ['A', 'B', 'C', 'D'].includes(k));
+                    if (keys.length < 4) notes.push('not_four_options');
+                }
+                if (!q.correct) notes.push('missing_correct');
+                else if (!['A', 'B', 'C', 'D'].includes(String(q.correct).toUpperCase())) notes.push('invalid_correct');
+            }
+            perQuestionNotes.push({ index: i, notes });
+        }
         const counts = countCorrectLetters(loaded);
         const total = Object.values(counts).reduce((a, b) => a + b, 0);
         const max = Math.max(...Object.values(counts));
         const skew = (max / Math.max(total, 1));
-        report.push({ file: relative, total, counts, skew });
+        report.push({ file: relative, total, counts, skew, questionNotes: perQuestionNotes });
     }
 
     const outPath = path.resolve(process.cwd(), 'assessment-report.json');

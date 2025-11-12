@@ -4,6 +4,10 @@ const path = require('path');
 
 const ASSESSMENTS_DIR = path.resolve(__dirname, '..', 'multiple_choice', 'assessments');
 
+// Patterns for semantic-preservation rules
+const PROTECT_BOTH_RE = /\bboth\b/i; // questions that mention "both" should be left alone
+const ALL_NONE_RE = /\b(all of the above|none of the above)\b/i; // ensure these live in D
+
 function findAssessmentFiles (dir) {
     const out = [];
     const items = fs.readdirSync(dir, { withFileTypes: true });
@@ -70,23 +74,35 @@ function rebalanceFile (file, apply = false) {
         const target = balancedTargetLetters(n);
 
         const actions = [];
-        // First: ensure any option containing the phrase "All of the above" lives in slot D
+        // First: mark protected questions (contain "both") and ensure any option
+        // containing "all of the above" or "none of the above" lives in slot D.
+        const protectedQuestions = new Set();
         for (let i = 0; i < n; i++) {
             const q = questions[i];
             const opts = q.options || {};
             try {
+                // If any option contains the word 'both', protect this question from any rebalancing
                 for (const letter of ['A', 'B', 'C', 'D']) {
-                    const text = opts[letter];
-                    if (typeof text === 'string' && /all of the above/i.test(text)) {
-                        if (letter !== 'D') {
-                            // swap letter <-> D so the 'All of the above' text sits in D
-                            swapOptions(opts, letter, 'D');
-                            const cur = String(q.correct || '').toUpperCase();
-                            if (cur === letter) q.correct = 'D';
-                            else if (cur === 'D') q.correct = letter;
-                            actions.push({ index: i, from: letter, to: 'D', reason: 'ensureAllOfTheAbove' });
+                    const txt = opts[letter];
+                    if (typeof txt === 'string' && PROTECT_BOTH_RE.test(txt)) {
+                        protectedQuestions.add(i);
+                        break;
+                    }
+                }
+                // Ensure 'all of the above' or 'none of the above' live in D (unless protected)
+                if (!protectedQuestions.has(i)) {
+                    for (const letter of ['A', 'B', 'C', 'D']) {
+                        const text = opts[letter];
+                        if (typeof text === 'string' && ALL_NONE_RE.test(text)) {
+                            if (letter !== 'D') {
+                                swapOptions(opts, letter, 'D');
+                                const cur = String(q.correct || '').toUpperCase();
+                                if (cur === letter) q.correct = 'D';
+                                else if (cur === 'D') q.correct = letter;
+                                actions.push({ index: i, from: letter, to: 'D', reason: 'ensureAllOrNoneInD' });
+                            }
+                            break;
                         }
-                        break; // found the special option for this question
                     }
                 }
             } catch (e) {
@@ -94,8 +110,9 @@ function rebalanceFile (file, apply = false) {
             }
         }
 
-        // Now perform the normal balancing swaps
+        // Now perform the normal balancing swaps for non-protected questions
         for (let i = 0; i < n; i++) {
+            if (protectedQuestions.has(i)) continue; // skip questions that mention 'both'
             const q = questions[i];
             const current = String(q.correct || '').toUpperCase();
             const want = target[i];
@@ -133,11 +150,30 @@ function rebalanceFile (file, apply = false) {
 function main () {
     const args = process.argv.slice(2);
     const apply = args.includes('--apply');
-    const restoreCombinational = args.includes('--restore-combinational');
     // optional directory filter: --dir=relative/path
     const dirArg = args.find(a => a.startsWith('--dir='));
+    const fileArg = args.find(a => a.startsWith('--file='));
+    const help = args.includes('--help') || args.includes('-h');
+    if (help) {
+        console.log('Usage: node rebalance_assessments.js [--dir=path/to/assessments] [--file=path/to/assessment.js] [--apply]');
+        console.log('Options:');
+        console.log('  --dir=path    Run on all assessment files under the given dir (defaults to multiple_choice/assessments)');
+        console.log('  --file=path   Run only on a single assessment file');
+        console.log('  --apply       Apply changes (create backups). Without --apply the script performs a dry-run');
+        console.log('  --scan-backups-combinational   Scan .bak.* backups for combinational options (dry-run)');
+        console.log('  --restore-combinational [--apply] Restore questions that contained combinational options from backups');
+        process.exit(0);
+    }
     let files;
-    if (dirArg) {
+    if (fileArg) {
+        const p = fileArg.split('=')[1];
+        const resolved = path.resolve(process.cwd(), p);
+        if (!fs.existsSync(resolved)) {
+            console.error('Specified file does not exist:', resolved);
+            process.exit(1);
+        }
+        files = [resolved];
+    } else if (dirArg) {
         const sub = dirArg.split('=')[1];
         const resolved = path.resolve(process.cwd(), sub);
         if (!fs.existsSync(resolved)) {
