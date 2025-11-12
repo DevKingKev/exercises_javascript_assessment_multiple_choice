@@ -537,12 +537,12 @@ module.exports = {
       "id": 28,
       "question": "What is the correct way to create a submit button in HTML?",
       "options": {
-        "A": "<pre><button type=\"submit\">Submit</button></pre>",
+        "A": "Both A and B",
         "B": "<pre><input type=\"submit\" value=\"Submit\"></pre>",
         "C": "<pre><submit>Submit</submit></pre>",
-        "D": "Both A and B"
+        "D": "<pre><button type=\"submit\">Submit</button></pre>"
       },
-      "correct": "D",
+      "correct": "A",
       "explanation": "Both <pre><button type=\"submit\"></pre> and <pre><input type=\"submit\"></pre> create submit buttons. The <pre><button></pre> element allows HTML content between the tags, while <pre><input></pre> uses the <pre>value</pre> attribute for the button text. Example A: <pre><button type=\"submit\"><strong>Submit</strong> Form</button></pre>. Example B: <pre><input type=\"submit\" value=\"Submit\"></pre>.",
       "topic": {
         "topics": [

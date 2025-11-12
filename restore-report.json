@@ -1,0 +1,199 @@
+[
+  {
+    "file": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/html/easy/assessment4.js",
+    "applied": true,
+    "backup": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/html/easy/assessment4.js.bak.1762906180592",
+    "restored": 3,
+    "indices": [
+      15,
+      24,
+      27
+    ]
+  },
+  {
+    "file": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment10.js",
+    "applied": true,
+    "backup": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment10.js.bak.1762906180595",
+    "restored": 2,
+    "indices": [
+      9,
+      17
+    ]
+  },
+  {
+    "file": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment14.js",
+    "applied": true,
+    "backup": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment14.js.bak.1762906180596",
+    "restored": 2,
+    "indices": [
+      9,
+      17
+    ]
+  },
+  {
+    "file": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment20.js",
+    "applied": true,
+    "backup": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment20.js.bak.1762906180599",
+    "restored": 1,
+    "indices": [
+      15
+    ]
+  },
+  {
+    "file": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment21.js",
+    "applied": true,
+    "backup": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment21.js.bak.1762906180601",
+    "restored": 1,
+    "indices": [
+      11
+    ]
+  },
+  {
+    "file": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment22.js",
+    "applied": true,
+    "backup": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment22.js.bak.1762906180603",
+    "restored": 1,
+    "indices": [
+      11
+    ]
+  },
+  {
+    "file": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment24.js",
+    "applied": true,
+    "backup": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment24.js.bak.1762906180604",
+    "restored": 1,
+    "indices": [
+      19
+    ]
+  },
+  {
+    "file": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment25.js",
+    "applied": true,
+    "backup": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment25.js.bak.1762906180605",
+    "restored": 2,
+    "indices": [
+      3,
+      20
+    ]
+  },
+  {
+    "file": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment27.js",
+    "applied": true,
+    "backup": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment27.js.bak.1762906180607",
+    "restored": 2,
+    "indices": [
+      20,
+      22
+    ]
+  },
+  {
+    "file": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment3.js",
+    "applied": true,
+    "backup": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment3.js.bak.1762906180608",
+    "restored": 2,
+    "indices": [
+      6,
+      7
+    ]
+  },
+  {
+    "file": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment31.js",
+    "applied": true,
+    "backup": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment31.js.bak.1762906180609",
+    "restored": 3,
+    "indices": [
+      2,
+      14,
+      22
+    ]
+  },
+  {
+    "file": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment32.js",
+    "applied": true,
+    "backup": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment32.js.bak.1762906180611",
+    "restored": 3,
+    "indices": [
+      5,
+      13,
+      27
+    ]
+  },
+  {
+    "file": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment34.js",
+    "applied": true,
+    "backup": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment34.js.bak.1762906180612",
+    "restored": 3,
+    "indices": [
+      1,
+      8,
+      19
+    ]
+  },
+  {
+    "file": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment36.js",
+    "applied": true,
+    "backup": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment36.js.bak.1762906180614",
+    "restored": 1,
+    "indices": [
+      27
+    ]
+  },
+  {
+    "file": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment39.js",
+    "applied": true,
+    "backup": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment39.js.bak.1762906180615",
+    "restored": 1,
+    "indices": [
+      11
+    ]
+  },
+  {
+    "file": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment4.js",
+    "applied": true,
+    "backup": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment4.js.bak.1762906180616",
+    "restored": 2,
+    "indices": [
+      21,
+      29
+    ]
+  },
+  {
+    "file": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment5.js",
+    "applied": true,
+    "backup": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment5.js.bak.1762906180617",
+    "restored": 2,
+    "indices": [
+      9,
+      16
+    ]
+  },
+  {
+    "file": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment7.js",
+    "applied": true,
+    "backup": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment7.js.bak.1762906180618",
+    "restored": 2,
+    "indices": [
+      5,
+      9
+    ]
+  },
+  {
+    "file": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment8.js",
+    "applied": true,
+    "backup": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment8.js.bak.1762906180620",
+    "restored": 1,
+    "indices": [
+      23
+    ]
+  },
+  {
+    "file": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment9.js",
+    "applied": true,
+    "backup": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/javascript/easy/assessment9.js.bak.1762906180622",
+    "restored": 2,
+    "indices": [
+      22,
+      28
+    ]
+  }
+]

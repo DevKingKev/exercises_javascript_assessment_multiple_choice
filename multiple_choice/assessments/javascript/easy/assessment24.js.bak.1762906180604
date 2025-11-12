@@ -379,10 +379,10 @@ module.exports = {
       "options": {
         "A": "Use try/catch block",
         "B": "Use <pre>.catch()</pre> on the function call",
-        "C": "Both A and B",
-        "D": "Errors cannot be caught in async functions"
+        "C": "Errors cannot be caught in async functions",
+        "D": "Both A and B"
       },
-      "correct": "C",
+      "correct": "D",
       "explanation": "You can use try/catch inside the async function, or you can use <pre>.catch()</pre> when calling the async function since it returns a Promise.",
       "topic": {
         "topics": [

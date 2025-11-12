@@ -180,11 +180,11 @@ module.exports = {
       "question": "What is the correct way to declare a function named 'myFunc'?",
       "options": {
         "A": "function myFunc() {}",
-        "B": "def myFunc() {}",
+        "B": "Both A and C",
         "C": "myFunc = function() {}",
-        "D": "Both A and C"
+        "D": "def myFunc() {}"
       },
-      "correct": "D",
+      "correct": "B",
       "explanation": "Both function declaration [CODE]function myFunc() {}[/CODE] and function expression [CODE]myFunc = function() {}[/CODE] are valid ways to create a function in JavaScript.",
       "topic": {
         "topics": [

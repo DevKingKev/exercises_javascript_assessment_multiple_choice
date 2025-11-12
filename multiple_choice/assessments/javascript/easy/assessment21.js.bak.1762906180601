@@ -242,11 +242,11 @@ module.exports = {
       "question": "What method can you use to get all own property names of an object?",
       "options": {
         "A": "<pre>Object.getOwnPropertyNames(obj)</pre>",
-        "B": "<pre>obj.getPropertyNames()</pre>",
+        "B": "Both A and C",
         "C": "<pre>Object.keys(obj)</pre>",
-        "D": "Both A and C"
+        "D": "<pre>obj.getPropertyNames()</pre>"
       },
-      "correct": "D",
+      "correct": "B",
       "explanation": "Both <pre>Object.getOwnPropertyNames()</pre> and <pre>Object.keys()</pre> return an object's own properties. <pre>getOwnPropertyNames()</pre> includes non-enumerable properties while <pre>keys()</pre> only includes enumerable ones.",
       "topic": {
         "topics": [

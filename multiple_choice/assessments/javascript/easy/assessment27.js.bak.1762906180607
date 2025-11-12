@@ -428,12 +428,12 @@ module.exports = {
       "id": 23,
       "question": "How do you handle a fetch error with async/await?",
       "options": {
-        "A": "Use try/catch block",
+        "A": "Both A and B",
         "B": "Use .catch() method",
         "C": "Check response.error",
-        "D": "Both A and B"
+        "D": "Use try/catch block"
       },
-      "correct": "D",
+      "correct": "A",
       "explanation": "With async/await, you can use try/catch, or you can still use .catch() on the Promise returned by the async function.",
       "topic": {
         "topics": [

@@ -207,12 +207,12 @@ module.exports = {
       "id": 10,
       "question": "How do you create a shallow copy of an object?",
       "options": {
-        "A": "<pre>{...obj}</pre>",
+        "A": "Both A and B",
         "B": "<pre>Object.assign({}, obj)</pre>",
         "C": "<pre>JSON.parse(JSON.stringify(obj))</pre>",
-        "D": "Both A and B"
+        "D": "<pre>{...obj}</pre>"
       },
-      "correct": "D",
+      "correct": "A",
       "explanation": "Both the spread operator and <pre>Object.assign()</pre> create shallow copies. <pre>JSON.parse(JSON.stringify(obj))</pre> creates a deep copy but loses methods and special values.",
       "topic": {
         "topics": [

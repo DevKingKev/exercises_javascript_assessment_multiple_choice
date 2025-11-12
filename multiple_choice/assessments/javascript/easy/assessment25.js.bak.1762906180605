@@ -106,11 +106,11 @@ module.exports = {
       "question": "What is the correct way to handle errors in this code? [CODE]async function fetchData() {\n  // might throw error\n}[/CODE]",
       "options": {
         "A": "Use try/catch inside the function",
-        "B": "Use .catch() when calling the function",
-        "C": "Both A and B",
+        "B": "Both A and B",
+        "C": "Use .catch() when calling the function",
         "D": "Errors cannot be caught in async functions"
       },
-      "correct": "C",
+      "correct": "B",
       "explanation": "You can handle errors either with try/catch inside the async function, or with .catch() on the returned Promise when calling the function.",
       "topic": {
         "topics": [

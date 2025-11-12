@@ -88,12 +88,12 @@ module.exports = {
       "id": 3,
       "question": "What is the correct way to export a function as default?",
       "options": {
-        "A": "<pre>export default function() {}</pre>",
+        "A": "Both A and C",
         "B": "<pre>export function default() {}</pre>",
         "C": "<pre>function myFunc() {} export default myFunc;</pre>",
-        "D": "Both A and C"
+        "D": "<pre>export default function() {}</pre>"
       },
-      "correct": "D",
+      "correct": "A",
       "explanation": "You can export a function as default either inline with the declaration or separately after defining it.",
       "topic": {
         "topics": [
@@ -294,10 +294,10 @@ module.exports = {
       "options": {
         "A": "<pre>export function func1() {}\nexport function func2() {}</pre>",
         "B": "<pre>export default function func1() {}\nexport default function func2() {}</pre>",
-        "C": "<pre>export { func1, func2 };</pre>",
-        "D": "Both A and C"
+        "C": "Both A and C",
+        "D": "<pre>export { func1, func2 };</pre>"
       },
-      "correct": "D",
+      "correct": "C",
       "explanation": "You can export each function individually or use an export list to export multiple at once.",
       "topic": {
         "topics": [
@@ -430,10 +430,10 @@ module.exports = {
       "options": {
         "A": "<pre>function calculate() {}\nexport { calculate };</pre>",
         "B": "<pre>function calculate() {}\nexport calculate;</pre>",
-        "C": "<pre>export function calculate() {}</pre>",
-        "D": "Both A and C"
+        "C": "Both A and C",
+        "D": "<pre>export function calculate() {}</pre>"
       },
-      "correct": "D",
+      "correct": "C",
       "explanation": "You can export a function either inline with its declaration or separately using the export list.",
       "topic": {
         "topics": [

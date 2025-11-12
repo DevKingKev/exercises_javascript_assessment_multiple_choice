@@ -72,11 +72,11 @@ module.exports = {
       "question": "How do you check if localStorage is available in the browser?",
       "options": {
         "A": "<pre>if (typeof Storage !== 'undefined')</pre>",
-        "B": "<pre>if (window.localStorage)</pre>",
+        "B": "Both A and B",
         "C": "<pre>if (localStorage.exists)</pre>",
-        "D": "Both A and B"
+        "D": "<pre>if (window.localStorage)</pre>"
       },
-      "correct": "D",
+      "correct": "B",
       "explanation": "You can check for Storage API support or directly check for window.localStorage existence.",
       "topic": {
         "topics": [
@@ -190,12 +190,12 @@ module.exports = {
       "id": 9,
       "question": "How do you store a boolean value in localStorage?",
       "options": {
-        "A": "<pre>localStorage.setItem('key', value.toString())</pre>",
+        "A": "Both A and C",
         "B": "<pre>localStorage.setItem('key', value)</pre>",
         "C": "<pre>localStorage.setItem('key', value ? 1 : 0)</pre>",
-        "D": "Both A and C"
+        "D": "<pre>localStorage.setItem('key', value.toString())</pre>"
       },
-      "correct": "D",
+      "correct": "A",
       "explanation": "You can convert booleans to strings using toString() or convert to numbers, since localStorage only stores strings.",
       "topic": {
         "topics": [
@@ -379,10 +379,10 @@ module.exports = {
       "options": {
         "A": "<pre>sessionStorage.getItem('key') !== null</pre>",
         "B": "<pre>'key' in sessionStorage</pre>",
-        "C": "<pre>sessionStorage.has('key')</pre>",
-        "D": "Both A and B"
+        "C": "Both A and B",
+        "D": "<pre>sessionStorage.has('key')</pre>"
       },
-      "correct": "D",
+      "correct": "C",
       "explanation": "You can check if getItem() returns non-null or use the 'in' operator to check for key existence.",
       "topic": {
         "topics": [

@@ -241,12 +241,12 @@ module.exports = {
       "id": 12,
       "question": "How do you check if an object was created by a specific constructor?",
       "options": {
-        "A": "<pre>object instanceof Constructor</pre>",
+        "A": "Both A and B",
         "B": "<pre>object.constructor === Constructor</pre>",
         "C": "<pre>Constructor.created(object)</pre>",
-        "D": "Both A and B"
+        "D": "<pre>object instanceof Constructor</pre>"
       },
-      "correct": "D",
+      "correct": "A",
       "explanation": "Both <pre>instanceof</pre> and checking the <pre>constructor</pre> property can determine if an object was created by a specific constructor, though <pre>instanceof</pre> is more reliable as the <pre>constructor</pre> property can be changed.",
       "topic": {
         "topics": [

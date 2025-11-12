@@ -432,10 +432,10 @@ module.exports = {
       "options": {
         "A": "<pre>input</pre>",
         "B": "<pre>change</pre>",
-        "C": "<pre>keyup</pre>",
-        "D": "Both A and B"
+        "C": "Both A and B",
+        "D": "<pre>keyup</pre>"
       },
-      "correct": "D",
+      "correct": "C",
       "explanation": "Both <pre>input</pre> and <pre>change</pre> events fire when values change, but at different times. The <pre>input</pre> event fires immediately on each change, while <pre>change</pre> fires when the element loses focus after the value has changed.",
       "topic": {
         "topics": [
@@ -535,10 +535,10 @@ module.exports = {
       "options": {
         "A": "<pre>parent.insertBefore(newElement, referenceElement)</pre>",
         "B": "<pre>referenceElement.before(newElement)</pre>",
-        "C": "<pre>parent.insert(newElement, referenceElement)</pre>",
-        "D": "Both A and B"
+        "C": "Both A and B",
+        "D": "<pre>parent.insert(newElement, referenceElement)</pre>"
       },
-      "correct": "D",
+      "correct": "C",
       "explanation": "Both methods work. <pre>insertBefore()</pre> is the traditional method that inserts a node before a reference node as a child of a specified parent node. The newer <pre>before()</pre> method is more intuitive and inserts nodes before the element it's called on.",
       "topic": {
         "topics": [

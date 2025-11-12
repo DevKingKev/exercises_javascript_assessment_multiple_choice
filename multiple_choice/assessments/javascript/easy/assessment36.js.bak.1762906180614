@@ -513,12 +513,12 @@ module.exports = {
       "id": 28,
       "question": "How can you test a small code snippet without affecting your main code?",
       "options": {
-        "A": "Use the browser console directly",
+        "A": "Both A and C",
         "B": "Create a separate project",
         "C": "Use a online code playground",
-        "D": "Both A and C"
+        "D": "Use the browser console directly"
       },
-      "correct": "D",
+      "correct": "A",
       "explanation": "Both the browser console and online playgrounds like JSFiddle are great for testing small code snippets safely.",
       "topic": {
         "topics": [

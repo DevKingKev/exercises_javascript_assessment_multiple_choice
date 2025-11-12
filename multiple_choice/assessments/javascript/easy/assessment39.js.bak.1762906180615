@@ -242,11 +242,11 @@ module.exports = {
       "question": "How can you handle different actions based on which element was clicked?",
       "options": {
         "A": "Check event.target with different selectors",
-        "B": "Use multiple delegated listeners",
+        "B": "Both A and C",
         "C": "Store actions in data attributes",
-        "D": "Both A and C"
+        "D": "Use multiple delegated listeners"
       },
-      "correct": "D",
+      "correct": "B",
       "explanation": "You can check event.target with different selectors and/or read data attributes to determine the appropriate action.",
       "topic": {
         "topics": [
