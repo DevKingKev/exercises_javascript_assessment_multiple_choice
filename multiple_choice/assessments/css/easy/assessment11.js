@@ -100,10 +100,10 @@ module.exports = {
             "id": 1,
             "question": "Which elements have <pre>display: block;</pre> by default?",
             "options": {
-                "A": "<pre>&lt;span&gt;</pre>, <pre>&lt;a&gt;</pre>, <pre>&lt;em&gt;</pre>",
-                "B": "<pre>&lt;div&gt;</pre>, <pre>&lt;p&gt;</pre>, <pre>&lt;h1&gt;</pre>",
-                "C": "<pre>&lt;strong&gt;</pre>, <pre>&lt;code&gt;</pre>, <pre>&lt;b&gt;</pre>",
-                "D": "<pre>&lt;img&gt;</pre>, <pre>&lt;input&gt;</pre>, <pre>&lt;button&gt;</pre>"
+                "A": "<pre><span></pre>, <pre><a></pre>, <pre><em></pre>",
+                "B": "<pre><div></pre>, <pre><p></pre>, <pre><h1></pre>",
+                "C": "<pre><strong></pre>, <pre><code></pre>, <pre><b></pre>",
+                "D": "<pre><img></pre>, <pre><input></pre>, <pre><button></pre>"
             },
             "correct": "B",
             "explanation": "Block-level elements include <div>, <p>, <h1> through <h6>, <ul>, <ol>, <section>, <article>, etc. They start on new lines and take up full width by default.",
@@ -112,7 +112,7 @@ module.exports = {
         },
         {
             "id": 2,
-            "question": "What happens when you apply <pre>width: 200px;</pre> to an inline element like <pre>&lt;span&gt;</pre>?",
+            "question": "What happens when you apply <pre>width: 200px;</pre> to an inline element like <pre><span></pre>?",
             "options": {
                 "A": "The span becomes 200px wide",
                 "B": "The width property is ignored",
@@ -126,7 +126,7 @@ module.exports = {
         },
         {
             "id": 3,
-            "question": "What is the default <pre>display</pre> value of a <pre>&lt;div&gt;</pre> element?",
+            "question": "What is the default <pre>display</pre> value of a <pre><div></pre> element?",
             "options": {
                 "A": "<pre>inline</pre>",
                 "B": "<pre>inline-block</pre>",
@@ -154,7 +154,7 @@ module.exports = {
         },
         {
             "id": 5,
-            "question": "What is the default <pre>display</pre> value of a <pre>&lt;span&gt;</pre> element?",
+            "question": "What is the default <pre>display</pre> value of a <pre><span></pre> element?",
             "options": {
                 "A": "<pre>block</pre>",
                 "B": "<pre>inline</pre>",
@@ -210,7 +210,7 @@ module.exports = {
         },
         {
             "id": 9,
-            "question": "What is the default <pre>display</pre> value of a <pre>&lt;p&gt;</pre> element?",
+            "question": "What is the default <pre>display</pre> value of a <pre><p></pre> element?",
             "options": {
                 "A": "<pre>inline</pre>",
                 "B": "<pre>block</pre>",
@@ -252,7 +252,7 @@ module.exports = {
         },
         {
             "id": 12,
-            "question": "What is the default <pre>display</pre> value of an <pre>&lt;a&gt;</pre> (link) element?",
+            "question": "What is the default <pre>display</pre> value of an <pre><a></pre> (link) element?",
             "options": {
                 "A": "<pre>block</pre>",
                 "B": "<pre>inline</pre>",
@@ -350,7 +350,7 @@ module.exports = {
         },
         {
             "id": 19,
-            "question": "Can you change a <pre>&lt;span&gt;</pre> to behave like a block element?",
+            "question": "Can you change a <pre><span></pre> to behave like a block element?",
             "options": {
                 "A": "No, HTML elements cannot change display types",
                 "B": "Yes, by setting display: block",
@@ -364,7 +364,7 @@ module.exports = {
         },
         {
             "id": 20,
-            "question": "What is the default <pre>display</pre> value of a <pre>&lt;ul&gt;</pre> element?",
+            "question": "What is the default <pre>display</pre> value of a <pre><ul></pre> element?",
             "options": {
                 "A": "<pre>inline</pre>",
                 "B": "<pre>list</pre>",
@@ -420,7 +420,7 @@ module.exports = {
         },
         {
             "id": 24,
-            "question": "What is the default <pre>display</pre> value of a <pre>&lt;strong&gt;</pre> element?",
+            "question": "What is the default <pre>display</pre> value of a <pre><strong></pre> element?",
             "options": {
                 "A": "<pre>block</pre>",
                 "B": "<pre>bold</pre>",
@@ -448,7 +448,7 @@ module.exports = {
         },
         {
             "id": 26,
-            "question": "What happens when you set <pre>display: inline;</pre> on a <pre>&lt;div&gt;</pre>?",
+            "question": "What happens when you set <pre>display: inline;</pre> on a <pre><div></pre>?",
             "options": {
                 "A": "Nothing, divs must be block",
                 "B": "The div flows inline with text and ignores width/height",
@@ -464,10 +464,10 @@ module.exports = {
             "id": 27,
             "question": "Which of these are inline elements by default?",
             "options": {
-                "A": "<pre>&lt;div&gt;</pre>, <pre>&lt;p&gt;</pre>, <pre>&lt;h1&gt;</pre>",
-                "B": "<pre>&lt;span&gt;</pre>, <pre>&lt;a&gt;</pre>, <pre>&lt;strong&gt;</pre>",
-                "C": "<pre>&lt;section&gt;</pre>, <pre>&lt;article&gt;</pre>, <pre>&lt;nav&gt;</pre>",
-                "D": "<pre>&lt;ul&gt;</pre>, <pre>&lt;ol&gt;</pre>, <pre>&lt;li&gt;</pre>"
+                "A": "<pre><div></pre>, <pre><p></pre>, <pre><h1></pre>",
+                "B": "<pre><span></pre>, <pre><a></pre>, <pre><strong></pre>",
+                "C": "<pre><section></pre>, <pre><article></pre>, <pre><nav></pre>",
+                "D": "<pre><ul></pre>, <pre><ol></pre>, <pre><li></pre>"
             },
             "correct": "B",
             "explanation": "Common inline elements include <span>, <a>, <strong>, <em>, <code>, <img>, etc. They flow with text and don't start on new lines by default.",
@@ -490,7 +490,7 @@ module.exports = {
         },
         {
             "id": 29,
-            "question": "Why would you set <pre>display: block;</pre> on a link (<pre>&lt;a&gt;</pre>)?",
+            "question": "Why would you set <pre>display: block;</pre> on a link (<pre><a></pre>)?",
             "options": {
                 "A": "To make it invisible",
                 "B": "To create a full-width clickable area and control dimensions",
