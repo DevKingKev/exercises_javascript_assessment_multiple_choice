@@ -230,6 +230,209 @@ This document outlines suggested topics for HTML assessments across all difficul
 - Cross-origin communication basics
 - `loading="lazy"` for iframes
 
+### Already Covered (Assessments 1-10)
+
+#### Assessment 1: Advanced HTML5 APIs and Semantic Web Technologies
+- Semantic HTML5 Elements
+- Web Components and Custom Elements
+- HTML5 APIs (Canvas, Geolocation, Storage)
+- Accessibility (ARIA, Screen Readers)
+- Microdata and Structured Data
+- Shadow DOM and Encapsulation
+- Form Validation and Constraints
+- Media Elements and APIs
+- Performance Optimization
+- Progressive Web App Features
+
+#### Assessment 2: Advanced HTML Semantics, Forms, and Multimedia Integration
+- Advanced Semantic Elements
+- Complex Form Structures
+- Multimedia Integration
+- Accessibility Deep Dive
+- Performance Optimization
+- Meta Tags and SEO
+- Data Attributes and Custom Properties
+- Progressive Enhancement
+- Cross-browser Compatibility
+- HTML Validation and Best Practices
+
+#### Assessment 3: Advanced HTML Form Controls and Features
+- Advanced Form Controls
+- Form Accessibility
+- Input Types and Attributes
+- Form Validation
+- User Experience
+- Semantic HTML
+- Progressive Enhancement
+- Cross-browser Compatibility
+
+#### Assessment 4: Advanced HTML Form Controls and Validation
+- Advanced Form Controls
+- Form Validation
+- Input Attributes
+- User Experience
+- Accessibility
+- Semantic HTML
+- Browser Compatibility
+- Progressive Enhancement
+
+#### Assessment 5: Advanced Semantic HTML5 Elements
+- Semantic HTML5
+- Accessibility
+- Document Structure
+- Text-level Semantics
+- Interactive Elements
+- Code Representation
+- SEO Optimization
+- Browser Compatibility
+
+#### Assessment 6: Advanced Semantic HTML5 Implementation
+- Semantic HTML5
+- Accessibility
+- Document Semantics
+- Interactive Elements
+- Text Semantics
+- Code Semantics
+- SEO and Metadata
+- Browser Support
+
+#### Assessment 7: HTML data-* Attributes: Usage and Best Practices
+- data-* attributes
+- DOM dataset API
+- CSS attribute selectors
+- Progressive enhancement
+- Best practices
+
+#### Assessment 8: HTML data-* Attributes: Practical Patterns and Safety
+- data-* attributes
+- DOM dataset API
+- CSS attribute selectors
+- JSON in data attributes
+- Security (XSS)
+- Performance
+- Accessibility (ARIA)
+- Server-side rendering (SSR)
+
+#### Assessment 9: HTML5 APIs Integration: Geolocation, Storage, Drag-and-Drop, Editable Content
+- Geolocation API
+- Web Storage (localStorage/sessionStorage)
+- Drag-and-drop API
+- contenteditable
+- spellcheck
+- translate attribute
+
+#### Assessment 10: HTML5 APIs Integration II
+- Geolocation (advanced scenarios)
+- Web Storage (advanced scenarios)
+- Drag-and-drop (advanced scenarios)
+- contenteditable (advanced scenarios)
+- spellcheck (advanced usage)
+- translate attribute (advanced usage)
+
+### Additional Medium Topics Not Yet Covered
+
+#### 16. Script Loading Strategies and Performance
+- `async` vs `defer` attributes for script loading
+- `<script type="module">` basics
+- `nomodule` attribute for legacy browser fallbacks
+- Script placement and page load performance
+- Blocking vs non-blocking scripts
+- `document.write()` and why to avoid it
+- Dynamic script insertion
+- Preload scripts with `<link rel="preload">`
+- Resource hints for JavaScript files
+
+#### 17. Link Relations and Resource Hints (Medium Focus)
+- `rel="preload"` for critical resources
+- `rel="prefetch"` for future navigation resources
+- `rel="preconnect"` for early connections
+- `rel="dns-prefetch"` for DNS resolution
+- `rel="noopener"` security with `target="_blank"`
+- `rel="noreferrer"` for privacy
+- `rel="canonical"` for duplicate content
+- `rel="alternate"` for translations and RSS
+- Performance impact of resource hints
+
+#### 18. Meta Tags Beyond SEO
+- `<meta name="viewport">` responsive design
+- `<meta name="theme-color">` for browser chrome
+- `<meta http-equiv="refresh">` and alternatives
+- Open Graph protocol tags (og:title, og:image, og:description)
+- Twitter Card meta tags
+- `<meta name="robots">` for search engine control
+- `<meta http-equiv="Content-Security-Policy">`
+- App-specific meta tags (apple-mobile-web-app-*)
+
+#### 19. Dialog Element and Modal Patterns
+- `<dialog>` element basics
+- `showModal()` vs `show()` methods
+- `::backdrop` pseudo-element styling
+- `close()` method and return values
+- Dialog accessibility considerations
+- Focus management in modals
+- Escape key handling
+- Click-outside-to-close patterns
+- Polyfills for older browsers
+
+#### 20. Output, Progress, and Meter Elements
+- `<output>` for calculation results
+- `for` attribute on output elements
+- `<progress>` for determinate progress
+- `<progress>` indeterminate state
+- `<meter>` for scalar measurements
+- `min`, `max`, `value`, `low`, `high`, `optimum` attributes
+- Use cases: progress bars, ratings, disk usage
+- Accessibility with progress/meter elements
+- Styling considerations
+
+#### 21. Time and Datetime Elements
+- `<time>` element semantic meaning
+- `datetime` attribute formats (ISO 8601)
+- Machine-readable dates for SEO
+- Valid datetime formats (dates, times, durations)
+- Microdata integration with time elements
+- Browser display vs datetime value
+- Use cases: publishing dates, event times, durations
+
+#### 22. Base Element and Document Base URL
+- `<base href="">` for relative URLs
+- `<base target="">` for link targets
+- Security implications of base element
+- Impact on all relative URLs in document
+- Fragment identifiers and base href
+- Best practices and when to avoid
+- Single page application considerations
+
+#### 23. SVG in HTML Integration (Medium Level)
+- Inline SVG vs `<img src="*.svg">`
+- `<svg>` element in HTML documents
+- SVG accessibility with `<title>` and `<desc>`
+- ARIA attributes on SVG elements
+- SVG sprites and `<use>` element
+- CSS styling of inline SVG
+- JavaScript manipulation of SVG DOM
+- Performance: inline vs external SVG
+
+#### 24. Responsive Images: srcset and sizes (Medium Deep Dive)
+- `srcset` with width descriptors (w)
+- `srcset` with pixel density descriptors (x)
+- `sizes` attribute and media conditions
+- How browsers select images from srcset
+- Art direction vs resolution switching
+- Performance benefits of responsive images
+- Testing responsive image selection
+- Fallback strategies for older browsers
+
+#### 25. Internationalization Elements
+- `<bdi>` (Bi-Directional Isolation)
+- `<bdo>` (Bi-Directional Override)
+- `<ruby>`, `<rt>`, `<rp>` for East Asian typography
+- `lang` attribute on specific elements
+- `dir` attribute (ltr, rtl, auto)
+- Character encoding and `<meta charset>`
+- Language negotiation patterns
+- RTL layout considerations
+
 ---
 
 ## Hard Level Topics
@@ -409,6 +612,222 @@ This document outlines suggested topics for HTML assessments across all difficul
 - Drop zones and allowed effects
 - Accessibility considerations for drag-and-drop
 
+### Already Covered Hard Topics
+
+*(No hard assessments created yet)*
+
+### Additional Hard Topics Not Yet Covered
+
+#### 21. Advanced Content Security Policy (CSP)
+- CSP directives in depth (script-src, style-src, img-src, etc.)
+- Nonce-based CSP implementation
+- Hash-based CSP for inline scripts/styles
+- `strict-dynamic` for modern CSP
+- CSP reporting with `report-uri` and `report-to`
+- CSP Level 3 features
+- Trusted Types API integration
+- Common CSP bypass techniques and prevention
+- CSP in development vs production
+
+#### 22. Advanced CORS and Cross-Origin Patterns
+- Preflight requests (OPTIONS) in detail
+- CORS with credentials (`credentials: 'include'`)
+- `crossorigin` attribute values and implications
+- CORS error debugging strategies
+- Canvas tainting and `crossorigin="anonymous"`
+- Cross-origin window communication (postMessage)
+- COEP (Cross-Origin-Embedder-Policy)
+- COOP (Cross-Origin-Opener-Policy)
+- CORP (Cross-Origin-Resource-Policy)
+
+#### 23. Subresource Integrity (SRI) Implementation
+- Generating SRI hashes (SHA-256, SHA-384, SHA-512)
+- Multiple hash algorithms for fallback
+- `integrity` attribute syntax
+- Combining SRI with CORS (`crossorigin` requirement)
+- CDN resource verification with SRI
+- Build tools integration for SRI
+- Fallback strategies when SRI fails
+- Performance implications
+- Content updates and hash management
+
+#### 24. Advanced Module Scripts and Import Maps
+- ES modules in HTML deep dive
+- Import maps for bare module specifiers
+- `<script type="importmap">` syntax
+- Scopes in import maps
+- Dynamic imports and code splitting
+- Module preloading strategies (`<link rel="modulepreload">`)
+- `nomodule` for legacy fallbacks
+- Module script execution timing
+- Top-level await in modules
+
+#### 25. Web Components: Custom Elements Lifecycle
+- Autonomous custom elements
+- Customized built-in elements (is="...")
+- Custom element lifecycle callbacks (connectedCallback, disconnectedCallback)
+- `attributeChangedCallback` and `observedAttributes`
+- `adoptedCallback` for document moves
+- Custom element registry
+- Extending native elements
+- Upgrade timing and undefined elements
+- Best practices for custom elements
+
+#### 26. Shadow DOM Encapsulation Patterns
+- Open vs closed shadow roots
+- Shadow DOM CSS scoping
+- `::slotted()` pseudo-element
+- CSS custom properties across shadow boundaries
+- `::part()` and `::theme()` pseudo-elements
+- Shadow DOM event retargeting
+- Composed vs non-composed events
+- Focus delegation in shadow DOM
+- Accessibility challenges with shadow DOM
+
+#### 27. Advanced Performance: Critical Rendering Path
+- HTML parsing and DOM construction
+- CSSOM construction
+- Render tree creation
+- Layout (reflow) operations
+- Paint and composite operations
+- Critical CSS identification and inlining
+- Above-the-fold optimization
+- Render-blocking resources elimination
+- Browser rendering pipeline deep dive
+- Performance metrics (FCP, LCP, CLS)
+
+#### 28. HTML Sanitization and XSS Prevention
+- DOMPurify and HTML sanitization
+- Trusted Types API
+- XSS attack vectors in HTML
+- `innerHTML` vs `textContent` security
+- Attribute-based XSS (event handlers in attributes)
+- DOM clobbering attacks
+- Mutation XSS (mXSS)
+- CSP as XSS mitigation layer
+- HTML sanitization best practices
+
+#### 29. Advanced Form Patterns: ElementInternals
+- Form-associated custom elements
+- `ElementInternals` API
+- Custom form controls with validation
+- `formAssociated` static property
+- Form lifecycle callbacks (formResetCallback, formStateRestoreCallback)
+- Custom validity states
+- Accessibility for custom form controls
+- Integration with native form validation
+
+#### 30. HTML Email Development Constraints
+- Email client rendering engines
+- Table-based layouts for email
+- Inline CSS requirement and specificity
+- Limited HTML/CSS support (no flexbox, grid, etc.)
+- Outlook-specific rendering quirks
+- Gmail clipping and CSS stripping
+- Responsive email techniques (media queries support)
+- Testing across email clients (Litmus, Email on Acid)
+- Dark mode support in email
+
+#### 31. Streaming HTML and Progressive Rendering
+- HTTP streaming and chunked transfer encoding
+- Progressive HTML rendering
+- `<script>` placement for perceived performance
+- Flushing early HTML for faster FCP
+- Skeleton screens and placeholders
+- Server-side rendering (SSR) streaming
+- Hydration strategies (progressive, partial)
+- Out-of-order streaming
+
+#### 32. HTML Parsing Algorithms and Edge Cases
+- HTML5 parsing algorithm
+- Error recovery and malformed HTML
+- Void elements and self-closing tags
+- Misnested tags and adoption agency algorithm
+- Foreign content (SVG, MathML) in HTML
+- Template element parsing
+- Document.write() and parser blocking
+- Quirks mode, limited-quirks mode, standards mode
+
+#### 33. Advanced Accessibility: Complex ARIA Patterns
+- ARIA authoring practices for complex widgets
+- Accordion pattern with proper ARIA
+- Tabs pattern (tab, tabpanel, tablist)
+- Tree view implementation
+- Combobox (autocomplete) patterns
+- Grid and treegrid patterns
+- Menu and menubar patterns
+- Focus management strategies
+- Keyboard navigation (arrow keys, Home, End, etc.)
+
+#### 34. Web App Manifest and PWA Integration
+- `<link rel="manifest">` and manifest.json
+- Manifest fields (name, short_name, icons, start_url)
+- Display modes (fullscreen, standalone, minimal-ui, browser)
+- Theme and background colors
+- Scope and navigation scope
+- App icons for different platforms
+- Shortcuts API
+- Share target registration
+- Install prompts and beforeinstallprompt
+
+#### 35. Declarative Shadow DOM
+- `<template shadowrootmode="open|closed">`
+- Server-side rendering with shadow DOM
+- Serialization of shadow DOM
+- Browser support and polyfills
+- Hydration with declarative shadow DOM
+- Benefits over imperative shadow DOM
+- Limitations and constraints
+
+#### 36. HTML and WebAssembly Integration
+- Loading WebAssembly modules
+- `<script type="module">` with WASM
+- Instantiating WASM from HTML
+- Streaming WASM compilation
+- WASM memory and HTML interaction
+- Use cases for WASM in web applications
+- Performance considerations
+
+#### 37. Advanced Meta Tags and HTTP Headers
+- `http-equiv` meta tags and equivalent HTTP headers
+- Content-Security-Policy via meta tag vs header
+- Referrer-Policy configuration
+- Feature-Policy (now Permissions-Policy)
+- X-UA-Compatible for IE compatibility
+- Cache control via meta tags (limitations)
+- Prerendering hints (deprecated/modern alternatives)
+
+#### 38. HTML Specification Deep Dives
+- WHATWG Living Standard vs W3C specs
+- HTML parsing specification details
+- Scripting and execution contexts
+- Browsing contexts and navigation
+- Origin and security model
+- HTML serialization and deserialization
+- Extension points in HTML spec
+- Reading and interpreting the spec
+
+#### 39. Advanced Lazy Loading and Intersection Observer
+- Native lazy loading (`loading="lazy"`) behavior
+- Intersection Observer API for custom lazy loading
+- Threshold and rootMargin configuration
+- Progressive image loading (LQIP, SQIP, blur-up)
+- Lazy loading iframes and embeds
+- Infinite scroll implementation
+- Performance monitoring for lazy-loaded resources
+- Preloading next sections
+
+#### 40. Browser Rendering Optimization Patterns
+- Layout thrashing prevention
+- Read/write batching for DOM operations
+- `requestAnimationFrame` for visual updates
+- `will-change` CSS property hints from HTML
+- Composite layers and transform/opacity
+- Paint flashing and layer boundaries
+- Forced synchronous layouts
+- Off-main-thread rendering
+- Runtime performance profiling
+
 ---
 
 ## Topic Distribution Strategy
@@ -480,6 +899,7 @@ When creating new assessments using these topics:
 
 ---
 
-**Last Updated:** November 11, 2025  
-**Assessment Count:** 3 Easy, 0 Medium, 0 Hard  
-**Next Priority:** Additional easy assessments covering meta tags, HTML entities, and accessibility basics
+**Last Updated:** November 13, 2025  
+**Assessment Count:** 3 Easy, 10 Medium, 0 Hard  
+**Next Priority:** Additional medium assessments covering script loading, link relations, meta tags, dialog elements, and responsive images not yet fully addressed
+
