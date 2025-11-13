@@ -1,170 +1,114 @@
 [
   {
     "file": "multiple_choice/assessments/html/medium/assessment10.js",
-    "total": 0,
+    "total": 25,
     "counts": {
-      "A": 0,
-      "B": 0,
+      "A": 19,
+      "B": 6,
       "C": 0,
       "D": 0
     },
-    "skew": 0,
+    "skew": 0.76,
     "questionNotes": [
       {
         "index": 0,
-        "notes": [
-          "missing_correct"
-        ]
+        "notes": []
       },
       {
         "index": 1,
-        "notes": [
-          "missing_correct"
-        ]
+        "notes": []
       },
       {
         "index": 2,
-        "notes": [
-          "missing_correct"
-        ]
+        "notes": []
       },
       {
         "index": 3,
-        "notes": [
-          "missing_correct"
-        ]
+        "notes": []
       },
       {
         "index": 4,
-        "notes": [
-          "missing_correct"
-        ]
+        "notes": []
       },
       {
         "index": 5,
-        "notes": [
-          "missing_correct"
-        ]
+        "notes": []
       },
       {
         "index": 6,
-        "notes": [
-          "missing_correct"
-        ]
+        "notes": []
       },
       {
         "index": 7,
-        "notes": [
-          "missing_correct"
-        ]
+        "notes": []
       },
       {
         "index": 8,
-        "notes": [
-          "missing_correct"
-        ]
+        "notes": []
       },
       {
         "index": 9,
-        "notes": [
-          "missing_correct"
-        ]
+        "notes": []
       },
       {
         "index": 10,
-        "notes": [
-          "missing_correct"
-        ]
+        "notes": []
       },
       {
         "index": 11,
-        "notes": [
-          "missing_correct"
-        ]
+        "notes": []
       },
       {
         "index": 12,
-        "notes": [
-          "missing_correct"
-        ]
+        "notes": []
       },
       {
         "index": 13,
-        "notes": [
-          "missing_correct"
-        ]
+        "notes": []
       },
       {
         "index": 14,
-        "notes": [
-          "missing_correct"
-        ]
+        "notes": []
       },
       {
         "index": 15,
-        "notes": [
-          "missing_correct"
-        ]
+        "notes": []
       },
       {
         "index": 16,
-        "notes": [
-          "missing_correct"
-        ]
+        "notes": []
       },
       {
         "index": 17,
-        "notes": [
-          "missing_correct"
-        ]
+        "notes": []
       },
       {
         "index": 18,
-        "notes": [
-          "missing_correct"
-        ]
+        "notes": []
       },
       {
         "index": 19,
-        "notes": [
-          "missing_correct"
-        ]
+        "notes": []
       },
       {
         "index": 20,
-        "notes": [
-          "missing_correct"
-        ]
+        "notes": []
       },
       {
         "index": 21,
-        "notes": [
-          "missing_correct"
-        ]
+        "notes": []
       },
       {
         "index": 22,
-        "notes": [
-          "missing_correct"
-        ]
+        "notes": []
       },
       {
         "index": 23,
-        "notes": [
-          "missing_correct"
-        ]
+        "notes": []
       },
       {
         "index": 24,
-        "notes": [
-          "missing_correct"
-        ]
-      },
-      {
-        "index": 25,
-        "notes": [
-          "missing_correct"
-        ]
+        "notes": []
       }
     ]
   }
