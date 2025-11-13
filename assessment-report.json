@@ -1,14 +1,14 @@
 [
   {
-    "file": "multiple_choice/assessments/html/medium/assessment16.js",
+    "file": "multiple_choice/assessments/html/medium/assessment17.js",
     "total": 25,
     "counts": {
-      "A": 0,
-      "B": 25,
+      "A": 2,
+      "B": 23,
       "C": 0,
       "D": 0
     },
-    "skew": 1,
+    "skew": 0.92,
     "questionNotes": [
       {
         "index": 0,
