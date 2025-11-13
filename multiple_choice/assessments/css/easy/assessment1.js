@@ -1,0 +1,603 @@
+module.exports = {
+  "metadata": {
+    "title": "CSS Fundamentals - Selectors, Syntax, and Colors",
+    "description": "Test your understanding of basic CSS syntax, selectors, color properties, and fundamental styling concepts",
+    "difficulty": "easy",
+    "domain": "css",
+    "timeLimit": 30,
+    "questionCount": 30,
+    "topics": [
+      "CSS Basics - Selectors and Syntax",
+      "Text Styling and Fonts",
+      "Colors and Backgrounds",
+      "Display and Visibility",
+      "Borders and Outlines",
+      "Basic Pseudo-classes",
+      "Units and Values",
+      "CSS Inheritance"
+    ],
+    "topicLinks": [
+      {
+        "topicName": "CSS Basics - Selectors and Syntax",
+        "refLink": "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors"
+      },
+      {
+        "topicName": "Text Styling and Fonts",
+        "refLink": "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Fonts"
+      },
+      {
+        "topicName": "Colors and Backgrounds",
+        "refLink": "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Colors"
+      },
+      {
+        "topicName": "Display and Visibility",
+        "refLink": "https://developer.mozilla.org/en-US/docs/Web/CSS/display"
+      },
+      {
+        "topicName": "Borders and Outlines",
+        "refLink": "https://developer.mozilla.org/en-US/docs/Web/CSS/border"
+      },
+      {
+        "topicName": "Basic Pseudo-classes",
+        "refLink": "https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes"
+      },
+      {
+        "topicName": "Units and Values",
+        "refLink": "https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Values_and_units"
+      },
+      {
+        "topicName": "CSS Inheritance",
+        "refLink": "https://developer.mozilla.org/en-US/docs/Web/CSS/inheritance"
+      }
+    ],
+    "keywords": [
+      "selectors",
+      "class",
+      "id",
+      "element selector",
+      "color",
+      "hex",
+      "rgb",
+      "font-family",
+      "font-size",
+      "text-align",
+      "background-color",
+      "syntax",
+      "property",
+      "value",
+      "declaration",
+      "rule",
+      "cascade",
+      "specificity",
+      "inline",
+      "block",
+      "hover",
+      "focus",
+      "pseudo-class",
+      "inheritance",
+      "inherit",
+      "border",
+      "outline",
+      "px",
+      "em",
+      "rem",
+      "percentage"
+    ],
+    "assessmentId": 1,
+    "assessmentUniqueId": 1731513600000,
+    "testType": "multiple-choice"
+  },
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is the correct syntax for a CSS rule that selects all paragraph elements?",
+      "options": {
+        "A": "<pre>p { color: red; }</pre>",
+        "B": "<pre>.p { color: red; }</pre>",
+        "C": "<pre>#p { color: red; }</pre>",
+        "D": "<pre>paragraph { color: red; }</pre>"
+      },
+      "correct": "A",
+      "explanation": "The correct syntax is <pre>p { color: red; }</pre> where <pre>p</pre> is the element selector (also called type selector) that selects all <pre>&lt;p&gt;</pre> elements in the document. Option B would select elements with class <pre>p</pre>, option C would select an element with id <pre>p</pre>, and option D uses an invalid element name. Element selectors in CSS match the HTML tag name exactly without any prefix symbols.",
+      "topic": {
+        "topics": [
+          "CSS Basics - Selectors and Syntax"
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "question": "Which CSS property is used to change the text color of an element?",
+      "options": {
+        "A": "<pre>text-color</pre>",
+        "B": "<pre>color</pre>",
+        "C": "<pre>font-color</pre>",
+        "D": "<pre>text-style</pre>"
+      },
+      "correct": "B",
+      "explanation": "The <pre>color</pre> property is the standard CSS property for setting the text color of an element. Properties like <pre>text-color</pre> or <pre>font-color</pre> do not exist in CSS. The <pre>color</pre> property accepts values in various formats including named colors (<pre>red</pre>), hexadecimal (<pre>#ff0000</pre>), RGB (<pre>rgb(255, 0, 0)</pre>), and RGBA (<pre>rgba(255, 0, 0, 1)</pre>).",
+      "topic": {
+        "topics": [
+          "Text Styling and Fonts",
+          "Colors and Backgrounds"
+        ]
+      }
+    },
+    {
+      "id": 3,
+      "question": "What does the <pre>.</pre> (dot) prefix indicate in a CSS selector?",
+      "options": {
+        "A": "A class selector",
+        "B": "An element selector",
+        "C": "An ID selector",
+        "D": "A descendant selector"
+      },
+      "correct": "A",
+      "explanation": "The dot prefix (<pre>.</pre>) indicates a class selector in CSS. For example, <pre>.button</pre> selects all elements with <pre>class=\"button\"</pre>. Class selectors are reusable and can be applied to multiple elements. In contrast, the hash symbol (<pre>#</pre>) is used for ID selectors, no prefix is used for element selectors, and a space creates a descendant combinator (not a selector prefix).",
+      "topic": {
+        "topics": [
+          "CSS Basics - Selectors and Syntax"
+        ]
+      }
+    },
+    {
+      "id": 4,
+      "question": "Which color format represents red in hexadecimal notation?",
+      "options": {
+        "A": "<pre>#0000ff</pre>",
+        "B": "<pre>#00ff00</pre>",
+        "C": "<pre>#ff0000</pre>",
+        "D": "<pre>#000000</pre>"
+      },
+      "correct": "C",
+      "explanation": "The hexadecimal color <pre>#ff0000</pre> represents pure red. In hex color notation, colors are represented by six characters: the first two represent red, the middle two represent green, and the last two represent blue. <pre>ff</pre> is the maximum value (255 in decimal) for red, while <pre>00</pre> represents zero for both green and blue. Option B is green, option C is blue, and option D is black.",
+      "topic": {
+        "topics": [
+          "Colors and Backgrounds"
+        ]
+      }
+    },
+    {
+      "id": 5,
+      "question": "What is the correct way to select an element with the ID <pre>header</pre>?",
+      "options": {
+        "A": "<pre>.header</pre>",
+        "B": "<pre>*header</pre>",
+        "C": "<pre>#header</pre>",
+        "D": "<pre>header</pre>"
+      },
+      "correct": "C",
+      "explanation": "The hash symbol (<pre>#</pre>) prefix is used to select an element by its ID in CSS. <pre>#header</pre> will select the element with <pre>id=\"header\"</pre>. IDs should be unique within a page, so this selector should match only one element. Option A would select elements with a class of <pre>header</pre>, option C uses an invalid syntax, and option D would select all <pre>&lt;header&gt;</pre> HTML elements.",
+      "topic": {
+        "topics": [
+          "CSS Basics - Selectors and Syntax"
+        ]
+      }
+    },
+    {
+      "id": 6,
+      "question": "Which property controls the horizontal alignment of text within an element?",
+      "options": {
+        "A": "<pre>text-align</pre>",
+        "B": "<pre>align</pre>",
+        "C": "<pre>vertical-align</pre>",
+        "D": "<pre>horizontal-align</pre>"
+      },
+      "correct": "A",
+      "explanation": "The <pre>text-align</pre> property controls the horizontal alignment of text within its container. Common values include <pre>left</pre>, <pre>right</pre>, <pre>center</pre>, and <pre>justify</pre>. The <pre>vertical-align</pre> property is used for vertical alignment of inline or table-cell elements. Properties like <pre>align</pre> and <pre>horizontal-align</pre> do not exist in CSS.",
+      "topic": {
+        "topics": [
+          "Text Styling and Fonts"
+        ]
+      }
+    },
+    {
+      "id": 7,
+      "question": "What does <pre>rgb(255, 0, 0)</pre> represent?",
+      "options": {
+        "A": "Blue",
+        "B": "Green",
+        "C": "Yellow",
+        "D": "Red"
+      },
+      "correct": "D",
+      "explanation": "The RGB color function <pre>rgb(255, 0, 0)</pre> represents red. In the RGB color model, the three values represent Red, Green, and Blue channels respectively, each ranging from 0 to 255. A value of 255 for red with 0 for green and blue creates pure red. <pre>rgb(0, 255, 0)</pre> would be green, <pre>rgb(0, 0, 255)</pre> would be blue, and <pre>rgb(255, 255, 0)</pre> would be yellow.",
+      "topic": {
+        "topics": [
+          "Colors and Backgrounds"
+        ]
+      }
+    },
+    {
+      "id": 8,
+      "question": "Which CSS property is used to set the font size of text?",
+      "options": {
+        "A": "<pre>text-size</pre>",
+        "B": "<pre>size</pre>",
+        "C": "<pre>text-font</pre>",
+        "D": "<pre>font-size</pre>"
+      },
+      "correct": "D",
+      "explanation": "The <pre>font-size</pre> property is used to set the size of text in CSS. It accepts various units including pixels (<pre>px</pre>), em (<pre>em</pre>), rem (<pre>rem</pre>), percentages (<pre>%</pre>), and viewport units (<pre>vh</pre>, <pre>vw</pre>). For example, <pre>font-size: 16px;</pre> or <pre>font-size: 1.2em;</pre>. Properties like <pre>text-size</pre>, <pre>size</pre>, or <pre>text-font</pre> do not exist in CSS.",
+      "topic": {
+        "topics": [
+          "Text Styling and Fonts"
+        ]
+      }
+    },
+    {
+      "id": 9,
+      "question": "What is the universal selector in CSS?",
+      "options": {
+        "A": "<pre>#</pre>",
+        "B": "<pre>.</pre>",
+        "C": "<pre>*</pre>",
+        "D": "<pre>@</pre>"
+      },
+      "correct": "C",
+      "explanation": "The asterisk (<pre>*</pre>) is the universal selector in CSS. It matches every element in the document. For example, <pre>* { margin: 0; }</pre> would remove margins from all elements. While useful for CSS resets, it should be used carefully as it can impact performance when overused. The <pre>#</pre> is for ID selectors, <pre>.</pre> is for class selectors, and <pre>@</pre> is used for at-rules like <pre>@media</pre> or <pre>@keyframes</pre>.",
+      "topic": {
+        "topics": [
+          "CSS Basics - Selectors and Syntax"
+        ]
+      }
+    },
+    {
+      "id": 10,
+      "question": "Which value makes an element's background completely transparent?",
+      "options": {
+        "A": "<pre>background-color: none;</pre>",
+        "B": "<pre>background-color: clear;</pre>",
+        "C": "<pre>background-color: transparent;</pre>",
+        "D": "<pre>background-color: invisible;</pre>"
+      },
+      "correct": "C",
+      "explanation": "The keyword <pre>transparent</pre> makes a background completely transparent in CSS. For example, <pre>background-color: transparent;</pre> allows any content behind the element to show through. This is actually the default value for <pre>background-color</pre>. You can also achieve transparency using RGBA colors like <pre>rgba(0, 0, 0, 0)</pre>. Values like <pre>none</pre>, <pre>clear</pre>, or <pre>invisible</pre> are not valid for the <pre>background-color</pre> property.",
+      "topic": {
+        "topics": [
+          "Colors and Backgrounds"
+        ]
+      }
+    },
+    {
+      "id": 11,
+      "question": "What does the <pre>display: none;</pre> declaration do?",
+      "options": {
+        "A": "Removes the element from the document flow entirely",
+        "B": "Makes the element invisible but keeps its space",
+        "C": "Makes the element semi-transparent",
+        "D": "Hides only the text content"
+      },
+      "correct": "A",
+      "explanation": "The <pre>display: none;</pre> declaration completely removes the element from the document flow, meaning it takes up no space and is not visible. It's as if the element doesn't exist in the layout. This is different from <pre>visibility: hidden;</pre>, which makes an element invisible but still preserves its space in the layout. The element with <pre>display: none;</pre> is also not accessible to screen readers, which is an important accessibility consideration.",
+      "topic": {
+        "topics": [
+          "Display and Visibility"
+        ]
+      }
+    },
+    {
+      "id": 12,
+      "question": "Which property would you use to make text bold?",
+      "options": {
+        "A": "<pre>font-weight</pre>",
+        "B": "<pre>text-weight</pre>",
+        "C": "<pre>text-style</pre>",
+        "D": "<pre>font-bold</pre>"
+      },
+      "correct": "A",
+      "explanation": "The <pre>font-weight</pre> property is used to set the weight (boldness) of text. Common values include <pre>normal</pre> (400), <pre>bold</pre> (700), or numeric values from 100 to 900. For example, <pre>font-weight: bold;</pre> or <pre>font-weight: 700;</pre>. Some fonts support variable weights and can use any value in the range. Properties like <pre>text-weight</pre>, <pre>text-style</pre>, or <pre>font-bold</pre> do not exist in CSS.",
+      "topic": {
+        "topics": [
+          "Text Styling and Fonts"
+        ]
+      }
+    },
+    {
+      "id": 13,
+      "question": "How do you write a comment in CSS?",
+      "options": {
+        "A": "<pre>// This is a comment</pre>",
+        "B": "<pre># This is a comment</pre>",
+        "C": "<pre>&lt;!-- This is a comment --&gt;</pre>",
+        "D": "<pre>/* This is a comment */</pre>"
+      },
+      "correct": "D",
+      "explanation": "CSS comments are written using <pre>/* comment here */</pre> syntax. Everything between <pre>/*</pre> and <pre>*/</pre> is ignored by the browser. Comments can span multiple lines and are useful for documenting your CSS code. Option A is JavaScript single-line comment syntax, option C is HTML comment syntax, and option D is used in some other languages but not in CSS. CSS does not support single-line comments.",
+      "topic": {
+        "topics": [
+          "CSS Basics - Selectors and Syntax"
+        ]
+      }
+    },
+    {
+      "id": 14,
+      "question": "What is the difference between <pre>visibility: hidden;</pre> and <pre>display: none;</pre>?",
+      "options": {
+        "A": "There is no difference",
+        "B": "<pre>visibility: hidden;</pre> keeps the element's space, <pre>display: none;</pre> removes it",
+        "C": "<pre>display: none;</pre> keeps the element's space, <pre>visibility: hidden;</pre> removes it",
+        "D": "Both remove the element from the page completely"
+      },
+      "correct": "B",
+      "explanation": "<pre>visibility: hidden;</pre> makes an element invisible but it still occupies space in the layout, affecting surrounding elements. <pre>display: none;</pre> removes the element from the document flow entirely, so it takes up no space. Additionally, <pre>visibility: hidden;</pre> elements can still respond to events and are part of the accessibility tree (though hidden from screen readers), while <pre>display: none;</pre> elements are completely removed from both the visual layout and accessibility tree.",
+      "topic": {
+        "topics": [
+          "Display and Visibility"
+        ]
+      }
+    },
+    {
+      "id": 15,
+      "question": "Which CSS property is used to change the font of text?",
+      "options": {
+        "A": "<pre>font-type</pre>",
+        "B": "<pre>text-font</pre>",
+        "C": "<pre>typeface</pre>",
+        "D": "<pre>font-family</pre>"
+      },
+      "correct": "D",
+      "explanation": "The <pre>font-family</pre> property specifies the font for an element. You can provide a comma-separated list of fonts as a fallback mechanism. For example: <pre>font-family: Arial, Helvetica, sans-serif;</pre> The browser will use the first available font in the list. It's good practice to end with a generic font family (<pre>serif</pre>, <pre>sans-serif</pre>, <pre>monospace</pre>, etc.) as a final fallback.",
+      "topic": {
+        "topics": [
+          "Text Styling and Fonts"
+        ]
+      }
+    },
+    {
+      "id": 16,
+      "question": "What does the <pre>:hover</pre> pseudo-class do?",
+      "options": {
+        "A": "Selects elements that are currently being clicked",
+        "B": "Selects the first element of its type",
+        "C": "Selects elements that have keyboard focus",
+        "D": "Selects elements when the mouse pointer is over them"
+      },
+      "correct": "D",
+      "explanation": "The <pre>:hover</pre> pseudo-class selects an element when the user's mouse pointer is positioned over it. It's commonly used for interactive effects like changing button colors or displaying tooltips. For example: <pre>button:hover { background-color: blue; }</pre> Note that <pre>:hover</pre> doesn't work on touch devices, so it's important to ensure your interface is still usable without hover effects. Option A describes <pre>:active</pre>, and option C describes <pre>:focus</pre>.",
+      "topic": {
+        "topics": [
+          "Basic Pseudo-classes"
+        ]
+      }
+    },
+    {
+      "id": 17,
+      "question": "Which unit is relative to the font size of the root element?",
+      "options": {
+        "A": "<pre>px</pre>",
+        "B": "<pre>rem</pre>",
+        "C": "<pre>em</pre>",
+        "D": "<pre>pt</pre>"
+      },
+      "correct": "B",
+      "explanation": "The <pre>rem</pre> (root em) unit is relative to the font size of the root element (usually the <pre>&lt;html&gt;</pre> element). If the root font size is 16px, then <pre>1rem = 16px</pre>. This makes <pre>rem</pre> units predictable and easier to work with than <pre>em</pre> units, which are relative to the parent element's font size. <pre>px</pre> and <pre>pt</pre> are absolute units, and <pre>em</pre> is relative to the current element's font size.",
+      "topic": {
+        "topics": [
+          "Units and Values"
+        ]
+      }
+    },
+    {
+      "id": 18,
+      "question": "What is the correct syntax to select all <pre>&lt;li&gt;</pre> elements inside a <pre>&lt;ul&gt;</pre>?",
+      "options": {
+        "A": "<pre>ul.li</pre>",
+        "B": "<pre>ul > li</pre>",
+        "C": "<pre>ul + li</pre>",
+        "D": "<pre>ul#li</pre>"
+      },
+      "correct": "B",
+      "explanation": "The selector <pre>ul > li</pre> uses the child combinator (<pre>></pre>) to select all <pre>&lt;li&gt;</pre> elements that are direct children of a <pre>&lt;ul&gt;</pre> element. You could also use <pre>ul li</pre> (descendant selector) which would select all <pre>&lt;li&gt;</pre> elements inside <pre>&lt;ul&gt;</pre>, including nested ones. Option B is invalid syntax, option C uses the adjacent sibling combinator which selects an <pre>&lt;li&gt;</pre> immediately after a <pre>&lt;ul&gt;</pre>, and option D is invalid syntax.",
+      "topic": {
+        "topics": [
+          "CSS Basics - Selectors and Syntax"
+        ]
+      }
+    },
+    {
+      "id": 19,
+      "question": "Which property adds a line under text?",
+      "options": {
+        "A": "<pre>text-style: underline;</pre>",
+        "B": "<pre>text-decoration: underline;</pre>",
+        "C": "<pre>font-decoration: underline;</pre>",
+        "D": "<pre>border-bottom: 1px solid;</pre>"
+      },
+      "correct": "B",
+      "explanation": "The <pre>text-decoration: underline;</pre> property adds a line under text. The <pre>text-decoration</pre> property can also have values like <pre>line-through</pre>, <pre>overline</pre>, or <pre>none</pre>. While option D (<pre>border-bottom</pre>) can create a line under text, it's not technically underlining the text—it's adding a border to the element, which behaves differently and doesn't move with the text baseline.",
+      "topic": {
+        "topics": [
+          "Text Styling and Fonts"
+        ]
+      }
+    },
+    {
+      "id": 20,
+      "question": "What does the <pre>opacity</pre> property control?",
+      "options": {
+        "A": "The brightness of an element",
+        "B": "The saturation of an element's colors",
+        "C": "The contrast of an element",
+        "D": "The transparency level of an element"
+      },
+      "correct": "D",
+      "explanation": "The <pre>opacity</pre> property controls the transparency level of an element and all its children. Values range from <pre>0</pre> (completely transparent) to <pre>1</pre> (completely opaque). For example, <pre>opacity: 0.5;</pre> makes an element 50% transparent. Unlike RGBA colors which only affect the color property, <pre>opacity</pre> affects the entire element including its content, background, and borders. This property is often used for fade effects and overlays.",
+      "topic": {
+        "topics": [
+          "Colors and Backgrounds"
+        ]
+      }
+    },
+    {
+      "id": 21,
+      "question": "Which CSS property would you use to add space around the content inside an element?",
+      "options": {
+        "A": "<pre>margin</pre>",
+        "B": "<pre>border</pre>",
+        "C": "<pre>padding</pre>",
+        "D": "<pre>spacing</pre>"
+      },
+      "correct": "C",
+      "explanation": "The <pre>padding</pre> property adds space around the content inside an element, between the content and the element's border. Padding is part of the element's background and increases the element's total size (unless using <pre>box-sizing: border-box;</pre>). In contrast, <pre>margin</pre> adds space outside the element's border, creating distance between elements. The property <pre>spacing</pre> does not exist in CSS.",
+      "topic": {
+        "topics": [
+          "CSS Basics - Selectors and Syntax"
+        ]
+      }
+    },
+    {
+      "id": 22,
+      "question": "What is the default value of the <pre>display</pre> property for a <pre>&lt;div&gt;</pre> element?",
+      "options": {
+        "A": "<pre>inline</pre>",
+        "B": "<pre>block</pre>",
+        "C": "<pre>inline-block</pre>",
+        "D": "<pre>flex</pre>"
+      },
+      "correct": "B",
+      "explanation": "The <pre>&lt;div&gt;</pre> element has a default <pre>display</pre> value of <pre>block</pre>. Block-level elements start on a new line and take up the full width available by default. Other block-level elements include <pre>&lt;p&gt;</pre>, <pre>&lt;h1&gt;-&lt;h6&gt;</pre>, <pre>&lt;section&gt;</pre>, and <pre>&lt;header&gt;</pre>. In contrast, inline elements like <pre>&lt;span&gt;</pre> or <pre>&lt;a&gt;</pre> don't start on a new line and only take up as much width as necessary.",
+      "topic": {
+        "topics": [
+          "Display and Visibility"
+        ]
+      }
+    },
+    {
+      "id": 23,
+      "question": "Which pseudo-class selects a link that has been visited?",
+      "options": {
+        "A": "<pre>:link</pre>",
+        "B": "<pre>:active</pre>",
+        "C": "<pre>:visited</pre>",
+        "D": "<pre>:hover</pre>"
+      },
+      "correct": "C",
+      "explanation": "The <pre>:visited</pre> pseudo-class selects links that the user has already visited. For privacy reasons, browsers limit which CSS properties can be styled with <pre>:visited</pre> (mainly color-related properties). The proper order for styling link pseudo-classes is LVHA: <pre>:link</pre>, <pre>:visited</pre>, <pre>:hover</pre>, <pre>:active</pre>. This order ensures that more specific states override general states.",
+      "topic": {
+        "topics": [
+          "Basic Pseudo-classes"
+        ]
+      }
+    },
+    {
+      "id": 24,
+      "question": "What does the <pre>inherit</pre> keyword do when used as a property value?",
+      "options": {
+        "A": "Sets the property to its default value",
+        "B": "Inherits the value from the parent element",
+        "C": "Removes the property",
+        "D": "Applies the browser's default styling"
+      },
+      "correct": "B",
+      "explanation": "The <pre>inherit</pre> keyword forces a property to inherit its value from the parent element, even if it normally wouldn't inherit. For example, <pre>border: inherit;</pre> would make an element's border inherit from its parent, even though borders don't normally inherit. This is different from <pre>initial</pre> which sets a property to its default value, and <pre>unset</pre> which acts as either <pre>inherit</pre> or <pre>initial</pre> depending on whether the property naturally inherits.",
+      "topic": {
+        "topics": [
+          "CSS Inheritance"
+        ]
+      }
+    },
+    {
+      "id": 25,
+      "question": "Which property controls the space between lines of text?",
+      "options": {
+        "A": "<pre>line-spacing</pre>",
+        "B": "<pre>text-spacing</pre>",
+        "C": "<pre>line-height</pre>",
+        "D": "<pre>vertical-spacing</pre>"
+      },
+      "correct": "C",
+      "explanation": "The <pre>line-height</pre> property controls the space between lines of text (leading). It can be specified as a unitless number (recommended), a length (<pre>px</pre>, <pre>em</pre>), or a percentage. For example, <pre>line-height: 1.5;</pre> creates spacing that is 1.5 times the font size. Good line-height improves readability, with values between 1.4 and 1.6 being common for body text. Properties like <pre>line-spacing</pre> or <pre>text-spacing</pre> do not exist in CSS.",
+      "topic": {
+        "topics": [
+          "Text Styling and Fonts"
+        ]
+      }
+    },
+    {
+      "id": 26,
+      "question": "What does the <pre>border</pre> property control?",
+      "options": {
+        "A": "Only the color of the border",
+        "B": "The width, style, and color of the border",
+        "C": "Only the width of the border",
+        "D": "Only the style of the border"
+      },
+      "correct": "B",
+      "explanation": "The <pre>border</pre> property is a shorthand that controls the width, style, and color of an element's border. For example: <pre>border: 2px solid red;</pre> sets a 2-pixel wide, solid, red border. You can also set individual sides using <pre>border-top</pre>, <pre>border-right</pre>, <pre>border-bottom</pre>, and <pre>border-left</pre>. The style value is required for the border to be visible—without it, the border won't display even if width and color are specified.",
+      "topic": {
+        "topics": [
+          "Borders and Outlines"
+        ]
+      }
+    },
+    {
+      "id": 27,
+      "question": "Which unit represents a percentage of the viewport width?",
+      "options": {
+        "A": "<pre>vh</pre>",
+        "B": "<pre>vw</pre>",
+        "C": "<pre>%</pre>",
+        "D": "<pre>vmin</pre>"
+      },
+      "correct": "B",
+      "explanation": "The <pre>vw</pre> (viewport width) unit represents a percentage of the viewport's width. <pre>1vw</pre> equals 1% of the viewport width, so <pre>100vw</pre> equals the full width of the viewport. Similarly, <pre>vh</pre> represents viewport height. These units are useful for responsive design and full-screen layouts. The <pre>%</pre> unit is relative to the parent element's dimensions, not the viewport. <pre>vmin</pre> equals the smaller of <pre>vw</pre> or <pre>vh</pre>.",
+      "topic": {
+        "topics": [
+          "Units and Values"
+        ]
+      }
+    },
+    {
+      "id": 28,
+      "question": "What is the difference between <pre>border</pre> and <pre>outline</pre>?",
+      "options": {
+        "A": "There is no difference",
+        "B": "<pre>border</pre> is always rectangular, <pre>outline</pre> can have any shape",
+        "C": "<pre>outline</pre> doesn't take up space and doesn't affect layout",
+        "D": "<pre>outline</pre> can only be used on links"
+      },
+      "correct": "C",
+      "explanation": "The key difference is that <pre>outline</pre> doesn't take up space in the layout and doesn't affect the element's dimensions or the position of surrounding elements. Outlines are drawn outside the border and don't respect <pre>border-radius</pre> (in most browsers). They're commonly used for focus indicators on interactive elements. Additionally, you cannot set different outline widths for different sides, unlike borders which can have different widths on each side.",
+      "topic": {
+        "topics": [
+          "Borders and Outlines"
+        ]
+      }
+    },
+    {
+      "id": 29,
+      "question": "Which properties inherit by default in CSS?",
+      "options": {
+        "A": "Box model properties (margin, padding, border)",
+        "B": "Text-related properties (color, font-family, line-height)",
+        "C": "Layout properties (display, position, float)",
+        "D": "Background properties"
+      },
+      "correct": "B",
+      "explanation": "Text-related properties like <pre>color</pre>, <pre>font-family</pre>, <pre>font-size</pre>, <pre>line-height</pre>, and <pre>text-align</pre> inherit by default from parent elements. This makes it easy to set typography for an entire page by styling the <pre>&lt;body&gt;</pre> element. Box model properties (margin, padding, border), layout properties, and background properties do not inherit by default. You can force inheritance with the <pre>inherit</pre> keyword or prevent it with <pre>initial</pre>.",
+      "topic": {
+        "topics": [
+          "CSS Inheritance"
+        ]
+      }
+    },
+    {
+      "id": 30,
+      "question": "What does the <pre>:focus</pre> pseudo-class represent?",
+      "options": {
+        "A": "An element that has received keyboard focus or was clicked",
+        "B": "An element when it is being clicked",
+        "C": "An element when the mouse hovers over it",
+        "D": "The first element of its type"
+      },
+      "correct": "A",
+      "explanation": "The <pre>:focus</pre> pseudo-class selects an element that has received focus, typically through keyboard navigation (Tab key) or clicking. It's crucial for accessibility, allowing keyboard users to see which element is currently active. Common uses include styling focused form inputs and buttons. For example: <pre>input:focus { outline: 2px solid blue; }</pre> Note that the newer <pre>:focus-visible</pre> pseudo-class shows focus only when it would be helpful to the user (typically keyboard navigation, not mouse clicks).",
+      "topic": {
+        "topics": [
+          "Basic Pseudo-classes"
+        ]
+      }
+    }
+  ]
+}
