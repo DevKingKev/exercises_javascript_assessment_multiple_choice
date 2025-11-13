@@ -1,0 +1,486 @@
+module.exports = {
+    "metadata": {
+        "title": "CSS Basic Grid Introduction",
+        "description": "Master the fundamentals of CSS Grid layout including creating grid containers with display: grid, defining columns and rows with grid-template-columns and grid-template-rows, understanding grid gaps, placing items with grid-column and grid-row, learning the fr unit, and building basic grid layouts for modern responsive designs.",
+        "difficulty": "easy",
+        "domain": "css",
+        "timeLimit": 30,
+        "questionCount": 30,
+        "assessmentId": 21,
+        "assessmentUniqueId": 1763067446845,
+        "testType": "multiple-choice",
+        "topics": [
+            "Display Grid",
+            "Grid Container",
+            "Grid Items",
+            "Grid Template Columns",
+            "Grid Template Rows",
+            "Grid Gap",
+            "Fr Unit",
+            "Grid Column Placement",
+            "Grid Row Placement",
+            "Basic Grid Layouts"
+        ],
+        "topicLinks": [
+            {
+                "topicName": "Display Grid",
+                "refLink": "https://developer.mozilla.org/en-US/docs/Web/CSS/display#grid"
+            },
+            {
+                "topicName": "Grid Container",
+                "refLink": "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout/Basic_concepts_of_grid_layout#the_grid_container"
+            },
+            {
+                "topicName": "Grid Items",
+                "refLink": "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout/Basic_concepts_of_grid_layout#grid_items"
+            },
+            {
+                "topicName": "Grid Template Columns",
+                "refLink": "https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-columns"
+            },
+            {
+                "topicName": "Grid Template Rows",
+                "refLink": "https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-rows"
+            },
+            {
+                "topicName": "Grid Gap",
+                "refLink": "https://developer.mozilla.org/en-US/docs/Web/CSS/gap"
+            },
+            {
+                "topicName": "Fr Unit",
+                "refLink": "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout/Basic_concepts_of_grid_layout#the_fr_unit"
+            },
+            {
+                "topicName": "Grid Column Placement",
+                "refLink": "https://developer.mozilla.org/en-US/docs/Web/CSS/grid-column"
+            },
+            {
+                "topicName": "Grid Row Placement",
+                "refLink": "https://developer.mozilla.org/en-US/docs/Web/CSS/grid-row"
+            },
+            {
+                "topicName": "Basic Grid Layouts",
+                "refLink": "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout/Realizing_common_layouts_using_grids"
+            }
+        ],
+        "keywords": [
+            "css-grid",
+            "display-grid",
+            "grid-container",
+            "grid-items",
+            "grid-template-columns",
+            "grid-template-rows",
+            "grid-gap",
+            "gap",
+            "column-gap",
+            "row-gap",
+            "fr-unit",
+            "fractional-unit",
+            "grid-column",
+            "grid-row",
+            "grid-placement",
+            "grid-lines",
+            "grid-tracks",
+            "grid-cells",
+            "repeat-function",
+            "auto-fit",
+            "auto-fill",
+            "minmax",
+            "grid-layout",
+            "responsive-grid",
+            "grid-spanning"
+        ]
+    },
+    "questions": [
+        {
+            "id": 1,
+            "question": "How do you create a grid container?",
+            "options": {
+                "A": "display: grid;",
+                "B": "layout: grid;",
+                "C": "grid: container;",
+                "D": "display: grid-container;"
+            },
+            "correct": "A",
+            "explanation": "You create a grid container by applying display: grid to an element. This makes all direct children of that element become grid items. The parent becomes the grid container and its layout switches to the CSS Grid model.",
+            "topic": "Display Grid"
+        },
+        {
+            "id": 2,
+            "question": "What does <pre>grid-template-columns: 1fr 1fr 1fr;</pre> create?",
+            "options": {
+                "A": "One column",
+                "B": "Two equal columns",
+                "C": "Three equal columns",
+                "D": "Three rows"
+            },
+            "correct": "C",
+            "explanation": "grid-template-columns: 1fr 1fr 1fr creates three equal-width columns. The 'fr' unit represents a fraction of the available space. Each column gets 1/3 of the available width because all three fractions are equal.",
+            "topic": "Grid Template Columns"
+        },
+        {
+            "id": 3,
+            "question": "What does the <pre>fr</pre> unit stand for?",
+            "options": {
+                "A": "Fixed ratio",
+                "B": "Fraction",
+                "C": "Frame",
+                "D": "Free"
+            },
+            "correct": "B",
+            "explanation": "The 'fr' unit stands for 'fraction' and represents a fraction of the available space in the grid container. It's used to distribute space flexibly. For example, 1fr 2fr creates two columns where the second is twice as wide as the first.",
+            "topic": "Fr Unit"
+        },
+        {
+            "id": 4,
+            "question": "What does <pre>gap: 20px;</pre> do in a grid container?",
+            "options": {
+                "A": "Sets padding inside grid items",
+                "B": "Sets space between grid items (both rows and columns)",
+                "C": "Sets margin around the grid container",
+                "D": "Sets border width"
+            },
+            "correct": "B",
+            "explanation": "gap: 20px sets the spacing between grid items—both between rows and between columns. It's shorthand for row-gap and column-gap. The gap appears between items but not at the outer edges of the grid.",
+            "topic": "Grid Gap"
+        },
+        {
+            "id": 5,
+            "question": "What are the direct children of a grid container called?",
+            "options": {
+                "A": "Grid cells",
+                "B": "Grid items",
+                "C": "Grid elements",
+                "D": "Grid children"
+            },
+            "correct": "B",
+            "explanation": "The direct children of a grid container are called 'grid items'. Only direct children become grid items—grandchildren and deeper descendants are not grid items unless their parent is also a grid container.",
+            "topic": "Grid Items"
+        },
+        {
+            "id": 6,
+            "question": "How do you create two rows, each 100px tall?",
+            "options": {
+                "A": "grid-rows: 100px 100px;",
+                "B": "grid-template-rows: 100px 100px;",
+                "C": "rows: 100px 100px;",
+                "D": "grid-height: 100px 100px;"
+            },
+            "correct": "B",
+            "explanation": "grid-template-rows: 100px 100px creates two rows, each 100px in height. Each value in the space-separated list defines the height of one row. You can mix units like pixels, fr, percentages, and auto.",
+            "topic": "Grid Template Rows"
+        },
+        {
+            "id": 7,
+            "question": "What does <pre>grid-column: 1 / 3;</pre> do?",
+            "options": {
+                "A": "Places item in column 1 or 3",
+                "B": "Makes item span from grid line 1 to grid line 3 (2 columns)",
+                "C": "Creates 3 columns",
+                "D": "Divides column by 3"
+            },
+            "correct": "B",
+            "explanation": "grid-column: 1 / 3 makes a grid item span from grid line 1 to grid line 3, covering 2 columns. Grid lines are numbered starting at 1 on the left edge. The syntax is start-line / end-line.",
+            "topic": "Grid Column Placement"
+        },
+        {
+            "id": 8,
+            "question": "Can you use <pre>gap</pre> in flexbox?",
+            "options": {
+                "A": "No, gap only works in Grid",
+                "B": "Yes, gap works in both Grid and Flexbox",
+                "C": "Only in old browsers",
+                "D": "Only with display: inline-flex"
+            },
+            "correct": "B",
+            "explanation": "Yes, the gap property works in both CSS Grid and Flexbox (modern browsers). It was originally a Grid-only property but has been extended to Flexbox, providing an easier way to add spacing between flex items than using margins.",
+            "topic": "Grid Gap"
+        },
+        {
+            "id": 9,
+            "question": "What does <pre>grid-template-columns: repeat(3, 1fr);</pre> do?",
+            "options": {
+                "A": "Creates one column repeated 3 times in a row",
+                "B": "Creates three equal-width columns",
+                "C": "Creates three rows",
+                "D": "Repeats the grid 3 times"
+            },
+            "correct": "B",
+            "explanation": "grid-template-columns: repeat(3, 1fr) creates three equal-width columns. The repeat() function is shorthand for writing the same value multiple times. repeat(3, 1fr) is equivalent to 1fr 1fr 1fr.",
+            "topic": "Grid Template Columns"
+        },
+        {
+            "id": 10,
+            "question": "How do you set different gap sizes for rows and columns?",
+            "options": {
+                "A": "gap: 10px 20px; (row-gap column-gap)",
+                "B": "Use row-gap and column-gap separately",
+                "C": "gap-row: 10px; gap-column: 20px;",
+                "D": "Both A and B work"
+            },
+            "correct": "D",
+            "explanation": "You can use either gap: 10px 20px (shorthand with row-gap first, then column-gap) or set row-gap: 10px and column-gap: 20px separately. Both achieve the same result. The shorthand is more concise.",
+            "topic": "Grid Gap"
+        },
+        {
+            "id": 11,
+            "question": "What does <pre>grid-row: 2 / 4;</pre> do?",
+            "options": {
+                "A": "Places item in row 2 or 4",
+                "B": "Makes item span from grid line 2 to grid line 4 (2 rows)",
+                "C": "Creates 4 rows",
+                "D": "Divides row by 4"
+            },
+            "correct": "B",
+            "explanation": "grid-row: 2 / 4 makes a grid item span from row grid line 2 to row grid line 4, covering 2 rows. It's similar to grid-column but for vertical placement. The syntax is start-line / end-line.",
+            "topic": "Grid Row Placement"
+        },
+        {
+            "id": 12,
+            "question": "What does <pre>grid-template-columns: 200px 1fr;</pre> create?",
+            "options": {
+                "A": "Two equal columns",
+                "B": "First column 200px wide, second column takes remaining space",
+                "C": "Two columns, both 200px",
+                "D": "One column"
+            },
+            "correct": "B",
+            "explanation": "grid-template-columns: 200px 1fr creates two columns. The first is a fixed 200px wide, and the second takes up the remaining available space (1 fraction of what's left). This is useful for sidebar layouts.",
+            "topic": "Grid Template Columns"
+        },
+        {
+            "id": 13,
+            "question": "Does <pre>display: grid;</pre> affect grandchildren of the grid container?",
+            "options": {
+                "A": "Yes, all descendants become grid items",
+                "B": "No, only direct children become grid items",
+                "C": "Only if they have no parent",
+                "D": "Only in modern browsers"
+            },
+            "correct": "B",
+            "explanation": "display: grid only affects direct children of the grid container—they become grid items. Grandchildren and deeper descendants are not grid items and are laid out normally within their grid item parent, unless that parent is also a grid container.",
+            "topic": "Grid Container"
+        },
+        {
+            "id": 14,
+            "question": "What does <pre>grid-template-columns: 1fr 2fr;</pre> create?",
+            "options": {
+                "A": "Two equal columns",
+                "B": "First column twice as wide as second",
+                "C": "Second column twice as wide as first",
+                "D": "Three columns"
+            },
+            "correct": "C",
+            "explanation": "grid-template-columns: 1fr 2fr creates two columns where the second column is twice as wide as the first. The available space is divided into 3 parts (1+2), with the first column getting 1/3 and the second getting 2/3.",
+            "topic": "Fr Unit"
+        },
+        {
+            "id": 15,
+            "question": "How many grid lines are there in a 3-column grid?",
+            "options": {
+                "A": "3 lines",
+                "B": "4 lines",
+                "C": "6 lines",
+                "D": "2 lines"
+            },
+            "correct": "B",
+            "explanation": "A 3-column grid has 4 vertical grid lines (one before each column and one after the last column). Grid lines are numbered from 1, starting at the left edge. So for 3 columns, you have lines 1, 2, 3, and 4.",
+            "topic": "Grid Column Placement"
+        },
+        {
+            "id": 16,
+            "question": "Can you mix different units in <pre>grid-template-columns</pre>?",
+            "options": {
+                "A": "No, all columns must use the same unit",
+                "B": "Yes, you can mix px, %, fr, and other units",
+                "C": "Only px and fr can be mixed",
+                "D": "Only in CSS Grid Level 2"
+            },
+            "correct": "B",
+            "explanation": "Yes, you can mix different units in grid-template-columns. For example: grid-template-columns: 200px 30% 1fr 2fr combines pixels, percentages, and fr units. This flexibility allows for very precise layouts.",
+            "topic": "Grid Template Columns"
+        },
+        {
+            "id": 17,
+            "question": "What does <pre>grid-column: span 2;</pre> do?",
+            "options": {
+                "A": "Places item in column 2",
+                "B": "Makes item span across 2 columns from its starting position",
+                "C": "Creates 2 columns",
+                "D": "Divides column by 2"
+            },
+            "correct": "B",
+            "explanation": "grid-column: span 2 makes a grid item span across 2 columns from its automatic or specified starting position. This is shorthand for specifying the span without caring about specific grid line numbers. It's more flexible for auto-placement.",
+            "topic": "Grid Column Placement"
+        },
+        {
+            "id": 18,
+            "question": "What is the default value of <pre>gap</pre> in a grid?",
+            "options": {
+                "A": "10px",
+                "B": "1em",
+                "C": "0 (no gap)",
+                "D": "auto"
+            },
+            "correct": "C",
+            "explanation": "The default value of gap is 0, meaning there's no space between grid items by default. Grid items are placed directly adjacent to each other. You must explicitly set gap if you want spacing between items.",
+            "topic": "Grid Gap"
+        },
+        {
+            "id": 19,
+            "question": "What does <pre>grid-template-rows: 100px auto 100px;</pre> create?",
+            "options": {
+                "A": "Three equal rows",
+                "B": "First and third rows 100px, middle row takes remaining space",
+                "C": "Three rows of 100px each",
+                "D": "Two rows"
+            },
+            "correct": "B",
+            "explanation": "grid-template-rows: 100px auto 100px creates three rows where the first and third are fixed at 100px, and the middle row automatically sizes to fit its content or takes remaining space. 'auto' makes the row size based on content.",
+            "topic": "Grid Template Rows"
+        },
+        {
+            "id": 20,
+            "question": "Can a grid item also be a grid container?",
+            "options": {
+                "A": "No, only one level allowed",
+                "B": "Yes, by applying display: grid to the grid item",
+                "C": "Only with display: inline-grid",
+                "D": "Only in CSS Grid Level 3"
+            },
+            "correct": "B",
+            "explanation": "Yes, a grid item can also be a grid container by applying display: grid to it. This creates nested grid layouts, allowing for complex designs. Each grid level operates independently with its own rows, columns, and gaps.",
+            "topic": "Grid Container"
+        },
+        {
+            "id": 21,
+            "question": "What does <pre>grid-template-columns: repeat(4, 25%);</pre> create?",
+            "options": {
+                "A": "Four equal columns (each 25% of container width)",
+                "B": "One column at 25%",
+                "C": "Four rows",
+                "D": "A 4x4 grid"
+            },
+            "correct": "A",
+            "explanation": "grid-template-columns: repeat(4, 25%) creates four columns, each taking 25% of the container's width. The repeat() function repeats the 25% value four times, creating four equal-width columns that fill 100% of the width.",
+            "topic": "Grid Template Columns"
+        },
+        {
+            "id": 22,
+            "question": "How do you make an item span from column 1 to the end of the grid?",
+            "options": {
+                "A": "grid-column: 1 / end;",
+                "B": "grid-column: 1 / -1;",
+                "C": "grid-column: 1 / last;",
+                "D": "grid-column: 1 / 100;"
+            },
+            "correct": "B",
+            "explanation": "grid-column: 1 / -1 makes an item span from column line 1 to the last column line. Negative numbers count from the end of the grid, with -1 being the last line. This works regardless of how many columns you have.",
+            "topic": "Grid Column Placement"
+        },
+        {
+            "id": 23,
+            "question": "What's the difference between <pre>gap</pre> and <pre>margin</pre> in Grid?",
+            "options": {
+                "A": "They do the same thing",
+                "B": "gap creates space between items only; margin creates space around items including edges",
+                "C": "gap is older property",
+                "D": "margin doesn't work in Grid"
+            },
+            "correct": "B",
+            "explanation": "gap creates space between grid items but not at the outer edges of the grid. margin creates space around each item, including at the edges. gap is generally preferred for spacing grid items because it only affects internal spacing.",
+            "topic": "Grid Gap"
+        },
+        {
+            "id": 24,
+            "question": "What does <pre>grid-template-columns: minmax(100px, 1fr);</pre> create?",
+            "options": {
+                "A": "A column that's always 100px",
+                "B": "A column that's at least 100px but can grow to fill available space",
+                "C": "Two columns",
+                "D": "A column that's at most 100px"
+            },
+            "correct": "B",
+            "explanation": "grid-template-columns: minmax(100px, 1fr) creates one column with a minimum width of 100px and maximum of 1fr (fills available space). The column will never shrink below 100px but can grow larger. minmax() is great for responsive grids.",
+            "topic": "Grid Template Columns"
+        },
+        {
+            "id": 25,
+            "question": "How do you create equal-height rows automatically based on content?",
+            "options": {
+                "A": "grid-template-rows: auto;",
+                "B": "Don't specify grid-template-rows (auto-generated rows)",
+                "C": "grid-template-rows: equal;",
+                "D": "grid-auto-rows: 1fr;"
+            },
+            "correct": "B",
+            "explanation": "If you don't specify grid-template-rows, rows are auto-generated as needed to fit content. Each row sizes to fit its tallest item. You can also use grid-auto-rows to control the size of these implicit rows.",
+            "topic": "Grid Template Rows"
+        },
+        {
+            "id": 26,
+            "question": "What does <pre>grid-row: span 3;</pre> do?",
+            "options": {
+                "A": "Places item in row 3",
+                "B": "Makes item span across 3 rows from its starting position",
+                "C": "Creates 3 rows",
+                "D": "Repeats item 3 times"
+            },
+            "correct": "B",
+            "explanation": "grid-row: span 3 makes a grid item span across 3 rows from its starting position. This is useful when you want an item to take up vertical space without specifying exact grid line numbers. Great for auto-placement scenarios.",
+            "topic": "Grid Row Placement"
+        },
+        {
+            "id": 27,
+            "question": "What does <pre>grid-template-columns: 100px 100px 100px;</pre> create?",
+            "options": {
+                "A": "One column at 300px",
+                "B": "Three columns, each 100px wide",
+                "C": "Three rows",
+                "D": "A flexible grid"
+            },
+            "correct": "B",
+            "explanation": "grid-template-columns: 100px 100px 100px creates three columns, each exactly 100px wide. The grid will be 300px wide in total (plus any gap). Fixed pixel values create rigid layouts that don't respond to container size changes.",
+            "topic": "Grid Template Columns"
+        },
+        {
+            "id": 28,
+            "question": "Can you use <pre>grid-column</pre> and <pre>grid-row</pre> together on the same item?",
+            "options": {
+                "A": "No, you can only position in one direction",
+                "B": "Yes, to position an item in both dimensions",
+                "C": "Only in CSS Grid Level 2",
+                "D": "Only with grid-area"
+            },
+            "correct": "B",
+            "explanation": "Yes, you can use grid-column and grid-row together on the same item to position it precisely in both dimensions. For example: grid-column: 1 / 3; grid-row: 2 / 4; places an item spanning specific columns and rows.",
+            "topic": "Grid Column Placement"
+        },
+        {
+            "id": 29,
+            "question": "What's the benefit of using <pre>fr</pre> units over percentages?",
+            "options": {
+                "A": "No difference",
+                "B": "fr units account for gaps and distribute remaining space, percentages don't",
+                "C": "fr is faster",
+                "D": "Percentages are deprecated"
+            },
+            "correct": "B",
+            "explanation": "fr units distribute the remaining available space after accounting for gaps, fixed-size tracks, and content. Percentages are based on the total container size and don't account for gaps, which can cause overflow. fr units are more flexible and gap-aware.",
+            "topic": "Fr Unit"
+        },
+        {
+            "id": 30,
+            "question": "What does <pre>grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));</pre> create?",
+            "options": {
+                "A": "A fixed number of columns",
+                "B": "As many columns as fit, each at least 200px, that automatically adjust to container width",
+                "C": "One column",
+                "D": "Infinite columns"
+            },
+            "correct": "B",
+            "explanation": "This creates a responsive grid that automatically fits as many columns as possible, with each column at least 200px wide but able to grow. auto-fit creates only as many tracks as needed for content, collapsing empty tracks. This is a powerful responsive pattern.",
+            "topic": "Grid Template Columns"
+        }
+    ]
+};

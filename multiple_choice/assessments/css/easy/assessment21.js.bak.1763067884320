@@ -96,12 +96,12 @@ module.exports = {
       "id": 1,
       "question": "How do you create a grid container?",
       "options": {
-        "A": "display: grid;",
-        "B": "layout: grid;",
+        "A": "layout: grid;",
+        "B": "display: grid;",
         "C": "grid: container;",
         "D": "display: grid-container;"
       },
-      "correct": "A",
+      "correct": "B",
       "explanation": "You create a grid container by applying display: grid to an element. This makes all direct children of that element become grid items. The parent becomes the grid container and its layout switches to the CSS Grid model.",
       "topic": "Display Grid"
     },
@@ -109,12 +109,12 @@ module.exports = {
       "id": 2,
       "question": "What does <pre>grid-template-columns: 1fr 1fr 1fr;</pre> create?",
       "options": {
-        "A": "Three equal columns",
+        "A": "One column",
         "B": "Two equal columns",
         "C": "Three rows",
-        "D": "One column"
+        "D": "Three equal columns"
       },
-      "correct": "A",
+      "correct": "D",
       "explanation": "grid-template-columns: 1fr 1fr 1fr creates three equal-width columns. The 'fr' unit represents a fraction of the available space. Each column gets 1/3 of the available width because all three fractions are equal.",
       "topic": "Grid Template Columns"
     },
@@ -124,10 +124,10 @@ module.exports = {
       "options": {
         "A": "Fixed ratio",
         "B": "Frame",
-        "C": "Free",
-        "D": "Fraction"
+        "C": "Fraction",
+        "D": "Free"
       },
-      "correct": "D",
+      "correct": "C",
       "explanation": "The 'fr' unit stands for 'fraction' and represents a fraction of the available space in the grid container. It's used to distribute space flexibly. For example, 1fr 2fr creates two columns where the second is twice as wide as the first.",
       "topic": "Fr Unit"
     },
@@ -200,12 +200,12 @@ module.exports = {
       "id": 9,
       "question": "What does <pre>grid-template-columns: repeat(3, 1fr);</pre> do?",
       "options": {
-        "A": "Creates three rows",
+        "A": "Creates three equal-width columns",
         "B": "Creates one column repeated 3 times in a row",
-        "C": "Creates three equal-width columns",
+        "C": "Creates three rows",
         "D": "Repeats the grid 3 times"
       },
-      "correct": "C",
+      "correct": "A",
       "explanation": "grid-template-columns: repeat(3, 1fr) creates three equal-width columns. The repeat() function is shorthand for writing the same value multiple times. repeat(3, 1fr) is equivalent to 1fr 1fr 1fr.",
       "topic": "Grid Template Columns"
     },
@@ -227,11 +227,11 @@ module.exports = {
       "question": "What does <pre>grid-row: 2 / 4;</pre> do?",
       "options": {
         "A": "Places item in row 2 or 4",
-        "B": "Makes item span from grid line 2 to grid line 4 (2 rows)",
+        "B": "Divides row by 4",
         "C": "Creates 4 rows",
-        "D": "Divides row by 4"
+        "D": "Makes item span from grid line 2 to grid line 4 (2 rows)"
       },
-      "correct": "B",
+      "correct": "D",
       "explanation": "grid-row: 2 / 4 makes a grid item span from row grid line 2 to row grid line 4, covering 2 rows. It's similar to grid-column but for vertical placement. The syntax is start-line / end-line.",
       "topic": "Grid Row Placement"
     },
@@ -252,12 +252,12 @@ module.exports = {
       "id": 13,
       "question": "Does <pre>display: grid;</pre> affect grandchildren of the grid container?",
       "options": {
-        "A": "No, only direct children become grid items",
-        "B": "Yes, all descendants become grid items",
+        "A": "Yes, all descendants become grid items",
+        "B": "No, only direct children become grid items",
         "C": "Only if they have no parent",
         "D": "Only in modern browsers"
       },
-      "correct": "A",
+      "correct": "B",
       "explanation": "display: grid only affects direct children of the grid container—they become grid items. Grandchildren and deeper descendants are not grid items and are laid out normally within their grid item parent, unless that parent is also a grid container.",
       "topic": "Grid Container"
     },
@@ -266,11 +266,11 @@ module.exports = {
       "question": "What does <pre>grid-template-columns: 1fr 2fr;</pre> create?",
       "options": {
         "A": "Two equal columns",
-        "B": "Three columns",
+        "B": "Second column twice as wide as first",
         "C": "First column twice as wide as second",
-        "D": "Second column twice as wide as first"
+        "D": "Three columns"
       },
-      "correct": "D",
+      "correct": "B",
       "explanation": "grid-template-columns: 1fr 2fr creates two columns where the second column is twice as wide as the first. The available space is divided into 3 parts (1+2), with the first column getting 1/3 and the second getting 2/3.",
       "topic": "Fr Unit"
     },
@@ -278,12 +278,12 @@ module.exports = {
       "id": 15,
       "question": "How many grid lines are there in a 3-column grid?",
       "options": {
-        "A": "3 lines",
-        "B": "4 lines",
+        "A": "4 lines",
+        "B": "3 lines",
         "C": "6 lines",
         "D": "2 lines"
       },
-      "correct": "B",
+      "correct": "A",
       "explanation": "A 3-column grid has 4 vertical grid lines (one before each column and one after the last column). Grid lines are numbered from 1, starting at the left edge. So for 3 columns, you have lines 1, 2, 3, and 4.",
       "topic": "Grid Column Placement"
     },
@@ -292,11 +292,11 @@ module.exports = {
       "question": "Can you mix different units in <pre>grid-template-columns</pre>?",
       "options": {
         "A": "No, all columns must use the same unit",
-        "B": "Only px and fr can be mixed",
-        "C": "Yes, you can mix px, %, fr, and other units",
+        "B": "Yes, you can mix px, %, fr, and other units",
+        "C": "Only px and fr can be mixed",
         "D": "Only in CSS Grid Level 2"
       },
-      "correct": "C",
+      "correct": "B",
       "explanation": "Yes, you can mix different units in grid-template-columns. For example: grid-template-columns: 200px 30% 1fr 2fr combines pixels, percentages, and fr units. This flexibility allows for very precise layouts.",
       "topic": "Grid Template Columns"
     },
@@ -317,12 +317,12 @@ module.exports = {
       "id": 18,
       "question": "What is the default value of <pre>gap</pre> in a grid?",
       "options": {
-        "A": "auto",
+        "A": "0 (no gap)",
         "B": "1em",
         "C": "10px",
-        "D": "0 (no gap)"
+        "D": "auto"
       },
-      "correct": "D",
+      "correct": "A",
       "explanation": "The default value of gap is 0, meaning there's no space between grid items by default. Grid items are placed directly adjacent to each other. You must explicitly set gap if you want spacing between items.",
       "topic": "Grid Gap"
     },
@@ -330,12 +330,12 @@ module.exports = {
       "id": 19,
       "question": "What does <pre>grid-template-rows: 100px auto 100px;</pre> create?",
       "options": {
-        "A": "First and third rows 100px, middle row takes remaining space",
+        "A": "Three equal rows",
         "B": "Three rows of 100px each",
-        "C": "Three equal rows",
+        "C": "First and third rows 100px, middle row takes remaining space",
         "D": "Two rows"
       },
-      "correct": "A",
+      "correct": "C",
       "explanation": "grid-template-rows: 100px auto 100px creates three rows where the first and third are fixed at 100px, and the middle row automatically sizes to fit its content or takes remaining space. 'auto' makes the row size based on content.",
       "topic": "Grid Template Rows"
     },
@@ -344,11 +344,11 @@ module.exports = {
       "question": "Can a grid item also be a grid container?",
       "options": {
         "A": "No, only one level allowed",
-        "B": "Only with display: inline-grid",
-        "C": "Yes, by applying display: grid to the grid item",
+        "B": "Yes, by applying display: grid to the grid item",
+        "C": "Only with display: inline-grid",
         "D": "Only in CSS Grid Level 3"
       },
-      "correct": "C",
+      "correct": "B",
       "explanation": "Yes, a grid item can also be a grid container by applying display: grid to it. This creates nested grid layouts, allowing for complex designs. Each grid level operates independently with its own rows, columns, and gaps.",
       "topic": "Grid Container"
     },
@@ -356,12 +356,12 @@ module.exports = {
       "id": 21,
       "question": "What does <pre>grid-template-columns: repeat(4, 25%);</pre> create?",
       "options": {
-        "A": "One column at 25%",
-        "B": "Four equal columns (each 25% of container width)",
+        "A": "Four equal columns (each 25% of container width)",
+        "B": "One column at 25%",
         "C": "Four rows",
         "D": "A 4x4 grid"
       },
-      "correct": "B",
+      "correct": "A",
       "explanation": "grid-template-columns: repeat(4, 25%) creates four columns, each taking 25% of the container's width. The repeat() function repeats the 25% value four times, creating four equal-width columns that fill 100% of the width.",
       "topic": "Grid Template Columns"
     },
@@ -409,11 +409,11 @@ module.exports = {
       "question": "How do you create equal-height rows automatically based on content?",
       "options": {
         "A": "grid-template-rows: auto;",
-        "B": "Don't specify grid-template-rows (auto-generated rows)",
-        "C": "grid-template-rows: equal;",
+        "B": "grid-template-rows: equal;",
+        "C": "Don't specify grid-template-rows (auto-generated rows)",
         "D": "grid-auto-rows: 1fr;"
       },
-      "correct": "B",
+      "correct": "C",
       "explanation": "If you don't specify grid-template-rows, rows are auto-generated as needed to fit content. Each row sizes to fit its tallest item. You can also use grid-auto-rows to control the size of these implicit rows.",
       "topic": "Grid Template Rows"
     },
@@ -422,11 +422,11 @@ module.exports = {
       "question": "What does <pre>grid-row: span 3;</pre> do?",
       "options": {
         "A": "Places item in row 3",
-        "B": "Repeats item 3 times",
+        "B": "Makes item span across 3 rows from its starting position",
         "C": "Creates 3 rows",
-        "D": "Makes item span across 3 rows from its starting position"
+        "D": "Repeats item 3 times"
       },
-      "correct": "D",
+      "correct": "B",
       "explanation": "grid-row: span 3 makes a grid item span across 3 rows from its starting position. This is useful when you want an item to take up vertical space without specifying exact grid line numbers. Great for auto-placement scenarios.",
       "topic": "Grid Row Placement"
     },
@@ -434,12 +434,12 @@ module.exports = {
       "id": 27,
       "question": "What does <pre>grid-template-columns: 100px 100px 100px;</pre> create?",
       "options": {
-        "A": "Three columns, each 100px wide",
+        "A": "One column at 300px",
         "B": "A flexible grid",
         "C": "Three rows",
-        "D": "One column at 300px"
+        "D": "Three columns, each 100px wide"
       },
-      "correct": "A",
+      "correct": "D",
       "explanation": "grid-template-columns: 100px 100px 100px creates three columns, each exactly 100px wide. The grid will be 300px wide in total (plus any gap). Fixed pixel values create rigid layouts that don't respond to container size changes.",
       "topic": "Grid Template Columns"
     },
@@ -460,12 +460,12 @@ module.exports = {
       "id": 29,
       "question": "What's the benefit of using <pre>fr</pre> units over percentages?",
       "options": {
-        "A": "fr units account for gaps and distribute remaining space, percentages don't",
-        "B": "No difference",
+        "A": "No difference",
+        "B": "fr units account for gaps and distribute remaining space, percentages don't",
         "C": "fr is faster",
         "D": "Percentages are deprecated"
       },
-      "correct": "A",
+      "correct": "B",
       "explanation": "fr units distribute the remaining available space after accounting for gaps, fixed-size tracks, and content. Percentages are based on the total container size and don't account for gaps, which can cause overflow. fr units are more flexible and gap-aware.",
       "topic": "Fr Unit"
     },
@@ -475,10 +475,10 @@ module.exports = {
       "options": {
         "A": "A fixed number of columns",
         "B": "Infinite columns",
-        "C": "As many columns as fit, each at least 200px, that automatically adjust to container width",
-        "D": "One column"
+        "C": "One column",
+        "D": "As many columns as fit, each at least 200px, that automatically adjust to container width"
       },
-      "correct": "C",
+      "correct": "D",
       "explanation": "This creates a responsive grid that automatically fits as many columns as possible, with each column at least 200px wide but able to grow. auto-fit creates only as many tracks as needed for content, collapsing empty tracks. This is a powerful responsive pattern.",
       "topic": "Grid Template Columns"
     }
