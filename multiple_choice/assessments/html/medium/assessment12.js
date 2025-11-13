@@ -74,12 +74,12 @@ module.exports = {
       "id": 2,
       "question": "What does the <pre>itemtype</pre> attribute specify in microdata markup?",
       "options": {
-        "A": "The data type of the item's properties (string, number, date, etc.)",
+        "A": "The URL of a vocabulary that defines the item, typically from Schema.org",
         "B": "The HTML element type that can contain the item",
         "C": "The MIME type of external resources referenced by the item",
-        "D": "The URL of a vocabulary that defines the item, typically from Schema.org"
+        "D": "The data type of the item's properties (string, number, date, etc.)"
       },
-      "correct": "D",
+      "correct": "A",
       "explanation": "The <pre>itemtype</pre> attribute specifies a URL that defines the vocabulary for the item, typically pointing to a Schema.org type like <pre>https://schema.org/Product</pre> or <pre>https://schema.org/Person</pre>. This URL identifies what kind of thing the item represents and what properties are valid for it. The vocabulary definition at that URL describes the expected properties and their meanings. For instance, <pre><div itemscope itemtype=\"https://schema.org/Product\"></pre> indicates that this item is a Product according to Schema.org's definition. The attribute doesn't specify data types of individual properties (that's contextual), MIME types, or constrain which HTML elements can be used—it purely identifies the semantic type of the item being described.",
       "topics": [
         "Microdata Attributes (itemscope, itemtype, itemprop)",
@@ -120,12 +120,12 @@ module.exports = {
       "id": 5,
       "question": "Which of the following is a correct implementation of a Product schema with microdata?",
       "options": {
-        "A": "<pre><div itemscope itemtype=\"Product\"><span itemprop=\"name\">Laptop</span></div></pre>",
+        "A": "<pre><div itemscope itemtype=\"https://schema.org/Product\"><span itemprop=\"name\">Laptop</span></div></pre>",
         "B": "<pre><div itemtype=\"https://schema.org/Product\"><span itemprop=\"name\">Laptop</span></div></pre>",
-        "C": "<pre><div itemscope itemtype=\"https://schema.org/Product\"><span itemprop=\"name\">Laptop</span></div></pre>",
+        "C": "<pre><div itemscope itemtype=\"Product\"><span itemprop=\"name\">Laptop</span></div></pre>",
         "D": "<pre><product><name>Laptop</name></product></pre>"
       },
-      "correct": "C",
+      "correct": "A",
       "explanation": "The correct implementation requires both <pre>itemscope</pre> (to create the item) and <pre>itemtype</pre> with the full Schema.org URL: <pre><div itemscope itemtype=\"https://schema.org/Product\"></pre>. The <pre>itemtype</pre> value must be a complete URL, not just \"Product\". Option A is missing the URL protocol and domain. Option C is missing <pre>itemscope</pre>, which is required to create the item—without it, the itemtype has no meaning. Option D uses made-up XML-style elements that aren't part of HTML or microdata. Inside the item scope, you add properties with <pre>itemprop</pre>. Common Product properties include name, description, image, price, brand, and aggregateRating.",
       "topics": [
         "Product Schema",
@@ -136,12 +136,12 @@ module.exports = {
       "id": 6,
       "question": "For a Product schema, how do you properly mark up the price with currency?",
       "options": {
-        "A": "<pre><span itemprop=\"price\">$29.99 USD</span></pre>",
-        "B": "<pre><span itemprop=\"price\" content=\"29.99\">$29.99</span> <meta itemprop=\"priceCurrency\" content=\"USD\"></pre>",
+        "A": "<pre><span itemprop=\"price\" content=\"29.99\">$29.99</span> <meta itemprop=\"priceCurrency\" content=\"USD\"></pre>",
+        "B": "<pre><span itemprop=\"price\">$29.99 USD</span></pre>",
         "C": "<pre><span itemprop=\"price\" currency=\"USD\">29.99</span></pre>",
         "D": "<pre><data itemprop=\"price\" value=\"29.99 USD\">$29.99</data></pre>"
       },
-      "correct": "B",
+      "correct": "A",
       "explanation": "For Product pricing, Schema.org expects separate properties: <pre>price</pre> (numeric value) and <pre>priceCurrency</pre> (ISO 4217 currency code like \"USD\"). The best practice is to use the <pre>content</pre> attribute for the machine-readable value while displaying formatted text: <pre><span itemprop=\"price\" content=\"29.99\">$29.99</span></pre>. For currency, since it's often not visibly displayed, use a <pre><meta></pre> tag: <pre><meta itemprop=\"priceCurrency\" content=\"USD\"></pre>. Option A puts everything in text, which parsers might not interpret correctly. Option C uses a non-existent currency attribute. Option D uses the <pre><data></pre> element's <pre>value</pre> attribute, which could work, but the combined \"29.99 USD\" format isn't ideal—separate properties are clearer.",
       "topics": [
         "Product Schema"
@@ -184,11 +184,11 @@ module.exports = {
       "question": "What are the SEO benefits of implementing structured data on your website?",
       "options": {
         "A": "Guaranteed higher search rankings for all keywords",
-        "B": "Faster page indexing regardless of content quality",
+        "B": "Eligibility for rich results (rich snippets) and enhanced search appearance, plus better content understanding by search engines",
         "C": "Automatic removal of duplicate content penalties",
-        "D": "Eligibility for rich results (rich snippets) and enhanced search appearance, plus better content understanding by search engines"
+        "D": "Faster page indexing regardless of content quality"
       },
-      "correct": "D",
+      "correct": "B",
       "explanation": "Structured data makes your content eligible for rich results in search engines, such as product stars and prices, recipe cards, event information, FAQ accordions, and more. These enhanced listings can improve click-through rates. Additionally, structured data helps search engines better understand your content's meaning and context, which can improve how they categorize and present it. However, structured data doesn't guarantee higher rankings—it's about eligibility for enhanced features and better understanding. It doesn't remove duplicate content issues, and while it helps search engines understand content, it doesn't bypass quality requirements for indexing. Think of structured data as helping search engines present your content more effectively when it already deserves to rank.",
       "topics": [
         "Structured Data SEO Benefits"
@@ -198,12 +198,12 @@ module.exports = {
       "id": 10,
       "question": "What is JSON-LD and how does it differ from microdata?",
       "options": {
-        "A": "JSON-LD is a JSON-based format for structured data that goes in <pre><script type=\"application/ld+json\"></pre> tags, separate from HTML content",
-        "B": "JSON-LD is a JavaScript library for generating microdata automatically",
+        "A": "JSON-LD is a JavaScript library for generating microdata automatically",
+        "B": "JSON-LD is a JSON-based format for structured data that goes in <pre><script type=\"application/ld+json\"></pre> tags, separate from HTML content",
         "C": "JSON-LD is the same as microdata but uses JSON syntax instead of HTML attributes",
         "D": "JSON-LD is deprecated in favor of microdata"
       },
-      "correct": "A",
+      "correct": "B",
       "explanation": "JSON-LD (JavaScript Object Notation for Linked Data) is an alternative format for implementing structured data using JSON syntax in <pre><script type=\"application/ld+json\"></pre> tags, typically in the <pre><head></pre> or anywhere in the document. Unlike microdata, which integrates directly into HTML elements with attributes, JSON-LD is completely separate from your content markup. For example: <pre><script type=\"application/ld+json\">{\"@context\": \"https://schema.org\", \"@type\": \"Product\", \"name\": \"Laptop\"}</script></pre>. Google and other search engines support both formats equally. JSON-LD is not a library, not deprecated, and quite different from microdata in implementation approach. Many developers prefer JSON-LD because it doesn't clutter HTML markup and is easier to generate programmatically.",
       "topics": [
         "JSON-LD Alternative"
@@ -214,11 +214,11 @@ module.exports = {
       "question": "Which tool is recommended by Google for testing and validating structured data markup?",
       "options": {
         "A": "W3C Markup Validator",
-        "B": "Schema.org's built-in validator API",
+        "B": "Google's Rich Results Test and Schema Markup Validator",
         "C": "Chrome DevTools Console",
-        "D": "Google's Rich Results Test and Schema Markup Validator"
+        "D": "Schema.org's built-in validator API"
       },
-      "correct": "D",
+      "correct": "B",
       "explanation": "Google provides the Rich Results Test (https://search.google.com/test/rich-results) and the Schema Markup Validator for testing structured data. These tools show you how Google interprets your markup, what rich results you're eligible for, and any errors or warnings. The Rich Results Test is particularly useful because it shows whether your markup qualifies for specific enhanced features in Google Search. The W3C Markup Validator checks HTML validity but not structured data specifically. Chrome DevTools can inspect elements but doesn't validate Schema.org compliance. Schema.org itself provides documentation but not a real-time validation API. There are also third-party tools like Schema.org's validator and structured data testing tools from Yandex and Bing.",
       "topics": [
         "Testing Structured Data"
@@ -245,11 +245,11 @@ module.exports = {
       "question": "What is the <pre>@context</pre> property in JSON-LD structured data?",
       "options": {
         "A": "It specifies which JSON parser to use",
-        "B": "It provides context about when the data was created",
-        "C": "It defines the vocabulary being used, typically set to \"https://schema.org\"",
+        "B": "It defines the vocabulary being used, typically set to \"https://schema.org\"",
+        "C": "It provides context about when the data was created",
         "D": "It sets the character encoding for the JSON data"
       },
-      "correct": "C",
+      "correct": "B",
       "explanation": "In JSON-LD, the <pre>@context</pre> property defines the vocabulary or namespace being used for the terms in the data. For Schema.org markup, you typically set it to <pre>\"@context\": \"https://schema.org\"</pre>. This tells parsers that terms like \"Product\", \"name\", \"price\", etc., should be interpreted according to Schema.org definitions. It's similar in purpose to the <pre>itemtype</pre> URL in microdata—it establishes the vocabulary context. The context doesn't relate to JSON parsing (that's built into JavaScript), temporal creation context, or character encoding (which is handled at the HTTP/HTML level). The <pre>@</pre> prefix indicates it's a JSON-LD keyword rather than a data property. You can also use <pre>@context</pre> to define custom vocabularies or combine multiple vocabularies.",
       "topics": [
         "JSON-LD Alternative",
@@ -262,10 +262,10 @@ module.exports = {
       "options": {
         "A": "Use a separate ReviewList schema linked with itemref",
         "B": "Add <pre>itemprop=\"customerReviews\"</pre> with comma-separated text",
-        "C": "Reviews cannot be marked up; only aggregateRating is supported",
-        "D": "Use <pre>itemprop=\"review\"</pre> with nested Review type items"
+        "C": "Use <pre>itemprop=\"review\"</pre> with nested Review type items",
+        "D": "Reviews cannot be marked up; only aggregateRating is supported"
       },
-      "correct": "D",
+      "correct": "C",
       "explanation": "Product schema supports the <pre>review</pre> property, which should contain Review type items. You can have multiple reviews as nested items: <pre><div itemscope itemtype=\"https://schema.org/Product\"><div itemprop=\"review\" itemscope itemtype=\"https://schema.org/Review\"><span itemprop=\"reviewRating\" itemscope itemtype=\"https://schema.org/Rating\"><span itemprop=\"ratingValue\">5</span></span><span itemprop=\"author\" itemscope itemtype=\"https://schema.org/Person\"><span itemprop=\"name\">John</span></span></div></div></pre>. Each Review can include properties like reviewRating, author, reviewBody, and datePublished. There's no \"customerReviews\" property, and reviews are definitely supported alongside aggregateRating. While itemref exists, direct nesting is the standard approach for reviews.",
       "topics": [
         "Product Schema",
@@ -278,10 +278,10 @@ module.exports = {
       "options": {
         "A": "The total number of products sold",
         "B": "The percentage of 5-star reviews",
-        "C": "The most recent customer rating",
-        "D": "A summary of all customer ratings, including average rating and review count"
+        "C": "A summary of all customer ratings, including average rating and review count",
+        "D": "The most recent customer rating"
       },
-      "correct": "D",
+      "correct": "C",
       "explanation": "The <pre>aggregateRating</pre> property contains an AggregateRating type that summarizes multiple ratings. It includes properties like <pre>ratingValue</pre> (the average rating, e.g., 4.5), <pre>bestRating</pre> (the highest possible rating, often 5), <pre>worstRating</pre> (the lowest possible, often 1), and <pre>reviewCount</pre> or <pre>ratingCount</pre> (how many ratings contributed to the average). For example: <pre><div itemprop=\"aggregateRating\" itemscope itemtype=\"https://schema.org/AggregateRating\"><span itemprop=\"ratingValue\">4.5</span> out of <span itemprop=\"bestRating\">5</span> based on <span itemprop=\"reviewCount\">89</span> reviews</div></pre>. This aggregate data is what often appears as star ratings in search results. It doesn't represent sales numbers, individual ratings, or specific percentages.",
       "topics": [
         "Product Schema"
@@ -308,11 +308,11 @@ module.exports = {
       "question": "What is the <pre>@type</pre> property in JSON-LD structured data?",
       "options": {
         "A": "It specifies the data type (string, number, boolean) of a property",
-        "B": "It defines the Schema.org type of the entity, such as \"Product\" or \"Person\"",
-        "C": "It indicates the file format of external resources",
+        "B": "It indicates the file format of external resources",
+        "C": "It defines the Schema.org type of the entity, such as \"Product\" or \"Person\"",
         "D": "It sets the MIME type for the JSON-LD script"
       },
-      "correct": "B",
+      "correct": "C",
       "explanation": "In JSON-LD, <pre>@type</pre> specifies the Schema.org type of the entity being described. For example: <pre>{\"@context\": \"https://schema.org\", \"@type\": \"Product\", \"name\": \"Laptop\"}</pre>. The <pre>@type</pre> value (\"Product\") corresponds to a Schema.org type and is equivalent to the <pre>itemtype</pre> URL in microdata (but without the full URL since <pre>@context</pre> already establishes the Schema.org namespace). You can have nested objects with their own <pre>@type</pre> values, like a Brand or Review within a Product. The property doesn't define data types of individual values, file formats, or MIME types. The <pre>@</pre> prefix indicates it's a JSON-LD keyword. Multiple types can be specified as an array: <pre>\"@type\": [\"Product\", \"IndividualProduct\"]</pre>.",
       "topics": [
         "JSON-LD Alternative",
@@ -354,12 +354,12 @@ module.exports = {
       "id": 20,
       "question": "How do search engines typically use structured data from websites?",
       "options": {
-        "A": "They extract the structured data to understand content better and potentially display rich results in search listings",
+        "A": "They ignore it unless the website has high domain authority",
         "B": "They replace the website's content with the structured data",
         "C": "They only use it for paid advertising placements",
-        "D": "They ignore it unless the website has high domain authority"
+        "D": "They extract the structured data to understand content better and potentially display rich results in search listings"
       },
-      "correct": "A",
+      "correct": "D",
       "explanation": "Search engines extract and parse structured data to better understand what your content is about and how to categorize it. This improved understanding can lead to enhanced search result displays called \"rich results\" or \"rich snippets\"—such as star ratings for products, cooking times for recipes, event dates and locations, FAQ expandable sections, and more. The structured data supplements, rather than replaces, your visible content. It's not limited to paid ads; it works for organic search results. Search engines use structured data from sites of all authority levels, though quality content and proper implementation matter more than domain authority alone. Think of structured data as providing explicit semantics that help search engines understand what human-readable content means.",
       "topics": [
         "Structured Data SEO Benefits"
@@ -370,11 +370,11 @@ module.exports = {
       "question": "What is a common mistake when implementing microdata that can cause it to fail validation?",
       "options": {
         "A": "Using too many properties on a single item",
-        "B": "Forgetting to include <pre>itemscope</pre> when using <pre>itemtype</pre>",
+        "B": "Including microdata in the <pre><head></pre> section",
         "C": "Mixing microdata with CSS classes on the same element",
-        "D": "Including microdata in the <pre><head></pre> section"
+        "D": "Forgetting to include <pre>itemscope</pre> when using <pre>itemtype</pre>"
       },
-      "correct": "B",
+      "correct": "D",
       "explanation": "A common error is adding <pre>itemtype</pre> without <pre>itemscope</pre>. The <pre>itemscope</pre> attribute is what creates the item, and <pre>itemtype</pre> only makes sense in that context—they should almost always appear together: <pre><div itemscope itemtype=\"https://schema.org/Product\"></pre>. Without <pre>itemscope</pre>, the <pre>itemtype</pre> and any child <pre>itemprop</pre> elements won't be properly associated with an item. There's no limit on properties that would cause validation failure (though irrelevant properties are pointless). Mixing microdata attributes with CSS classes is perfectly fine and doesn't cause issues. While microdata typically appears in the <pre><body></pre> where content lives, technically you could include it in <pre><head></pre> using <pre><link></pre> or <pre><meta></pre> elements, though this is uncommon.",
       "topics": [
         "Microdata Attributes (itemscope, itemtype, itemprop)",
@@ -387,10 +387,10 @@ module.exports = {
       "options": {
         "A": "Repeat the property multiple times in the JSON object",
         "B": "Concatenate values with commas: <pre>\"propertyName\": \"value1, value2, value3\"</pre>",
-        "C": "Use an array: <pre>\"propertyName\": [\"value1\", \"value2\", \"value3\"]</pre>",
-        "D": "Multiple values are not supported in JSON-LD"
+        "C": "Multiple values are not supported in JSON-LD",
+        "D": "Use an array: <pre>\"propertyName\": [\"value1\", \"value2\", \"value3\"]</pre>"
       },
-      "correct": "C",
+      "correct": "D",
       "explanation": "In JSON-LD, use a JSON array to represent multiple values for a property: <pre>\"image\": [\"image1.jpg\", \"image2.jpg\", \"image3.jpg\"]</pre> or <pre>\"sameAs\": [\"https://twitter.com/example\", \"https://facebook.com/example\"]</pre>. This is standard JSON syntax and works for both simple values (strings, numbers) and nested objects. You cannot repeat keys in JSON objects—that would be invalid JSON syntax. Concatenating values into a comma-separated string might display correctly but won't be parsed as multiple distinct values by search engines and other consumers. JSON-LD fully supports multiple values through arrays, making it easy to include multiple images, authors, or other repeating properties. Some properties expect arrays (like offers or review), while others can be either a single value or an array.",
       "topics": [
         "JSON-LD Alternative"
@@ -417,11 +417,11 @@ module.exports = {
       "question": "What does the <pre>offers</pre> property represent in a Product schema?",
       "options": {
         "A": "Special promotional discounts currently available",
-        "B": "An Offer or AggregateOffer type containing price, availability, and seller information",
+        "B": "Cross-sell and upsell product suggestions",
         "C": "The number of offers received from suppliers",
-        "D": "Cross-sell and upsell product suggestions"
+        "D": "An Offer or AggregateOffer type containing price, availability, and seller information"
       },
-      "correct": "B",
+      "correct": "D",
       "explanation": "The <pre>offers</pre> property contains structured information about how to purchase the product, using the Offer or AggregateOffer type. An Offer includes properties like <pre>price</pre>, <pre>priceCurrency</pre>, <pre>availability</pre> (e.g., \"https://schema.org/InStock\"), <pre>url</pre> (purchase link), <pre>seller</pre>, <pre>priceValidUntil</pre>, and more. Example: <pre><div itemprop=\"offers\" itemscope itemtype=\"https://schema.org/Offer\"><span itemprop=\"price\" content=\"29.99\">$29.99</span><link itemprop=\"availability\" href=\"https://schema.org/InStock\">In Stock</div></pre>. Products can have multiple offers (from different sellers) or an AggregateOffer (representing a range of prices). It's not specifically about promotions (though on-sale prices can be marked), supplier offers, or product recommendations—it's about purchase options for this specific product.",
       "topics": [
         "Product Schema",
@@ -432,12 +432,12 @@ module.exports = {
       "id": 25,
       "question": "What should you do if Google's Rich Results Test shows warnings but no errors for your structured data?",
       "options": {
-        "A": "Review warnings and consider adding recommended properties to improve rich results eligibility and quality",
+        "A": "Warnings indicate the page will be penalized in search rankings",
         "B": "Ignore warnings; they don't affect rich results eligibility",
         "C": "Completely rewrite the structured data using a different format",
-        "D": "Warnings indicate the page will be penalized in search rankings"
+        "D": "Review warnings and consider adding recommended properties to improve rich results eligibility and quality"
       },
-      "correct": "A",
+      "correct": "D",
       "explanation": "Warnings in the Rich Results Test typically indicate missing recommended (but not required) properties that could enhance your structured data or improve rich results eligibility. For example, a Product might show warnings if you're missing <pre>image</pre>, <pre>brand</pre>, or <pre>aggregateRating</pre> properties. While errors must be fixed for the markup to work correctly, warnings suggest improvements that could make your rich results more informative and visually appealing, potentially improving click-through rates. Review each warning to determine if adding that property makes sense for your content. Warnings don't cause search ranking penalties—they're helpful suggestions. You don't need to change formats; just enhance your existing markup. Errors (not warnings) can prevent rich results eligibility.",
       "topics": [
         "Testing Structured Data",

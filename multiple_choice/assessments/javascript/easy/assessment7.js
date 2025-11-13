@@ -72,12 +72,12 @@ module.exports = {
       "id": 2,
       "question": "What does the following function return?\n\n[CODE]\nfunction test() {\n    return;\n    'unreachable';\n}\n[/CODE]",
       "options": {
-        "A": "'unreachable'",
+        "A": "undefined",
         "B": "Error",
         "C": "null",
-        "D": "undefined"
+        "D": "'unreachable'"
       },
-      "correct": "D",
+      "correct": "A",
       "explanation": "A return statement without a value returns undefined. The code after return is never executed (dead code).",
       "topic": {
         "topics": [
@@ -91,11 +91,11 @@ module.exports = {
       "question": "How many parameters does this arrow function have?\n\n[CODE]\n(a, b, c = 10) => a + b + c\n[/CODE]",
       "options": {
         "A": "2",
-        "B": "4",
-        "C": "3",
+        "B": "3",
+        "C": "4",
         "D": "It's invalid syntax"
       },
-      "correct": "C",
+      "correct": "B",
       "explanation": "The function has three parameters: a, b, and c. The parameter c has a default value of 10, but it's still counted as a parameter.",
       "topic": {
         "topics": [
@@ -108,12 +108,12 @@ module.exports = {
       "id": 4,
       "question": "What will this code output?\n\n[CODE]\nfunction outer() {\n    let x = 10;\n    function inner() {\n        console.log(x);\n    }\n    return inner;\n}\nconst fn = outer();\nfn();\n[/CODE]",
       "options": {
-        "A": "undefined",
-        "B": "10",
+        "A": "10",
+        "B": "undefined",
         "C": "Error",
         "D": "null"
       },
-      "correct": "B",
+      "correct": "A",
       "explanation": "This demonstrates a closure. The inner function maintains access to the outer function's variables even after the outer function has returned. It prints 10.",
       "topic": {
         "topics": [
@@ -128,10 +128,10 @@ module.exports = {
       "options": {
         "A": "The global object",
         "B": "The function itself",
-        "C": "Inherited from enclosing scope",
-        "D": "undefined"
+        "C": "undefined",
+        "D": "Inherited from enclosing scope"
       },
-      "correct": "C",
+      "correct": "D",
       "explanation": "Arrow functions don't have their own 'this' binding. They inherit 'this' from the enclosing lexical scope, which is different from regular functions.",
       "topic": {
         "topics": [
@@ -180,11 +180,11 @@ module.exports = {
       "question": "Which statement about scope is correct?",
       "options": {
         "A": "var has block scope",
-        "B": "const has block scope",
+        "B": "All variables are global",
         "C": "let has function scope",
-        "D": "All variables are global"
+        "D": "const has block scope"
       },
-      "correct": "B",
+      "correct": "D",
       "explanation": "const (and let) have block scope, meaning they're only accessible within the block where they're defined. var has function scope, not block scope.",
       "topic": {
         "topics": [
@@ -198,10 +198,10 @@ module.exports = {
       "options": {
         "A": "5",
         "B": "Error",
-        "C": "undefined",
-        "D": "null"
+        "C": "null",
+        "D": "undefined"
       },
-      "correct": "C",
+      "correct": "D",
       "explanation": "Due to hoisting, var declarations are moved to the top of their scope, but not their assignments. So 'a' is declared but undefined at the console.log.",
       "topic": {
         "topics": [
@@ -233,11 +233,11 @@ module.exports = {
       "question": "What is a closure in JavaScript?",
       "options": {
         "A": "A function that closes the program",
-        "B": "A function with access to its outer scope variables",
-        "C": "A closed block of code",
+        "B": "A closed block of code",
+        "C": "A function with access to its outer scope variables",
         "D": "A private method"
       },
-      "correct": "B",
+      "correct": "C",
       "explanation": "A closure is a function that has access to variables in its outer (enclosing) lexical scope, even after the outer function has returned. This is a powerful JavaScript feature.",
       "topic": {
         "topics": [
@@ -252,10 +252,10 @@ module.exports = {
       "options": {
         "A": "null",
         "B": "0",
-        "C": "Error",
-        "D": "undefined"
+        "C": "undefined",
+        "D": "Error"
       },
-      "correct": "D",
+      "correct": "C",
       "explanation": "Functions without an explicit return statement automatically return undefined. This is JavaScript's default behavior.",
       "topic": {
         "topics": [
@@ -269,10 +269,10 @@ module.exports = {
       "options": {
         "A": "1",
         "B": "2",
-        "C": "undefined",
-        "D": "ReferenceError"
+        "C": "ReferenceError",
+        "D": "undefined"
       },
-      "correct": "D",
+      "correct": "C",
       "explanation": "This triggers the Temporal Dead Zone. The local x is hoisted but not initialized, and accessing it before the let statement causes a ReferenceError.",
       "topic": {
         "topics": [
@@ -287,10 +287,10 @@ module.exports = {
       "options": {
         "A": "function test(a: 5, b: 10) {}",
         "B": "function test(a || 5, b || 10) {}",
-        "C": "function test(a = 5, b = 10) {}",
-        "D": "function test(a := 5, b := 10) {}"
+        "C": "function test(a := 5, b := 10) {}",
+        "D": "function test(a = 5, b = 10) {}"
       },
-      "correct": "C",
+      "correct": "D",
       "explanation": "ES6 default parameters use the syntax parameter = defaultValue. This sets a default value if the argument is undefined or not provided.",
       "topic": {
         "topics": [
@@ -356,12 +356,12 @@ module.exports = {
       "id": 18,
       "question": "What is the scope of a variable declared with let inside a function?",
       "options": {
-        "A": "Block scope",
-        "B": "Function scope",
+        "A": "Function scope",
+        "B": "Block scope",
         "C": "Global scope",
         "D": "Module scope"
       },
-      "correct": "A",
+      "correct": "B",
       "explanation": "Variables declared with let have block scope. They're only accessible within the block (including function blocks) where they're declared.",
       "topic": {
         "topics": [
@@ -373,12 +373,12 @@ module.exports = {
       "id": 19,
       "question": "What does the rest parameter (...args) collect?",
       "options": {
-        "A": "Remaining arguments as an array",
-        "B": "All arguments as an array",
+        "A": "All arguments as an array",
+        "B": "Remaining arguments as an array",
         "C": "First argument only",
         "D": "No arguments"
       },
-      "correct": "A",
+      "correct": "B",
       "explanation": "The rest parameter collects all remaining arguments into an array. It must be the last parameter and is prefixed with three dots.",
       "topic": {
         "topics": [
@@ -392,10 +392,10 @@ module.exports = {
       "options": {
         "A": "function inner() { return 'hello'; }",
         "B": "Error",
-        "C": "undefined",
-        "D": "'hello'"
+        "C": "'hello'",
+        "D": "undefined"
       },
-      "correct": "D",
+      "correct": "C",
       "explanation": "outer() returns the inner function. outer()() calls outer first (returning inner), then immediately calls inner (returning 'hello').",
       "topic": {
         "topics": [
@@ -443,12 +443,12 @@ module.exports = {
       "id": 23,
       "question": "What happens when you try to reassign a function parameter declared with const?",
       "options": {
-        "A": "Error",
-        "B": "Parameters cannot use const",
+        "A": "Parameters cannot use const",
+        "B": "Error",
         "C": "Parameter is reassigned",
         "D": "undefined"
       },
-      "correct": "B",
+      "correct": "A",
       "explanation": "Function parameters cannot be declared with const, let, or var. They are implicitly declared and behave similarly to let in terms of scope.",
       "topic": {
         "topics": [
@@ -462,11 +462,11 @@ module.exports = {
       "question": "What does this function return?\n\n[CODE]\nfunction test() {\n    return\n    {\n        value: 42\n    };\n}\n[/CODE]",
       "options": {
         "A": "{ value: 42 }",
-        "B": "undefined",
+        "B": "Error",
         "C": "42",
-        "D": "Error"
+        "D": "undefined"
       },
-      "correct": "B",
+      "correct": "D",
       "explanation": "JavaScript automatically inserts a semicolon after 'return', making it 'return;' which returns undefined. Always put the opening brace on the same line as return.",
       "topic": {
         "topics": [
@@ -478,12 +478,12 @@ module.exports = {
       "id": 25,
       "question": "Which creates a function that remembers its creation environment?",
       "options": {
-        "A": "Closure",
+        "A": "Anonymous function",
         "B": "Arrow function",
         "C": "Regular function",
-        "D": "Anonymous function"
+        "D": "Closure"
       },
-      "correct": "A",
+      "correct": "D",
       "explanation": "A closure is a function that remembers and can access variables from its outer (enclosing) scope, even after the outer function has finished executing.",
       "topic": {
         "topics": [
@@ -496,12 +496,12 @@ module.exports = {
       "id": 26,
       "question": "What is the difference between call() and apply()?",
       "options": {
-        "A": "call() takes arguments separately, apply() takes an array",
-        "B": "No difference",
+        "A": "No difference",
+        "B": "call() takes arguments separately, apply() takes an array",
         "C": "apply() is faster",
         "D": "call() cannot change 'this'"
       },
-      "correct": "A",
+      "correct": "B",
       "explanation": "Both change 'this' context, but call() takes arguments individually: func.call(thisArg, arg1, arg2), while apply() takes an array: func.apply(thisArg, [arg1, arg2]).",
       "topic": {
         "topics": [
@@ -550,12 +550,12 @@ module.exports = {
       "id": 29,
       "question": "What is a higher-order function?",
       "options": {
-        "A": "A function defined at a high scope level",
+        "A": "A function that takes or returns another function",
         "B": "A complex function",
         "C": "A function with many parameters",
-        "D": "A function that takes or returns another function"
+        "D": "A function defined at a high scope level"
       },
-      "correct": "D",
+      "correct": "A",
       "explanation": "A higher-order function is a function that takes one or more functions as arguments, or returns a function as its result. Examples include map(), filter(), and reduce().",
       "topic": {
         "topics": [
@@ -567,12 +567,11 @@ module.exports = {
       "id": 30,
       "question": "What does bind() return?",
       "options": {
-        "A": "A new function with bound 'this' context",
         "B": "The result of calling the function",
         "C": "undefined",
-        "D": "The original function modified"
+        "D": "The original function modified",
+        "undefined": "A new function with bound 'this' context"
       },
-      "correct": "A",
       "explanation": "bind() returns a new function with a permanently bound 'this' value and optionally pre-filled arguments. The original function is not modified.",
       "topic": {
         "topics": [

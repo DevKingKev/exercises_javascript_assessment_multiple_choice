@@ -69,12 +69,12 @@ module.exports = {
       "id": 1,
       "question": "What happens when you call [CODE]next()[/CODE] on a generator that has already completed?",
       "options": {
-        "A": "It throws a TypeError",
-        "B": "It returns <pre>{ value: undefined, done: true }</pre>",
+        "A": "It returns <pre>{ value: undefined, done: true }</pre>",
+        "B": "It throws a TypeError",
         "C": "It restarts the generator from the beginning",
         "D": "It returns the last yielded value"
       },
-      "correct": "B",
+      "correct": "A",
       "explanation": "Once a generator has completed (reached a return statement or the end of the function), calling <pre>next()</pre> will always return <pre>{ value: undefined, done: true }</pre>. The generator doesn't restart, throw errors, or return previous values. If the generator had an explicit return value, subsequent calls to <pre>next()</pre> after completion will still return <pre>undefined</pre> as the value, not the return value. This behavior allows you to safely call <pre>next()</pre> multiple times without error handling.",
       "topic": {
         "topics": [
@@ -86,12 +86,12 @@ module.exports = {
       "id": 2,
       "question": "What is the primary difference between a Proxy's [CODE]get[/CODE] trap and using a getter on an object?",
       "options": {
-        "A": "Proxies are faster than getters",
+        "A": "A Proxy can intercept property access for properties that don't exist yet",
         "B": "A Proxy's get trap cannot return undefined",
         "C": "Getters can be used with primitives, Proxies cannot",
-        "D": "A Proxy can intercept property access for properties that don't exist yet"
+        "D": "Proxies are faster than getters"
       },
-      "correct": "D",
+      "correct": "A",
       "explanation": "The key advantage of a Proxy's <pre>get</pre> trap is that it can intercept access to any property, including those that haven't been defined yet. Traditional getters must be defined for specific properties in advance. This makes Proxies extremely powerful for creating dynamic objects, virtual properties, default values for missing properties, or implementing features like auto-vivification. For example, you could create an object that returns empty arrays for any undefined property, or an object that fetches data on-demand when properties are accessed.",
       "topic": {
         "topics": [
@@ -103,12 +103,12 @@ module.exports = {
       "id": 3,
       "question": "What is the purpose of [CODE]Symbol.iterator[/CODE]?",
       "options": {
-        "A": "It defines how an object should be converted to a string",
-        "B": "It makes an object iterable in for...of loops and spread operations",
+        "A": "It makes an object iterable in for...of loops and spread operations",
+        "B": "It defines how an object should be converted to a string",
         "C": "It prevents an object from being garbage collected",
         "D": "It creates a unique identifier for the object"
       },
-      "correct": "B",
+      "correct": "A",
       "explanation": "<pre>Symbol.iterator</pre> is a well-known symbol that defines the default iterator for an object. When you implement <pre>[Symbol.iterator]()</pre> on an object, you make it iterable, meaning it can be used with <pre>for...of</pre> loops, the spread operator (<pre>...</pre>), <pre>Array.from()</pre>, and destructuring. The method should return an iterator object with a <pre>next()</pre> method that returns <pre>{ value, done }</pre> objects. This is how built-in iterables like Arrays, Strings, Maps, and Sets work. Custom iterables allow you to define your own iteration behavior for any object.",
       "topic": {
         "topics": [
@@ -154,12 +154,12 @@ module.exports = {
       "id": 6,
       "question": "What is the main advantage of using [CODE]WeakMap[/CODE] over [CODE]Map[/CODE] for storing object metadata?",
       "options": {
-        "A": "WeakMap is faster for large datasets",
+        "A": "WeakMap allows garbage collection of keys when no other references exist",
         "B": "WeakMap can use primitive values as keys",
-        "C": "WeakMap allows garbage collection of keys when no other references exist",
+        "C": "WeakMap is faster for large datasets",
         "D": "WeakMap maintains insertion order"
       },
-      "correct": "C",
+      "correct": "A",
       "explanation": "<pre>WeakMap</pre> holds 'weak' references to its keys, meaning if there are no other references to a key object, it can be garbage collected even though it exists in the WeakMap. This prevents memory leaks when storing metadata about objects. For example, if you're tracking DOM elements and those elements are removed from the page, a WeakMap will automatically clean up their entries. In contrast, a regular Map holds strong references, keeping keys in memory indefinitely. The trade-off is that WeakMaps are not enumerable (no <pre>size</pre>, <pre>keys()</pre>, or iteration), and keys must be objects, not primitives.",
       "topic": {
         "topics": [
@@ -172,12 +172,12 @@ module.exports = {
       "id": 7,
       "question": "What does this generator function do?\n[CODE]function* range(start, end) {\n  for (let i = start; i < end; i++) {\n    yield i;\n  }\n}[/CODE]",
       "options": {
-        "A": "Returns an array of numbers from start to end",
+        "A": "Creates an iterator that produces numbers lazily on demand",
         "B": "Throws an error because generators can't use for loops",
         "C": "Calculates the sum of numbers in the range",
-        "D": "Creates an iterator that produces numbers lazily on demand"
+        "D": "Returns an array of numbers from start to end"
       },
-      "correct": "D",
+      "correct": "A",
       "explanation": "This generator creates a lazy iterator that produces numbers from <pre>start</pre> to <pre>end - 1</pre> only when requested via <pre>next()</pre> calls. Unlike returning an array, which creates all values in memory immediately, this generator computes each value on-demand. This is memory-efficient for large ranges: <pre>range(0, 1000000)</pre> doesn't allocate a million-element array. You can use it with <pre>for...of</pre>: <pre>for (const num of range(1, 5)) { }</pre>, or convert to an array with <pre>Array.from(range(1, 5))</pre>. This lazy evaluation is a key benefit of generators for working with sequences.",
       "topic": {
         "topics": [
@@ -189,12 +189,12 @@ module.exports = {
       "id": 8,
       "question": "What is 'currying' in functional programming?",
       "options": {
-        "A": "Converting a function with multiple arguments into a sequence of functions each taking a single argument",
-        "B": "Executing a function repeatedly with different arguments",
+        "A": "Executing a function repeatedly with different arguments",
+        "B": "Converting a function with multiple arguments into a sequence of functions each taking a single argument",
         "C": "Combining multiple functions into one",
         "D": "Making a function run faster by optimizing its code"
       },
-      "correct": "A",
+      "correct": "B",
       "explanation": "Currying transforms a function that takes multiple arguments into a chain of functions, each taking a single argument. For example, <pre>add(a, b)</pre> becomes <pre>add(a)(b)</pre>. This enables partial application: you can create specialized functions by fixing some arguments. Example: <pre>const add = a => b => a + b; const add5 = add(5); add5(3); // 8</pre>. Currying is useful for creating reusable function configurations, function composition, and improving code readability in functional pipelines. It's a fundamental technique in functional programming that promotes code reuse and modularity.",
       "topic": {
         "topics": [
@@ -207,11 +207,11 @@ module.exports = {
       "question": "What does the [CODE]deleteProperty[/CODE] trap in a Proxy intercept?",
       "options": {
         "A": "Garbage collection of the object",
-        "B": "Setting a property to undefined",
+        "B": "The <pre>delete</pre> operator",
         "C": "The <pre>Object.freeze()</pre> method",
-        "D": "The <pre>delete</pre> operator"
+        "D": "Setting a property to undefined"
       },
-      "correct": "D",
+      "correct": "B",
       "explanation": "The <pre>deleteProperty</pre> trap intercepts the <pre>delete</pre> operator. When you write <pre>delete obj.prop</pre> on a proxied object, the trap is called with the target and property name. This allows you to: prevent deletion of certain properties, log deletion attempts, trigger side effects, or implement virtual properties that can't really be deleted. The trap should return a boolean indicating success. Note that setting a property to <pre>undefined</pre> does NOT trigger this trap—that triggers the <pre>set</pre> trap. This distinction is important for implementing proper property management in proxies.",
       "topic": {
         "topics": [
@@ -241,11 +241,11 @@ module.exports = {
       "question": "What is memoization and when should it be used?",
       "options": {
         "A": "A technique to make functions run asynchronously",
-        "B": "A method to prevent memory leaks",
+        "B": "Caching function results based on arguments to avoid redundant computations",
         "C": "Converting callbacks to promises",
-        "D": "Caching function results based on arguments to avoid redundant computations"
+        "D": "A method to prevent memory leaks"
       },
-      "correct": "D",
+      "correct": "B",
       "explanation": "Memoization is an optimization technique where function results are cached based on their input arguments. When the function is called again with the same arguments, the cached result is returned instead of recomputing. This is most effective for: (1) pure functions (same input always produces same output), (2) expensive computations, (3) functions called repeatedly with the same arguments. Example: Fibonacci calculations, API response caching, complex calculations. Implementation typically uses a Map or object to store results keyed by arguments. Trade-off: increased memory usage for decreased computation time. Not suitable for functions with side effects or those rarely called with duplicate arguments.",
       "topic": {
         "topics": [
@@ -294,10 +294,10 @@ module.exports = {
       "options": {
         "A": "Writing functions inside other functions",
         "B": "Making functions run in parallel",
-        "C": "Using arrow functions instead of regular functions",
-        "D": "Combining multiple functions where the output of one is the input of the next"
+        "C": "Combining multiple functions where the output of one is the input of the next",
+        "D": "Using arrow functions instead of regular functions"
       },
-      "correct": "D",
+      "correct": "C",
       "explanation": "Function composition is combining simple functions to build more complex ones. The output of one function becomes the input to the next. Example:\n<pre>const compose = (f, g) => x => f(g(x));\nconst addOne = x => x + 1;\nconst double = x => x * 2;\nconst addOneThenDouble = compose(double, addOne);\naddOneThenDouble(3); // (3 + 1) * 2 = 8</pre>\nComposition reads right-to-left (or use <pre>pipe</pre> for left-to-right). Benefits: code reusability, readability, testability. Each function does one thing well, and you combine them for complex operations. This is a fundamental pattern in functional programming for building maintainable data transformation pipelines.",
       "topic": {
         "topics": [
@@ -343,12 +343,12 @@ module.exports = {
       "id": 17,
       "question": "What is a key difference between [CODE]WeakSet[/CODE] and [CODE]Set[/CODE]?",
       "options": {
-        "A": "WeakSet can only store objects and doesn't prevent garbage collection",
+        "A": "WeakSet allows duplicate values",
         "B": "WeakSet stores values in sorted order",
-        "C": "WeakSet allows duplicate values",
+        "C": "WeakSet can only store objects and doesn't prevent garbage collection",
         "D": "WeakSet is synchronized for multi-threading"
       },
-      "correct": "A",
+      "correct": "C",
       "explanation": "<pre>WeakSet</pre> can only store objects (not primitives) and holds weak references to them—if there are no other references to an object in a WeakSet, it can be garbage collected. This prevents memory leaks. Use cases: tracking objects without preventing their cleanup (e.g., marking DOM elements as 'processed' without keeping them alive). Trade-offs: WeakSets are not enumerable (no <pre>size</pre>, no iteration, can't list contents) because members may be garbage collected at any time. Regular Sets store any value type, hold strong references (preventing GC), and are fully enumerable. WeakSet is specialized for memory-conscious object tracking.",
       "topic": {
         "topics": [
@@ -361,12 +361,12 @@ module.exports = {
       "id": 18,
       "question": "What does the [CODE]return()[/CODE] method do when called on a generator iterator?",
       "options": {
-        "A": "Completes the generator early, optionally with a return value",
+        "A": "Restarts the generator from the beginning",
         "B": "Returns the current yielded value",
-        "C": "Restarts the generator from the beginning",
+        "C": "Completes the generator early, optionally with a return value",
         "D": "Throws an exception inside the generator"
       },
-      "correct": "A",
+      "correct": "C",
       "explanation": "Calling <pre>return(value)</pre> on a generator iterator terminates the generator early and returns <pre>{ value: value, done: true }</pre>. Any <pre>finally</pre> blocks in the generator will execute before completion. Example:\n<pre>function* gen() {\n  try { yield 1; yield 2; }\n  finally { console.log('cleanup'); }\n}\nconst g = gen();\ng.next(); // { value: 1, done: false }\ng.return(99); // logs 'cleanup', returns { value: 99, done: true }\ng.next(); // { value: undefined, done: true }</pre>\nThis is useful for cleanup when you're done with a generator early, similar to breaking out of a loop. It's also used internally by <pre>for...of</pre> when breaking.",
       "topic": {
         "topics": [
@@ -378,12 +378,12 @@ module.exports = {
       "id": 19,
       "question": "What is the [CODE]lookbehind[/CODE] assertion in regular expressions used for?",
       "options": {
-        "A": "Matching text that comes before a specific pattern without including it in the match",
+        "A": "Finding all previous occurrences of a pattern",
         "B": "Reversing the direction of the regex search",
-        "C": "Finding all previous occurrences of a pattern",
+        "C": "Matching text that comes before a specific pattern without including it in the match",
         "D": "Matching the last occurrence of a pattern"
       },
-      "correct": "A",
+      "correct": "C",
       "explanation": "Lookbehind assertions (<pre>(?<=...)</pre> for positive, <pre>(?<!...)</pre> for negative) match a position in the string based on what comes before it, without including that content in the match. Example:\n<pre>'$100 €200'.match(/(?<=\\$)\\d+/); // ['100'] - matches numbers after $\n'$100 €200'.match(/(?<!\\$)\\d+/); // ['200'] - matches numbers NOT after $</pre>\nThis is powerful for context-sensitive matching: extracting values with specific prefixes, validating format without capturing delimiters, or filtering matches based on preceding context. Unlike capturing groups, lookbehinds don't consume characters or appear in match results—they're pure assertions about position.",
       "topic": {
         "topics": [
@@ -395,12 +395,12 @@ module.exports = {
       "id": 20,
       "question": "What is 'partial application' in functional programming?",
       "options": {
-        "A": "Creating a new function by fixing some arguments of an existing function",
+        "A": "Splitting a function into multiple files",
         "B": "Running only part of a function's code",
         "C": "Using async/await with functions",
-        "D": "Splitting a function into multiple files"
+        "D": "Creating a new function by fixing some arguments of an existing function"
       },
-      "correct": "A",
+      "correct": "D",
       "explanation": "Partial application creates a new function by pre-filling some arguments of an existing function. Example:\n<pre>function multiply(a, b, c) { return a * b * c; }\nconst multiplyBy2 = multiply.bind(null, 2);\nmultiplyBy2(3, 4); // 2 * 3 * 4 = 24</pre>\nOr with closures:\n<pre>const partial = (fn, ...args) => (...rest) => fn(...args, ...rest);\nconst add = (a, b, c) => a + b + c;\nconst add5 = partial(add, 5);\nadd5(10, 15); // 30</pre>\nThis creates specialized functions from generic ones, enabling code reuse and configuration. Unlike currying (which transforms arity), partial application fixes specific arguments. It's useful for callbacks, configuration, and creating function variants.",
       "topic": {
         "topics": [
@@ -413,11 +413,11 @@ module.exports = {
       "question": "What happens if a Proxy's [CODE]set[/CODE] trap returns false?",
       "options": {
         "A": "The property is still set but a warning is logged",
-        "B": "In strict mode, a TypeError is thrown; in non-strict mode, the operation silently fails",
+        "B": "The Proxy is automatically destroyed",
         "C": "The target object is frozen",
-        "D": "The Proxy is automatically destroyed"
+        "D": "In strict mode, a TypeError is thrown; in non-strict mode, the operation silently fails"
       },
-      "correct": "B",
+      "correct": "D",
       "explanation": "When a Proxy's <pre>set</pre> trap returns <pre>false</pre>, the behavior depends on strict mode. In strict mode, a TypeError is thrown: <pre>'set' on proxy: trap returned falsish</pre>. In non-strict mode, the assignment silently fails—the property isn't set, but no error occurs. This allows Proxies to enforce invariants and prevent invalid state changes. Example use case: preventing modification of read-only properties, enforcing type validation, or implementing access control. Always return <pre>true</pre> from the trap if the operation should succeed. This same pattern applies to other traps like <pre>deleteProperty</pre> and <pre>defineProperty</pre>.",
       "topic": {
         "topics": [
@@ -431,10 +431,10 @@ module.exports = {
       "options": {
         "A": "To catch errors that weren't caught by catch",
         "B": "To retry the operation if it failed",
-        "C": "To execute code regardless of whether an error occurred",
-        "D": "To log all errors to the console"
+        "C": "To log all errors to the console",
+        "D": "To execute code regardless of whether an error occurred"
       },
-      "correct": "C",
+      "correct": "D",
       "explanation": "The <pre>finally</pre> block executes regardless of whether the <pre>try</pre> block succeeded or threw an error, and even if the <pre>catch</pre> block threw a new error or returned early. This makes it perfect for cleanup operations: closing files, releasing resources, hiding loading spinners, re-enabling buttons. Example:\n<pre>try {\n  await fetchData();\n} catch (error) {\n  handleError(error);\n} finally {\n  hideSpinner(); // Always runs\n}</pre>\nImportant: <pre>finally</pre> can override return values: if <pre>finally</pre> contains a <pre>return</pre>, that becomes the function's return value, even if <pre>try</pre> or <pre>catch</pre> returned something else. This is a subtle gotcha to be aware of.",
       "topic": {
         "topics": [
@@ -465,10 +465,10 @@ module.exports = {
       "options": {
         "A": "A memory leak that needs to be avoided",
         "B": "A way to free memory immediately",
-        "C": "A function that retains access to its outer scope's variables, potentially preventing garbage collection",
-        "D": "A type of memory compression"
+        "C": "A type of memory compression",
+        "D": "A function that retains access to its outer scope's variables, potentially preventing garbage collection"
       },
-      "correct": "C",
+      "correct": "D",
       "explanation": "Closures allow inner functions to access outer scope variables even after the outer function has returned. This creates a reference chain that prevents garbage collection of those variables. Example:\n<pre>function outer() {\n  const largeData = new Array(1000000);\n  return () => console.log(largeData.length);\n}\nconst fn = outer(); // largeData can't be GC'd</pre>\nWhile closures are powerful and useful, they can inadvertently cause memory leaks if large objects are captured unnecessarily. Best practices: minimize captured variables, explicitly null out unneeded references, use WeakMap for object metadata. Understanding closure memory implications is crucial for performance in long-running applications with many event handlers or callbacks.",
       "topic": {
         "topics": [

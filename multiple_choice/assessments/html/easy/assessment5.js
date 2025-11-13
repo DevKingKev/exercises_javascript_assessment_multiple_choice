@@ -120,12 +120,12 @@ module.exports = {
       "id": 4,
       "question": "What is the purpose of the <pre><datalist></pre> element?",
       "options": {
-        "A": "Creates a data table",
-        "B": "Provides pre-defined options for an input field",
+        "A": "Provides pre-defined options for an input field",
+        "B": "Creates a data table",
         "C": "Lists database records",
         "D": "Defines data types"
       },
-      "correct": "B",
+      "correct": "A",
       "explanation": "The <pre><datalist></pre> element contains a set of <pre><option></pre> elements that represent pre-defined values for an input field. Users can either select from the list or type their own value. Example: [CODE]<label for=\"browser\">Choose browser:</label>\n<input list=\"browsers\" id=\"browser\">\n<datalist id=\"browsers\">\n  <option value=\"Chrome\">\n  <option value=\"Firefox\">\n</datalist>[/CODE]",
       "topic": {
         "topics": [
@@ -137,12 +137,12 @@ module.exports = {
       "id": 5,
       "question": "Which HTML entity represents the copyright symbol?",
       "options": {
-        "A": "<pre>&amp;copyr;</pre>",
+        "A": "<pre>&amp;copy;</pre>",
         "B": "<pre>&amp;copyright;</pre>",
         "C": "<pre>&amp;c;</pre>",
-        "D": "<pre>&amp;copy;</pre>"
+        "D": "<pre>&amp;copyr;</pre>"
       },
-      "correct": "D",
+      "correct": "A",
       "explanation": "The <pre>&amp;copy;</pre> entity represents the copyright symbol ©. HTML entities are used to display reserved characters or symbols that would otherwise be interpreted as HTML code. Other common entities include <pre>&amp;reg;</pre> for ®, <pre>&amp;trade;</pre> for ™, and <pre>&amp;nbsp;</pre> for a non-breaking space.",
       "topic": {
         "topics": [
@@ -154,12 +154,12 @@ module.exports = {
       "id": 6,
       "question": "What does the <pre><progress></pre> element represent?",
       "options": {
-        "A": "A progress bar for file uploads only",
+        "A": "The completion progress of a task",
         "B": "A loading animation",
-        "C": "The completion progress of a task",
+        "C": "A progress bar for file uploads only",
         "D": "A timer countdown"
       },
-      "correct": "C",
+      "correct": "A",
       "explanation": "The <pre><progress></pre> element displays an indicator showing the completion progress of a task, typically displayed as a progress bar. Use the <pre>value</pre> attribute for current progress and <pre>max</pre> for the total value. Example: [CODE]<progress value=\"70\" max=\"100\">70%</progress>[/CODE] This shows a progress bar at 70% completion.",
       "topic": {
         "topics": [
@@ -171,12 +171,12 @@ module.exports = {
       "id": 7,
       "question": "Which attribute makes an input field focused when the page loads?",
       "options": {
-        "A": "<pre>defaultfocus</pre>",
+        "A": "<pre>autofocus</pre>",
         "B": "<pre>focus</pre>",
         "C": "<pre>selected</pre>",
-        "D": "<pre>autofocus</pre>"
+        "D": "<pre>defaultfocus</pre>"
       },
-      "correct": "D",
+      "correct": "A",
       "explanation": "The <pre>autofocus</pre> boolean attribute automatically focuses the input field when the page loads. This is useful for forms where users are expected to start typing immediately. Example: <pre><input type=\"text\" autofocus></pre> Only one element should have this attribute per page to avoid confusion.",
       "topic": {
         "topics": [
@@ -206,11 +206,11 @@ module.exports = {
       "question": "Which element creates a thematic break between content sections?",
       "options": {
         "A": "<pre><divider></pre>",
-        "B": "<pre><break></pre>",
+        "B": "<pre><hr></pre>",
         "C": "<pre><section></pre>",
-        "D": "<pre><hr></pre>"
+        "D": "<pre><break></pre>"
       },
-      "correct": "D",
+      "correct": "B",
       "explanation": "The <pre><hr></pre> (horizontal rule) element represents a thematic break between paragraph-level elements, such as a change of scene in a story or a shift of topic within a section. It's typically displayed as a horizontal line. This is a semantic element that helps structure content meaningfully.",
       "topic": {
         "topics": [
@@ -273,12 +273,12 @@ module.exports = {
       "id": 13,
       "question": "Which attribute adds a hint to help users fill out a field?",
       "options": {
-        "A": "<pre>placeholder</pre>",
-        "B": "<pre>hint</pre>",
+        "A": "<pre>hint</pre>",
+        "B": "<pre>placeholder</pre>",
         "C": "<pre>tip</pre>",
         "D": "<pre>help</pre>"
       },
-      "correct": "A",
+      "correct": "B",
       "explanation": "The <pre>placeholder</pre> attribute provides a short hint that describes the expected value of an input field. It disappears when the user starts typing. Example: <pre><input type=\"text\" placeholder=\"Enter your email\"></pre> Note: Placeholders are not a substitute for proper labels, which are essential for accessibility.",
       "topic": {
         "topics": [
@@ -292,11 +292,11 @@ module.exports = {
       "question": "What does the <pre><object></pre> element do?",
       "options": {
         "A": "Defines HTML object types",
-        "B": "Creates JavaScript objects",
-        "C": "Embeds external resources like PDFs or Flash",
+        "B": "Embeds external resources like PDFs or Flash",
+        "C": "Creates JavaScript objects",
         "D": "Embeds 3D models only"
       },
-      "correct": "C",
+      "correct": "B",
       "explanation": "The <pre><object></pre> element represents an external resource, which can be treated as an image, nested browsing context, or resource to be handled by a plugin. It can embed various content types like PDFs, Flash, or even other web pages. Example: [CODE]<object data=\"document.pdf\" type=\"application/pdf\" width=\"100%\" height=\"500\">\n  <p>Your browser doesn't support PDFs.</p>\n</object>[/CODE]",
       "topic": {
         "topics": [
@@ -308,12 +308,12 @@ module.exports = {
       "id": 15,
       "question": "Which HTML entity represents a non-breaking space?",
       "options": {
-        "A": "<pre>&amp;nbsp;</pre>",
-        "B": "<pre>&amp;space;</pre>",
+        "A": "<pre>&amp;space;</pre>",
+        "B": "<pre>&amp;nbsp;</pre>",
         "C": "<pre>&amp;nbs;</pre>",
         "D": "<pre>&amp;blank;</pre>"
       },
-      "correct": "A",
+      "correct": "B",
       "explanation": "The <pre>&amp;nbsp;</pre> entity represents a non-breaking space, which prevents browsers from breaking a line at that space. This is useful for keeping words together, like in \"Dr.&amp;nbsp;Smith\" to ensure \"Dr. Smith\" doesn't break across lines. Non-breaking spaces are also commonly used in HTML to create multiple spaces since regular consecutive spaces collapse.",
       "topic": {
         "topics": [
@@ -326,11 +326,11 @@ module.exports = {
       "question": "What is the purpose of the <pre>lang</pre> attribute in the <pre><html></pre> tag?",
       "options": {
         "A": "Creates language options",
-        "B": "Sets the language for styling",
+        "B": "Specifies the language of the document",
         "C": "Defines programming language",
-        "D": "Specifies the language of the document"
+        "D": "Sets the language for styling"
       },
-      "correct": "D",
+      "correct": "B",
       "explanation": "The <pre>lang</pre> attribute specifies the primary language of the document's content. This is important for accessibility (screen readers), search engines, and translation tools. Example: <pre><html lang=\"en\"></pre> for English or <pre><html lang=\"es\"></pre> for Spanish. Use ISO language codes and include region if needed: <pre>lang=\"en-US\"</pre> for American English.",
       "topic": {
         "topics": [
@@ -345,10 +345,10 @@ module.exports = {
       "options": {
         "A": "<pre><note></pre>",
         "B": "<pre><aside></pre>",
-        "C": "<pre><comment></pre>",
-        "D": "<pre><small></pre>"
+        "C": "<pre><small></pre>",
+        "D": "<pre><comment></pre>"
       },
-      "correct": "D",
+      "correct": "C",
       "explanation": "The <pre><small></pre> element represents side comments and small print, like copyright and legal text, independent of its styled presentation. Browsers typically render it one font size smaller. Example: <pre><small>Copyright 2025 Company Name. All rights reserved.</small></pre> This is semantic HTML that indicates the content is of lesser importance.",
       "topic": {
         "topics": [
@@ -377,12 +377,12 @@ module.exports = {
       "id": 19,
       "question": "Which attribute specifies that a form should not be validated?",
       "options": {
-        "A": "<pre>novalidate</pre>",
+        "A": "<pre>skipvalidate</pre>",
         "B": "<pre>no-validation</pre>",
-        "C": "<pre>skipvalidate</pre>",
+        "C": "<pre>novalidate</pre>",
         "D": "<pre>formnovalidate</pre>"
       },
-      "correct": "A",
+      "correct": "C",
       "explanation": "The <pre>novalidate</pre> boolean attribute indicates that the form should not be validated when submitted. This is useful when you want to handle validation with custom JavaScript instead of the browser's built-in validation. Example: <pre><form novalidate></pre> For individual submit buttons, use <pre>formnovalidate</pre> instead.",
       "topic": {
         "topics": [
@@ -412,11 +412,11 @@ module.exports = {
       "question": "Which meta tag prevents search engines from indexing a page?",
       "options": {
         "A": "<pre><meta name=\"search\" content=\"exclude\"></pre>",
-        "B": "<pre><meta name=\"robots\" content=\"noindex\"></pre>",
-        "C": "<pre><meta name=\"google\" content=\"noindex\"></pre>",
+        "B": "<pre><meta name=\"google\" content=\"noindex\"></pre>",
+        "C": "<pre><meta name=\"robots\" content=\"noindex\"></pre>",
         "D": "<pre><meta index=\"false\"></pre>"
       },
-      "correct": "B",
+      "correct": "C",
       "explanation": "The robots meta tag with <pre>noindex</pre> value tells search engines not to index the page. Other useful values include <pre>nofollow</pre> (don't follow links), <pre>noarchive</pre> (don't show cached version), and <pre>nosnippet</pre> (don't show description). Example: <pre><meta name=\"robots\" content=\"noindex, nofollow\"></pre>",
       "topic": {
         "topics": [
@@ -430,10 +430,10 @@ module.exports = {
       "options": {
         "A": "A programming citation",
         "B": "A citation reference number",
-        "C": "A city location",
-        "D": "The title of a creative work"
+        "C": "The title of a creative work",
+        "D": "A city location"
       },
-      "correct": "D",
+      "correct": "C",
       "explanation": "The <pre><cite></pre> element represents the title of a creative work (e.g., a book, a paper, an essay, a poem, a score, a song, a script, a film, a TV show, a game, a sculpture, a painting, a theater production, a play, an opera, a musical, an exhibition, etc.). Example: <pre>More information in <cite>The Great Gatsby</cite>.</pre> Browsers typically render it in italics.",
       "topic": {
         "topics": [
@@ -445,12 +445,12 @@ module.exports = {
       "id": 23,
       "question": "Which attribute specifies that an input field should be automatically completed?",
       "options": {
-        "A": "<pre>autocomplete</pre>",
+        "A": "<pre>suggest</pre>",
         "B": "<pre>auto-fill</pre>",
-        "C": "<pre>suggest</pre>",
+        "C": "<pre>autocomplete</pre>",
         "D": "<pre>complete</pre>"
       },
-      "correct": "A",
+      "correct": "C",
       "explanation": "The <pre>autocomplete</pre> attribute specifies whether a field should have autocomplete enabled. It can be set to <pre>\"on\"</pre> (allow) or <pre>\"off\"</pre> (disable). You can also use specific values like <pre>\"name\"</pre>, <pre>\"email\"</pre>, or <pre>\"current-password\"</pre> to help browsers provide appropriate suggestions. Example: <pre><input type=\"email\" autocomplete=\"email\"></pre>",
       "topic": {
         "topics": [
@@ -464,10 +464,10 @@ module.exports = {
       "options": {
         "A": "Defines keyboard layout",
         "B": "Creates keyboard shortcuts",
-        "C": "Represents keyboard input",
-        "D": "Marks text as keyboard-related"
+        "C": "Marks text as keyboard-related",
+        "D": "Represents keyboard input"
       },
-      "correct": "C",
+      "correct": "D",
       "explanation": "The <pre><kbd></pre> element represents user input from a keyboard, voice input, or any other text entry device. Browsers typically display it in a monospace font. Example: <pre>Press <kbd>Ctrl</kbd> + <kbd>C</kbd> to copy.</pre> This is useful for documentation, tutorials, and technical writing to distinguish user input from regular text.",
       "topic": {
         "topics": [
@@ -480,11 +480,11 @@ module.exports = {
       "question": "Which element defines a container for multiple image resources?",
       "options": {
         "A": "<pre><images></pre>",
-        "B": "<pre><picture></pre>",
+        "B": "<pre><multi-img></pre>",
         "C": "<pre><gallery></pre>",
-        "D": "<pre><multi-img></pre>"
+        "D": "<pre><picture></pre>"
       },
-      "correct": "B",
+      "correct": "D",
       "explanation": "The <pre><picture></pre> element contains zero or more <pre><source></pre> elements and one <pre><img></pre> element to provide versions of an image for different display/device scenarios. Example: [CODE]<picture>\n  <source media=\"(min-width: 800px)\" srcset=\"large.jpg\">\n  <source media=\"(min-width: 400px)\" srcset=\"medium.jpg\">\n  <img src=\"small.jpg\" alt=\"Description\">\n</picture>[/CODE] This enables responsive images.",
       "topic": {
         "topics": [
@@ -515,10 +515,10 @@ module.exports = {
       "options": {
         "A": "<pre>size</pre>",
         "B": "<pre>width</pre>",
-        "C": "<pre>cols</pre>",
-        "D": "<pre>visible-width</pre>"
+        "C": "<pre>visible-width</pre>",
+        "D": "<pre>cols</pre>"
       },
-      "correct": "C",
+      "correct": "D",
       "explanation": "The <pre>cols</pre> attribute specifies the visible width of a text area, measured in average character widths. Example: <pre><textarea cols=\"50\" rows=\"10\">Default text</textarea></pre> The <pre>rows</pre> attribute specifies the visible number of text lines. While CSS is preferred for styling, these attributes provide basic sizing that works even without CSS.",
       "topic": {
         "topics": [
@@ -532,10 +532,10 @@ module.exports = {
       "options": {
         "A": "Displays the current time",
         "B": "Creates a timer countdown",
-        "C": "Represents a specific period in time",
-        "D": "Formats time strings"
+        "C": "Formats time strings",
+        "D": "Represents a specific period in time"
       },
-      "correct": "C",
+      "correct": "D",
       "explanation": "The <pre><time></pre> element represents a specific period in time. It can include the <pre>datetime</pre> attribute to provide a machine-readable format. Example: <pre>The meeting is on <time datetime=\"2025-01-15T14:30\">January 15, 2025 at 2:30 PM</time>.</pre> This helps search engines, browsers, and other tools understand and process time information consistently.",
       "topic": {
         "topics": [
@@ -548,11 +548,11 @@ module.exports = {
       "question": "Which element represents a group of rows in a table?",
       "options": {
         "A": "<pre><tgroup></pre>",
-        "B": "<pre><tbody></pre>",
+        "B": "<pre><grouptable></pre>",
         "C": "<pre><rowgroup></pre>",
-        "D": "<pre><grouptable></pre>"
+        "D": "<pre><tbody></pre>"
       },
-      "correct": "B",
+      "correct": "D",
       "explanation": "The <pre><tbody></pre> element groups one or more <pre><tr></pre> elements as the body of a table. Tables can have multiple <pre><tbody></pre> elements to group rows semantically. Example: [CODE]<table>\n  <thead>\n    <tr><th>Name</th><th>Age</th></tr>\n  </thead>\n  <tbody>\n    <tr><td>John</td><td>25</td></tr>\n    <tr><td>Jane</td><td>30</td></tr>\n  </tbody>\n</table>[/CODE]",
       "topic": {
         "topics": [
@@ -565,11 +565,11 @@ module.exports = {
       "question": "What does the <pre>spellcheck</pre> attribute do?",
       "options": {
         "A": "Checks spelling automatically",
-        "B": "Controls whether spelling checking is enabled",
+        "B": "Defines custom spelling rules",
         "C": "Adds spell check functionality",
-        "D": "Defines custom spelling rules"
+        "D": "Controls whether spelling checking is enabled"
       },
-      "correct": "B",
+      "correct": "D",
       "explanation": "The <pre>spellcheck</pre> attribute specifies whether the element's content is checked for spelling errors. It can be set to <pre>true</pre> (check spelling), <pre>false</pre> (don't check), or left empty for default behavior. Example: <pre><textarea spellcheck=\"true\">This text will be spell-checked.</textarea></pre> This is particularly useful for content-editable elements and text areas.",
       "topic": {
         "topics": [

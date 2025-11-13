@@ -54,12 +54,12 @@ module.exports = {
       "id": 1,
       "question": "What console method displays data as an interactive tree?",
       "options": {
-        "A": "<pre>console.inspect()</pre>",
+        "A": "<pre>console.dir()</pre>",
         "B": "<pre>console.tree()</pre>",
         "C": "<pre>console.explore()</pre>",
-        "D": "<pre>console.dir()</pre>"
+        "D": "<pre>console.inspect()</pre>"
       },
-      "correct": "D",
+      "correct": "A",
       "explanation": "console.dir() displays an interactive tree of properties for a specified JavaScript object, making it easy to explore nested structures.",
       "topic": {
         "topics": [
@@ -71,12 +71,12 @@ module.exports = {
       "id": 2,
       "question": "How do you pause execution at a specific line without modifying code?",
       "options": {
-        "A": "Use debugger statement",
+        "A": "Set a breakpoint in developer tools",
         "B": "Add console.pause()",
-        "C": "Set a breakpoint in developer tools",
+        "C": "Use debugger statement",
         "D": "Add a special comment"
       },
-      "correct": "C",
+      "correct": "A",
       "explanation": "You can click on the line number in the Sources panel of developer tools to set a breakpoint without changing your code.",
       "topic": {
         "topics": [
@@ -88,12 +88,12 @@ module.exports = {
       "id": 3,
       "question": "What does console.groupCollapsed() do?",
       "options": {
-        "A": "Hides broken code",
+        "A": "Creates a collapsed group of console messages",
         "B": "Groups errors together",
         "C": "Collapses all console output",
-        "D": "Creates a collapsed group of console messages"
+        "D": "Hides broken code"
       },
-      "correct": "D",
+      "correct": "A",
       "explanation": "console.groupCollapsed() creates a new inline group in the console that starts collapsed, requiring a click to expand.",
       "topic": {
         "topics": [
@@ -105,12 +105,12 @@ module.exports = {
       "id": 4,
       "question": "How can you monitor a variable's value change during execution?",
       "options": {
-        "A": "Use console.watch()",
-        "B": "Add it to the Watch panel in debugger",
+        "A": "Add it to the Watch panel in debugger",
+        "B": "Use console.watch()",
         "C": "Wrap it in monitor() function",
         "D": "Use console.track()"
       },
-      "correct": "B",
+      "correct": "A",
       "explanation": "The Watch panel in browser developer tools lets you monitor variable values and expressions as you step through code.",
       "topic": {
         "topics": [
@@ -139,12 +139,12 @@ module.exports = {
       "id": 6,
       "question": "How do you log multiple related values with a single statement?",
       "options": {
-        "A": "<pre>console.multiple(var1, var2, var3)</pre>",
-        "B": "<pre>console.log({var1, var2, var3})</pre>",
+        "A": "<pre>console.log({var1, var2, var3})</pre>",
+        "B": "<pre>console.multiple(var1, var2, var3)</pre>",
         "C": "<pre>console.batch(var1, var2, var3)</pre>",
         "D": "<pre>console.all(var1, var2, var3)</pre>"
       },
-      "correct": "B",
+      "correct": "A",
       "explanation": "Using object literal shorthand with console.log() automatically labels each value with its variable name.",
       "topic": {
         "topics": [
@@ -156,12 +156,12 @@ module.exports = {
       "id": 7,
       "question": "What does a red 'X' next to a breakpoint indicate?",
       "options": {
-        "A": "The breakpoint is conditional",
+        "A": "The breakpoint is disabled",
         "B": "The breakpoint has an error",
-        "C": "The breakpoint is disabled",
+        "C": "The breakpoint is conditional",
         "D": "The breakpoint is active"
       },
-      "correct": "C",
+      "correct": "A",
       "explanation": "A red 'X' or faded breakpoint indicator typically means the breakpoint is currently disabled.",
       "topic": {
         "topics": [
@@ -174,11 +174,11 @@ module.exports = {
       "question": "How can you quickly test a function in the console?",
       "options": {
         "A": "Refresh the page and check",
-        "B": "Create a new test file",
+        "B": "Call the function directly in console",
         "C": "Use console.testFunction()",
-        "D": "Call the function directly in console"
+        "D": "Create a new test file"
       },
-      "correct": "D",
+      "correct": "B",
       "explanation": "You can call any globally available function directly in the browser console to test its behavior.",
       "topic": {
         "topics": [
@@ -208,11 +208,11 @@ module.exports = {
       "question": "How do you create a conditional breakpoint?",
       "options": {
         "A": "Add console.breakIf()",
-        "B": "Use if(debugger) statement",
-        "C": "Right-click breakpoint and add condition",
+        "B": "Right-click breakpoint and add condition",
+        "C": "Use if(debugger) statement",
         "D": "Wrap code in debug conditional"
       },
-      "correct": "C",
+      "correct": "B",
       "explanation": "Right-click a breakpoint in developer tools and select 'Edit breakpoint' to add a condition that must be true for the breakpoint to trigger.",
       "topic": {
         "topics": [
@@ -224,12 +224,12 @@ module.exports = {
       "id": 11,
       "question": "What does console.timeLog() do?",
       "options": {
-        "A": "Logs elapsed time without stopping timer",
-        "B": "Logs the current time",
+        "A": "Logs the current time",
+        "B": "Logs elapsed time without stopping timer",
         "C": "Stops and logs the timer",
         "D": "Logs timezone information"
       },
-      "correct": "A",
+      "correct": "B",
       "explanation": "console.timeLog() logs the current value of a timer without stopping it, useful for intermediate timing checks.",
       "topic": {
         "topics": [
@@ -293,11 +293,11 @@ module.exports = {
       "question": "What does a purple console message indicate?",
       "options": {
         "A": "It's a deprecated feature warning",
-        "B": "It's a severe error",
+        "B": "It's a console.warn() message",
         "C": "It's a network request",
-        "D": "It's a console.warn() message"
+        "D": "It's a severe error"
       },
-      "correct": "D",
+      "correct": "B",
       "explanation": "console.warn() typically displays messages with yellow or purple styling in browser consoles.",
       "topic": {
         "topics": [
@@ -310,11 +310,11 @@ module.exports = {
       "question": "How can you quickly inspect a DOM element in console?",
       "options": {
         "A": "Use inspect() function",
-        "B": "Use $0 after selecting element in Elements panel",
-        "C": "Use console.element()",
+        "B": "Use console.element()",
+        "C": "Use $0 after selecting element in Elements panel",
         "D": "Right-click and 'Inspect in console'"
       },
-      "correct": "B",
+      "correct": "C",
       "explanation": "$0 references the currently selected element in the Elements panel, making it easy to inspect in console.",
       "topic": {
         "topics": [
@@ -327,11 +327,11 @@ module.exports = {
       "question": "What is a common debugging strategy for async code?",
       "options": {
         "A": "Remove all async/await keywords",
-        "B": "Add logs at start and end of async operations",
-        "C": "Convert to synchronous code",
+        "B": "Convert to synchronous code",
+        "C": "Add logs at start and end of async operations",
         "D": "Ignore timing issues"
       },
-      "correct": "B",
+      "correct": "C",
       "explanation": "Logging at the beginning and completion of async operations helps track their execution order and timing.",
       "topic": {
         "topics": [
@@ -343,12 +343,12 @@ module.exports = {
       "id": 18,
       "question": "How do you disable all breakpoints temporarily?",
       "options": {
-        "A": "Click 'Deactivate breakpoints' button",
+        "A": "Close developer tools",
         "B": "Remove all debugger statements",
-        "C": "Close developer tools",
+        "C": "Click 'Deactivate breakpoints' button",
         "D": "Use console.disableBreakpoints()"
       },
-      "correct": "A",
+      "correct": "C",
       "explanation": "The 'Deactivate breakpoints' button in debugger temporarily disables all breakpoints without removing them.",
       "topic": {
         "topics": [
@@ -394,12 +394,12 @@ module.exports = {
       "id": 21,
       "question": "What is the purpose of 'Blackboxing' a script?",
       "options": {
-        "A": "Skip debugging third-party library code",
+        "A": "Make code run faster",
         "B": "Hide sensitive code",
-        "C": "Make code run faster",
+        "C": "Skip debugging third-party library code",
         "D": "Encrypt the source code"
       },
-      "correct": "A",
+      "correct": "C",
       "explanation": "Blackboxing tells the debugger to skip over specified scripts (like libraries) when stepping through code.",
       "topic": {
         "topics": [
@@ -413,10 +413,10 @@ module.exports = {
       "options": {
         "A": "<pre>console.exists(variable)</pre>",
         "B": "<pre>console.check(variable)</pre>",
-        "C": "<pre>console.defined(variable)</pre>",
-        "D": "<pre>console.log(typeof variable)</pre>"
+        "C": "<pre>console.log(typeof variable)</pre>",
+        "D": "<pre>console.defined(variable)</pre>"
       },
-      "correct": "D",
+      "correct": "C",
       "explanation": "Using typeof in console.log helps check if a variable is defined and what type it is without throwing errors.",
       "topic": {
         "topics": [
@@ -428,12 +428,12 @@ module.exports = {
       "id": 23,
       "question": "What does the 'Scope' section show when paused at a breakpoint?",
       "options": {
-        "A": "All accessible variables and their values",
+        "A": "Future variable states",
         "B": "Only global variables",
         "C": "Variable names but not values",
-        "D": "Future variable states"
+        "D": "All accessible variables and their values"
       },
-      "correct": "A",
+      "correct": "D",
       "explanation": "The Scope section displays all variables in the current execution context, including local, closure, and global variables with their current values.",
       "topic": {
         "topics": [
@@ -447,10 +447,10 @@ module.exports = {
       "options": {
         "A": "Use console.findLogs()",
         "B": "Check the Console panel",
-        "C": "Use Find in Files feature for 'console.log'",
-        "D": "Search HTML files only"
+        "C": "Search HTML files only",
+        "D": "Use Find in Files feature for 'console.log'"
       },
-      "correct": "C",
+      "correct": "D",
       "explanation": "Using your editor's 'Find in Files' feature to search for 'console.log' helps locate all logging statements quickly.",
       "topic": {
         "topics": [
@@ -464,10 +464,10 @@ module.exports = {
       "options": {
         "A": "Convert all to console.error",
         "B": "Add more detailed logs",
-        "C": "Remove or comment out most logs",
-        "D": "Keep all logs for debugging"
+        "C": "Keep all logs for debugging",
+        "D": "Remove or comment out most logs"
       },
-      "correct": "C",
+      "correct": "D",
       "explanation": "Remove or disable most console.log statements in production to avoid cluttering the console and potential performance impacts.",
       "topic": {
         "topics": [
@@ -479,12 +479,12 @@ module.exports = {
       "id": 26,
       "question": "How do you inspect network requests in developer tools?",
       "options": {
-        "A": "Use the Network panel",
+        "A": "Look in Sources panel",
         "B": "Check Console for fetch logs",
         "C": "Use console.network()",
-        "D": "Look in Sources panel"
+        "D": "Use the Network panel"
       },
-      "correct": "A",
+      "correct": "D",
       "explanation": "The Network panel shows all network requests made by the page, including status, timing, and response data.",
       "topic": {
         "topics": [
@@ -547,13 +547,13 @@ module.exports = {
       "id": 30,
       "question": "Why is it important to understand the call stack when debugging?",
       "options": {
-        "A": "It shows the execution path that led to current state",
+        "A": "It organizes your code structure",
         "B": "It makes code run faster",
         "C": "It prevents stack overflow errors",
-        "D": "It organizes your code structure"
+        "D": "It shows the execution path that led to current state"
       },
       "explanation": "Understanding the call stack helps trace how your code reached its current state, which is crucial for identifying the source of bugs.",
-      "correct": "A",
+      "correct": "D",
       "topic": {
         "topics": [
           "Error tracking"

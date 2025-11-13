@@ -69,12 +69,12 @@ module.exports = {
       "id": 1,
       "question": "Which HTML entity represents the ampersand symbol (&)?",
       "options": {
-        "A": "<pre>&amp;and;</pre>",
-        "B": "<pre>&amp;amp;</pre>",
+        "A": "<pre>&amp;amp;</pre>",
+        "B": "<pre>&amp;and;</pre>",
         "C": "<pre>&amp;symbol;</pre>",
         "D": "<pre>&amp;ersand;</pre>"
       },
-      "correct": "B",
+      "correct": "A",
       "explanation": "The <pre>&amp;amp;</pre> entity represents the ampersand symbol (&). Since the ampersand is used to start HTML entities, you must use <pre>&amp;amp;</pre> when you want to display an actual ampersand character in your HTML content.",
       "topic": {
         "topics": [
@@ -87,12 +87,12 @@ module.exports = {
       "id": 2,
       "question": "What does the <pre>&amp;lt;</pre> entity display?",
       "options": {
-        "A": "Left bracket ([)",
+        "A": "Less-than symbol (<)",
         "B": "Greater-than symbol (>)",
         "C": "Left arrow (←)",
-        "D": "Less-than symbol (<)"
+        "D": "Left bracket ([)"
       },
-      "correct": "D",
+      "correct": "A",
       "explanation": "The <pre>&amp;lt;</pre> entity displays the less-than symbol (<). This is necessary because the < character is used to start HTML tags, so if you want to display it as content, you must use the entity.",
       "topic": {
         "topics": [
@@ -105,12 +105,12 @@ module.exports = {
       "id": 3,
       "question": "Which entity creates a non-breaking space?",
       "options": {
-        "A": "<pre>&amp;nbs;</pre>",
+        "A": "<pre>&amp;nbsp;</pre>",
         "B": "<pre>&amp;space;</pre>",
-        "C": "<pre>&amp;nbsp;</pre>",
+        "C": "<pre>&amp;nbs;</pre>",
         "D": "<pre>&amp;blank;</pre>"
       },
-      "correct": "C",
+      "correct": "A",
       "explanation": "The <pre>&amp;nbsp;</pre> entity creates a non-breaking space, which prevents browsers from breaking a line at that space. This is useful for keeping words together like \"Dr.&amp;nbsp;Smith\" to ensure they don't break across lines.",
       "topic": {
         "topics": [
@@ -141,12 +141,12 @@ module.exports = {
       "id": 5,
       "question": "Which entity represents the greater-than symbol (>)?",
       "options": {
-        "A": "<pre>&amp;more;</pre>",
-        "B": "<pre>&amp;gt;</pre>",
+        "A": "<pre>&amp;gt;</pre>",
+        "B": "<pre>&amp;more;</pre>",
         "C": "<pre>&amp;greater;</pre>",
         "D": "<pre>&amp;above;</pre>"
       },
-      "correct": "B",
+      "correct": "A",
       "explanation": "The <pre>&amp;gt;</pre> entity represents the greater-than symbol (>). Like the less-than symbol, the greater-than symbol has special meaning in HTML and must be escaped when used as content.",
       "topic": {
         "topics": [
@@ -159,12 +159,12 @@ module.exports = {
       "id": 6,
       "question": "What does <pre>&amp;quot;</pre> display?",
       "options": {
-        "A": "Question mark (?)",
+        "A": "Double quotation mark (\")",
         "B": "Single quotation mark (')",
-        "C": "Double quotation mark (\")",
+        "C": "Question mark (?)",
         "D": "Quotation dash (—)"
       },
-      "correct": "C",
+      "correct": "A",
       "explanation": "The <pre>&amp;quot;</pre> entity displays a double quotation mark (\"). This is useful when you need to include quotes within an attribute value that's already enclosed in quotes.",
       "topic": {
         "topics": [
@@ -177,12 +177,12 @@ module.exports = {
       "id": 7,
       "question": "Which entity produces the Euro currency symbol?",
       "options": {
-        "A": "<pre>&amp;eur;</pre>",
-        "B": "<pre>&amp;euro;</pre>",
+        "A": "<pre>&amp;euro;</pre>",
+        "B": "<pre>&amp;eur;</pre>",
         "C": "<pre>&amp;currency;</pre>",
         "D": "<pre>&amp;euros;</pre>"
       },
-      "correct": "B",
+      "correct": "A",
       "explanation": "The <pre>&amp;euro;</pre> entity produces the Euro currency symbol (€). Example: <pre>Price: &amp;euro;25.99</pre> displays as Price: €25.99.",
       "topic": {
         "topics": [
@@ -195,12 +195,12 @@ module.exports = {
       "id": 8,
       "question": "What symbol does <pre>&amp;reg;</pre> create?",
       "options": {
-        "A": "Registration mark (❐)",
+        "A": "Registered trademark symbol (®)",
         "B": "Copyright symbol (©)",
         "C": "Trademark symbol (™)",
-        "D": "Registered trademark symbol (®)"
+        "D": "Registration mark (❐)"
       },
-      "correct": "D",
+      "correct": "A",
       "explanation": "The <pre>&amp;reg;</pre> entity creates the registered trademark symbol (®). This indicates that a name, logo, or phrase is officially registered with a trademark office.",
       "topic": {
         "topics": [
@@ -232,11 +232,11 @@ module.exports = {
       "question": "What does <pre>&amp;pound;</pre> display?",
       "options": {
         "A": "Weight symbol (lb)",
-        "B": "Number sign (#)",
+        "B": "British pound symbol (£)",
         "C": "Hash symbol (#)",
-        "D": "British pound symbol (£)"
+        "D": "Number sign (#)"
       },
-      "correct": "D",
+      "correct": "B",
       "explanation": "The <pre>&amp;pound;</pre> entity displays the British pound sterling symbol (£). Example: <pre>Cost: &amp;pound;45.00</pre> displays as Cost: £45.00.",
       "topic": {
         "topics": [
@@ -250,11 +250,11 @@ module.exports = {
       "question": "Which entity should you use to display a single quotation mark?",
       "options": {
         "A": "<pre>&amp;squot;</pre>",
-        "B": "<pre>&amp;quote;</pre>",
-        "C": "<pre>&amp;apos;</pre>",
+        "B": "<pre>&amp;apos;</pre>",
+        "C": "<pre>&amp;quote;</pre>",
         "D": "<pre>&amp;singlequote;</pre>"
       },
-      "correct": "C",
+      "correct": "B",
       "explanation": "The <pre>&amp;apos;</pre> entity displays a single quotation mark or apostrophe ('). While often optional in HTML content, it's essential within attribute values that use single quotes.",
       "topic": {
         "topics": [
@@ -267,12 +267,12 @@ module.exports = {
       "id": 12,
       "question": "What symbol does <pre>&amp;trade;</pre> produce?",
       "options": {
-        "A": "Trademark symbol (™)",
-        "B": "Registered trademark (®)",
+        "A": "Registered trademark (®)",
+        "B": "Trademark symbol (™)",
         "C": "Copyright symbol (©)",
         "D": "Trade symbol (🏪)"
       },
-      "correct": "A",
+      "correct": "B",
       "explanation": "The <pre>&amp;trade;</pre> entity produces the trademark symbol (™). This indicates an unregistered trademark or that a name, logo, or phrase is being used as a trademark.",
       "topic": {
         "topics": [
@@ -286,11 +286,11 @@ module.exports = {
       "question": "Which entity represents the division sign?",
       "options": {
         "A": "<pre>&amp;slash;</pre>",
-        "B": "<pre>&amp;div;</pre>",
+        "B": "<pre>&amp;divide;</pre>",
         "C": "<pre>&amp;division;</pre>",
-        "D": "<pre>&amp;divide;</pre>"
+        "D": "<pre>&amp;div;</pre>"
       },
-      "correct": "D",
+      "correct": "B",
       "explanation": "The <pre>&amp;divide;</pre> entity represents the division sign (÷). This is used in mathematical expressions. Example: <pre>12 &amp;divide; 3 = 4</pre> displays as 12 ÷ 3 = 4.",
       "topic": {
         "topics": [
@@ -303,12 +303,12 @@ module.exports = {
       "id": 14,
       "question": "What does <pre>&amp;yen;</pre> display?",
       "options": {
-        "A": "Japanese yen symbol (¥)",
-        "B": "Chinese yuan symbol (元)",
+        "A": "Chinese yuan symbol (元)",
+        "B": "Japanese yen symbol (¥)",
         "C": "Dollar symbol ($)",
         "D": "Cent symbol (¢)"
       },
-      "correct": "A",
+      "correct": "B",
       "explanation": "The <pre>&amp;yen;</pre> entity displays the Japanese yen symbol (¥). This currency symbol is used for both Japanese yen and Chinese yuan in some contexts.",
       "topic": {
         "topics": [
@@ -322,11 +322,11 @@ module.exports = {
       "question": "Which entity represents the plus-minus symbol?",
       "options": {
         "A": "<pre>&amp;+-;</pre>",
-        "B": "<pre>&amp;plusminus;</pre>",
+        "B": "<pre>&amp;plusmn;</pre>",
         "C": "<pre>&amp;pm;</pre>",
-        "D": "<pre>&amp;plusmn;</pre>"
+        "D": "<pre>&amp;plusminus;</pre>"
       },
-      "correct": "D",
+      "correct": "B",
       "explanation": "The <pre>&amp;plusmn;</pre> entity represents the plus-minus symbol (±). This is used in mathematics to indicate approximation or tolerance. Example: <pre>Temperature: 20&amp;plusmn;2°C</pre> displays as Temperature: 20±2°C.",
       "topic": {
         "topics": [
@@ -339,12 +339,12 @@ module.exports = {
       "id": 16,
       "question": "When should you use HTML entities instead of typing characters directly?",
       "options": {
-        "A": "When the character has special meaning in HTML",
-        "B": "Always, for all special characters",
+        "A": "Always, for all special characters",
+        "B": "When the character has special meaning in HTML",
         "C": "Only for mathematical symbols",
         "D": "Never, with UTF-8 encoding"
       },
-      "correct": "A",
+      "correct": "B",
       "explanation": "You should use HTML entities when the character has special meaning in HTML syntax (<, >, &, \") or when you need to ensure the character displays correctly across different systems and encodings, even though UTF-8 handles most characters directly.",
       "topic": {
         "topics": [
@@ -395,10 +395,10 @@ module.exports = {
       "options": {
         "A": "Currency symbol (¤)",
         "B": "Dollar symbol ($)",
-        "C": "Percent symbol (%)",
-        "D": "Cent symbol (¢)"
+        "C": "Cent symbol (¢)",
+        "D": "Percent symbol (%)"
       },
-      "correct": "D",
+      "correct": "C",
       "explanation": "The <pre>&amp;cent;</pre> entity displays the cent symbol (¢). This is used primarily for US currency subdivisions. Example: <pre>Price: 99&amp;cent;</pre> displays as Price: 99¢.",
       "topic": {
         "topics": [
@@ -411,12 +411,12 @@ module.exports = {
       "id": 20,
       "question": "Which entity represents the section symbol?",
       "options": {
-        "A": "<pre>&amp;sect;</pre>",
+        "A": "<pre>&amp;para;</pre>",
         "B": "<pre>&amp;section;</pre>",
-        "C": "<pre>&amp;para;</pre>",
+        "C": "<pre>&amp;sect;</pre>",
         "D": "<pre>&amp;sec;</pre>"
       },
-      "correct": "A",
+      "correct": "C",
       "explanation": "The <pre>&amp;sect;</pre> entity represents the section symbol (§). This is commonly used in legal documents and references to indicate sections. Example: <pre>See &amp;sect; 4.2</pre> displays as See § 4.2.",
       "topic": {
         "topics": [
@@ -430,11 +430,11 @@ module.exports = {
       "question": "What is the numeric entity for the copyright symbol?",
       "options": {
         "A": "<pre>&amp;#174;</pre>",
-        "B": "<pre>&amp;#169;</pre>",
-        "C": "<pre>&amp;#8482;</pre>",
+        "B": "<pre>&amp;#8482;</pre>",
+        "C": "<pre>&amp;#169;</pre>",
         "D": "<pre>&amp;#64;</pre>"
       },
-      "correct": "B",
+      "correct": "C",
       "explanation": "The numeric entity <pre>&amp;#169;</pre> represents the copyright symbol (©). HTML entities can be written using named entities (<pre>&amp;copy;</pre>) or numeric entities using either decimal (<pre>&amp;#169;</pre>) or hexadecimal (<pre>&amp;#xA9;</pre>) codes.",
       "topic": {
         "topics": [
@@ -465,12 +465,12 @@ module.exports = {
       "id": 23,
       "question": "What does <pre>&amp;frac12;</pre> display?",
       "options": {
-        "A": "Vulgar fraction one half (½)",
+        "A": "Number 1/2",
         "B": "Division symbol (÷)",
-        "C": "Number 1/2",
+        "C": "Vulgar fraction one half (½)",
         "D": "Mathematical fraction"
       },
-      "correct": "A",
+      "correct": "C",
       "explanation": "The <pre>&amp;frac12;</pre> entity displays the vulgar fraction one half (½). Other fraction entities include <pre>&amp;frac14;</pre> for ¼ and <pre>&amp;frac34;</pre> for ¾.",
       "topic": {
         "topics": [
@@ -502,11 +502,11 @@ module.exports = {
       "question": "What is the primary reason to use <pre>&amp;nbsp;</pre> instead of regular spaces?",
       "options": {
         "A": "To create wider spacing",
-        "B": "To prevent unwanted line breaks",
+        "B": "To make text bold",
         "C": "To improve SEO",
-        "D": "To make text bold"
+        "D": "To prevent unwanted line breaks"
       },
-      "correct": "B",
+      "correct": "D",
       "explanation": "The primary reason to use <pre>&amp;nbsp;</pre> instead of regular spaces is to prevent browsers from breaking lines at that point. Regular spaces are 'breaking spaces' where lines can wrap, while non-breaking spaces keep content together.",
       "topic": {
         "topics": [
@@ -520,11 +520,11 @@ module.exports = {
       "question": "Which entity represents the inverted question mark used in Spanish?",
       "options": {
         "A": "<pre>&amp;invertquest;</pre>",
-        "B": "<pre>&amp;iquest;</pre>",
+        "B": "<pre>&amp;question;</pre>",
         "C": "<pre>&amp;spanishquest;</pre>",
-        "D": "<pre>&amp;question;</pre>"
+        "D": "<pre>&amp;iquest;</pre>"
       },
-      "correct": "B",
+      "correct": "D",
       "explanation": "The <pre>&amp;iquest;</pre> entity represents the inverted question mark (¿) used at the beginning of questions in Spanish. The inverted exclamation mark is <pre>&amp;iexcl;</pre> (¡).",
       "topic": {
         "topics": [
@@ -538,11 +538,11 @@ module.exports = {
       "question": "What does <pre>&amp;middot;</pre> display?",
       "options": {
         "A": "Bullet point (•)",
-        "B": "Middle dot (·)",
+        "B": "Multiplication dot (⋅)",
         "C": "Decimal point (.)",
-        "D": "Multiplication dot (⋅)"
+        "D": "Middle dot (·)"
       },
-      "correct": "B",
+      "correct": "D",
       "explanation": "The <pre>&amp;middot;</pre> entity displays the middle dot (·), which is used as a decimal point in some countries, as a multiplication sign, or as a separator in lists and names.",
       "topic": {
         "topics": [
@@ -555,12 +555,12 @@ module.exports = {
       "id": 28,
       "question": "Which entity should you use to display the ampersand in HTML content?",
       "options": {
-        "A": "<pre>&amp;amp;</pre>",
+        "A": "<pre>&amp;ersand;</pre>",
         "B": "<pre>&amp;</pre>",
         "C": "<pre>&amp;and;</pre>",
-        "D": "<pre>&amp;ersand;</pre>"
+        "D": "<pre>&amp;amp;</pre>"
       },
-      "correct": "A",
+      "correct": "D",
       "explanation": "You must use <pre>&amp;amp;</pre> to display an ampersand in HTML content because the ampersand character (&) is used to start entity references. If you use a plain &, the browser will try to interpret what follows as an entity.",
       "topic": {
         "topics": [
@@ -573,12 +573,12 @@ module.exports = {
       "id": 29,
       "question": "What is the hexadecimal entity for the Euro symbol?",
       "options": {
-        "A": "<pre>&amp;#x20AC;</pre>",
+        "A": "<pre>&amp;#x20;</pre>",
         "B": "<pre>&amp;#x24;</pre>",
         "C": "<pre>&amp;#xA3;</pre>",
-        "D": "<pre>&amp;#x20;</pre>"
+        "D": "<pre>&amp;#x20AC;</pre>"
       },
-      "correct": "A",
+      "correct": "D",
       "explanation": "The hexadecimal entity for the Euro symbol is <pre>&amp;#x20AC;</pre>. HTML entities can be written in hexadecimal format with <pre>&amp;#x</pre> followed by the hex code, or in decimal format with <pre>&amp;#</pre> followed by the decimal code.",
       "topic": {
         "topics": [
@@ -593,10 +593,10 @@ module.exports = {
       "options": {
         "A": "Only when using ASCII encoding",
         "B": "For all non-alphanumeric characters",
-        "C": "For characters <, >, &, and \" in content",
-        "D": "Never, with proper UTF-8 declaration"
+        "C": "Never, with proper UTF-8 declaration",
+        "D": "For characters <, >, &, and \" in content"
       },
-      "correct": "C",
+      "correct": "D",
       "explanation": "HTML entities are absolutely necessary for the characters <, >, &, and \" when they appear in HTML content, because these characters have special meaning in HTML syntax. While UTF-8 can display most characters directly, these four must be escaped to avoid parsing errors.",
       "topic": {
         "topics": [

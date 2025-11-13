@@ -69,12 +69,12 @@ module.exports = {
       "id": 1,
       "question": "Which of the following best describes the relationship between microtasks and macrotasks?",
       "options": {
-        "A": "Microtasks run after macrotasks and before the next paint",
+        "A": "Microtasks run between macrotasks within the same event loop turn and are drained before rendering",
         "B": "Macrotasks run before microtasks in every tick",
         "C": "They run simultaneously on separate threads",
-        "D": "Microtasks run between macrotasks within the same event loop turn and are drained before rendering"
+        "D": "Microtasks run after macrotasks and before the next paint"
       },
-      "correct": "D",
+      "correct": "A",
       "explanation": "Microtasks (Promise callbacks, mutation observer callbacks) are executed after the currently running script and before the event loop continues to the next macrotask; they are drained before rendering/paint.",
       "topic": {
         "topics": [
@@ -103,12 +103,12 @@ module.exports = {
       "id": 3,
       "question": "Which Promise utility returns after all input promises settle and gives their status?",
       "options": {
-        "A": "Promise.all",
-        "B": "Promise.allSettled",
+        "A": "Promise.allSettled",
+        "B": "Promise.all",
         "C": "Promise.race",
         "D": "Promise.any"
       },
-      "correct": "B",
+      "correct": "A",
       "explanation": "Promise.allSettled waits for all promises to settle and returns an array describing each outcome, regardless of fulfillment or rejection.",
       "topic": {
         "topics": [
@@ -120,12 +120,12 @@ module.exports = {
       "id": 4,
       "question": "To avoid layout thrashing when performing many DOM reads and writes, you should:",
       "options": {
-        "A": "Interleave reads and writes",
+        "A": "Batch reads, then batch writes",
         "B": "Use setTimeout for each write",
-        "C": "Batch reads, then batch writes",
+        "C": "Interleave reads and writes",
         "D": "Call requestAnimationFrame for reads"
       },
-      "correct": "C",
+      "correct": "A",
       "explanation": "Batching DOM reads together and then batching writes reduces forced synchronous layouts and improves performance (avoid alternating reads/writes which cause layout thrashing).",
       "topic": {
         "topics": [
@@ -137,12 +137,12 @@ module.exports = {
       "id": 5,
       "question": "Which approach is best to limit how often a scroll handler runs to improve performance?",
       "options": {
-        "A": "Use setInterval with a very small interval",
+        "A": "Throttle the handler or use requestAnimationFrame-based throttling",
         "B": "Debounce the handler",
         "C": "Run the handler synchronously on each event",
-        "D": "Throttle the handler or use requestAnimationFrame-based throttling"
+        "D": "Use setInterval with a very small interval"
       },
-      "correct": "D",
+      "correct": "A",
       "explanation": "Throttling or using requestAnimationFrame ensures the handler runs at a controlled rate (e.g., once per animation frame), preventing expensive continuous work during high-frequency events like scroll.",
       "topic": {
         "topics": [
@@ -154,12 +154,12 @@ module.exports = {
       "id": 6,
       "question": "Which API provides a way to run scripts in background threads in the browser?",
       "options": {
-        "A": "setInterval",
+        "A": "Web Workers",
         "B": "Promise",
         "C": "requestAnimationFrame",
-        "D": "Web Workers"
+        "D": "setInterval"
       },
-      "correct": "D",
+      "correct": "A",
       "explanation": "Web Workers allow JavaScript to run in background threads separate from the main UI thread, useful for CPU-intensive tasks without blocking the UI.",
       "topic": {
         "topics": [
@@ -171,12 +171,12 @@ module.exports = {
       "id": 7,
       "question": "What is the main difference between fetch() and XHR?",
       "options": {
-        "A": "There is no difference",
+        "A": "fetch supports promises and streams; XHR doesn't natively support promises",
         "B": "XHR is asynchronous only, fetch is synchronous",
         "C": "fetch automatically retries failed requests",
-        "D": "fetch supports promises and streams; XHR doesn't natively support promises"
+        "D": "There is no difference"
       },
-      "correct": "D",
+      "correct": "A",
       "explanation": "fetch() returns a Promise and integrates better with modern APIs (streams, Service Workers), whereas XHR uses callbacks and an older API surface.",
       "topic": {
         "topics": [
@@ -189,11 +189,11 @@ module.exports = {
       "question": "Which of these is true about requestAnimationFrame (rAF)?",
       "options": {
         "A": "rAF callbacks run as microtasks",
-        "B": "rAF is deprecated",
-        "C": "rAF schedules callbacks before the next repaint",
+        "B": "rAF schedules callbacks before the next repaint",
+        "C": "rAF is deprecated",
         "D": "rAF guarantees 60fps on all devices"
       },
-      "correct": "C",
+      "correct": "B",
       "explanation": "requestAnimationFrame schedules a callback to run before the next repaint; it's useful for smooth animations and syncing DOM updates with frame rendering.",
       "topic": {
         "topics": [
@@ -205,12 +205,12 @@ module.exports = {
       "id": 9,
       "question": "Which pattern helps avoid holding large objects in memory between asynchronous callbacks?",
       "options": {
-        "A": "Passing minimal data to callbacks and releasing references",
-        "B": "Capturing large objects in closures permanently",
+        "A": "Capturing large objects in closures permanently",
+        "B": "Passing minimal data to callbacks and releasing references",
         "C": "Using global variables",
         "D": "Using JSON.stringify for everything"
       },
-      "correct": "A",
+      "correct": "B",
       "explanation": "Minimize captured state and release references so garbage collector can reclaim memory; avoid unnecessary large closures or globals that keep data alive.",
       "topic": {
         "topics": [
@@ -274,11 +274,11 @@ module.exports = {
       "question": "Which technique can reduce the frequency of expensive layout calculations triggered by DOM updates?",
       "options": {
         "A": "Make many small writes interleaved with reads",
-        "B": "Perform DOM reads inside write loops",
-        "C": "Use document fragments and batch DOM updates",
+        "B": "Use document fragments and batch DOM updates",
+        "C": "Perform DOM reads inside write loops",
         "D": "Use eval() to batch updates"
       },
-      "correct": "C",
+      "correct": "B",
       "explanation": "Using document fragments and batching DOM writes reduces layout recalculations and reflows; avoid interleaving reads and writes that cause forced synchronous layouts.",
       "topic": {
         "topics": [
@@ -290,12 +290,12 @@ module.exports = {
       "id": 14,
       "question": "When using setTimeout(fn, 0) in browsers, which statement is true?",
       "options": {
-        "A": "It schedules a macrotask which runs after microtasks and next tick",
+        "A": "It runs as a microtask",
         "B": "It runs immediately before microtasks",
-        "C": "It runs as a microtask",
+        "C": "It schedules a macrotask which runs after microtasks and next tick",
         "D": "It schedules work on another thread"
       },
-      "correct": "A",
+      "correct": "C",
       "explanation": "setTimeout schedules a macrotask; macrotasks run after the current script and microtasks are drained, so the timeout callback runs later than Promise microtasks.",
       "topic": {
         "topics": [
@@ -324,12 +324,12 @@ module.exports = {
       "id": 16,
       "question": "Which Node API yields behavior most similar to setTimeout(fn, 0) but schedules callbacks earlier in certain environments?",
       "options": {
-        "A": "setImmediate",
+        "A": "requestAnimationFrame",
         "B": "process.nextTick",
-        "C": "requestAnimationFrame",
+        "C": "setImmediate",
         "D": "Promise.resolve()"
       },
-      "correct": "A",
+      "correct": "C",
       "explanation": "setImmediate schedules a macrotask that on Node runs after I/O events callbacks; process.nextTick runs before I/O. setImmediate is often used to break up long operations.",
       "topic": {
         "topics": [
@@ -341,12 +341,12 @@ module.exports = {
       "id": 17,
       "question": "Which Promise utility returns the first fulfilled promise, rejecting only if all promises reject?",
       "options": {
-        "A": "Promise.any",
+        "A": "Promise.all",
         "B": "Promise.race",
-        "C": "Promise.all",
+        "C": "Promise.any",
         "D": "Promise.allSettled"
       },
-      "correct": "A",
+      "correct": "C",
       "explanation": "Promise.any resolves as soon as one input promise fulfills; it rejects only if all input promises reject.",
       "topic": {
         "topics": [
@@ -359,11 +359,11 @@ module.exports = {
       "question": "Which technique is most effective to prevent blocking the main thread when doing heavy CPU work in a browser?",
       "options": {
         "A": "Use setTimeout for small slices",
-        "B": "Use Web Workers to move CPU-heavy tasks off the main thread",
-        "C": "Use synchronous XHR during processing",
+        "B": "Use synchronous XHR during processing",
+        "C": "Use Web Workers to move CPU-heavy tasks off the main thread",
         "D": "Store large arrays in localStorage"
       },
-      "correct": "B",
+      "correct": "C",
       "explanation": "Web Workers enable running scripts in background threads, avoiding main-thread blocking for CPU-heavy tasks.",
       "topic": {
         "topics": [
@@ -377,10 +377,10 @@ module.exports = {
       "options": {
         "A": "Network tab only",
         "B": "Console tab",
-        "C": "Application tab",
-        "D": "Performance tab's Long Tasks and Flame Chart in DevTools"
+        "C": "Performance tab's Long Tasks and Flame Chart in DevTools",
+        "D": "Application tab"
       },
-      "correct": "D",
+      "correct": "C",
       "explanation": "DevTools Performance panel visualizes long tasks and call stacks, helping identify jank caused by main-thread work.",
       "topic": {
         "topics": [
@@ -394,10 +394,10 @@ module.exports = {
       "options": {
         "A": "console.time only",
         "B": "setTimeout with 0 delay",
-        "C": "performance.now()",
-        "D": "Math.random()"
+        "C": "Math.random()",
+        "D": "performance.now()"
       },
-      "correct": "C",
+      "correct": "D",
       "explanation": "performance.now() provides sub-millisecond precision for high-resolution timing useful in profiling code sections.",
       "topic": {
         "topics": [
@@ -409,12 +409,12 @@ module.exports = {
       "id": 21,
       "question": "Which approach best reduces memory retained by closures in long-lived timers?",
       "options": {
-        "A": "Clear timers and null out references when no longer needed",
+        "A": "Use eval to free memory",
         "B": "Keep references to large objects in outer scope",
         "C": "Attach large objects to window for GC protection",
-        "D": "Use eval to free memory"
+        "D": "Clear timers and null out references when no longer needed"
       },
-      "correct": "A",
+      "correct": "D",
       "explanation": "Clearing timers and removing references allows the garbage collector to reclaim memory instead of keeping it retained by closures.",
       "topic": {
         "topics": [
@@ -444,11 +444,11 @@ module.exports = {
       "question": "When streaming a large response from fetch, what object allows incremental reads?",
       "options": {
         "A": "response.text() only",
-        "B": "ReadableStream/response.body.getReader",
+        "B": "localStorage",
         "C": "XMLHttpRequest only",
-        "D": "localStorage"
+        "D": "ReadableStream/response.body.getReader"
       },
-      "correct": "B",
+      "correct": "D",
       "explanation": "The Streams API exposes a ReadableStream on response.body letting you read chunks progressively rather than waiting for the whole payload.",
       "topic": {
         "topics": [
@@ -462,10 +462,10 @@ module.exports = {
       "options": {
         "A": "process them synchronously",
         "B": "Create thousands of timers",
-        "C": "Batch tasks and run them on microtask or rAF checkpoints where appropriate",
-        "D": "Disable microtasks"
+        "C": "Disable microtasks",
+        "D": "Batch tasks and run them on microtask or rAF checkpoints where appropriate"
       },
-      "correct": "C",
+      "correct": "D",
       "explanation": "Batching small tasks and scheduling them appropriately prevents constant context switching and reduces overhead.",
       "topic": {
         "topics": [
@@ -477,12 +477,12 @@ module.exports = {
       "id": 25,
       "question": "Which metric indicates the time until the main thread first becomes free to handle user input?",
       "options": {
-        "A": "First Input Delay (FID)",
+        "A": "Total Blocking Time (TBT)",
         "B": "Time to First Byte (TTFB)",
         "C": "DOMContentLoaded",
-        "D": "Total Blocking Time (TBT)"
+        "D": "First Input Delay (FID)"
       },
-      "correct": "A",
+      "correct": "D",
       "explanation": "First Input Delay measures the delay between first user interaction and when the main thread can respond; it's a key responsiveness metric.",
       "topic": {
         "topics": [

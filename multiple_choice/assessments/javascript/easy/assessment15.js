@@ -54,12 +54,12 @@ module.exports = {
       "id": 1,
       "question": "What does [CODE]Object.seal(obj)[/CODE] prevent?",
       "options": {
-        "A": "All modifications",
+        "A": "Adding or deleting properties",
         "B": "Modifying existing properties",
         "C": "Accessing properties",
-        "D": "Adding or deleting properties"
+        "D": "All modifications"
       },
-      "correct": "D",
+      "correct": "A",
       "explanation": "<pre>Object.seal()</pre> prevents new properties from being added and existing properties from being deleted, but allows modifying existing property values.",
       "topic": {
         "topics": [
@@ -71,12 +71,12 @@ module.exports = {
       "id": 2,
       "question": "How do you define a non-enumerable property?",
       "options": {
-        "A": "<pre>obj.prop = value; obj.hide('prop')</pre>",
-        "B": "<pre>Object.defineProperty(obj, 'prop', {enumerable: false})</pre>",
+        "A": "<pre>Object.defineProperty(obj, 'prop', {enumerable: false})</pre>",
+        "B": "<pre>obj.prop = value; obj.hide('prop')</pre>",
         "C": "<pre>obj['prop'] = value; obj.enumerable = false</pre>",
         "D": "<pre>Object.hideProperty(obj, 'prop')</pre>"
       },
-      "correct": "B",
+      "correct": "A",
       "explanation": "<pre>Object.defineProperty()</pre> allows you to set property attributes like <pre>enumerable</pre>. Non-enumerable properties won't show up in <pre>for...in</pre> loops or <pre>Object.keys()</pre>.",
       "topic": {
         "topics": [
@@ -88,12 +88,12 @@ module.exports = {
       "id": 3,
       "question": "What is the result of [CODE]const obj = {a: 1}; Object.freeze(obj); obj.a = 2; obj.a[/CODE]?",
       "options": {
-        "A": "Error",
+        "A": "<pre>1</pre>",
         "B": "<pre>2</pre>",
         "C": "<pre>undefined</pre>",
-        "D": "<pre>1</pre>"
+        "D": "Error"
       },
-      "correct": "D",
+      "correct": "A",
       "explanation": "<pre>Object.freeze()</pre> makes an object immutable. Attempts to modify properties are ignored in non-strict mode or throw errors in strict mode.",
       "topic": {
         "topics": [
@@ -105,12 +105,12 @@ module.exports = {
       "id": 4,
       "question": "Which loop iterates over object properties including inherited ones?",
       "options": {
-        "A": "<pre>Object.keys()</pre> with forEach",
+        "A": "<pre>for...in</pre>",
         "B": "<pre>for...of</pre>",
-        "C": "<pre>for...in</pre>",
+        "C": "<pre>Object.keys()</pre> with forEach",
         "D": "<pre>Object.entries()</pre> with forEach"
       },
-      "correct": "C",
+      "correct": "A",
       "explanation": "<pre>for...in</pre> iterates over all enumerable properties, including inherited ones. Use <pre>hasOwnProperty()</pre> to filter to own properties only.",
       "topic": {
         "topics": [
@@ -122,12 +122,12 @@ module.exports = {
       "id": 5,
       "question": "What does [CODE]Object.getPrototypeOf({}) === Object.prototype[/CODE] return?",
       "options": {
-        "A": "<pre>false</pre>",
-        "B": "<pre>true</pre>",
+        "A": "<pre>true</pre>",
+        "B": "<pre>false</pre>",
         "C": "<pre>undefined</pre>",
         "D": "Error"
       },
-      "correct": "B",
+      "correct": "A",
       "explanation": "Objects created with literal notation inherit from <pre>Object.prototype</pre>, so this comparison returns <pre>true</pre>.",
       "topic": {
         "topics": [
@@ -173,12 +173,12 @@ module.exports = {
       "id": 8,
       "question": "Which method checks if an object is sealed?",
       "options": {
-        "A": "<pre>obj.isSealed</pre>",
+        "A": "<pre>Object.isSealed()</pre>",
         "B": "<pre>Object.sealed()</pre>",
-        "C": "<pre>Object.isSealed()</pre>",
+        "C": "<pre>obj.isSealed</pre>",
         "D": "<pre>Object.checkSealed()</pre>"
       },
-      "correct": "C",
+      "correct": "A",
       "explanation": "<pre>Object.isSealed()</pre> determines if an object is sealed, meaning no properties can be added or removed.",
       "topic": {
         "topics": [
@@ -191,11 +191,11 @@ module.exports = {
       "question": "What does [CODE]const {a: x} = {a: 1}[/CODE] assign to x?",
       "options": {
         "A": "<pre>undefined</pre>",
-        "B": "<pre>a</pre>",
+        "B": "<pre>1</pre>",
         "C": "<pre>{a: 1}</pre>",
-        "D": "<pre>1</pre>"
+        "D": "<pre>a</pre>"
       },
-      "correct": "D",
+      "correct": "B",
       "explanation": "This destructuring syntax extracts property <pre>a</pre> from the object and assigns it to variable <pre>x</pre>.",
       "topic": {
         "topics": [
@@ -207,12 +207,12 @@ module.exports = {
       "id": 10,
       "question": "How do you make a property read-only?",
       "options": {
-        "A": "<pre>Object.defineProperty(obj, 'prop', {writable: false})</pre>",
-        "B": "<pre>obj.readOnly('prop')</pre>",
+        "A": "<pre>obj.readOnly('prop')</pre>",
+        "B": "<pre>Object.defineProperty(obj, 'prop', {writable: false})</pre>",
         "C": "<pre>Object.freezeProperty(obj, 'prop')</pre>",
         "D": "<pre>obj.prop.readOnly = true</pre>"
       },
-      "correct": "A",
+      "correct": "B",
       "explanation": "Setting <pre>writable: false</pre> in a property descriptor makes the property read-only. Attempts to change it will fail silently or throw in strict mode.",
       "topic": {
         "topics": [
@@ -225,11 +225,11 @@ module.exports = {
       "question": "What is the result of [CODE]Object.isExtensible({})[/CODE]?",
       "options": {
         "A": "Error",
-        "B": "<pre>false</pre>",
+        "B": "<pre>true</pre>",
         "C": "<pre>undefined</pre>",
-        "D": "<pre>true</pre>"
+        "D": "<pre>false</pre>"
       },
-      "correct": "D",
+      "correct": "B",
       "explanation": "By default, objects are extensible (new properties can be added). <pre>Object.isExtensible()</pre> checks if an object can have new properties added.",
       "topic": {
         "topics": [
@@ -242,11 +242,11 @@ module.exports = {
       "question": "Which method creates an object without any prototype?",
       "options": {
         "A": "<pre>Object.noPrototype()</pre>",
-        "B": "<pre>{}</pre>",
+        "B": "<pre>Object.create(null)</pre>",
         "C": "<pre>new Object()</pre>",
-        "D": "<pre>Object.create(null)</pre>"
+        "D": "<pre>{}</pre>"
       },
-      "correct": "D",
+      "correct": "B",
       "explanation": "<pre>Object.create(null)</pre> creates an object with no prototype, meaning it won't inherit any methods from <pre>Object.prototype</pre>.",
       "topic": {
         "topics": [
@@ -292,12 +292,12 @@ module.exports = {
       "id": 15,
       "question": "What is the result of [CODE]const obj = {}; 'toString' in obj[/CODE]?",
       "options": {
-        "A": "<pre>true</pre>",
-        "B": "<pre>false</pre>",
+        "A": "<pre>false</pre>",
+        "B": "<pre>true</pre>",
         "C": "<pre>undefined</pre>",
         "D": "Error"
       },
-      "correct": "A",
+      "correct": "B",
       "explanation": "The <pre>in</pre> operator checks the prototype chain. <pre>toString</pre> is inherited from <pre>Object.prototype</pre>, so it returns <pre>true</pre>.",
       "topic": {
         "topics": [
@@ -310,11 +310,11 @@ module.exports = {
       "question": "Which method prevents property attributes from being changed?",
       "options": {
         "A": "<pre>Object.freeze()</pre>",
-        "B": "<pre>Object.seal()</pre>",
-        "C": "<pre>Object.preventExtensions()</pre>",
+        "B": "<pre>Object.preventExtensions()</pre>",
+        "C": "<pre>Object.seal()</pre>",
         "D": "<pre>Object.lock()</pre>"
       },
-      "correct": "B",
+      "correct": "C",
       "explanation": "<pre>Object.seal()</pre> makes existing properties non-configurable, preventing their attributes from being changed.",
       "topic": {
         "topics": [
@@ -343,12 +343,12 @@ module.exports = {
       "id": 18,
       "question": "How do you destructure with default values?",
       "options": {
-        "A": "<pre>const {a = 1} = {}</pre>",
+        "A": "<pre>const {a} = {default: 1}</pre>",
         "B": "<pre>const {a: 1} = {}</pre>",
-        "C": "<pre>const {a} = {default: 1}</pre>",
+        "C": "<pre>const {a = 1} = {}</pre>",
         "D": "<pre>const a = 1 from {}</pre>"
       },
-      "correct": "A",
+      "correct": "C",
       "explanation": "Default values in destructuring provide fallback values when the property doesn't exist or is <pre>undefined</pre>.",
       "topic": {
         "topics": [
@@ -444,12 +444,12 @@ module.exports = {
       "id": 24,
       "question": "Which method returns only enumerable own properties?",
       "options": {
-        "A": "<pre>Object.keys()</pre>",
+        "A": "<pre>Object.properties()</pre>",
         "B": "<pre>Object.getOwnPropertyNames()</pre>",
         "C": "<pre>Reflect.ownKeys()</pre>",
-        "D": "<pre>Object.properties()</pre>"
+        "D": "<pre>Object.keys()</pre>"
       },
-      "correct": "A",
+      "correct": "D",
       "explanation": "<pre>Object.keys()</pre> returns only enumerable own property names. Other methods include non-enumerable properties.",
       "topic": {
         "topics": [
@@ -463,10 +463,10 @@ module.exports = {
       "options": {
         "A": "Converts the object to an array",
         "B": "Copies array methods to the object",
-        "C": "Sets the object's prototype to Array.prototype",
-        "D": "Throws an error"
+        "C": "Throws an error",
+        "D": "Sets the object's prototype to Array.prototype"
       },
-      "correct": "C",
+      "correct": "D",
       "explanation": "<pre>Object.setPrototypeOf()</pre> sets the prototype (i.e., the internal <pre>[[Prototype]]</pre> property) of a specified object to another object.",
       "topic": {
         "topics": [
@@ -496,11 +496,11 @@ module.exports = {
       "question": "What is the result of [CODE]const obj = {a: 1}; Object.defineProperty(obj, 'b', {value: 2, enumerable: false}); Object.keys(obj)[/CODE]?",
       "options": {
         "A": "<pre>['a', 'b']</pre>",
-        "B": "<pre>['a']</pre>",
+        "B": "<pre>[1, 2]</pre>",
         "C": "<pre>[1]</pre>",
-        "D": "<pre>[1, 2]</pre>"
+        "D": "<pre>['a']</pre>"
       },
-      "correct": "B",
+      "correct": "D",
       "explanation": "<pre>Object.keys()</pre> only returns enumerable properties. Property <pre>b</pre> was defined as non-enumerable, so it's not included.",
       "topic": {
         "topics": [
@@ -513,11 +513,11 @@ module.exports = {
       "question": "Which method creates multiple properties at once?",
       "options": {
         "A": "<pre>Object.createProperties()</pre>",
-        "B": "<pre>Object.defineProperties()</pre>",
+        "B": "<pre>Object.setProperties()</pre>",
         "C": "<pre>Object.addProperties()</pre>",
-        "D": "<pre>Object.setProperties()</pre>"
+        "D": "<pre>Object.defineProperties()</pre>"
       },
-      "correct": "B",
+      "correct": "D",
       "explanation": "<pre>Object.defineProperties()</pre> allows you to define multiple properties with their descriptors in one call.",
       "topic": {
         "topics": [
@@ -529,12 +529,12 @@ module.exports = {
       "id": 29,
       "question": "What does [CODE]const obj = {a: 1}; const {a, b = 2} = obj; b[/CODE] return?",
       "options": {
-        "A": "<pre>2</pre>",
+        "A": "Error",
         "B": "<pre>1</pre>",
         "C": "<pre>undefined</pre>",
-        "D": "Error"
+        "D": "<pre>2</pre>"
       },
-      "correct": "A",
+      "correct": "D",
       "explanation": "Since property <pre>b</pre> doesn't exist in the object, the default value <pre>2</pre> is used.",
       "topic": {
         "topics": [
@@ -546,12 +546,11 @@ module.exports = {
       "id": 30,
       "question": "How do you check if an object is the prototype of another?",
       "options": {
-        "A": "<pre>prototypeObj.isPrototypeOf(obj)</pre>",
         "B": "<pre>obj instanceof prototypeObj</pre>",
         "C": "<pre>Object.isPrototype(prototypeObj, obj)</pre>",
-        "D": "<pre>obj.hasPrototype(prototypeObj)</pre>"
+        "D": "<pre>obj.hasPrototype(prototypeObj)</pre>",
+        "undefined": "<pre>prototypeObj.isPrototypeOf(obj)</pre>"
       },
-      "correct": "A",
       "explanation": "<pre>isPrototypeOf()</pre> checks if an object exists in another object's prototype chain. It's more flexible than <pre>instanceof</pre>.",
       "topic": {
         "topics": [

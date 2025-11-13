@@ -70,11 +70,11 @@ module.exports = {
       "question": "What is the purpose of the <pre>hreflang</pre> attribute in HTML?",
       "options": {
         "A": "To translate link text automatically",
-        "B": "To indicate the language of the linked document, helping search engines serve the correct language version to users",
+        "B": "To enable hyperlink translations",
         "C": "To set the programming language for external scripts",
-        "D": "To enable hyperlink translations"
+        "D": "To indicate the language of the linked document, helping search engines serve the correct language version to users"
       },
-      "correct": "B",
+      "correct": "D",
       "explanation": "The <pre>hreflang</pre> attribute indicates the language and optionally the region of a linked document. It's commonly used with <pre><link rel=\"alternate\"></pre> in the <pre><head></pre> to tell search engines about different language versions of a page: <pre><link rel=\"alternate\" hreflang=\"es\" href=\"https://example.com/es/\"></pre>. This helps search engines serve the Spanish version to Spanish-speaking users and the English version to English speakers. It can also be used on <pre><a></pre> elements to indicate the linked page's language. The attribute uses BCP 47 language tags like <pre>en-US</pre>, <pre>fr-CA</pre>, or <pre>pt-BR</pre>. Use <pre>hreflang=\"x-default\"</pre> for a default/fallback page. The attribute doesn't trigger automatic translation or affect programming languages—it's purely for indicating language/locale of linked resources to help with SEO and user experience.",
       "topics": [
         "hreflang Attribute",
@@ -85,12 +85,12 @@ module.exports = {
       "id": 2,
       "question": "How should you implement a language selector/switcher in HTML?",
       "options": {
-        "A": "Use JavaScript only; HTML has no role in language switching",
+        "A": "Create semantic navigation with links to each language version, using <pre>hreflang</pre> and indicating the current language",
         "B": "Rely entirely on automatic browser translation",
         "C": "Use a dropdown menu without any semantic markup",
-        "D": "Create semantic navigation with links to each language version, using <pre>hreflang</pre> and indicating the current language"
+        "D": "Use JavaScript only; HTML has no role in language switching"
       },
-      "correct": "D",
+      "correct": "A",
       "explanation": "A proper language selector should be semantic HTML navigation, typically using a list of links to each language version: <pre><nav aria-label=\"Language selector\"><ul><li><a href=\"/en/\" hreflang=\"en\" lang=\"en\">English</a></li><li><a href=\"/fr/\" hreflang=\"fr\" lang=\"fr\">Français</a></li></ul></nav></pre>. Mark the current language with <pre>aria-current=\"true\"</pre> or similar. Each link should use the target language's name in that language (\"Français\" not \"French\" for French). The <pre>lang</pre> attribute ensures proper pronunciation by screen readers, and <pre>hreflang</pre> indicates the linked page's language. Position the selector consistently across all language versions. While JavaScript can enhance the experience (dropdown with flag icons, for example), the base should be accessible HTML. Don't rely on browser auto-translation—users should control language selection. This approach works without JavaScript and is accessible to all users and search engines.",
       "topics": [
         "Language Switchers",
@@ -118,12 +118,12 @@ module.exports = {
       "id": 4,
       "question": "Why is it problematic to use flag icons alone to represent language options?",
       "options": {
-        "A": "Flags load too slowly",
-        "B": "Languages aren't tied to single countries; the same language is spoken in multiple countries with different flags, and using flags can be politically sensitive or confusing",
+        "A": "Languages aren't tied to single countries; the same language is spoken in multiple countries with different flags, and using flags can be politically sensitive or confusing",
+        "B": "Flags load too slowly",
         "C": "Flags violate HTML standards",
         "D": "Flags don't work on mobile devices"
       },
-      "correct": "B",
+      "correct": "A",
       "explanation": "Using flag icons alone for language selection creates multiple problems. Languages span countries: English is spoken in the UK, US, Australia, Canada, etc.—which flag represents \"English\"? Spanish is spoken in Spain, Mexico, Argentina, and 20+ other countries. A UK flag for English may confuse or alienate American users. Flags can also be politically sensitive in regions with territorial disputes. Additionally, flags aren't accessible to screen reader users without proper text labels. Some countries have multiple official languages. Best practice: use language names in their native form (\"English\", \"Español\", \"日本語\") as the primary indicator, with optional flags as supplementary visual aids: <pre><a href=\"/es/\" lang=\"es\"><img src=\"flag.svg\" alt=\"\" role=\"presentation\"> Español</a></pre>. The flag should be decorative (<pre>alt=\"\"</pre>) while the text provides the accessible label. This isn't about HTML standards, loading speed, or device compatibility—it's about clarity and cultural sensitivity.",
       "topics": [
         "Language Switchers",
@@ -183,12 +183,12 @@ module.exports = {
       "id": 8,
       "question": "What challenges exist with date formatting across different locales?",
       "options": {
-        "A": "Date component order varies (MM/DD/YYYY vs DD/MM/YYYY vs YYYY-MM-DD), separators differ, and week start days vary by culture",
+        "A": "Only the year format changes",
         "B": "Dates format identically worldwide",
-        "C": "Only the year format changes",
+        "C": "Date component order varies (MM/DD/YYYY vs DD/MM/YYYY vs YYYY-MM-DD), separators differ, and week start days vary by culture",
         "D": "Dates don't need internationalization"
       },
-      "correct": "A",
+      "correct": "C",
       "explanation": "Date formatting is highly locale-dependent. The US uses MM/DD/YYYY (03/14/2025), most European countries use DD/MM/YYYY (14/03/2025), and ISO 8601 uses YYYY-MM-DD (2025-03-14). The date \"01/02/2025\" could mean January 2nd or February 1st depending on locale. Separators vary: slashes (/), periods (.), or hyphens (-). Some locales write months as words to avoid ambiguity. Time formats differ: 12-hour with AM/PM (US) vs 24-hour (Europe). Week start varies: Sunday (US, Canada), Monday (Europe), Saturday (Middle East). Calendar systems differ: Gregorian, Islamic, Hebrew, etc. For HTML, use the <pre><time></pre> element with an ISO 8601 <pre>datetime</pre> attribute for machine-reading and locale-formatted display: <pre><time datetime=\"2025-03-14\">14/03/2025</time></pre>. JavaScript's <pre>Intl.DateTimeFormat</pre> helps with formatting. Always clarify date formats in forms to prevent user errors.",
       "topics": [
         "Date and Time Localization",
@@ -199,12 +199,12 @@ module.exports = {
       "id": 9,
       "question": "What is the purpose of the <pre><time></pre> element in internationalization?",
       "options": {
-        "A": "To provide a machine-readable date/time in the <pre>datetime</pre> attribute while displaying a human-readable, locale-appropriate format",
+        "A": "To create countdown timers",
         "B": "To set the server time zone",
-        "C": "To create countdown timers",
+        "C": "To provide a machine-readable date/time in the <pre>datetime</pre> attribute while displaying a human-readable, locale-appropriate format",
         "D": "To measure page load time"
       },
-      "correct": "A",
+      "correct": "C",
       "explanation": "The <pre><time></pre> element separates machine-readable from human-readable date/time representations using the <pre>datetime</pre> attribute. Store the canonical value in <pre>datetime</pre> (ISO 8601 format) and display a localized version: <pre><time datetime=\"2025-11-13T14:30:00Z\">13 novembre 2025, 14h30</time></pre>. This allows search engines, browsers, and assistive technologies to understand the exact date/time while users see familiar formatting. The element supports dates, times, durations, and time zones. For example: <pre><time datetime=\"2025-11-13\">November 13, 2025</time></pre> for dates, <pre><time datetime=\"14:30\">2:30 PM</time></pre> for times, or <pre><time datetime=\"PT2H30M\">2 hours 30 minutes</time></pre> for durations. The element doesn't set server time zones, create countdown timers (though it can mark up countdown endpoints), or measure performance. It's about semantic, accessible, internationalizable date/time markup.",
       "topics": [
         "Date and Time Localization",
@@ -216,11 +216,11 @@ module.exports = {
       "question": "What is text collation and why does it matter for internationalization?",
       "options": {
         "A": "Collation is about text colors",
-        "B": "Collation only affects database queries, not HTML",
+        "B": "Collation defines how text is sorted and compared; different languages have different alphabetical orders and sorting rules",
         "C": "Collation is a deprecated HTML feature",
-        "D": "Collation defines how text is sorted and compared; different languages have different alphabetical orders and sorting rules"
+        "D": "Collation only affects database queries, not HTML"
       },
-      "correct": "D",
+      "correct": "B",
       "explanation": "Text collation defines the rules for sorting and comparing strings. Different languages and locales have different alphabetical orders. In Swedish, \"ä\" comes after \"z\", but in German, it's treated near \"a\". Spanish traditionally treated \"ch\" and \"ll\" as single letters with their own positions. Some languages sort accented characters differently: \"é\" might sort like \"e\" or separately. Case sensitivity varies by locale. Sorting user names, product lists, or any alphabetical data requires locale-aware collation. In HTML, you don't directly control collation, but JavaScript's <pre>Intl.Collator</pre> API provides locale-appropriate sorting: <pre>items.sort(new Intl.Collator('sv').compare)</pre> for Swedish sorting. Without proper collation, alphabetical lists appear nonsensical to users. This isn't about colors, isn't deprecated, and while databases handle collation too, it's crucial throughout the application stack including client-side sorting and searching.",
       "topics": [
         "Text Collation and Sorting",
@@ -232,11 +232,11 @@ module.exports = {
       "question": "How should you structure URLs for a multi-language website?",
       "options": {
         "A": "Use query parameters: <pre>example.com?lang=en</pre>",
-        "B": "Store language preference in cookies only",
-        "C": "Common approaches include subdirectories (<pre>example.com/en/</pre>), subdomains (<pre>en.example.com</pre>), or country-code domains (<pre>example.co.uk</pre>), each with SEO and maintenance trade-offs",
+        "B": "Common approaches include subdirectories (<pre>example.com/en/</pre>), subdomains (<pre>en.example.com</pre>), or country-code domains (<pre>example.co.uk</pre>), each with SEO and maintenance trade-offs",
+        "C": "Store language preference in cookies only",
         "D": "Use hash fragments: <pre>example.com#en</pre>"
       },
-      "correct": "C",
+      "correct": "B",
       "explanation": "Multi-language URL structures have several approaches. Subdirectories (<pre>example.com/en/</pre>, <pre>example.com/fr/</pre>) are popular: easy to implement, all content under one domain, clear to users. Subdomains (<pre>en.example.com</pre>, <pre>fr.example.com</pre>) work well but can be treated as separate sites by search engines. Country-code top-level domains (ccTLDs: <pre>example.com</pre>, <pre>example.fr</pre>, <pre>example.de</pre>) provide strong geographic signals but require managing multiple domains. Some use language parameters (<pre>example.com?lang=fr</pre>) but this is less SEO-friendly and harder to share. Avoid hash fragments—they're not sent to servers and hurt SEO. Best practices: use <pre>hreflang</pre> tags regardless of structure, be consistent across the site, don't auto-redirect without user confirmation (respect user preferences), and make the language clear in the URL for shareability. Subdirectory approach is often recommended for balance of SEO, maintenance, and user experience.",
       "topics": [
         "Multi-Language Navigation",
@@ -248,11 +248,11 @@ module.exports = {
       "question": "What cultural considerations should you account for beyond translation?",
       "options": {
         "A": "Translation is sufficient for internationalization",
-        "B": "Only text direction and character encoding matter",
-        "C": "Color meanings, imagery, symbols, reading patterns, formality levels, and cultural taboos all vary across cultures and need consideration",
+        "B": "Color meanings, imagery, symbols, reading patterns, formality levels, and cultural taboos all vary across cultures and need consideration",
+        "C": "Only text direction and character encoding matter",
         "D": "Cultural considerations are optional"
       },
-      "correct": "C",
+      "correct": "B",
       "explanation": "Internationalization extends far beyond translation. Color symbolism varies: white represents purity in Western cultures but mourning in some Eastern cultures; red means danger in the West but prosperity in China. Images and gestures have different meanings: thumbs up is positive in the West but offensive in parts of the Middle East. Number symbolism varies: 4 is unlucky in China/Japan, 13 in Western cultures. Reading patterns differ: F-pattern for LTR, reversed for RTL. Formality and tone differ: some cultures prefer formal address, others casual. Date significance varies: appropriate release dates for products/content. Personal data expectations differ: some cultures freely share birthdays, others don't. Icons may not translate: a mailbox icon looks different in the US vs UK. Layout density preferences vary: some cultures prefer minimalist designs, others information-dense layouts. These considerations affect design, content strategy, and user experience, not just text translation.",
       "topics": [
         "Cultural Considerations",
@@ -296,12 +296,12 @@ module.exports = {
       "id": 15,
       "question": "How should you test internationalization implementations?",
       "options": {
-        "A": "Test with native speakers, verify all <pre>lang</pre>/<pre>dir</pre> attributes, check RTL layouts, validate translations in context, test character encoding with special characters, and verify locale-specific formatting",
-        "B": "Testing isn't necessary for internationalization",
+        "A": "Testing isn't necessary for internationalization",
+        "B": "Test with native speakers, verify all <pre>lang</pre>/<pre>dir</pre> attributes, check RTL layouts, validate translations in context, test character encoding with special characters, and verify locale-specific formatting",
         "C": "Only run spell-check on translations",
         "D": "Use browser auto-translate features for testing"
       },
-      "correct": "A",
+      "correct": "B",
       "explanation": "Comprehensive i18n testing includes multiple aspects. Validate markup: ensure all content has appropriate <pre>lang</pre> attributes, RTL languages have <pre>dir=\"rtl\"</pre>, and <pre><bdi></pre>/<pre><bdo></pre> are used correctly. Test with actual content: verify character encoding handles accented characters, ideographic scripts, right-to-left text, and special symbols (test strings like \"Iñtërnâtiônàlizætiøn\" or Arabic text). Check layout: verify RTL layouts mirror correctly, long German words don't break layouts, and vertical scripts (if supported) work. Validate translations in context: native speakers should review for accuracy, tone, and cultural appropriateness—not just linguistic correctness. Test locale-specific features: date/number/currency formatting, sorting/collation, form validation. Verify accessibility: screen readers pronounce different languages correctly. Test with browser language preferences set to different locales. Check <pre>hreflang</pre> implementation with search engine tools. Spell-check alone is insufficient, and auto-translate doesn't test your actual implementation.",
       "topics": [
         "Internationalization Testing",
@@ -313,11 +313,11 @@ module.exports = {
       "question": "What is a common mistake when implementing language switchers?",
       "options": {
         "A": "Placing them in the header",
-        "B": "Not preserving the user's current page context—switching from <pre>/en/products/shoes</pre> to <pre>/fr/</pre> instead of <pre>/fr/products/shoes</pre>",
-        "C": "Using text instead of images",
+        "B": "Using text instead of images",
+        "C": "Not preserving the user's current page context—switching from <pre>/en/products/shoes</pre> to <pre>/fr/</pre> instead of <pre>/fr/products/shoes</pre>",
         "D": "Making them too large"
       },
-      "correct": "B",
+      "correct": "C",
       "explanation": "A critical language switcher mistake is not preserving page context. When a user viewing <pre>/en/products/shoes</pre> switches to French, they should land on <pre>/fr/products/shoes</pre>, not the French homepage. This maintains their browsing context and task flow. Implement this by: mapping equivalent URLs across languages, using <pre><link rel=\"alternate\" hreflang=\"fr\" href=\"/fr/products/shoes\"></pre> tags for each page, and having the language switcher detect the current page's equivalent. Some content might not have translations yet—handle gracefully by either showing a fallback (homepage, category page) with a message, or indicating which pages are available in which languages. The switcher position (header is fine) isn't the issue, using text is actually better than images for accessibility, and size is a design preference. Context preservation is about user experience—losing their place in the site when switching languages is frustrating and can cause task abandonment.",
       "topics": [
         "Language Switchers",
@@ -328,12 +328,12 @@ module.exports = {
       "id": 17,
       "question": "How should you handle pluralization rules across different languages?",
       "options": {
-        "A": "All languages use the same singular/plural rules as English",
-        "B": "Different languages have different pluralization rules: some have only singular/plural, others have dual, trial, or complex rules based on number endings",
+        "A": "Different languages have different pluralization rules: some have only singular/plural, others have dual, trial, or complex rules based on number endings",
+        "B": "All languages use the same singular/plural rules as English",
         "C": "Pluralization doesn't need localization",
         "D": "Just add 's' to make plurals in all languages"
       },
-      "correct": "B",
+      "correct": "A",
       "explanation": "Pluralization rules vary dramatically across languages. English has two forms: singular and plural (1 item, 2 items). But: Arabic has six forms (zero, one, two, few, many, other); Polish has complex rules based on number endings (1, 2-4, 5-21, 22-24, etc.); Japanese has no plural distinction; Russian has three forms with complex rules. You can't hard-code pluralization logic—use internationalization libraries that handle these rules. The Unicode CLDR (Common Locale Data Repository) defines pluralization rules for languages. In HTML, avoid displaying \"1 items\" or \"2 item\"—use proper locale-aware pluralization. Store translation strings with placeholders: <pre>{count, plural, one {# item} other {# items}}</pre> for English, but with appropriate forms for each language. Libraries like ICU MessageFormat, i18next, or built-in browser APIs can handle this complexity. Never assume English pluralization patterns apply to other languages.",
       "topics": [
         "Locale-Specific Formatting",
@@ -409,12 +409,12 @@ module.exports = {
       "id": 22,
       "question": "How should you handle form labels and placeholders in RTL languages?",
       "options": {
-        "A": "Keep them in LTR layout even for RTL sites",
+        "A": "Flip label positioning to the right, align text to the right, and ensure placeholder text follows RTL direction",
         "B": "Only translate the text without changing layout",
-        "C": "Flip label positioning to the right, align text to the right, and ensure placeholder text follows RTL direction",
+        "C": "Keep them in LTR layout even for RTL sites",
         "D": "Use images instead of text"
       },
-      "correct": "C",
+      "correct": "A",
       "explanation": "RTL forms require comprehensive layout adaptation. Labels should align to the right side of inputs: <pre><form dir=\"rtl\"><label for=\"name\">الاسم</label><input type=\"text\" id=\"name\" dir=\"auto\"></form></pre>. Text alignment should be right-aligned: inputs, textareas, and labels flow RTL. Visual indicators like asterisks for required fields should appear on the right: \"*الاسم\" not \"الاسم*\". Placeholder text follows RTL direction. Checkboxes and radio buttons typically move to the right of labels in RTL layouts. Field grouping order may need adjustment. Icons within inputs (search icons, clear buttons) should flip horizontally. Error message positioning mirrors to the right. The form structure itself should feel natural for RTL users, not like a forced translation of an LTR form. Use CSS logical properties or RTL-specific styles. Don't just translate text while keeping LTR layout—that creates awkward, hard-to-use forms. Testing with native RTL language speakers is crucial.",
       "topics": [
         "Cultural Considerations",
@@ -426,12 +426,12 @@ module.exports = {
       "id": 23,
       "question": "What is the difference between internationalization (i18n) and localization (l10n)?",
       "options": {
-        "A": "Internationalization is designing/building software to support multiple locales; localization is adapting that software for a specific locale with translations and cultural adaptations",
+        "A": "Internationalization is outdated; use localization instead",
         "B": "They're the same thing with different acronyms",
         "C": "Localization is for European sites; internationalization is for Asian sites",
-        "D": "Internationalization is outdated; use localization instead"
+        "D": "Internationalization is designing/building software to support multiple locales; localization is adapting that software for a specific locale with translations and cultural adaptations"
       },
-      "correct": "A",
+      "correct": "D",
       "explanation": "Internationalization (i18n: 18 letters between 'i' and 'n') is the process of designing and developing software architecture to support multiple languages and regions without code changes. This includes using Unicode, externalizing strings, using locale-aware formatting APIs, supporting bidirectional text, and designing flexible layouts. Localization (l10n: 10 letters between 'l' and 'n') is the process of adapting internationalized software for a specific locale: translating text, adapting images, adjusting date/number/currency formats, and addressing cultural considerations. Metaphor: i18n is building a house with universal electrical outlets; l10n is plugging in region-specific appliances. You internationalize once (build the framework), then localize many times (for each language/region). Good i18n makes l10n easier and cheaper. They're complementary, not alternatives or geographic-specific. Modern best practice is to internationalize from the start, even if you only localize to one language initially.",
       "topics": [
         "Cultural Considerations",
@@ -461,11 +461,10 @@ module.exports = {
       "question": "What is the role of the <pre>Content-Language</pre> HTTP header?",
       "options": {
         "A": "It's the same as the HTML <pre>lang</pre> attribute",
-        "B": "It's a server response header indicating the intended audience language(s) for the content, complementing but not replacing the <pre>lang</pre> attribute",
         "C": "It controls browser language settings",
-        "D": "It's required for all HTML documents"
+        "D": "It's required for all HTML documents",
+        "undefined": "It's a server response header indicating the intended audience language(s) for the content, complementing but not replacing the <pre>lang</pre> attribute"
       },
-      "correct": "B",
       "explanation": "The <pre>Content-Language</pre> HTTP response header indicates the intended audience language for the content: <pre>Content-Language: fr-CA</pre> means the content is intended for French-speaking Canadians. It can list multiple languages: <pre>Content-Language: en, fr</pre>. This header provides metadata for caches, search engines, and browsers. However, it doesn't replace the HTML <pre>lang</pre> attribute—they serve different purposes. The <pre>lang</pre> attribute declares the actual language of specific content and affects rendering/accessibility. <pre>Content-Language</pre> is about intended audience and doesn't affect processing. You can have <pre>Content-Language: en</pre> but <pre><p lang=\"fr\">Bonjour</p></pre> inside—the document targets English speakers but contains French quotes. The header isn't required and doesn't control user browser settings. Best practice: use the <pre>lang</pre> attribute always for proper rendering; optionally use <pre>Content-Language</pre> header for metadata and SEO, ensuring they're consistent with your primary content language.",
       "topics": [
         "Content Negotiation",

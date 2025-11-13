@@ -54,12 +54,12 @@ module.exports = {
       "id": 1,
       "question": "What does the 'typeof' operator return for an array in JavaScript?",
       "options": {
-        "A": "'array'",
-        "B": "'object'",
+        "A": "'object'",
+        "B": "'array'",
         "C": "'list'",
         "D": "'undefined'"
       },
-      "correct": "B",
+      "correct": "A",
       "explanation": "In JavaScript, arrays are actually objects, so typeof returns 'object'. To check if something is specifically an array, use Array.isArray().",
       "topic": {
         "topics": [
@@ -92,12 +92,12 @@ module.exports = {
       "id": 3,
       "question": "What is the result of: 5 + '3'?",
       "options": {
-        "A": "8",
+        "A": "'53'",
         "B": "53",
-        "C": "'53'",
+        "C": "8",
         "D": "Error"
       },
-      "correct": "C",
+      "correct": "A",
       "explanation": "JavaScript performs type coercion. When adding a number and string, the number is converted to a string, resulting in '53'.",
       "topic": {
         "topics": [
@@ -128,12 +128,12 @@ module.exports = {
       "id": 5,
       "question": "What does '===' check for in JavaScript?",
       "options": {
-        "A": "Value only",
-        "B": "Value and type",
+        "A": "Value and type",
+        "B": "Value only",
         "C": "Type only",
         "D": "Reference only"
       },
-      "correct": "B",
+      "correct": "A",
       "explanation": "The strict equality operator (===) checks both value and type without type coercion, while == only checks value with type coercion.",
       "topic": {
         "topics": [
@@ -146,12 +146,12 @@ module.exports = {
       "id": 6,
       "question": "Which method removes the last element from an array?",
       "options": {
-        "A": "array.removeLast()",
-        "B": "array.pop()",
+        "A": "array.pop()",
+        "B": "array.removeLast()",
         "C": "array.delete()",
         "D": "array.shift()"
       },
-      "correct": "B",
+      "correct": "A",
       "explanation": "pop() removes and returns the last element from an array. shift() removes the first element.",
       "topic": {
         "topics": [
@@ -201,12 +201,12 @@ module.exports = {
       "id": 9,
       "question": "What does the 'length' property return for the string 'Hello'?",
       "options": {
-        "A": "5",
-        "B": "4",
+        "A": "4",
+        "B": "5",
         "C": "6",
         "D": "undefined"
       },
-      "correct": "A",
+      "correct": "B",
       "explanation": "The length property returns the number of characters in a string. 'Hello' has 5 characters, so it returns 5.",
       "topic": {
         "topics": [
@@ -220,11 +220,11 @@ module.exports = {
       "question": "Which operator is used for logical AND in JavaScript?",
       "options": {
         "A": "&",
-        "B": "and",
-        "C": "&&",
+        "B": "&&",
+        "C": "and",
         "D": "AND"
       },
-      "correct": "C",
+      "correct": "B",
       "explanation": "The logical AND operator in JavaScript is &&. The single & is a bitwise AND operator.",
       "topic": {
         "topics": [
@@ -237,11 +237,11 @@ module.exports = {
       "question": "What is the result of: Boolean('')?",
       "options": {
         "A": "true",
-        "B": "Error",
+        "B": "false",
         "C": "undefined",
-        "D": "false"
+        "D": "Error"
       },
-      "correct": "D",
+      "correct": "B",
       "explanation": "An empty string is a falsy value in JavaScript, so Boolean('') returns false. Other falsy values include 0, null, undefined, NaN.",
       "topic": {
         "topics": [
@@ -271,12 +271,12 @@ module.exports = {
       "id": 13,
       "question": "What does 'null' represent in JavaScript?",
       "options": {
-        "A": "An intentional absence of value",
-        "B": "An undefined variable",
+        "A": "An undefined variable",
+        "B": "An intentional absence of value",
         "C": "An empty string",
         "D": "Zero"
       },
-      "correct": "A",
+      "correct": "B",
       "explanation": "null represents an intentional absence of any object value. It's different from undefined, which means a variable hasn't been assigned.",
       "topic": {
         "topics": [
@@ -289,12 +289,12 @@ module.exports = {
       "id": 14,
       "question": "Which method joins all elements of an array into a string?",
       "options": {
-        "A": "join()",
-        "B": "concat()",
+        "A": "concat()",
+        "B": "join()",
         "C": "merge()",
         "D": "combine()"
       },
-      "correct": "A",
+      "correct": "B",
       "explanation": "join() creates and returns a new string by concatenating all array elements, separated by a specified separator (comma by default).",
       "topic": {
         "topics": [
@@ -309,11 +309,11 @@ module.exports = {
       "question": "What is the scope of a variable declared with 'let'?",
       "options": {
         "A": "Global scope",
-        "B": "Function scope",
-        "C": "Block scope",
+        "B": "Block scope",
+        "C": "Function scope",
         "D": "Module scope"
       },
-      "correct": "C",
+      "correct": "B",
       "explanation": "Variables declared with 'let' have block scope, meaning they're only accessible within the block where they're defined.",
       "topic": {
         "topics": [
@@ -327,11 +327,11 @@ module.exports = {
       "question": "Which method checks if an array contains a specific element?",
       "options": {
         "A": "contains()",
-        "B": "exists()",
+        "B": "includes()",
         "C": "has()",
-        "D": "includes()"
+        "D": "exists()"
       },
-      "correct": "D",
+      "correct": "B",
       "explanation": "includes() determines whether an array includes a certain element, returning true or false. It was introduced in ES2016.",
       "topic": {
         "topics": [
@@ -362,12 +362,12 @@ module.exports = {
       "id": 18,
       "question": "Which method creates a new array with all elements that pass a test?",
       "options": {
-        "A": "filter()",
+        "A": "find()",
         "B": "map()",
-        "C": "find()",
+        "C": "filter()",
         "D": "forEach()"
       },
-      "correct": "A",
+      "correct": "C",
       "explanation": "filter() creates a new array with all elements that pass the test implemented by the provided function.",
       "topic": {
         "topics": [
@@ -380,11 +380,11 @@ module.exports = {
       "question": "What does 'NaN' stand for?",
       "options": {
         "A": "Null and None",
-        "B": "Not a Number",
-        "C": "New Array Node",
+        "B": "New Array Node",
+        "C": "Not a Number",
         "D": "Not Available Now"
       },
-      "correct": "B",
+      "correct": "C",
       "explanation": "NaN stands for 'Not a Number' and represents a value that is not a legal number. Ironically, typeof NaN returns 'number'.",
       "topic": {
         "topics": [
@@ -399,12 +399,12 @@ module.exports = {
       "id": 20,
       "question": "Which method removes elements from an array and optionally adds new ones?",
       "options": {
-        "A": "splice()",
+        "A": "split()",
         "B": "slice()",
-        "C": "split()",
+        "C": "splice()",
         "D": "replace()"
       },
-      "correct": "A",
+      "correct": "C",
       "explanation": "splice() changes the contents of an array by removing existing elements and/or adding new elements. slice() doesn't modify the original array.",
       "topic": {
         "topics": [
@@ -436,11 +436,11 @@ module.exports = {
       "question": "Which method returns the first element that satisfies a condition?",
       "options": {
         "A": "filter()",
-        "B": "find()",
-        "C": "search()",
+        "B": "search()",
+        "C": "find()",
         "D": "locate()"
       },
-      "correct": "B",
+      "correct": "C",
       "explanation": "find() returns the first element in an array that satisfies the provided testing function. If no element is found, it returns undefined.",
       "topic": {
         "topics": [
@@ -454,11 +454,11 @@ module.exports = {
       "question": "What is the result of: typeof undefined?",
       "options": {
         "A": "'null'",
-        "B": "'undefined'",
-        "C": "'object'",
+        "B": "'object'",
+        "C": "'undefined'",
         "D": "Error"
       },
-      "correct": "B",
+      "correct": "C",
       "explanation": "typeof undefined returns the string 'undefined'. This is different from null, where typeof null returns 'object' (a known quirk).",
       "topic": {
         "topics": [
@@ -473,11 +473,11 @@ module.exports = {
       "question": "Which method creates a new array with the results of calling a function on every element?",
       "options": {
         "A": "forEach()",
-        "B": "map()",
+        "B": "call()",
         "C": "apply()",
-        "D": "call()"
+        "D": "map()"
       },
-      "correct": "B",
+      "correct": "D",
       "explanation": "map() creates a new array populated with the results of calling a provided function on every element in the calling array.",
       "topic": {
         "topics": [
@@ -491,10 +491,10 @@ module.exports = {
       "options": {
         "A": "Skips the current iteration",
         "B": "Pauses the loop",
-        "C": "Exits the loop completely",
-        "D": "Restarts the loop"
+        "C": "Restarts the loop",
+        "D": "Exits the loop completely"
       },
-      "correct": "C",
+      "correct": "D",
       "explanation": "The 'break' statement terminates the current loop completely. 'continue' skips the current iteration and moves to the next one.",
       "topic": {
         "topics": [
@@ -507,12 +507,12 @@ module.exports = {
       "id": 26,
       "question": "Which method converts a number to a string?",
       "options": {
-        "A": "toString()",
+        "A": "convert()",
         "B": "toText()",
         "C": "stringify()",
-        "D": "convert()"
+        "D": "toString()"
       },
-      "correct": "A",
+      "correct": "D",
       "explanation": "toString() method returns a string representing the specified number. You can also use String() constructor or template literals.",
       "topic": {
         "topics": [
@@ -566,10 +566,10 @@ module.exports = {
       "options": {
         "A": "2",
         "B": "4",
-        "C": "3",
-        "D": "undefined"
+        "C": "undefined",
+        "D": "3"
       },
-      "correct": "C",
+      "correct": "D",
       "explanation": "The length property of an array returns the number of elements. The array [1, 2, 3] has 3 elements, so length is 3.",
       "topic": {
         "topics": [

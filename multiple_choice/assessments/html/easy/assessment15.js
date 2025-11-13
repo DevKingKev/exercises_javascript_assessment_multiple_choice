@@ -69,12 +69,12 @@ module.exports = {
       "id": 1,
       "question": "Why was the <pre>font</pre> tag deprecated in HTML?",
       "options": {
-        "A": "It only worked in Internet Explorer",
+        "A": "It mixed presentation with structure, violating separation of concerns",
         "B": "It was too difficult to use correctly",
-        "C": "It mixed presentation with structure, violating separation of concerns",
+        "C": "It only worked in Internet Explorer",
         "D": "It made text load too slowly"
       },
-      "correct": "C",
+      "correct": "A",
       "explanation": "The <pre>font</pre> tag was deprecated because it mixed presentation (styling) with structure (content), violating the principle of separation of concerns. Modern web development uses CSS for all styling aspects.",
       "topic": {
         "topics": [
@@ -105,12 +105,12 @@ module.exports = {
       "id": 3,
       "question": "Which CSS feature should replace the <pre>marquee</pre> tag for scrolling content?",
       "options": {
-        "A": "CSS float property",
+        "A": "CSS animations and transitions",
         "B": "JavaScript setInterval",
         "C": "HTML5 video elements",
-        "D": "CSS animations and transitions"
+        "D": "CSS float property"
       },
-      "correct": "D",
+      "correct": "A",
       "explanation": "CSS animations and transitions provide modern, accessible alternatives to the <pre>marquee</pre> tag. They offer better performance, more control, and don't cause accessibility issues like marquees did.",
       "topic": {
         "topics": [
@@ -159,12 +159,12 @@ module.exports = {
       "id": 6,
       "question": "What CSS property should you use instead of the <pre>font</pre> tag's size attribute?",
       "options": {
-        "A": "<pre>text-size</pre>",
-        "B": "<pre>font-size</pre>",
+        "A": "<pre>font-size</pre>",
+        "B": "<pre>text-size</pre>",
         "C": "<pre>size</pre>",
         "D": "<pre>font-scale</pre>"
       },
-      "correct": "B",
+      "correct": "A",
       "explanation": "Use the CSS <pre>font-size</pre> property instead of the <pre>font</pre> tag's size attribute. This provides better control and follows modern web standards for styling.",
       "topic": {
         "topics": [
@@ -177,12 +177,12 @@ module.exports = {
       "id": 7,
       "question": "Why were frames (<pre>frame</pre>, <pre>frameset</pre>) deprecated?",
       "options": {
-        "A": "They made pages load faster",
-        "B": "They caused navigation and accessibility problems",
+        "A": "They caused navigation and accessibility problems",
+        "B": "They made pages load faster",
         "C": "They were too difficult to style",
         "D": "They only worked on desktop computers"
       },
-      "correct": "B",
+      "correct": "A",
       "explanation": "Frames were deprecated because they caused numerous problems: broken back/forward navigation, bookmarking issues, poor accessibility for screen readers, and SEO difficulties.",
       "topic": {
         "topics": [
@@ -195,12 +195,12 @@ module.exports = {
       "id": 8,
       "question": "What is the modern approach to creating scrolling text effects?",
       "options": {
-        "A": "JavaScript with requestAnimationFrame",
-        "B": "CSS animations with @keyframes",
+        "A": "CSS animations with @keyframes",
+        "B": "JavaScript with requestAnimationFrame",
         "C": "HTML5 canvas element",
         "D": "SVG animations"
       },
-      "correct": "B",
+      "correct": "A",
       "explanation": "CSS animations with @keyframes provide a modern, performant way to create scrolling text effects. They are more accessible and give developers finer control over timing and easing.",
       "topic": {
         "topics": [
@@ -213,12 +213,12 @@ module.exports = {
       "id": 9,
       "question": "Which deprecated tag was used for setting text color?",
       "options": {
-        "A": "<pre>font</pre> with color attribute",
-        "B": "<pre>color</pre>",
+        "A": "<pre>color</pre>",
+        "B": "<pre>font</pre> with color attribute",
         "C": "<pre>text</pre> with color attribute",
         "D": "<pre>style</pre> with color attribute"
       },
-      "correct": "A",
+      "correct": "B",
       "explanation": "The <pre>font</pre> tag with the color attribute was used to set text color. This has been replaced by the CSS <pre>color</pre> property for better separation of concerns.",
       "topic": {
         "topics": [
@@ -232,11 +232,11 @@ module.exports = {
       "question": "What CSS property replaces the <pre>font</pre> tag's face attribute?",
       "options": {
         "A": "<pre>typeface</pre>",
-        "B": "<pre>font-face</pre>",
+        "B": "<pre>font-family</pre>",
         "C": "<pre>text-font</pre>",
-        "D": "<pre>font-family</pre>"
+        "D": "<pre>font-face</pre>"
       },
-      "correct": "D",
+      "correct": "B",
       "explanation": "The CSS <pre>font-family</pre> property replaces the <pre>font</pre> tag's face attribute for specifying font families. This allows for better font stacking and web font integration.",
       "topic": {
         "topics": [
@@ -250,11 +250,11 @@ module.exports = {
       "question": "Why is it important to avoid deprecated tags in modern web development?",
       "options": {
         "A": "They improve page loading speed",
-        "B": "They make HTML files smaller",
-        "C": "They may not be supported in current or future browsers",
+        "B": "They may not be supported in current or future browsers",
+        "C": "They make HTML files smaller",
         "D": "They are required for mobile devices"
       },
-      "correct": "C",
+      "correct": "B",
       "explanation": "Deprecated tags may not be supported in current or future browsers, leading to broken functionality. Using modern standards ensures compatibility and accessibility.",
       "topic": {
         "topics": [
@@ -268,11 +268,11 @@ module.exports = {
       "question": "What modern layout technique replaced frames for creating website layouts?",
       "options": {
         "A": "JavaScript frameworks",
-        "B": "HTML tables",
-        "C": "CSS Flexbox and Grid",
+        "B": "CSS Flexbox and Grid",
+        "C": "HTML tables",
         "D": "SVG layouts"
       },
-      "correct": "C",
+      "correct": "B",
       "explanation": "CSS Flexbox and Grid layouts have replaced frames for creating modern website layouts. They provide responsive, accessible alternatives without the drawbacks of frames.",
       "topic": {
         "topics": [
@@ -285,12 +285,12 @@ module.exports = {
       "id": 13,
       "question": "Which tag was used for creating scrolling text banners?",
       "options": {
-        "A": "<pre>marquee</pre>",
-        "B": "<pre>scroll</pre>",
+        "A": "<pre>scroll</pre>",
+        "B": "<pre>marquee</pre>",
         "C": "<pre>banner</pre>",
         "D": "<pre>ticker</pre>"
       },
-      "correct": "A",
+      "correct": "B",
       "explanation": "The <pre>marquee</pre> tag was used to create scrolling text banners. It was non-standard, caused accessibility issues, and has been replaced by CSS and JavaScript solutions.",
       "topic": {
         "topics": [
@@ -304,11 +304,11 @@ module.exports = {
       "question": "What principle of web development encourages using CSS instead of presentational HTML?",
       "options": {
         "A": "Mobile first",
-        "B": "Progressive enhancement",
+        "B": "Separation of concerns",
         "C": "Graceful degradation",
-        "D": "Separation of concerns"
+        "D": "Progressive enhancement"
       },
-      "correct": "D",
+      "correct": "B",
       "explanation": "Separation of concerns is the principle that encourages keeping structure (HTML), presentation (CSS), and behavior (JavaScript) separate. This makes code more maintainable and accessible.",
       "topic": {
         "topics": [
@@ -339,12 +339,12 @@ module.exports = {
       "id": 16,
       "question": "What was the main problem with the <pre>basefont</pre> tag?",
       "options": {
-        "A": "It applied global styling that was hard to override",
-        "B": "It only worked with specific fonts",
+        "A": "It only worked with specific fonts",
+        "B": "It applied global styling that was hard to override",
         "C": "It required special server configuration",
         "D": "It made text impossible to read"
       },
-      "correct": "A",
+      "correct": "B",
       "explanation": "The <pre>basefont</pre> tag set a default font for the entire document, making it difficult to override and violating the principle of separation between structure and presentation.",
       "topic": {
         "topics": [
@@ -359,10 +359,10 @@ module.exports = {
       "options": {
         "A": "<pre>place-items</pre>",
         "B": "<pre>align-content</pre>",
-        "C": "<pre>justify-content</pre>",
-        "D": "<pre>text-align</pre>"
+        "C": "<pre>text-align</pre>",
+        "D": "<pre>justify-content</pre>"
       },
-      "correct": "D",
+      "correct": "C",
       "explanation": "The <pre>text-align</pre> CSS property provides control over text alignment, replacing the deprecated <pre>center</pre> tag and other alignment attributes.",
       "topic": {
         "topics": [
@@ -375,12 +375,12 @@ module.exports = {
       "id": 18,
       "question": "Why should blinking or scrolling content be used sparingly?",
       "options": {
-        "A": "It can cause accessibility issues and distract users",
+        "A": "It only works on modern browsers",
         "B": "It makes websites load slower",
-        "C": "It only works on modern browsers",
+        "C": "It can cause accessibility issues and distract users",
         "D": "It requires special plugins"
       },
-      "correct": "A",
+      "correct": "C",
       "explanation": "Blinking or scrolling content can cause accessibility issues, particularly for users with cognitive disabilities, and can be distracting for all users. It should be used sparingly and with accessibility considerations.",
       "topic": {
         "topics": [
@@ -394,11 +394,11 @@ module.exports = {
       "question": "What replaced the <pre>applet</pre> tag for embedding interactive content?",
       "options": {
         "A": "<pre>java</pre>",
-        "B": "<pre>object</pre> or <pre>embed</pre>",
-        "C": "<pre>plugin</pre>",
+        "B": "<pre>plugin</pre>",
+        "C": "<pre>object</pre> or <pre>embed</pre>",
         "D": "<pre>interactive</pre>"
       },
-      "correct": "B",
+      "correct": "C",
       "explanation": "The <pre>object</pre> and <pre>embed</pre> elements replaced the <pre>applet</pre> tag for embedding interactive content and plugins, providing a more standardized approach.",
       "topic": {
         "topics": [
@@ -413,10 +413,10 @@ module.exports = {
       "options": {
         "A": "CSS custom properties (variables)",
         "B": "Using external stylesheets",
-        "C": "CSS Grid and Flexbox for layout",
-        "D": "All of these help separate presentation from structure"
+        "C": "All of these help separate presentation from structure",
+        "D": "CSS Grid and Flexbox for layout"
       },
-      "correct": "D",
+      "correct": "C",
       "explanation": "All these CSS methodologies help separate presentation from structure: external stylesheets, modern layout techniques, and CSS variables all contribute to keeping styling in CSS rather than HTML.",
       "topic": {
         "topics": [
@@ -430,11 +430,11 @@ module.exports = {
       "question": "What was the <pre>dir</pre> tag used for, and why was it deprecated?",
       "options": {
         "A": "Direction of text, replaced by CSS direction property",
-        "B": "Directory lists, replaced by <pre>ul</pre> for better semantics",
-        "C": "Direct embedding of files, replaced by <pre>iframe</pre>",
+        "B": "Direct embedding of files, replaced by <pre>iframe</pre>",
+        "C": "Directory lists, replaced by <pre>ul</pre> for better semantics",
         "D": "Directory navigation, replaced by JavaScript"
       },
-      "correct": "B",
+      "correct": "C",
       "explanation": "The <pre>dir</pre> tag was used for directory lists but was deprecated in favor of <pre>ul</pre> (unordered list) which has better semantic meaning and styling capabilities.",
       "topic": {
         "topics": [
@@ -449,10 +449,10 @@ module.exports = {
       "options": {
         "A": "<pre>float: center;</pre>",
         "B": "<pre>align: center;</pre>",
-        "C": "<pre>position: center;</pre>",
-        "D": "<pre>margin: 0 auto;</pre>"
+        "C": "<pre>margin: 0 auto;</pre>",
+        "D": "<pre>position: center;</pre>"
       },
-      "correct": "D",
+      "correct": "C",
       "explanation": "Use <pre>margin: 0 auto;</pre> on a block element with a defined width to center it horizontally. This is the modern CSS alternative to the deprecated <pre>center</pre> tag for block-level elements.",
       "topic": {
         "topics": [
@@ -466,11 +466,11 @@ module.exports = {
       "question": "Why was the <pre>isindex</pre> tag removed from HTML?",
       "options": {
         "A": "It caused security vulnerabilities",
-        "B": "It was made obsolete by the <pre>input</pre> element",
+        "B": "It was too difficult to style",
         "C": "It only worked in specific browsers",
-        "D": "It was too difficult to style"
+        "D": "It was made obsolete by the <pre>input</pre> element"
       },
-      "correct": "B",
+      "correct": "D",
       "explanation": "The <pre>isindex</pre> tag was an early way to create search inputs but was made obsolete by the more flexible and powerful <pre>input</pre> element with its various types.",
       "topic": {
         "topics": [
@@ -485,10 +485,10 @@ module.exports = {
       "options": {
         "A": "JavaScript font scaling",
         "B": "HTML font size attributes",
-        "C": "CSS viewport units and media queries",
-        "D": "SVG text elements"
+        "C": "SVG text elements",
+        "D": "CSS viewport units and media queries"
       },
-      "correct": "C",
+      "correct": "D",
       "explanation": "CSS viewport units (vw, vh), relative units (em, rem), and media queries allow for responsive font sizing that adapts to different screen sizes and user preferences.",
       "topic": {
         "topics": [
@@ -521,10 +521,10 @@ module.exports = {
       "options": {
         "A": "Faster rendering in all browsers",
         "B": "Smaller file sizes",
-        "C": "Better maintainability and consistency",
-        "D": "Easier to learn for beginners"
+        "C": "Easier to learn for beginners",
+        "D": "Better maintainability and consistency"
       },
-      "correct": "C",
+      "correct": "D",
       "explanation": "CSS provides better maintainability and consistency because styles can be defined once and applied to multiple elements, making global changes much easier than updating individual HTML attributes.",
       "topic": {
         "topics": [
@@ -537,12 +537,12 @@ module.exports = {
       "id": 27,
       "question": "Which tag was used for strikethrough text before CSS became standard?",
       "options": {
-        "A": "<pre>strike</pre>",
+        "A": "<pre>cancel</pre>",
         "B": "<pre>line-through</pre>",
         "C": "<pre>delete</pre>",
-        "D": "<pre>cancel</pre>"
+        "D": "<pre>strike</pre>"
       },
-      "correct": "A",
+      "correct": "D",
       "explanation": "The <pre>strike</pre> tag was used for strikethrough text but was deprecated in favor of the more semantic <pre>del</pre> element or CSS <pre>text-decoration: line-through;</pre>.",
       "topic": {
         "topics": [
@@ -557,10 +557,10 @@ module.exports = {
       "options": {
         "A": "Feature detection",
         "B": "Graceful degradation",
-        "C": "Progressive enhancement",
-        "D": "All of these"
+        "C": "All of these",
+        "D": "Progressive enhancement"
       },
-      "correct": "C",
+      "correct": "D",
       "explanation": "Progressive enhancement is the modern approach that starts with basic functionality that works everywhere, then enhances with modern features for capable browsers, ensuring sites don't rely on deprecated or unsupported features.",
       "topic": {
         "topics": [
@@ -573,12 +573,12 @@ module.exports = {
       "id": 29,
       "question": "Why should you validate your HTML code?",
       "options": {
-        "A": "To ensure it follows current standards and avoids deprecated elements",
+        "A": "To reduce file size significantly",
         "B": "To make it load faster",
         "C": "To improve SEO ranking automatically",
-        "D": "To reduce file size significantly"
+        "D": "To ensure it follows current standards and avoids deprecated elements"
       },
-      "correct": "A",
+      "correct": "D",
       "explanation": "Validating HTML ensures your code follows current web standards, helps avoid deprecated elements, and improves compatibility across different browsers and devices.",
       "topic": {
         "topics": [
@@ -592,11 +592,10 @@ module.exports = {
       "question": "What is the main goal of modern web standards regarding HTML and CSS?",
       "options": {
         "A": "Making websites look the same everywhere",
-        "B": "Separation of structure and presentation",
         "C": "Eliminating all animation from the web",
-        "D": "Requiring JavaScript for basic functionality"
+        "D": "Requiring JavaScript for basic functionality",
+        "undefined": "Separation of structure and presentation"
       },
-      "correct": "B",
       "explanation": "The main goal is separation of structure (HTML) and presentation (CSS), which leads to more maintainable, accessible, and future-proof websites that can adapt to different devices and user needs.",
       "topic": {
         "topics": [

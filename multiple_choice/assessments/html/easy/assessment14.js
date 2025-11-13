@@ -69,12 +69,12 @@ module.exports = {
       "id": 1,
       "question": "Which element would you choose to create a main content area for a blog post?",
       "options": {
-        "A": "<pre>aside</pre>",
+        "A": "<pre>article</pre>",
         "B": "<pre>span</pre>",
-        "C": "<pre>article</pre>",
+        "C": "<pre>aside</pre>",
         "D": "<pre>strong</pre>"
       },
-      "correct": "C",
+      "correct": "A",
       "explanation": "The <pre>article</pre> element is perfect for blog posts as it represents a self-contained composition. It's a block-level semantic element that clearly defines the main content area.",
       "topic": {
         "topics": [
@@ -105,12 +105,12 @@ module.exports = {
       "id": 3,
       "question": "Which element is most appropriate for marking up a navigation menu?",
       "options": {
-        "A": "<pre>menu</pre>",
+        "A": "<pre>nav</pre>",
         "B": "<pre>div</pre>",
-        "C": "<pre>nav</pre>",
+        "C": "<pre>menu</pre>",
         "D": "<pre>ul</pre>"
       },
-      "correct": "C",
+      "correct": "A",
       "explanation": "The <pre>nav</pre> element is specifically designed for navigation sections. It's a block-level semantic element that helps screen readers and search engines identify the main navigation area.",
       "topic": {
         "topics": [
@@ -141,12 +141,12 @@ module.exports = {
       "id": 5,
       "question": "Which element would you use to add emphasis to a single word within a sentence?",
       "options": {
-        "A": "<pre>div</pre>",
+        "A": "<pre>em</pre>",
         "B": "<pre>p</pre>",
         "C": "<pre>section</pre>",
-        "D": "<pre>em</pre>"
+        "D": "<pre>div</pre>"
       },
-      "correct": "D",
+      "correct": "A",
       "explanation": "The <pre>em</pre> element is an inline element designed to add emphasis to text within flowing content. It's semantically appropriate and typically renders as italic.",
       "topic": {
         "topics": [
@@ -159,12 +159,12 @@ module.exports = {
       "id": 6,
       "question": "What is the main advantage of using <pre>section</pre> over <pre>div</pre> for content grouping?",
       "options": {
-        "A": "Automatic styling and borders",
-        "B": "Better semantic meaning and document structure",
+        "A": "Better semantic meaning and document structure",
+        "B": "Automatic styling and borders",
         "C": "Smaller file size",
         "D": "Faster rendering performance"
       },
-      "correct": "B",
+      "correct": "A",
       "explanation": "The <pre>section</pre> element provides semantic meaning, indicating a thematic grouping of content. This improves accessibility and helps search engines understand your document structure.",
       "topic": {
         "topics": [
@@ -195,12 +195,12 @@ module.exports = {
       "id": 8,
       "question": "What element is best for wrapping a product name in an online store?",
       "options": {
-        "A": "<pre>article</pre> for each product",
+        "A": "<pre>span</pre> with appropriate classes",
         "B": "<pre>div</pre> with product styling",
-        "C": "<pre>span</pre> with appropriate classes",
+        "C": "<pre>article</pre> for each product",
         "D": "<pre>section</pre> for product names"
       },
-      "correct": "C",
+      "correct": "A",
       "explanation": "Use <pre>span</pre> with appropriate classes to wrap product names within product descriptions. It's an inline element that doesn't break the text flow and allows targeted styling.",
       "topic": {
         "topics": [
@@ -213,12 +213,12 @@ module.exports = {
       "id": 9,
       "question": "How can you make an image behave like a block element?",
       "options": {
-        "A": "Apply <pre>display: block;</pre> in CSS",
-        "B": "Wrap it in a <pre>div</pre> element",
+        "A": "Wrap it in a <pre>div</pre> element",
+        "B": "Apply <pre>display: block;</pre> in CSS",
         "C": "Add <pre>block=\"true\"</pre> attribute",
         "D": "Use the <pre>blockimg</pre> element"
       },
-      "correct": "A",
+      "correct": "B",
       "explanation": "Apply <pre>display: block;</pre> to an image to make it behave like a block element. This is useful for centering images or preventing text from wrapping around them.",
       "topic": {
         "topics": [
@@ -232,11 +232,11 @@ module.exports = {
       "question": "Which element represents the footer of a document or section?",
       "options": {
         "A": "<pre>close</pre>",
-        "B": "<pre>bottom</pre>",
+        "B": "<pre>footer</pre>",
         "C": "<pre>end</pre>",
-        "D": "<pre>footer</pre>"
+        "D": "<pre>bottom</pre>"
       },
-      "correct": "D",
+      "correct": "B",
       "explanation": "The <pre>footer</pre> element represents the footer of its nearest sectioning content or root element. It typically contains metadata, copyright information, or related links.",
       "topic": {
         "topics": [
@@ -285,12 +285,12 @@ module.exports = {
       "id": 13,
       "question": "How do you create a clickable area that spans an entire block element?",
       "options": {
-        "A": "Wrap the block element in an <pre>a</pre> tag",
-        "B": "Add <pre>clickable=\"true\"</pre> attribute",
+        "A": "Add <pre>clickable=\"true\"</pre> attribute",
+        "B": "Wrap the block element in an <pre>a</pre> tag",
         "C": "Use <pre>display: link;</pre> in CSS",
         "D": "Apply JavaScript click handlers"
       },
-      "correct": "A",
+      "correct": "B",
       "explanation": "Wrap the block element in an <pre>a</pre> tag to make the entire area clickable. Modern HTML allows block elements inside <pre>a</pre> tags, making this a valid pattern.",
       "topic": {
         "topics": [
@@ -304,11 +304,11 @@ module.exports = {
       "question": "Which element is most appropriate for a copyright notice in the page footer?",
       "options": {
         "A": "<pre>mini</pre>",
-        "B": "<pre>tiny</pre>",
-        "C": "<pre>small</pre>",
+        "B": "<pre>small</pre>",
+        "C": "<pre>tiny</pre>",
         "D": "<pre>footertext</pre>"
       },
-      "correct": "C",
+      "correct": "B",
       "explanation": "The <pre>small</pre> element is semantically appropriate for side comments like copyright notices, typically rendered in smaller text. It's an inline element that fits well in footer content.",
       "topic": {
         "topics": [
@@ -322,11 +322,11 @@ module.exports = {
       "question": "What CSS property value hides an element but preserves its space?",
       "options": {
         "A": "<pre>opacity: 0;</pre>",
-        "B": "<pre>display: none;</pre>",
-        "C": "<pre>visibility: hidden;</pre>",
+        "B": "<pre>visibility: hidden;</pre>",
+        "C": "<pre>display: none;</pre>",
         "D": "<pre>position: absolute;</pre>"
       },
-      "correct": "C",
+      "correct": "B",
       "explanation": "<pre>visibility: hidden;</pre> hides the element but preserves its space in the layout. <pre>display: none;</pre> completely removes the element from the document flow.",
       "topic": {
         "topics": [
@@ -340,11 +340,11 @@ module.exports = {
       "question": "Which element represents the header of a document or section?",
       "options": {
         "A": "<pre>banner</pre>",
-        "B": "<pre>head</pre>",
+        "B": "<pre>header</pre>",
         "C": "<pre>top</pre>",
-        "D": "<pre>header</pre>"
+        "D": "<pre>head</pre>"
       },
-      "correct": "D",
+      "correct": "B",
       "explanation": "The <pre>header</pre> element represents introductory content for its nearest sectioning content or root element. It typically contains headings, logos, and navigation.",
       "topic": {
         "topics": [
@@ -377,10 +377,10 @@ module.exports = {
       "options": {
         "A": "<pre>cmd</pre>",
         "B": "<pre>input</pre>",
-        "C": "<pre>code</pre>",
-        "D": "<pre>kbd</pre>"
+        "C": "<pre>kbd</pre>",
+        "D": "<pre>code</pre>"
       },
-      "correct": "D",
+      "correct": "C",
       "explanation": "The <pre>kbd</pre> element represents user keyboard input. It's an inline element typically used in documentation to show which keys to press.",
       "topic": {
         "topics": [
@@ -394,11 +394,11 @@ module.exports = {
       "question": "What is the default display value of form elements like <pre>input</pre> and <pre>select</pre>?",
       "options": {
         "A": "Block",
-        "B": "Inline-block",
-        "C": "Inline",
+        "B": "Inline",
+        "C": "Inline-block",
         "D": "None"
       },
-      "correct": "B",
+      "correct": "C",
       "explanation": "Form elements like <pre>input</pre>, <pre>select</pre>, and <pre>textarea</pre> are inline-block by default. They flow inline with text but can have width, height, and other box model properties.",
       "topic": {
         "topics": [
@@ -412,11 +412,11 @@ module.exports = {
       "question": "Which element is most appropriate for a main heading of a page?",
       "options": {
         "A": "<pre>heading</pre>",
-        "B": "<pre>h1</pre>",
-        "C": "<pre>title</pre>",
+        "B": "<pre>title</pre>",
+        "C": "<pre>h1</pre>",
         "D": "<pre>header</pre>"
       },
-      "correct": "B",
+      "correct": "C",
       "explanation": "The <pre>h1</pre> element represents the highest level heading and should be used for the main title of the page. It's a block-level element that establishes the primary topic.",
       "topic": {
         "topics": [
@@ -431,10 +431,10 @@ module.exports = {
       "options": {
         "A": "Use <pre>menu</pre> with <pre>item</pre> elements",
         "B": "Use <pre>div</pre> with <pre>span</pre> elements",
-        "C": "Use <pre>nav</pre> with <pre>a</pre> elements directly",
-        "D": "Use <pre>ul</pre> with <pre>li</pre> elements"
+        "C": "Use <pre>ul</pre> with <pre>li</pre> elements",
+        "D": "Use <pre>nav</pre> with <pre>a</pre> elements directly"
       },
-      "correct": "D",
+      "correct": "C",
       "explanation": "Use an unordered list (<pre>ul</pre>) with list item (<pre>li</pre>) elements, each containing an anchor (<pre>a</pre>) tag. This creates a semantic, accessible vertical navigation structure.",
       "topic": {
         "topics": [
@@ -448,11 +448,11 @@ module.exports = {
       "question": "What element represents a thematic break between content sections?",
       "options": {
         "A": "<pre>br</pre>",
-        "B": "<pre>hr</pre>",
-        "C": "<pre>divider</pre>",
+        "B": "<pre>divider</pre>",
+        "C": "<pre>hr</pre>",
         "D": "<pre>break</pre>"
       },
-      "correct": "B",
+      "correct": "C",
       "explanation": "The <pre>hr</pre> element represents a thematic break between paragraph-level elements. It's a block-level element typically displayed as a horizontal rule.",
       "topic": {
         "topics": [
@@ -466,11 +466,11 @@ module.exports = {
       "question": "How can you center a block element horizontally?",
       "options": {
         "A": "Apply <pre>text-align: center;</pre>",
-        "B": "Use <pre>margin: 0 auto;</pre> in CSS",
-        "C": "Use <pre>display: center;</pre>",
+        "B": "Use <pre>display: center;</pre>",
+        "C": "Use <pre>margin: 0 auto;</pre> in CSS",
         "D": "Add <pre>center=\"true\"</pre> attribute"
       },
-      "correct": "B",
+      "correct": "C",
       "explanation": "Use <pre>margin: 0 auto;</pre> on a block element with a defined width to center it horizontally. The auto margins distribute the remaining space equally on both sides.",
       "topic": {
         "topics": [
@@ -503,10 +503,10 @@ module.exports = {
       "options": {
         "A": "It loses all its content",
         "B": "It becomes invisible but preserves space",
-        "C": "It starts on a new line and takes full width",
-        "D": "It inherits parent element's width"
+        "C": "It inherits parent element's width",
+        "D": "It starts on a new line and takes full width"
       },
-      "correct": "C",
+      "correct": "D",
       "explanation": "Applying <pre>display: block;</pre> to a <pre>span</pre> element makes it behave like a block element: it starts on a new line and takes the full available width.",
       "topic": {
         "topics": [
@@ -519,12 +519,12 @@ module.exports = {
       "id": 26,
       "question": "Which element represents preformatted text that preserves whitespace?",
       "options": {
-        "A": "<pre>pre</pre>",
+        "A": "<pre>format</pre>",
         "B": "<pre>code</pre>",
         "C": "<pre>text</pre>",
-        "D": "<pre>format</pre>"
+        "D": "<pre>pre</pre>"
       },
-      "correct": "A",
+      "correct": "D",
       "explanation": "The <pre>pre</pre> element represents preformatted text where whitespace and line breaks are preserved. It's a block-level element commonly used for code blocks.",
       "topic": {
         "topics": [
@@ -537,12 +537,12 @@ module.exports = {
       "id": 27,
       "question": "How do you create a responsive layout that stacks vertically on mobile?",
       "options": {
-        "A": "Use block elements and media queries",
+        "A": "Add <pre>responsive=\"true\"</pre> attribute",
         "B": "Apply <pre>display: mobile;</pre>",
         "C": "Use only inline elements",
-        "D": "Add <pre>responsive=\"true\"</pre> attribute"
+        "D": "Use block elements and media queries"
       },
-      "correct": "A",
+      "correct": "D",
       "explanation": "Use block elements (which stack vertically by default) and media queries to adjust layouts for different screen sizes. Block elements naturally create vertical stacks on narrow viewports.",
       "topic": {
         "topics": [
@@ -574,11 +574,11 @@ module.exports = {
       "question": "What CSS property value creates a flexible box layout?",
       "options": {
         "A": "<pre>display: block;</pre>",
-        "B": "<pre>display: flex;</pre>",
+        "B": "<pre>display: box;</pre>",
         "C": "<pre>display: inline;</pre>",
-        "D": "<pre>display: box;</pre>"
+        "D": "<pre>display: flex;</pre>"
       },
-      "correct": "B",
+      "correct": "D",
       "explanation": "<pre>display: flex;</pre> creates a flex container, enabling a flexible layout model where child elements can be easily aligned and distributed.",
       "topic": {
         "topics": [
@@ -593,10 +593,10 @@ module.exports = {
       "options": {
         "A": "<pre>content</pre>",
         "B": "<pre>body</pre>",
-        "C": "<pre>main</pre>",
-        "D": "<pre>primary</pre>"
+        "C": "<pre>primary</pre>",
+        "D": "<pre>main</pre>"
       },
-      "correct": "C",
+      "correct": "D",
       "explanation": "The <pre>main</pre> element represents the dominant content of the document. It should be unique to the document and not contain repeated content like navigation or footers.",
       "topic": {
         "topics": [

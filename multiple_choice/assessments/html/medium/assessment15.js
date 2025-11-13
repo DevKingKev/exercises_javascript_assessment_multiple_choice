@@ -59,12 +59,12 @@ module.exports = {
       "id": 1,
       "question": "What is the purpose of the <pre>lang</pre> attribute in HTML?",
       "options": {
-        "A": "To translate the page content automatically",
+        "A": "To declare the language of the element's content for browsers, search engines, and assistive technologies",
         "B": "To set the programming language for script elements",
         "C": "To enable syntax highlighting for code examples",
-        "D": "To declare the language of the element's content for browsers, search engines, and assistive technologies"
+        "D": "To translate the page content automatically"
       },
-      "correct": "D",
+      "correct": "A",
       "explanation": "The <pre>lang</pre> attribute declares the natural language of an element's content using language tags like <pre>en</pre> (English), <pre>fr</pre> (French), or <pre>ar</pre> (Arabic). This helps browsers apply correct hyphenation and spell-checking, assists search engines in returning language-appropriate results, and enables screen readers to use proper pronunciation and voice characteristics. For example, <pre><html lang=\"en\"></pre> declares the whole document is in English, while <pre><span lang=\"fr\">Bonjour</span></pre> marks a French word within English text. The attribute doesn't trigger automatic translation—that's a browser feature users control. It doesn't relate to programming languages or syntax highlighting. Always set <pre>lang</pre> on the <pre><html></pre> element and override it locally when content changes language.",
       "topics": [
         "lang Attribute",
@@ -76,11 +76,11 @@ module.exports = {
       "question": "What are valid values for the <pre>dir</pre> attribute?",
       "options": {
         "A": "<pre>left</pre>, <pre>right</pre>, <pre>center</pre>",
-        "B": "<pre>horizontal</pre>, <pre>vertical</pre>",
-        "C": "<pre>ltr</pre>, <pre>rtl</pre>, <pre>auto</pre>",
+        "B": "<pre>ltr</pre>, <pre>rtl</pre>, <pre>auto</pre>",
+        "C": "<pre>horizontal</pre>, <pre>vertical</pre>",
         "D": "<pre>forward</pre>, <pre>backward</pre>"
       },
-      "correct": "C",
+      "correct": "B",
       "explanation": "The <pre>dir</pre> attribute accepts three values: <pre>ltr</pre> (left-to-right for languages like English, French, Spanish), <pre>rtl</pre> (right-to-left for languages like Arabic, Hebrew, Persian), and <pre>auto</pre> (lets the browser determine direction based on content). For example, <pre><html lang=\"ar\" dir=\"rtl\"></pre> sets up an Arabic page with right-to-left layout. The <pre>auto</pre> value is useful when you don't know the direction in advance, such as for user-generated content: <pre><p dir=\"auto\">{{userContent}}</p></pre>. The browser examines the first strongly-directional character to determine direction. Values like \"left\", \"right\", \"center\", \"horizontal\", \"vertical\", \"forward\", or \"backward\" are not valid. The <pre>dir</pre> attribute affects text flow and layout, flipping the entire reading direction.",
       "topics": [
         "dir Attribute and Text Direction"
@@ -107,10 +107,10 @@ module.exports = {
       "options": {
         "A": "For all bidirectional text",
         "B": "Only for Arabic and Hebrew text",
-        "C": "When embedding user-generated content or text whose direction is unknown and might differ from the surrounding text",
-        "D": "To create bidirectional links"
+        "C": "To create bidirectional links",
+        "D": "When embedding user-generated content or text whose direction is unknown and might differ from the surrounding text"
       },
-      "correct": "C",
+      "correct": "D",
       "explanation": "The <pre><bdi></pre> (Bidirectional Isolation) element isolates text whose direction is unknown from its surroundings, preventing it from affecting the layout of nearby content. This is crucial for user-generated content like usernames, comments, or search queries that might contain RTL text in an LTR context (or vice versa). For example: <pre>User <bdi>{{username}}</bdi> posted...</pre>. If the username is in Arabic, the <pre><bdi></pre> prevents it from reversing the surrounding \"User\" and \"posted\" words. Without <pre><bdi></pre>, mixed-direction content can create confusing layouts, especially with punctuation. You don't use it for all bidirectional text—only when direction is unpredictable. It's not limited to specific languages or for creating links. Think of <pre><bdi></pre> as a protective wrapper for unknown-direction content.",
       "topics": [
         "Bidirectional Isolation (bdi)"
@@ -121,11 +121,11 @@ module.exports = {
       "question": "What is the difference between <pre><bdo></pre> and <pre><bdi></pre>?",
       "options": {
         "A": "They are identical; <pre><bdi></pre> is just shorter syntax",
-        "B": "<pre><bdo></pre> is for LTR text; <pre><bdi></pre> is for RTL text",
-        "C": "<pre><bdo></pre> forces a specific direction; <pre><bdi></pre> isolates text but lets it flow naturally according to its content",
+        "B": "<pre><bdo></pre> forces a specific direction; <pre><bdi></pre> isolates text but lets it flow naturally according to its content",
+        "C": "<pre><bdo></pre> is for LTR text; <pre><bdi></pre> is for RTL text",
         "D": "<pre><bdi></pre> is deprecated; use <pre><bdo></pre> instead"
       },
-      "correct": "C",
+      "correct": "B",
       "explanation": "The <pre><bdo></pre> (Bidirectional Override) element forcibly overrides the text direction using a required <pre>dir</pre> attribute: <pre><bdo dir=\"rtl\">forced right-to-left</bdo></pre>. The <pre><bdi></pre> (Bidirectional Isolation) element isolates text from its surroundings but allows the text to flow in its natural direction based on its content: <pre><bdi>{{unknownText}}</bdi></pre>. Use <pre><bdo></pre> when you want to force a specific direction regardless of content. Use <pre><bdi></pre> when you want to isolate unknown-direction text but let it display naturally. For example, in \"User <bdi>مرحبا</bdi> commented\", the Arabic flows RTL while the English flows LTR, but they don't interfere with each other. Neither is deprecated or language-specific. They serve different purposes in handling bidirectional text.",
       "topics": [
         "Bidirectional Override (bdo)",
@@ -136,12 +136,12 @@ module.exports = {
       "id": 6,
       "question": "What does the <pre>translate</pre> attribute do?",
       "options": {
-        "A": "It automatically translates content to the user's browser language",
+        "A": "It indicates whether element content should be translated when the page is localized",
         "B": "It enables Google Translate integration",
-        "C": "It indicates whether element content should be translated when the page is localized",
+        "C": "It automatically translates content to the user's browser language",
         "D": "It translates character encodings"
       },
-      "correct": "C",
+      "correct": "A",
       "explanation": "The <pre>translate</pre> attribute indicates whether content should be translated when the page is localized. Valid values are <pre>yes</pre> (or empty attribute, meaning translate) and <pre>no</pre> (don't translate). For example: <pre><p translate=\"no\">API_KEY_12345</p></pre> tells translation tools to leave that content unchanged. This is useful for proper names, code snippets, brand names, technical terms, or any content that shouldn't be translated. The attribute doesn't perform translation—it's metadata for translation tools (automated or human) to respect. Most content is translatable by default, so you primarily use <pre>translate=\"no\"</pre> to mark exceptions. It doesn't integrate specific translation services or handle encoding. Browser translation features may or may not respect this attribute, but professional localization workflows typically do.",
       "topics": [
         "translate Attribute"
@@ -151,12 +151,12 @@ module.exports = {
       "id": 7,
       "question": "What is the recommended character encoding for HTML documents?",
       "options": {
-        "A": "ASCII",
+        "A": "UTF-8",
         "B": "Windows-1252",
         "C": "ISO-8859-1",
-        "D": "UTF-8"
+        "D": "ASCII"
       },
-      "correct": "D",
+      "correct": "A",
       "explanation": "UTF-8 is the recommended character encoding for HTML documents and is the default encoding for HTML5. UTF-8 can represent every character in the Unicode standard, supporting all languages and symbols while remaining backward-compatible with ASCII for basic Latin characters. Declare it early in your <pre><head></pre>: <pre><meta charset=\"UTF-8\"></pre> or via HTTP header <pre>Content-Type: text/html; charset=UTF-8</pre>. UTF-8 is efficient, widely supported, and eliminates encoding issues when mixing languages. ASCII is limited to 128 characters (no accents, non-Latin scripts). ISO-8859-1 (Latin-1) and Windows-1252 support Western European languages but not Arabic, Chinese, emoji, etc. UTF-8 has become the web standard—over 98% of websites use it. Always use UTF-8 unless you have a very specific legacy requirement.",
       "topics": [
         "Character Encoding"
@@ -166,12 +166,12 @@ module.exports = {
       "id": 8,
       "question": "Where should the charset declaration appear in an HTML document?",
       "options": {
-        "A": "Anywhere in the <pre><head></pre> section",
+        "A": "Within the first 1024 bytes of the document, preferably as the first element in <pre><head></pre>",
         "B": "At the end of the document",
         "C": "In the <pre><body></pre> section before any text content",
-        "D": "Within the first 1024 bytes of the document, preferably as the first element in <pre><head></pre>"
+        "D": "Anywhere in the <pre><head></pre> section"
       },
-      "correct": "D",
+      "correct": "A",
       "explanation": "The charset declaration must appear within the first 1024 bytes of the HTML document, and it's best practice to place it as the first element inside <pre><head></pre>: <pre><head><meta charset=\"UTF-8\"><title>Page Title</title></head></pre>. This ensures the browser uses the correct encoding from the very start of parsing. If the charset appears too late, the browser might have already parsed some content with the wrong encoding, leading to garbled text (mojibake). Placing it first prevents this issue. The declaration can't go in <pre><body></pre> and shouldn't be at the end—by then, the entire document has been parsed. While HTTP headers can also declare encoding (and take precedence), the HTML meta tag serves as a fallback and ensures correct encoding when files are viewed locally.",
       "topics": [
         "Character Encoding"
@@ -182,11 +182,11 @@ module.exports = {
       "question": "What layout challenges are unique to right-to-left (RTL) languages?",
       "options": {
         "A": "RTL languages don't have any special challenges; just set <pre>dir=\"rtl\"</pre>",
-        "B": "RTL languages require different HTML elements",
+        "B": "Entire layouts must mirror: navigation, sidebars, icons, and UI elements flow from right to left, not just text",
         "C": "RTL only affects vertical text alignment",
-        "D": "Entire layouts must mirror: navigation, sidebars, icons, and UI elements flow from right to left, not just text"
+        "D": "RTL languages require different HTML elements"
       },
-      "correct": "D",
+      "correct": "B",
       "explanation": "Right-to-left layouts require comprehensive mirroring beyond just text direction. Navigation menus start from the right, sidebars swap sides, icons and arrows reverse direction (forward arrows point left, back arrows point right), breadcrumbs flow right-to-left, form labels align to the right, and visual hierarchies flip horizontally. CSS logical properties help: use <pre>margin-inline-start</pre> instead of <pre>margin-left</pre>, <pre>padding-inline-end</pre> instead of <pre>padding-right</pre>, etc. Images with directional meaning may need flipping. Progress bars fill right-to-left. Even non-text UI elements like checkboxes and radio buttons often move to the opposite side. Simply setting <pre>dir=\"rtl\"</pre> handles text but doesn't automatically mirror all CSS layouts—you need to design for bidirectionality. RTL doesn't affect vertical alignment specifically or require different HTML elements, but CSS and design must accommodate both directions.",
       "topics": [
         "Right-to-Left (RTL) Layout",
@@ -197,12 +197,12 @@ module.exports = {
       "id": 10,
       "question": "What is the correct format for language tags in the <pre>lang</pre> attribute?",
       "options": {
-        "A": "Use BCP 47 language tags: primary language code (e.g., <pre>en</pre>) optionally followed by region/script subtags (e.g., <pre>en-US</pre>, <pre>zh-Hans</pre>)",
+        "A": "Use two-letter country codes: <pre>lang=\"US\"</pre>",
         "B": "Use full language names: <pre>lang=\"English\"</pre>",
-        "C": "Use two-letter country codes: <pre>lang=\"US\"</pre>",
+        "C": "Use BCP 47 language tags: primary language code (e.g., <pre>en</pre>) optionally followed by region/script subtags (e.g., <pre>en-US</pre>, <pre>zh-Hans</pre>)",
         "D": "Use any custom identifier that describes the language"
       },
-      "correct": "A",
+      "correct": "C",
       "explanation": "Language tags follow the BCP 47 standard (RFC 5646), using codes from ISO 639 for languages and ISO 3166 for regions. Basic format: <pre>lang=\"en\"</pre> (English), <pre>lang=\"fr\"</pre> (French), <pre>lang=\"ar\"</pre> (Arabic). Add region subtags for specificity: <pre>lang=\"en-US\"</pre> (US English), <pre>lang=\"en-GB\"</pre> (British English), <pre>lang=\"pt-BR\"</pre> (Brazilian Portuguese). Script subtags distinguish writing systems: <pre>lang=\"zh-Hans\"</pre> (Simplified Chinese), <pre>lang=\"zh-Hant\"</pre> (Traditional Chinese). Use lowercase for language codes, uppercase for regions, title case for scripts. Don't use full language names, country codes alone, or custom identifiers—these won't be recognized by browsers and assistive technologies. The IANA Language Subtag Registry maintains valid codes. Be as specific as needed but avoid over-specifying.",
       "topics": [
         "lang Attribute",
@@ -230,11 +230,11 @@ module.exports = {
       "question": "What happens if you don't specify the <pre>lang</pre> attribute on an HTML document?",
       "options": {
         "A": "The browser automatically detects the language",
-        "B": "Assistive technologies can't reliably determine the language, potentially causing pronunciation errors and other accessibility issues",
-        "C": "The document will fail HTML validation",
+        "B": "The document will fail HTML validation",
+        "C": "Assistive technologies can't reliably determine the language, potentially causing pronunciation errors and other accessibility issues",
         "D": "Nothing; the lang attribute is optional and purely cosmetic"
       },
-      "correct": "B",
+      "correct": "C",
       "explanation": "Without the <pre>lang</pre> attribute, assistive technologies like screen readers can't reliably determine the document's language. They may fall back to the user's system language or make incorrect guesses, resulting in garbled pronunciation. For example, French text read with English pronunciation rules is incomprehensible. Search engines may also have difficulty categorizing your content, browsers can't apply proper spell-checking or hyphenation, and translation tools struggle. While the document won't fail validation (lang is technically optional), omitting it is a serious accessibility and usability problem. The W3C strongly recommends always declaring language. Browsers don't auto-detect reliably—even sophisticated algorithms can be wrong, especially for short content or mixed languages. The <pre>lang</pre> attribute is not cosmetic; it provides crucial semantic information.",
       "topics": [
         "lang Attribute",
@@ -277,12 +277,12 @@ module.exports = {
       "id": 15,
       "question": "Which CSS properties are particularly important for creating bidirectional (RTL/LTR) compatible layouts?",
       "options": {
-        "A": "Logical properties like <pre>margin-inline-start</pre>, <pre>padding-inline-end</pre>, <pre>border-inline</pre>, and <pre>inset-inline-start</pre>",
-        "B": "Only <pre>text-align</pre> and <pre>direction</pre>",
+        "A": "Only <pre>text-align</pre> and <pre>direction</pre>",
+        "B": "Logical properties like <pre>margin-inline-start</pre>, <pre>padding-inline-end</pre>, <pre>border-inline</pre>, and <pre>inset-inline-start</pre>",
         "C": "Physical properties like <pre>margin-left</pre> and <pre>margin-right</pre> work perfectly for RTL",
         "D": "RTL layouts require completely separate CSS files"
       },
-      "correct": "A",
+      "correct": "B",
       "explanation": "CSS logical properties are designed for bidirectional layouts, using flow-relative directions (inline/block, start/end) instead of physical directions (left/right, top/bottom). Use <pre>margin-inline-start</pre> instead of <pre>margin-left</pre> (it becomes left margin in LTR, right margin in RTL), <pre>padding-inline-end</pre> instead of <pre>padding-right</pre>, <pre>border-inline</pre> for horizontal borders, and <pre>inset-inline-start</pre> for positioning. These automatically flip based on <pre>dir</pre> attribute. While <pre>text-align</pre> and <pre>direction</pre> are useful, they're not sufficient for complete layouts. Physical properties like <pre>margin-left</pre> don't flip, requiring manual overrides or separate stylesheets. Logical properties eliminate this need, creating truly bidirectional CSS that works for both LTR and RTL without duplication. Modern browsers widely support logical properties, making them the best practice for international layouts.",
       "topics": [
         "Right-to-Left (RTL) Layout",
@@ -308,12 +308,12 @@ module.exports = {
       "id": 17,
       "question": "How do you properly mark up a quote in a foreign language?",
       "options": {
-        "A": "<pre><q lang=\"fr\">Bonjour</q></pre>",
+        "A": "<pre><quote language=\"French\">Bonjour</quote></pre>",
         "B": "<pre><q translate=\"no\">Bonjour</q></pre>",
-        "C": "<pre><quote language=\"French\">Bonjour</quote></pre>",
+        "C": "<pre><q lang=\"fr\">Bonjour</q></pre>",
         "D": "<pre><blockquote>Bonjour</blockquote></pre> with no additional attributes"
       },
-      "correct": "A",
+      "correct": "C",
       "explanation": "Use the <pre>lang</pre> attribute to indicate a foreign-language quote: <pre><p>She said <q lang=\"fr\">Bonjour</q> when she arrived.</p></pre>. This helps screen readers pronounce the French word correctly using French phonetics, even in an English document. The <pre><q></pre> element provides the semantic meaning of a quote, while <pre>lang</pre> provides the language information. You might also use <pre>translate=\"no\"</pre> if the quote should remain in French when the page is translated, but <pre>lang</pre> is essential for pronunciation. There's no <pre><quote></pre> element or <pre>language</pre> attribute in HTML. <pre><blockquote></pre> is for longer, block-level quotes, but still needs <pre>lang</pre> for foreign language content: <pre><blockquote lang=\"es\"><p>¿Cómo estás?</p></blockquote></pre>. Always declare language changes for accessibility.",
       "topics": [
         "lang Attribute",
@@ -342,11 +342,11 @@ module.exports = {
       "question": "Why is <pre><bdi></pre> particularly important for usernames and user-generated content?",
       "options": {
         "A": "It validates that usernames don't contain invalid characters",
-        "B": "It prevents RTL usernames from disrupting the layout of surrounding LTR text (and vice versa), especially with punctuation",
-        "C": "It encrypts user data for security",
+        "B": "It encrypts user data for security",
+        "C": "It prevents RTL usernames from disrupting the layout of surrounding LTR text (and vice versa), especially with punctuation",
         "D": "It automatically translates usernames to the page language"
       },
-      "correct": "B",
+      "correct": "C",
       "explanation": "The <pre><bdi></pre> element prevents user-generated content from disrupting surrounding layout. Consider a leaderboard: \"1. <bdi>{{username}}</bdi> - 100 points\". If a username contains RTL text without <pre><bdi></pre>, it can reverse nearby punctuation and text, creating confusing displays like \"- 100 points 1. username\". The <pre><bdi></pre> isolates the username, ensuring it displays in its natural direction without affecting the surrounding LTR content. This is critical for rankings, comment systems, social media posts, and anywhere user input appears in structured contexts. Without isolation, RTL names can make interfaces unusable or misleading. The element doesn't validate input, encrypt data, or translate—it purely prevents directional contamination. Think of it as a protective boundary around unpredictable-direction content.",
       "topics": [
         "Bidirectional Isolation (bdi)",
@@ -357,12 +357,12 @@ module.exports = {
       "id": 20,
       "question": "What is the difference between the HTML <pre>dir</pre> attribute and the CSS <pre>direction</pre> property?",
       "options": {
-        "A": "The HTML <pre>dir</pre> attribute is recommended and sets directionality semantically; CSS <pre>direction</pre> is primarily for styling edge cases",
+        "A": "They work on different text types",
         "B": "They are completely different and incompatible",
         "C": "CSS <pre>direction</pre> is the modern approach; <pre>dir</pre> is deprecated",
-        "D": "They work on different text types"
+        "D": "The HTML <pre>dir</pre> attribute is recommended and sets directionality semantically; CSS <pre>direction</pre> is primarily for styling edge cases"
       },
-      "correct": "A",
+      "correct": "D",
       "explanation": "The HTML <pre>dir</pre> attribute is the recommended way to set text direction because it's semantic and accessible. It's part of the document structure: <pre><div dir=\"rtl\">...</div></pre>. The CSS <pre>direction</pre> property achieves similar visual results but is considered presentational. Use <pre>dir</pre> for document-level or element-level directionality tied to content meaning. CSS <pre>direction</pre> is useful for specific styling needs or when you can't modify HTML, but it doesn't provide the same semantic clarity. Screen readers and search engines better understand <pre>dir</pre> as structural information about content. Neither is deprecated, and they're not incompatible (CSS can override HTML), but best practice is to use the HTML <pre>dir</pre> attribute for semantic direction and reserve CSS <pre>direction</pre> for presentational overrides or technical necessities.",
       "topics": [
         "dir Attribute and Text Direction",
@@ -373,12 +373,12 @@ module.exports = {
       "id": 21,
       "question": "When creating forms for international users, what special considerations apply?",
       "options": {
-        "A": "Use <pre>dir=\"auto\"</pre> on inputs for user content, ensure labels flip position in RTL, and consider name/address format variations",
+        "A": "Forms must be rebuilt entirely for each language",
         "B": "Forms work the same way regardless of language",
         "C": "Only the submit button text needs translation",
-        "D": "Forms must be rebuilt entirely for each language"
+        "D": "Use <pre>dir=\"auto\"</pre> on inputs for user content, ensure labels flip position in RTL, and consider name/address format variations"
       },
-      "correct": "A",
+      "correct": "D",
       "explanation": "International forms require several considerations: Use <pre>dir=\"auto\"</pre> on text inputs and textareas where users might enter RTL or LTR content: <pre><input type=\"text\" dir=\"auto\"></pre>. In RTL layouts, labels should flip to the right side of inputs. Name fields must accommodate different cultural conventions (some cultures put family names first). Address formats vary dramatically by country—don't assume Western patterns. Phone number formats differ globally. Consider date format preferences (MM/DD/YYYY vs DD/MM/YYYY). Placeholder text and error messages need translation and proper <pre>lang</pre> attributes. Calendar widgets must support different week start days. While you don't rebuild forms entirely for each language, you need flexible structures that adapt to different data patterns and layouts. Simply translating button text is insufficient for good international UX.",
       "topics": [
         "dir Attribute and Text Direction",
@@ -406,12 +406,12 @@ module.exports = {
       "id": 23,
       "question": "How do you handle mixed-direction text within a single paragraph?",
       "options": {
-        "A": "Split it into multiple paragraphs",
-        "B": "Use <pre><bdi></pre> or <pre><span dir=\"auto\"></pre> around the opposite-direction content while letting UBA handle most of it naturally",
+        "A": "Use <pre><bdi></pre> or <pre><span dir=\"auto\"></pre> around the opposite-direction content while letting UBA handle most of it naturally",
+        "B": "Split it into multiple paragraphs",
         "C": "Use only <pre><bdo></pre> to force all directions explicitly",
         "D": "Avoid mixing directions in a single paragraph"
       },
-      "correct": "B",
+      "correct": "A",
       "explanation": "For mixed-direction content in a paragraph, the Unicode Bidirectional Algorithm (UBA) handles most cases automatically. However, use <pre><bdi></pre> or <pre><span dir=\"auto\"></pre> around unpredictable content: <pre><p dir=\"ltr\">User <bdi>{{username}}</bdi> from <bdi>{{city}}</bdi> commented...</p></pre>. This isolates user-generated content that might be RTL within an LTR paragraph. For known-direction content, you can use explicit <pre>dir</pre> attributes: <pre><p>The word <span lang=\"ar\" dir=\"rtl\">مرحبا</span> means hello.</p></pre>. Don't use <pre><bdo></pre> unless you truly need to override the natural algorithm—it's for forcing specific directions, not normal mixed content. Splitting into multiple paragraphs or avoiding mixed directions limits expressiveness. Proper use of <pre><bdi></pre>, <pre>dir</pre>, and <pre>lang</pre> allows natural mixed-language and mixed-direction text while maintaining correct layout.",
       "topics": [
         "Bidirectional Isolation (bdi)",
@@ -439,11 +439,10 @@ module.exports = {
       "question": "What is the correct way to handle internationalized domain names (IDNs) in HTML?",
       "options": {
         "A": "HTML doesn't support non-ASCII domain names",
-        "B": "Use Punycode encoding for the <pre>href</pre> attribute but can display Unicode in visible link text: <pre><a href=\"http://xn--example.com\">例え.com</a></pre>",
         "C": "Use Unicode directly in URLs without conversion",
-        "D": "Replace all non-ASCII characters with underscores"
+        "D": "Replace all non-ASCII characters with underscores",
+        "undefined": "Use Punycode encoding for the <pre>href</pre> attribute but can display Unicode in visible link text: <pre><a href=\"http://xn--example.com\">例え.com</a></pre>"
       },
-      "correct": "B",
       "explanation": "Internationalized Domain Names (IDNs) allow non-ASCII characters in domain names, but the underlying DNS system uses ASCII. The solution is Punycode encoding, which converts Unicode to ASCII: 例え.com becomes xn--r8jz45g.com. In HTML, use Punycode in the <pre>href</pre> attribute for browser compatibility: <pre><a href=\"https://xn--r8jz45g.com/\">例え.com</a></pre>. The visible link text can show the Unicode version for users. Modern browsers display IDNs as Unicode in the address bar (converting from Punycode) but may show Punycode if there's a security concern (mixed scripts). You can't reliably use Unicode directly in <pre>href</pre> attributes without encoding—different browsers handle it differently. Replacing with underscores breaks the domain. Always encode IDNs to Punycode for <pre>href</pre> values while keeping human-readable Unicode for display.",
       "topics": [
         "Character Encoding",

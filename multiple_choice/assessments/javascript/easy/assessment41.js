@@ -54,12 +54,12 @@ module.exports = {
       "id": 1,
       "question": "Why should you avoid innerHTML for user-generated content?",
       "options": {
-        "A": "It breaks CSS styling",
+        "A": "It can lead to XSS attacks",
         "B": "It's slower than other methods",
         "C": "It doesn't work with modern JavaScript",
-        "D": "It can lead to XSS attacks"
+        "D": "It breaks CSS styling"
       },
-      "correct": "D",
+      "correct": "A",
       "explanation": "innerHTML can execute malicious scripts from user input, creating cross-site scripting (XSS) vulnerabilities.",
       "topic": {
         "topics": [
@@ -71,12 +71,12 @@ module.exports = {
       "id": 2,
       "question": "What is a safer alternative to innerHTML for adding text content?",
       "options": {
-        "A": "outerHTML",
+        "A": "textContent",
         "B": "innerText",
-        "C": "textContent",
+        "C": "outerHTML",
         "D": "document.write"
       },
-      "correct": "C",
+      "correct": "A",
       "explanation": "textContent safely inserts text without parsing HTML, preventing script execution from user input.",
       "topic": {
         "topics": [
@@ -88,12 +88,12 @@ module.exports = {
       "id": 3,
       "question": "What should you always add to img elements for accessibility?",
       "options": {
-        "A": "title attribute",
-        "B": "alt attribute",
+        "A": "alt attribute",
+        "B": "title attribute",
         "C": "srcset attribute",
         "D": "loading attribute"
       },
-      "correct": "B",
+      "correct": "A",
       "explanation": "The alt attribute provides text descriptions for screen readers and when images fail to load.",
       "topic": {
         "topics": [
@@ -122,12 +122,12 @@ module.exports = {
       "id": 5,
       "question": "What should you do before using user input in your application?",
       "options": {
-        "A": "Convert it to uppercase",
-        "B": "Validate and sanitize it",
+        "A": "Validate and sanitize it",
+        "B": "Convert it to uppercase",
         "C": "Store it in localStorage first",
         "D": "Display it immediately"
       },
-      "correct": "B",
+      "correct": "A",
       "explanation": "Always validate input meets expected format and sanitize it to remove potentially harmful content.",
       "topic": {
         "topics": [
@@ -139,12 +139,12 @@ module.exports = {
       "id": 6,
       "question": "What is XSS?",
       "options": {
-        "A": "XML security standards",
+        "A": "Cross-site scripting attacks",
         "B": "Extra style sheets",
-        "C": "Cross-site scripting attacks",
+        "C": "XML security standards",
         "D": "Extended script syntax"
       },
-      "correct": "C",
+      "correct": "A",
       "explanation": "XSS (Cross-site Scripting) is a security vulnerability where attackers inject malicious scripts into web pages.",
       "topic": {
         "topics": [
@@ -173,12 +173,12 @@ module.exports = {
       "id": 8,
       "question": "What is a content security policy (CSP)?",
       "options": {
-        "A": "A method for organizing CSS files",
+        "A": "A security layer to prevent XSS attacks",
         "B": "A way to optimize content delivery",
-        "C": "A security layer to prevent XSS attacks",
+        "C": "A method for organizing CSS files",
         "D": "A JavaScript framework feature"
       },
-      "correct": "C",
+      "correct": "A",
       "explanation": "CSP helps prevent XSS by restricting sources of scripts and other resources that can be loaded.",
       "topic": {
         "topics": [
@@ -191,11 +191,11 @@ module.exports = {
       "question": "Why is it important to provide keyboard navigation?",
       "options": {
         "A": "To support touch devices only",
-        "B": "To make websites faster",
+        "B": "For users who can't use a mouse",
         "C": "For better SEO ranking",
-        "D": "For users who can't use a mouse"
+        "D": "To make websites faster"
       },
-      "correct": "D",
+      "correct": "B",
       "explanation": "Keyboard accessibility is essential for users with motor disabilities and those who prefer keyboard navigation.",
       "topic": {
         "topics": [
@@ -207,12 +207,12 @@ module.exports = {
       "id": 10,
       "question": "What should you use instead of document.write()?",
       "options": {
-        "A": "DOM manipulation methods",
-        "B": "console.log",
+        "A": "console.log",
+        "B": "DOM manipulation methods",
         "C": "alert()",
         "D": "It's still safe to use"
       },
-      "correct": "A",
+      "correct": "B",
       "explanation": "document.write() can block page rendering and has security implications. Use DOM methods like createElement and appendChild instead.",
       "topic": {
         "topics": [
@@ -224,12 +224,12 @@ module.exports = {
       "id": 11,
       "question": "Why should you avoid using eval()?",
       "options": {
-        "A": "It can execute arbitrary code and create security risks",
-        "B": "It's deprecated in JavaScript",
+        "A": "It's deprecated in JavaScript",
+        "B": "It can execute arbitrary code and create security risks",
         "C": "It only works in older browsers",
         "D": "It's too slow for modern apps"
       },
-      "correct": "A",
+      "correct": "B",
       "explanation": "eval() executes any string as code, making it extremely dangerous with untrusted input.",
       "topic": {
         "topics": [
@@ -242,11 +242,11 @@ module.exports = {
       "question": "What is ARIA used for?",
       "options": {
         "A": "Creating responsive layouts",
-        "B": "Making animations smoother",
+        "B": "Improving accessibility when HTML semantics aren't enough",
         "C": "Adding authentication to websites",
-        "D": "Improving accessibility when HTML semantics aren't enough"
+        "D": "Making animations smoother"
       },
-      "correct": "D",
+      "correct": "B",
       "explanation": "ARIA (Accessible Rich Internet Applications) provides additional accessibility information when native HTML isn't sufficient.",
       "topic": {
         "topics": [
@@ -258,12 +258,12 @@ module.exports = {
       "id": 13,
       "question": "Why should you hash passwords before storing them?",
       "options": {
-        "A": "To protect user data if the database is compromised",
-        "B": "To make passwords easier to remember",
+        "A": "To make passwords easier to remember",
+        "B": "To protect user data if the database is compromised",
         "C": "To reduce storage space",
         "D": "To make login faster"
       },
-      "correct": "A",
+      "correct": "B",
       "explanation": "Hashing passwords ensures that plain text passwords aren't stored, protecting users if data is breached.",
       "topic": {
         "topics": [
@@ -276,11 +276,11 @@ module.exports = {
       "question": "What is the purpose of the tabindex attribute?",
       "options": {
         "A": "To style tabs in a UI",
-        "B": "To create table indexes",
-        "C": "To control keyboard navigation order",
+        "B": "To control keyboard navigation order",
+        "C": "To create table indexes",
         "D": "To index database tables"
       },
-      "correct": "C",
+      "correct": "B",
       "explanation": "tabindex controls the order in which elements receive focus when users navigate with the Tab key.",
       "topic": {
         "topics": [
@@ -292,12 +292,12 @@ module.exports = {
       "id": 15,
       "question": "Why should you use HTTPS instead of HTTP?",
       "options": {
-        "A": "To encrypt data between browser and server",
-        "B": "To make websites load faster",
+        "A": "To make websites load faster",
+        "B": "To encrypt data between browser and server",
         "C": "To improve JavaScript performance",
         "D": "To reduce server costs"
       },
-      "correct": "A",
+      "correct": "B",
       "explanation": "HTTPS encrypts communication, preventing eavesdropping and tampering with sensitive data.",
       "topic": {
         "topics": [
@@ -345,10 +345,10 @@ module.exports = {
       "options": {
         "A": "Any ratio is fine",
         "B": "At least 2:1",
-        "C": "At least 7:1",
-        "D": "At least 4.5:1"
+        "C": "At least 4.5:1",
+        "D": "At least 7:1"
       },
-      "correct": "D",
+      "correct": "C",
       "explanation": "WCAG recommends minimum 4.5:1 contrast ratio for normal text to ensure readability for users with visual impairments.",
       "topic": {
         "topics": [
@@ -361,11 +361,11 @@ module.exports = {
       "question": "What should you use to create interactive custom controls?",
       "options": {
         "A": "Only div and span elements",
-        "B": "ARIA roles and keyboard event handlers",
-        "C": "Inline JavaScript events",
+        "B": "Inline JavaScript events",
+        "C": "ARIA roles and keyboard event handlers",
         "D": "CSS animations only"
       },
-      "correct": "B",
+      "correct": "C",
       "explanation": "Custom controls need proper ARIA roles and keyboard support to be accessible to all users.",
       "topic": {
         "topics": [
@@ -378,11 +378,11 @@ module.exports = {
       "question": "Why should you avoid autoplaying videos with sound?",
       "options": {
         "A": "It uses too much bandwidth",
-        "B": "It can be disruptive and inaccessible",
-        "C": "It breaks mobile browsers",
+        "B": "It breaks mobile browsers",
+        "C": "It can be disruptive and inaccessible",
         "D": "It's not supported in all browsers"
       },
-      "correct": "B",
+      "correct": "C",
       "explanation": "Autoplaying media can disorient users and interfere with screen readers. Always provide user control.",
       "topic": {
         "topics": [
@@ -394,12 +394,12 @@ module.exports = {
       "id": 21,
       "question": "What is the purpose of input sanitization?",
       "options": {
-        "A": "To remove potentially harmful content from user input",
+        "A": "To compress data before storage",
         "B": "To format input for better display",
-        "C": "To compress data before storage",
+        "C": "To remove potentially harmful content from user input",
         "D": "To translate input to different languages"
       },
-      "correct": "A",
+      "correct": "C",
       "explanation": "Sanitization removes or neutralizes dangerous content like script tags from user input before processing.",
       "topic": {
         "topics": [
@@ -413,10 +413,10 @@ module.exports = {
       "options": {
         "A": "To satisfy SEO requirements only",
         "B": "To make text larger and more visible",
-        "C": "To improve page loading speed",
-        "D": "To create a logical document structure for screen readers"
+        "C": "To create a logical document structure for screen readers",
+        "D": "To improve page loading speed"
       },
-      "correct": "D",
+      "correct": "C",
       "explanation": "Proper heading structure helps screen reader users understand page organization and navigate content.",
       "topic": {
         "topics": [
@@ -428,12 +428,12 @@ module.exports = {
       "id": 23,
       "question": "What is a safe way to include third-party scripts?",
       "options": {
-        "A": "Use subresource integrity (SRI) hashes",
+        "A": "Embed them directly in HTML",
         "B": "Load them from any CDN",
-        "C": "Embed them directly in HTML",
+        "C": "Use subresource integrity (SRI) hashes",
         "D": "Load them asynchronously only"
       },
-      "correct": "A",
+      "correct": "C",
       "explanation": "SRI hashes ensure third-party scripts haven't been tampered with by verifying their content matches expected hashes.",
       "topic": {
         "topics": [
@@ -446,11 +446,11 @@ module.exports = {
       "question": "Why should you provide visible focus indicators?",
       "options": {
         "A": "To make the website more colorful",
-        "B": "So keyboard users can see which element has focus",
+        "B": "For better mobile touch targets",
         "C": "To indicate loading states",
-        "D": "For better mobile touch targets"
+        "D": "So keyboard users can see which element has focus"
       },
-      "correct": "B",
+      "correct": "D",
       "explanation": "Visible focus indicators are essential for keyboard users to navigate and understand where they are on the page.",
       "topic": {
         "topics": [
@@ -481,10 +481,10 @@ module.exports = {
       "options": {
         "A": "To validate HTML syntax",
         "B": "To check website performance",
-        "C": "To ensure your site is accessible to blind users",
-        "D": "To test mobile responsiveness"
+        "C": "To test mobile responsiveness",
+        "D": "To ensure your site is accessible to blind users"
       },
-      "correct": "C",
+      "correct": "D",
       "explanation": "Screen reader testing helps identify accessibility issues that affect users who rely on assistive technology.",
       "topic": {
         "topics": [
@@ -515,10 +515,10 @@ module.exports = {
       "options": {
         "A": "To automatically validate form data",
         "B": "To make forms submit faster",
-        "C": "To group related form controls accessibly",
-        "D": "To style form sections differently"
+        "C": "To style form sections differently",
+        "D": "To group related form controls accessibly"
       },
-      "correct": "C",
+      "correct": "D",
       "explanation": "fieldset groups related form controls, and legend provides a description, improving accessibility.",
       "topic": {
         "topics": [
@@ -531,11 +531,11 @@ module.exports = {
       "question": "What is a safe way to handle file uploads?",
       "options": {
         "A": "Trust client-side validation only",
-        "B": "Validate file types and sizes on the server",
+        "B": "Store files in localStorage",
         "C": "Accept all file types for flexibility",
-        "D": "Store files in localStorage"
+        "D": "Validate file types and sizes on the server"
       },
-      "correct": "B",
+      "correct": "D",
       "explanation": "Server-side validation is essential since client-side checks can be bypassed. Restrict allowed file types and sizes.",
       "topic": {
         "topics": [
@@ -548,12 +548,12 @@ module.exports = {
       "question": "Why should you avoid using div for everything?",
       "options": {
         "A": "div elements are slower to render",
-        "B": "Semantic elements provide better accessibility and structure",
+        "B": "div is being deprecated in HTML6",
         "C": "div doesn't work with CSS Grid",
-        "D": "div is being deprecated in HTML6"
+        "D": "Semantic elements provide better accessibility and structure"
       },
       "explanation": "Semantic elements like main, article, section, and nav provide meaning that helps both users and assistive technologies understand content structure.",
-      "correct": "B",
+      "correct": "D",
       "topic": {
         "topics": [
           "Semantic HTML"

@@ -69,12 +69,12 @@ module.exports = {
       "id": 1,
       "question": "Which method returns the first element within the document that matches the specified selector?",
       "options": {
-        "A": "getElementById",
-        "B": "querySelector",
+        "A": "querySelector",
+        "B": "getElementById",
         "C": "getElementsByClassName",
         "D": "querySelectorAll"
       },
-      "correct": "B",
+      "correct": "A",
       "explanation": "document.querySelector returns the first Element within the document that matches the specified selector.",
       "topic": {
         "topics": [
@@ -86,12 +86,12 @@ module.exports = {
       "id": 2,
       "question": "Which approach best implements event delegation for many similar child elements?",
       "options": {
-        "A": "Attach listeners to each child",
+        "A": "Attach one listener to the parent and inspect event.target",
         "B": "Use inline onclick attributes",
         "C": "Use setInterval to poll for events",
-        "D": "Attach one listener to the parent and inspect event.target"
+        "D": "Attach listeners to each child"
       },
-      "correct": "D",
+      "correct": "A",
       "explanation": "Event delegation attaches a single listener to a common ancestor and inspects event.target to handle events for many children efficiently.",
       "topic": {
         "topics": [
@@ -103,12 +103,12 @@ module.exports = {
       "id": 3,
       "question": "What is a primary benefit of Shadow DOM?",
       "options": {
-        "A": "Runs on a separate thread",
+        "A": "Encapsulation of styles and markup from the main document",
         "B": "Automatically optimizes performance",
         "C": "Makes elements invisible to assistive tech",
-        "D": "Encapsulation of styles and markup from the main document"
+        "D": "Runs on a separate thread"
       },
-      "correct": "D",
+      "correct": "A",
       "explanation": "Shadow DOM provides encapsulation so internal DOM nodes and styles don't leak into the main document and vice versa.",
       "topic": {
         "topics": [
@@ -120,12 +120,12 @@ module.exports = {
       "id": 4,
       "question": "Which lifecycle callback is invoked when a custom element is inserted into the DOM?",
       "options": {
-        "A": "disconnectedCallback",
-        "B": "connectedCallback",
+        "A": "connectedCallback",
+        "B": "disconnectedCallback",
         "C": "attributeChangedCallback",
         "D": "adoptedCallback"
       },
-      "correct": "B",
+      "correct": "A",
       "explanation": "connectedCallback is called each time the custom element is appended into a document-connected element.",
       "topic": {
         "topics": [
@@ -154,12 +154,12 @@ module.exports = {
       "id": 6,
       "question": "Which interface would you use to observe DOM mutations like added/removed nodes?",
       "options": {
-        "A": "IntersectionObserver",
+        "A": "MutationObserver",
         "B": "PerformanceObserver",
         "C": "ResizeObserver",
-        "D": "MutationObserver"
+        "D": "IntersectionObserver"
       },
-      "correct": "D",
+      "correct": "A",
       "explanation": "MutationObserver lets you observe changes to the DOM tree, attributes, and characterData.",
       "topic": {
         "topics": [
@@ -171,12 +171,12 @@ module.exports = {
       "id": 7,
       "question": "Which method gives an element's size and position relative to the viewport?",
       "options": {
-        "A": "element.offsetParent",
+        "A": "element.getBoundingClientRect",
         "B": "element.getClientRects",
-        "C": "element.getBoundingClientRect",
+        "C": "element.offsetParent",
         "D": "element.getComputedStyle"
       },
-      "correct": "C",
+      "correct": "A",
       "explanation": "getBoundingClientRect returns the size of an element and its position relative to the viewport.",
       "topic": {
         "topics": [
@@ -206,11 +206,11 @@ module.exports = {
       "question": "In event handling, which flag prevents further propagation of the current event in the bubbling or capturing phases?",
       "options": {
         "A": "stopImmediatePropagation",
-        "B": "preventDefault",
+        "B": "stopPropagation",
         "C": "cancelBubble",
-        "D": "stopPropagation"
+        "D": "preventDefault"
       },
-      "correct": "D",
+      "correct": "B",
       "explanation": "event.stopPropagation() stops the event from bubbling (or capturing) further; stopImmediatePropagation also prevents other listeners on the same element.",
       "topic": {
         "topics": [
@@ -240,11 +240,11 @@ module.exports = {
       "question": "Which Node property returns the node type (e.g., element, text, comment)?",
       "options": {
         "A": "nodeName",
-        "B": "nodeKind",
-        "C": "nodeType",
+        "B": "nodeType",
+        "C": "nodeKind",
         "D": "nodeValue"
       },
-      "correct": "C",
+      "correct": "B",
       "explanation": "Node.nodeType is a numeric code representing the type (1 = Element, 3 = Text, etc.).",
       "topic": {
         "topics": [
@@ -274,11 +274,11 @@ module.exports = {
       "question": "Which method is appropriate to efficiently insert many nodes into the DOM?",
       "options": {
         "A": "appendChild for each node directly into document.body",
-        "B": "Use innerHTML with concatenated strings always",
-        "C": "Build nodes in a DocumentFragment and append the fragment once",
+        "B": "Build nodes in a DocumentFragment and append the fragment once",
+        "C": "Use innerHTML with concatenated strings always",
         "D": "Use synchronous XHR to fetch markup"
       },
-      "correct": "C",
+      "correct": "B",
       "explanation": "DocumentFragment allows batching DOM insertions in memory and attaching once, minimizing reflows.",
       "topic": {
         "topics": [
@@ -290,12 +290,12 @@ module.exports = {
       "id": 14,
       "question": "Which API helps you lazily load offscreen images when they approach the viewport?",
       "options": {
-        "A": "IntersectionObserver",
+        "A": "ResizeObserver",
         "B": "MutationObserver",
-        "C": "ResizeObserver",
+        "C": "IntersectionObserver",
         "D": "PerformanceObserver"
       },
-      "correct": "A",
+      "correct": "C",
       "explanation": "IntersectionObserver provides a way to asynchronously observe changes in the intersection of a target element with an ancestor or the top-level document's viewport, useful for lazy-loading.",
       "topic": {
         "topics": [
@@ -309,10 +309,10 @@ module.exports = {
       "options": {
         "A": "Always attach open shadow root",
         "B": "Expose all internal nodes via properties",
-        "C": "Never use shadow DOM",
-        "D": "Prefer closed shadow root to prevent access"
+        "C": "Prefer closed shadow root to prevent access",
+        "D": "Never use shadow DOM"
       },
-      "correct": "D",
+      "correct": "C",
       "explanation": "Using a closed shadow root prevents outside scripts from accessing shadow internals via element.shadowRoot; it's a trade-off with extensibility and testing.",
       "topic": {
         "topics": [
@@ -326,10 +326,10 @@ module.exports = {
       "options": {
         "A": "element.custom",
         "B": "element.data",
-        "C": "element.getAttributeNames",
-        "D": "element.dataset"
+        "C": "element.dataset",
+        "D": "element.getAttributeNames"
       },
-      "correct": "D",
+      "correct": "C",
       "explanation": "element.dataset provides a DOMStringMap for reading and writing data-* attributes in a convenient camelCase form.",
       "topic": {
         "topics": [
@@ -392,12 +392,12 @@ module.exports = {
       "id": 20,
       "question": "Which property is safer than innerHTML when inserting plain text from untrusted sources?",
       "options": {
-        "A": "textContent",
+        "A": "insertAdjacentHTML",
         "B": "dataset",
         "C": "outerHTML",
-        "D": "insertAdjacentHTML"
+        "D": "textContent"
       },
-      "correct": "A",
+      "correct": "D",
       "explanation": "textContent inserts text without parsing HTML, avoiding script injection risks associated with innerHTML.",
       "topic": {
         "topics": [
@@ -409,12 +409,12 @@ module.exports = {
       "id": 21,
       "question": "Which classList method toggles a class only if a second boolean argument is true/false?",
       "options": {
-        "A": "classList.toggle(name, force)",
+        "A": "classList.contains",
         "B": "classList.add with condition",
         "C": "classList.replace",
-        "D": "classList.contains"
+        "D": "classList.toggle(name, force)"
       },
-      "correct": "A",
+      "correct": "D",
       "explanation": "classList.toggle(name, force) will add the class if force is true and remove it if force is false.",
       "topic": {
         "topics": [
@@ -426,12 +426,12 @@ module.exports = {
       "id": 22,
       "question": "Which element method returns the closest ancestor that matches the selector?",
       "options": {
-        "A": "element.closest(selector)",
+        "A": "element.querySelectorAll",
         "B": "element.parentNode(selector)",
         "C": "element.findAncestor",
-        "D": "element.querySelectorAll"
+        "D": "element.closest(selector)"
       },
-      "correct": "A",
+      "correct": "D",
       "explanation": "closest traverses ancestors (including the element itself) and returns the first that matches the selector.",
       "topic": {
         "topics": [
@@ -443,12 +443,12 @@ module.exports = {
       "id": 23,
       "question": "Which approach helps avoid reflows when reading layout values and writing styles?",
       "options": {
-        "A": "Batch reads first, then batch writes",
+        "A": "Always use offsetWidth for writes",
         "B": "Interleave many reads and writes",
         "C": "Perform read after write",
-        "D": "Always use offsetWidth for writes"
+        "D": "Batch reads first, then batch writes"
       },
-      "correct": "A",
+      "correct": "D",
       "explanation": "Batching reads and then writes prevents forced synchronous layout and reduces reflows.",
       "topic": {
         "topics": [
@@ -461,11 +461,11 @@ module.exports = {
       "question": "Which attribute is typically used to make <template> content inert until it's instantiated?",
       "options": {
         "A": "disabled",
-        "B": "template's content is already inert by default",
+        "B": "data-template",
         "C": "hidden",
-        "D": "data-template"
+        "D": "template's content is already inert by default"
       },
-      "correct": "B",
+      "correct": "D",
       "explanation": "Template content is inert and not part of the document until it is cloned and inserted; scripts inside templates do not execute.",
       "topic": {
         "topics": [
@@ -477,12 +477,12 @@ module.exports = {
       "id": 25,
       "question": "Which method removes a child and optionally returns it for reuse?",
       "options": {
-        "A": "element.removeChild(node)",
+        "A": "element.popChild",
         "B": "element.deleteChild",
         "C": "element.clearChild",
-        "D": "element.popChild"
+        "D": "element.removeChild(node)"
       },
-      "correct": "A",
+      "correct": "D",
       "explanation": "removeChild returns the removed node, allowing you to reuse it or insert it elsewhere.",
       "topic": {
         "topics": [

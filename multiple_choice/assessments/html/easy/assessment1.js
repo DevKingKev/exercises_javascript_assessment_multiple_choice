@@ -54,12 +54,12 @@ module.exports = {
       "id": 1,
       "question": "Which HTML element defines the root of an HTML document?",
       "options": {
-        "A": "<pre><DOCTYPE></pre>",
+        "A": "<pre><html></pre>",
         "B": "<pre><head></pre>",
         "C": "<pre><body></pre>",
-        "D": "<pre><html></pre>"
+        "D": "<pre><DOCTYPE></pre>"
       },
-      "correct": "D",
+      "correct": "A",
       "explanation": "The <pre><html></pre> element is the root element of an HTML document. It contains all other elements on the page. The <pre><!DOCTYPE html></pre> declaration comes before it but is not an element. The <pre><head></pre> and <pre><body></pre> elements are children of <pre><html></pre>.",
       "topic": {
         "topics": [
@@ -71,12 +71,12 @@ module.exports = {
       "id": 2,
       "question": "What is the purpose of the <pre>alt</pre> attribute in an image tag?",
       "options": {
-        "A": "Sets the image alignment",
-        "B": "Provides alternative text when the image cannot be displayed",
+        "A": "Provides alternative text when the image cannot be displayed",
+        "B": "Sets the image alignment",
         "C": "Specifies the image width",
         "D": "Defines the image format"
       },
-      "correct": "B",
+      "correct": "A",
       "explanation": "The <pre>alt</pre> attribute provides alternative text for an image if it cannot be displayed. This text is important for accessibility (screen readers) and appears when images fail to load. It should describe the image content meaningfully.",
       "topic": {
         "topics": [
@@ -88,12 +88,12 @@ module.exports = {
       "id": 3,
       "question": "Which element is used to create a hyperlink?",
       "options": {
-        "A": "<pre><link></pre>",
-        "B": "<pre><a></pre>",
+        "A": "<pre><a></pre>",
+        "B": "<pre><link></pre>",
         "C": "<pre><href></pre>",
         "D": "<pre><url></pre>"
       },
-      "correct": "B",
+      "correct": "A",
       "explanation": "The <pre><a></pre> (anchor) element creates hyperlinks using the <pre>href</pre> attribute. The <pre><link></pre> element is used in the <pre><head></pre> to link external resources like stylesheets.",
       "topic": {
         "topics": [
@@ -105,12 +105,12 @@ module.exports = {
       "id": 4,
       "question": "What does this HTML create? [CODE]<ul>\n  <li>Coffee</li>\n  <li>Tea</li>\n  <li>Milk</li>\n</ul>[/CODE]",
       "options": {
-        "A": "An ordered (numbered) list",
-        "B": "An unordered (bulleted) list",
+        "A": "An unordered (bulleted) list",
+        "B": "An ordered (numbered) list",
         "C": "A dropdown menu",
         "D": "A table"
       },
-      "correct": "B",
+      "correct": "A",
       "explanation": "The <pre><ul></pre> (unordered list) element creates a bulleted list. Each <pre><li></pre> (list item) represents one bullet point. For numbered lists, use <pre><ol></pre> (ordered list) instead.",
       "topic": {
         "topics": [
@@ -122,12 +122,12 @@ module.exports = {
       "id": 5,
       "question": "Which HTML5 element is used to define a header section of a page or section?",
       "options": {
-        "A": "<pre><top></pre>",
+        "A": "<pre><header></pre>",
         "B": "<pre><head></pre>",
-        "C": "<pre><header></pre>",
+        "C": "<pre><top></pre>",
         "D": "<pre><section></pre>"
       },
-      "correct": "C",
+      "correct": "A",
       "explanation": "The <pre><header></pre> element represents introductory content, typically containing headings, logos, or navigation. Don't confuse it with <pre><head></pre>, which contains metadata and is not visible on the page.",
       "topic": {
         "topics": [
@@ -156,12 +156,12 @@ module.exports = {
       "id": 7,
       "question": "Where should the <pre><title></pre> element be placed in an HTML document?",
       "options": {
-        "A": "Inside the <pre><body></pre> section",
-        "B": "Inside the <pre><head></pre> section",
+        "A": "Inside the <pre><head></pre> section",
+        "B": "Inside the <pre><body></pre> section",
         "C": "Before the <pre><html></pre> tag",
         "D": "Anywhere in the document"
       },
-      "correct": "B",
+      "correct": "A",
       "explanation": "The <pre><title></pre> element must be placed inside the <pre><head></pre> section. It defines the document title shown in the browser tab and is required for valid HTML. It's not displayed in the page body.",
       "topic": {
         "topics": [
@@ -173,12 +173,12 @@ module.exports = {
       "id": 8,
       "question": "What does the <pre>href</pre> attribute specify in [CODE]<a href=\"https://example.com\">Link</a>[/CODE]?",
       "options": {
-        "A": "The link color",
+        "A": "The URL the link points to",
         "B": "The link text",
-        "C": "The URL the link points to",
+        "C": "The link color",
         "D": "The link target window"
       },
-      "correct": "C",
+      "correct": "A",
       "explanation": "The <pre>href</pre> (hypertext reference) attribute specifies the URL or destination the link points to. When clicked, the browser navigates to this URL.",
       "topic": {
         "topics": [
@@ -191,11 +191,11 @@ module.exports = {
       "question": "Which element is used to define the most important heading?",
       "options": {
         "A": "<pre><heading></pre>",
-        "B": "<pre><h6></pre>",
-        "C": "<pre><h1></pre>",
+        "B": "<pre><h1></pre>",
+        "C": "<pre><h6></pre>",
         "D": "<pre><header></pre>"
       },
-      "correct": "C",
+      "correct": "B",
       "explanation": "The <pre><h1></pre> element defines the most important heading. Headings range from <pre><h1></pre> (most important) to <pre><h6></pre> (least important). Use only one <pre><h1></pre> per page for best SEO and accessibility.",
       "topic": {
         "topics": [
@@ -225,11 +225,11 @@ module.exports = {
       "question": "Which HTML element defines a paragraph?",
       "options": {
         "A": "<pre><paragraph></pre>",
-        "B": "<pre><para></pre>",
-        "C": "<pre><p></pre>",
+        "B": "<pre><p></pre>",
+        "C": "<pre><para></pre>",
         "D": "<pre><text></pre>"
       },
-      "correct": "C",
+      "correct": "B",
       "explanation": "The <pre><p></pre> element defines a paragraph of text. Browsers automatically add spacing before and after paragraphs. It's a block-level element.",
       "topic": {
         "topics": [
@@ -258,12 +258,12 @@ module.exports = {
       "id": 13,
       "question": "Which attribute is required for the <pre><img></pre> tag to be valid?",
       "options": {
-        "A": "<pre>src</pre>",
-        "B": "<pre>alt</pre>",
+        "A": "<pre>alt</pre>",
+        "B": "<pre>src</pre>",
         "C": "<pre>width</pre>",
         "D": "<pre>height</pre>"
       },
-      "correct": "A",
+      "correct": "B",
       "explanation": "The <pre>src</pre> (source) attribute is required for the <pre><img></pre> tag, as it specifies the image file path. While <pre>alt</pre> is highly recommended for accessibility, only <pre>src</pre> is technically required for the tag to function.",
       "topic": {
         "topics": [
@@ -276,11 +276,11 @@ module.exports = {
       "question": "What is the semantic purpose of the <pre><nav></pre> element?",
       "options": {
         "A": "Styles the page header",
-        "B": "Creates a navigation button",
-        "C": "Defines a section of navigation links",
+        "B": "Defines a section of navigation links",
+        "C": "Creates a navigation button",
         "D": "Adds a menu bar"
       },
-      "correct": "C",
+      "correct": "B",
       "explanation": "The <pre><nav></pre> element is a semantic HTML5 element that defines a section containing navigation links. It helps screen readers and search engines identify the main navigation areas of a page.",
       "topic": {
         "topics": [
@@ -292,12 +292,12 @@ module.exports = {
       "id": 15,
       "question": "Which element is used to emphasize text with italic style?",
       "options": {
-        "A": "<pre><em></pre> or <pre><i></pre>",
-        "B": "<pre><italic></pre>",
+        "A": "<pre><italic></pre>",
+        "B": "<pre><em></pre> or <pre><i></pre>",
         "C": "<pre><strong></pre>",
         "D": "<pre><b></pre>"
       },
-      "correct": "A",
+      "correct": "B",
       "explanation": "Both <pre><em></pre> (emphasis) and <pre><i></pre> (italic) create italic text. <pre><em></pre> indicates semantic emphasis, while <pre><i></pre> is stylistic. <pre><strong></pre> and <pre><b></pre> create bold text.",
       "topic": {
         "topics": [
@@ -310,11 +310,11 @@ module.exports = {
       "question": "What is the purpose of the <pre><footer></pre> element?",
       "options": {
         "A": "Displays copyright text only",
-        "B": "Adds footnotes to text",
+        "B": "Defines footer content for a page or section",
         "C": "Creates the bottom margin",
-        "D": "Defines footer content for a page or section"
+        "D": "Adds footnotes to text"
       },
-      "correct": "D",
+      "correct": "B",
       "explanation": "The <pre><footer></pre> element represents footer content, typically containing copyright, contact info, or related links. It can be used for the page footer or section footers. It's a semantic HTML5 element.",
       "topic": {
         "topics": [
@@ -328,10 +328,10 @@ module.exports = {
       "options": {
         "A": "Sets a blank target URL",
         "B": "Makes the link blank",
-        "C": "Disables the link",
-        "D": "Opens the link in a new tab or window"
+        "C": "Opens the link in a new tab or window",
+        "D": "Disables the link"
       },
-      "correct": "D",
+      "correct": "C",
       "explanation": "The <pre>target=\"_blank\"</pre> attribute makes the link open in a new browser tab or window. For security, it's recommended to also add <pre>rel=\"noopener noreferrer\"</pre> when using <pre>target=\"_blank\"</pre>.",
       "topic": {
         "topics": [
@@ -343,12 +343,12 @@ module.exports = {
       "id": 18,
       "question": "Which element creates a table row?",
       "options": {
-        "A": "<pre><tr></pre>",
+        "A": "<pre><th></pre>",
         "B": "<pre><td></pre>",
-        "C": "<pre><th></pre>",
+        "C": "<pre><tr></pre>",
         "D": "<pre><table></pre>"
       },
-      "correct": "A",
+      "correct": "C",
       "explanation": "The <pre><tr></pre> (table row) element creates a row in a table. Inside <pre><tr></pre>, use <pre><td></pre> for data cells or <pre><th></pre> for header cells.",
       "topic": {
         "topics": [
@@ -377,12 +377,12 @@ module.exports = {
       "id": 20,
       "question": "Which HTML element is used to define the main content of a document?",
       "options": {
-        "A": "<pre><main></pre>",
+        "A": "<pre><body></pre>",
         "B": "<pre><content></pre>",
-        "C": "<pre><body></pre>",
+        "C": "<pre><main></pre>",
         "D": "<pre><article></pre>"
       },
-      "correct": "A",
+      "correct": "C",
       "explanation": "The <pre><main></pre> element represents the main content of the <pre><body></pre>. There should be only one <pre><main></pre> per page, and it should not be inside <pre><header></pre>, <pre><footer></pre>, <pre><nav></pre>, or <pre><aside></pre>.",
       "topic": {
         "topics": [
@@ -394,12 +394,12 @@ module.exports = {
       "id": 21,
       "question": "What does the <pre><span></pre> element do?",
       "options": {
-        "A": "Defines an inline container for styling text",
+        "A": "Adds spacing between elements",
         "B": "Creates a paragraph",
-        "C": "Adds spacing between elements",
+        "C": "Defines an inline container for styling text",
         "D": "Makes text span multiple lines"
       },
-      "correct": "A",
+      "correct": "C",
       "explanation": "The <pre><span></pre> element is an inline container used to group text for styling with CSS or manipulation with JavaScript. It has no semantic meaning and doesn't change layout by default.",
       "topic": {
         "topics": [
@@ -412,11 +412,11 @@ module.exports = {
       "question": "Which element represents a self-contained piece of content like a blog post?",
       "options": {
         "A": "<pre><section></pre>",
-        "B": "<pre><article></pre>",
-        "C": "<pre><div></pre>",
+        "B": "<pre><div></pre>",
+        "C": "<pre><article></pre>",
         "D": "<pre><content></pre>"
       },
-      "correct": "B",
+      "correct": "C",
       "explanation": "The <pre><article></pre> element represents self-contained, independently distributable content like blog posts, news articles, or forum posts. It should make sense on its own when syndicated.",
       "topic": {
         "topics": [
@@ -430,10 +430,10 @@ module.exports = {
       "options": {
         "A": "Specifies the element's content",
         "B": "Defines the element type",
-        "C": "Sets the element's class",
-        "D": "Provides a unique identifier for an element"
+        "C": "Provides a unique identifier for an element",
+        "D": "Sets the element's class"
       },
-      "correct": "D",
+      "correct": "C",
       "explanation": "The <pre>id</pre> attribute assigns a unique identifier to an element. Each <pre>id</pre> must be unique within a page. It's used for CSS styling, JavaScript targeting, and anchor links.",
       "topic": {
         "topics": [
@@ -462,12 +462,12 @@ module.exports = {
       "id": 25,
       "question": "Which element defines a table header cell?",
       "options": {
-        "A": "<pre><th></pre>",
+        "A": "<pre><thead></pre>",
         "B": "<pre><td></pre>",
         "C": "<pre><tr></pre>",
-        "D": "<pre><thead></pre>"
+        "D": "<pre><th></pre>"
       },
-      "correct": "A",
+      "correct": "D",
       "explanation": "The <pre><th></pre> (table header) element defines a header cell in a table. It's typically bold and centered by default. <pre><td></pre> is for regular data cells, and <pre><thead></pre> groups header rows.",
       "topic": {
         "topics": [
@@ -480,11 +480,11 @@ module.exports = {
       "question": "What does the <pre><div></pre> element represent?",
       "options": {
         "A": "A division sign",
-        "B": "A generic block-level container",
+        "B": "A diverse element",
         "C": "A divider line",
-        "D": "A diverse element"
+        "D": "A generic block-level container"
       },
-      "correct": "B",
+      "correct": "D",
       "explanation": "The <pre><div></pre> element is a generic block-level container with no semantic meaning. It's used to group elements for styling or layout purposes. Prefer semantic elements like <pre><section></pre> or <pre><article></pre> when appropriate.",
       "topic": {
         "topics": [
@@ -530,12 +530,12 @@ module.exports = {
       "id": 29,
       "question": "What does [CODE]<img src=\"logo.png\" width=\"100\" height=\"50\">[/CODE] do?",
       "options": {
-        "A": "Displays logo.png with 100px width and 50px height",
+        "A": "Validates the image dimensions",
         "B": "Creates a 100x50 placeholder image",
         "C": "Resizes the original image file",
-        "D": "Validates the image dimensions"
+        "D": "Displays logo.png with 100px width and 50px height"
       },
-      "correct": "A",
+      "correct": "D",
       "explanation": "The <pre>width</pre> and <pre>height</pre> attributes set the display dimensions of the image in pixels. This doesn't change the actual file; it only affects how the browser displays it. Setting dimensions helps prevent layout shift during page load.",
       "topic": {
         "topics": [
@@ -549,10 +549,10 @@ module.exports = {
       "options": {
         "A": "<pre><input></pre>",
         "B": "<pre><click></pre>",
-        "C": "<pre><button></pre>",
-        "D": "<pre><submit></pre>"
+        "C": "<pre><submit></pre>",
+        "D": "<pre><button></pre>"
       },
-      "correct": "C",
+      "correct": "D",
       "explanation": "The <pre><button></pre> element creates a clickable button. It's more flexible than <pre><input type=\"button\"></pre> because it can contain HTML content like images or formatted text. Use <pre>type=\"button\"</pre>, <pre>\"submit\"</pre>, or <pre>\"reset\"</pre> to specify button behavior.",
       "topic": {
         "topics": [

@@ -54,12 +54,12 @@ module.exports = {
       "id": 1,
       "question": "What is the purpose of the <pre><form></pre> element?",
       "options": {
-        "A": "Creates a formatted text area",
-        "B": "Groups form controls and defines how to submit data",
+        "A": "Groups form controls and defines how to submit data",
+        "B": "Creates a formatted text area",
         "C": "Displays a form template",
         "D": "Validates user input"
       },
-      "correct": "B",
+      "correct": "A",
       "explanation": "The <pre><form></pre> element groups related form controls and defines how to submit the collected data using attributes like <pre>action</pre> (URL to submit to) and <pre>method</pre> (HTTP method like GET or POST).",
       "topic": {
         "topics": [
@@ -71,12 +71,12 @@ module.exports = {
       "id": 2,
       "question": "Which input type creates a text field for email addresses?",
       "options": {
-        "A": "<pre>type=\"mail\"</pre>",
+        "A": "<pre>type=\"email\"</pre>",
         "B": "<pre>type=\"text\"</pre>",
-        "C": "<pre>type=\"email\"</pre>",
+        "C": "<pre>type=\"mail\"</pre>",
         "D": "<pre>type=\"address\"</pre>"
       },
-      "correct": "C",
+      "correct": "A",
       "explanation": "The <pre>type=\"email\"</pre> input creates a field specifically for email addresses. It provides built-in validation to ensure the entered value looks like a valid email format, and mobile browsers show email-optimized keyboards.",
       "topic": {
         "topics": [
@@ -105,12 +105,12 @@ module.exports = {
       "id": 4,
       "question": "How do you associate a label with an input field for accessibility?",
       "options": {
-        "A": "Use the <pre>link</pre> attribute",
+        "A": "Use the <pre>for</pre> attribute matching the input's <pre>id</pre>",
         "B": "Place them next to each other",
         "C": "Use the <pre>name</pre> attribute",
-        "D": "Use the <pre>for</pre> attribute matching the input's <pre>id</pre>"
+        "D": "Use the <pre>link</pre> attribute"
       },
-      "correct": "D",
+      "correct": "A",
       "explanation": "Connect a <pre><label></pre> to an input using [CODE]<label for=\"email\">Email:</label>\n<input type=\"email\" id=\"email\">[/CODE]. The <pre>for</pre> attribute must match the input's <pre>id</pre>. This improves accessibility and makes the label clickable to focus the input.",
       "topic": {
         "topics": [
@@ -122,12 +122,12 @@ module.exports = {
       "id": 5,
       "question": "What does this create? [CODE]<select>\n  <option>Red</option>\n  <option>Blue</option>\n  <option>Green</option>\n</select>[/CODE]",
       "options": {
-        "A": "A list of links",
+        "A": "A dropdown menu with three options",
         "B": "Three radio buttons",
         "C": "Three checkboxes",
-        "D": "A dropdown menu with three options"
+        "D": "A list of links"
       },
-      "correct": "D",
+      "correct": "A",
       "explanation": "The <pre><select></pre> element creates a dropdown menu. Each <pre><option></pre> element represents a choice in the dropdown. Users can select one option at a time by default.",
       "topic": {
         "topics": [
@@ -156,12 +156,12 @@ module.exports = {
       "id": 7,
       "question": "What is the purpose of the <pre><textarea></pre> element?",
       "options": {
-        "A": "Creates a single-line input",
+        "A": "Creates a multi-line text input field",
         "B": "Displays read-only text",
-        "C": "Creates a multi-line text input field",
+        "C": "Creates a single-line input",
         "D": "Formats text with styling"
       },
-      "correct": "C",
+      "correct": "A",
       "explanation": "The <pre><textarea></pre> element creates a resizable multi-line text input field. Use <pre>rows</pre> and <pre>cols</pre> attributes to set initial size, or use CSS for better control.",
       "topic": {
         "topics": [
@@ -173,12 +173,12 @@ module.exports = {
       "id": 8,
       "question": "What does [CODE]<input type=\"checkbox\" name=\"agree\" value=\"yes\">[/CODE] create?",
       "options": {
-        "A": "A radio button",
-        "B": "A checkbox that can be checked or unchecked",
+        "A": "A checkbox that can be checked or unchecked",
+        "B": "A radio button",
         "C": "A toggle switch",
         "D": "A dropdown option"
       },
-      "correct": "B",
+      "correct": "A",
       "explanation": "The <pre>type=\"checkbox\"</pre> input creates a checkbox that users can check or uncheck. Multiple checkboxes can be selected independently. When checked, it submits the specified <pre>value</pre> (\"yes\" in this case).",
       "topic": {
         "topics": [
@@ -225,11 +225,11 @@ module.exports = {
       "question": "Which attribute sets the initial value of an input field?",
       "options": {
         "A": "<pre>placeholder</pre>",
-        "B": "<pre>default</pre>",
+        "B": "<pre>value</pre>",
         "C": "<pre>initial</pre>",
-        "D": "<pre>value</pre>"
+        "D": "<pre>default</pre>"
       },
-      "correct": "D",
+      "correct": "B",
       "explanation": "The <pre>value</pre> attribute sets the initial value of an input field. For text inputs, it pre-fills the field. For buttons, it sets the button text. For checkboxes/radios, it defines the value sent when checked.",
       "topic": {
         "topics": [
@@ -242,11 +242,11 @@ module.exports = {
       "question": "What does [CODE]<button type=\"submit\">Send</button>[/CODE] do inside a form?",
       "options": {
         "A": "Creates a generic button with no action",
-        "B": "Resets the form",
-        "C": "Submits the form when clicked",
+        "B": "Submits the form when clicked",
+        "C": "Resets the form",
         "D": "Validates the form"
       },
-      "correct": "C",
+      "correct": "B",
       "explanation": "A button with <pre>type=\"submit\"</pre> triggers form submission when clicked. This is the default type for buttons inside forms. Use <pre>type=\"button\"</pre> for buttons that don't submit, or <pre>type=\"reset\"</pre> to clear the form.",
       "topic": {
         "topics": [
@@ -293,11 +293,11 @@ module.exports = {
       "question": "How do you create a radio button group where only one can be selected?",
       "options": {
         "A": "Use the <pre>group</pre> attribute",
-        "B": "Place them in the same <pre><div></pre>",
-        "C": "Give all radio buttons the same <pre>name</pre> attribute",
+        "B": "Give all radio buttons the same <pre>name</pre> attribute",
+        "C": "Place them in the same <pre><div></pre>",
         "D": "Give them sequential IDs"
       },
-      "correct": "C",
+      "correct": "B",
       "explanation": "Radio buttons with the same <pre>name</pre> attribute form a mutually exclusive group. Only one can be selected at a time. Each should have a different <pre>value</pre> to distinguish which option was chosen. Example: [CODE]<input type=\"radio\" name=\"size\" value=\"S\">\n<input type=\"radio\" name=\"size\" value=\"M\">[/CODE]",
       "topic": {
         "topics": [
@@ -310,11 +310,11 @@ module.exports = {
       "question": "What does the <pre>disabled</pre> attribute do in [CODE]<input type=\"text\" disabled>[/CODE]?",
       "options": {
         "A": "Validates the input",
-        "B": "Hides the input field",
+        "B": "Prevents user interaction and excludes from form submission",
         "C": "Makes the field required",
-        "D": "Prevents user interaction and excludes from form submission"
+        "D": "Hides the input field"
       },
-      "correct": "D",
+      "correct": "B",
       "explanation": "The <pre>disabled</pre> attribute prevents users from interacting with the field and excludes its value from form submission. The field typically appears grayed out. Use <pre>readonly</pre> if you want to prevent editing but still submit the value.",
       "topic": {
         "topics": [
@@ -326,12 +326,12 @@ module.exports = {
       "id": 17,
       "question": "Which input type creates a slider control?",
       "options": {
-        "A": "<pre>type=\"range\"</pre>",
+        "A": "<pre>type=\"number\"</pre>",
         "B": "<pre>type=\"slider\"</pre>",
-        "C": "<pre>type=\"number\"</pre>",
+        "C": "<pre>type=\"range\"</pre>",
         "D": "<pre>type=\"scale\"</pre>"
       },
-      "correct": "A",
+      "correct": "C",
       "explanation": "The <pre>type=\"range\"</pre> input creates a slider control. Use <pre>min</pre>, <pre>max</pre>, and <pre>step</pre> attributes to configure the range and increments. Example: [CODE]<input type=\"range\" min=\"0\" max=\"100\" step=\"5\">[/CODE]",
       "topic": {
         "topics": [
@@ -344,11 +344,11 @@ module.exports = {
       "question": "What does [CODE]<option selected>Blue</option>[/CODE] do in a select dropdown?",
       "options": {
         "A": "Highlights Blue in a different color",
-        "B": "Makes Blue the pre-selected option",
-        "C": "Makes Blue the only selectable option",
+        "B": "Makes Blue the only selectable option",
+        "C": "Makes Blue the pre-selected option",
         "D": "Validates the selection"
       },
-      "correct": "B",
+      "correct": "C",
       "explanation": "The <pre>selected</pre> boolean attribute makes an option pre-selected when the page loads. Only one option should have this attribute in a single-select dropdown. Without it, the first option is selected by default.",
       "topic": {
         "topics": [
@@ -360,12 +360,12 @@ module.exports = {
       "id": 19,
       "question": "What is the purpose of the <pre>action</pre> attribute in [CODE]<form action=\"/submit\">[/CODE]?",
       "options": {
-        "A": "Specifies the URL where form data is sent",
+        "A": "Sets the submit button text",
         "B": "Defines the form's behavior",
-        "C": "Sets the submit button text",
+        "C": "Specifies the URL where form data is sent",
         "D": "Creates a form action handler"
       },
-      "correct": "A",
+      "correct": "C",
       "explanation": "The <pre>action</pre> attribute specifies the URL that processes the form data when submitted. If omitted, the form submits to the current page URL. Example: [CODE]<form action=\"/api/contact\" method=\"POST\">[/CODE]",
       "topic": {
         "topics": [
@@ -378,11 +378,11 @@ module.exports = {
       "question": "Which input type creates a number input with increment/decrement buttons?",
       "options": {
         "A": "<pre>type=\"integer\"</pre>",
-        "B": "<pre>type=\"number\"</pre>",
-        "C": "<pre>type=\"numeric\"</pre>",
+        "B": "<pre>type=\"numeric\"</pre>",
+        "C": "<pre>type=\"number\"</pre>",
         "D": "<pre>type=\"counter\"</pre>"
       },
-      "correct": "B",
+      "correct": "C",
       "explanation": "The <pre>type=\"number\"</pre> input creates a numeric field with spinner controls (up/down arrows). Use <pre>min</pre>, <pre>max</pre>, and <pre>step</pre> attributes to constrain values. It validates that only numbers are entered.",
       "topic": {
         "topics": [
@@ -411,12 +411,12 @@ module.exports = {
       "id": 22,
       "question": "What does [CODE]<input type=\"file\">[/CODE] create?",
       "options": {
-        "A": "A file upload button that opens a file picker",
+        "A": "A link to download files",
         "B": "A text field for file paths",
-        "C": "A link to download files",
+        "C": "A file upload button that opens a file picker",
         "D": "A file manager interface"
       },
-      "correct": "A",
+      "correct": "C",
       "explanation": "The <pre>type=\"file\"</pre> input creates a file upload control with a button that opens the system's file picker. Use the <pre>accept</pre> attribute to restrict file types, and <pre>multiple</pre> to allow selecting multiple files.",
       "topic": {
         "topics": [
@@ -428,12 +428,12 @@ module.exports = {
       "id": 23,
       "question": "What does the <pre>readonly</pre> attribute do in [CODE]<input type=\"text\" readonly value=\"Fixed\">[/CODE]?",
       "options": {
-        "A": "Prevents editing but includes value in form submission",
+        "A": "Makes the field optional",
         "B": "Hides the input field",
-        "C": "Makes the field optional",
+        "C": "Prevents editing but includes value in form submission",
         "D": "Same as disabled"
       },
-      "correct": "A",
+      "correct": "C",
       "explanation": "The <pre>readonly</pre> attribute prevents users from modifying the field's value, but unlike <pre>disabled</pre>, the value is still submitted with the form. The field can receive focus and be copied.",
       "topic": {
         "topics": [
@@ -479,12 +479,12 @@ module.exports = {
       "id": 26,
       "question": "What does the <pre>maxlength</pre> attribute do in [CODE]<input type=\"text\" maxlength=\"10\">[/CODE]?",
       "options": {
-        "A": "Limits input to maximum 10 characters",
+        "A": "Validates that length equals 10",
         "B": "Sets minimum length to 10",
         "C": "Sets the field width to 10 pixels",
-        "D": "Validates that length equals 10"
+        "D": "Limits input to maximum 10 characters"
       },
-      "correct": "A",
+      "correct": "D",
       "explanation": "The <pre>maxlength</pre> attribute restricts the maximum number of characters users can enter. The browser prevents typing beyond this limit. Use <pre>minlength</pre> to set a minimum character requirement.",
       "topic": {
         "topics": [
@@ -498,10 +498,10 @@ module.exports = {
       "options": {
         "A": "<pre>type=\"palette\"</pre>",
         "B": "<pre>type=\"picker\"</pre>",
-        "C": "<pre>type=\"color\"</pre>",
-        "D": "<pre>type=\"rgb\"</pre>"
+        "C": "<pre>type=\"rgb\"</pre>",
+        "D": "<pre>type=\"color\"</pre>"
       },
-      "correct": "C",
+      "correct": "D",
       "explanation": "The <pre>type=\"color\"</pre> input provides a color picker interface in supported browsers. It returns the selected color as a hexadecimal value (e.g., #ff0000 for red).",
       "topic": {
         "topics": [
@@ -532,10 +532,10 @@ module.exports = {
       "options": {
         "A": "Sets a default value pattern",
         "B": "Creates a repeating pattern background",
-        "C": "Validates input against a regular expression (3 digits)",
-        "D": "Formats the input display"
+        "C": "Formats the input display",
+        "D": "Validates input against a regular expression (3 digits)"
       },
-      "correct": "C",
+      "correct": "D",
       "explanation": "The <pre>pattern</pre> attribute specifies a regular expression that the input must match for validation. In this example, it requires exactly 3 digits. The browser shows a validation message if the pattern doesn't match.",
       "topic": {
         "topics": [
@@ -547,12 +547,12 @@ module.exports = {
       "id": 30,
       "question": "Which attribute makes a checkbox checked by default?",
       "options": {
-        "A": "<pre>checked</pre>",
+        "A": "<pre>value=\"true\"</pre>",
         "B": "<pre>selected</pre>",
         "C": "<pre>default</pre>",
-        "D": "<pre>value=\"true\"</pre>"
+        "D": "<pre>checked</pre>"
       },
-      "correct": "A",
+      "correct": "D",
       "explanation": "The <pre>checked</pre> boolean attribute makes a checkbox or radio button selected by default when the page loads. Example: [CODE]<input type=\"checkbox\" checked>[/CODE]. For dropdowns, use <pre>selected</pre> instead.",
       "topic": {
         "topics": [

@@ -105,12 +105,12 @@ module.exports = {
       "id": 4,
       "question": "How do you import multiple named exports?",
       "options": {
-        "A": "<pre>import [name1, name2] from './module.js';</pre>",
+        "A": "<pre>import { name1, name2 } from './module.js';</pre>",
         "B": "<pre>import name1, name2 from './module.js';</pre>",
-        "C": "<pre>import { name1, name2 } from './module.js';</pre>",
+        "C": "<pre>import [name1, name2] from './module.js';</pre>",
         "D": "<pre>import (name1, name2) from './module.js';</pre>"
       },
-      "correct": "C",
+      "correct": "A",
       "explanation": "Multiple named imports use curly braces with comma-separated names inside.",
       "topic": {
         "topics": [
@@ -124,10 +124,10 @@ module.exports = {
       "options": {
         "A": "Named exports are faster",
         "B": "Default exports are private, named are public",
-        "C": "A module can have one default but multiple named exports",
-        "D": "There is no difference"
+        "C": "There is no difference",
+        "D": "A module can have one default but multiple named exports"
       },
-      "correct": "C",
+      "correct": "D",
       "explanation": "Each module can have only one default export but can have multiple named exports.",
       "topic": {
         "topics": [
@@ -139,12 +139,12 @@ module.exports = {
       "id": 6,
       "question": "How do you import everything from a module?",
       "options": {
-        "A": "<pre>import ./module.js;</pre>",
+        "A": "<pre>import * as module from './module.js';</pre>",
         "B": "<pre>import all from './module.js';</pre>",
         "C": "<pre>import { * } from './module.js';</pre>",
-        "D": "<pre>import * as module from './module.js';</pre>"
+        "D": "<pre>import ./module.js;</pre>"
       },
-      "correct": "D",
+      "correct": "A",
       "explanation": "The namespace import <pre>import * as name</pre> imports all exports into an object.",
       "topic": {
         "topics": [
@@ -207,12 +207,12 @@ module.exports = {
       "id": 10,
       "question": "How do you import both default and named exports?",
       "options": {
-        "A": "<pre>import defaultExport from './module.js' and namedExport;</pre>",
+        "A": "<pre>import defaultExport, { namedExport } from './module.js';</pre>",
         "B": "<pre>import defaultExport, namedExport from './module.js';</pre>",
         "C": "<pre>import { defaultExport, namedExport } from './module.js';</pre>",
-        "D": "<pre>import defaultExport, { namedExport } from './module.js';</pre>"
+        "D": "<pre>import defaultExport from './module.js' and namedExport;</pre>"
       },
-      "correct": "D",
+      "correct": "A",
       "explanation": "Place the default import first (without braces) followed by named imports in braces.",
       "topic": {
         "topics": [
@@ -224,12 +224,12 @@ module.exports = {
       "id": 11,
       "question": "What is the correct way to export a variable that was declared earlier?",
       "options": {
-        "A": "<pre>export { variableName };</pre>",
+        "A": "<pre>export = variableName;</pre>",
         "B": "<pre>export variableName;</pre>",
         "C": "<pre>export let variableName;</pre>",
-        "D": "<pre>export = variableName;</pre>"
+        "D": "<pre>export { variableName };</pre>"
       },
-      "correct": "A",
+      "correct": "D",
       "explanation": "Use the export list syntax to export variables that were declared separately.",
       "topic": {
         "topics": [
@@ -309,12 +309,12 @@ module.exports = {
       "id": 16,
       "question": "What does this import do? [CODE]import { reallyLongName as short } from './module.js';[/CODE]",
       "options": {
-        "A": "Invalid syntax",
+        "A": "Imports a named export with a shorter alias",
         "B": "Imports a default export with a different name",
         "C": "Imports everything with an alias",
-        "D": "Imports a named export with a shorter alias"
+        "D": "Invalid syntax"
       },
-      "correct": "D",
+      "correct": "A",
       "explanation": "This imports the named export 'reallyLongName' but gives it the local name 'short'.",
       "topic": {
         "topics": [
@@ -326,12 +326,12 @@ module.exports = {
       "id": 17,
       "question": "Can a module have both default and named exports?",
       "options": {
-        "A": "No",
-        "B": "Yes",
+        "A": "Yes",
+        "B": "No",
         "C": "Only in Node.js",
         "D": "Only in browsers"
       },
-      "correct": "B",
+      "correct": "A",
       "explanation": "A module can have one default export and multiple named exports at the same time.",
       "topic": {
         "topics": [
@@ -344,11 +344,11 @@ module.exports = {
       "question": "What is the correct way to export an object as default?",
       "options": {
         "A": "<pre>default export { key: 'value' };</pre>",
-        "B": "<pre>export { key: 'value' } as default;</pre>",
+        "B": "<pre>export default { key: 'value' };</pre>",
         "C": "<pre>export default object { key: 'value' };</pre>",
-        "D": "<pre>export default { key: 'value' };</pre>"
+        "D": "<pre>export { key: 'value' } as default;</pre>"
       },
-      "correct": "D",
+      "correct": "B",
       "explanation": "Use <pre>export default</pre> followed by the object literal to export it as the default.",
       "topic": {
         "topics": [
@@ -360,12 +360,12 @@ module.exports = {
       "id": 19,
       "question": "How do you import a default export with a named import syntax?",
       "options": {
-        "A": "<pre>import { default as alias } from './module.js';</pre>",
+        "A": "<pre>import default from './module.js';</pre>",
         "B": "You cannot - use different syntax",
-        "C": "<pre>import default from './module.js';</pre>",
+        "C": "<pre>import { default as alias } from './module.js';</pre>",
         "D": "<pre>import * as default from './module.js';</pre>"
       },
-      "correct": "A",
+      "correct": "C",
       "explanation": "You can import a default export as a named import using <pre>import { default as name }</pre>",
       "topic": {
         "topics": [
@@ -377,12 +377,12 @@ module.exports = {
       "id": 20,
       "question": "What is this syntax? [CODE]export const pi = 3.14;\nexport const e = 2.71;[/CODE]",
       "options": {
-        "A": "Multiple named exports",
+        "A": "Side-effect exports",
         "B": "Multiple default exports",
         "C": "Invalid - too many exports",
-        "D": "Side-effect exports"
+        "D": "Multiple named exports"
       },
-      "correct": "A",
+      "correct": "D",
       "explanation": "This exports two constants as separate named exports from the module.",
       "topic": {
         "topics": [
@@ -411,12 +411,12 @@ module.exports = {
       "id": 22,
       "question": "What is the main advantage of named exports?",
       "options": {
-        "A": "Can export multiple values from a module",
-        "B": "Faster than default exports",
+        "A": "Faster than default exports",
+        "B": "Can export multiple values from a module",
         "C": "Work in older browsers",
         "D": "Auto-complete in editors"
       },
-      "correct": "A",
+      "correct": "B",
       "explanation": "Named exports allow a module to export multiple values, while default exports are limited to one per module.",
       "topic": {
         "topics": [
@@ -446,11 +446,11 @@ module.exports = {
       "question": "What is the purpose of this import? [CODE]import 'styles.css';[/CODE]",
       "options": {
         "A": "Import default from CSS",
-        "B": "Import for side effects only",
+        "B": "Invalid import",
         "C": "Import all CSS classes",
-        "D": "Invalid import"
+        "D": "Import for side effects only"
       },
-      "correct": "B",
+      "correct": "D",
       "explanation": "This imports a module (like CSS) solely for its side effects without importing any specific exports.",
       "topic": {
         "topics": [
@@ -480,11 +480,11 @@ module.exports = {
       "question": "How do you import all named exports as an object?",
       "options": {
         "A": "<pre>import utils from './utils.js';</pre>",
-        "B": "<pre>import * as utils from './utils.js';</pre>",
-        "C": "<pre>import { * } from './utils.js';</pre>",
+        "B": "<pre>import { * } from './utils.js';</pre>",
+        "C": "<pre>import * as utils from './utils.js';</pre>",
         "D": "<pre>import all utils from './utils.js';</pre>"
       },
-      "correct": "B",
+      "correct": "C",
       "explanation": "The namespace import <pre>import * as name</pre> collects all named exports into an object.",
       "topic": {
         "topics": [
@@ -497,11 +497,11 @@ module.exports = {
       "question": "What is wrong with this export? [CODE]const data = {};\nexport data;[/CODE]",
       "options": {
         "A": "Should use 'export default'",
-        "B": "Missing curly braces for named export",
+        "B": "Nothing is wrong",
         "C": "Cannot export const variables",
-        "D": "Nothing is wrong"
+        "D": "Missing curly braces for named export"
       },
-      "correct": "B",
+      "correct": "D",
       "explanation": "To export a previously declared variable, use <pre>export { data };</pre> with curly braces.",
       "topic": {
         "topics": [
@@ -513,12 +513,12 @@ module.exports = {
       "id": 28,
       "question": "How do you re-export everything from another module?",
       "options": {
-        "A": "<pre>export * from './other-module.js';</pre>",
+        "A": "<pre>re-export * from './other-module.js';</pre>",
         "B": "<pre>import * from './other-module.js'; export *;</pre>",
         "C": "<pre>export all from './other-module.js';</pre>",
-        "D": "<pre>re-export * from './other-module.js';</pre>"
+        "D": "<pre>export * from './other-module.js';</pre>"
       },
-      "correct": "A",
+      "correct": "D",
       "explanation": "<pre>export *</pre> re-exports all named exports from the specified module.",
       "topic": {
         "topics": [
@@ -530,12 +530,12 @@ module.exports = {
       "id": 29,
       "question": "What is the main advantage of default exports?",
       "options": {
-        "A": "Simpler import syntax for main module functionality",
-        "B": "Better performance",
+        "A": "Better performance",
+        "B": "Simpler import syntax for main module functionality",
         "C": "Work in CommonJS modules",
         "D": "Auto-renaming in imports"
       },
-      "correct": "A",
+      "correct": "B",
       "explanation": "Default exports provide a clean import syntax for the primary functionality of a module.",
       "topic": {
         "topics": [
@@ -547,12 +547,12 @@ module.exports = {
       "id": 30,
       "question": "What does this import do? [CODE]import Main, { helper1, helper2 } from './module.js';[/CODE]",
       "options": {
-        "A": "Imports default and two named exports",
+        "A": "Imports default with two aliases",
         "B": "Imports three named exports",
-        "C": "Imports default with two aliases",
+        "C": "Imports default and two named exports",
         "D": "Invalid syntax"
       },
-      "correct": "A",
+      "correct": "C",
       "explanation": "This imports the default export as 'Main' and two named exports 'helper1' and 'helper2'.",
       "topic": {
         "topics": [

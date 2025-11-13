@@ -69,12 +69,12 @@ module.exports = {
       "id": 1,
       "question": "What is the output of this code?\n[CODE]function outer() {\n  const x = 10;\n  function inner() {\n    console.log(x);\n    console.log(y);\n  }\n  const y = 20;\n  return inner;\n}\n\nconst fn = outer();\nfn();[/CODE]",
       "options": {
-        "A": "<pre>10, undefined</pre>",
+        "A": "<pre>10, 20</pre>",
         "B": "ReferenceError",
         "C": "<pre>undefined, 20</pre>",
-        "D": "<pre>10, 20</pre>"
+        "D": "<pre>10, undefined</pre>"
       },
-      "correct": "D",
+      "correct": "A",
       "explanation": "The output is <pre>10, 20</pre> because of how closures and the scope chain work in JavaScript. When <pre>inner()</pre> is defined inside <pre>outer()</pre>, it captures the entire lexical scope of <pre>outer()</pre>, including all variables declared in that scope (both <pre>x</pre> and <pre>y</pre>).\n\nEven though <pre>y</pre> is declared after <pre>inner()</pre> is defined, by the time <pre>inner()</pre> is executed (when <pre>fn()</pre> is called), both <pre>x</pre> and <pre>y</pre> have been initialized. This demonstrates that closures capture variables by reference, not by value at definition time.\n\nThe scope chain lookup happens when the function is executed, not when it's defined. This is why both variables are accessible even though one was declared after the function definition.",
       "topic": {
         "topics": [
@@ -87,12 +87,12 @@ module.exports = {
       "id": 2,
       "question": "What is the key difference between CommonJS <pre>require()</pre> and ES6 <pre>import</pre>?",
       "options": {
-        "A": "CommonJS imports are static; ES6 imports are dynamic",
+        "A": "CommonJS is synchronous; ES6 imports are asynchronous",
         "B": "CommonJS only works in Node.js; ES6 imports only work in browsers",
         "C": "CommonJS supports tree shaking; ES6 imports don't",
-        "D": "CommonJS is synchronous; ES6 imports are asynchronous"
+        "D": "CommonJS imports are static; ES6 imports are dynamic"
       },
-      "correct": "D",
+      "correct": "A",
       "explanation": "The key difference is that CommonJS <pre>require()</pre> is synchronous and loads modules at runtime, while ES6 <pre>import</pre> is asynchronous and can be statically analyzed at compile time.\n\n[CODE]// CommonJS - synchronous\nconst fs = require('fs');\nconst data = fs.readFileSync('file.txt');\n\n// ES6 imports - asynchronous and statically analyzable\nimport { readFile } from 'fs/promises';\nconst data = await readFile('file.txt');\n\n// Dynamic imports in ES6 (async)\nconst module = await import('./module.js');[/CODE]\n\nThis difference has several implications:\n- CommonJS modules can be conditionally loaded anywhere in code\n- ES6 imports must be at the top level (except for dynamic imports)\n- ES6 imports enable better tooling like tree shaking and static analysis\n- CommonJS is the original Node.js module system\n- ES6 modules are the modern standard supported in both browsers and Node.js\n\nES6 modules also have live bindings, meaning imported values can change if the exporting module updates them, whereas CommonJS imports are copies.",
       "topic": {
         "topics": [
@@ -104,12 +104,12 @@ module.exports = {
       "id": 3,
       "question": "What does this IIFE pattern accomplish?\n[CODE](function() {\n  let count = 0;\n  window.increment = function() {\n    return ++count;\n  };\n  window.getCount = function() {\n    return count;\n  };\n})();[/CODE]",
       "options": {
-        "A": "Creates a memory leak",
-        "B": "Implements a singleton with private state",
+        "A": "Implements a singleton with private state",
+        "B": "Creates a memory leak",
         "C": "Pollutes the global scope unnecessarily",
         "D": "Creates a recursive function"
       },
-      "correct": "B",
+      "correct": "A",
       "explanation": "This IIFE (Immediately Invoked Function Expression) implements a module pattern with private state. The <pre>count</pre> variable is encapsulated within the IIFE's scope and cannot be accessed directly from outside, making it truly private.\n\n[CODE]// Usage:\nincrement(); // 1\nincrement(); // 2\ngetCount();  // 2\nconsole.log(count); // ReferenceError: count is not defined\n\n// Alternative modern approach with ES6 modules\nexport let count = 0;\nexport function increment() {\n  return ++count;\n}\n\n// Or with closures in class-like pattern\nfunction createCounter() {\n  let count = 0;\n  return {\n    increment: () => ++count,\n    getCount: () => count\n  };\n}\nconst counter = createCounter();[/CODE]\n\nThis pattern was commonly used before ES6 modules to:\n- Avoid polluting the global namespace\n- Create private variables and functions\n- Implement the module pattern\n- Prevent naming collisions\n\nWhile ES6 modules are now preferred, understanding IIFEs is still important for working with legacy code and understanding JavaScript's scoping mechanisms.",
       "topic": {
         "topics": [
@@ -122,12 +122,12 @@ module.exports = {
       "id": 4,
       "question": "What is the result of this curried function call?\n[CODE]const multiply = a => b => c => a * b * c;\nconst result = multiply(2)(3)(4);[/CODE]",
       "options": {
-        "A": "<pre>9</pre>",
+        "A": "<pre>24</pre>",
         "B": "<pre>function</pre>",
-        "C": "<pre>24</pre>",
+        "C": "<pre>9</pre>",
         "D": "TypeError"
       },
-      "correct": "C",
+      "correct": "A",
       "explanation": "The result is <pre>24</pre> because this is a curried function that takes three arguments one at a time. Currying transforms a function that takes multiple arguments into a sequence of functions each taking a single argument.\n\n[CODE]// Step by step execution:\nconst step1 = multiply(2);    // returns: b => c => 2 * b * c\nconst step2 = step1(3);       // returns: c => 2 * 3 * c\nconst step3 = step2(4);       // returns: 2 * 3 * 4 = 24\n\n// Equivalent uncurried version\nconst multiplySimple = (a, b, c) => a * b * c;\nmultiplySimple(2, 3, 4); // 24\n\n// Practical currying example\nconst discount = percentage => price => price * (1 - percentage);\nconst tenPercentOff = discount(0.1);\nconst twentyPercentOff = discount(0.2);\n\nconsole.log(tenPercentOff(100));     // 90\nconsole.log(twentyPercentOff(100));  // 80[/CODE]\n\nCurrying is useful for:\n- Creating specialized functions from general ones\n- Function composition\n- Partial application\n- Making code more declarative and reusable\n\nThis pattern is fundamental in functional programming and enables powerful abstraction techniques.",
       "topic": {
         "topics": [
@@ -140,12 +140,12 @@ module.exports = {
       "id": 5,
       "question": "What does this code demonstrate about error propagation?\n[CODE]function a() {\n  throw new Error('Original error');\n}\n\nfunction b() {\n  try {\n    a();\n  } catch (err) {\n    throw new Error('Wrapped error: ' + err.message);\n  }\n}\n\nfunction c() {\n  try {\n    b();\n  } catch (err) {\n    console.log(err.message);\n    console.log(err.stack);\n  }\n}\n\nc();[/CODE]",
       "options": {
-        "A": "Error stack traces are preserved through re-throwing",
-        "B": "The original stack trace is lost when wrapping errors",
+        "A": "The original stack trace is lost when wrapping errors",
+        "B": "Error stack traces are preserved through re-throwing",
         "C": "Errors cannot be caught in nested function calls",
         "D": "All error information is automatically preserved"
       },
-      "correct": "B",
+      "correct": "A",
       "explanation": "This demonstrates that the original stack trace is lost when wrapping errors in new Error objects. When you catch an error and throw a new one, the stack trace of the original error is not preserved in the new error's stack.\n\n[CODE]// Better approach: preserve original error\nfunction betterB() {\n  try {\n    a();\n  } catch (err) {\n    // Create new error but preserve stack\n    const newError = new Error('Wrapped error: ' + err.message);\n    newError.originalError = err;  // Attach original error\n    newError.stack = err.stack;    // Or preserve stack\n    throw newError;\n  }\n}\n\n// Modern approach with Error cause (ES2022)\nfunction modernB() {\n  try {\n    a();\n  } catch (err) {\n    throw new Error('Wrapped error', { cause: err });\n  }\n}\n\n// Usage with cause\ntry {\n  modernB();\n} catch (err) {\n  console.log(err.message);      // 'Wrapped error'\n  console.log(err.cause.message); // 'Original error'\n  console.log(err.cause.stack);   // Original stack trace\n}[/CODE]\n\nBest practices for error propagation:\n- Use <pre>Error.cause</pre> (ES2022+) to preserve original errors\n- Don't swallow errors without logging\n- Provide meaningful error messages\n- Consider custom error types for different error categories\n- Always include relevant context in error messages",
       "topic": {
         "topics": [
@@ -175,12 +175,12 @@ module.exports = {
       "id": 7,
       "question": "What does this code demonstrate about JavaScript's execution context?\n[CODE]console.log('Start');\nsetTimeout(() => console.log('Timeout'), 0);\nPromise.resolve().then(() => console.log('Promise'));\nconsole.log('End');[/CODE]",
       "options": {
-        "A": "All logs happen simultaneously",
+        "A": "The order is: Start, End, Promise, Timeout",
         "B": "The order is: Start, End, Timeout, Promise",
         "C": "The order is random",
-        "D": "The order is: Start, End, Promise, Timeout"
+        "D": "All logs happen simultaneously"
       },
-      "correct": "D",
+      "correct": "A",
       "explanation": "The output order is: <pre>Start, End, Promise, Timeout</pre>. This demonstrates the JavaScript event loop and the difference between microtasks (Promise callbacks) and macrotasks (setTimeout callbacks).\n\n[CODE]// Execution order explanation:\n// 1. 'Start' - synchronous execution\n// 2. setTimeout callback queued as macrotask\n// 3. Promise callback queued as microtask\n// 4. 'End' - synchronous execution\n// 5. Call stack empty, microtasks executed: 'Promise'\n// 6. Macrotasks executed: 'Timeout'\n\n// More complex example\nconsole.log('Script start');\n\nsetTimeout(() => console.log('setTimeout'), 0);\n\nPromise.resolve()\n  .then(() => console.log('Promise 1'))\n  .then(() => console.log('Promise 2'));\n\nPromise.resolve().then(() => console.log('Promise 3'));\n\nconsole.log('Script end');\n\n// Output:\n// Script start\n// Script end\n// Promise 1\n// Promise 3\n// Promise 2\n// setTimeout[/CODE]\n\nKey concepts:\n- **Microtasks**: Promise callbacks, queueMicrotask, MutationObserver\n- **Macrotasks**: setTimeout, setInterval, I/O operations, UI rendering\n- **Event Loop**: Processes microtasks before macrotasks\n- **Call Stack**: Where synchronous code executes\n\nUnderstanding this execution model is crucial for writing correct asynchronous code and avoiding race conditions.",
       "topic": {
         "topics": [
@@ -211,11 +211,11 @@ module.exports = {
       "question": "What does this lazy evaluation pattern accomplish?\n[CODE]function lazyRange(start, end) {\n  return {\n    [Symbol.iterator]: function*() {\n      let current = start;\n      while (current < end) {\n        yield current++;\n      }\n    }\n  };\n}\n\nconst numbers = lazyRange(1, 1000000);\nconst firstTen = [];\nfor (const num of numbers) {\n  if (firstTen.length >= 10) break;\n  firstTen.push(num);\n}[/CODE]",
       "options": {
         "A": "Creates an array with 1 million elements immediately",
-        "B": "Returns undefined for all values",
+        "B": "Generates numbers on-demand as needed",
         "C": "Causes a stack overflow",
-        "D": "Generates numbers on-demand as needed"
+        "D": "Returns undefined for all values"
       },
-      "correct": "D",
+      "correct": "B",
       "explanation": "This implements lazy evaluation using generators, generating numbers on-demand only when they are actually needed. Unlike creating an array with 1 million elements upfront, this approach only generates the first 10 numbers that are actually used.\n\n[CODE]// Traditional approach (eager evaluation)\nfunction eagerRange(start, end) {\n  const result = [];\n  for (let i = start; i < end; i++) {\n    result.push(i);\n  }\n  return result; // All elements created immediately\n}\n\n// Lazy approach with generator\nfunction* lazyRangeGen(start, end) {\n  for (let i = start; i < end; i++) {\n    yield i; // Generate one element at a time\n  }\n}\n\n// Memory comparison\nconst eager = eagerRange(1, 1000000);  // Allocates 1M elements\nconst lazy = lazyRangeGen(1, 1000000); // No allocation until used\n\n// Take only first 10 elements\nconst first10Eager = eager.slice(0, 10);  // But 1M elements already allocated\nconst first10Lazy = [];\nfor (const num of lazy) {\n  if (first10Lazy.length >= 10) break;\n  first10Lazy.push(num);  // Only 10 elements allocated\n}\n\n// Practical lazy evaluation example\nfunction* fibonacci() {\n  let [a, b] = [0, 1];\n  while (true) {\n    yield a;\n    [a, b] = [b, a + b];\n  }\n}\n\nconst fib = fibonacci();\nconsole.log([...Array(10)].map(() => fib.next().value));\n// [0, 1, 1, 2, 3, 5, 8, 13, 21, 34] - Infinite sequence, finite usage[/CODE]\n\nLazy evaluation benefits:\n- Memory efficiency for large sequences\n- Ability to work with infinite sequences\n- Better performance when only partial results are needed\n- Composability of operations",
       "topic": {
         "topics": [
@@ -229,11 +229,11 @@ module.exports = {
       "question": "What is the result of this coercion example?\n[CODE]console.log([] + {});\nconsole.log({} + []);\nconsole.log([] + []);\nconsole.log({} + {});[/CODE]",
       "options": {
         "A": "<pre>\\\"[object Object]\\\", \\\"[object Object]\\\", \\\"[object Object]\\\", \\\"[object Object]\\\"</pre>",
-        "B": "<pre>\\\"[object Object]\\\", 0, \\\"\\\", NaN</pre>",
-        "C": "<pre>\\\"[object Object]\\\", \\\"[object Object]\\\", \\\"\\\", \\\"[object Object][object Object]\\\"</pre>",
+        "B": "<pre>\\\"[object Object]\\\", \\\"[object Object]\\\", \\\"\\\", \\\"[object Object][object Object]\\\"</pre>",
+        "C": "<pre>\\\"[object Object]\\\", 0, \\\"\\\", NaN</pre>",
         "D": "<pre>\\\"\\\", \\\"[object Object]\\\", \\\"\\\", \\\"[object Object]\\\"</pre>"
       },
-      "correct": "C",
+      "correct": "B",
       "explanation": "The results demonstrate JavaScript's complex type coercion rules when using the <pre>+</pre> operator with objects:\n\n[CODE]// 1. [] + {}\n// [] converts to empty string \\\"\\\"\n// {} converts to \\\"[object Object]\\\"\n// Result: \\\"\\\" + \\\"[object Object]\\\" = \\\"[object Object]\\\"\n\n// 2. {} + []\n// In many contexts, {} is treated as empty block, not object\n// So this becomes: +[] which converts [] to number\n// [] converts to 0 when coerced to number\n// Result: 0\n\n// 3. [] + []\n// Both arrays convert to empty strings\n// Result: \\\"\\\" + \\\"\\\" = \\\"\\\"\n\n// 4. {} + {}\n// First {} as empty block, second {} as object\n// Becomes: +{} which converts {} to number\n// {} converts to NaN when coerced to number\n// Result: NaN\n\n// More predictable with explicit conversion\nconsole.log(String([]) + String({}));    // \\\"[object Object]\\\"\nconsole.log(Number([]) + Number({}));    // NaN\n\n// Best practice: avoid implicit coercion\nconsole.log([].toString() + {}.toString()); // \\\"[object Object]\\\"\nconsole.log([].concat({}).join(''));        // \\\"[object Object]\\\"[/CODE]\n\nThese results highlight why implicit type coercion can be confusing and error-prone. Best practices:\n- Use explicit type conversion (<pre>String()</pre>, <pre>Number()</pre>, <pre>Boolean()</pre>)\n- Use strict equality (<pre>===</pre>) instead of loose equality (<pre>==</pre>)\n- Be cautious with <pre>+</pre> operator when operands might be objects\n- Consider using template literals for string concatenation",
       "topic": {
         "topics": [
@@ -299,10 +299,10 @@ module.exports = {
       "options": {
         "A": "Currying a function",
         "B": "Creating a higher-order function",
-        "C": "Memoizing function results",
-        "D": "Creating a specialized function with pre-filled arguments"
+        "C": "Creating a specialized function with pre-filled arguments",
+        "D": "Memoizing function results"
       },
-      "correct": "D",
+      "correct": "C",
       "explanation": "This demonstrates partial application - creating a specialized function (<pre>doubleAndTriple</pre>) by pre-filling some arguments of a more general function (<pre>multiply</pre>). The resulting function can be reused with different remaining arguments.\n\n[CODE]// Partial application vs currying\n// Currying: transform f(a, b, c) into f(a)(b)(c)\nconst curriedMultiply = a => b => c => a * b * c;\n\n// Partial application: fix some arguments\nconst partial = (fn, ...fixedArgs) => (...remainingArgs) => \n  fn(...fixedArgs, ...remainingArgs);\n\nconst doubleAndTriple = partial(multiply, 2, 3);\nconsole.log(doubleAndTriple(4)); // 24\nconsole.log(doubleAndTriple(5)); // 30\n\n// Using Function.prototype.bind\nconst boundMultiply = multiply.bind(null, 2, 3);\nconsole.log(boundMultiply(4)); // 24\n\n// Practical examples\n// Configuration functions\nconst createRequest = (baseURL, headers) => (endpoint, data) => \n  fetch(`${baseURL}${endpoint}`, { headers, body: JSON.stringify(data) });\n\nconst apiRequest = createRequest('https://api.example.com', {\n  'Content-Type': 'application/json'\n});\n\napiRequest('/users', { name: 'John' });\napiRequest('/products', { category: 'electronics' });\n\n// Validation functions\nconst createValidator = (type, rules) => (value) => \n  validate(value, type, rules);\n\nconst emailValidator = createValidator('email', { required: true });\nconst passwordValidator = createValidator('password', { minLength: 8 });\n\nconsole.log(emailValidator('test@example.com'));\nconsole.log(passwordValidator('123'));[/CODE]\n\nPartial application is useful for:\n- Creating specialized functions from general ones\n- Reducing code duplication\n- Improving code readability\n- Configuring functions with common parameters\n- Building functional pipelines",
       "topic": {
         "topics": [
@@ -334,11 +334,11 @@ module.exports = {
       "question": "What does this error handling pattern accomplish?\n[CODE]async function fetchWithRetry(url, retries = 3) {\n  for (let i = 0; i < retries; i++) {\n    try {\n      const response = await fetch(url);\n      if (!response.ok) throw new Error(`HTTP ${response.status}`);\n      return await response.json();\n    } catch (error) {\n      if (i === retries - 1) throw error;\n      console.log(`Attempt ${i + 1} failed, retrying...`);\n      await new Promise(resolve => setTimeout(resolve, 1000 * (i + 1)));\n    }\n  }\n}[/CODE]",
       "options": {
         "A": "Makes parallel requests for better performance",
-        "B": "Implements exponential backoff retry logic",
-        "C": "Caches successful responses",
+        "B": "Caches successful responses",
+        "C": "Implements exponential backoff retry logic",
         "D": "Validates response schema"
       },
-      "correct": "B",
+      "correct": "C",
       "explanation": "This implements exponential backoff retry logic with increasing delays between retry attempts. The pattern is essential for handling transient failures in distributed systems and network requests.\n\n[CODE]// Enhanced version with exponential backoff\nasync function fetchWithExponentialBackoff(url, maxRetries = 5) {\n  let lastError;\n  \n  for (let attempt = 0; attempt < maxRetries; attempt++) {\n    try {\n      const response = await fetch(url);\n      \n      if (response.ok) {\n        return await response.json();\n      }\n      \n      // Don't retry client errors (4xx) except 429 (Too Many Requests)\n      if (response.status >= 400 && response.status < 500 && response.status !== 429) {\n        throw new Error(`Client error: ${response.status}`);\n      }\n      \n      throw new Error(`HTTP ${response.status}`);\n      \n    } catch (error) {\n      lastError = error;\n      \n      if (attempt === maxRetries - 1) {\n        throw new Error(`Failed after ${maxRetries} attempts: ${error.message}`);\n      }\n      \n      // Exponential backoff: 1s, 2s, 4s, 8s...\n      const delay = Math.pow(2, attempt) * 1000;\n      console.log(`Attempt ${attempt + 1} failed, retrying in ${delay}ms...`);\n      await new Promise(resolve => setTimeout(resolve, delay));\n    }\n  }\n}\n\n// With jitter to avoid thundering herd problem\nfunction withJitter(delay) {\n  return delay * (0.5 + Math.random()); // 50-150% of delay\n}\n\n// Circuit breaker pattern (advanced)\nclass CircuitBreaker {\n  constructor(request, options = {}) {\n    this.request = request;\n    this.state = 'CLOSED';\n    this.failureCount = 0;\n    this.nextAttempt = Date.now();\n    this.options = { \n      failureThreshold: 5, \n      timeout: 5000, \n      ...options \n    };\n  }\n  \n  async fire(...args) {\n    if (this.state === 'OPEN') {\n      if (this.nextAttempt <= Date.now()) {\n        this.state = 'HALF_OPEN';\n      } else {\n        throw new Error('Circuit breaker is OPEN');\n      }\n    }\n    \n    try {\n      const response = await this.request(...args);\n      this.success();\n      return response;\n    } catch (error) {\n      this.failure(error);\n      throw error;\n    }\n  }\n  \n  success() {\n    this.failureCount = 0;\n    this.state = 'CLOSED';\n  }\n  \n  failure(error) {\n    this.failureCount++;\n    if (this.failureCount >= this.options.failureThreshold) {\n      this.state = 'OPEN';\n      this.nextAttempt = Date.now() + this.options.timeout;\n    }\n  }\n}[/CODE]\n\nRetry patterns are crucial for:\n- Handling transient network failures\n- Dealing with rate limiting\n- Improving application resilience\n- Graceful degradation",
       "topic": {
         "topics": [
@@ -367,12 +367,12 @@ module.exports = {
       "id": 18,
       "question": "What does this function composition utility demonstrate?\n[CODE]const pipe = (...fns) => x => fns.reduce((acc, fn) => fn(acc), x);\n\nconst add = x => y => x + y;\nconst multiply = x => y => x * y;\nconst square = x => x * x;\n\nconst compute = pipe(\n  add(5),\n  multiply(3),\n  square\n);\n\nconsole.log(compute(10));[/CODE]",
       "options": {
-        "A": "<pre>2025</pre>",
+        "A": "<pre>675</pre>",
         "B": "<pre>225</pre>",
-        "C": "<pre>675</pre>",
+        "C": "<pre>2025</pre>",
         "D": "<pre>45</pre>"
       },
-      "correct": "A",
+      "correct": "C",
       "explanation": "The result is <pre>2025</pre> because the <pre>pipe</pre> function applies each function from left to right, composing them into a single operation. This demonstrates functional composition with curried functions.\n\n[CODE]// Step by step execution:\n// compute(10) = pipe(add(5), multiply(3), square)(10)\n// 1. add(5)(10) = 15\n// 2. multiply(3)(15) = 45\n// 3. square(45) = 2025\n\n// Compare with compose (right to left)\nconst compose = (...fns) => x => fns.reduceRight((acc, fn) => fn(acc), x);\n\nconst computeCompose = compose(\n  square,\n  multiply(3),\n  add(5)\n);\n\nconsole.log(computeCompose(10)); // 2025 (same result, different order)\n\n// Practical data transformation pipeline\nconst users = [\n  { name: 'john', age: 25, active: true },\n  { name: 'jane', age: 30, active: false },\n  { name: 'bob', age: 35, active: true }\n];\n\nconst processUsers = pipe(\n  // Filter active users\n  arr => arr.filter(user => user.active),\n  // Sort by age\n  arr => arr.sort((a, b) => a.age - b.age),\n  // Extract names\n  arr => arr.map(user => user.name),\n  // Capitalize names\n  arr => arr.map(name => name.charAt(0).toUpperCase() + name.slice(1))\n);\n\nconsole.log(processUsers(users)); // ['John', 'Bob']\n\n// Point-free style with reusable utilities\nconst filter = predicate => arr => arr.filter(predicate);\nconst sort = comparator => arr => arr.sort(comparator);\nconst map = fn => arr => arr.map(fn);\n\nconst processUsersPointFree = pipe(\n  filter(user => user.active),\n  sort((a, b) => a.age - b.age),\n  map(user => user.name),\n  map(name => name.charAt(0).toUpperCase() + name.slice(1))\n);[/CODE]\n\nFunction composition enables:\n- Building complex transformations from simple functions\n- Code reuse and modularity\n- Declarative programming style\n- Easy testing of individual functions\n- Readable data processing pipelines",
       "topic": {
         "topics": [
@@ -385,12 +385,12 @@ module.exports = {
       "id": 19,
       "question": "What is the key benefit of this immutable update pattern?\n[CODE]function setIn(obj, path, value) {\n  if (path.length === 0) return value;\n  const [key, ...rest] = path;\n  \n  if (rest.length === 0) {\n    return { ...obj, [key]: value };\n  }\n  \n  return {\n    ...obj,\n    [key]: setIn(obj[key] || {}, rest, value)\n  };\n}\n\nconst state = { user: { profile: { name: 'John', age: 30 } } };\nconst newState = setIn(state, ['user', 'profile', 'age'], 31);[/CODE]",
       "options": {
-        "A": "It creates a new object with only the changed path updated",
+        "A": "It deep clones the entire object",
         "B": "It mutates the original state for performance",
-        "C": "It deep clones the entire object",
+        "C": "It creates a new object with only the changed path updated",
         "D": "It freezes the object to prevent changes"
       },
-      "correct": "A",
+      "correct": "C",
       "explanation": "This pattern creates a new object with only the changed path updated, while sharing unchanged parts between the old and new objects. This is called structural sharing and is fundamental to efficient immutable updates.\n\n[CODE]// Structural sharing example\nconst original = {\n  user: {\n    profile: { name: 'John', age: 30 },\n    settings: { theme: 'dark' }\n  },\n  products: [{ id: 1 }, { id: 2 }]\n};\n\nconst updated = setIn(original, ['user', 'profile', 'age'], 31);\n\n// References to unchanged parts are shared\nconsole.log(original.user.settings === updated.user.settings); // true\nconsole.log(original.products === updated.products);           // true\n\n// Only changed path is recreated\nconsole.log(original.user === updated.user);                   // false\nconsole.log(original.user.profile === updated.user.profile);   // false\n\n// Manual equivalent (verbose)\nconst updatedManual = {\n  ...original,\n  user: {\n    ...original.user,\n    profile: {\n      ...original.user.profile,\n      age: 31\n    }\n  }\n};\n\n// Enhanced version with array support\nfunction setInEnhanced(obj, path, value) {\n  if (path.length === 0) return value;\n  const [key, ...rest] = path;\n  \n  if (rest.length === 0) {\n    if (Array.isArray(obj)) {\n      const newArray = [...obj];\n      newArray[key] = value;\n      return newArray;\n    }\n    return { ...obj, [key]: value };\n  }\n  \n  const nextObj = obj[key] || (typeof rest[0] === 'number' ? [] : {});\n  \n  if (Array.isArray(obj)) {\n    const newArray = [...obj];\n    newArray[key] = setInEnhanced(nextObj, rest, value);\n    return newArray;\n  }\n  \n  return {\n    ...obj,\n    [key]: setInEnhanced(nextObj, rest, value)\n  };\n}\n\n// Using libraries like Immer for complex updates\n// import { produce } from 'immer';\n// const newState = produce(state, draft => {\n//   draft.user.profile.age = 31;\n// });[/CODE]\n\nStructural sharing provides:\n- Memory efficiency for large objects\n- Fast equality checks (reference equality)\n- Predictable state updates\n- Easy undo/redo functionality\n- Optimal performance for UI frameworks",
       "topic": {
         "topics": [
@@ -402,12 +402,12 @@ module.exports = {
       "id": 20,
       "question": "What does this generator pattern accomplish?\n[CODE]function* paginate(items, pageSize) {\n  for (let i = 0; i < items.length; i += pageSize) {\n    yield items.slice(i, i + pageSize);\n  }\n}\n\nconst data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];\nconst pages = paginate(data, 3);\n\nfor (const page of pages) {\n  console.log('Page:', page);\n}[/CODE]",
       "options": {
-        "A": "Generates pages on-demand as needed",
+        "A": "Causes memory leak with large arrays",
         "B": "Creates infinite pagination",
         "C": "Mutates the original array",
-        "D": "Causes memory leak with large arrays"
+        "D": "Generates pages on-demand as needed"
       },
-      "correct": "A",
+      "correct": "D",
       "explanation": "This generator pattern creates a paginator that generates pages on-demand as they are consumed, rather than creating all pages upfront. This is memory-efficient for large datasets.\n\n[CODE]// Traditional approach (eager)\nfunction paginateEager(items, pageSize) {\n  const pages = [];\n  for (let i = 0; i < items.length; i += pageSize) {\n    pages.push(items.slice(i, i + pageSize));\n  }\n  return pages; // All pages created immediately\n}\n\n// Generator approach (lazy)\nfunction* paginateLazy(items, pageSize) {\n  for (let i = 0; i < items.length; i += pageSize) {\n    yield items.slice(i, i + pageSize); // Generate one page at a time\n  }\n}\n\n// Memory comparison with large dataset\nconst largeData = Array.from({ length: 1000000 }, (_, i) => i);\n\nconst eagerPages = paginateEager(largeData, 1000); // 1000 pages created immediately\nconst lazyPages = paginateLazy(largeData, 1000);   // No pages created yet\n\n// Only create pages as needed\nlet count = 0;\nfor (const page of lazyPages) {\n  console.log('Processing page', ++count);\n  if (count >= 5) break; // Only 5 pages actually created\n}\n\n// Infinite pagination example\nfunction* infiniteSequence() {\n  let page = 1;\n  while (true) {\n    // Simulate API call\n    yield fetchPage(page);\n    page++;\n  }\n}\n\nasync function fetchPage(pageNum) {\n  // Simulate API call\n  return { page: pageNum, data: [] };\n}\n\n// Async generator for streaming data\nasync function* streamData(url) {\n  const response = await fetch(url);\n  const reader = response.body.getReader();\n  \n  try {\n    while (true) {\n      const { done, value } = await reader.read();\n      if (done) break;\n      yield value;\n    }\n  } finally {\n    reader.releaseLock();\n  }\n}\n\n// Using generators for complex state machines\nfunction* stateMachine() {\n  let state = 'idle';\n  \n  while (true) {\n    const action = yield state;\n    \n    switch (state) {\n      case 'idle':\n        if (action === 'start') state = 'running';\n        break;\n      case 'running':\n        if (action === 'pause') state = 'paused';\n        else if (action === 'stop') state = 'idle';\n        break;\n      case 'paused':\n        if (action === 'resume') state = 'running';\n        else if (action === 'stop') state = 'idle';\n        break;\n    }\n  }\n}[/CODE]\n\nGenerator patterns are powerful for:\n- Lazy evaluation and memory efficiency\n- Working with infinite sequences\n- Complex state management\n- Async data streaming\n- Custom iteration logic",
       "topic": {
         "topics": [
@@ -421,10 +421,10 @@ module.exports = {
       "options": {
         "A": "Approach 1 is invalid syntax",
         "B": "All three work identically in all cases",
-        "C": "Approach 2 imports everything into a namespace object",
-        "D": "Approach 3 only works with CommonJS modules"
+        "C": "Approach 3 only works with CommonJS modules",
+        "D": "Approach 2 imports everything into a namespace object"
       },
-      "correct": "C",
+      "correct": "D",
       "explanation": "Approach 2 imports all exports from the module into a namespace object. The differences between these import approaches have important implications for bundle size, tree shaking, and code organization.\n\n[CODE]// Understanding module exports\n// react.js (simplified)\nexport function useState(initial) { /* ... */ }\nexport function useEffect(effect) { /* ... */ }\nexport default { /* default export object */ };\n\n// Approach 1: Named imports (recommended)\nimport { useState, useEffect } from 'react';\n// Only imports what you use\n// Enables tree shaking\n// Clear dependencies\n\n// Approach 2: Namespace import\nimport * as React from 'react';\n// Imports ALL exports into React object\n// Usage: React.useState, React.useEffect\n// May include unused exports in bundle\n// Useful for libraries with many utilities\n\n// Approach 3: Default import\nimport React from 'react';\n// Only imports the default export\n// Does NOT include named exports like useState, useEffect\n// This would cause: React.useState is undefined\n\n// Mixed approach\nimport React, { useState, useEffect } from 'react';\n// Imports default as React + named exports\n\n// Re-exporting patterns\n// utils.js\nexport const add = (a, b) => a + b;\nexport const multiply = (a, b) => a * b;\n\n// math.js - barrel export\nexport { add, multiply } from './utils';\nexport const complexOperation = () => { /* ... */ };\n\n// consumer.js\nimport { add, multiply } from './math'; // Clean imports\n\n// Dynamic imports (code splitting)\nconst loadComponent = async () => {\n  const { HeavyComponent } = await import('./HeavyComponent');\n  return HeavyComponent;\n};\n\n// Conditional imports\nif (featureFlag) {\n  const analytics = await import('./analytics');\n  analytics.track('event');\n}\n\n// Best practices:\n// 1. Use named imports for better tree shaking\n// 2. Use namespace imports when you need many utilities\n// 3. Use dynamic imports for code splitting\n// 4. Avoid mixing default and named exports in same module\n// 5. Use barrel exports to simplify import paths[/CODE]\n\nUnderstanding these patterns helps optimize bundle size and maintain clean, modular code architecture.",
       "topic": {
         "topics": [
@@ -438,10 +438,10 @@ module.exports = {
       "options": {
         "A": "Prevents all errors in the application",
         "B": "Logs errors but doesn't recover from them",
-        "C": "Catches and handles errors in child component trees",
-        "D": "Only catches synchronous rendering errors"
+        "C": "Only catches synchronous rendering errors",
+        "D": "Catches and handles errors in child component trees"
       },
-      "correct": "C",
+      "correct": "D",
       "explanation": "This Error Boundary pattern catches JavaScript errors anywhere in the child component tree, logs those errors, and displays a fallback UI instead of the component tree that crashed. This prevents the entire app from breaking due to errors in one component.\n\n[CODE]// Usage example\nfunction App() {\n  return (\n    <ErrorBoundary \n      fallback={<ErrorScreen />}\n      onError={(error, errorInfo) => {\n        // Send to error reporting service\n        errorService.report(error, errorInfo);\n      }}\n    >\n      <UserProfile />\n      <ProductList />\n      <ShoppingCart />\n    </ErrorBoundary>\n  );\n}\n\n// Multiple error boundaries for granular error handling\nfunction GranularApp() {\n  return (\n    <div>\n      <ErrorBoundary fallback={<HeaderError />}>\n        <AppHeader />\n      </ErrorBoundary>\n      \n      <ErrorBoundary fallback={<ContentError />}>\n        <MainContent />\n      </ErrorBoundary>\n      \n      <ErrorBoundary fallback={<FooterError />}>\n        <AppFooter />\n      </ErrorBoundary>\n    </div>\n  );\n}\n\n// Error boundary limitations\nclass LimitedErrorBoundary extends React.Component {\n  componentDidCatch(error, errorInfo) {\n    // Catches errors in:\n    // - Rendering\n    // - Lifecycle methods\n    // - Constructors of child components\n    \n    // Does NOT catch errors in:\n    // - Event handlers\n    // - Async code (setTimeout, promises)\n    // - Server side rendering\n    // - Errors thrown in the error boundary itself\n  }\n}\n\n// Handling async errors\nfunction AsyncErrorHandler() {\n  const [error, setError] = useState(null);\n  \n  if (error) {\n    return <div>Error: {error.message}</div>;\n  }\n  \n  const handleAsyncOperation = async () => {\n    try {\n      await fetchData();\n    } catch (err) {\n      setError(err); // Handle async errors in state\n    }\n  };\n  \n  return <button onClick={handleAsyncOperation}>Load</button>;\n}\n\n// Modern approach with hooks\nfunction useErrorHandler() {\n  const [error, setError] = useState(null);\n  \n  useEffect(() => {\n    if (error) {\n      // Handle error\n      errorService.report(error);\n    }\n  }, [error]);\n  \n  return setError;\n}\n\nfunction ComponentWithErrorHandling() {\n  const handleError = useErrorHandler();\n  \n  useEffect(() => {\n    fetchData().catch(handleError);\n  }, [handleError]);\n  \n  // ... component logic\n}[/CODE]\n\nError boundaries are essential for:\n- Preventing total app crashes\n- Graceful error recovery\n- Better user experience\n- Error monitoring and reporting\n- Isolating component failures",
       "topic": {
         "topics": [
@@ -453,12 +453,12 @@ module.exports = {
       "id": 23,
       "question": "What is the result of this execution order example?\n[CODE]async function asyncFunc() {\n  console.log('2');\n  await Promise.resolve();\n  console.log('4');\n}\n\nconsole.log('1');\nasyncFunc();\nconsole.log('3');[/CODE]",
       "options": {
-        "A": "<pre>1, 2, 3, 4</pre>",
+        "A": "<pre>1, 3, 2, 4</pre>",
         "B": "<pre>1, 2, 4, 3</pre>",
         "C": "<pre>2, 1, 4, 3</pre>",
-        "D": "<pre>1, 3, 2, 4</pre>"
+        "D": "<pre>1, 2, 3, 4</pre>"
       },
-      "correct": "A",
+      "correct": "D",
       "explanation": "The output is <pre>1, 2, 3, 4</pre> because <pre>await</pre> causes the function to pause and return control to the calling context, allowing synchronous code to continue executing before the awaited promise resolves.\n\n[CODE]// Step by step execution:\nconsole.log('1');           // 1 - synchronous\nasyncFunc();                // call async function\n  console.log('2');         // 2 - synchronous part of asyncFunc\n  await Promise.resolve();  // pause function, return control\nconsole.log('3');           // 3 - synchronous code continues\n// Microtask queue processed: resume asyncFunc\nconsole.log('4');           // 4 - after await\n\n// More complex example\nasync function complexAsync() {\n  console.log('A');\n  \n  await Promise.resolve();\n  console.log('B');\n  \n  await new Promise(resolve => setTimeout(resolve, 0));\n  console.log('C');\n  \n  await Promise.resolve().then(() => console.log('D'));\n  console.log('E');\n}\n\nconsole.log('Start');\ncomplexAsync();\nconsole.log('End');\n\n// Output: Start, A, End, B, D, C, E\n\n// Execution order explanation:\n// 1. 'Start' - synchronous\n// 2. 'A' - synchronous part of complexAsync\n// 3. await Promise.resolve() - yields to microtask queue\n// 4. 'End' - synchronous code continues\n// 5. Microtasks: 'B' (from first await)\n// 6. await setTimeout - yields to macrotask queue\n// 7. Microtasks continue: 'D' (from Promise.then)\n// 8. 'E' cannot run yet because we're waiting for setTimeout\n// 9. Macrotask: setTimeout callback, then 'C'\n// 10. Finally 'E' after all awaits complete\n\n// Converting async/await to promise chain\nfunction promiseEquivalent() {\n  console.log('A');\n  \n  return Promise.resolve()\n    .then(() => {\n      console.log('B');\n      return new Promise(resolve => setTimeout(resolve, 0));\n    })\n    .then(() => {\n      console.log('C');\n      return Promise.resolve().then(() => console.log('D'));\n    })\n    .then(() => {\n      console.log('E');\n    });\n}[/CODE]\n\nUnderstanding async/await execution order is crucial for:\n- Debugging asynchronous code\n- Avoiding race conditions\n- Writing predictable async logic\n- Performance optimization\n- Proper error handling",
       "topic": {
         "topics": [
@@ -471,11 +471,11 @@ module.exports = {
       "question": "What does this function memoization pattern accomplish?\n[CODE]function memoize(fn) {\n  const cache = new Map();\n  return function(...args) {\n    const key = JSON.stringify(args);\n    if (cache.has(key)) {\n      return cache.get(key);\n    }\n    const result = fn.apply(this, args);\n    cache.set(key, result);\n    return result;\n  };\n}\n\nconst expensiveCalculation = memoize((x, y) => {\n  console.log('Calculating...');\n  return x * y + Math.sqrt(x * y);\n});[/CODE]",
       "options": {
         "A": "Speeds up first function call",
-        "B": "Caches function results based on arguments",
+        "B": "Creates a lazy version of the function",
         "C": "Prevents function from being called multiple times",
-        "D": "Creates a lazy version of the function"
+        "D": "Caches function results based on arguments"
       },
-      "correct": "B",
+      "correct": "D",
       "explanation": "This memoization pattern caches function results based on the input arguments, returning cached results for repeated calls with the same arguments instead of recalculating. This optimizes expensive computations.\n\n[CODE]// Usage example\nconsole.log(expensiveCalculation(10, 20)); // Calculating... then result\nconsole.log(expensiveCalculation(10, 20)); // Cached result (no Calculating...)\nconsole.log(expensiveCalculation(5, 15));  // Calculating... then new result\n\n// Enhanced memoization with cache limits\nfunction memoizeWithLimit(fn, limit = 100) {\n  const cache = new Map();\n  const keys = [];\n  \n  return function(...args) {\n    const key = JSON.stringify(args);\n    \n    if (cache.has(key)) {\n      // Move to end (most recently used)\n      keys.splice(keys.indexOf(key), 1);\n      keys.push(key);\n      return cache.get(key);\n    }\n    \n    // Evict oldest if limit reached\n    if (keys.length >= limit) {\n      const oldestKey = keys.shift();\n      cache.delete(oldestKey);\n    }\n    \n    const result = fn.apply(this, args);\n    cache.set(key, result);\n    keys.push(key);\n    \n    return result;\n  };\n}\n\n// Memoization with custom key generator\nfunction memoizeWithKey(fn, keyGenerator = JSON.stringify) {\n  const cache = new Map();\n  return function(...args) {\n    const key = keyGenerator(args);\n    if (cache.has(key)) return cache.get(key);\n    const result = fn.apply(this, args);\n    cache.set(key, result);\n    return result;\n  };\n}\n\n// React useMemo hook (similar concept)\nfunction ExpensiveComponent({ a, b }) {\n  const result = React.useMemo(() => {\n    return expensiveCalculation(a, b);\n  }, [a, b]); // Only recalculate when a or b changes\n  \n  return <div>{result}</div>;\n}\n\n// When NOT to memoize\n// - Functions with side effects\n// - Functions that always return different results\n// - Very fast functions (overhead > benefit)\n// - Functions with non-serializable arguments\n\n// Memoization use cases:\n// - Expensive mathematical computations\n// - API response caching\n// - Component rendering optimization\n// - Recursive function optimization (Fibonacci)\n\nconst fibonacci = memoize(function(n) {\n  if (n <= 1) return n;\n  return fibonacci(n - 1) + fibonacci(n - 2);\n});\n\nconsole.log(fibonacci(40)); // Fast with memoization[/CODE]\n\nMemoization provides significant performance benefits for:\n- Pure functions with expensive computations\n- Functions called repeatedly with same arguments\n- Recursive algorithms\n- Data transformation pipelines",
       "topic": {
         "topics": [

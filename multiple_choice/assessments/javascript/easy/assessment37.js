@@ -54,12 +54,12 @@ module.exports = {
       "id": 1,
       "question": "What is event delegation in JavaScript?",
       "options": {
-        "A": "Sending events to a server",
+        "A": "Attaching one event listener to a parent to handle children",
         "B": "Delegating events to another function",
         "C": "Creating multiple event listeners",
-        "D": "Attaching one event listener to a parent to handle children"
+        "D": "Sending events to a server"
       },
-      "correct": "D",
+      "correct": "A",
       "explanation": "Event delegation uses a single event listener on a parent element to handle events from multiple child elements through event bubbling.",
       "topic": {
         "topics": [
@@ -71,12 +71,12 @@ module.exports = {
       "id": 2,
       "question": "Why is event delegation useful for dynamic content?",
       "options": {
-        "A": "It prevents event bubbling",
+        "A": "It works for elements added after page load",
         "B": "It makes events faster",
         "C": "It requires less code",
-        "D": "It works for elements added after page load"
+        "D": "It prevents event bubbling"
       },
-      "correct": "D",
+      "correct": "A",
       "explanation": "Since the listener is on a stable parent, it automatically handles events from dynamically added children without needing to attach new listeners.",
       "topic": {
         "topics": [
@@ -88,12 +88,12 @@ module.exports = {
       "id": 3,
       "question": "How do you identify which child element was clicked in event delegation?",
       "options": {
-        "A": "Check event.currentTarget",
-        "B": "Check event.target",
+        "A": "Check event.target",
+        "B": "Check event.currentTarget",
         "C": "Check this keyword",
         "D": "Check event.source"
       },
-      "correct": "B",
+      "correct": "A",
       "explanation": "event.target refers to the actual element that triggered the event, which is the child element that was clicked.",
       "topic": {
         "topics": [
@@ -105,12 +105,12 @@ module.exports = {
       "id": 4,
       "question": "What is event bubbling?",
       "options": {
-        "A": "Events create bubbles in the DOM",
-        "B": "Events propagate upward from target to ancestors",
+        "A": "Events propagate upward from target to ancestors",
+        "B": "Events create bubbles in the DOM",
         "C": "Events propagate downward to children",
         "D": "Events duplicate themselves"
       },
-      "correct": "B",
+      "correct": "A",
       "explanation": "Event bubbling means events start at the target element and propagate up through its ancestors, enabling event delegation.",
       "topic": {
         "topics": [
@@ -139,12 +139,12 @@ module.exports = {
       "id": 6,
       "question": "How do you check if the clicked element matches a specific selector?",
       "options": {
-        "A": "<pre>event.currentTarget.matches('.selector')</pre>",
+        "A": "<pre>event.target.matches('.selector')</pre>",
         "B": "<pre>event.matches('.selector')</pre>",
         "C": "<pre>this.matches('.selector')</pre>",
-        "D": "<pre>event.target.matches('.selector')</pre>"
+        "D": "<pre>event.currentTarget.matches('.selector')</pre>"
       },
-      "correct": "D",
+      "correct": "A",
       "explanation": "The matches() method on event.target checks if the clicked element matches a CSS selector.",
       "topic": {
         "topics": [
@@ -173,12 +173,12 @@ module.exports = {
       "id": 8,
       "question": "In event delegation, what does event.currentTarget refer to?",
       "options": {
-        "A": "The event source",
+        "A": "The element with the event listener",
         "B": "The element that was clicked",
         "C": "The document root",
-        "D": "The element with the event listener"
+        "D": "The event source"
       },
-      "correct": "D",
+      "correct": "A",
       "explanation": "event.currentTarget is the element that has the event listener attached (the parent in delegation).",
       "topic": {
         "topics": [
@@ -207,12 +207,12 @@ module.exports = {
       "id": 10,
       "question": "What is a common mistake in event delegation?",
       "options": {
-        "A": "Not checking if event.target matches desired element",
-        "B": "Using too many parent listeners",
+        "A": "Using too many parent listeners",
+        "B": "Not checking if event.target matches desired element",
         "C": "Attaching listeners to document only",
         "D": "Using event delegation for all events"
       },
-      "correct": "A",
+      "correct": "B",
       "explanation": "Forgetting to verify that event.target is the specific child you want to handle can cause the handler to run for unwanted clicks.",
       "topic": {
         "topics": [
@@ -224,12 +224,12 @@ module.exports = {
       "id": 11,
       "question": "Which event does NOT bubble by default?",
       "options": {
-        "A": "focus",
-        "B": "click",
+        "A": "click",
+        "B": "focus",
         "C": "mouseover",
         "D": "keydown"
       },
-      "correct": "A",
+      "correct": "B",
       "explanation": "The focus event does not bubble by default, so it cannot be used with event delegation without special handling.",
       "topic": {
         "topics": [
@@ -241,12 +241,12 @@ module.exports = {
       "id": 12,
       "question": "How do you handle clicks on specific list items using delegation?",
       "options": {
-        "A": "Add listener to ul, check if event.target is li",
-        "B": "Add listeners to each li individually",
+        "A": "Add listeners to each li individually",
+        "B": "Add listener to ul, check if event.target is li",
         "C": "Add listener to document only",
         "D": "Use inline onclick handlers"
       },
-      "correct": "A",
+      "correct": "B",
       "explanation": "Attach one listener to the ul element and check if event.target (or its parent) is an li element.",
       "topic": {
         "topics": [
@@ -259,11 +259,11 @@ module.exports = {
       "question": "What is the difference between event.target and event.currentTarget?",
       "options": {
         "A": "They are always the same",
-        "B": "target is listener, currentTarget is clicked",
-        "C": "target is clicked element, currentTarget is listener element",
+        "B": "target is clicked element, currentTarget is listener element",
+        "C": "target is listener, currentTarget is clicked",
         "D": "target is parent, currentTarget is child"
       },
-      "correct": "C",
+      "correct": "B",
       "explanation": "event.target is the element that triggered the event, event.currentTarget is the element with the event listener.",
       "topic": {
         "topics": [
@@ -275,12 +275,12 @@ module.exports = {
       "id": 14,
       "question": "Why might you use event delegation for a large table?",
       "options": {
-        "A": "Avoid attaching hundreds of cell listeners",
-        "B": "Tables don't support direct listeners",
+        "A": "Tables don't support direct listeners",
+        "B": "Avoid attaching hundreds of cell listeners",
         "C": "It makes table rendering faster",
         "D": "Tables require delegation by default"
       },
-      "correct": "A",
+      "correct": "B",
       "explanation": "A table with hundreds of cells would require hundreds of individual listeners without delegation, which is inefficient.",
       "topic": {
         "topics": [
@@ -310,11 +310,11 @@ module.exports = {
       "question": "What happens if you click between list items in a delegated listener?",
       "options": {
         "A": "It triggers all list items",
-        "B": "The click is ignored completely",
-        "C": "event.target might be the ul, not an li",
+        "B": "event.target might be the ul, not an li",
+        "C": "The click is ignored completely",
         "D": "It throws an error"
       },
-      "correct": "C",
+      "correct": "B",
       "explanation": "If you click the padding between items, event.target could be the ul itself, so you need to check what was actually clicked.",
       "topic": {
         "topics": [
@@ -327,11 +327,11 @@ module.exports = {
       "question": "When should you NOT use event delegation?",
       "options": {
         "A": "For a dynamic list of items",
-        "B": "For a single, static button",
-        "C": "For a grid of interactive cells",
+        "B": "For a grid of interactive cells",
+        "C": "For a single, static button",
         "D": "For a menu with submenus"
       },
-      "correct": "B",
+      "correct": "C",
       "explanation": "For single static elements, direct event listeners are simpler and more appropriate than delegation.",
       "topic": {
         "topics": [
@@ -343,12 +343,12 @@ module.exports = {
       "id": 18,
       "question": "How do you handle events for elements deep inside the clicked element?",
       "options": {
-        "A": "Use closest() to find the relevant parent",
+        "A": "Only handle direct children",
         "B": "Attach listeners to every nested element",
-        "C": "Only handle direct children",
+        "C": "Use closest() to find the relevant parent",
         "D": "Use event.stopPropagation() on children"
       },
-      "correct": "A",
+      "correct": "C",
       "explanation": "If a child contains other elements, event.target might be a deep descendant. Use closest() to find the element you actually want to handle.",
       "topic": {
         "topics": [
@@ -379,10 +379,10 @@ module.exports = {
       "options": {
         "A": "Event delegation cannot be removed",
         "B": "Remove listeners from all children",
-        "C": "Use event.removeDelegation()",
-        "D": "Remove the single parent listener"
+        "C": "Remove the single parent listener",
+        "D": "Use event.removeDelegation()"
       },
-      "correct": "D",
+      "correct": "C",
       "explanation": "Since there's only one listener on the parent, removing that single listener stops all delegated event handling.",
       "topic": {
         "topics": [
@@ -396,10 +396,10 @@ module.exports = {
       "options": {
         "A": "Speeds up event delegation",
         "B": "Makes delegation work better",
-        "C": "Has no effect on delegation",
-        "D": "Prevents the event from reaching delegated listeners"
+        "C": "Prevents the event from reaching delegated listeners",
+        "D": "Has no effect on delegation"
       },
-      "correct": "D",
+      "correct": "C",
       "explanation": "If a child element calls stopPropagation(), the event won't bubble up to the parent, breaking event delegation.",
       "topic": {
         "topics": [
@@ -429,11 +429,11 @@ module.exports = {
       "question": "Why is document.body often used for event delegation?",
       "options": {
         "A": "It's the fastest option",
-        "B": "It captures all events that bubble up",
-        "C": "It has special delegation powers",
+        "B": "It has special delegation powers",
+        "C": "It captures all events that bubble up",
         "D": "It prevents event conflicts"
       },
-      "correct": "B",
+      "correct": "C",
       "explanation": "Since most events bubble up to body, using it as the delegate captures events from anywhere on the page.",
       "topic": {
         "topics": [
@@ -446,11 +446,11 @@ module.exports = {
       "question": "What is a potential downside of using document for delegation?",
       "options": {
         "A": "It doesn't work for dynamic content",
-        "B": "The handler runs for many unrelated clicks",
+        "B": "It only works for click events",
         "C": "It's slower than direct listeners",
-        "D": "It only works for click events"
+        "D": "The handler runs for many unrelated clicks"
       },
-      "correct": "B",
+      "correct": "D",
       "explanation": "Using document means your handler runs for every click on the page, so you must carefully filter event.target.",
       "topic": {
         "topics": [
@@ -479,12 +479,12 @@ module.exports = {
       "id": 26,
       "question": "What is the event capturing phase?",
       "options": {
-        "A": "Events propagate down from document to target",
+        "A": "Events duplicate during propagation",
         "B": "Events are captured for analysis",
         "C": "Events stop propagating",
-        "D": "Events duplicate during propagation"
+        "D": "Events propagate down from document to target"
       },
-      "correct": "A",
+      "correct": "D",
       "explanation": "Event capturing is the opposite of bubbling - events propagate down from document to target before the bubbling phase.",
       "topic": {
         "topics": [
@@ -498,10 +498,10 @@ module.exports = {
       "options": {
         "A": "It's not possible with delegation",
         "B": "Use event.capture() method",
-        "C": "Pass {capture: true} to addEventListener",
-        "D": "Set event.capture = true"
+        "C": "Set event.capture = true",
+        "D": "Pass {capture: true} to addEventListener"
       },
-      "correct": "C",
+      "correct": "D",
       "explanation": "You can use the capture phase by setting the capture option to true, though bubbling is more commonly used for delegation.",
       "topic": {
         "topics": [
@@ -514,11 +514,11 @@ module.exports = {
       "question": "What is the main advantage of delegation for large applications?",
       "options": {
         "A": "Makes all events global",
-        "B": "Simplifies event management for dynamic UI",
+        "B": "Automatically removes old listeners",
         "C": "Eliminates the need for event listeners",
-        "D": "Automatically removes old listeners"
+        "D": "Simplifies event management for dynamic UI"
       },
-      "correct": "B",
+      "correct": "D",
       "explanation": "In large apps with complex, dynamic UIs, delegation reduces the complexity of managing many individual event listeners.",
       "topic": {
         "topics": [
@@ -532,10 +532,10 @@ module.exports = {
       "options": {
         "A": "Only use document for keyboard delegation",
         "B": "Keyboard events cannot be delegated",
-        "C": "Same as click events - check event.target",
-        "D": "Use special key delegation methods"
+        "C": "Use special key delegation methods",
+        "D": "Same as click events - check event.target"
       },
-      "correct": "C",
+      "correct": "D",
       "explanation": "Keyboard events bubble just like mouse events, so you can use the same delegation patterns by checking event.target.",
       "topic": {
         "topics": [
@@ -549,11 +549,11 @@ module.exports = {
       "options": {
         "A": "Remove existing direct listeners",
         "B": "Find all child elements to delegate",
-        "C": "Identify a stable parent element",
-        "D": "Create a delegation function"
+        "C": "Create a delegation function",
+        "D": "Identify a stable parent element"
       },
       "explanation": "The first step is finding a parent element that contains (or will contain) the children you want to handle, and that won't be removed from DOM.",
-      "correct": "C",
+      "correct": "D",
       "topic": {
         "topics": [
           "Event delegation concept"

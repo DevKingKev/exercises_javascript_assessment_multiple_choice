@@ -86,12 +86,12 @@ module.exports = {
       "id": 2,
       "question": "Which header helps you restrict sources for scripts and resources to mitigate XSS?",
       "options": {
-        "A": "X-Frame-Options",
-        "B": "Content-Security-Policy",
+        "A": "Content-Security-Policy",
+        "B": "X-Frame-Options",
         "C": "Referrer-Policy",
         "D": "X-Powered-By"
       },
-      "correct": "B",
+      "correct": "A",
       "explanation": "Content-Security-Policy (CSP) allows you to restrict allowed sources for scripts/styles/etc., reducing XSS risks.",
       "topic": {
         "topics": [
@@ -103,12 +103,12 @@ module.exports = {
       "id": 3,
       "question": "When using fetch from a browser to another origin that requires credentials, what must be set?",
       "options": {
-        "A": "mode: 'no-cors'",
+        "A": "credentials: 'include' and server must allow with Access-Control-Allow-Credentials",
         "B": "Use synchronous XHR",
         "C": "cache: 'no-store' only",
-        "D": "credentials: 'include' and server must allow with Access-Control-Allow-Credentials"
+        "D": "mode: 'no-cors'"
       },
-      "correct": "D",
+      "correct": "A",
       "explanation": "To include cookies/credentials in CORS requests, set credentials: 'include' and the server must respond with Access-Control-Allow-Credentials: true and proper origins.",
       "topic": {
         "topics": [
@@ -120,12 +120,12 @@ module.exports = {
       "id": 4,
       "question": "Which cookie attribute helps prevent sending cookies on cross-site requests?",
       "options": {
-        "A": "HttpOnly",
+        "A": "SameSite",
         "B": "Secure",
-        "C": "SameSite",
+        "C": "HttpOnly",
         "D": "Path"
       },
-      "correct": "C",
+      "correct": "A",
       "explanation": "SameSite can be set to Lax/Strict to control whether cookies are sent on cross-site requests, helping mitigate CSRF.",
       "topic": {
         "topics": [
@@ -206,11 +206,11 @@ module.exports = {
       "question": "Which of the following is NOT an effective input validation rule?",
       "options": {
         "A": "Whitelist allowed characters/formats",
-        "B": "Validate on server-side as well as client-side",
+        "B": "Trust client-side validation alone",
         "C": "Normalize inputs before validation",
-        "D": "Trust client-side validation alone"
+        "D": "Validate on server-side as well as client-side"
       },
-      "correct": "D",
+      "correct": "B",
       "explanation": "Client-side validation improves UX but cannot be trusted for security; server-side validation is required.",
       "topic": {
         "topics": [
@@ -257,11 +257,11 @@ module.exports = {
       "question": "Which technique reduces the risk of executing untrusted scripts embedded in user input?",
       "options": {
         "A": "Use innerHTML with user content",
-        "B": "Eval the content in a sandboxed iframe without restrictions",
-        "C": "Use textContent or properly escape before insertion",
+        "B": "Use textContent or properly escape before insertion",
+        "C": "Eval the content in a sandboxed iframe without restrictions",
         "D": "Store raw HTML in localStorage and execute later"
       },
-      "correct": "C",
+      "correct": "B",
       "explanation": "textContent inserts text without parsing as HTML, and escaping user content prevents scripts from executing.",
       "topic": {
         "topics": [
@@ -274,11 +274,11 @@ module.exports = {
       "question": "Which is an example of applying the principle of least privilege in web apps?",
       "options": {
         "A": "Grant all services full admin access",
-        "B": "Use root/administrator for regular operations",
-        "C": "Give each service only the permissions it needs for its role",
+        "B": "Give each service only the permissions it needs for its role",
+        "C": "Use root/administrator for regular operations",
         "D": "Store credentials in publicly readable files"
       },
-      "correct": "C",
+      "correct": "B",
       "explanation": "Least privilege means giving components minimum permissions necessary to perform their job to limit potential damage from compromise.",
       "topic": {
         "topics": [
@@ -309,10 +309,10 @@ module.exports = {
       "options": {
         "A": "Bundle unverified third-party scripts directly from CDN without auditing",
         "B": "Use eval to isolate code",
-        "C": "Disable all security headers for speed",
-        "D": "Vendor or sandbox third-party code and limit its privileges"
+        "C": "Vendor or sandbox third-party code and limit its privileges",
+        "D": "Disable all security headers for speed"
       },
-      "correct": "D",
+      "correct": "C",
       "explanation": "Auditing, vendoring, sandboxing, and applying CSP or iframe isolation reduce the blast radius of compromised third-party scripts.",
       "topic": {
         "topics": [
@@ -324,12 +324,12 @@ module.exports = {
       "id": 16,
       "question": "Which CSP directive allows you to restrict script sources?",
       "options": {
-        "A": "script-src",
+        "A": "frame-ancestors only",
         "B": "default-src only",
-        "C": "frame-ancestors only",
+        "C": "script-src",
         "D": "connect-src only"
       },
-      "correct": "A",
+      "correct": "C",
       "explanation": "The script-src directive controls from which origins scripts are allowed to be loaded and executed.",
       "topic": {
         "topics": [
@@ -342,11 +342,11 @@ module.exports = {
       "question": "Which practice helps protect tokens leaked via XSS?",
       "options": {
         "A": "Store tokens in localStorage",
-        "B": "Use HttpOnly cookies and rotate tokens frequently",
-        "C": "Embed tokens in the DOM",
+        "B": "Embed tokens in the DOM",
+        "C": "Use HttpOnly cookies and rotate tokens frequently",
         "D": "Send tokens in query strings"
       },
-      "correct": "B",
+      "correct": "C",
       "explanation": "HttpOnly cookies cannot be read by JavaScript and rotating tokens reduces the window an attacker can use a stolen token.",
       "topic": {
         "topics": [
@@ -360,10 +360,10 @@ module.exports = {
       "options": {
         "A": "console.log",
         "B": "manual grep only",
-        "C": "browser DevTools only",
-        "D": "npm audit or similar SCA tools"
+        "C": "npm audit or similar SCA tools",
+        "D": "browser DevTools only"
       },
-      "correct": "D",
+      "correct": "C",
       "explanation": "Software Composition Analysis tools like npm audit, Snyk, Dependabot help find known CVEs in dependencies.",
       "topic": {
         "topics": [
@@ -375,12 +375,12 @@ module.exports = {
       "id": 19,
       "question": "Which HTTP header helps prevent MIME type sniffing vulnerabilities?",
       "options": {
-        "A": "X-Content-Type-Options: nosniff",
+        "A": "Content-Security-Policy",
         "B": "X-Frame-Options",
-        "C": "Content-Security-Policy",
+        "C": "X-Content-Type-Options: nosniff",
         "D": "Referrer-Policy"
       },
-      "correct": "A",
+      "correct": "C",
       "explanation": "X-Content-Type-Options: nosniff prevents browsers from MIME-sniffing responses away from declared content-type, reducing certain types of attacks.",
       "topic": {
         "topics": [
@@ -392,12 +392,12 @@ module.exports = {
       "id": 20,
       "question": "Which cookie attribute ensures cookies are only sent over secure channels?",
       "options": {
-        "A": "Secure",
+        "A": "Path",
         "B": "HttpOnly",
         "C": "SameSite",
-        "D": "Path"
+        "D": "Secure"
       },
-      "correct": "A",
+      "correct": "D",
       "explanation": "The Secure attribute ensures cookies are only sent over HTTPS connections.",
       "topic": {
         "topics": [
@@ -411,10 +411,10 @@ module.exports = {
       "options": {
         "A": "Echo user input in HTML without sanitizing",
         "B": "Use document.write with user data",
-        "C": "Validate and encode URL parameters before use",
-        "D": "Disable all input validation"
+        "C": "Disable all input validation",
+        "D": "Validate and encode URL parameters before use"
       },
-      "correct": "C",
+      "correct": "D",
       "explanation": "Validating and encoding data prevents injection attacks that rely on reflected inputs.",
       "topic": {
         "topics": [
@@ -428,10 +428,10 @@ module.exports = {
       "options": {
         "A": "Access-Control-Allow-Origin: * and Access-Control-Allow-Credentials: true",
         "B": "No headers needed",
-        "C": "Access-Control-Allow-Origin: https://app.example and Access-Control-Allow-Credentials: true",
-        "D": "X-Frame-Options: SAMEORIGIN"
+        "C": "X-Frame-Options: SAMEORIGIN",
+        "D": "Access-Control-Allow-Origin: https://app.example and Access-Control-Allow-Credentials: true"
       },
-      "correct": "C",
+      "correct": "D",
       "explanation": "When sending credentials, the server must set Access-Control-Allow-Origin to the exact origin and set Access-Control-Allow-Credentials: true; '*' cannot be used with credentials.",
       "topic": {
         "topics": [
@@ -444,11 +444,11 @@ module.exports = {
       "question": "What is Subresource Integrity (SRI) used for?",
       "options": {
         "A": "Encrypting API responses",
-        "B": "Verifying a fetched resource (like a script) hasn't been tampered with using an integrity hash",
+        "B": "Automatically updating dependencies",
         "C": "Hiding script sources",
-        "D": "Automatically updating dependencies"
+        "D": "Verifying a fetched resource (like a script) hasn't been tampered with using an integrity hash"
       },
-      "correct": "B",
+      "correct": "D",
       "explanation": "SRI allows browsers to check that a fetched resource matches an expected cryptographic hash, preventing tampered CDN resources from executing.",
       "topic": {
         "topics": [

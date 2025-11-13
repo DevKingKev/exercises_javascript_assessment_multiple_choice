@@ -54,12 +54,12 @@ module.exports = {
       "id": 1,
       "question": "What data type does localStorage store?",
       "options": {
-        "A": "Numbers and strings only",
+        "A": "Strings only",
         "B": "Any JavaScript data type",
-        "C": "Strings only",
+        "C": "Numbers and strings only",
         "D": "Objects only"
       },
-      "correct": "C",
+      "correct": "A",
       "explanation": "localStorage can only store strings. To store other data types, you need to convert them to strings using JSON.stringify().",
       "topic": {
         "topics": [
@@ -88,12 +88,12 @@ module.exports = {
       "id": 3,
       "question": "How do you retrieve data from localStorage?",
       "options": {
-        "A": "<pre>localStorage.retrieve('key')</pre>",
-        "B": "<pre>localStorage.getItem('key')</pre>",
+        "A": "<pre>localStorage.getItem('key')</pre>",
+        "B": "<pre>localStorage.retrieve('key')</pre>",
         "C": "<pre>localStorage.key</pre>",
         "D": "<pre>localStorage.load('key')</pre>"
       },
-      "correct": "B",
+      "correct": "A",
       "explanation": "The <pre>getItem()</pre> method returns the value associated with the specified key, or null if the key doesn't exist.",
       "topic": {
         "topics": [
@@ -105,12 +105,12 @@ module.exports = {
       "id": 4,
       "question": "What is the main difference between localStorage and sessionStorage?",
       "options": {
-        "A": "localStorage is more secure",
+        "A": "localStorage persists, sessionStorage is per session",
         "B": "localStorage is faster",
         "C": "sessionStorage stores more data",
-        "D": "localStorage persists, sessionStorage is per session"
+        "D": "localStorage is more secure"
       },
-      "correct": "D",
+      "correct": "A",
       "explanation": "localStorage data persists until explicitly deleted, while sessionStorage data is cleared when the browser tab is closed.",
       "topic": {
         "topics": [
@@ -123,12 +123,12 @@ module.exports = {
       "id": 5,
       "question": "How do you store an object in localStorage?",
       "options": {
-        "A": "<pre>localStorage.setItem('key', obj)</pre>",
-        "B": "<pre>localStorage.setItem('key', JSON.stringify(obj))</pre>",
+        "A": "<pre>localStorage.setItem('key', JSON.stringify(obj))</pre>",
+        "B": "<pre>localStorage.setItem('key', obj)</pre>",
         "C": "<pre>localStorage.obj = obj</pre>",
         "D": "<pre>localStorage.storeObject('key', obj)</pre>"
       },
-      "correct": "B",
+      "correct": "A",
       "explanation": "Since localStorage only stores strings, you must convert objects to JSON strings using JSON.stringify().",
       "topic": {
         "topics": [
@@ -140,12 +140,12 @@ module.exports = {
       "id": 6,
       "question": "How do you remove a specific item from localStorage?",
       "options": {
-        "A": "<pre>localStorage.key = null</pre>",
+        "A": "<pre>localStorage.removeItem('key')</pre>",
         "B": "<pre>localStorage.delete('key')</pre>",
         "C": "<pre>localStorage.clear('key')</pre>",
-        "D": "<pre>localStorage.removeItem('key')</pre>"
+        "D": "<pre>localStorage.key = null</pre>"
       },
-      "correct": "D",
+      "correct": "A",
       "explanation": "The <pre>removeItem()</pre> method removes the specified key and its value from localStorage.",
       "topic": {
         "topics": [
@@ -192,11 +192,11 @@ module.exports = {
       "question": "What happens when you try to store a number in localStorage?",
       "options": {
         "A": "It causes an error",
-        "B": "It stays as a number",
-        "C": "It gets converted to a string",
+        "B": "It gets converted to a string",
+        "C": "It stays as a number",
         "D": "It becomes undefined"
       },
-      "correct": "C",
+      "correct": "B",
       "explanation": "All values are converted to strings when stored in localStorage.",
       "topic": {
         "topics": [
@@ -243,11 +243,11 @@ module.exports = {
       "question": "What is the storage limit for localStorage in most browsers?",
       "options": {
         "A": "Unlimited",
-        "B": "About 1MB",
-        "C": "About 5-10MB",
+        "B": "About 5-10MB",
+        "C": "About 1MB",
         "D": "About 100KB"
       },
-      "correct": "C",
+      "correct": "B",
       "explanation": "Most modern browsers allow about 5-10MB of data per origin for localStorage.",
       "topic": {
         "topics": [
@@ -259,12 +259,12 @@ module.exports = {
       "id": 13,
       "question": "What will this code return? [CODE]localStorage.getItem('nonExistentKey');[/CODE]",
       "options": {
-        "A": "<pre>null</pre>",
-        "B": "<pre>undefined</pre>",
+        "A": "<pre>undefined</pre>",
+        "B": "<pre>null</pre>",
         "C": "<pre>''</pre>",
         "D": "Throws an error"
       },
-      "correct": "A",
+      "correct": "B",
       "explanation": "getItem() returns null when the specified key does not exist in localStorage.",
       "topic": {
         "topics": [
@@ -277,11 +277,11 @@ module.exports = {
       "question": "How do you check if a key exists in localStorage?",
       "options": {
         "A": "<pre>localStorage.exists('key')</pre>",
-        "B": "<pre>'key' in localStorage</pre>",
+        "B": "<pre>localStorage.getItem('key') !== null</pre>",
         "C": "<pre>localStorage.has('key')</pre>",
-        "D": "<pre>localStorage.getItem('key') !== null</pre>"
+        "D": "<pre>'key' in localStorage</pre>"
       },
-      "correct": "D",
+      "correct": "B",
       "explanation": "Check if getItem() returns something other than null to verify a key exists.",
       "topic": {
         "topics": [
@@ -311,11 +311,11 @@ module.exports = {
       "question": "How do you store a boolean value in localStorage?",
       "options": {
         "A": "Cannot store booleans",
-        "B": "Store it directly",
+        "B": "Convert to string with toString() or JSON.stringify()",
         "C": "Convert to number first",
-        "D": "Convert to string with toString() or JSON.stringify()"
+        "D": "Store it directly"
       },
-      "correct": "D",
+      "correct": "B",
       "explanation": "Since localStorage only stores strings, convert booleans to strings before storing.",
       "topic": {
         "topics": [
@@ -328,11 +328,11 @@ module.exports = {
       "question": "What is a security concern with localStorage?",
       "options": {
         "A": "Data is encrypted automatically",
-        "B": "Data is accessible by any JavaScript on the domain",
-        "C": "Data is sent to the server",
+        "B": "Data is sent to the server",
+        "C": "Data is accessible by any JavaScript on the domain",
         "D": "Data has no expiration"
       },
-      "correct": "B",
+      "correct": "C",
       "explanation": "Any JavaScript running on the same domain can access localStorage data, making it vulnerable to XSS attacks.",
       "topic": {
         "topics": [
@@ -362,11 +362,11 @@ module.exports = {
       "question": "What happens if you exceed localStorage quota?",
       "options": {
         "A": "Silently fails",
-        "B": "Throws a QuotaExceededError",
-        "C": "Overwrites old data",
+        "B": "Overwrites old data",
+        "C": "Throws a QuotaExceededError",
         "D": "Compresses the data"
       },
-      "correct": "B",
+      "correct": "C",
       "explanation": "When the storage limit is exceeded, browsers throw a QuotaExceededError exception.",
       "topic": {
         "topics": [
@@ -395,12 +395,12 @@ module.exports = {
       "id": 21,
       "question": "What is a good practice when storing data in localStorage?",
       "options": {
-        "A": "Wrap in try/catch for quota errors",
+        "A": "Store everything as numbers",
         "B": "Never store any data",
-        "C": "Store everything as numbers",
+        "C": "Wrap in try/catch for quota errors",
         "D": "Use only short keys"
       },
-      "correct": "A",
+      "correct": "C",
       "explanation": "Always wrap localStorage operations in try/catch blocks to handle potential quota errors.",
       "topic": {
         "topics": [
@@ -432,10 +432,10 @@ module.exports = {
       "options": {
         "A": "Deletes the settings",
         "B": "Always returns empty object",
-        "C": "Throws error if settings not found",
-        "D": "Gets settings or returns empty object if not found"
+        "C": "Gets settings or returns empty object if not found",
+        "D": "Throws error if settings not found"
       },
-      "correct": "D",
+      "correct": "C",
       "explanation": "This safely retrieves and parses settings, providing a default empty object if no settings are stored.",
       "topic": {
         "topics": [
@@ -449,10 +449,10 @@ module.exports = {
       "options": {
         "A": "Yes, directly without conversion",
         "B": "No, arrays are not supported",
-        "C": "Yes, by converting to JSON string",
-        "D": "Only numeric arrays"
+        "C": "Only numeric arrays",
+        "D": "Yes, by converting to JSON string"
       },
-      "correct": "C",
+      "correct": "D",
       "explanation": "Arrays can be stored by converting them to JSON strings with JSON.stringify().",
       "topic": {
         "topics": [
@@ -466,10 +466,10 @@ module.exports = {
       "options": {
         "A": "Global across all websites",
         "B": "Per subdomain only",
-        "C": "Per origin (protocol + domain + port)",
-        "D": "Per directory on the server"
+        "C": "Per directory on the server",
+        "D": "Per origin (protocol + domain + port)"
       },
-      "correct": "C",
+      "correct": "D",
       "explanation": "localStorage is scoped to the origin (protocol + domain + port), so same-origin pages share the same storage.",
       "topic": {
         "topics": [
@@ -481,12 +481,12 @@ module.exports = {
       "id": 26,
       "question": "How do you update an existing value in localStorage?",
       "options": {
-        "A": "Use setItem() with the same key",
+        "A": "Cannot update existing values",
         "B": "Use updateItem() method",
         "C": "Delete and re-add the item",
-        "D": "Cannot update existing values"
+        "D": "Use setItem() with the same key"
       },
-      "correct": "A",
+      "correct": "D",
       "explanation": "Calling setItem() with an existing key will overwrite the previous value.",
       "topic": {
         "topics": [
@@ -498,12 +498,12 @@ module.exports = {
       "id": 27,
       "question": "What type of data should NOT be stored in localStorage?",
       "options": {
-        "A": "Sensitive information like passwords",
+        "A": "Shopping cart items",
         "B": "User preferences",
         "C": "Theme settings",
-        "D": "Shopping cart items"
+        "D": "Sensitive information like passwords"
       },
-      "correct": "A",
+      "correct": "D",
       "explanation": "Never store sensitive information like passwords, tokens, or personal data in localStorage due to XSS vulnerabilities.",
       "topic": {
         "topics": [
@@ -532,12 +532,12 @@ module.exports = {
       "id": 29,
       "question": "What happens to localStorage when browser data is cleared?",
       "options": {
-        "A": "It gets deleted",
+        "A": "It gets compressed",
         "B": "It persists",
         "C": "It moves to sessionStorage",
-        "D": "It gets compressed"
+        "D": "It gets deleted"
       },
-      "correct": "A",
+      "correct": "D",
       "explanation": "When users clear browser data/cache, localStorage data is also cleared.",
       "topic": {
         "topics": [
@@ -550,12 +550,12 @@ module.exports = {
       "question": "Why might you choose sessionStorage over localStorage?",
       "options": {
         "A": "For larger storage capacity",
-        "B": "For temporary data that should not persist",
+        "B": "For faster access",
         "C": "For better security",
-        "D": "For faster access"
+        "D": "For temporary data that should not persist"
       },
       "explanation": "sessionStorage is ideal for data that should only exist during a single browsing session, like form data that shouldn't persist after closing the tab.",
-      "correct": "B",
+      "correct": "D",
       "topic": {
         "topics": [
           "Common use cases"

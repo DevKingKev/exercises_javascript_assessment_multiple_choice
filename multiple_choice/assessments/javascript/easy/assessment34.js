@@ -56,10 +56,10 @@ module.exports = {
       "options": {
         "A": "<pre>sessionStorage.store('key', 'value')</pre>",
         "B": "<pre>sessionStorage.save('key', 'value')</pre>",
-        "C": "<pre>sessionStorage.setItem('key', 'value')</pre>",
-        "D": "<pre>sessionStorage.key = 'value'</pre>"
+        "C": "<pre>sessionStorage.key = 'value'</pre>",
+        "D": "<pre>sessionStorage.setItem('key', 'value')</pre>"
       },
-      "correct": "C",
+      "correct": "D",
       "explanation": "sessionStorage uses the same API as localStorage, with setItem() for storing data.",
       "topic": {
         "topics": [
@@ -88,12 +88,12 @@ module.exports = {
       "id": 3,
       "question": "What happens when you store a number in sessionStorage?",
       "options": {
-        "A": "It gets converted to a string",
+        "A": "It causes an error",
         "B": "It remains a number",
-        "C": "It causes an error",
+        "C": "It gets converted to a string",
         "D": "It becomes undefined"
       },
-      "correct": "A",
+      "correct": "C",
       "explanation": "Like localStorage, sessionStorage only stores string values. Numbers are automatically converted to strings.",
       "topic": {
         "topics": [
@@ -107,10 +107,10 @@ module.exports = {
       "options": {
         "A": "<pre>sessionStorage.storeArray('key', array)</pre>",
         "B": "<pre>sessionStorage.setItem('key', array)</pre>",
-        "C": "<pre>sessionStorage.array = array</pre>",
-        "D": "<pre>sessionStorage.setItem('key', JSON.stringify(array))</pre>"
+        "C": "<pre>sessionStorage.setItem('key', JSON.stringify(array))</pre>",
+        "D": "<pre>sessionStorage.array = array</pre>"
       },
-      "correct": "D",
+      "correct": "C",
       "explanation": "Convert the array to a JSON string before storing, since sessionStorage only accepts strings.",
       "topic": {
         "topics": [
@@ -123,11 +123,11 @@ module.exports = {
       "question": "What is the scope of sessionStorage data?",
       "options": {
         "A": "Limited to the current page only",
-        "B": "Shared across all tabs from same origin",
+        "B": "Limited to the current browser tab",
         "C": "Global across all browser windows",
-        "D": "Limited to the current browser tab"
+        "D": "Shared across all tabs from same origin"
       },
-      "correct": "D",
+      "correct": "B",
       "explanation": "sessionStorage is isolated to each browser tab. Opening a new tab creates a new sessionStorage.",
       "topic": {
         "topics": [
@@ -139,12 +139,12 @@ module.exports = {
       "id": 6,
       "question": "How do you remove a specific item from sessionStorage?",
       "options": {
-        "A": "<pre>sessionStorage.key = null</pre>",
+        "A": "<pre>sessionStorage.removeItem('key')</pre>",
         "B": "<pre>sessionStorage.delete('key')</pre>",
         "C": "<pre>sessionStorage.clear('key')</pre>",
-        "D": "<pre>sessionStorage.removeItem('key')</pre>"
+        "D": "<pre>sessionStorage.key = null</pre>"
       },
-      "correct": "D",
+      "correct": "A",
       "explanation": "The removeItem() method removes a specific key-value pair from sessionStorage.",
       "topic": {
         "topics": [
@@ -225,11 +225,11 @@ module.exports = {
       "question": "How do you clear all data from sessionStorage?",
       "options": {
         "A": "<pre>sessionStorage.empty()</pre>",
-        "B": "<pre>sessionStorage.removeAll()</pre>",
-        "C": "<pre>sessionStorage.clear()</pre>",
+        "B": "<pre>sessionStorage.clear()</pre>",
+        "C": "<pre>sessionStorage.removeAll()</pre>",
         "D": "<pre>sessionStorage.reset()</pre>"
       },
-      "correct": "C",
+      "correct": "B",
       "explanation": "The clear() method removes all key-value pairs from sessionStorage.",
       "topic": {
         "topics": [
@@ -243,10 +243,10 @@ module.exports = {
       "options": {
         "A": "It ignores the operation",
         "B": "It causes an error",
-        "C": "It stores an empty value",
-        "D": "It stores the string 'null'"
+        "C": "It stores the string 'null'",
+        "D": "It stores an empty value"
       },
-      "correct": "D",
+      "correct": "C",
       "explanation": "null gets converted to the string 'null' when stored in localStorage.",
       "topic": {
         "topics": [
@@ -309,12 +309,12 @@ module.exports = {
       "id": 16,
       "question": "What does this code do? [CODE]const settings = localStorage.settings || '{}';[/CODE]",
       "options": {
-        "A": "Gets settings with fallback empty object string",
+        "A": "Deletes the settings",
         "B": "Throws an error",
         "C": "Always returns empty object",
-        "D": "Deletes the settings"
+        "D": "Gets settings with fallback empty object string"
       },
-      "correct": "A",
+      "correct": "D",
       "explanation": "This safely retrieves settings with a fallback empty object string if settings don't exist.",
       "topic": {
         "topics": [
@@ -326,12 +326,12 @@ module.exports = {
       "id": 17,
       "question": "When should you use sessionStorage over localStorage?",
       "options": {
-        "A": "For temporary form data during a session",
+        "A": "For sensitive information",
         "B": "For user preferences that should persist",
         "C": "For large amounts of data",
-        "D": "For sensitive information"
+        "D": "For temporary form data during a session"
       },
-      "correct": "A",
+      "correct": "D",
       "explanation": "sessionStorage is ideal for temporary data that should not persist beyond the current browsing session.",
       "topic": {
         "topics": [
@@ -343,12 +343,12 @@ module.exports = {
       "id": 18,
       "question": "How do you get all keys from localStorage?",
       "options": {
-        "A": "<pre>localStorage.keys</pre>",
+        "A": "<pre>Object.keys(localStorage)</pre>",
         "B": "<pre>localStorage.getAllKeys()</pre>",
-        "C": "<pre>Object.keys(localStorage)</pre>",
+        "C": "<pre>localStorage.keys</pre>",
         "D": "<pre>localStorage.listKeys()</pre>"
       },
-      "correct": "C",
+      "correct": "A",
       "explanation": "You can use Object.keys() with localStorage to get an array of all keys.",
       "topic": {
         "topics": [
@@ -396,10 +396,10 @@ module.exports = {
       "options": {
         "A": "Compress objects before storing",
         "B": "Store the entire object always",
-        "C": "Split objects across multiple keys",
-        "D": "Store only necessary properties, not entire objects"
+        "C": "Store only necessary properties, not entire objects",
+        "D": "Split objects across multiple keys"
       },
-      "correct": "D",
+      "correct": "C",
       "explanation": "Only store the properties you actually need to minimize storage usage and improve performance.",
       "topic": {
         "topics": [
@@ -411,12 +411,12 @@ module.exports = {
       "id": 22,
       "question": "How does localStorage behave with different protocols?",
       "options": {
-        "A": "HTTP and HTTPS have separate storage",
+        "A": "Only HTTPS can use localStorage",
         "B": "Protocol doesn't matter",
-        "C": "Only HTTPS can use localStorage",
+        "C": "HTTP and HTTPS have separate storage",
         "D": "HTTP can read HTTPS storage"
       },
-      "correct": "A",
+      "correct": "C",
       "explanation": "localStorage is separated by origin, which includes protocol. HTTP and HTTPS are considered different origins.",
       "topic": {
         "topics": [
@@ -446,11 +446,11 @@ module.exports = {
       "question": "How do you store a Date object in localStorage?",
       "options": {
         "A": "<pre>localStorage.setItem('key', date)</pre>",
-        "B": "<pre>localStorage.setItem('key', date.toISOString())</pre>",
-        "C": "<pre>localStorage.date = date</pre>",
+        "B": "<pre>localStorage.date = date</pre>",
+        "C": "<pre>localStorage.setItem('key', date.toISOString())</pre>",
         "D": "<pre>localStorage.setItem('key', date.toString())</pre>"
       },
-      "correct": "B",
+      "correct": "C",
       "explanation": "Convert Date objects to ISO string format for reliable storage and parsing later.",
       "topic": {
         "topics": [
@@ -479,12 +479,12 @@ module.exports = {
       "id": 26,
       "question": "How do you properly retrieve a number from localStorage?",
       "options": {
-        "A": "<pre>localStorage.getItem('key').toNumber()</pre>",
-        "B": "<pre>Number(localStorage.getItem('key'))</pre>",
+        "A": "<pre>Number(localStorage.getItem('key'))</pre>",
+        "B": "<pre>localStorage.getItem('key').toNumber()</pre>",
         "C": "<pre>localStorage.getNumber('key')</pre>",
         "D": "<pre>parseInt(localStorage.getItem('key'))</pre>"
       },
-      "correct": "B",
+      "correct": "A",
       "explanation": "Use Number() or parseFloat() to convert the stored string back to a number.",
       "topic": {
         "topics": [
@@ -498,10 +498,10 @@ module.exports = {
       "options": {
         "A": "Limited to 1KB per key",
         "B": "Data expires too quickly",
-        "C": "Vulnerable to XSS attacks",
-        "D": "Requires SSL certificate"
+        "C": "Requires SSL certificate",
+        "D": "Vulnerable to XSS attacks"
       },
-      "correct": "C",
+      "correct": "D",
       "explanation": "Any JavaScript running on the page can access storage, making it vulnerable to cross-site scripting attacks.",
       "topic": {
         "topics": [
@@ -513,12 +513,12 @@ module.exports = {
       "id": 28,
       "question": "How do you iterate through all sessionStorage items?",
       "options": {
-        "A": "<pre>sessionStorage.forEach((key, value) => {})</pre>",
+        "A": "<pre>for (let i = 0; i < sessionStorage.length; i++) {\n  const key = sessionStorage.key(i);\n  const value = sessionStorage.getItem(key);\n}</pre>",
         "B": "<pre>for (let key in sessionStorage) {}</pre>",
-        "C": "<pre>for (let i = 0; i < sessionStorage.length; i++) {\n  const key = sessionStorage.key(i);\n  const value = sessionStorage.getItem(key);\n}</pre>",
+        "C": "<pre>sessionStorage.forEach((key, value) => {})</pre>",
         "D": "<pre>Object.entries(sessionStorage).forEach()</pre>"
       },
-      "correct": "C",
+      "correct": "A",
       "explanation": "Use a for loop with sessionStorage.length and sessionStorage.key() to iterate through all items.",
       "topic": {
         "topics": [
@@ -530,12 +530,12 @@ module.exports = {
       "id": 29,
       "question": "What is the main advantage of using browser storage over cookies?",
       "options": {
-        "A": "Larger storage capacity",
+        "A": "Faster access speed",
         "B": "Automatic server transmission",
         "C": "Better security",
-        "D": "Faster access speed"
+        "D": "Larger storage capacity"
       },
-      "correct": "A",
+      "correct": "D",
       "explanation": "Browser storage offers much larger capacity (MBs) compared to cookies (KBs).",
       "topic": {
         "topics": [
@@ -549,11 +549,10 @@ module.exports = {
       "options": {
         "A": "Disable the feature completely",
         "B": "Show an error message to user",
-        "C": "Provide fallback to in-memory storage",
-        "D": "Use cookies instead automatically"
+        "D": "Use cookies instead automatically",
+        "undefined": "Provide fallback to in-memory storage"
       },
       "explanation": "When storage is unavailable, fall back to in-memory storage or other alternatives to maintain functionality.",
-      "correct": "C",
       "topic": {
         "topics": [
           "Error prevention"

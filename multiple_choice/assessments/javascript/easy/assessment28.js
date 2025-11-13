@@ -88,12 +88,12 @@ module.exports = {
       "id": 3,
       "question": "Which data structure would you use to remove duplicates from an array?",
       "options": {
-        "A": "Map",
-        "B": "Set",
+        "A": "Set",
+        "B": "Map",
         "C": "Array",
         "D": "Object"
       },
-      "correct": "B",
+      "correct": "A",
       "explanation": "Set is perfect for removing duplicates: <pre>const unique = [...new Set(array)];</pre>",
       "topic": {
         "topics": [
@@ -105,12 +105,12 @@ module.exports = {
       "id": 4,
       "question": "How do you check if a value exists in a Set?",
       "options": {
-        "A": "<pre>set.contains(value)</pre>",
-        "B": "<pre>set.has(value)</pre>",
+        "A": "<pre>set.has(value)</pre>",
+        "B": "<pre>set.contains(value)</pre>",
         "C": "<pre>set.includes(value)</pre>",
         "D": "<pre>set.find(value)</pre>"
       },
-      "correct": "B",
+      "correct": "A",
       "explanation": "The <pre>has()</pre> method returns true if the value exists in the Set, false otherwise.",
       "topic": {
         "topics": [
@@ -122,12 +122,12 @@ module.exports = {
       "id": 5,
       "question": "What is a key advantage of Map over regular objects?",
       "options": {
-        "A": "Smaller memory usage",
+        "A": "Keys can be any data type",
         "B": "Better performance for all operations",
         "C": "Automatic sorting of keys",
-        "D": "Keys can be any data type"
+        "D": "Smaller memory usage"
       },
-      "correct": "D",
+      "correct": "A",
       "explanation": "Map allows any value (including objects, functions, or other maps) as keys, while objects only allow strings and symbols.",
       "topic": {
         "topics": [
@@ -139,12 +139,12 @@ module.exports = {
       "id": 6,
       "question": "How do you add a value to a Set?",
       "options": {
-        "A": "<pre>set.insert(value)</pre>",
+        "A": "<pre>set.add(value)</pre>",
         "B": "<pre>set.push(value)</pre>",
-        "C": "<pre>set.add(value)</pre>",
+        "C": "<pre>set.insert(value)</pre>",
         "D": "<pre>set.set(value)</pre>"
       },
-      "correct": "C",
+      "correct": "A",
       "explanation": "The <pre>add()</pre> method adds a value to the Set. If the value already exists, it won't be added again.",
       "topic": {
         "topics": [
@@ -173,12 +173,12 @@ module.exports = {
       "id": 8,
       "question": "How do you set a key-value pair in a Map?",
       "options": {
-        "A": "<pre>map[key] = value</pre>",
+        "A": "<pre>map.set(key, value)</pre>",
         "B": "<pre>map.add(key, value)</pre>",
-        "C": "<pre>map.set(key, value)</pre>",
+        "C": "<pre>map[key] = value</pre>",
         "D": "<pre>map.insert(key, value)</pre>"
       },
-      "correct": "C",
+      "correct": "A",
       "explanation": "The <pre>set()</pre> method adds or updates a key-value pair in the Map.",
       "topic": {
         "topics": [
@@ -208,11 +208,11 @@ module.exports = {
       "question": "What is the result of this code? [CODE]const map = new Map();\nmap.set('a', 1);\nmap.set('b', 2);\nmap.get('a');[/CODE]",
       "options": {
         "A": "<pre>undefined</pre>",
-        "B": "<pre>2</pre>",
-        "C": "<pre>1</pre>",
+        "B": "<pre>1</pre>",
+        "C": "<pre>2</pre>",
         "D": "<pre>'a'</pre>"
       },
-      "correct": "C",
+      "correct": "B",
       "explanation": "<pre>get('a')</pre> returns the value associated with key 'a', which is 1.",
       "topic": {
         "topics": [
@@ -224,12 +224,12 @@ module.exports = {
       "id": 11,
       "question": "When would you use a Map instead of a regular object?",
       "options": {
-        "A": "When you need non-string keys",
-        "B": "When you need faster iteration",
+        "A": "When you need faster iteration",
+        "B": "When you need non-string keys",
         "C": "When you need JSON serialization",
         "D": "When you need prototype methods"
       },
-      "correct": "A",
+      "correct": "B",
       "explanation": "Map is particularly useful when you need to use objects, functions, or other non-primitive values as keys.",
       "topic": {
         "topics": [
@@ -259,11 +259,11 @@ module.exports = {
       "question": "What does this code do? [CODE]const uniqueWords = new Set(text.split(' '));[/CODE]",
       "options": {
         "A": "Sorts words alphabetically",
-        "B": "Counts words in text",
-        "C": "Gets unique words from text",
+        "B": "Gets unique words from text",
+        "C": "Counts words in text",
         "D": "Maps words to numbers"
       },
-      "correct": "C",
+      "correct": "B",
       "explanation": "This splits text into words and creates a Set, automatically removing any duplicate words.",
       "topic": {
         "topics": [
@@ -275,12 +275,12 @@ module.exports = {
       "id": 14,
       "question": "How do you check if a key exists in a Map?",
       "options": {
-        "A": "<pre>map.has(key)</pre>",
-        "B": "<pre>map.contains(key)</pre>",
+        "A": "<pre>map.contains(key)</pre>",
+        "B": "<pre>map.has(key)</pre>",
         "C": "<pre>map.includes(key)</pre>",
         "D": "<pre>key in map</pre>"
       },
-      "correct": "A",
+      "correct": "B",
       "explanation": "The <pre>has()</pre> method returns true if the key exists in the Map.",
       "topic": {
         "topics": [
@@ -293,11 +293,11 @@ module.exports = {
       "question": "What is the main performance advantage of Set for membership tests?",
       "options": {
         "A": "Automatically sorts values",
-        "B": "Faster than objects for all operations",
+        "B": "Faster than arrays for checking if value exists",
         "C": "Uses less memory than arrays",
-        "D": "Faster than arrays for checking if value exists"
+        "D": "Faster than objects for all operations"
       },
-      "correct": "D",
+      "correct": "B",
       "explanation": "Set.has() is much faster than Array.includes() for large collections because Sets are optimized for membership testing.",
       "topic": {
         "topics": [
@@ -310,11 +310,11 @@ module.exports = {
       "question": "How do you remove a value from a Set?",
       "options": {
         "A": "<pre>set.pop(value)</pre>",
-        "B": "<pre>set.remove(value)</pre>",
-        "C": "<pre>set.delete(value)</pre>",
+        "B": "<pre>set.delete(value)</pre>",
+        "C": "<pre>set.remove(value)</pre>",
         "D": "<pre>set.clear(value)</pre>"
       },
-      "correct": "C",
+      "correct": "B",
       "explanation": "The <pre>delete()</pre> method removes a specific value from the Set.",
       "topic": {
         "topics": [
@@ -328,10 +328,10 @@ module.exports = {
       "options": {
         "A": "Storing only primitive values",
         "B": "Removing duplicates from arrays",
-        "C": "Sorting values automatically",
-        "D": "Storing metadata associated with objects"
+        "C": "Storing metadata associated with objects",
+        "D": "Sorting values automatically"
       },
-      "correct": "D",
+      "correct": "C",
       "explanation": "Map is great for storing additional data about objects without modifying the objects themselves, using the objects as keys.",
       "topic": {
         "topics": [
@@ -345,10 +345,10 @@ module.exports = {
       "options": {
         "A": "<pre>NaN</pre>",
         "B": "<pre>2</pre>",
-        "C": "<pre>0</pre>",
-        "D": "<pre>1</pre>"
+        "C": "<pre>1</pre>",
+        "D": "<pre>0</pre>"
       },
-      "correct": "D",
+      "correct": "C",
       "explanation": "In Sets, NaN is considered equal to NaN (unlike regular JavaScript where NaN !== NaN), so only one NaN is stored.",
       "topic": {
         "topics": [
@@ -360,12 +360,12 @@ module.exports = {
       "id": 19,
       "question": "How do you get all keys from a Map?",
       "options": {
-        "A": "<pre>map.keys()</pre>",
+        "A": "<pre>Object.keys(map)</pre>",
         "B": "<pre>map.getKeys()</pre>",
-        "C": "<pre>Object.keys(map)</pre>",
+        "C": "<pre>map.keys()</pre>",
         "D": "<pre>map.allKeys()</pre>"
       },
-      "correct": "A",
+      "correct": "C",
       "explanation": "The <pre>keys()</pre> method returns an iterator of all keys in the Map, in insertion order.",
       "topic": {
         "topics": [
@@ -378,11 +378,11 @@ module.exports = {
       "question": "Which data structure would you use to count occurrences of items?",
       "options": {
         "A": "Set",
-        "B": "Map",
-        "C": "Array",
+        "B": "Array",
+        "C": "Map",
         "D": "String"
       },
-      "correct": "B",
+      "correct": "C",
       "explanation": "Map is perfect for counting: use items as keys and increment their counts as values.",
       "topic": {
         "topics": [
@@ -395,11 +395,11 @@ module.exports = {
       "question": "How do you remove all elements from a Set?",
       "options": {
         "A": "<pre>set.removeAll()</pre>",
-        "B": "<pre>set.clear()</pre>",
-        "C": "<pre>set.empty()</pre>",
+        "B": "<pre>set.empty()</pre>",
+        "C": "<pre>set.clear()</pre>",
         "D": "<pre>set.deleteAll()</pre>"
       },
-      "correct": "B",
+      "correct": "C",
       "explanation": "The <pre>clear()</pre> method removes all elements from a Set.",
       "topic": {
         "topics": [
@@ -412,11 +412,11 @@ module.exports = {
       "question": "What is the result of this code? [CODE]const map = new Map([['a', 1], ['b', 2]]);\nmap.get('c');[/CODE]",
       "options": {
         "A": "<pre>null</pre>",
-        "B": "<pre>undefined</pre>",
-        "C": "<pre>0</pre>",
+        "B": "<pre>0</pre>",
+        "C": "<pre>undefined</pre>",
         "D": "Throws an error"
       },
-      "correct": "B",
+      "correct": "C",
       "explanation": "When getting a non-existent key from a Map, it returns undefined (doesn't throw an error).",
       "topic": {
         "topics": [
@@ -446,11 +446,11 @@ module.exports = {
       "question": "How do you iterate over a Set's values?",
       "options": {
         "A": "<pre>for (let value in set)</pre>",
-        "B": "<pre>for (let value of set)</pre>",
+        "B": "<pre>set.values().forEach()</pre>",
         "C": "<pre>set.forEachValue()</pre>",
-        "D": "<pre>set.values().forEach()</pre>"
+        "D": "<pre>for (let value of set)</pre>"
       },
-      "correct": "B",
+      "correct": "D",
       "explanation": "Sets are iterable, so you can use for...of loop directly, or use forEach method.",
       "topic": {
         "topics": [
@@ -498,10 +498,10 @@ module.exports = {
       "options": {
         "A": "Adds property to the object",
         "B": "Converts object to string",
-        "C": "Stores metadata using an object as key",
-        "D": "Throws an error"
+        "C": "Throws an error",
+        "D": "Stores metadata using an object as key"
       },
-      "correct": "C",
+      "correct": "D",
       "explanation": "This stores 'metadata' associated with the obj, using the object itself as the key in the Map.",
       "topic": {
         "topics": [
@@ -513,12 +513,12 @@ module.exports = {
       "id": 28,
       "question": "How do you get the number of key-value pairs in a Map?",
       "options": {
-        "A": "<pre>map.size</pre>",
+        "A": "<pre>map.size()</pre>",
         "B": "<pre>map.length</pre>",
         "C": "<pre>map.count</pre>",
-        "D": "<pre>map.size()</pre>"
+        "D": "<pre>map.size</pre>"
       },
-      "correct": "A",
+      "correct": "D",
       "explanation": "The <pre>size</pre> property returns the number of key-value pairs in a Map.",
       "topic": {
         "topics": [
@@ -531,11 +531,11 @@ module.exports = {
       "question": "Which method is available on both Map and Set?",
       "options": {
         "A": "<pre>get</pre>",
-        "B": "<pre>forEach</pre>",
+        "B": "<pre>add</pre>",
         "C": "<pre>set</pre>",
-        "D": "<pre>add</pre>"
+        "D": "<pre>forEach</pre>"
       },
-      "correct": "B",
+      "correct": "D",
       "explanation": "Both Map and Set have a <pre>forEach</pre> method for iterating over their elements.",
       "topic": {
         "topics": [
@@ -547,12 +547,12 @@ module.exports = {
       "id": 30,
       "question": "What is the simplest way to create a Set from an array?",
       "options": {
-        "A": "<pre>new Set(array)</pre>",
+        "A": "<pre>Set.create(array)</pre>",
         "B": "<pre>Set.from(array)</pre>",
         "C": "<pre>array.toSet()</pre>",
-        "D": "<pre>Set.create(array)</pre>"
+        "D": "<pre>new Set(array)</pre>"
       },
-      "correct": "A",
+      "correct": "D",
       "explanation": "You can pass an array directly to the Set constructor to create a Set from the array's values.",
       "topic": {
         "topics": [

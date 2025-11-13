@@ -54,12 +54,12 @@ module.exports = {
       "id": 1,
       "question": "What is the result of [CODE][1, 2, 3].map(x => x * 2)[/CODE]?",
       "options": {
-        "A": "[1, 2, 3]",
+        "A": "[2, 4, 6]",
         "B": "[1, 4, 9]",
-        "C": "[2, 4, 6]",
+        "C": "[1, 2, 3]",
         "D": "6"
       },
-      "correct": "C",
+      "correct": "A",
       "explanation": "The map() method creates a new array by applying the given function to each element. Here, each element is multiplied by 2, resulting in [2, 4, 6].",
       "topic": {
         "topics": [
@@ -108,12 +108,12 @@ module.exports = {
       "id": 4,
       "question": "Which method finds the position of the first occurrence of a value in an array?",
       "options": {
-        "A": "find()",
-        "B": "indexOf()",
+        "A": "indexOf()",
+        "B": "find()",
         "C": "search()",
         "D": "position()"
       },
-      "correct": "B",
+      "correct": "A",
       "explanation": "indexOf() returns the first index at which a given element can be found in the array, or -1 if it is not present.",
       "topic": {
         "topics": [
@@ -144,12 +144,12 @@ module.exports = {
       "id": 6,
       "question": "How do you check if an object has a specific property?",
       "options": {
-        "A": "obj.hasProperty('key')",
+        "A": "'key' in obj",
         "B": "obj.has('key')",
-        "C": "'key' in obj",
+        "C": "obj.hasProperty('key')",
         "D": "obj.contains('key')"
       },
-      "correct": "C",
+      "correct": "A",
       "explanation": "The 'in' operator returns true if the specified property is in the object or its prototype chain. You can also use obj.hasOwnProperty('key') to check only own properties.",
       "topic": {
         "topics": [
@@ -162,12 +162,12 @@ module.exports = {
       "id": 7,
       "question": "What does [CODE][1, 2, 3].reduce((a, b) => a + b, 0)[/CODE] return?",
       "options": {
-        "A": "[1, 2, 3]",
+        "A": "6",
         "B": "0",
         "C": "123",
-        "D": "6"
+        "D": "[1, 2, 3]"
       },
-      "correct": "D",
+      "correct": "A",
       "explanation": "reduce() executes a reducer function on each array element, resulting in a single output value. Here it sums all elements: 0 + 1 + 2 + 3 = 6.",
       "topic": {
         "topics": [
@@ -199,11 +199,11 @@ module.exports = {
       "question": "What is the result of [CODE]'abc'.repeat(3)[/CODE]?",
       "options": {
         "A": "'abc'",
-        "B": "Error",
+        "B": "'abcabcabc'",
         "C": "['abc', 'abc', 'abc']",
-        "D": "'abcabcabc'"
+        "D": "Error"
       },
-      "correct": "D",
+      "correct": "B",
       "explanation": "The repeat() method constructs and returns a new string which contains the specified number of copies of the string on which it was called, concatenated together.",
       "topic": {
         "topics": [
@@ -233,12 +233,12 @@ module.exports = {
       "id": 11,
       "question": "What does [CODE]Object.values({a: 1, b: 2, c: 3})[/CODE] return?",
       "options": {
-        "A": "[1, 2, 3]",
-        "B": "['a', 'b', 'c']",
+        "A": "['a', 'b', 'c']",
+        "B": "[1, 2, 3]",
         "C": "{a: 1, b: 2, c: 3}",
         "D": "6"
       },
-      "correct": "A",
+      "correct": "B",
       "explanation": "Object.values() returns an array of a given object's own enumerable property values in the same order as provided by a for...in loop.",
       "topic": {
         "topics": [
@@ -252,11 +252,11 @@ module.exports = {
       "question": "What is the result of [CODE]'JavaScript'.includes('Script')[/CODE]?",
       "options": {
         "A": "1",
-        "B": "false",
-        "C": "true",
+        "B": "true",
+        "C": "false",
         "D": "Error"
       },
-      "correct": "C",
+      "correct": "B",
       "explanation": "The includes() method performs a case-sensitive search to determine whether one string may be found within another string, returning true or false.",
       "topic": {
         "topics": [
@@ -287,12 +287,12 @@ module.exports = {
       "id": 14,
       "question": "What does [CODE][1, 2, 3, 4].filter(x => x % 2 === 0)[/CODE] return?",
       "options": {
-        "A": "[2, 4]",
-        "B": "[1, 3]",
+        "A": "[1, 3]",
+        "B": "[2, 4]",
         "C": "[1, 2, 3, 4]",
         "D": "true"
       },
-      "correct": "A",
+      "correct": "B",
       "explanation": "filter() creates a new array with all elements that pass the test implemented by the provided function. Here it returns even numbers: [2, 4].",
       "topic": {
         "topics": [
@@ -306,11 +306,11 @@ module.exports = {
       "question": "How do you reverse a string in JavaScript?",
       "options": {
         "A": "str.reverse()",
-        "B": "str.backwards()",
+        "B": "str.split('').reverse().join('')",
         "C": "reverse(str)",
-        "D": "str.split('').reverse().join('')"
+        "D": "str.backwards()"
       },
-      "correct": "D",
+      "correct": "B",
       "explanation": "Strings don't have a reverse() method. You must split into an array, reverse the array, then join back into a string.",
       "topic": {
         "topics": [
@@ -324,11 +324,11 @@ module.exports = {
       "question": "What is the result of [CODE][1, 2, 3].every(x => x > 0)[/CODE]?",
       "options": {
         "A": "false",
-        "B": "true",
-        "C": "[1, 2, 3]",
+        "B": "[1, 2, 3]",
+        "C": "true",
         "D": "3"
       },
-      "correct": "B",
+      "correct": "C",
       "explanation": "The every() method tests whether all elements in the array pass the test implemented by the provided function. All elements are greater than 0, so it returns true.",
       "topic": {
         "topics": [
@@ -378,10 +378,10 @@ module.exports = {
       "options": {
         "A": "1",
         "B": "false",
-        "C": "[3]",
-        "D": "true"
+        "C": "true",
+        "D": "[3]"
       },
-      "correct": "D",
+      "correct": "C",
       "explanation": "The some() method tests whether at least one element in the array passes the test. Since 3 is greater than 2, it returns true.",
       "topic": {
         "topics": [
@@ -395,11 +395,11 @@ module.exports = {
       "question": "How do you convert an array to a string with a custom separator?",
       "options": {
         "A": "array.toString(separator)",
-        "B": "array.join(separator)",
-        "C": "array.concat(separator)",
+        "B": "array.concat(separator)",
+        "C": "array.join(separator)",
         "D": "String(array, separator)"
       },
-      "correct": "B",
+      "correct": "C",
       "explanation": "The join() method creates and returns a new string by concatenating all elements in an array, separated by the specified separator string.",
       "topic": {
         "topics": [
@@ -430,12 +430,12 @@ module.exports = {
       "id": 22,
       "question": "Which method finds the maximum value in an array?",
       "options": {
-        "A": "Math.max(...array)",
+        "A": "max(array)",
         "B": "array.max()",
         "C": "array.maximum()",
-        "D": "max(array)"
+        "D": "Math.max(...array)"
       },
-      "correct": "A",
+      "correct": "D",
       "explanation": "Math.max() takes individual arguments, not an array. Use the spread operator to expand the array elements as individual arguments.",
       "topic": {
         "topics": [
@@ -449,11 +449,11 @@ module.exports = {
       "question": "What is the result of [CODE]'a,b,c'.split(',').length[/CODE]?",
       "options": {
         "A": "2",
-        "B": "3",
+        "B": "Error",
         "C": "5",
-        "D": "Error"
+        "D": "3"
       },
-      "correct": "B",
+      "correct": "D",
       "explanation": "split(',') creates an array ['a', 'b', 'c'], which has 3 elements, so length returns 3.",
       "topic": {
         "topics": [
@@ -467,11 +467,11 @@ module.exports = {
       "question": "How do you check if all elements in an array are unique?",
       "options": {
         "A": "array.isUnique()",
-        "B": "new Set(array).size === array.length",
+        "B": "Array.isUnique(array)",
         "C": "array.unique() === array",
-        "D": "Array.isUnique(array)"
+        "D": "new Set(array).size === array.length"
       },
-      "correct": "B",
+      "correct": "D",
       "explanation": "Convert the array to a Set (which only keeps unique values) and compare its size to the original array length. If they're equal, all elements were unique.",
       "topic": {
         "topics": [
@@ -484,12 +484,12 @@ module.exports = {
       "id": 25,
       "question": "What does [CODE][1, [2, [3]]].flat(2)[/CODE] return?",
       "options": {
-        "A": "[1, 2, 3]",
+        "A": "[[1, 2, 3]]",
         "B": "[1, 2, [3]]",
         "C": "[1, [2, 3]]",
-        "D": "[[1, 2, 3]]"
+        "D": "[1, 2, 3]"
       },
-      "correct": "A",
+      "correct": "D",
       "explanation": "flat(2) flattens the array up to 2 levels deep. The nested structure [1, [2, [3]]] becomes [1, 2, 3] after flattening 2 levels.",
       "topic": {
         "topics": [
@@ -504,10 +504,10 @@ module.exports = {
       "options": {
         "A": "array.compact()",
         "B": "array.clean()",
-        "C": "array.filter(Boolean)",
-        "D": "array.removeFalsy()"
+        "C": "array.removeFalsy()",
+        "D": "array.filter(Boolean)"
       },
-      "correct": "C",
+      "correct": "D",
       "explanation": "filter(Boolean) removes all falsy values (false, null, 0, '', undefined, NaN) because Boolean() converts falsy values to false, which filter excludes.",
       "topic": {
         "topics": [
@@ -521,11 +521,11 @@ module.exports = {
       "question": "What is the result of [CODE]'test'.startsWith('te')[/CODE]?",
       "options": {
         "A": "false",
-        "B": "true",
+        "B": "Error",
         "C": "0",
-        "D": "Error"
+        "D": "true"
       },
-      "correct": "B",
+      "correct": "D",
       "explanation": "The startsWith() method determines whether a string begins with the characters of a specified string, returning true or false.",
       "topic": {
         "topics": [

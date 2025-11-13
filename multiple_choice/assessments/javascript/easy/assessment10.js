@@ -54,12 +54,12 @@ module.exports = {
       "id": 1,
       "question": "Which method returns the character at a specified index?",
       "options": {
-        "A": "<pre>characterAt()</pre>",
+        "A": "<pre>charAt()</pre>",
         "B": "<pre>getChar()</pre>",
-        "C": "<pre>charAt()</pre>",
+        "C": "<pre>characterAt()</pre>",
         "D": "<pre>at()</pre>"
       },
-      "correct": "C",
+      "correct": "A",
       "explanation": "The <pre>charAt()</pre> method returns the character at the specified index in a string. String indices start at 0, so <pre>'hello'.charAt(1)</pre> returns <pre>'e'</pre>. You can also use bracket notation like <pre>'hello'[1]</pre> for the same result.",
       "topic": {
         "topics": [
@@ -71,12 +71,12 @@ module.exports = {
       "id": 2,
       "question": "What does <pre>'hello'.toUpperCase()</pre> return?",
       "options": {
-        "A": "<pre>'HELLO'</pre>",
+        "A": "<pre>'hello'</pre>",
         "B": "<pre>'Hello'</pre>",
-        "C": "<pre>'hello'</pre>",
+        "C": "<pre>'HELLO'</pre>",
         "D": "<pre>'hELLO'</pre>"
       },
-      "correct": "A",
+      "correct": "C",
       "explanation": "The <pre>toUpperCase()</pre> method converts all characters in a string to uppercase letters. It returns a new string and doesn't modify the original string. The opposite method is <pre>toLowerCase()</pre> which converts to lowercase.",
       "topic": {
         "topics": [
@@ -88,12 +88,12 @@ module.exports = {
       "id": 3,
       "question": "Which method finds the position of the first occurrence of a substring?",
       "options": {
-        "A": "<pre>search()</pre>",
-        "B": "<pre>indexOf()</pre>",
+        "A": "<pre>indexOf()</pre>",
+        "B": "<pre>search()</pre>",
         "C": "<pre>find()</pre>",
         "D": "<pre>locate()</pre>"
       },
-      "correct": "B",
+      "correct": "A",
       "explanation": "The <pre>indexOf()</pre> method returns the index of the first occurrence of the specified substring, or -1 if it's not found. For example, <pre>'hello'.indexOf('l')</pre> returns <pre>2</pre>. There's also <pre>lastIndexOf()</pre> to find the last occurrence.",
       "topic": {
         "topics": [
@@ -105,12 +105,12 @@ module.exports = {
       "id": 4,
       "question": "What does <pre>'hello world'.split(' ')</pre> return?",
       "options": {
-        "A": "<pre>['hello', 'world']</pre>",
-        "B": "<pre>'helloworld'</pre>",
+        "A": "<pre>'helloworld'</pre>",
+        "B": "<pre>['hello', 'world']</pre>",
         "C": "<pre>['h','e','l','l','o',' ','w','o','r','l','d']</pre>",
         "D": "<pre>'hello world'</pre>"
       },
-      "correct": "A",
+      "correct": "B",
       "explanation": "The <pre>split()</pre> method divides a string into an array of substrings using the specified separator. When splitting by space <pre>' '</pre>, it creates an array with each word as a separate element. Without a separator, it splits into individual characters.",
       "topic": {
         "topics": [
@@ -123,11 +123,11 @@ module.exports = {
       "question": "How do you get the length of a string?",
       "options": {
         "A": "<pre>string.count()</pre>",
-        "B": "<pre>string.size()</pre>",
-        "C": "<pre>string.length</pre>",
+        "B": "<pre>string.length</pre>",
+        "C": "<pre>string.size()</pre>",
         "D": "<pre>string.getLength()</pre>"
       },
-      "correct": "C",
+      "correct": "B",
       "explanation": "The <pre>length</pre> property returns the number of characters in a string. For example, <pre>'hello'.length</pre> returns <pre>5</pre>. This is a property, not a method, so you don't use parentheses.",
       "topic": {
         "topics": [
@@ -139,12 +139,12 @@ module.exports = {
       "id": 6,
       "question": "What does <pre>' hello '.trim()</pre> return?",
       "options": {
-        "A": "<pre>'hello '</pre>",
+        "A": "<pre>'hello'</pre>",
         "B": "<pre>' hello '</pre>",
-        "C": "<pre>'hello'</pre>",
+        "C": "<pre>'hello '</pre>",
         "D": "<pre>' hello'</pre>"
       },
-      "correct": "C",
+      "correct": "A",
       "explanation": "The <pre>trim()</pre> method removes whitespace from both ends of a string. There are also <pre>trimStart()</pre> and <pre>trimEnd()</pre> to remove whitespace from only the beginning or end respectively.",
       "topic": {
         "topics": [
@@ -174,11 +174,11 @@ module.exports = {
       "question": "What is the result of <pre>'abc'.repeat(3)</pre>?",
       "options": {
         "A": "<pre>'abc3'</pre>",
-        "B": "<pre>'abcabcabc'</pre>",
-        "C": "<pre>'aaa bbb ccc'</pre>",
+        "B": "<pre>'aaa bbb ccc'</pre>",
+        "C": "<pre>'abcabcabc'</pre>",
         "D": "<pre>'abc'</pre>"
       },
-      "correct": "B",
+      "correct": "C",
       "explanation": "The <pre>repeat()</pre> method returns a new string containing the specified number of copies of the original string. It's useful for creating repeated patterns or padding strings.",
       "topic": {
         "topics": [
@@ -192,10 +192,10 @@ module.exports = {
       "options": {
         "A": "<pre>-1</pre>",
         "B": "<pre>false</pre>",
-        "C": "<pre>2</pre>",
-        "D": "<pre>true</pre>"
+        "C": "<pre>true</pre>",
+        "D": "<pre>2</pre>"
       },
-      "correct": "D",
+      "correct": "C",
       "explanation": "The <pre>includes()</pre> method determines whether a string contains the specified substring, returning <pre>true</pre> or <pre>false</pre>. It's case-sensitive, so <pre>'Hello'.includes('hello')</pre> would return <pre>false</pre>.",
       "topic": {
         "topics": [
@@ -241,12 +241,12 @@ module.exports = {
       "id": 12,
       "question": "What does <pre>'hello'.startsWith('he')</pre> return?",
       "options": {
-        "A": "<pre>true</pre>",
+        "A": "<pre>2</pre>",
         "B": "<pre>false</pre>",
         "C": "<pre>0</pre>",
-        "D": "<pre>2</pre>"
+        "D": "<pre>true</pre>"
       },
-      "correct": "A",
+      "correct": "D",
       "explanation": "The <pre>startsWith()</pre> method determines whether a string begins with the specified characters, returning <pre>true</pre> or <pre>false</pre>. There's also <pre>endsWith()</pre> to check the end of a string.",
       "topic": {
         "topics": [
@@ -275,12 +275,12 @@ module.exports = {
       "id": 14,
       "question": "What does <pre>'Hello'.toLowerCase()</pre> return?",
       "options": {
-        "A": "<pre>'hELLO'</pre>",
+        "A": "<pre>'hello'</pre>",
         "B": "<pre>'HELLO'</pre>",
         "C": "<pre>'Hello'</pre>",
-        "D": "<pre>'hello'</pre>"
+        "D": "<pre>'hELLO'</pre>"
       },
-      "correct": "D",
+      "correct": "A",
       "explanation": "The <pre>toLowerCase()</pre> method converts all characters in a string to lowercase letters. It's commonly used for case-insensitive comparisons or normalizing user input.",
       "topic": {
         "topics": [
@@ -292,12 +292,12 @@ module.exports = {
       "id": 15,
       "question": "Which method converts a string to an array of characters?",
       "options": {
-        "A": "<pre>toArray()</pre>",
-        "B": "<pre>split('')</pre>",
+        "A": "<pre>split('')</pre>",
+        "B": "<pre>toArray()</pre>",
         "C": "<pre>chars()</pre>",
         "D": "<pre>Array.from(string)</pre>"
       },
-      "correct": "B",
+      "correct": "A",
       "explanation": "The <pre>split('')</pre> method with an empty string as separator converts a string to an array of individual characters. <pre>Array.from(string)</pre> also works and handles Unicode characters better.",
       "topic": {
         "topics": [
@@ -310,11 +310,11 @@ module.exports = {
       "question": "What is the result of <pre>'hello'.charCodeAt(0)</pre>?",
       "options": {
         "A": "<pre>'h'</pre>",
-        "B": "<pre>104</pre>",
+        "B": "<pre>0</pre>",
         "C": "<pre>72</pre>",
-        "D": "<pre>0</pre>"
+        "D": "<pre>104</pre>"
       },
-      "correct": "B",
+      "correct": "D",
       "explanation": "The <pre>charCodeAt()</pre> method returns the Unicode code point of the character at the specified index. For 'h', it returns 104. For uppercase 'H', it would return 72.",
       "topic": {
         "topics": [
@@ -326,12 +326,12 @@ module.exports = {
       "id": 17,
       "question": "What does <pre>'hello'.padStart(8, '*')</pre> return?",
       "options": {
-        "A": "<pre>'***hello'</pre>",
-        "B": "<pre>'hello***'</pre>",
+        "A": "<pre>'hello***'</pre>",
+        "B": "<pre>'***hello'</pre>",
         "C": "<pre>'*hello*'</pre>",
         "D": "<pre>'hello'</pre>"
       },
-      "correct": "A",
+      "correct": "B",
       "explanation": "The <pre>padStart()</pre> method pads the current string with another string until the resulting string reaches the given length. The padding is applied from the start. <pre>padEnd()</pre> pads from the end.",
       "topic": {
         "topics": [
@@ -377,12 +377,12 @@ module.exports = {
       "id": 20,
       "question": "What does <pre>'hello'.slice(1, 4)</pre> return?",
       "options": {
-        "A": "<pre>'ell'</pre>",
+        "A": "<pre>'hell'</pre>",
         "B": "<pre>'ello'</pre>",
         "C": "<pre>'hel'</pre>",
-        "D": "<pre>'hell'</pre>"
+        "D": "<pre>'ell'</pre>"
       },
-      "correct": "A",
+      "correct": "D",
       "explanation": "The <pre>slice()</pre> method extracts a section of a string from the start index up to (but not including) the end index. So <pre>slice(1, 4)</pre> extracts characters at positions 1, 2, and 3.",
       "topic": {
         "topics": [
@@ -396,10 +396,10 @@ module.exports = {
       "options": {
         "A": "<pre>toPrimitive()</pre>",
         "B": "<pre>toString()</pre>",
-        "C": "<pre>valueOf()</pre>",
-        "D": "<pre>getValue()</pre>"
+        "C": "<pre>getValue()</pre>",
+        "D": "<pre>valueOf()</pre>"
       },
-      "correct": "C",
+      "correct": "D",
       "explanation": "The <pre>valueOf()</pre> method returns the primitive value of a String object. This is rarely used directly since JavaScript automatically converts String objects to primitives when needed.",
       "topic": {
         "topics": [
@@ -413,10 +413,10 @@ module.exports = {
       "options": {
         "A": "<pre>6</pre>",
         "B": "<pre>5</pre>",
-        "C": "<pre>3</pre>",
-        "D": "<pre>4</pre>"
+        "C": "<pre>4</pre>",
+        "D": "<pre>3</pre>"
       },
-      "correct": "D",
+      "correct": "C",
       "explanation": "The <pre>length</pre> property returns the number of UTF-16 code units, not necessarily the number of visible characters. 'é' is a single character but may use multiple code units depending on encoding.",
       "topic": {
         "topics": [
@@ -447,10 +447,10 @@ module.exports = {
       "options": {
         "A": "<pre>compareLocale()</pre>",
         "B": "<pre>compare()</pre>",
-        "C": "<pre>localeCompare()</pre>",
-        "D": "<pre>localCompare()</pre>"
+        "C": "<pre>localCompare()</pre>",
+        "D": "<pre>localeCompare()</pre>"
       },
-      "correct": "C",
+      "correct": "D",
       "explanation": "The <pre>localeCompare()</pre> method returns a number indicating whether a reference string comes before, after, or is the same as the given string in sort order, according to the current locale.",
       "topic": {
         "topics": [
@@ -496,12 +496,12 @@ module.exports = {
       "id": 27,
       "question": "What is the result of <pre>'hello'[0]</pre>?",
       "options": {
-        "A": "<pre>'h'</pre>",
+        "A": "<pre>undefined</pre>",
         "B": "<pre>0</pre>",
-        "C": "<pre>undefined</pre>",
+        "C": "<pre>'h'</pre>",
         "D": "<pre>'hello'</pre>"
       },
-      "correct": "A",
+      "correct": "C",
       "explanation": "Strings are array-like objects and can be accessed using bracket notation with numeric indices. This provides a convenient way to get individual characters without using <pre>charAt()</pre>.",
       "topic": {
         "topics": [
@@ -533,9 +533,8 @@ module.exports = {
         "A": "<pre>2</pre>",
         "B": "<pre>-1</pre>",
         "C": "<pre>1</pre>",
-        "D": "<pre>3</pre>"
+        "undefined": "<pre>3</pre>"
       },
-      "correct": "D",
       "explanation": "The <pre>lastIndexOf()</pre> method returns the index of the last occurrence of the specified value. In 'hello', 'l' appears at positions 2 and 3, so <pre>lastIndexOf('l')</pre> returns 3.",
       "topic": {
         "topics": [

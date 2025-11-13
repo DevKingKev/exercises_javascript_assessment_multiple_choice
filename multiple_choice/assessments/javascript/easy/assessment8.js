@@ -91,11 +91,11 @@ module.exports = {
       "question": "What does [CODE]Object.keys({a: 1, b: 2, c: 3})[/CODE] return?",
       "options": {
         "A": "[1, 2, 3]",
-        "B": "['a', 'b', 'c']",
+        "B": "6",
         "C": "{a: 1, b: 2, c: 3}",
-        "D": "6"
+        "D": "['a', 'b', 'c']"
       },
-      "correct": "B",
+      "correct": "D",
       "explanation": "Object.keys() returns an array containing all the object's own enumerable property names (keys), not the values.",
       "topic": {
         "topics": [
@@ -108,12 +108,12 @@ module.exports = {
       "id": 4,
       "question": "What is the prototype of an object created with object literal {}?",
       "options": {
-        "A": "Object.prototype",
+        "A": "undefined",
         "B": "null",
         "C": "Function.prototype",
-        "D": "undefined"
+        "D": "Object.prototype"
       },
-      "correct": "A",
+      "correct": "D",
       "explanation": "Objects created with literal notation {} inherit from Object.prototype, which gives them methods like toString(), hasOwnProperty(), etc.",
       "topic": {
         "topics": [
@@ -127,11 +127,11 @@ module.exports = {
       "question": "How do you check if a property exists directly on an object (not inherited)?",
       "options": {
         "A": "obj.property !== undefined",
-        "B": "'property' in obj",
+        "B": "obj.hasOwnProperty('property')",
         "C": "obj.contains('property')",
-        "D": "obj.hasOwnProperty('property')"
+        "D": "'property' in obj"
       },
-      "correct": "D",
+      "correct": "B",
       "explanation": "hasOwnProperty() checks if the property exists on the object itself, not on its prototype chain. The 'in' operator checks both own and inherited properties.",
       "topic": {
         "topics": [
@@ -180,12 +180,12 @@ module.exports = {
       "id": 8,
       "question": "What does [CODE]Object.freeze(obj)[/CODE] do?",
       "options": {
-        "A": "Prevents adding new properties only",
-        "B": "Prevents all modifications to the object",
+        "A": "Prevents all modifications to the object",
+        "B": "Prevents adding new properties only",
         "C": "Prevents modifying existing properties only",
         "D": "Temporarily stops object access"
       },
-      "correct": "B",
+      "correct": "A",
       "explanation": "Object.freeze() makes an object immutable. You cannot add, delete, or modify properties. Note that nested objects are not automatically frozen.",
       "topic": {
         "topics": [
@@ -199,11 +199,11 @@ module.exports = {
       "question": "What will this code output?\n\n[CODE]\nconst obj = {name: 'John'};\nconst obj2 = obj;\nobj2.name = 'Jane';\nconsole.log(obj.name);\n[/CODE]",
       "options": {
         "A": "'John'",
-        "B": "'Jane'",
-        "C": "undefined",
+        "B": "undefined",
+        "C": "'Jane'",
         "D": "Error"
       },
-      "correct": "B",
+      "correct": "C",
       "explanation": "Objects are assigned by reference. obj2 references the same object as obj, so modifying obj2 also affects obj. Both point to the same memory location.",
       "topic": {
         "topics": [
@@ -217,11 +217,11 @@ module.exports = {
       "question": "What does [CODE]Object.values({x: 10, y: 20})[/CODE] return?",
       "options": {
         "A": "['x', 'y']",
-        "B": "{x: 10, y: 20}",
-        "C": "[10, 20]",
+        "B": "[10, 20]",
+        "C": "{x: 10, y: 20}",
         "D": "30"
       },
-      "correct": "C",
+      "correct": "B",
       "explanation": "Object.values() returns an array of the object's own enumerable property values. It's the counterpart to Object.keys().",
       "topic": {
         "topics": [
@@ -234,12 +234,12 @@ module.exports = {
       "id": 11,
       "question": "What is the prototype chain?",
       "options": {
-        "A": "A linked series of objects for property lookup",
+        "A": "A list of all object properties",
         "B": "A chain of functions",
-        "C": "A list of all object properties",
+        "C": "A linked series of objects for property lookup",
         "D": "A debugging tool"
       },
-      "correct": "A",
+      "correct": "C",
       "explanation": "The prototype chain is a series of linked objects that JavaScript uses to look up properties. If a property isn't found on an object, JavaScript checks its prototype, then the prototype's prototype, and so on.",
       "topic": {
         "topics": [
@@ -289,10 +289,10 @@ module.exports = {
       "options": {
         "A": "['a', 'b', 1, 2]",
         "B": "['a1', 'b2']",
-        "C": "{a: 1, b: 2}",
-        "D": "[['a', 1], ['b', 2]]"
+        "C": "[['a', 1], ['b', 2]]",
+        "D": "{a: 1, b: 2}"
       },
-      "correct": "D",
+      "correct": "C",
       "explanation": "Object.entries() returns an array of [key, value] pairs for each enumerable property in the object.",
       "topic": {
         "topics": [
@@ -306,11 +306,11 @@ module.exports = {
       "question": "How do you create an object without a prototype?",
       "options": {
         "A": "let obj = {}",
-        "B": "let obj = Object.create(null)",
+        "B": "let obj = Object.prototype",
         "C": "let obj = new Object()",
-        "D": "let obj = Object.prototype"
+        "D": "let obj = Object.create(null)"
       },
-      "correct": "B",
+      "correct": "D",
       "explanation": "Object.create(null) creates an object with no prototype, meaning it won't inherit any methods from Object.prototype. This is useful for creating 'pure' data stores.",
       "topic": {
         "topics": [
@@ -324,11 +324,11 @@ module.exports = {
       "question": "What does [CODE]Object.assign({}, obj1, obj2)[/CODE] do?",
       "options": {
         "A": "Compares obj1 and obj2",
-        "B": "Creates an array from obj1 and obj2",
+        "B": "Merges obj1 and obj2 into a new object",
         "C": "Deletes obj1 and obj2",
-        "D": "Merges obj1 and obj2 into a new object"
+        "D": "Creates an array from obj1 and obj2"
       },
-      "correct": "D",
+      "correct": "B",
       "explanation": "Object.assign() copies all enumerable properties from source objects (obj1, obj2) to the target object ({}), effectively merging them into a new object.",
       "topic": {
         "topics": [
@@ -342,11 +342,11 @@ module.exports = {
       "question": "What is a method in an object?",
       "options": {
         "A": "A prototype property",
-        "B": "A special type of object",
+        "B": "A property whose value is a function",
         "C": "A constructor function",
-        "D": "A property whose value is a function"
+        "D": "A special type of object"
       },
-      "correct": "D",
+      "correct": "B",
       "explanation": "A method is simply a property of an object that holds a function as its value. Methods can access other properties of the object using 'this'.",
       "topic": {
         "topics": [
@@ -359,11 +359,11 @@ module.exports = {
       "question": "What will this code output?\n\n[CODE]\nfunction Person(name) {\n    this.name = name;\n}\nconst p1 = new Person('Alice');\nconsole.log(p1.name);\n[/CODE]",
       "options": {
         "A": "undefined",
-        "B": "'name'",
-        "C": "'Alice'",
+        "B": "'Alice'",
+        "C": "'name'",
         "D": "Error"
       },
-      "correct": "C",
+      "correct": "B",
       "explanation": "The constructor function sets the 'name' property on the new object using 'this'. When called with 'new', it creates and returns a new Person object with name 'Alice'.",
       "topic": {
         "topics": [
@@ -376,12 +376,12 @@ module.exports = {
       "id": 19,
       "question": "What does [CODE]Object.seal(obj)[/CODE] do?",
       "options": {
-        "A": "Makes the object completely immutable",
+        "A": "Prevents adding or deleting properties",
         "B": "Prevents modifying existing properties",
-        "C": "Prevents adding or deleting properties",
+        "C": "Makes the object completely immutable",
         "D": "Hides the object"
       },
-      "correct": "C",
+      "correct": "A",
       "explanation": "Object.seal() prevents adding new properties or deleting existing ones, but you can still modify existing property values. It's less restrictive than Object.freeze().",
       "topic": {
         "topics": [
@@ -394,12 +394,12 @@ module.exports = {
       "id": 20,
       "question": "How do you check if an object has any properties?",
       "options": {
-        "A": "Object.keys(obj).length > 0",
+        "A": "obj.hasProperties()",
         "B": "obj.length > 0",
-        "C": "obj.hasProperties()",
+        "C": "Object.keys(obj).length > 0",
         "D": "obj !== {}"
       },
-      "correct": "A",
+      "correct": "C",
       "explanation": "Object.keys() returns an array of property names. Checking if its length is greater than 0 tells you if the object has any own enumerable properties.",
       "topic": {
         "topics": [
@@ -431,10 +431,10 @@ module.exports = {
       "options": {
         "A": "Error",
         "B": "2",
-        "C": "undefined",
-        "D": "1"
+        "C": "1",
+        "D": "undefined"
       },
-      "correct": "D",
+      "correct": "C",
       "explanation": "Object.freeze() prevents modifications. The assignment obj.a = 2 silently fails (or throws in strict mode), so obj.a remains 1.",
       "topic": {
         "topics": [
@@ -447,12 +447,12 @@ module.exports = {
       "id": 23,
       "question": "What does [CODE]obj.__proto__[/CODE] reference?",
       "options": {
-        "A": "The object itself",
+        "A": "The object's prototype",
         "B": "The object's constructor",
         "C": "The object's properties",
-        "D": "The object's prototype"
+        "D": "The object itself"
       },
-      "correct": "D",
+      "correct": "A",
       "explanation": "__proto__ is a reference to the object's prototype. Modern code should use Object.getPrototypeOf(obj) instead, as __proto__ is deprecated.",
       "topic": {
         "topics": [
@@ -483,11 +483,11 @@ module.exports = {
       "question": "What is the result of [CODE]'toString' in {}[/CODE]?",
       "options": {
         "A": "false",
-        "B": "Error",
+        "B": "true",
         "C": "undefined",
-        "D": "true"
+        "D": "Error"
       },
-      "correct": "D",
+      "correct": "B",
       "explanation": "The 'in' operator checks for properties on the object and its prototype chain. toString is inherited from Object.prototype, so it returns true.",
       "topic": {
         "topics": [
@@ -501,11 +501,11 @@ module.exports = {
       "question": "What does [CODE]Object.getOwnPropertyNames(obj)[/CODE] return?",
       "options": {
         "A": "All properties including inherited",
-        "B": "All own properties (enumerable and non-enumerable)",
+        "B": "Only prototype properties",
         "C": "Only enumerable own properties",
-        "D": "Only prototype properties"
+        "D": "All own properties (enumerable and non-enumerable)"
       },
-      "correct": "B",
+      "correct": "D",
       "explanation": "Object.getOwnPropertyNames() returns all own properties, including non-enumerable ones. Object.keys() only returns enumerable properties.",
       "topic": {
         "topics": [
@@ -536,12 +536,12 @@ module.exports = {
       "id": 28,
       "question": "What is the purpose of Object.defineProperty()?",
       "options": {
-        "A": "To create new objects",
-        "B": "To define or modify property with specific attributes",
+        "A": "To define or modify property with specific attributes",
+        "B": "To create new objects",
         "C": "To delete properties",
         "D": "To freeze objects"
       },
-      "correct": "B",
+      "correct": "A",
       "explanation": "Object.defineProperty() allows you to define or modify a property with fine-grained control over its attributes like writable, enumerable, and configurable.",
       "topic": {
         "topics": [
@@ -554,12 +554,12 @@ module.exports = {
       "id": 29,
       "question": "What will this code output?\n\n[CODE]\nconst obj = {x: 1};\nconst obj2 = Object.create(obj);\nconsole.log(obj2.x);\n[/CODE]",
       "options": {
-        "A": "1",
+        "A": "null",
         "B": "undefined",
-        "C": "null",
+        "C": "1",
         "D": "Error"
       },
-      "correct": "A",
+      "correct": "C",
       "explanation": "Object.create(obj) creates a new object with obj as its prototype. When accessing obj2.x, JavaScript looks up the prototype chain and finds x on obj.",
       "topic": {
         "topics": [

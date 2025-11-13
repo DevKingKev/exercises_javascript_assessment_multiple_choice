@@ -54,12 +54,12 @@ module.exports = {
       "id": 1,
       "question": "What is the correct syntax to export a variable as a named export?",
       "options": {
-        "A": "<pre>const count = 5; export count;</pre>",
+        "A": "<pre>export const count = 5;</pre>",
         "B": "<pre>const count = 5; export default count;</pre>",
         "C": "<pre>export default const count = 5;</pre>",
-        "D": "<pre>export const count = 5;</pre>"
+        "D": "<pre>const count = 5; export count;</pre>"
       },
-      "correct": "D",
+      "correct": "A",
       "explanation": "Named exports use the <pre>export</pre> keyword before the variable declaration, or can be exported later with <pre>export { count };</pre>",
       "topic": {
         "topics": [
@@ -73,10 +73,10 @@ module.exports = {
       "options": {
         "A": "<pre>import default apiKey from './config.js';</pre>",
         "B": "<pre>import apiKey from './config.js';</pre>",
-        "C": "<pre>import { apiKey } from './config.js';</pre>",
-        "D": "<pre>import * as apiKey from './config.js';</pre>"
+        "C": "<pre>import * as apiKey from './config.js';</pre>",
+        "D": "<pre>import { apiKey } from './config.js';</pre>"
       },
-      "correct": "C",
+      "correct": "D",
       "explanation": "Named imports use curly braces around the export name. The name must match exactly.",
       "topic": {
         "topics": [
@@ -105,12 +105,12 @@ module.exports = {
       "id": 4,
       "question": "How can you export multiple variables at once?",
       "options": {
-        "A": "<pre>export { name, age, email };</pre>",
-        "B": "<pre>export name, age, email;</pre>",
+        "A": "<pre>export name, age, email;</pre>",
+        "B": "<pre>export { name, age, email };</pre>",
         "C": "<pre>export default name, age, email;</pre>",
         "D": "<pre>export [name, age, email];</pre>"
       },
-      "correct": "A",
+      "correct": "B",
       "explanation": "Use an export list with curly braces to export multiple previously declared variables.",
       "topic": {
         "topics": [
@@ -122,12 +122,12 @@ module.exports = {
       "id": 5,
       "question": "What is the main difference between default and named imports?",
       "options": {
-        "A": "There is no difference",
+        "A": "Default imports don't use curly braces",
         "B": "Named imports are faster",
         "C": "Default imports only work with functions",
-        "D": "Default imports don't use curly braces"
+        "D": "There is no difference"
       },
-      "correct": "D",
+      "correct": "A",
       "explanation": "Default imports: <pre>import name from './module.js';</pre> Named imports: <pre>import { name } from './module.js';</pre>",
       "topic": {
         "topics": [
@@ -173,12 +173,12 @@ module.exports = {
       "id": 8,
       "question": "How do you import all exports from a module as an object?",
       "options": {
-        "A": "<pre>import all from './utils.js';</pre>",
+        "A": "<pre>import * as utils from './utils.js';</pre>",
         "B": "<pre>import utils from './utils.js';</pre>",
         "C": "<pre>import { * } from './utils.js';</pre>",
-        "D": "<pre>import * as utils from './utils.js';</pre>"
+        "D": "<pre>import all from './utils.js';</pre>"
       },
-      "correct": "D",
+      "correct": "A",
       "explanation": "The namespace import syntax imports all exports as properties of an object.",
       "topic": {
         "topics": [
@@ -190,12 +190,12 @@ module.exports = {
       "id": 9,
       "question": "What is wrong with this code? [CODE]export const name = 'John';\nexport default name;[/CODE]",
       "options": {
-        "A": "Should use 'let' instead of 'const'",
+        "A": "Nothing - it's valid",
         "B": "Cannot export same variable twice",
         "C": "Missing semicolons",
-        "D": "Nothing - it's valid"
+        "D": "Should use 'let' instead of 'const'"
       },
-      "correct": "D",
+      "correct": "A",
       "explanation": "This is valid - it exports 'name' as both a named export and the default export.",
       "topic": {
         "topics": [
@@ -224,12 +224,12 @@ module.exports = {
       "id": 11,
       "question": "What is the correct way to export a function as default?",
       "options": {
-        "A": "<pre>export default function calculate() {}</pre>",
+        "A": "<pre>function calculate() {} export default;</pre>",
         "B": "<pre>export function default calculate() {}</pre>",
-        "C": "<pre>function calculate() {} export default;</pre>",
+        "C": "<pre>export default function calculate() {}</pre>",
         "D": "<pre>default export function calculate() {}</pre>"
       },
-      "correct": "A",
+      "correct": "C",
       "explanation": "The <pre>export default</pre> keywords come before the function declaration.",
       "topic": {
         "topics": [
@@ -241,12 +241,12 @@ module.exports = {
       "id": 12,
       "question": "How do you import a module only for its side effects?",
       "options": {
-        "A": "<pre>import sideEffects from './styles.css';</pre>",
-        "B": "<pre>import './styles.css';</pre>",
+        "A": "<pre>import './styles.css';</pre>",
+        "B": "<pre>import sideEffects from './styles.css';</pre>",
         "C": "<pre>import {} from './styles.css';</pre>",
         "D": "<pre>import * from './styles.css';</pre>"
       },
-      "correct": "B",
+      "correct": "A",
       "explanation": "An import statement without any bindings runs the module for side effects only.",
       "topic": {
         "topics": [
@@ -259,11 +259,11 @@ module.exports = {
       "question": "What does this import do? [CODE]import MathUtils, { PI, calculate } from './math.js';[/CODE]",
       "options": {
         "A": "Imports default with two parameters",
-        "B": "Imports three named exports",
-        "C": "Imports default and two named exports",
+        "B": "Imports default and two named exports",
+        "C": "Imports three named exports",
         "D": "Invalid syntax"
       },
-      "correct": "C",
+      "correct": "B",
       "explanation": "This imports the default export as 'MathUtils' and two named exports 'PI' and 'calculate'.",
       "topic": {
         "topics": [
@@ -294,10 +294,10 @@ module.exports = {
       "options": {
         "A": "Only named exports are imported",
         "B": "Only default export is imported",
-        "C": "All exports are available as Lib.properties",
-        "D": "Nothing is imported"
+        "C": "Nothing is imported",
+        "D": "All exports are available as Lib.properties"
       },
-      "correct": "C",
+      "correct": "D",
       "explanation": "Namespace imports collect all exports (both default and named) into an object.",
       "topic": {
         "topics": [
@@ -327,11 +327,11 @@ module.exports = {
       "question": "What is the advantage of named exports?",
       "options": {
         "A": "Better performance",
-        "B": "Simpler import syntax",
-        "C": "Can export multiple values from one module",
+        "B": "Can export multiple values from one module",
+        "C": "Simpler import syntax",
         "D": "Auto-completion in editors"
       },
-      "correct": "C",
+      "correct": "B",
       "explanation": "Named exports allow a module to export multiple values, while default exports are limited to one per module.",
       "topic": {
         "topics": [
@@ -344,11 +344,11 @@ module.exports = {
       "question": "How do you export an object literal as default?",
       "options": {
         "A": "<pre>default export { key: 'value' };</pre>",
-        "B": "<pre>export { key: 'value' } as default;</pre>",
+        "B": "<pre>export default { key: 'value' };</pre>",
         "C": "<pre>export default object { key: 'value' };</pre>",
-        "D": "<pre>export default { key: 'value' };</pre>"
+        "D": "<pre>export { key: 'value' } as default;</pre>"
       },
-      "correct": "D",
+      "correct": "B",
       "explanation": "Use <pre>export default</pre> followed by the object literal to export it as the default.",
       "topic": {
         "topics": [
@@ -360,12 +360,12 @@ module.exports = {
       "id": 19,
       "question": "What does this export? [CODE]export const version = '1.0';\nexport const author = 'John';[/CODE]",
       "options": {
-        "A": "Two named exports",
+        "A": "Invalid - too many exports",
         "B": "One default and one named export",
         "C": "Two default exports",
-        "D": "Invalid - too many exports"
+        "D": "Two named exports"
       },
-      "correct": "A",
+      "correct": "D",
       "explanation": "This exports two constants as separate named exports from the module.",
       "topic": {
         "topics": [
@@ -412,11 +412,11 @@ module.exports = {
       "question": "How do you import multiple named exports in one statement?",
       "options": {
         "A": "<pre>import func1, func2, func3 from './utils.js';</pre>",
-        "B": "<pre>import { func1, func2, func3 } from './utils.js';</pre>",
+        "B": "<pre>import func1; import func2; import func3 from './utils.js';</pre>",
         "C": "<pre>import [func1, func2, func3] from './utils.js';</pre>",
-        "D": "<pre>import func1; import func2; import func3 from './utils.js';</pre>"
+        "D": "<pre>import { func1, func2, func3 } from './utils.js';</pre>"
       },
-      "correct": "B",
+      "correct": "D",
       "explanation": "Multiple named imports are comma-separated within curly braces.",
       "topic": {
         "topics": [
@@ -446,11 +446,11 @@ module.exports = {
       "question": "How do you re-export all named exports from another module?",
       "options": {
         "A": "<pre>export all from './math.js';</pre>",
-        "B": "<pre>export * from './math.js';</pre>",
-        "C": "<pre>import * from './math.js'; export *;</pre>",
+        "B": "<pre>import * from './math.js'; export *;</pre>",
+        "C": "<pre>export * from './math.js';</pre>",
         "D": "<pre>re-export * from './math.js';</pre>"
       },
-      "correct": "B",
+      "correct": "C",
       "explanation": "<pre>export *</pre> re-exports all named exports from the specified module.",
       "topic": {
         "topics": [
@@ -496,12 +496,12 @@ module.exports = {
       "id": 27,
       "question": "What does this import statement do? [CODE]import './initialize.js';[/CODE]",
       "options": {
-        "A": "Runs the module for side effects",
-        "B": "Imports the default export",
+        "A": "Imports the default export",
+        "B": "Runs the module for side effects",
         "C": "Imports all named exports",
         "D": "Invalid import statement"
       },
-      "correct": "A",
+      "correct": "B",
       "explanation": "This runs the module's code but doesn't import any exports, useful for initialization scripts.",
       "topic": {
         "topics": [
@@ -530,12 +530,12 @@ module.exports = {
       "id": 29,
       "question": "What is the correct syntax for a mixed import?",
       "options": {
-        "A": "<pre>import Main, { helper } from './module.js';</pre>",
+        "A": "<pre>import Main and { helper } from './module.js';</pre>",
         "B": "<pre>import { Main, helper } from './module.js';</pre>",
-        "C": "<pre>import Main and { helper } from './module.js';</pre>",
+        "C": "<pre>import Main, { helper } from './module.js';</pre>",
         "D": "<pre>import Main, helper from './module.js';</pre>"
       },
-      "correct": "A",
+      "correct": "C",
       "explanation": "For mixed imports, the default import comes first (no braces) followed by named imports in braces.",
       "topic": {
         "topics": [
@@ -548,12 +548,11 @@ module.exports = {
       "question": "What is a key benefit of ES modules over older module systems?",
       "options": {
         "A": "Better performance in all cases",
-        "B": "Static analysis and tree-shaking",
         "C": "Simpler syntax only",
-        "D": "Works without build tools"
+        "D": "Works without build tools",
+        "undefined": "Static analysis and tree-shaking"
       },
       "explanation": "ES modules enable static analysis, allowing tools to determine dependencies at compile time and remove unused code (tree-shaking).",
-      "correct": "B",
       "topic": {
         "topics": [
           "Module syntax"

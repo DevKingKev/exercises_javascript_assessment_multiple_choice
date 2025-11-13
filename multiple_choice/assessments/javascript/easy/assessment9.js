@@ -55,11 +55,11 @@ module.exports = {
       "question": "Which method selects the first element that matches a CSS selector?",
       "options": {
         "A": "<pre>document.findElement()</pre>",
-        "B": "<pre>document.getElementById()</pre>",
+        "B": "<pre>document.querySelector()</pre>",
         "C": "<pre>document.getElementsByClassName()</pre>",
-        "D": "<pre>document.querySelector()</pre>"
+        "D": "<pre>document.getElementById()</pre>"
       },
-      "correct": "D",
+      "correct": "B",
       "explanation": "<pre>document.querySelector()</pre> returns the first element that matches the specified CSS selector. It's very flexible and can select elements by ID, class, tag name, or any valid CSS selector. For example, <pre>document.querySelector('#myId')</pre> selects by ID, while <pre>document.querySelector('.myClass')</pre> selects by class.",
       "topic": {
         "topics": [
@@ -89,11 +89,11 @@ module.exports = {
       "question": "What is the correct way to add a click event listener to a button?",
       "options": {
         "A": "<pre>button.onClick = function() {}</pre>",
-        "B": "<pre>button.addEvent('click', function() {})</pre>",
-        "C": "<pre>button.addEventListener('click', function() {})</pre>",
+        "B": "<pre>button.addEventListener('click', function() {})</pre>",
+        "C": "<pre>button.addEvent('click', function() {})</pre>",
         "D": "<pre>button.click(function() {})</pre>"
       },
-      "correct": "C",
+      "correct": "B",
       "explanation": "<pre>addEventListener()</pre> is the modern standard for adding event handlers. It allows multiple handlers for the same event and provides better control over event propagation. The older <pre>onclick</pre> property can only have one handler and is less flexible.",
       "topic": {
         "topics": [
@@ -106,11 +106,11 @@ module.exports = {
       "question": "How do you create a new div element?",
       "options": {
         "A": "<pre>document.newElement('div')</pre>",
-        "B": "<pre>new DivElement()</pre>",
-        "C": "<pre>document.createElement('div')</pre>",
+        "B": "<pre>document.createElement('div')</pre>",
+        "C": "<pre>new DivElement()</pre>",
         "D": "<pre>document.div()</pre>"
       },
-      "correct": "C",
+      "correct": "B",
       "explanation": "<pre>document.createElement()</pre> creates a new element with the specified tag name. The element is created in memory but not yet added to the document. You need to use methods like <pre>appendChild()</pre> or <pre>append()</pre> to add it to the DOM.",
       "topic": {
         "topics": [
@@ -122,12 +122,12 @@ module.exports = {
       "id": 5,
       "question": "Which property gets the parent element of a node?",
       "options": {
-        "A": "<pre>element.parent</pre>",
-        "B": "<pre>element.parentNode</pre>",
+        "A": "<pre>element.parentNode</pre>",
+        "B": "<pre>element.parent</pre>",
         "C": "<pre>element.parentElement</pre>",
         "D": "<pre>element.owner</pre>"
       },
-      "correct": "B",
+      "correct": "A",
       "explanation": "<pre>parentNode</pre> returns the parent node of the specified element. <pre>parentElement</pre> is similar but returns null if the parent is not an element node (like a document node). For most DOM traversal, <pre>parentNode</pre> is commonly used.",
       "topic": {
         "topics": [
@@ -139,12 +139,12 @@ module.exports = {
       "id": 6,
       "question": "How do you prevent the default behavior of an event?",
       "options": {
-        "A": "<pre>event.preventDefault()</pre>",
+        "A": "<pre>event.cancel()</pre>",
         "B": "<pre>event.stop()</pre>",
-        "C": "<pre>event.cancel()</pre>",
+        "C": "<pre>event.preventDefault()</pre>",
         "D": "<pre>event.stopDefault()</pre>"
       },
-      "correct": "A",
+      "correct": "C",
       "explanation": "<pre>preventDefault()</pre> prevents the browser's default action for the event. For example, it can prevent a form from submitting, a link from navigating, or context menu from appearing. This is different from <pre>stopPropagation()</pre> which stops the event from bubbling up.",
       "topic": {
         "topics": [
@@ -156,12 +156,12 @@ module.exports = {
       "id": 7,
       "question": "What does <pre>document.getElementById('myId')</pre> return if no element is found?",
       "options": {
-        "A": "<pre>undefined</pre>",
-        "B": "<pre>null</pre>",
+        "A": "<pre>null</pre>",
+        "B": "<pre>undefined</pre>",
         "C": "<pre>false</pre>",
         "D": "Throws an error"
       },
-      "correct": "B",
+      "correct": "A",
       "explanation": "When no element matches the specified ID, <pre>getElementById()</pre> returns <pre>null</pre>. This is important to check for in your code to avoid errors when trying to manipulate non-existent elements.",
       "topic": {
         "topics": [
@@ -173,12 +173,12 @@ module.exports = {
       "id": 8,
       "question": "How do you add a CSS class to an element?",
       "options": {
-        "A": "<pre>element.classList.add('className')</pre>",
+        "A": "<pre>element.style.class = 'className'</pre>",
         "B": "<pre>element.className = 'className'</pre>",
         "C": "<pre>element.addClass('className')</pre>",
-        "D": "<pre>element.style.class = 'className'</pre>"
+        "D": "<pre>element.classList.add('className')</pre>"
       },
-      "correct": "A",
+      "correct": "D",
       "explanation": "<pre>classList.add()</pre> is the modern way to add a class to an element. It doesn't affect existing classes. The older <pre>className</pre> property replaces all classes, so you'd need to concatenate strings to preserve existing classes.",
       "topic": {
         "topics": [
@@ -209,11 +209,11 @@ module.exports = {
       "question": "How do you get the value of an input element?",
       "options": {
         "A": "<pre>input.textContent</pre>",
-        "B": "<pre>input.value</pre>",
+        "B": "<pre>input.text</pre>",
         "C": "<pre>input.innerHTML</pre>",
-        "D": "<pre>input.text</pre>"
+        "D": "<pre>input.value</pre>"
       },
-      "correct": "B",
+      "correct": "D",
       "explanation": "Form elements like <pre>input</pre>, <pre>select</pre>, and <pre>textarea</pre> use the <pre>value</pre> property to get and set their current value. Regular elements like <pre>div</pre> or <pre>span</pre> use <pre>textContent</pre> or <pre>innerHTML</pre> instead.",
       "topic": {
         "topics": [
@@ -245,10 +245,10 @@ module.exports = {
       "options": {
         "A": "<pre>element.delete()</pre>",
         "B": "<pre>document.remove(element)</pre>",
-        "C": "<pre>element.hide()</pre>",
-        "D": "<pre>element.remove()</pre>"
+        "C": "<pre>element.remove()</pre>",
+        "D": "<pre>element.hide()</pre>"
       },
-      "correct": "D",
+      "correct": "C",
       "explanation": "The <pre>remove()</pre> method removes the element from the DOM tree. Older approaches used <pre>parent.removeChild(element)</pre>, but the modern <pre>remove()</pre> method is simpler and more intuitive.",
       "topic": {
         "topics": [
@@ -261,11 +261,11 @@ module.exports = {
       "question": "Which method selects all elements that match a CSS selector?",
       "options": {
         "A": "<pre>document.querySelector()</pre>",
-        "B": "<pre>document.getElementsBySelector()</pre>",
-        "C": "<pre>document.querySelectorAll()</pre>",
+        "B": "<pre>document.querySelectorAll()</pre>",
+        "C": "<pre>document.getElementsBySelector()</pre>",
         "D": "<pre>document.findAll()</pre>"
       },
-      "correct": "C",
+      "correct": "B",
       "explanation": "<pre>document.querySelectorAll()</pre> returns a NodeList of all elements that match the specified CSS selector. Unlike <pre>getElementsByClassName()</pre> which returns a live collection, <pre>querySelectorAll()</pre> returns a static collection.",
       "topic": {
         "topics": [
@@ -277,12 +277,12 @@ module.exports = {
       "id": 14,
       "question": "What does <pre>event.target</pre> refer to?",
       "options": {
-        "A": "The element that triggered the event",
+        "A": "The parent element",
         "B": "The element the listener is attached to",
         "C": "The document object",
-        "D": "The parent element"
+        "D": "The element that triggered the event"
       },
-      "correct": "A",
+      "correct": "D",
       "explanation": "<pre>event.target</pre> refers to the element that originally triggered the event, which might be different from <pre>event.currentTarget</pre> (the element the listener is attached to) when events bubble up through the DOM tree.",
       "topic": {
         "topics": [
@@ -311,12 +311,12 @@ module.exports = {
       "id": 16,
       "question": "Which event fires when the DOM content is fully loaded?",
       "options": {
-        "A": "<pre>window.onload</pre>",
-        "B": "<pre>DOMContentLoaded</pre>",
+        "A": "<pre>DOMContentLoaded</pre>",
+        "B": "<pre>window.onload</pre>",
         "C": "<pre>document.ready</pre>",
         "D": "<pre>content.loaded</pre>"
       },
-      "correct": "B",
+      "correct": "A",
       "explanation": "The <pre>DOMContentLoaded</pre> event fires when the initial HTML document has been completely loaded and parsed, without waiting for stylesheets, images, and subframes to finish loading. <pre>window.onload</pre> waits for all resources to load.",
       "topic": {
         "topics": [
@@ -328,12 +328,12 @@ module.exports = {
       "id": 17,
       "question": "How do you get all child elements of a parent?",
       "options": {
-        "A": "<pre>parent.children</pre>",
-        "B": "<pre>parent.childNodes</pre>",
+        "A": "<pre>parent.childNodes</pre>",
+        "B": "<pre>parent.children</pre>",
         "C": "<pre>parent.getChildren()</pre>",
         "D": "<pre>parent.allChildren</pre>"
       },
-      "correct": "A",
+      "correct": "B",
       "explanation": "<pre>children</pre> returns a live HTMLCollection of child elements, excluding text nodes and comments. <pre>childNodes</pre> returns all child nodes including text nodes and comments, which is usually not what you want.",
       "topic": {
         "topics": [
@@ -362,12 +362,12 @@ module.exports = {
       "id": 19,
       "question": "How do you set an inline style on an element?",
       "options": {
-        "A": "<pre>element.style.color = 'red'</pre>",
+        "A": "<pre>element.addStyle('color: red')</pre>",
         "B": "<pre>element.css('color', 'red')</pre>",
         "C": "<pre>element.setStyle('color', 'red')</pre>",
-        "D": "<pre>element.addStyle('color: red')</pre>"
+        "D": "<pre>element.style.color = 'red'</pre>"
       },
-      "correct": "A",
+      "correct": "D",
       "explanation": "The <pre>style</pre> property allows you to set inline CSS styles directly on an element. CSS property names that contain hyphens become camelCase in JavaScript (e.g., <pre>backgroundColor</pre> for 'background-color').",
       "topic": {
         "topics": [
@@ -380,11 +380,11 @@ module.exports = {
       "question": "Which method is used to attach an event listener?",
       "options": {
         "A": "<pre>listen()</pre>",
-        "B": "<pre>attachEvent()</pre>",
+        "B": "<pre>addEventListener()</pre>",
         "C": "<pre>on()</pre>",
-        "D": "<pre>addEventListener()</pre>"
+        "D": "<pre>attachEvent()</pre>"
       },
-      "correct": "D",
+      "correct": "B",
       "explanation": "<pre>addEventListener()</pre> is the standard method for registering event handlers. It allows multiple handlers for the same event type and provides control over event propagation. The older <pre>attachEvent()</pre> was used in Internet Explorer.",
       "topic": {
         "topics": [
@@ -396,12 +396,12 @@ module.exports = {
       "id": 21,
       "question": "How do you check if an element has a specific class?",
       "options": {
-        "A": "<pre>element.hasClass('className')</pre>",
+        "A": "<pre>element.classList.contains('className')</pre>",
         "B": "<pre>element.className.includes('className')</pre>",
-        "C": "<pre>element.classList.contains('className')</pre>",
+        "C": "<pre>element.hasClass('className')</pre>",
         "D": "<pre>element.hasClassName('className')</pre>"
       },
-      "correct": "C",
+      "correct": "A",
       "explanation": "<pre>classList.contains()</pre> returns <pre>true</pre> if the element has the specified class, <pre>false</pre> otherwise. This is more reliable than checking <pre>className</pre> which requires string parsing and can have false positives.",
       "topic": {
         "topics": [
@@ -414,11 +414,11 @@ module.exports = {
       "question": "What does <pre>document.createElement('div')</pre> return?",
       "options": {
         "A": "A string containing HTML",
-        "B": "A reference to a new div element",
-        "C": "A boolean value",
+        "B": "A boolean value",
+        "C": "A reference to a new div element",
         "D": "An array of elements"
       },
-      "correct": "B",
+      "correct": "C",
       "explanation": "<pre>document.createElement()</pre> returns a reference to a newly created element node. The element exists in memory but is not yet part of the document. You need to explicitly add it to the DOM using methods like <pre>appendChild()</pre> or <pre>append()</pre>.",
       "topic": {
         "topics": [
@@ -450,10 +450,10 @@ module.exports = {
       "options": {
         "A": "<pre>element.nextSibling</pre>",
         "B": "<pre>element.getNextSibling()</pre>",
-        "C": "<pre>element.siblingNext</pre>",
-        "D": "<pre>element.nextElementSibling</pre>"
+        "C": "<pre>element.nextElementSibling</pre>",
+        "D": "<pre>element.siblingNext</pre>"
       },
-      "correct": "D",
+      "correct": "C",
       "explanation": "<pre>nextElementSibling</pre> returns the next element node, skipping text nodes and comments. <pre>nextSibling</pre> returns the very next node regardless of type, which is often a text node containing whitespace.",
       "topic": {
         "topics": [
@@ -465,12 +465,12 @@ module.exports = {
       "id": 25,
       "question": "What is the purpose of <pre>event.stopPropagation()</pre>?",
       "options": {
-        "A": "Prevents the default action",
+        "A": "Stops the event from bubbling up",
         "B": "Removes the event listener",
-        "C": "Stops the event from bubbling up",
+        "C": "Prevents the default action",
         "D": "Pauses the event execution"
       },
-      "correct": "C",
+      "correct": "A",
       "explanation": "<pre>stopPropagation()</pre> prevents the event from bubbling up to parent elements. This is useful when you want to handle an event exclusively in the current element without parent elements also receiving the event.",
       "topic": {
         "topics": [
@@ -483,11 +483,11 @@ module.exports = {
       "question": "How do you set an attribute on an element?",
       "options": {
         "A": "<pre>element.attribute('name', 'value')</pre>",
-        "B": "<pre>element.setAttribute('name', 'value')</pre>",
+        "B": "<pre>element.addAttribute('name', 'value')</pre>",
         "C": "<pre>element.attr('name', 'value')</pre>",
-        "D": "<pre>element.addAttribute('name', 'value')</pre>"
+        "D": "<pre>element.setAttribute('name', 'value')</pre>"
       },
-      "correct": "B",
+      "correct": "D",
       "explanation": "<pre>setAttribute()</pre> sets the value of an attribute on the specified element. If the attribute already exists, the value is updated; otherwise, a new attribute is added with the specified name and value.",
       "topic": {
         "topics": [
@@ -516,12 +516,12 @@ module.exports = {
       "id": 28,
       "question": "What does <pre>document.readyState</pre> indicate?",
       "options": {
-        "A": "The browser's network status",
-        "B": "The loading state of the document",
+        "A": "The loading state of the document",
+        "B": "The browser's network status",
         "C": "The JavaScript execution state",
         "D": "The user's interaction state"
       },
-      "correct": "B",
+      "correct": "A",
       "explanation": "<pre>document.readyState</pre> indicates the loading state of the document. It can be 'loading' (document is still loading), 'interactive' (document has finished loading but sub-resources are still loading), or 'complete' (document and all sub-resources have finished loading).",
       "topic": {
         "topics": [
@@ -550,12 +550,12 @@ module.exports = {
       "id": 30,
       "question": "What is the event object passed to event handlers?",
       "options": {
-        "A": "An object containing event information",
-        "B": "The element that triggered the event",
+        "A": "The element that triggered the event",
+        "B": "An object containing event information",
         "C": "The function that will be executed",
         "D": "The parent element of the target"
       },
-      "correct": "A",
+      "correct": "B",
       "explanation": "The event object is automatically passed to event handlers and contains information about the event, such as the target element, event type, mouse position, key pressed, and methods to control event propagation and default behavior.",
       "topic": {
         "topics": [

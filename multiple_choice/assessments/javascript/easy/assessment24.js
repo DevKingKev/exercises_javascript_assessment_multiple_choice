@@ -54,12 +54,12 @@ module.exports = {
       "id": 1,
       "question": "What does the <pre>async</pre> keyword do when placed before a function?",
       "options": {
-        "A": "Makes the function run faster",
-        "B": "Makes the function always return a Promise",
+        "A": "Makes the function always return a Promise",
+        "B": "Makes the function run faster",
         "C": "Prevents the function from throwing errors",
         "D": "Makes the function synchronous"
       },
-      "correct": "B",
+      "correct": "A",
       "explanation": "The <pre>async</pre> keyword automatically wraps the function's return value in a Promise. Even if you return a regular value, it becomes a resolved Promise.",
       "topic": {
         "topics": [
@@ -71,12 +71,12 @@ module.exports = {
       "id": 2,
       "question": "What does <pre>Promise.resolve(5)</pre> return?",
       "options": {
-        "A": "The number 5",
-        "B": "A Promise that resolves to 5",
+        "A": "A Promise that resolves to 5",
+        "B": "The number 5",
         "C": "A rejected Promise",
         "D": "An error"
       },
-      "correct": "B",
+      "correct": "A",
       "explanation": "<pre>Promise.resolve()</pre> creates a Promise that is immediately resolved with the given value. So <pre>Promise.resolve(5)</pre> returns a Promise that resolves to 5.",
       "topic": {
         "topics": [
@@ -88,12 +88,12 @@ module.exports = {
       "id": 3,
       "question": "What is the purpose of the <pre>await</pre> keyword?",
       "options": {
-        "A": "To make code run faster",
+        "A": "To pause execution until a Promise settles",
         "B": "To create a new Promise",
         "C": "To handle Promise rejections",
-        "D": "To pause execution until a Promise settles"
+        "D": "To make code run faster"
       },
-      "correct": "D",
+      "correct": "A",
       "explanation": "The <pre>await</pre> keyword can only be used inside async functions and pauses the execution until the Promise is settled (either resolved or rejected).",
       "topic": {
         "topics": [
@@ -105,12 +105,12 @@ module.exports = {
       "id": 4,
       "question": "What will this code log? [CODE]async function test() {\n  return 'hello';\n}\ntest().then(console.log);[/CODE]",
       "options": {
-        "A": "<pre>Promise {'hello'}</pre>",
-        "B": "<pre>'hello'</pre>",
+        "A": "<pre>'hello'</pre>",
+        "B": "<pre>Promise {'hello'}</pre>",
         "C": "<pre>undefined</pre>",
         "D": "Nothing"
       },
-      "correct": "B",
+      "correct": "A",
       "explanation": "Async functions always return Promises. The value 'hello' is automatically wrapped in a resolved Promise, which then passes 'hello' to the <pre>then</pre> callback.",
       "topic": {
         "topics": [
@@ -122,12 +122,12 @@ module.exports = {
       "id": 5,
       "question": "What does <pre>Promise.reject('error')</pre> return?",
       "options": {
-        "A": "Returns 'error'",
+        "A": "A Promise that rejects with 'error'",
         "B": "A Promise that resolves with 'error'",
         "C": "Throws an error immediately",
-        "D": "A Promise that rejects with 'error'"
+        "D": "Returns 'error'"
       },
-      "correct": "D",
+      "correct": "A",
       "explanation": "<pre>Promise.reject()</pre> creates a Promise that is immediately rejected with the given reason. The rejection can be caught with <pre>catch()</pre> or <pre>try/catch</pre> with await.",
       "topic": {
         "topics": [
@@ -139,12 +139,12 @@ module.exports = {
       "id": 6,
       "question": "What will be logged first? [CODE]console.log('A');\nsetTimeout(() => console.log('B'), 0);\nconsole.log('C');[/CODE]",
       "options": {
-        "A": "Nothing",
+        "A": "<pre>A</pre>",
         "B": "<pre>B</pre>",
         "C": "<pre>C</pre>",
-        "D": "<pre>A</pre>"
+        "D": "Nothing"
       },
-      "correct": "D",
+      "correct": "A",
       "explanation": "Even with 0 delay, <pre>setTimeout</pre> callbacks go to the task queue and execute after synchronous code. So the order is A, C, B.",
       "topic": {
         "topics": [
@@ -173,12 +173,12 @@ module.exports = {
       "id": 8,
       "question": "What does this code return? [CODE]async function getValue() {\n  await Promise.resolve(10);\n  return 20;\n}[/CODE]",
       "options": {
-        "A": "The number 20",
-        "B": "A Promise that resolves to 20",
+        "A": "A Promise that resolves to 20",
+        "B": "The number 20",
         "C": "A Promise that resolves to 10",
         "D": "undefined"
       },
-      "correct": "B",
+      "correct": "A",
       "explanation": "Async functions always return Promises. The function waits for the first Promise, then returns 20, which becomes the resolved value of the returned Promise.",
       "topic": {
         "topics": [
@@ -208,11 +208,11 @@ module.exports = {
       "question": "What will this code log? [CODE]Promise.resolve(1)\n  .then(x => x + 1)\n  .then(x => console.log(x));[/CODE]",
       "options": {
         "A": "<pre>undefined</pre>",
-        "B": "<pre>1</pre>",
-        "C": "<pre>2</pre>",
+        "B": "<pre>2</pre>",
+        "C": "<pre>1</pre>",
         "D": "Nothing"
       },
-      "correct": "C",
+      "correct": "B",
       "explanation": "The Promise resolves to 1, the first <pre>then</pre> adds 1 to get 2, and the second <pre>then</pre> logs 2.",
       "topic": {
         "topics": [
@@ -224,12 +224,12 @@ module.exports = {
       "id": 11,
       "question": "Can you use <pre>await</pre> outside of an async function?",
       "options": {
-        "A": "No, it will cause a syntax error",
-        "B": "Yes, anywhere in the code",
+        "A": "Yes, anywhere in the code",
+        "B": "No, it will cause a syntax error",
         "C": "Only in module scope",
         "D": "Only in arrow functions"
       },
-      "correct": "A",
+      "correct": "B",
       "explanation": "The <pre>await</pre> keyword can only be used inside functions declared with <pre>async</pre>. Using it elsewhere results in a syntax error.",
       "topic": {
         "topics": [
@@ -242,11 +242,11 @@ module.exports = {
       "question": "What does <pre>.finally()</pre> do in a Promise chain?",
       "options": {
         "A": "Only runs if the Promise rejects",
-        "B": "Only runs if the Promise resolves",
-        "C": "Runs regardless of resolution or rejection",
+        "B": "Runs regardless of resolution or rejection",
+        "C": "Only runs if the Promise resolves",
         "D": "Stops the Promise chain"
       },
-      "correct": "C",
+      "correct": "B",
       "explanation": "The <pre>.finally()</pre> method executes a callback regardless of whether the Promise was fulfilled or rejected. It's useful for cleanup operations.",
       "topic": {
         "topics": [
@@ -258,12 +258,12 @@ module.exports = {
       "id": 13,
       "question": "What will this code log? [CODE]async function test() {\n  const result = await Promise.resolve('done');\n  console.log(result);\n}\ntest();[/CODE]",
       "options": {
-        "A": "<pre>'done'</pre>",
-        "B": "<pre>Promise {'done'}</pre>",
+        "A": "<pre>Promise {'done'}</pre>",
+        "B": "<pre>'done'</pre>",
         "C": "<pre>undefined</pre>",
         "D": "Nothing"
       },
-      "correct": "A",
+      "correct": "B",
       "explanation": "The <pre>await</pre> keyword unwraps the Promise value, so <pre>result</pre> becomes 'done', which is then logged.",
       "topic": {
         "topics": [
@@ -293,11 +293,11 @@ module.exports = {
       "question": "What will be the execution order? [CODE]console.log('1');\nasync function run() {\n  console.log('2');\n  await Promise.resolve();\n  console.log('3');\n}\nrun();\nconsole.log('4');[/CODE]",
       "options": {
         "A": "<pre>2, 1, 3, 4</pre>",
-        "B": "<pre>1, 2, 3, 4</pre>",
-        "C": "<pre>1, 2, 4, 3</pre>",
+        "B": "<pre>1, 2, 4, 3</pre>",
+        "C": "<pre>1, 2, 3, 4</pre>",
         "D": "<pre>1, 4, 2, 3</pre>"
       },
-      "correct": "C",
+      "correct": "B",
       "explanation": "1 and 2 log synchronously. The await pauses the async function, so 4 logs next. Then the microtask (await) runs and 3 logs last.",
       "topic": {
         "topics": [
@@ -310,11 +310,11 @@ module.exports = {
       "question": "How do you convert a callback-based function to return a Promise?",
       "options": {
         "A": "Return the callback directly",
-        "B": "Add <pre>async</pre> keyword",
+        "B": "Use the Promise constructor",
         "C": "Use <pre>Promise.wrap()</pre>",
-        "D": "Use the Promise constructor"
+        "D": "Add <pre>async</pre> keyword"
       },
-      "correct": "D",
+      "correct": "B",
       "explanation": "The Promise constructor is used to wrap callback-based functions. Call <pre>resolve</pre> on success and <pre>reject</pre> on error within the callback.",
       "topic": {
         "topics": [
@@ -344,11 +344,11 @@ module.exports = {
       "question": "What is the value of <pre>result</pre>? [CODE]async function test() {\n  return await 5;\n}\nconst result = test();[/CODE]",
       "options": {
         "A": "The number 5",
-        "B": "A Promise",
-        "C": "undefined",
+        "B": "undefined",
+        "C": "A Promise",
         "D": "An error"
       },
-      "correct": "B",
+      "correct": "C",
       "explanation": "Async functions always return Promises. Even though we await a non-Promise value (5), the function itself returns a Promise that resolves to 5.",
       "topic": {
         "topics": [
@@ -360,12 +360,12 @@ module.exports = {
       "id": 19,
       "question": "What does <pre>Promise.all()</pre> do?",
       "options": {
-        "A": "Waits for all Promises to resolve or any to reject",
+        "A": "Returns the first resolved Promise",
         "B": "Runs Promises one after another",
-        "C": "Returns the first resolved Promise",
+        "C": "Waits for all Promises to resolve or any to reject",
         "D": "Stops if any Promise rejects"
       },
-      "correct": "A",
+      "correct": "C",
       "explanation": "<pre>Promise.all()</pre> takes an array of Promises and returns a new Promise that resolves when all input Promises resolve, or rejects immediately if any input Promise rejects.",
       "topic": {
         "topics": [
@@ -394,12 +394,12 @@ module.exports = {
       "id": 21,
       "question": "What will this code log? [CODE]async function test() {\n  throw new Error('fail');\n}\ntest().catch(() => console.log('caught'));[/CODE]",
       "options": {
-        "A": "<pre>'caught'</pre>",
+        "A": "Nothing",
         "B": "Error: fail",
-        "C": "Nothing",
+        "C": "<pre>'caught'</pre>",
         "D": "undefined"
       },
-      "correct": "A",
+      "correct": "C",
       "explanation": "Throwing in an async function is equivalent to rejecting the returned Promise. The rejection is caught by the <pre>.catch()</pre> method, which logs 'caught'.",
       "topic": {
         "topics": [
@@ -411,12 +411,12 @@ module.exports = {
       "id": 22,
       "question": "What is the difference between <pre>Promise.resolve()</pre> and <pre>new Promise(resolve => resolve())</pre>?",
       "options": {
-        "A": "They are functionally equivalent",
+        "A": "One is faster",
         "B": "Only one can take a value",
-        "C": "One is faster",
+        "C": "They are functionally equivalent",
         "D": "One is deprecated"
       },
-      "correct": "A",
+      "correct": "C",
       "explanation": "Both create an immediately resolved Promise. <pre>Promise.resolve()</pre> is just a shorthand for the longer constructor syntax.",
       "topic": {
         "topics": [
@@ -428,12 +428,12 @@ module.exports = {
       "id": 23,
       "question": "What will be logged? [CODE]console.log('start');\nPromise.resolve().then(() => console.log('promise'));\nconsole.log('end');[/CODE]",
       "options": {
-        "A": "<pre>start, end, promise</pre>",
+        "A": "<pre>promise, start, end</pre>",
         "B": "<pre>start, promise, end</pre>",
-        "C": "<pre>promise, start, end</pre>",
+        "C": "<pre>start, end, promise</pre>",
         "D": "<pre>start, end</pre>"
       },
-      "correct": "A",
+      "correct": "C",
       "explanation": "Synchronous code runs first (start, end), then microtasks (Promise callbacks) run before the next event loop cycle, so 'promise' logs last.",
       "topic": {
         "topics": [
@@ -447,10 +447,10 @@ module.exports = {
       "options": {
         "A": "Only in certain browsers",
         "B": "No, await only works with one Promise",
-        "C": "Only with Promise.all()",
-        "D": "Yes, by using multiple await statements"
+        "C": "Yes, by using multiple await statements",
+        "D": "Only with Promise.all()"
       },
-      "correct": "D",
+      "correct": "C",
       "explanation": "You can use multiple await statements to run Promises sequentially. Each await will pause the function until that Promise settles.",
       "topic": {
         "topics": [
@@ -462,12 +462,12 @@ module.exports = {
       "id": 25,
       "question": "What does this return? [CODE]async function test() {\n  return Promise.resolve(42);\n}[/CODE]",
       "options": {
-        "A": "A Promise that resolves to 42",
+        "A": "undefined",
         "B": "The number 42",
         "C": "A Promise that resolves to a Promise",
-        "D": "undefined"
+        "D": "A Promise that resolves to 42"
       },
-      "correct": "A",
+      "correct": "D",
       "explanation": "Async functions automatically unwrap returned Promises. Returning <pre>Promise.resolve(42)</pre> is the same as returning 42 directly in an async function.",
       "topic": {
         "topics": [
@@ -481,10 +481,10 @@ module.exports = {
       "options": {
         "A": "Returns the fastest resolving Promise",
         "B": "Runs all Promises in parallel",
-        "C": "Returns the first settled Promise (resolve or reject)",
-        "D": "Times out slow Promises"
+        "C": "Times out slow Promises",
+        "D": "Returns the first settled Promise (resolve or reject)"
       },
-      "correct": "C",
+      "correct": "D",
       "explanation": "<pre>Promise.race()</pre> returns a Promise that settles (either resolves or rejects) as soon as any of the input Promises settles.",
       "topic": {
         "topics": [
@@ -498,10 +498,10 @@ module.exports = {
       "options": {
         "A": "<pre>undefined</pre>",
         "B": "<pre>Promise {'hello'}</pre>",
-        "C": "<pre>'hello'</pre>",
-        "D": "Syntax error"
+        "C": "Syntax error",
+        "D": "<pre>'hello'</pre>"
       },
-      "correct": "C",
+      "correct": "D",
       "explanation": "You can await non-Promise values. The value is automatically wrapped in a resolved Promise, so <pre>await 'hello'</pre> simply returns 'hello'.",
       "topic": {
         "topics": [
@@ -514,11 +514,11 @@ module.exports = {
       "question": "How do you run async operations in parallel?",
       "options": {
         "A": "Use multiple await statements",
-        "B": "Use Promise.all() with await",
+        "B": "Async operations cannot run in parallel",
         "C": "Use async/await in a loop",
-        "D": "Async operations cannot run in parallel"
+        "D": "Use Promise.all() with await"
       },
-      "correct": "B",
+      "correct": "D",
       "explanation": "To run async operations in parallel, start all Promises first (without await), then use <pre>await Promise.all()</pre> to wait for all results.",
       "topic": {
         "topics": [
@@ -549,10 +549,10 @@ module.exports = {
       "options": {
         "A": "Fewer features",
         "B": "Better performance",
-        "C": "More readable, synchronous-looking code",
-        "D": "Works in older browsers"
+        "C": "Works in older browsers",
+        "D": "More readable, synchronous-looking code"
       },
-      "correct": "C",
+      "correct": "D",
       "explanation": "Async/await makes asynchronous code look and behave more like synchronous code, which is easier to read and understand, especially for complex logic with multiple async steps.",
       "topic": {
         "topics": [

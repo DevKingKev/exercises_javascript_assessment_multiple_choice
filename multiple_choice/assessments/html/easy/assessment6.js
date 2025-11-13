@@ -69,12 +69,12 @@ module.exports = {
       "id": 1,
       "question": "What does the <pre><fieldset></pre> element do in a form?",
       "options": {
-        "A": "Sets field boundaries",
+        "A": "Groups related form controls together",
         "B": "Creates a field validation set",
-        "C": "Groups related form controls together",
+        "C": "Sets field boundaries",
         "D": "Defines form field properties"
       },
-      "correct": "C",
+      "correct": "A",
       "explanation": "The <pre><fieldset></pre> element groups several form controls together, creating a visual and semantic grouping. It's often used with <pre><legend></pre> to provide a caption for the group. This improves form organization and accessibility by relating similar fields. Example: [CODE]<fieldset>\n  <legend>Personal Information</legend>\n  <input type=\"text\" name=\"name\">\n  <input type=\"email\" name=\"email\">\n</fieldset>[/CODE]",
       "topic": {
         "topics": [
@@ -86,12 +86,12 @@ module.exports = {
       "id": 2,
       "question": "Which input type is specifically designed for telephone numbers?",
       "options": {
-        "A": "<pre>type=\"contact\"</pre>",
+        "A": "<pre>type=\"tel\"</pre>",
         "B": "<pre>type=\"phone\"</pre>",
         "C": "<pre>type=\"number\"</pre>",
-        "D": "<pre>type=\"tel\"</pre>"
+        "D": "<pre>type=\"contact\"</pre>"
       },
-      "correct": "D",
+      "correct": "A",
       "explanation": "The <pre>type=\"tel\"</pre> input is designed for telephone numbers. On mobile devices, it typically displays a telephone keypad instead of the standard keyboard. While it doesn't validate phone number formats, it provides better user experience for phone number input. Example: <pre><input type=\"tel\" name=\"phone\"></pre>",
       "topic": {
         "topics": [
@@ -103,12 +103,12 @@ module.exports = {
       "id": 3,
       "question": "What is the purpose of the <pre>formnovalidate</pre> attribute on a submit button?",
       "options": {
-        "A": "Prevents form submission",
-        "B": "Submits the form without validation",
+        "A": "Submits the form without validation",
+        "B": "Prevents form submission",
         "C": "Validates form on server only",
         "D": "Disables client-side validation"
       },
-      "correct": "B",
+      "correct": "A",
       "explanation": "The <pre>formnovalidate</pre> attribute on a submit button allows the form to be submitted without client-side validation. This is useful for 'Save Draft' or similar buttons where incomplete data might be acceptable. Example: <pre><button type=\"submit\" formnovalidate>Save Draft</button></pre>",
       "topic": {
         "topics": [
@@ -157,12 +157,12 @@ module.exports = {
       "id": 6,
       "question": "Which element provides a caption for a <pre><fieldset></pre>?",
       "options": {
-        "A": "<pre><label></pre>",
+        "A": "<pre><legend></pre>",
         "B": "<pre><caption></pre>",
-        "C": "<pre><legend></pre>",
+        "C": "<pre><label></pre>",
         "D": "<pre><title></pre>"
       },
-      "correct": "C",
+      "correct": "A",
       "explanation": "The <pre><legend></pre> element provides a caption or title for a <pre><fieldset></pre> element. It should be the first child of the fieldset and describes the group of form controls. Example: [CODE]<fieldset>\n  <legend>Shipping Address</legend>\n  <!-- form controls -->\n</fieldset>[/CODE]",
       "topic": {
         "topics": [
@@ -175,12 +175,12 @@ module.exports = {
       "id": 7,
       "question": "What does the <pre>step</pre> attribute control in number inputs?",
       "options": {
-        "A": "The form submission steps",
+        "A": "The increment between valid values",
         "B": "The validation steps",
-        "C": "The increment between valid values",
+        "C": "The form submission steps",
         "D": "The input formatting steps"
       },
-      "correct": "C",
+      "correct": "A",
       "explanation": "The <pre>step</pre> attribute specifies the legal number intervals for number inputs and range sliders. For example, <pre>step=\"2\"</pre> would allow only even numbers. It works with <pre>min</pre> and <pre>max</pre> to define precise value constraints. Example: <pre><input type=\"number\" step=\"0.5\" min=\"0\" max=\"10\"></pre>",
       "topic": {
         "topics": [
@@ -228,12 +228,12 @@ module.exports = {
       "id": 10,
       "question": "Which attribute makes a checkbox indeterminate?",
       "options": {
-        "A": "Can only be set via JavaScript",
-        "B": "<pre>indeterminate</pre>",
+        "A": "<pre>indeterminate</pre>",
+        "B": "Can only be set via JavaScript",
         "C": "<pre>partial</pre>",
         "D": "<pre>mixed</pre>"
       },
-      "correct": "A",
+      "correct": "B",
       "explanation": "The indeterminate state of a checkbox can only be set via JavaScript, not through HTML attributes. It represents a 'partially checked' state, often used in tree views or 'select all' scenarios. Example: [CODE]const checkbox = document.getElementById('myCheckbox');\ncheckbox.indeterminate = true;[/CODE]",
       "topic": {
         "topics": [
@@ -262,12 +262,12 @@ module.exports = {
       "id": 12,
       "question": "Which input type is designed for search queries?",
       "options": {
-        "A": "<pre>type=\"search\"</pre>",
-        "B": "<pre>type=\"text\"</pre>",
+        "A": "<pre>type=\"text\"</pre>",
+        "B": "<pre>type=\"search\"</pre>",
         "C": "<pre>type=\"query\"</pre>",
         "D": "<pre>type=\"find\"</pre>"
       },
-      "correct": "A",
+      "correct": "B",
       "explanation": "The <pre>type=\"search\"</pre> input is semantically designed for search queries. Browsers may style it differently (rounded corners, clear button) and provide search-specific features. Example: <pre><input type=\"search\" name=\"q\" placeholder=\"Search...\"></pre>",
       "topic": {
         "topics": [
@@ -280,11 +280,11 @@ module.exports = {
       "question": "What is the purpose of the <pre>formtarget</pre> attribute?",
       "options": {
         "A": "Defines form security target",
-        "B": "Sets form validation target",
-        "C": "Specifies where to display form response",
+        "B": "Specifies where to display form response",
+        "C": "Sets form validation target",
         "D": "Specifies form data target"
       },
-      "correct": "C",
+      "correct": "B",
       "explanation": "The <pre>formtarget</pre> attribute specifies where to display the response after form submission, overriding the form's <pre>target</pre> attribute. It works like the <pre>target</pre> attribute on links. Example: <pre><button type=\"submit\" formtarget=\"_blank\">Open in New Tab</button></pre>",
       "topic": {
         "topics": [
@@ -297,11 +297,11 @@ module.exports = {
       "question": "Which attribute specifies the maximum number of characters for a textarea?",
       "options": {
         "A": "<pre>chars</pre>",
-        "B": "<pre>size</pre>",
+        "B": "<pre>maxlength</pre>",
         "C": "<pre>limit</pre>",
-        "D": "<pre>maxlength</pre>"
+        "D": "<pre>size</pre>"
       },
-      "correct": "D",
+      "correct": "B",
       "explanation": "The <pre>maxlength</pre> attribute specifies the maximum number of characters allowed in a textarea or text input. The browser prevents users from typing beyond this limit. Example: <pre><textarea maxlength=\"500\">Enter up to 500 characters</textarea></pre>",
       "topic": {
         "topics": [
@@ -331,12 +331,12 @@ module.exports = {
       "id": 16,
       "question": "Which input type is designed for color selection?",
       "options": {
-        "A": "<pre>type=\"color\"</pre>",
-        "B": "<pre>type=\"picker\"</pre>",
+        "A": "<pre>type=\"picker\"</pre>",
+        "B": "<pre>type=\"color\"</pre>",
         "C": "<pre>type=\"palette\"</pre>",
         "D": "<pre>type=\"rgb\"</pre>"
       },
-      "correct": "A",
+      "correct": "B",
       "explanation": "The <pre>type=\"color\"</pre> input provides a color picker interface. It returns the selected color as a hexadecimal value. Example: <pre><input type=\"color\" name=\"bgcolor\" value=\"#ff0000\"></pre>",
       "topic": {
         "topics": [
@@ -350,10 +350,10 @@ module.exports = {
       "options": {
         "A": "Specifies form direction",
         "B": "Sets the input direction",
-        "C": "Defines directory name for file inputs",
-        "D": "Submits the text direction along with the value"
+        "C": "Submits the text direction along with the value",
+        "D": "Defines directory name for file inputs"
       },
-      "correct": "D",
+      "correct": "C",
       "explanation": "The <pre>dirname</pre> attribute causes the text direction (ltr or rtl) to be submitted along with the input value. This is useful for forms that need to preserve text direction. Example: <pre><input type=\"text\" name=\"message\" dirname=\"message.dir\"></pre>",
       "topic": {
         "topics": [
@@ -366,12 +366,12 @@ module.exports = {
       "id": 18,
       "question": "Which attribute specifies that a field should be filled automatically?",
       "options": {
-        "A": "<pre>autocomplete</pre>",
+        "A": "<pre>suggest</pre>",
         "B": "<pre>auto-fill</pre>",
-        "C": "<pre>suggest</pre>",
+        "C": "<pre>autocomplete</pre>",
         "D": "<pre>complete</pre>"
       },
-      "correct": "A",
+      "correct": "C",
       "explanation": "The <pre>autocomplete</pre> attribute controls whether the browser can automatically complete the field. Values include <pre>on</pre>, <pre>off</pre>, and specific field types like <pre>name</pre>, <pre>email</pre>, etc. Example: <pre><input type=\"email\" autocomplete=\"email\"></pre>",
       "topic": {
         "topics": [
@@ -385,11 +385,11 @@ module.exports = {
       "question": "What does the <pre>formaction</pre> attribute override?",
       "options": {
         "A": "Form validation action",
-        "B": "The form's action attribute",
-        "C": "Form security action",
+        "B": "Form security action",
+        "C": "The form's action attribute",
         "D": "Form processing action"
       },
-      "correct": "B",
+      "correct": "C",
       "explanation": "The <pre>formaction</pre> attribute overrides the form's <pre>action</pre> attribute for a specific submit button. This allows different submission URLs from the same form. Example: <pre><button type=\"submit\" formaction=\"/save-draft\">Save Draft</button></pre>",
       "topic": {
         "topics": [
@@ -403,10 +403,10 @@ module.exports = {
       "options": {
         "A": "<pre>type=\"hour\"</pre>",
         "B": "<pre>type=\"datetime\"</pre>",
-        "C": "<pre>type=\"clock\"</pre>",
-        "D": "<pre>type=\"time\"</pre>"
+        "C": "<pre>type=\"time\"</pre>",
+        "D": "<pre>type=\"clock\"</pre>"
       },
-      "correct": "D",
+      "correct": "C",
       "explanation": "The <pre>type=\"time\"</pre> input allows users to select a time value (hours and minutes) without timezone information. It returns values in 24-hour format. Example: <pre><input type=\"time\" name=\"appointment\"></pre>",
       "topic": {
         "topics": [
@@ -437,11 +437,11 @@ module.exports = {
       "question": "Which attribute specifies the acceptable file types for file inputs?",
       "options": {
         "A": "<pre>filetypes</pre>",
-        "B": "<pre>accept</pre>",
-        "C": "<pre>types</pre>",
+        "B": "<pre>types</pre>",
+        "C": "<pre>accept</pre>",
         "D": "<pre>extensions</pre>"
       },
-      "correct": "B",
+      "correct": "C",
       "explanation": "The <pre>accept</pre> attribute specifies which file types are acceptable for file inputs. It can use MIME types or file extensions. Example: <pre><input type=\"file\" accept=\".jpg,.png,.pdf\"></pre> or <pre><input type=\"file\" accept=\"image/*\"></pre>",
       "topic": {
         "topics": [
@@ -456,10 +456,10 @@ module.exports = {
       "options": {
         "A": "Disables all validation",
         "B": "Enables server-side validation only",
-        "C": "Prevents form submission",
-        "D": "Disables client-side validation"
+        "C": "Disables client-side validation",
+        "D": "Prevents form submission"
       },
-      "correct": "D",
+      "correct": "C",
       "explanation": "The <pre>novalidate</pre> attribute on a form element disables the browser's built-in client-side validation. This is useful when you want to handle validation entirely through JavaScript. Example: <pre><form novalidate>...</form></pre>",
       "topic": {
         "topics": [
@@ -489,11 +489,11 @@ module.exports = {
       "question": "What is the purpose of the <pre>form</pre> element's <pre>enctype</pre> attribute?",
       "options": {
         "A": "Sets form encryption type",
-        "B": "Specifies how form data is encoded for submission",
+        "B": "Specifies form encoding validation",
         "C": "Defines form content type",
-        "D": "Specifies form encoding validation"
+        "D": "Specifies how form data is encoded for submission"
       },
-      "correct": "B",
+      "correct": "D",
       "explanation": "The <pre>enctype</pre> attribute specifies how form data should be encoded when submitted to the server. The default is <pre>application/x-www-form-urlencoded</pre>, while <pre>multipart/form-data</pre> is required for file uploads. Example: <pre><form enctype=\"multipart/form-data\">...</form></pre>",
       "topic": {
         "topics": [
@@ -524,10 +524,10 @@ module.exports = {
       "options": {
         "A": "JavaScript patterns",
         "B": "CSS patterns",
-        "C": "Regular expressions",
-        "D": "HTML patterns"
+        "C": "HTML patterns",
+        "D": "Regular expressions"
       },
-      "correct": "C",
+      "correct": "D",
       "explanation": "The <pre>pattern</pre> attribute uses regular expressions to validate input. If the input doesn't match the pattern, the form won't submit. Example: <pre><input type=\"text\" pattern=\"[A-Za-z]{3}\" title=\"3 letters only\"></pre>",
       "topic": {
         "topics": [
@@ -540,11 +540,11 @@ module.exports = {
       "question": "Which input type is designed for month selection?",
       "options": {
         "A": "<pre>type=\"date\"</pre>",
-        "B": "<pre>type=\"month\"</pre>",
+        "B": "<pre>type=\"year\"</pre>",
         "C": "<pre>type=\"calendar\"</pre>",
-        "D": "<pre>type=\"year\"</pre>"
+        "D": "<pre>type=\"month\"</pre>"
       },
-      "correct": "B",
+      "correct": "D",
       "explanation": "The <pre>type=\"month\"</pre> input allows users to select a specific month and year. It returns values in the format 'YYYY-MM'. Example: <pre><input type=\"month\" name=\"birthmonth\"></pre>",
       "topic": {
         "topics": [
@@ -556,12 +556,12 @@ module.exports = {
       "id": 29,
       "question": "What is the purpose of the <pre>form</pre> attribute's <pre>rel</pre> value?",
       "options": {
-        "A": "Specifies the relationship between the form and its target",
+        "A": "Specifies form rendering",
         "B": "Defines form reliability",
         "C": "Sets form relevance",
-        "D": "Specifies form rendering"
+        "D": "Specifies the relationship between the form and its target"
       },
-      "correct": "A",
+      "correct": "D",
       "explanation": "The <pre>rel</pre> attribute on forms specifies the relationship between the current document and the linked resource (the form's target). Values include <pre>external</pre>, <pre>nofollow</pre>, and <pre>opener</pre>. Example: <pre><form action=\"/submit\" rel=\"nofollow\">...</form></pre>",
       "topic": {
         "topics": [
@@ -576,10 +576,10 @@ module.exports = {
       "options": {
         "A": "<pre>flexible</pre>",
         "B": "<pre>resizable</pre>",
-        "C": "By default, but can be controlled with CSS",
-        "D": "<pre>sizable</pre>"
+        "C": "<pre>sizable</pre>",
+        "D": "By default, but can be controlled with CSS"
       },
-      "correct": "C",
+      "correct": "D",
       "explanation": "Textareas are resizable by default in most browsers. This behavior can be controlled with CSS using the <pre>resize</pre> property. Example: <pre>textarea { resize: none; }</pre> to disable resizing, or <pre>resize: vertical;</pre> to allow only vertical resizing.",
       "topic": {
         "topics": [

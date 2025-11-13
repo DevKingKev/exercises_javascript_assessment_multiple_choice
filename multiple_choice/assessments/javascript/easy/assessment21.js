@@ -71,12 +71,12 @@ module.exports = {
       "id": 2,
       "question": "How do you check if one object is the prototype of another?",
       "options": {
-        "A": "<pre>obj.hasPrototype(prototypeObj)</pre>",
+        "A": "<pre>prototypeObj.isPrototypeOf(obj)</pre>",
         "B": "<pre>obj instanceof prototypeObj</pre>",
-        "C": "<pre>prototypeObj.isPrototypeOf(obj)</pre>",
+        "C": "<pre>obj.hasPrototype(prototypeObj)</pre>",
         "D": "<pre>prototypeObj === obj.__proto__</pre>"
       },
-      "correct": "C",
+      "correct": "A",
       "explanation": "The <pre>isPrototypeOf()</pre> method checks if an object exists in another object's prototype chain. It's more reliable than manually checking <pre>__proto__</pre>.",
       "topic": {
         "topics": [
@@ -88,12 +88,12 @@ module.exports = {
       "id": 3,
       "question": "What is created when you use <pre>new Person()</pre>?",
       "options": {
-        "A": "A reference to Person",
+        "A": "An instance of Person",
         "B": "A copy of Person",
-        "C": "An instance of Person",
+        "C": "A reference to Person",
         "D": "A class named Person"
       },
-      "correct": "C",
+      "correct": "A",
       "explanation": "The <pre>new</pre> keyword creates a new object instance that inherits from <pre>Person.prototype</pre> and calls the Person constructor function to initialize it.",
       "topic": {
         "topics": [
@@ -105,12 +105,12 @@ module.exports = {
       "id": 4,
       "question": "Where does JavaScript look first when accessing an object's property?",
       "options": {
-        "A": "It checks all at once",
+        "A": "On the object itself",
         "B": "On the object's prototype",
         "C": "On Object.prototype",
-        "D": "On the object itself"
+        "D": "It checks all at once"
       },
-      "correct": "D",
+      "correct": "A",
       "explanation": "JavaScript first checks if the property exists directly on the object. If not found, it then looks up the prototype chain until the property is found or the chain ends.",
       "topic": {
         "topics": [
@@ -122,12 +122,12 @@ module.exports = {
       "id": 5,
       "question": "What is the default prototype for objects created with <pre>{}</pre>?",
       "options": {
-        "A": "<pre>null</pre>",
-        "B": "<pre>Object.prototype</pre>",
+        "A": "<pre>Object.prototype</pre>",
+        "B": "<pre>null</pre>",
         "C": "<pre>Array.prototype</pre>",
         "D": "No prototype"
       },
-      "correct": "B",
+      "correct": "A",
       "explanation": "Objects created with object literal syntax automatically inherit from <pre>Object.prototype</pre>, which provides basic methods like <pre>toString()</pre> and <pre>hasOwnProperty()</pre>.",
       "topic": {
         "topics": [
@@ -190,12 +190,12 @@ module.exports = {
       "id": 9,
       "question": "What is the result of [CODE]'hello'.toString === Object.prototype.toString[/CODE]?",
       "options": {
-        "A": "<pre>false</pre>",
-        "B": "<pre>true</pre>",
+        "A": "<pre>true</pre>",
+        "B": "<pre>false</pre>",
         "C": "<pre>undefined</pre>",
         "D": "Error"
       },
-      "correct": "A",
+      "correct": "B",
       "explanation": "This returns <pre>false</pre> because strings use <pre>String.prototype.toString</pre>, not <pre>Object.prototype.toString</pre>. Each built-in type has its own prototype chain.",
       "topic": {
         "topics": [
@@ -208,11 +208,11 @@ module.exports = {
       "question": "How do you create an object that doesn't inherit from anything?",
       "options": {
         "A": "<pre>{}</pre>",
-        "B": "<pre>new Object()</pre>",
-        "C": "<pre>Object.create(null)</pre>",
+        "B": "<pre>Object.create(null)</pre>",
+        "C": "<pre>new Object()</pre>",
         "D": "<pre>Object.empty()</pre>"
       },
-      "correct": "C",
+      "correct": "B",
       "explanation": "<pre>Object.create(null)</pre> creates an object with no prototype, meaning it doesn't inherit any methods from <pre>Object.prototype</pre>. These are called 'dictionary objects'.",
       "topic": {
         "topics": [
@@ -225,11 +225,11 @@ module.exports = {
       "question": "What is property shadowing in JavaScript?",
       "options": {
         "A": "When properties change color",
-        "B": "When properties are invisible",
-        "C": "When an object's own property hides a prototype property",
+        "B": "When an object's own property hides a prototype property",
+        "C": "When properties are invisible",
         "D": "When properties are deleted"
       },
-      "correct": "C",
+      "correct": "B",
       "explanation": "Property shadowing occurs when an object has its own property with the same name as a property in its prototype chain. The own property 'shadows' or hides the prototype property.",
       "topic": {
         "topics": [
@@ -259,11 +259,11 @@ module.exports = {
       "question": "What is the prototype of a function?",
       "options": {
         "A": "<pre>null</pre>",
-        "B": "<pre>Object.prototype</pre>",
-        "C": "<pre>Function.prototype</pre>",
+        "B": "<pre>Function.prototype</pre>",
+        "C": "<pre>Object.prototype</pre>",
         "D": "Functions don't have prototypes"
       },
-      "correct": "C",
+      "correct": "B",
       "explanation": "All functions inherit from <pre>Function.prototype</pre>, which provides methods like <pre>call()</pre>, <pre>apply()</pre>, and <pre>bind()</pre>.",
       "topic": {
         "topics": [
@@ -276,11 +276,11 @@ module.exports = {
       "question": "How can you prevent modifications to an object's prototype?",
       "options": {
         "A": "It's not possible",
-        "B": "<pre>Object.lock(obj)</pre>",
+        "B": "<pre>Object.freeze(Object.prototype)</pre>",
         "C": "<pre>obj.sealPrototype()</pre>",
-        "D": "<pre>Object.freeze(Object.prototype)</pre>"
+        "D": "<pre>Object.lock(obj)</pre>"
       },
-      "correct": "D",
+      "correct": "B",
       "explanation": "<pre>Object.freeze()</pre> makes an object immutable. Freezing <pre>Object.prototype</pre> prevents modifications to the base prototype that all objects inherit from.",
       "topic": {
         "topics": [
@@ -309,12 +309,12 @@ module.exports = {
       "id": 16,
       "question": "What is the relationship between <pre>Object</pre> and <pre>Object.prototype</pre>?",
       "options": {
-        "A": "Object.prototype is the prototype of objects created by Object",
+        "A": "They are the same thing",
         "B": "Object is an instance of Object.prototype",
-        "C": "They are the same thing",
+        "C": "Object.prototype is the prototype of objects created by Object",
         "D": "There is no relationship"
       },
-      "correct": "A",
+      "correct": "C",
       "explanation": "<pre>Object.prototype</pre> is the prototype for objects created by the <pre>Object</pre> constructor or with object literal syntax. It's at the top of most prototype chains.",
       "topic": {
         "topics": [
@@ -328,10 +328,10 @@ module.exports = {
       "options": {
         "A": "It's not possible",
         "B": "Use <pre>for...in</pre> without checks",
-        "C": "Use <pre>Object.values()</pre>",
-        "D": "Use <pre>hasOwnProperty()</pre> check in a loop"
+        "C": "Use <pre>hasOwnProperty()</pre> check in a loop",
+        "D": "Use <pre>Object.values()</pre>"
       },
-      "correct": "D",
+      "correct": "C",
       "explanation": "When using <pre>for...in</pre>, you should check <pre>obj.hasOwnProperty(key)</pre> to filter out inherited properties from the prototype chain.",
       "topic": {
         "topics": [
@@ -344,11 +344,11 @@ module.exports = {
       "question": "What happens when you delete an object's own property?",
       "options": {
         "A": "The property is removed from the prototype",
-        "B": "The property is removed from the object",
-        "C": "All instances lose the property",
+        "B": "All instances lose the property",
+        "C": "The property is removed from the object",
         "D": "It creates an error"
       },
-      "correct": "B",
+      "correct": "C",
       "explanation": "The <pre>delete</pre> operator only removes own properties from an object. If a property with the same name exists in the prototype chain, it becomes visible again after deletion.",
       "topic": {
         "topics": [
@@ -362,10 +362,10 @@ module.exports = {
       "options": {
         "A": "To delete a prototype",
         "B": "To set an object's prototype",
-        "C": "To create a new prototype",
-        "D": "To safely get an object's prototype"
+        "C": "To safely get an object's prototype",
+        "D": "To create a new prototype"
       },
-      "correct": "D",
+      "correct": "C",
       "explanation": "<pre>Object.getPrototypeOf(obj)</pre> is the standard way to get an object's prototype, replacing the non-standard <pre>__proto__</pre> property.",
       "topic": {
         "topics": [
@@ -378,11 +378,11 @@ module.exports = {
       "question": "Can you change an object's prototype after it's created?",
       "options": {
         "A": "No, prototypes are fixed",
-        "B": "Yes, with <pre>Object.setPrototypeOf()</pre>",
-        "C": "Only for arrays",
+        "B": "Only for arrays",
+        "C": "Yes, with <pre>Object.setPrototypeOf()</pre>",
         "D": "Only before the object is used"
       },
-      "correct": "B",
+      "correct": "C",
       "explanation": "<pre>Object.setPrototypeOf(obj, proto)</pre> can change an object's prototype after creation, but this is generally discouraged for performance reasons.",
       "topic": {
         "topics": [
@@ -396,10 +396,10 @@ module.exports = {
       "options": {
         "A": "Error",
         "B": "<pre>false</pre>",
-        "C": "<pre>undefined</pre>",
-        "D": "<pre>true</pre>"
+        "C": "<pre>true</pre>",
+        "D": "<pre>undefined</pre>"
       },
-      "correct": "D",
+      "correct": "C",
       "explanation": "This returns <pre>true</pre> because <pre>Object</pre> is a constructor function, and all functions inherit from <pre>Function.prototype</pre>.",
       "topic": {
         "topics": [
@@ -412,11 +412,11 @@ module.exports = {
       "question": "How do built-in methods like <pre>toString()</pre> work on primitives?",
       "options": {
         "A": "Primitives have their own methods",
-        "B": "JavaScript temporarily wraps them in objects",
-        "C": "It's a special language feature",
+        "B": "It's a special language feature",
+        "C": "JavaScript temporarily wraps them in objects",
         "D": "They don't work on primitives"
       },
-      "correct": "B",
+      "correct": "C",
       "explanation": "When you call a method on a primitive, JavaScript automatically wraps it in a temporary object (String, Number, etc.), calls the method, then discards the wrapper.",
       "topic": {
         "topics": [
@@ -430,10 +430,10 @@ module.exports = {
       "options": {
         "A": "<pre>prototype</pre> is newer",
         "B": "They are the same thing",
-        "C": "<pre>prototype</pre> is on functions, <pre>__proto__</pre> is on objects",
-        "D": "<pre>__proto__</pre> is only for arrays"
+        "C": "<pre>__proto__</pre> is only for arrays",
+        "D": "<pre>prototype</pre> is on functions, <pre>__proto__</pre> is on objects"
       },
-      "correct": "C",
+      "correct": "D",
       "explanation": "<pre>prototype</pre> is a property of constructor functions that sets what new instances will inherit. <pre>__proto__</pre> is a property of objects that points to their actual prototype.",
       "topic": {
         "topics": [
@@ -464,10 +464,10 @@ module.exports = {
       "options": {
         "A": "Use global functions",
         "B": "Copy methods to each object",
-        "C": "Put methods on a shared prototype",
-        "D": "It's not possible"
+        "C": "It's not possible",
+        "D": "Put methods on a shared prototype"
       },
-      "correct": "C",
+      "correct": "D",
       "explanation": "By placing methods on a prototype, all objects that inherit from that prototype share the same method instances, which is memory-efficient.",
       "topic": {
         "topics": [
@@ -480,11 +480,11 @@ module.exports = {
       "question": "What is the prototype chain for an array?",
       "options": {
         "A": "Array → Object.prototype → null",
-        "B": "Array → Array.prototype → Object.prototype → null",
+        "B": "Array → Function.prototype → Object.prototype → null",
         "C": "Array → Array.prototype → null",
-        "D": "Array → Function.prototype → Object.prototype → null"
+        "D": "Array → Array.prototype → Object.prototype → null"
       },
-      "correct": "B",
+      "correct": "D",
       "explanation": "Arrays inherit from <pre>Array.prototype</pre>, which inherits from <pre>Object.prototype</pre>, which ultimately points to <pre>null</pre>.",
       "topic": {
         "topics": [
@@ -497,11 +497,11 @@ module.exports = {
       "question": "What does <pre>Object.create()</pre> return if passed <pre>null</pre>?",
       "options": {
         "A": "<pre>null</pre>",
-        "B": "An object with no prototype",
+        "B": "Error",
         "C": "An empty object",
-        "D": "Error"
+        "D": "An object with no prototype"
       },
-      "correct": "B",
+      "correct": "D",
       "explanation": "<pre>Object.create(null)</pre> creates an object that doesn't inherit from anything - its prototype chain ends immediately. These are useful as pure dictionaries.",
       "topic": {
         "topics": [
@@ -513,12 +513,12 @@ module.exports = {
       "id": 28,
       "question": "How can you check if a property is inherited vs own?",
       "options": {
-        "A": "Use <pre>hasOwnProperty()</pre>",
+        "A": "Check if it's <pre>undefined</pre>",
         "B": "Use <pre>typeof</pre>",
         "C": "Use <pre>instanceof</pre>",
-        "D": "Check if it's <pre>undefined</pre>"
+        "D": "Use <pre>hasOwnProperty()</pre>"
       },
-      "correct": "A",
+      "correct": "D",
       "explanation": "The <pre>hasOwnProperty()</pre> method returns <pre>true</pre> only if the property exists directly on the object (not inherited).",
       "topic": {
         "topics": [
@@ -547,12 +547,12 @@ module.exports = {
       "id": 30,
       "question": "Why is understanding prototypes important for JavaScript developers?",
       "options": {
-        "A": "It's fundamental to how JavaScript works",
+        "A": "It's optional knowledge",
         "B": "It makes code run faster",
         "C": "It's only needed for advanced features",
-        "D": "It's optional knowledge"
+        "D": "It's fundamental to how JavaScript works"
       },
-      "correct": "A",
+      "correct": "D",
       "explanation": "Prototypes are core to JavaScript's object model. Understanding them is essential for effective object-oriented programming, debugging, and working with libraries and frameworks in JavaScript.",
       "topic": {
         "topics": [

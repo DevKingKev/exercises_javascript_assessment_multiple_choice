@@ -54,12 +54,12 @@ module.exports = {
       "id": 1,
       "question": "What is a unit in unit testing?",
       "options": {
-        "A": "A complete user interface",
+        "A": "A single function, method, or small piece of code",
         "B": "An entire application module",
-        "C": "A single function, method, or small piece of code",
+        "C": "A complete user interface",
         "D": "A database table"
       },
-      "correct": "C",
+      "correct": "A",
       "explanation": "A unit typically refers to the smallest testable part of an application, such as a single function, method, or class. Unit testing focuses on verifying these small pieces work correctly in isolation.",
       "topic": {
         "topics": [
@@ -88,12 +88,12 @@ module.exports = {
       "id": 3,
       "question": "What is the purpose of automated testing tools?",
       "options": {
-        "A": "To write code automatically",
-        "B": "To run tests automatically and report results",
+        "A": "To run tests automatically and report results",
+        "B": "To write code automatically",
         "C": "To fix bugs automatically",
         "D": "To design user interfaces"
       },
-      "correct": "B",
+      "correct": "A",
       "explanation": "Automated testing tools execute tests without manual intervention, run them repeatedly, and provide reports on which tests passed or failed. This saves time and ensures consistent testing.",
       "topic": {
         "topics": [
@@ -105,12 +105,12 @@ module.exports = {
       "id": 4,
       "question": "What does a passing test indicate?",
       "options": {
-        "A": "The code is ready for production",
+        "A": "The code meets the test requirements",
         "B": "The code is completely bug-free",
         "C": "The code is optimized for performance",
-        "D": "The code meets the test requirements"
+        "D": "The code is ready for production"
       },
-      "correct": "D",
+      "correct": "A",
       "explanation": "A passing test means the code currently meets the specific requirements defined in that test. It doesn't guarantee the code is perfect, but it confirms the tested behavior works as expected.",
       "topic": {
         "topics": [
@@ -122,12 +122,12 @@ module.exports = {
       "id": 5,
       "question": "Why is isolation important in unit testing?",
       "options": {
-        "A": "To reduce test file size",
+        "A": "To test one thing at a time without external dependencies",
         "B": "To make tests run in parallel",
-        "C": "To test one thing at a time without external dependencies",
+        "C": "To reduce test file size",
         "D": "To use less memory"
       },
-      "correct": "C",
+      "correct": "A",
       "explanation": "Isolation ensures that unit tests focus on testing one specific piece of functionality without interference from external dependencies. This makes tests more reliable and easier to debug when they fail.",
       "topic": {
         "topics": [
@@ -139,12 +139,12 @@ module.exports = {
       "id": 6,
       "question": "What is a test runner?",
       "options": {
-        "A": "A type of assertion method",
+        "A": "A tool that executes tests and reports results",
         "B": "A person who manually tests software",
-        "C": "A tool that executes tests and reports results",
+        "C": "A type of assertion method",
         "D": "A performance monitoring tool"
       },
-      "correct": "C",
+      "correct": "A",
       "explanation": "A test runner is software that automatically finds test files, executes the tests, and reports which tests passed or failed. Test runners work with any testing framework to automate the testing process.",
       "topic": {
         "topics": [
@@ -173,12 +173,12 @@ module.exports = {
       "id": 8,
       "question": "What is the purpose of test descriptions?",
       "options": {
-        "A": "To add comments to the code",
+        "A": "To clearly state what behavior is being tested",
         "B": "To make tests look more professional",
         "C": "To satisfy the test framework requirements",
-        "D": "To clearly state what behavior is being tested"
+        "D": "To add comments to the code"
       },
-      "correct": "D",
+      "correct": "A",
       "explanation": "Clear test descriptions help developers understand what specific behavior is being verified. When tests fail, good descriptions make it easier to identify what's broken and why.",
       "topic": {
         "topics": [
@@ -208,11 +208,11 @@ module.exports = {
       "question": "What does a test suite contain?",
       "options": {
         "A": "Testing documentation",
-        "B": "A single test assertion",
-        "C": "A collection of related test cases",
+        "B": "A collection of related test cases",
+        "C": "A single test assertion",
         "D": "Performance benchmarks"
       },
-      "correct": "C",
+      "correct": "B",
       "explanation": "A test suite is a collection of test cases that are grouped together, usually testing related functionality or a specific module of the application.",
       "topic": {
         "topics": [
@@ -225,11 +225,11 @@ module.exports = {
       "question": "Why are automated tests valuable?",
       "options": {
         "A": "They never need to be updated",
-        "B": "They eliminate all bugs automatically",
+        "B": "They can run quickly and repeatedly without manual effort",
         "C": "They write the code for you",
-        "D": "They can run quickly and repeatedly without manual effort"
+        "D": "They eliminate all bugs automatically"
       },
-      "correct": "D",
+      "correct": "B",
       "explanation": "Automated tests save time and effort by running frequently during development, catching issues early, and ensuring code quality without manual testing for every change.",
       "topic": {
         "topics": [
@@ -242,11 +242,11 @@ module.exports = {
       "question": "What is a positive test case?",
       "options": {
         "A": "Testing with positive numbers only",
-        "B": "A test that always passes",
+        "B": "Testing with valid inputs that should work correctly",
         "C": "Testing only when you feel positive",
-        "D": "Testing with valid inputs that should work correctly"
+        "D": "A test that always passes"
       },
-      "correct": "D",
+      "correct": "B",
       "explanation": "Positive test cases verify that the system works correctly with valid, expected inputs and normal usage scenarios.",
       "topic": {
         "topics": [
@@ -258,12 +258,12 @@ module.exports = {
       "id": 13,
       "question": "What is a negative test case?",
       "options": {
-        "A": "Testing with invalid inputs and error conditions",
-        "B": "A test that always fails",
+        "A": "A test that always fails",
+        "B": "Testing with invalid inputs and error conditions",
         "C": "Testing with negative numbers",
         "D": "A poorly written test"
       },
-      "correct": "A",
+      "correct": "B",
       "explanation": "Negative test cases verify that the system properly handles invalid inputs, edge cases, and error conditions without crashing or behaving unexpectedly.",
       "topic": {
         "topics": [
@@ -276,11 +276,11 @@ module.exports = {
       "question": "What does 'test coverage' measure?",
       "options": {
         "A": "The percentage of bugs found",
-        "B": "The number of tests written",
+        "B": "How much of the code is executed by tests",
         "C": "How many developers reviewed the tests",
-        "D": "How much of the code is executed by tests"
+        "D": "The number of tests written"
       },
-      "correct": "D",
+      "correct": "B",
       "explanation": "Test coverage is a metric that measures what percentage of your source code is executed when your tests run, helping identify untested areas of the codebase.",
       "topic": {
         "topics": [
@@ -310,11 +310,11 @@ module.exports = {
       "question": "What should you do when you find a bug?",
       "options": {
         "A": "Ignore it if it's minor",
-        "B": "Immediately fix the code without testing",
-        "C": "Write a test that reproduces the bug, then fix it",
+        "B": "Write a test that reproduces the bug, then fix it",
+        "C": "Immediately fix the code without testing",
         "D": "Only fix it before release"
       },
-      "correct": "C",
+      "correct": "B",
       "explanation": "When you find a bug, first write a test that demonstrates the faulty behavior. Then fix the code so the test passes. This ensures the bug doesn't reappear (regression) and documents the expected behavior.",
       "topic": {
         "topics": [
@@ -326,12 +326,12 @@ module.exports = {
       "id": 17,
       "question": "What is the benefit of fast-running tests?",
       "options": {
-        "A": "They provide quick feedback during development",
+        "A": "They're easier to write",
         "B": "They find more complex bugs",
-        "C": "They're easier to write",
+        "C": "They provide quick feedback during development",
         "D": "They use less disk space"
       },
-      "correct": "A",
+      "correct": "C",
       "explanation": "Fast tests can be run frequently during development, providing immediate feedback about whether recent changes broke anything. This encourages developers to run tests often.",
       "topic": {
         "topics": [
@@ -343,12 +343,12 @@ module.exports = {
       "id": 18,
       "question": "What is a mock object used for in testing?",
       "options": {
-        "A": "To simulate real dependencies during testing",
+        "A": "To generate random test data",
         "B": "To make tests look more realistic",
-        "C": "To generate random test data",
+        "C": "To simulate real dependencies during testing",
         "D": "To style test output"
       },
-      "correct": "A",
+      "correct": "C",
       "explanation": "Mock objects simulate the behavior of real dependencies (like databases, APIs, or other services) so you can test units in isolation without relying on external systems.",
       "topic": {
         "topics": [
@@ -378,11 +378,11 @@ module.exports = {
       "question": "Why should tests be independent from each other?",
       "options": {
         "A": "To make tests run in alphabetical order",
-        "B": "So one test failure doesn't affect other tests",
-        "C": "Because they test different functions",
+        "B": "Because they test different functions",
+        "C": "So one test failure doesn't affect other tests",
         "D": "To reduce test file size"
       },
-      "correct": "B",
+      "correct": "C",
       "explanation": "Independent tests don't rely on the state or results of other tests. This ensures that test failures are isolated and tests can run in any order without affecting each other.",
       "topic": {
         "topics": [
@@ -394,12 +394,12 @@ module.exports = {
       "id": 21,
       "question": "What is integration testing?",
       "options": {
-        "A": "Testing how multiple units work together",
+        "A": "Testing the user interface only",
         "B": "Testing individual functions in isolation",
-        "C": "Testing the user interface only",
+        "C": "Testing how multiple units work together",
         "D": "Testing with integrated development environments"
       },
-      "correct": "A",
+      "correct": "C",
       "explanation": "Integration testing verifies that different units or components work correctly when combined together, testing the interactions between them rather than individual units in isolation.",
       "topic": {
         "topics": [
@@ -413,10 +413,10 @@ module.exports = {
       "options": {
         "A": "They find more complex bugs",
         "B": "They run faster as a group",
-        "C": "They're easier to write",
-        "D": "Easier to pinpoint exactly what's broken"
+        "C": "Easier to pinpoint exactly what's broken",
+        "D": "They're easier to write"
       },
-      "correct": "D",
+      "correct": "C",
       "explanation": "Small, focused tests each verify one specific behavior. When a test fails, it's immediately clear what exact functionality is broken, making debugging much easier.",
       "topic": {
         "topics": [
@@ -428,12 +428,12 @@ module.exports = {
       "id": 23,
       "question": "What do testing frameworks typically provide?",
       "options": {
-        "A": "Assertion methods, test runners, and utilities",
+        "A": "Performance optimization tools",
         "B": "Code editors and debuggers",
-        "C": "Performance optimization tools",
+        "C": "Assertion methods, test runners, and utilities",
         "D": "User interface components"
       },
-      "correct": "A",
+      "correct": "C",
       "explanation": "Testing frameworks provide built-in assertion methods to check conditions, test runners to execute tests, and various utilities for organizing tests, mocking dependencies, and reporting results in a standardized way.",
       "topic": {
         "topics": [
@@ -446,11 +446,11 @@ module.exports = {
       "question": "What is the purpose of test data?",
       "options": {
         "A": "To fill up test databases",
-        "B": "To provide inputs for the code being tested",
+        "B": "To generate random values",
         "C": "To make tests look more realistic",
-        "D": "To generate random values"
+        "D": "To provide inputs for the code being tested"
       },
-      "correct": "B",
+      "correct": "D",
       "explanation": "Test data consists of the specific inputs and expected outputs used to verify that code behaves correctly under various conditions and scenarios.",
       "topic": {
         "topics": [
@@ -479,12 +479,12 @@ module.exports = {
       "id": 26,
       "question": "What should you verify in a test for a sorting function?",
       "options": {
-        "A": "That it correctly sorts various input arrays",
+        "A": "That it doesn't call other functions",
         "B": "That it uses the most efficient algorithm",
         "C": "That it has the fewest lines of code",
-        "D": "That it doesn't call other functions"
+        "D": "That it correctly sorts various input arrays"
       },
-      "correct": "A",
+      "correct": "D",
       "explanation": "Tests for a sorting function should verify it produces correctly sorted output for different inputs: already sorted arrays, reverse-sorted arrays, arrays with duplicates, empty arrays, etc.",
       "topic": {
         "topics": [
@@ -497,11 +497,11 @@ module.exports = {
       "question": "What is the role of assertions in testing?",
       "options": {
         "A": "To log information to the console",
-        "B": "To check if actual results match expected results",
+        "B": "To generate test reports",
         "C": "To stop test execution early",
-        "D": "To generate test reports"
+        "D": "To check if actual results match expected results"
       },
-      "correct": "B",
+      "correct": "D",
       "explanation": "Assertions are the core of testing - they compare the actual output of code with the expected output and fail the test if they don't match.",
       "topic": {
         "topics": [
@@ -514,11 +514,11 @@ module.exports = {
       "question": "What does a test typically verify about a function?",
       "options": {
         "A": "Its internal implementation details",
-        "B": "Its output for given inputs matches expectations",
+        "B": "Its code style follows conventions",
         "C": "Its variable names are meaningful",
-        "D": "Its code style follows conventions"
+        "D": "Its output for given inputs matches expectations"
       },
-      "correct": "B",
+      "correct": "D",
       "explanation": "Good tests focus on verifying the behavior and output of functions (what they do) rather than their internal implementation (how they do it). This allows implementation to change without breaking tests, as long as behavior remains correct.",
       "topic": {
         "topics": [
@@ -531,11 +531,11 @@ module.exports = {
       "question": "What is the benefit of running tests automatically?",
       "options": {
         "A": "Complete elimination of all bugs",
-        "B": "Early detection of problems in the development process",
+        "B": "Reduction in code size",
         "C": "Automatic code optimization",
-        "D": "Reduction in code size"
+        "D": "Early detection of problems in the development process"
       },
-      "correct": "B",
+      "correct": "D",
       "explanation": "Automated tests run as part of the development workflow to catch issues early, before they reach production, saving time and reducing the cost of fixing bugs.",
       "topic": {
         "topics": [
@@ -549,11 +549,11 @@ module.exports = {
       "options": {
         "A": "How to name the test file",
         "B": "Which testing framework to use",
-        "C": "What specific behavior you want to verify",
-        "D": "What assertions are available"
+        "C": "What assertions are available",
+        "D": "What specific behavior you want to verify"
       },
       "explanation": "Before writing any test code, you should clearly understand what specific behavior or requirement you're trying to verify. This ensures the test has a clear purpose and will provide meaningful feedback.",
-      "correct": "C",
+      "correct": "D",
       "topic": {
         "topics": [
           "Testing workflow"

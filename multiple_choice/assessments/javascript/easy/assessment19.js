@@ -54,12 +54,12 @@ module.exports = {
       "id": 1,
       "question": "What is the result of [CODE]'hello'.length[/CODE]?",
       "options": {
-        "A": "<pre>4</pre>",
-        "B": "<pre>5</pre>",
+        "A": "<pre>5</pre>",
+        "B": "<pre>4</pre>",
         "C": "<pre>6</pre>",
         "D": "<pre>undefined</pre>"
       },
-      "correct": "B",
+      "correct": "A",
       "explanation": "The <pre>length</pre> property returns the number of characters in a string. 'hello' has 5 characters: h, e, l, l, o.",
       "topic": {
         "topics": [
@@ -105,12 +105,12 @@ module.exports = {
       "id": 4,
       "question": "What does [CODE]'hello'.includes('ell')[/CODE] return?",
       "options": {
-        "A": "<pre>false</pre>",
-        "B": "<pre>true</pre>",
+        "A": "<pre>true</pre>",
+        "B": "<pre>false</pre>",
         "C": "<pre>2</pre>",
         "D": "<pre>'ell'</pre>"
       },
-      "correct": "B",
+      "correct": "A",
       "explanation": "The <pre>includes()</pre> method returns <pre>true</pre> if the string contains the specified substring, <pre>false</pre> otherwise.",
       "topic": {
         "topics": [
@@ -122,12 +122,12 @@ module.exports = {
       "id": 5,
       "question": "What is the result of [CODE]'hello'.indexOf('l')[/CODE]?",
       "options": {
-        "A": "<pre>-1</pre>",
+        "A": "<pre>2</pre>",
         "B": "<pre>3</pre>",
         "C": "<pre>1</pre>",
-        "D": "<pre>2</pre>"
+        "D": "<pre>-1</pre>"
       },
-      "correct": "D",
+      "correct": "A",
       "explanation": "The <pre>indexOf()</pre> method returns the position of the first occurrence of the specified value, starting the search from the beginning.",
       "topic": {
         "topics": [
@@ -139,12 +139,12 @@ module.exports = {
       "id": 6,
       "question": "What does [CODE]'hello'.slice(1, 4)[/CODE] return?",
       "options": {
-        "A": "<pre>'ello'</pre>",
+        "A": "<pre>'ell'</pre>",
         "B": "<pre>'hel'</pre>",
-        "C": "<pre>'ell'</pre>",
+        "C": "<pre>'ello'</pre>",
         "D": "<pre>'ll'</pre>"
       },
-      "correct": "C",
+      "correct": "A",
       "explanation": "The <pre>slice()</pre> method extracts a section from index 1 (inclusive) to index 4 (exclusive), returning 'ell'.",
       "topic": {
         "topics": [
@@ -156,12 +156,12 @@ module.exports = {
       "id": 7,
       "question": "What is the result of [CODE]' hello '.trim()[/CODE]?",
       "options": {
-        "A": "<pre>' hello'</pre>",
+        "A": "<pre>'hello'</pre>",
         "B": "<pre>' hello '</pre>",
         "C": "<pre>'hello '</pre>",
-        "D": "<pre>'hello'</pre>"
+        "D": "<pre>' hello'</pre>"
       },
-      "correct": "D",
+      "correct": "A",
       "explanation": "The <pre>trim()</pre> method removes whitespace from both ends of a string, returning 'hello' without the surrounding spaces.",
       "topic": {
         "topics": [
@@ -173,12 +173,12 @@ module.exports = {
       "id": 8,
       "question": "What does [CODE]'hello'.replace('l', 'x')[/CODE] return?",
       "options": {
-        "A": "<pre>'hexxo'</pre>",
-        "B": "<pre>'hexlo'</pre>",
+        "A": "<pre>'hexlo'</pre>",
+        "B": "<pre>'hexxo'</pre>",
         "C": "<pre>'hello'</pre>",
         "D": "<pre>'hexo'</pre>"
       },
-      "correct": "B",
+      "correct": "A",
       "explanation": "The <pre>replace()</pre> method replaces only the first occurrence of the specified value unless using a global regex.",
       "topic": {
         "topics": [
@@ -208,11 +208,11 @@ module.exports = {
       "question": "What does [CODE]'hello'.endsWith('lo')[/CODE] return?",
       "options": {
         "A": "<pre>3</pre>",
-        "B": "<pre>false</pre>",
-        "C": "<pre>true</pre>",
+        "B": "<pre>true</pre>",
+        "C": "<pre>false</pre>",
         "D": "<pre>'lo'</pre>"
       },
-      "correct": "C",
+      "correct": "B",
       "explanation": "The <pre>endsWith()</pre> method returns <pre>true</pre> if the string ends with the specified characters, <pre>false</pre> otherwise.",
       "topic": {
         "topics": [
@@ -224,12 +224,12 @@ module.exports = {
       "id": 11,
       "question": "What is the result of [CODE]'hello'.concat(' world')[/CODE]?",
       "options": {
-        "A": "<pre>'hello world'</pre>",
-        "B": "<pre>'helloworld'</pre>",
+        "A": "<pre>'helloworld'</pre>",
+        "B": "<pre>'hello world'</pre>",
         "C": "<pre>'hello world '</pre>",
         "D": "<pre>Error</pre>"
       },
-      "correct": "A",
+      "correct": "B",
       "explanation": "The <pre>concat()</pre> method joins two or more strings, returning a new concatenated string.",
       "topic": {
         "topics": [
@@ -241,12 +241,12 @@ module.exports = {
       "id": 12,
       "question": "What does [CODE]'HELLO'.toLowerCase().toUpperCase()[/CODE] return?",
       "options": {
-        "A": "<pre>'HELLO'</pre>",
-        "B": "<pre>'hello'</pre>",
+        "A": "<pre>'hello'</pre>",
+        "B": "<pre>'HELLO'</pre>",
         "C": "<pre>'Hello'</pre>",
         "D": "<pre>Error</pre>"
       },
-      "correct": "A",
+      "correct": "B",
       "explanation": "First <pre>toLowerCase()</pre> converts to 'hello', then <pre>toUpperCase()</pre> converts it back to 'HELLO'.",
       "topic": {
         "topics": [
@@ -258,12 +258,12 @@ module.exports = {
       "id": 13,
       "question": "What is the result of [CODE]'hello'.lastIndexOf('l')[/CODE]?",
       "options": {
-        "A": "<pre>3</pre>",
-        "B": "<pre>2</pre>",
+        "A": "<pre>2</pre>",
+        "B": "<pre>3</pre>",
         "C": "<pre>4</pre>",
         "D": "<pre>-1</pre>"
       },
-      "correct": "A",
+      "correct": "B",
       "explanation": "The <pre>lastIndexOf()</pre> method returns the position of the last occurrence of the specified value.",
       "topic": {
         "topics": [
@@ -276,11 +276,11 @@ module.exports = {
       "question": "What does [CODE]'hello'.split('')[/CODE] return?",
       "options": {
         "A": "<pre>Error</pre>",
-        "B": "<pre>'h,e,l,l,o'</pre>",
+        "B": "<pre>['h','e','l','l','o']</pre>",
         "C": "<pre>'hello'</pre>",
-        "D": "<pre>['h','e','l','l','o']</pre>"
+        "D": "<pre>'h,e,l,l,o'</pre>"
       },
-      "correct": "D",
+      "correct": "B",
       "explanation": "The <pre>split()</pre> method divides a string into an array of substrings using an empty string as separator, splitting between each character.",
       "topic": {
         "topics": [
@@ -293,11 +293,11 @@ module.exports = {
       "question": "What is the result of [CODE]'hello'.charCodeAt(0)[/CODE]?",
       "options": {
         "A": "<pre>108</pre>",
-        "B": "<pre>101</pre>",
-        "C": "<pre>104</pre>",
+        "B": "<pre>104</pre>",
+        "C": "<pre>101</pre>",
         "D": "<pre>111</pre>"
       },
-      "correct": "C",
+      "correct": "B",
       "explanation": "The <pre>charCodeAt()</pre> method returns the Unicode of the character at the specified position. 'h' has Unicode 104.",
       "topic": {
         "topics": [
@@ -309,12 +309,12 @@ module.exports = {
       "id": 16,
       "question": "What does [CODE]'hello'.startsWith('he')[/CODE] return?",
       "options": {
-        "A": "<pre>true</pre>",
-        "B": "<pre>false</pre>",
+        "A": "<pre>false</pre>",
+        "B": "<pre>true</pre>",
         "C": "<pre>0</pre>",
         "D": "<pre>'he'</pre>"
       },
-      "correct": "A",
+      "correct": "B",
       "explanation": "The <pre>startsWith()</pre> method returns <pre>true</pre> if the string begins with the specified characters, <pre>false</pre> otherwise.",
       "topic": {
         "topics": [
@@ -327,11 +327,11 @@ module.exports = {
       "question": "What is the result of [CODE]'hello'.repeat(2)[/CODE]?",
       "options": {
         "A": "<pre>'hello2'</pre>",
-        "B": "<pre>'hellohello'</pre>",
-        "C": "<pre>'hello hello'</pre>",
+        "B": "<pre>'hello hello'</pre>",
+        "C": "<pre>'hellohello'</pre>",
         "D": "<pre>Error</pre>"
       },
-      "correct": "B",
+      "correct": "C",
       "explanation": "The <pre>repeat()</pre> method returns a new string containing the specified number of copies of the original string.",
       "topic": {
         "topics": [
@@ -362,10 +362,10 @@ module.exports = {
       "options": {
         "A": "<pre>'!hello!'</pre>",
         "B": "<pre>'!!hello'</pre>",
-        "C": "<pre>'hello!'</pre>",
-        "D": "<pre>'hello!!'</pre>"
+        "C": "<pre>'hello!!'</pre>",
+        "D": "<pre>'hello!'</pre>"
       },
-      "correct": "D",
+      "correct": "C",
       "explanation": "The <pre>padEnd()</pre> method pads the current string from the end with the specified string until reaching the target length.",
       "topic": {
         "topics": [
@@ -378,11 +378,11 @@ module.exports = {
       "question": "What does [CODE]'Hello World'.toLocaleLowerCase()[/CODE] typically return?",
       "options": {
         "A": "<pre>'HELLO WORLD'</pre>",
-        "B": "<pre>'hello world'</pre>",
-        "C": "<pre>'Hello world'</pre>",
+        "B": "<pre>'Hello world'</pre>",
+        "C": "<pre>'hello world'</pre>",
         "D": "<pre>Error</pre>"
       },
-      "correct": "B",
+      "correct": "C",
       "explanation": "The <pre>toLocaleLowerCase()</pre> method returns the string converted to lowercase according to locale-specific mappings, usually same as <pre>toLowerCase()</pre> for English.",
       "topic": {
         "topics": [
@@ -396,10 +396,10 @@ module.exports = {
       "options": {
         "A": "<pre>'l'</pre>",
         "B": "<pre>3</pre>",
-        "C": "<pre>true</pre>",
-        "D": "<pre>2</pre>"
+        "C": "<pre>2</pre>",
+        "D": "<pre>true</pre>"
       },
-      "correct": "D",
+      "correct": "C",
       "explanation": "The <pre>search()</pre> method returns the position of the first match of the specified value, similar to <pre>indexOf()</pre> but accepts regex.",
       "topic": {
         "topics": [
@@ -429,11 +429,11 @@ module.exports = {
       "question": "What is the result of [CODE]'hello'.normalize()[/CODE]?",
       "options": {
         "A": "<pre>'HELLO'</pre>",
-        "B": "<pre>'hello'</pre>",
-        "C": "<pre>'h e l l o'</pre>",
+        "B": "<pre>'h e l l o'</pre>",
+        "C": "<pre>'hello'</pre>",
         "D": "<pre>Error</pre>"
       },
-      "correct": "B",
+      "correct": "C",
       "explanation": "The <pre>normalize()</pre> method returns the Unicode Normalization Form of the string. For simple ASCII strings like 'hello', it returns the same string.",
       "topic": {
         "topics": [
@@ -447,10 +447,10 @@ module.exports = {
       "options": {
         "A": "<pre>'hello'</pre>",
         "B": "<pre>'  hello'</pre>",
-        "C": "<pre>'hello  '</pre>",
-        "D": "<pre>'  hello  '</pre>"
+        "C": "<pre>'  hello  '</pre>",
+        "D": "<pre>'hello  '</pre>"
       },
-      "correct": "C",
+      "correct": "D",
       "explanation": "The <pre>trimStart()</pre> method removes whitespace from the beginning of a string, leaving trailing whitespace intact.",
       "topic": {
         "topics": [
@@ -479,12 +479,12 @@ module.exports = {
       "id": 26,
       "question": "What does [CODE]parseFloat('3.14.15')[/CODE] return?",
       "options": {
-        "A": "<pre>3.14</pre>",
+        "A": "<pre>Error</pre>",
         "B": "<pre>3.14.15</pre>",
         "C": "<pre>NaN</pre>",
-        "D": "<pre>Error</pre>"
+        "D": "<pre>3.14</pre>"
       },
-      "correct": "A",
+      "correct": "D",
       "explanation": "The <pre>parseFloat()</pre> function parses a string and returns a floating point number, stopping at the second decimal point.",
       "topic": {
         "topics": [
@@ -496,12 +496,12 @@ module.exports = {
       "id": 27,
       "question": "What is the result of [CODE]String.fromCharCode(72, 105)[/CODE]?",
       "options": {
-        "A": "<pre>'Hi'</pre>",
+        "A": "<pre>Error</pre>",
         "B": "<pre>'72,105'</pre>",
         "C": "<pre>[72, 105]</pre>",
-        "D": "<pre>Error</pre>"
+        "D": "<pre>'Hi'</pre>"
       },
-      "correct": "A",
+      "correct": "D",
       "explanation": "The <pre>String.fromCharCode()</pre> method creates a string from a sequence of Unicode values. 72='H', 105='i'.",
       "topic": {
         "topics": [
@@ -514,11 +514,11 @@ module.exports = {
       "question": "What does [CODE]'hello'.localeCompare('hello')[/CODE] return?",
       "options": {
         "A": "<pre>1</pre>",
-        "B": "<pre>0</pre>",
+        "B": "<pre>true</pre>",
         "C": "<pre>-1</pre>",
-        "D": "<pre>true</pre>"
+        "D": "<pre>0</pre>"
       },
-      "correct": "B",
+      "correct": "D",
       "explanation": "The <pre>localeCompare()</pre> method returns 0 if the strings are equal, -1 if the reference string comes before, or 1 if it comes after.",
       "topic": {
         "topics": [
@@ -549,10 +549,10 @@ module.exports = {
       "options": {
         "A": "<pre>'helxo'</pre>",
         "B": "<pre>'hexlo'</pre>",
-        "C": "<pre>'hexxo'</pre>",
-        "D": "<pre>'hello'</pre>"
+        "C": "<pre>'hello'</pre>",
+        "D": "<pre>'hexxo'</pre>"
       },
-      "correct": "C",
+      "correct": "D",
       "explanation": "First <pre>split('l')</pre> creates ['he', '', 'o'], then <pre>join('x')</pre> joins with 'x' between elements, creating 'hexxo'.",
       "topic": {
         "topics": [

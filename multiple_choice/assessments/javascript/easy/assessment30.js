@@ -71,12 +71,12 @@ module.exports = {
       "id": 2,
       "question": "How does Map handle different data types as keys?",
       "options": {
-        "A": "Converts them to strings",
-        "B": "Preserves the original type",
+        "A": "Preserves the original type",
+        "B": "Converts them to strings",
         "C": "Converts them to numbers",
         "D": "Only allows strings"
       },
-      "correct": "B",
+      "correct": "A",
       "explanation": "Map preserves the exact data type of keys, so numbers, objects, and functions can all be used as distinct keys.",
       "topic": {
         "topics": [
@@ -88,12 +88,12 @@ module.exports = {
       "id": 3,
       "question": "What is the result? [CODE]const obj = {};\nobj[1] = 'number';\nobj['1'] = 'string';\nconsole.log(obj[1]);[/CODE]",
       "options": {
-        "A": "<pre>undefined</pre>",
+        "A": "<pre>'string'</pre>",
         "B": "<pre>'number'</pre>",
-        "C": "<pre>'string'</pre>",
+        "C": "<pre>undefined</pre>",
         "D": "Throws error"
       },
-      "correct": "C",
+      "correct": "A",
       "explanation": "Both <pre>1</pre> and <pre>'1'</pre> become the same string key <pre>'1'</pre> in objects, so the last assignment wins.",
       "topic": {
         "topics": [
@@ -122,12 +122,12 @@ module.exports = {
       "id": 5,
       "question": "What happens when you use an object as an object key?",
       "options": {
-        "A": "It works as expected",
-        "B": "It gets converted to string '[object Object]'",
+        "A": "It gets converted to string '[object Object]'",
+        "B": "It works as expected",
         "C": "It causes an error",
         "D": "It becomes null"
       },
-      "correct": "B",
+      "correct": "A",
       "explanation": "Objects used as keys get converted to the string <pre>'[object Object]'</pre>, so all objects become the same key.",
       "topic": {
         "topics": [
@@ -156,12 +156,12 @@ module.exports = {
       "id": 7,
       "question": "What is the result? [CODE]const obj = {};\nconst key1 = {};\nconst key2 = {};\nobj[key1] = 'first';\nobj[key2] = 'second';\nconsole.log(obj[key1]);[/CODE]",
       "options": {
-        "A": "<pre>'first'</pre>",
-        "B": "<pre>'second'</pre>",
+        "A": "<pre>'second'</pre>",
+        "B": "<pre>'first'</pre>",
         "C": "<pre>undefined</pre>",
         "D": "Throws error"
       },
-      "correct": "B",
+      "correct": "A",
       "explanation": "Both objects become the string <pre>'[object Object]'</pre> as keys, so the second assignment overwrites the first.",
       "topic": {
         "topics": [
@@ -190,12 +190,12 @@ module.exports = {
       "id": 9,
       "question": "What is the result? [CODE]const set = new Set();\nset.add(NaN);\nset.add(NaN);\nconsole.log(set.size);[/CODE]",
       "options": {
-        "A": "<pre>1</pre>",
-        "B": "<pre>2</pre>",
+        "A": "<pre>2</pre>",
+        "B": "<pre>1</pre>",
         "C": "<pre>0</pre>",
         "D": "Throws error"
       },
-      "correct": "A",
+      "correct": "B",
       "explanation": "Set treats all NaN values as identical, so the second add() has no effect.",
       "topic": {
         "topics": [
@@ -225,11 +225,11 @@ module.exports = {
       "question": "Can Map use functions as keys?",
       "options": {
         "A": "Functions get converted to strings",
-        "B": "No, only primitives allowed",
+        "B": "Yes, functions can be Map keys",
         "C": "Only arrow functions",
-        "D": "Yes, functions can be Map keys"
+        "D": "No, only primitives allowed"
       },
-      "correct": "D",
+      "correct": "B",
       "explanation": "Map can use any value as a key, including functions, and preserves them as distinct keys.",
       "topic": {
         "topics": [
@@ -242,11 +242,11 @@ module.exports = {
       "question": "What is the result? [CODE]const obj = {};\nobj[true] = 'bool';\nobj['true'] = 'string';\nconsole.log(obj[true]);[/CODE]",
       "options": {
         "A": "Throws error",
-        "B": "<pre>'bool'</pre>",
+        "B": "<pre>'string'</pre>",
         "C": "<pre>undefined</pre>",
-        "D": "<pre>'string'</pre>"
+        "D": "<pre>'bool'</pre>"
       },
-      "correct": "D",
+      "correct": "B",
       "explanation": "<pre>true</pre> becomes string <pre>'true'</pre>, so both assignments use the same key and the last one wins.",
       "topic": {
         "topics": [
@@ -276,11 +276,11 @@ module.exports = {
       "question": "What is a common pitfall when using arrays as object keys?",
       "options": {
         "A": "Only empty arrays work as keys",
-        "B": "Arrays cannot be object keys",
-        "C": "All arrays become the same '[object Object]' key",
+        "B": "All arrays become the same '[object Object]' key",
+        "C": "Arrays cannot be object keys",
         "D": "Arrays get sorted automatically"
       },
-      "correct": "C",
+      "correct": "B",
       "explanation": "Arrays used as object keys get converted to the string <pre>'[object Object]'</pre>, making all arrays the same key.",
       "topic": {
         "topics": [
@@ -292,12 +292,12 @@ module.exports = {
       "id": 15,
       "question": "What is the result? [CODE]const map = new Map();\nconst arr1 = [1, 2];\nconst arr2 = [1, 2];\nmap.set(arr1, 'first');\nmap.set(arr2, 'second');\nconsole.log(map.get(arr1));[/CODE]",
       "options": {
-        "A": "<pre>'first'</pre>",
-        "B": "<pre>'second'</pre>",
+        "A": "<pre>'second'</pre>",
+        "B": "<pre>'first'</pre>",
         "C": "<pre>undefined</pre>",
         "D": "Throws error"
       },
-      "correct": "A",
+      "correct": "B",
       "explanation": "Map uses object identity, not content. <pre>arr1</pre> and <pre>arr2</pre> are different objects, so they are different keys.",
       "topic": {
         "topics": [
@@ -310,11 +310,11 @@ module.exports = {
       "question": "What happens with null and undefined as object keys?",
       "options": {
         "A": "They become empty strings",
-        "B": "They cause errors",
+        "B": "They become strings 'null' and 'undefined'",
         "C": "They stay as null and undefined",
-        "D": "They become strings 'null' and 'undefined'"
+        "D": "They cause errors"
       },
-      "correct": "D",
+      "correct": "B",
       "explanation": "null and undefined get converted to strings <pre>'null'</pre> and <pre>'undefined'</pre> when used as object keys.",
       "topic": {
         "topics": [
@@ -344,11 +344,11 @@ module.exports = {
       "question": "What is the result? [CODE]const obj = {};\nobj[null] = 'null';\nobj[undefined] = 'undefined';\nconsole.log(obj['null']);[/CODE]",
       "options": {
         "A": "<pre>'undefined'</pre>",
-        "B": "<pre>'null'</pre>",
-        "C": "<pre>undefined</pre>",
+        "B": "<pre>undefined</pre>",
+        "C": "<pre>'null'</pre>",
         "D": "Throws error"
       },
-      "correct": "B",
+      "correct": "C",
       "explanation": "Both null and undefined become string keys, so <pre>obj['null']</pre> accesses the value set with <pre>obj[null]</pre>.",
       "topic": {
         "topics": [
@@ -360,12 +360,12 @@ module.exports = {
       "id": 19,
       "question": "Can Set contain duplicate objects?",
       "options": {
-        "A": "Yes, if they are different object instances",
+        "A": "Only if they have different properties",
         "B": "No, objects are always deduplicated",
-        "C": "Only if they have different properties",
+        "C": "Yes, if they are different object instances",
         "D": "Objects cannot be added to Set"
       },
-      "correct": "A",
+      "correct": "C",
       "explanation": "Set uses object identity, so different object instances with the same content are considered different values.",
       "topic": {
         "topics": [
@@ -378,11 +378,11 @@ module.exports = {
       "question": "What is a key advantage of Map for numeric keys?",
       "options": {
         "A": "Automatically sorts numeric keys",
-        "B": "Preserves number type without string conversion",
-        "C": "Faster access for numbers",
+        "B": "Faster access for numbers",
+        "C": "Preserves number type without string conversion",
         "D": "Smaller memory usage for numbers"
       },
-      "correct": "B",
+      "correct": "C",
       "explanation": "Map keeps numbers as numbers, avoiding the string conversion that happens with object keys.",
       "topic": {
         "topics": [
@@ -396,10 +396,10 @@ module.exports = {
       "options": {
         "A": "Throws error",
         "B": "<pre>2</pre>",
-        "C": "<pre>0</pre>",
-        "D": "<pre>1</pre>"
+        "C": "<pre>1</pre>",
+        "D": "<pre>0</pre>"
       },
-      "correct": "D",
+      "correct": "C",
       "explanation": "Set treats +0 and -0 as the same value, so the second add() has no effect.",
       "topic": {
         "topics": [
@@ -413,10 +413,10 @@ module.exports = {
       "options": {
         "A": "It becomes undefined",
         "B": "It becomes a string",
-        "C": "It causes an error",
-        "D": "It stays as a Symbol without conversion"
+        "C": "It stays as a Symbol without conversion",
+        "D": "It causes an error"
       },
-      "correct": "D",
+      "correct": "C",
       "explanation": "Symbols are one of the few data types that don't get converted when used as object keys.",
       "topic": {
         "topics": [
@@ -430,10 +430,10 @@ module.exports = {
       "options": {
         "A": "Converts them to strings first",
         "B": "Treats them as the same key",
-        "C": "Compares their properties",
-        "D": "Treats them as different keys"
+        "C": "Treats them as different keys",
+        "D": "Compares their properties"
       },
-      "correct": "D",
+      "correct": "C",
       "explanation": "Map uses object identity, so different object instances are always different keys regardless of content.",
       "topic": {
         "topics": [
@@ -446,11 +446,11 @@ module.exports = {
       "question": "What is the result? [CODE]const obj = {};\nobj[1] = 'one';\nobj['01'] = 'zero one';\nconsole.log(obj[1]);[/CODE]",
       "options": {
         "A": "<pre>'zero one'</pre>",
-        "B": "<pre>'one'</pre>",
+        "B": "Throws error",
         "C": "<pre>undefined</pre>",
-        "D": "Throws error"
+        "D": "<pre>'one'</pre>"
       },
-      "correct": "B",
+      "correct": "D",
       "explanation": "<pre>1</pre> becomes <pre>'1'</pre> and <pre>'01'</pre> stays <pre>'01'</pre>, so they are different keys.",
       "topic": {
         "topics": [
@@ -464,10 +464,10 @@ module.exports = {
       "options": {
         "A": "When you need prototype methods",
         "B": "When you need JSON serialization",
-        "C": "When you need to preserve key types",
-        "D": "When working with simple string keys"
+        "C": "When working with simple string keys",
+        "D": "When you need to preserve key types"
       },
-      "correct": "C",
+      "correct": "D",
       "explanation": "Map is better when you need to use various data types as keys without them being converted to strings.",
       "topic": {
         "topics": [
@@ -498,10 +498,10 @@ module.exports = {
       "options": {
         "A": "Automatic sorting of numeric keys",
         "B": "Numbers being too large as keys",
-        "C": "Accidental key overwrites due to string conversion",
-        "D": "Numbers becoming floats"
+        "C": "Numbers becoming floats",
+        "D": "Accidental key overwrites due to string conversion"
       },
-      "correct": "C",
+      "correct": "D",
       "explanation": "Different numeric values that become the same string key can accidentally overwrite each other in objects.",
       "topic": {
         "topics": [
@@ -515,10 +515,10 @@ module.exports = {
       "options": {
         "A": "Objects cannot be added to Set",
         "B": "Objects with same content are deduplicated",
-        "C": "Each object reference is unique",
-        "D": "Objects get converted to strings"
+        "C": "Objects get converted to strings",
+        "D": "Each object reference is unique"
       },
-      "correct": "C",
+      "correct": "D",
       "explanation": "Set stores object references, so each object instance is unique regardless of its properties.",
       "topic": {
         "topics": [
@@ -530,12 +530,12 @@ module.exports = {
       "id": 29,
       "question": "What is the result? [CODE]const obj = {};\nobj[[1,2]] = 'array';\nobj[[1,2]] = 'another array';\nconsole.log(Object.keys(obj).length);[/CODE]",
       "options": {
-        "A": "<pre>1</pre>",
+        "A": "Throws error",
         "B": "<pre>2</pre>",
         "C": "<pre>0</pre>",
-        "D": "Throws error"
+        "D": "<pre>1</pre>"
       },
-      "correct": "A",
+      "correct": "D",
       "explanation": "Both arrays become the string <pre>'1,2'</pre> as keys, so the second assignment overwrites the first.",
       "topic": {
         "topics": [
@@ -549,10 +549,10 @@ module.exports = {
       "options": {
         "A": "Objects cannot store DOM references",
         "B": "Map is faster for DOM operations",
-        "C": "DOM elements can be used as keys directly",
-        "D": "Map automatically cleans up DOM references"
+        "C": "Map automatically cleans up DOM references",
+        "D": "DOM elements can be used as keys directly"
       },
-      "correct": "C",
+      "correct": "D",
       "explanation": "Map allows using DOM elements as keys, while objects would convert them to useless string <pre>'[object Object]'</pre>.",
       "topic": {
         "topics": [

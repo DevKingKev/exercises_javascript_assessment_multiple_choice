@@ -69,12 +69,12 @@ module.exports = {
       "id": 1,
       "question": "What will the following code output?\n\n[CODE]\nfunction outer() {\n    let count = 0;\n    return function inner() {\n        count++;\n        return count;\n    };\n}\n\nconst counter = outer();\nconsole.log(counter());\nconsole.log(counter());\n[/CODE]",
       "options": {
-        "A": "0, 0",
-        "B": "1, 2",
+        "A": "1, 2",
+        "B": "0, 0",
         "C": "1, 1",
         "D": "undefined, undefined"
       },
-      "correct": "B",
+      "correct": "A",
       "explanation": "This demonstrates a closure. The inner function maintains access to the 'count' variable from the outer function's scope even after outer() has finished executing. This is called lexical scoping.\n\nWhen counter() is called the first time, count increments from 0 to 1 and returns 1. The second call increments it to 2 and returns 2. The variable persists between calls because the inner function 'closes over' the outer function's variables, creating a closure that preserves the state.",
       "topic": {
         "topics": [
@@ -87,12 +87,12 @@ module.exports = {
       "id": 2,
       "question": "What is the output of this code?\n\n[CODE]\nconst arr = [1, 2, 3, 4, 5];\nconst result = arr.reduce((acc, curr) => acc + curr, 0);\nconsole.log(result);\n[/CODE]",
       "options": {
-        "A": "0",
+        "A": "15",
         "B": "[1, 2, 3, 4, 5]",
-        "C": "15",
+        "C": "0",
         "D": "undefined"
       },
-      "correct": "C",
+      "correct": "A",
       "explanation": "The reduce() method executes a reducer function on each element of the array, resulting in a single output value. It takes two parameters: the reducer function and an initial value (0 in this case).\n\nThe reducer function receives an accumulator (acc) and the current value (curr). Starting with acc = 0:\n- First iteration: 0 + 1 = 1\n- Second: 1 + 2 = 3\n- Third: 3 + 3 = 6\n- Fourth: 6 + 4 = 10\n- Fifth: 10 + 5 = 15\n\nReduce is powerful for transforming arrays into single values like sums, products, or even objects.",
       "topic": {
         "topics": [
@@ -141,12 +141,12 @@ module.exports = {
       "id": 5,
       "question": "What is the difference between 'async/await' and Promises?",
       "options": {
-        "A": "async/await is faster than Promises",
-        "B": "async/await is syntactic sugar that makes Promises easier to work with",
+        "A": "async/await is syntactic sugar that makes Promises easier to work with",
+        "B": "async/await is faster than Promises",
         "C": "async/await doesn't use Promises at all",
         "D": "Promises are deprecated in favor of async/await"
       },
-      "correct": "B",
+      "correct": "A",
       "explanation": "async/await is syntactic sugar built on top of Promises, making asynchronous code look and behave more like synchronous code. They don't replace Promises - they make them easier to use.\n\nKey points:\n- An async function always returns a Promise\n- await can only be used inside async functions\n- await pauses execution until the Promise resolves\n- Error handling uses try/catch instead of .catch()\n\nExample comparison:\n\nPromises:\nfetch(url)\n    .then(response => response.json())\n    .then(data => console.log(data))\n    .catch(error => console.error(error));\n\nasync/await:\ntry {\n    const response = await fetch(url);\n    const data = await response.json();\n    console.log(data);\n} catch (error) {\n    console.error(error);\n}\n\nBoth accomplish the same thing, but async/await is often more readable.",
       "topic": {
         "topics": [
@@ -158,12 +158,12 @@ module.exports = {
       "id": 6,
       "question": "What will this code output?\n\n[CODE]\nconst arr = [1, 2, 3];\nconst [a, ...rest] = arr;\nconsole.log(rest);\n[/CODE]",
       "options": {
-        "A": "1",
+        "A": "[2, 3]",
         "B": "[1, 2, 3]",
         "C": "undefined",
-        "D": "[2, 3]"
+        "D": "1"
       },
-      "correct": "D",
+      "correct": "A",
       "explanation": "This uses destructuring with the rest operator (...). Destructuring allows you to unpack values from arrays or properties from objects into distinct variables.\n\nThe rest operator collects the 'rest' of the elements:\n- 'a' gets the first element (1)\n- '...rest' collects all remaining elements into a new array [2, 3]\n\nThe rest operator must always be the last element in destructuring. It's different from the spread operator (which looks identical but is used differently):\n\nRest (in destructuring): const [first, ...others] = arr;\nSpread (in array literals): const newArr = [...arr, 4, 5];\n\nBoth use '...' syntax but serve opposite purposes - rest collects items, spread expands them.",
       "topic": {
         "topics": [
@@ -197,12 +197,12 @@ module.exports = {
       "id": 8,
       "question": "What will be the output?\n\n[CODE]\nconsole.log(typeof null);\nconsole.log(typeof undefined);\nconsole.log(typeof []);\nconsole.log(typeof {});\n[/CODE]",
       "options": {
-        "A": "'object', 'undefined', 'object', 'object'",
-        "B": "'null', 'undefined', 'array', 'object'",
+        "A": "'null', 'undefined', 'array', 'object'",
+        "B": "'object', 'undefined', 'object', 'object'",
         "C": "'null', 'undefined', 'object', 'object'",
         "D": "'object', 'object', 'array', 'object'"
       },
-      "correct": "A",
+      "correct": "B",
       "explanation": "This reveals some quirks in JavaScript's typeof operator:\n\n1. typeof null returns 'object' - This is a famous JavaScript bug that dates back to its creation! null is a primitive value, not an object, but due to how JavaScript's type system was implemented, this bug was never fixed for backward compatibility reasons.\n\n2. typeof undefined returns 'undefined' - This is correct and expected.\n\n3. typeof [] returns 'object' - Arrays ARE objects in JavaScript (they're a special type of object). To specifically check for arrays, use Array.isArray([]) which returns true.\n\n4. typeof {} returns 'object' - This is correct; {} is an object literal.\n\nTo properly check types:\n- Arrays: Array.isArray(value)\n- null: value === null\n- Objects (excluding null): typeof value === 'object' && value !== null\n- Other primitives: typeof works fine",
       "topic": {
         "topics": [
@@ -216,11 +216,11 @@ module.exports = {
       "question": "What is a closure in JavaScript?",
       "options": {
         "A": "A way to close and terminate a function",
-        "B": "A method to prevent memory leaks",
-        "C": "A function that has access to variables from its outer scope",
+        "B": "A function that has access to variables from its outer scope",
+        "C": "A method to prevent memory leaks",
         "D": "A syntax for defining anonymous functions"
       },
-      "correct": "C",
+      "correct": "B",
       "explanation": "A closure is created when a function is defined inside another function, and the inner function has access to the outer function's variables even after the outer function has finished executing. This is one of JavaScript's most powerful features.\n\nHow closures work:\n\nfunction createCounter() {\n    let count = 0;  // Private variable\n    return {\n        increment: function() {\n            count++;\n            return count;\n        },\n        decrement: function() {\n            count--;\n            return count;\n        }\n    };\n}\n\nconst counter = createCounter();\ncounter.increment(); // 1\ncounter.increment(); // 2\ncounter.decrement(); // 1\n\nThe 'count' variable is enclosed in the closure, accessible to increment and decrement functions but not directly accessible from outside. This creates private variables in JavaScript.\n\nCommon uses:\n- Data privacy/encapsulation\n- Factory functions\n- Callbacks and event handlers\n- Maintaining state in functional programming",
       "topic": {
         "topics": [
@@ -235,11 +235,11 @@ module.exports = {
       "question": "What will this code output?\n\n[CODE]\nconst promise = new Promise((resolve, reject) => {\n    setTimeout(() => resolve('Success!'), 1000);\n});\n\npromise.then(result => console.log(result));\nconsole.log('Waiting...');\n[/CODE]",
       "options": {
         "A": "'Success!' then 'Waiting...'",
-        "B": "Only 'Success!'",
-        "C": "'Waiting...' then 'Success!'",
+        "B": "'Waiting...' then 'Success!'",
+        "C": "Only 'Success!'",
         "D": "Only 'Waiting...'"
       },
-      "correct": "C",
+      "correct": "B",
       "explanation": "This demonstrates JavaScript's asynchronous execution and the event loop. Understanding execution order is crucial for async programming.\n\nExecution flow:\n\n1. The Promise is created and setTimeout is scheduled (but doesn't block)\n2. .then() registers a callback but doesn't execute yet\n3. console.log('Waiting...') executes immediately (synchronous)\n4. The script finishes, and the call stack is empty\n5. After 1 second, setTimeout's callback executes, resolving the Promise\n6. The Promise's .then() callback is added to the microtask queue\n7. The event loop processes microtasks, executing console.log('Success!')\n\nOutput:\n'Waiting...'  (immediately)\n'Success!'    (after 1 second)\n\nKey concepts:\n- Synchronous code runs first\n- Async callbacks (setTimeout) are scheduled for later\n- Promise callbacks (.then) are microtasks and run before setTimeout callbacks\n- The event loop manages when async code executes",
       "topic": {
         "topics": [
@@ -276,11 +276,11 @@ module.exports = {
       "question": "What does the spread operator (...) do in this context?\n\n[CODE]\nconst arr1 = [1, 2, 3];\nconst arr2 = [4, 5, 6];\nconst combined = [...arr1, ...arr2];\n[/CODE]",
       "options": {
         "A": "Creates a nested array",
-        "B": "Throws an error",
+        "B": "Merges the arrays into a single flat array",
         "C": "Creates a reference to the original arrays",
-        "D": "Merges the arrays into a single flat array"
+        "D": "Throws an error"
       },
-      "correct": "D",
+      "correct": "B",
       "explanation": "The spread operator (...) expands an iterable (like an array) into individual elements. It's incredibly versatile and creates shallow copies, not references.\n\nIn this example:\n[...arr1, ...arr2] expands to [1, 2, 3, 4, 5, 6]\n\nCommon use cases:\n\n1. Combining arrays:\nconst all = [...arr1, ...arr2];\n\n2. Copying arrays (shallow copy):\nconst copy = [...original];\n\n3. Adding elements:\nconst withNew = [...arr1, 'new', ...arr2];\n\n4. Function arguments:\nconst numbers = [1, 2, 3];\nMath.max(...numbers); // same as Math.max(1, 2, 3)\n\n5. Object spreading (ES2018+):\nconst obj1 = {a: 1, b: 2};\nconst obj2 = {c: 3};\nconst combined = {...obj1, ...obj2}; // {a: 1, b: 2, c: 3}\n\nImportant: Spread creates a shallow copy. Nested objects/arrays are still referenced, not copied deeply.",
       "topic": {
         "topics": [
@@ -314,10 +314,10 @@ module.exports = {
       "options": {
         "A": "A way to copy properties from one object to another",
         "B": "A way to prevent property access",
-        "C": "A method only available in ES6 classes",
-        "D": "Objects inherit properties and methods from their prototype object"
+        "C": "Objects inherit properties and methods from their prototype object",
+        "D": "A method only available in ES6 classes"
       },
-      "correct": "D",
+      "correct": "C",
       "explanation": "Prototype inheritance is JavaScript's mechanism for object inheritance. Every JavaScript object has an internal link to another object called its prototype, forming a prototype chain.\n\nHow it works:\n\nfunction Person(name) {\n    this.name = name;\n}\n\nPerson.prototype.greet = function() {\n    console.log('Hi, I am ' + this.name);\n};\n\nconst alice = new Person('Alice');\nalice.greet(); // 'Hi, I am Alice'\n\nWhen you call alice.greet():\n1. JavaScript looks for 'greet' on the alice object - not found\n2. It looks up the prototype chain to Person.prototype - found!\n3. Executes the method with 'this' bound to alice\n\nPrototype chain:\nalice → Person.prototype → Object.prototype → null\n\nKey concepts:\n- All objects inherit from Object.prototype (unless explicitly set to null)\n- Prototype properties are shared among all instances (memory efficient)\n- Instance properties shadow prototype properties with the same name\n- Modern syntax (ES6 classes) is syntactic sugar over prototypes\n\nChecking prototypes:\n- Object.getPrototypeOf(alice) === Person.prototype // true\n- alice instanceof Person // true\n- alice.hasOwnProperty('name') // true (own property)\n- alice.hasOwnProperty('greet') // false (inherited)",
       "topic": {
         "topics": [
@@ -351,12 +351,12 @@ module.exports = {
       "id": 16,
       "question": "Which array method does NOT mutate the original array?",
       "options": {
-        "A": "map()",
+        "A": "push()",
         "B": "sort()",
-        "C": "push()",
+        "C": "map()",
         "D": "splice()"
       },
-      "correct": "A",
+      "correct": "C",
       "explanation": "Understanding which methods mutate (modify) arrays versus which return new arrays is crucial for avoiding bugs and writing predictable code.\n\nMUTATING methods (modify original):\n- push(), pop() - add/remove from end\n- shift(), unshift() - add/remove from start\n- splice() - add/remove at any position\n- sort() - sorts in place\n- reverse() - reverses in place\n\nNON-MUTATING methods (return new array/value):\n- map() - transforms each element\n- filter() - selects elements\n- slice() - extracts portion\n- concat() - combines arrays\n- reduce() - reduces to single value\n- find(), findIndex() - searches\n- every(), some() - tests elements\n\nExample:\n\nconst original = [1, 2, 3];\n\n// Mutating:\noriginal.push(4);\nconsole.log(original); // [1, 2, 3, 4] - MODIFIED!\n\n// Non-mutating:\nconst doubled = original.map(x => x * 2);\nconsole.log(original); // [1, 2, 3, 4] - unchanged\nconsole.log(doubled); // [2, 4, 6, 8] - new array\n\nBest practice: Prefer non-mutating methods for predictable, functional code. Use spread or slice() to copy before mutating if needed:\nconst copy = [...original];\ncopy.sort(); // original unchanged",
       "topic": {
         "topics": [
@@ -370,12 +370,12 @@ module.exports = {
       "id": 17,
       "question": "What is the output of this code?\n\n[CODE]\nconst arr = [1, 2, 3, 4, 5];\nconst filtered = arr.filter(x => x > 2).map(x => x * 2);\nconsole.log(filtered);\n[/CODE]",
       "options": {
-        "A": "[6, 8, 10]",
+        "A": "[3, 4, 5]",
         "B": "[2, 4, 6, 8, 10]",
-        "C": "[3, 4, 5]",
+        "C": "[6, 8, 10]",
         "D": "[1, 2, 3, 4, 5]"
       },
-      "correct": "A",
+      "correct": "C",
       "explanation": "This demonstrates method chaining with array methods, a common functional programming pattern in JavaScript. Each method returns a new array, allowing you to chain operations.\n\nStep-by-step execution:\n\n1. Start: [1, 2, 3, 4, 5]\n\n2. filter(x => x > 2):\n   - Tests each element: 1>2? no, 2>2? no, 3>2? yes, 4>2? yes, 5>2? yes\n   - Result: [3, 4, 5]\n\n3. map(x => x * 2) on [3, 4, 5]:\n   - Transforms each: 3*2=6, 4*2=8, 5*2=10\n   - Result: [6, 8, 10]\n\nMethod chaining benefits:\n- Readable, declarative code\n- Each step is independent and testable\n- No intermediate variables needed\n- Immutable transformations\n\nCommon patterns:\n\narray\n    .filter(predicate)    // select elements\n    .map(transform)       // transform each\n    .reduce(accumulate)   // combine to single value\n\nExample:\nconst users = [{name: 'Alice', age: 25}, {name: 'Bob', age: 17}];\nconst adultNames = users\n    .filter(u => u.age >= 18)\n    .map(u => u.name);\n// ['Alice']",
       "topic": {
         "topics": [
@@ -391,10 +391,10 @@ module.exports = {
       "options": {
         "A": "Makes the code run faster",
         "B": "Disables deprecated features",
-        "C": "Forces type checking like TypeScript",
-        "D": "Enables strict mode which catches common coding errors"
+        "C": "Enables strict mode which catches common coding errors",
+        "D": "Forces type checking like TypeScript"
       },
-      "correct": "D",
+      "correct": "C",
       "explanation": "'use strict' is a directive that enables strict mode, which helps you write more secure and error-free JavaScript by catching silent errors and preventing potentially problematic practices.\n\nWhat strict mode does:\n\n1. PREVENTS silent errors:\n'use strict';\nx = 10; // ReferenceError: x is not defined (without strict: creates global variable)\n\n2. PREVENTS accidental globals:\nfunction test() {\n    'use strict';\n    myVar = 5; // Error instead of creating window.myVar\n}\n\n3. PROHIBITS duplicate parameters:\nfunction sum(a, a, b) { // Error in strict mode\n    return a + a + b;\n}\n\n4. MAKES 'this' undefined in functions:\n'use strict';\nfunction show() {\n    console.log(this); // undefined (not global object)\n}\n\n5. DISALLOWS octal syntax:\nconst num = 010; // Error (octal literals)\n\n6. PREVENTS deleting variables:\nconst x = 5;\ndelete x; // Error\n\nScope:\n- Global: Place at top of file\n- Function: Place at top of function\n- Automatic in ES6 modules and classes\n\nBest practice: Always use strict mode. It catches bugs early and makes code more maintainable. Modern JavaScript (ES6+) enables it automatically in modules.",
       "topic": {
         "topics": [
@@ -410,10 +410,10 @@ module.exports = {
       "options": {
         "A": "They are different names for the same function",
         "B": "call() is synchronous, apply() is asynchronous",
-        "C": "Only bind() can set the 'this' value",
-        "D": "call() and apply() invoke immediately; bind() returns a new function"
+        "C": "call() and apply() invoke immediately; bind() returns a new function",
+        "D": "Only bind() can set the 'this' value"
       },
-      "correct": "D",
+      "correct": "C",
       "explanation": "These three methods control the 'this' context of functions, but they work differently. Understanding them is essential for managing context in JavaScript.\n\nDifferences:\n\n1. CALL() - invokes immediately with arguments listed individually:\nfunction greet(greeting, punctuation) {\n    console.log(greeting + ', ' + this.name + punctuation);\n}\nconst person = { name: 'Alice' };\ngreet.call(person, 'Hello', '!'); // 'Hello, Alice!'\n\n2. APPLY() - invokes immediately with arguments as an array:\ngreet.apply(person, ['Hello', '!']); // 'Hello, Alice!'\n// Useful when you have an array of arguments\nconst args = ['Hi', '?'];\ngreet.apply(person, args);\n\n3. BIND() - returns a NEW function with bound 'this' (doesn't invoke):\nconst boundGreet = greet.bind(person, 'Hey');\nboundGreet('!!!'); // 'Hey, Alice!!!'\n// Useful for callbacks and event handlers\n\nMemory tricks:\n- call: C for Comma-separated arguments\n- apply: A for Array of arguments\n- bind: B for Binding returns a new function\n\nCommon use cases:\n- call/apply: Borrowing methods from other objects\n- bind: Event handlers, callbacks, partial application\n\nModern alternative: Arrow functions inherit 'this' from enclosing scope, often eliminating the need for bind().",
       "topic": {
         "topics": [
@@ -427,12 +427,12 @@ module.exports = {
       "id": 20,
       "question": "What will this code output?\n\n[CODE]\nconst promise1 = Promise.resolve(3);\nconst promise2 = Promise.reject('Error');\nconst promise3 = Promise.resolve(5);\n\nPromise.all([promise1, promise2, promise3])\n    .then(results => console.log(results))\n    .catch(error => console.log(error));\n[/CODE]",
       "options": {
-        "A": "'Error'",
+        "A": "undefined",
         "B": "[3, 5]",
         "C": "[3, 'Error', 5]",
-        "D": "undefined"
+        "D": "'Error'"
       },
-      "correct": "A",
+      "correct": "D",
       "explanation": "Promise.all() is a powerful method for handling multiple promises, but it has an important characteristic: it fails fast. If ANY promise rejects, the entire Promise.all() rejects immediately.\n\nHow Promise.all() works:\n\n1. Takes an array of promises\n2. Returns a single promise that:\n   - RESOLVES when ALL promises resolve (with array of all results)\n   - REJECTS when ANY promise rejects (with the first rejection reason)\n\nIn this example:\n- promise1 resolves with 3\n- promise2 rejects with 'Error' ← This causes immediate rejection\n- promise3 would resolve with 5 (but never checked)\n- The .catch() handler receives 'Error'\n\nAlternatives for different needs:\n\n1. Promise.allSettled() - waits for all, never rejects:\nPromise.allSettled([promise1, promise2, promise3])\n    .then(results => console.log(results));\n// [{status: 'fulfilled', value: 3},\n//  {status: 'rejected', reason: 'Error'},\n//  {status: 'fulfilled', value: 5}]\n\n2. Promise.race() - resolves/rejects with first settled:\nPromise.race([promise1, promise2, promise3])\n// Returns promise1's result (3) - first to settle\n\n3. Promise.any() - resolves with first fulfillment, rejects if all reject:\nPromise.any([promise1, promise2, promise3])\n// Returns 3 (first successful resolution)\n\nUse Promise.all() when you need all operations to succeed.",
       "topic": {
         "topics": [
@@ -448,10 +448,10 @@ module.exports = {
       "options": {
         "A": "Assigning multiple events to one element",
         "B": "Preventing default browser behavior",
-        "C": "Using a parent element to handle events for its children",
-        "D": "Removing event listeners automatically"
+        "C": "Removing event listeners automatically",
+        "D": "Using a parent element to handle events for its children"
       },
-      "correct": "C",
+      "correct": "D",
       "explanation": "Event delegation is a pattern that leverages event bubbling to handle events at a higher level in the DOM rather than attaching listeners to individual elements. This is more efficient and handles dynamically added elements.\n\nHow event bubbling works:\nWhen an event occurs on an element, it first runs handlers on that element, then on its parent, then grandparent, and so on up to the document root.\n\nExample without delegation (inefficient):\nconst buttons = document.querySelectorAll('button');\nbuttons.forEach(button => {\n    button.addEventListener('click', handleClick); // 100 listeners for 100 buttons!\n});\n\nExample with delegation (efficient):\nconst container = document.querySelector('.button-container');\ncontainer.addEventListener('click', (e) => {\n    if (e.target.matches('button')) {\n        handleClick(e); // One listener handles all buttons!\n    }\n});\n\nBenefits:\n1. PERFORMANCE: One listener instead of many\n2. DYNAMIC ELEMENTS: Handles elements added after page load\n3. MEMORY: Less memory usage\n4. CLEANUP: Only one listener to remove\n\nPractical example:\ndocument.querySelector('.todo-list').addEventListener('click', (e) => {\n    if (e.target.classList.contains('delete-btn')) {\n        deleteTodo(e.target.closest('.todo-item'));\n    } else if (e.target.classList.contains('complete-btn')) {\n        completeTodo(e.target.closest('.todo-item'));\n    }\n});\n\nUse e.target (the actual clicked element) and e.currentTarget (the element with the listener) to determine what was clicked.",
       "topic": {
         "topics": [
@@ -466,11 +466,11 @@ module.exports = {
       "question": "What will this code output?\n\n[CODE]\nconst obj = { a: 1 };\nconst copy1 = obj;\nconst copy2 = { ...obj };\n\ncopy1.a = 2;\ncopy2.a = 3;\n\nconsole.log(obj.a);\n[/CODE]",
       "options": {
         "A": "1",
-        "B": "2",
+        "B": "undefined",
         "C": "3",
-        "D": "undefined"
+        "D": "2"
       },
-      "correct": "B",
+      "correct": "D",
       "explanation": "This demonstrates the crucial difference between reference assignment and copying objects. Understanding this prevents many common bugs in JavaScript.\n\nWhat happens:\n\n[CODE]\nconst obj = { a: 1 };\nconst copy1 = obj;\nconst copy2 = { ...obj };\n\ncopy1.a = 2;\ncopy2.a = 3;\n\nconsole.log(obj.a);\n[/CODE]\n\n1. const copy1 = obj;\n   - Creates a REFERENCE to the same object\n   - Both 'obj' and 'copy1' point to the same memory location\n   - Changes to copy1 affect obj (they're the same object!)\n\n2. const copy2 = { ...obj };\n   - Creates a SHALLOW COPY (new object)\n   - copy2 is a different object with the same properties\n   - Changes to copy2 don't affect obj\n\n3. copy1.a = 2;\n   - Since copy1 and obj reference the same object, obj.a becomes 2\n\n4. copy2.a = 3;\n   - copy2 is independent, so obj.a stays 2\n\nVisual representation:\n\n[CODE]\nobj → {a: 1} ← copy1 (same object)\ncopy2 → {a: 1} (different object)\n[/CODE]\n\nImportant caveats:\n\nSHALLOW COPY (spread, Object.assign):\n\n[CODE]\nconst obj = { a: 1, nested: { b: 2 } };\nconst copy = { ...obj };\ncopy.nested.b = 3;\nconsole.log(obj.nested.b); // 3 - nested objects still referenced!\n[/CODE]\n\nDEEP COPY (various methods):\n\n[CODE]\n// Quick but limited:\nconst deepCopy = JSON.parse(JSON.stringify(obj));\n// Better for complex objects:\nconst deepCopy = structuredClone(obj); // Modern browsers\n[/CODE]\n\nRule of thumb: Use spread for simple objects, structuredClone() for nested structures.",
       "topic": {
         "topics": [
@@ -484,11 +484,11 @@ module.exports = {
       "question": "What does Object.freeze() do?",
       "options": {
         "A": "Stops all JavaScript execution",
-        "B": "Makes an object immutable (prevents modifications)",
+        "B": "Serializes an object to JSON",
         "C": "Copies an object",
-        "D": "Serializes an object to JSON"
+        "D": "Makes an object immutable (prevents modifications)"
       },
-      "correct": "B",
+      "correct": "D",
       "explanation": "Object.freeze() makes an object immutable by preventing any modifications to its properties. This is useful for creating constants and preventing accidental mutations.\n\nWhat Object.freeze() does:\n\nconst obj = { name: 'Alice', age: 25 };\nObject.freeze(obj);\n\nobj.name = 'Bob';        // Fails silently (or throws in strict mode)\nobj.newProp = 'value';   // Fails silently\ndelete obj.age;          // Fails silently\n\nconsole.log(obj); // { name: 'Alice', age: 25 } - unchanged\n\nChecking if frozen:\nObject.isFrozen(obj); // true\n\nLimitations (SHALLOW freeze):\n\nconst obj = {\n    name: 'Alice',\n    address: { city: 'NYC' }\n};\nObject.freeze(obj);\n\nobj.name = 'Bob'; // Fails\nobj.address.city = 'LA'; // SUCCEEDS! Nested object not frozen\n\nDeep freeze (must implement yourself):\nfunction deepFreeze(obj) {\n    Object.freeze(obj);\n    Object.keys(obj).forEach(key => {\n        if (typeof obj[key] === 'object' && obj[key] !== null) {\n            deepFreeze(obj[key]);\n        }\n    });\n    return obj;\n}\n\nRelated methods:\n- Object.seal(): Prevents adding/removing properties, but allows modification\n- Object.preventExtensions(): Prevents adding properties only\n\nUse cases:\n- Configuration objects\n- Constants that should never change\n- Functional programming (immutability)\n- Preventing accidental mutations in shared data\n\nNote: freeze() doesn't affect primitive values (they're already immutable).",
       "topic": {
         "topics": [
@@ -502,10 +502,10 @@ module.exports = {
       "options": {
         "A": "To create a superclass",
         "B": "To make a class abstract",
-        "C": "To call the parent class constructor or methods",
-        "D": "To define static methods"
+        "C": "To define static methods",
+        "D": "To call the parent class constructor or methods"
       },
-      "correct": "C",
+      "correct": "D",
       "explanation": "The 'super' keyword is used in class inheritance to call the parent class's constructor and methods. It's essential when extending classes to properly initialize the parent class.\n\nTwo main uses:\n\n1. CALLING PARENT CONSTRUCTOR:\nclass Animal {\n    constructor(name) {\n        this.name = name;\n    }\n}\n\nclass Dog extends Animal {\n    constructor(name, breed) {\n        super(name);  // MUST call super() before using 'this'\n        this.breed = breed;\n    }\n}\n\nconst dog = new Dog('Rex', 'Labrador');\n// super(name) calls Animal's constructor with 'Rex'\n\n2. CALLING PARENT METHODS:\nclass Animal {\n    speak() {\n        return 'Some sound';\n    }\n}\n\nclass Dog extends Animal {\n    speak() {\n        const parentSound = super.speak(); // Call parent's speak()\n        return parentSound + ' and bark!';\n    }\n}\n\nconst dog = new Dog();\ndog.speak(); // 'Some sound and bark!'\n\nImportant rules:\n\n1. In constructor: super() MUST be called before accessing 'this':\nclass Child extends Parent {\n    constructor() {\n        // this.value = 5; // ERROR! Can't use 'this' before super()\n        super();\n        this.value = 5; // OK now\n    }\n}\n\n2. In methods: super.methodName() calls parent's version\n3. Can't use super in regular functions, only in class methods\n4. super() can only be called in constructors of derived classes\n\nWithout super(), the parent class doesn't initialize, causing errors. It's the bridge between parent and child classes.",
       "topic": {
         "topics": [

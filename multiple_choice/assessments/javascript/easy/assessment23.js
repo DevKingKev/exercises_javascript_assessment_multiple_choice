@@ -53,12 +53,12 @@ module.exports = {
       "id": 1,
       "question": "What is the primary mechanism for inheritance in JavaScript?",
       "options": {
-        "A": "Class inheritance",
-        "B": "Prototype chain",
+        "A": "Prototype chain",
+        "B": "Class inheritance",
         "C": "Interface implementation",
         "D": "Module imports"
       },
-      "correct": "B",
+      "correct": "A",
       "explanation": "JavaScript uses prototypal inheritance as its primary mechanism, where objects can inherit properties and methods from other objects through the prototype chain.",
       "topic": {
         "topics": [
@@ -70,12 +70,12 @@ module.exports = {
       "id": 2,
       "question": "How do you create an object that inherits from another object?",
       "options": {
-        "A": "<pre>new parentObj()</pre>",
+        "A": "<pre>Object.create(parentObj)</pre>",
         "B": "<pre>parentObj.newInstance()</pre>",
         "C": "<pre>Object.inherit(parentObj)</pre>",
-        "D": "<pre>Object.create(parentObj)</pre>"
+        "D": "<pre>new parentObj()</pre>"
       },
-      "correct": "D",
+      "correct": "A",
       "explanation": "<pre>Object.create()</pre> is the standard way to create a new object with a specified prototype object. The new object will inherit from the parent object.",
       "topic": {
         "topics": [
@@ -87,12 +87,12 @@ module.exports = {
       "id": 3,
       "question": "What is the purpose of the <pre>constructor</pre> property?",
       "options": {
-        "A": "To destroy objects",
+        "A": "To reference the function that created the object",
         "B": "To create new objects",
-        "C": "To reference the function that created the object",
+        "C": "To destroy objects",
         "D": "To set inheritance"
       },
-      "correct": "C",
+      "correct": "A",
       "explanation": "The <pre>constructor</pre> property points to the constructor function that was used to create the object instance. It's automatically set up when using constructor functions.",
       "topic": {
         "topics": [
@@ -104,12 +104,12 @@ module.exports = {
       "id": 4,
       "question": "What happens when you access a method on an object?",
       "options": {
-        "A": "It must exist directly on the object",
-        "B": "JavaScript looks up the prototype chain if not found on the object",
+        "A": "JavaScript looks up the prototype chain if not found on the object",
+        "B": "It must exist directly on the object",
         "C": "It searches global scope",
         "D": "It creates the method automatically"
       },
-      "correct": "B",
+      "correct": "A",
       "explanation": "When a method is accessed on an object, JavaScript first checks the object itself. If not found, it searches the prototype chain until the method is found or the chain ends.",
       "topic": {
         "topics": [
@@ -138,12 +138,12 @@ module.exports = {
       "id": 6,
       "question": "How can you check if an object is a direct instance of a constructor?",
       "options": {
-        "A": "<pre>Constructor.hasInstance(object)</pre>",
+        "A": "<pre>object.constructor === Constructor</pre>",
         "B": "<pre>object instanceof Constructor</pre>",
-        "C": "<pre>object.constructor === Constructor</pre>",
+        "C": "<pre>Constructor.hasInstance(object)</pre>",
         "D": "<pre>object.isInstanceOf(Constructor)</pre>"
       },
-      "correct": "C",
+      "correct": "A",
       "explanation": "Checking <pre>object.constructor === Constructor</pre> verifies if the object was created directly by that constructor, while <pre>instanceof</pre> checks the entire prototype chain.",
       "topic": {
         "topics": [
@@ -172,12 +172,12 @@ module.exports = {
       "id": 8,
       "question": "What happens when you add a method to a constructor's prototype?",
       "options": {
-        "A": "All existing and future instances can use it",
-        "B": "Only new instances can use it",
+        "A": "Only new instances can use it",
+        "B": "All existing and future instances can use it",
         "C": "Only the constructor can use it",
         "D": "It replaces existing methods"
       },
-      "correct": "A",
+      "correct": "B",
       "explanation": "When you add a method to a constructor's prototype, all instances (both existing and future) immediately have access to that method through the prototype chain.",
       "topic": {
         "topics": [
@@ -207,11 +207,11 @@ module.exports = {
       "question": "How does JavaScript find properties on an object?",
       "options": {
         "A": "It searches global variables",
-        "B": "It only searches the object itself",
+        "B": "It searches the object first, then the prototype chain",
         "C": "It searches the prototype chain first",
-        "D": "It searches the object first, then the prototype chain"
+        "D": "It only searches the object itself"
       },
-      "correct": "D",
+      "correct": "B",
       "explanation": "JavaScript first looks for properties directly on the object. If not found, it searches up the prototype chain until the property is found or the chain ends.",
       "topic": {
         "topics": [
@@ -224,11 +224,11 @@ module.exports = {
       "question": "What is the purpose of <pre>Object.getPrototypeOf()</pre>?",
       "options": {
         "A": "To check if an object has a prototype",
-        "B": "To set the prototype of an object",
+        "B": "To get the prototype of an object",
         "C": "To create a new prototype",
-        "D": "To get the prototype of an object"
+        "D": "To set the prototype of an object"
       },
-      "correct": "D",
+      "correct": "B",
       "explanation": "<pre>Object.getPrototypeOf(obj)</pre> returns the prototype of the specified object. This is the standard way to access an object's prototype.",
       "topic": {
         "topics": [
@@ -274,12 +274,12 @@ module.exports = {
       "id": 14,
       "question": "How can you create multiple objects with shared methods efficiently?",
       "options": {
-        "A": "Define methods on the prototype",
-        "B": "Define methods in the constructor",
+        "A": "Define methods in the constructor",
+        "B": "Define methods on the prototype",
         "C": "Copy methods to each object",
         "D": "Use global functions"
       },
-      "correct": "A",
+      "correct": "B",
       "explanation": "Defining methods on the prototype is memory-efficient because all instances share the same method references rather than each having their own copy.",
       "topic": {
         "topics": [
@@ -292,11 +292,11 @@ module.exports = {
       "question": "What is the prototype chain for a function?",
       "options": {
         "A": "Function → null",
-        "B": "Function → Object.prototype → null",
+        "B": "Function → Function.prototype → Object.prototype → null",
         "C": "Function → Function.prototype → null",
-        "D": "Function → Function.prototype → Object.prototype → null"
+        "D": "Function → Object.prototype → null"
       },
-      "correct": "D",
+      "correct": "B",
       "explanation": "Functions inherit from <pre>Function.prototype</pre>, which in turn inherits from <pre>Object.prototype</pre>, ending with <pre>null</pre>.",
       "topic": {
         "topics": [
@@ -310,10 +310,10 @@ module.exports = {
       "options": {
         "A": "Copies the constructor",
         "B": "Just calls the function",
-        "C": "Only creates an empty object",
-        "D": "Creates object, sets prototype, calls constructor"
+        "C": "Creates object, sets prototype, calls constructor",
+        "D": "Only creates an empty object"
       },
-      "correct": "D",
+      "correct": "C",
       "explanation": "The <pre>new</pre> keyword: 1) Creates a new object, 2) Sets the object's prototype to the constructor's prototype, 3) Calls the constructor with <pre>this</pre> set to the new object, 4) Returns the new object.",
       "topic": {
         "topics": [
@@ -342,12 +342,12 @@ module.exports = {
       "id": 18,
       "question": "What is the result of [CODE]Object.getPrototypeOf(Object.prototype)</CODE>?",
       "options": {
-        "A": "<pre>null</pre>",
+        "A": "<pre>Function.prototype</pre>",
         "B": "<pre>Object</pre>",
-        "C": "<pre>Function.prototype</pre>",
+        "C": "<pre>null</pre>",
         "D": "<pre>undefined</pre>"
       },
-      "correct": "A",
+      "correct": "C",
       "explanation": "<pre>Object.prototype</pre> is at the top of most prototype chains, and its prototype is <pre>null</pre>, indicating the end of the chain.",
       "topic": {
         "topics": [
@@ -377,11 +377,11 @@ module.exports = {
       "question": "What is the relationship between a constructor and its instances?",
       "options": {
         "A": "Constructors inherit from instances",
-        "B": "Instances inherit from constructor's prototype",
-        "C": "They are the same object",
+        "B": "They are the same object",
+        "C": "Instances inherit from constructor's prototype",
         "D": "There is no relationship"
       },
-      "correct": "B",
+      "correct": "C",
       "explanation": "When you create an instance with <pre>new Constructor()</pre>, the instance inherits from <pre>Constructor.prototype</pre>, establishing the prototype relationship.",
       "topic": {
         "topics": [
@@ -427,12 +427,12 @@ module.exports = {
       "id": 23,
       "question": "What is the prototype of a string primitive when methods are called on it?",
       "options": {
-        "A": "<pre>String.prototype</pre>",
+        "A": "No prototype",
         "B": "<pre>Object.prototype</pre>",
         "C": "<pre>Function.prototype</pre>",
-        "D": "No prototype"
+        "D": "<pre>String.prototype</pre>"
       },
-      "correct": "A",
+      "correct": "D",
       "explanation": "When you call methods on string primitives, JavaScript temporarily wraps them in String objects that inherit from <pre>String.prototype</pre>.",
       "topic": {
         "topics": [
@@ -445,11 +445,11 @@ module.exports = {
       "question": "What is the purpose of <pre>Object.setPrototypeOf()</pre>?",
       "options": {
         "A": "To get an object's prototype",
-        "B": "To change an object's prototype after creation",
+        "B": "To check prototype relationships",
         "C": "To create a new object",
-        "D": "To check prototype relationships"
+        "D": "To change an object's prototype after creation"
       },
-      "correct": "B",
+      "correct": "D",
       "explanation": "<pre>Object.setPrototypeOf(obj, proto)</pre> changes the prototype of an existing object. However, this is generally discouraged for performance reasons.",
       "topic": {
         "topics": [
@@ -462,11 +462,11 @@ module.exports = {
       "question": "What is the result of [CODE]Function.prototype.isPrototypeOf(Array)[/CODE]?",
       "options": {
         "A": "<pre>false</pre>",
-        "B": "<pre>true</pre>",
+        "B": "Error",
         "C": "<pre>undefined</pre>",
-        "D": "Error"
+        "D": "<pre>true</pre>"
       },
-      "correct": "B",
+      "correct": "D",
       "explanation": "This returns <pre>true</pre> because <pre>Array</pre> is a constructor function, and all functions inherit from <pre>Function.prototype</pre>.",
       "topic": {
         "topics": [
@@ -497,10 +497,10 @@ module.exports = {
       "options": {
         "A": "Existing instances keep the old method",
         "B": "Only new instances see the update",
-        "C": "All instances immediately see the updated method",
-        "D": "It causes an error"
+        "C": "It causes an error",
+        "D": "All instances immediately see the updated method"
       },
-      "correct": "C",
+      "correct": "D",
       "explanation": "Since objects access methods through the prototype chain dynamically, changes to prototype methods are immediately visible to all instances that inherit from that prototype.",
       "topic": {
         "topics": [
@@ -529,12 +529,12 @@ module.exports = {
       "id": 29,
       "question": "Why might you use <pre>Object.create(null)</pre>?",
       "options": {
-        "A": "To create a pure dictionary without inherited methods",
+        "A": "To create immutable objects",
         "B": "To make objects faster",
         "C": "To prevent any property access",
-        "D": "To create immutable objects"
+        "D": "To create a pure dictionary without inherited methods"
       },
-      "correct": "A",
+      "correct": "D",
       "explanation": "<pre>Object.create(null)</pre> creates objects without the <pre>Object.prototype</pre> methods, which is useful for pure data storage where you don't want inherited methods interfering.",
       "topic": {
         "topics": [
@@ -548,10 +548,10 @@ module.exports = {
       "options": {
         "A": "Using <pre>Object.create()</pre>",
         "B": "Using <pre>new Object()</pre>",
-        "C": "Using object literal syntax: <pre>{}</pre>",
-        "D": "Using a constructor function"
+        "C": "Using a constructor function",
+        "D": "Using object literal syntax: <pre>{}</pre>"
       },
-      "correct": "C",
+      "correct": "D",
       "explanation": "Object literal syntax <pre>{}</pre> is the simplest and most common way to create objects in JavaScript. It's concise and directly creates an object inheriting from <pre>Object.prototype</pre>.",
       "topic": {
         "topics": [
@@ -560,4 +560,4 @@ module.exports = {
       }
     }
   ]
-};
+}

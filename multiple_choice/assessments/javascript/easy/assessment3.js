@@ -54,12 +54,12 @@ module.exports = {
       "id": 1,
       "question": "What does [CODE]Math.max(5, 10, 3)[/CODE] return?",
       "options": {
-        "A": "5",
+        "A": "10",
         "B": "18",
         "C": "3",
-        "D": "10"
+        "D": "5"
       },
-      "correct": "D",
+      "correct": "A",
       "explanation": "[CODE]Math.max()[/CODE] returns the largest of the given numbers. Among 5, 10, and 3, the largest is 10.",
       "topic": {
         "topics": [
@@ -72,12 +72,12 @@ module.exports = {
       "id": 2,
       "question": "Which method adds elements to the end of an array?",
       "options": {
-        "A": "unshift()",
+        "A": "push()",
         "B": "append()",
-        "C": "push()",
+        "C": "unshift()",
         "D": "add()"
       },
-      "correct": "C",
+      "correct": "A",
       "explanation": "push() adds one or more elements to the end of an array and returns the new length of the array.",
       "topic": {
         "topics": [
@@ -90,12 +90,12 @@ module.exports = {
       "id": 3,
       "question": "What does [CODE]'hello'.charAt(1)[/CODE] return?",
       "options": {
-        "A": "'h'",
-        "B": "'e'",
+        "A": "'e'",
+        "B": "'h'",
         "C": "'l'",
         "D": "'o'"
       },
-      "correct": "B",
+      "correct": "A",
       "explanation": "[CODE]charAt(1)[/CODE] returns the character at index 1. String indexing starts at 0, so index 1 in 'hello' is 'e'.",
       "topic": {
         "topics": [
@@ -108,12 +108,12 @@ module.exports = {
       "id": 4,
       "question": "What is the result of [CODE]2 * 3 + 4[/CODE]?",
       "options": {
-        "A": "14",
+        "A": "10",
         "B": "9",
         "C": "24",
-        "D": "10"
+        "D": "14"
       },
-      "correct": "D",
+      "correct": "A",
       "explanation": "Following order of operations (PEMDAS), multiplication happens before addition: [CODE]2 * 3 = 6[/CODE], then [CODE]6 + 4 = 10[/CODE].",
       "topic": {
         "topics": [
@@ -143,12 +143,12 @@ module.exports = {
       "id": 6,
       "question": "What does [CODE]Math.pow(2, 3)[/CODE] return?",
       "options": {
-        "A": "5",
-        "B": "8",
+        "A": "8",
+        "B": "5",
         "C": "6",
         "D": "9"
       },
-      "correct": "B",
+      "correct": "A",
       "explanation": "[CODE]Math.pow(2, 3)[/CODE] calculates 2 to the power of 3, which is [CODE]2 * 2 * 2 = 8[/CODE].",
       "topic": {
         "topics": [
@@ -234,11 +234,11 @@ module.exports = {
       "question": "What is the result of [CODE]10 / 2 * 3[/CODE]?",
       "options": {
         "A": "1.67",
-        "B": "5",
-        "C": "15",
+        "B": "15",
+        "C": "5",
         "D": "6"
       },
-      "correct": "C",
+      "correct": "B",
       "explanation": "Operations of equal precedence are evaluated left to right: [CODE]10 / 2 = 5[/CODE], then [CODE]5 * 3 = 15[/CODE].",
       "topic": {
         "topics": [
@@ -251,11 +251,11 @@ module.exports = {
       "question": "Which method finds the index of a substring in a string?",
       "options": {
         "A": "find()",
-        "B": "search()",
-        "C": "indexOf()",
+        "B": "indexOf()",
+        "C": "search()",
         "D": "locate()"
       },
-      "correct": "C",
+      "correct": "B",
       "explanation": "indexOf() returns the index of the first occurrence of a substring. It returns -1 if the substring is not found.",
       "topic": {
         "topics": [
@@ -269,11 +269,11 @@ module.exports = {
       "question": "What does [CODE]Math.min(8, 3, 15)[/CODE] return?",
       "options": {
         "A": "8",
-        "B": "26",
+        "B": "3",
         "C": "15",
-        "D": "3"
+        "D": "26"
       },
-      "correct": "D",
+      "correct": "B",
       "explanation": "Math.min() returns the smallest of the given numbers. Among 8, 3, and 15, the smallest is 3.",
       "topic": {
         "topics": [
@@ -286,12 +286,12 @@ module.exports = {
       "id": 14,
       "question": "How do you call a function named 'myFunction'?",
       "options": {
-        "A": "myFunction()",
-        "B": "call myFunction",
+        "A": "call myFunction",
+        "B": "myFunction()",
         "C": "run myFunction",
         "D": "execute myFunction"
       },
-      "correct": "A",
+      "correct": "B",
       "explanation": "Functions are called (invoked) by adding parentheses after the function name: myFunction().",
       "topic": {
         "topics": [
@@ -324,10 +324,10 @@ module.exports = {
       "options": {
         "A": "16",
         "B": "10",
-        "C": "13",
-        "D": "11"
+        "C": "11",
+        "D": "13"
       },
-      "correct": "D",
+      "correct": "C",
       "explanation": "Multiplication has higher precedence than addition: 3 * 2 = 6, then 5 + 6 = 11.",
       "topic": {
         "topics": [
@@ -375,12 +375,12 @@ module.exports = {
       "id": 19,
       "question": "What is the length of the string 'coding'?",
       "options": {
-        "A": "6",
+        "A": "7",
         "B": "5",
-        "C": "7",
+        "C": "6",
         "D": "4"
       },
-      "correct": "A",
+      "correct": "C",
       "explanation": "The string 'coding' has 6 characters: c-o-d-i-n-g. The length property counts all characters including spaces.",
       "topic": {
         "topics": [
@@ -395,10 +395,10 @@ module.exports = {
       "options": {
         "A": "Error",
         "B": "5",
-        "C": "4.7",
-        "D": "4"
+        "C": "4",
+        "D": "4.7"
       },
-      "correct": "D",
+      "correct": "C",
       "explanation": "Math.floor() returns the largest integer less than or equal to the given number. 4.7 floors down to 4.",
       "topic": {
         "topics": [
@@ -411,12 +411,12 @@ module.exports = {
       "id": 21,
       "question": "How do you access the last element of an array 'arr'?",
       "options": {
-        "A": "arr[arr.length - 1]",
+        "A": "arr.last()",
         "B": "arr[arr.length]",
-        "C": "arr.last()",
+        "C": "arr[arr.length - 1]",
         "D": "arr[-1]"
       },
-      "correct": "A",
+      "correct": "C",
       "explanation": "Array indexing starts at 0, so the last element is at index (length - 1). arr[arr.length] would be undefined.",
       "topic": {
         "topics": [
@@ -429,12 +429,12 @@ module.exports = {
       "id": 22,
       "question": "What is the result of [CODE]12 % 5[/CODE]?",
       "options": {
-        "A": "2",
+        "A": "7",
         "B": "2.4",
-        "C": "7",
+        "C": "2",
         "D": "0"
       },
-      "correct": "A",
+      "correct": "C",
       "explanation": "The modulus operator (%) returns the remainder. 12 divided by 5 is 2 remainder 2, so 12 % 5 = 2.",
       "topic": {
         "topics": [
@@ -447,11 +447,11 @@ module.exports = {
       "question": "Which method removes the first element from an array?",
       "options": {
         "A": "pop()",
-        "B": "shift()",
+        "B": "delete()",
         "C": "remove()",
-        "D": "delete()"
+        "D": "shift()"
       },
-      "correct": "B",
+      "correct": "D",
       "explanation": "shift() removes the first element from an array and returns that element. pop() removes the last element.",
       "topic": {
         "topics": [
@@ -464,12 +464,12 @@ module.exports = {
       "id": 24,
       "question": "What does 'hello'.toUpperCase() return?",
       "options": {
-        "A": "'HELLO'",
+        "A": "Error",
         "B": "'hello'",
         "C": "'Hello'",
-        "D": "Error"
+        "D": "'HELLO'"
       },
-      "correct": "A",
+      "correct": "D",
       "explanation": "toUpperCase() converts all characters in a string to uppercase letters. 'hello' becomes 'HELLO'.",
       "topic": {
         "topics": [
@@ -482,12 +482,12 @@ module.exports = {
       "id": 25,
       "question": "What is the result of (4 + 2) * 3?",
       "options": {
-        "A": "18",
+        "A": "12",
         "B": "14",
         "C": "10",
-        "D": "12"
+        "D": "18"
       },
-      "correct": "A",
+      "correct": "D",
       "explanation": "Parentheses have the highest precedence: (4 + 2) = 6, then 6 * 3 = 18.",
       "topic": {
         "topics": [
@@ -499,12 +499,12 @@ module.exports = {
       "id": 26,
       "question": "How do you get the number of elements in an array?",
       "options": {
-        "A": "array.length",
+        "A": "array.elements",
         "B": "array.size",
         "C": "array.count",
-        "D": "array.elements"
+        "D": "array.length"
       },
-      "correct": "A",
+      "correct": "D",
       "explanation": "The length property returns the number of elements in an array.",
       "topic": {
         "topics": [
@@ -519,10 +519,10 @@ module.exports = {
       "options": {
         "A": "3",
         "B": "3.2",
-        "C": "4",
-        "D": "Error"
+        "C": "Error",
+        "D": "4"
       },
-      "correct": "C",
+      "correct": "D",
       "explanation": "Math.ceil() returns the smallest integer greater than or equal to the given number. 3.2 ceils up to 4.",
       "topic": {
         "topics": [
@@ -536,11 +536,11 @@ module.exports = {
       "question": "Which operator is used for string concatenation?",
       "options": {
         "A": "&",
-        "B": "+",
+        "B": ".",
         "C": "++",
-        "D": "."
+        "D": "+"
       },
-      "correct": "B",
+      "correct": "D",
       "explanation": "The + operator is used for both addition and string concatenation in JavaScript.",
       "topic": {
         "topics": [
@@ -556,10 +556,10 @@ module.exports = {
       "options": {
         "A": "2",
         "B": "0",
-        "C": "1",
-        "D": "-1"
+        "C": "-1",
+        "D": "1"
       },
-      "correct": "C",
+      "correct": "D",
       "explanation": "indexOf() returns the index of the first occurrence of the element. The value 2 is at index 1 in the array [1, 2, 3].",
       "topic": {
         "topics": [

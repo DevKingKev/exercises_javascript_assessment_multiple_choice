@@ -71,12 +71,12 @@ module.exports = {
       "id": 2,
       "question": "Which method converts a fetch response to JSON?",
       "options": {
-        "A": "<pre>JSON.parse(response)</pre>",
-        "B": "<pre>response.json()</pre>",
+        "A": "<pre>response.json()</pre>",
+        "B": "<pre>JSON.parse(response)</pre>",
         "C": "<pre>response.toJSON()</pre>",
         "D": "<pre>fetch.json(response)</pre>"
       },
-      "correct": "B",
+      "correct": "A",
       "explanation": "The Response object has a .json() method that reads the response body and parses it as JSON. This also returns a Promise.",
       "topic": {
         "topics": [
@@ -88,12 +88,12 @@ module.exports = {
       "id": 3,
       "question": "What does a 404 status code mean?",
       "options": {
-        "A": "Server error",
-        "B": "Resource not found",
+        "A": "Resource not found",
+        "B": "Server error",
         "C": "Success",
         "D": "Authentication required"
       },
-      "correct": "B",
+      "correct": "A",
       "explanation": "HTTP status code 404 means the requested resource was not found on the server.",
       "topic": {
         "topics": [
@@ -122,12 +122,12 @@ module.exports = {
       "id": 5,
       "question": "What property indicates if a fetch response was successful?",
       "options": {
-        "A": "<pre>response.good</pre>",
+        "A": "<pre>response.ok</pre>",
         "B": "<pre>response.success</pre>",
-        "C": "<pre>response.ok</pre>",
+        "C": "<pre>response.good</pre>",
         "D": "<pre>response.valid</pre>"
       },
-      "correct": "C",
+      "correct": "A",
       "explanation": "response.ok is true for status codes 200-299, making it easy to check if the request was successful.",
       "topic": {
         "topics": [
@@ -139,12 +139,12 @@ module.exports = {
       "id": 6,
       "question": "What happens when fetch cannot reach the server?",
       "options": {
-        "A": "Returns status 500",
-        "B": "The Promise rejects",
+        "A": "The Promise rejects",
+        "B": "Returns status 500",
         "C": "Returns null",
         "D": "Throws a syntax error"
       },
-      "correct": "B",
+      "correct": "A",
       "explanation": "Network errors like DNS failures, no internet connection, or CORS issues cause the fetch Promise to reject.",
       "topic": {
         "topics": [
@@ -156,12 +156,12 @@ module.exports = {
       "id": 7,
       "question": "How do you send data in a POST request with fetch?",
       "options": {
-        "A": "Use the 'data' option",
+        "A": "Use the 'body' option",
         "B": "Add it to the URL",
-        "C": "Use the 'body' option",
+        "C": "Use the 'data' option",
         "D": "Set it as a header"
       },
-      "correct": "C",
+      "correct": "A",
       "explanation": "The 'body' option in fetch is used to send data to the server in POST, PUT, and PATCH requests.",
       "topic": {
         "topics": [
@@ -207,12 +207,12 @@ module.exports = {
       "id": 10,
       "question": "How do you check the HTTP status of a response?",
       "options": {
-        "A": "<pre>response.status</pre>",
-        "B": "<pre>response.code</pre>",
+        "A": "<pre>response.code</pre>",
+        "B": "<pre>response.status</pre>",
         "C": "<pre>response.statusCode</pre>",
         "D": "<pre>response.httpStatus</pre>"
       },
-      "correct": "A",
+      "correct": "B",
       "explanation": "response.status contains the numeric HTTP status code (200, 404, 500, etc.).",
       "topic": {
         "topics": [
@@ -225,11 +225,11 @@ module.exports = {
       "question": "What is the default HTTP method for fetch?",
       "options": {
         "A": "OPTIONS",
-        "B": "POST",
+        "B": "GET",
         "C": "PUT",
-        "D": "GET"
+        "D": "POST"
       },
-      "correct": "D",
+      "correct": "B",
       "explanation": "If you don't specify a method, fetch uses GET by default.",
       "topic": {
         "topics": [
@@ -242,11 +242,11 @@ module.exports = {
       "question": "How do you handle both network and HTTP errors in fetch?",
       "options": {
         "A": "Check response.error",
-        "B": "Only use try/catch",
+        "B": "Check response.ok and use catch()",
         "C": "Fetch handles all errors automatically",
-        "D": "Check response.ok and use catch()"
+        "D": "Only use try/catch"
       },
-      "correct": "D",
+      "correct": "B",
       "explanation": "Use .catch() for network errors and check response.ok for HTTP errors like 404 or 500.",
       "topic": {
         "topics": [
@@ -258,12 +258,12 @@ module.exports = {
       "id": 13,
       "question": "What does this code do? [CODE]const data = await fetch(url).then(r => r.json());[/CODE]",
       "options": {
-        "A": "Fetches and parses JSON data",
-        "B": "Makes a GET request only",
+        "A": "Makes a GET request only",
+        "B": "Fetches and parses JSON data",
         "C": "Throws an error",
         "D": "Sends data to server"
       },
-      "correct": "A",
+      "correct": "B",
       "explanation": "This code uses await with a Promise chain to fetch data and parse it as JSON in one line.",
       "topic": {
         "topics": [
@@ -276,11 +276,11 @@ module.exports = {
       "question": "What header is needed when sending JSON data?",
       "options": {
         "A": "<pre>Type: json</pre>",
-        "B": "<pre>Accept: application/json</pre>",
+        "B": "<pre>Content-Type: application/json</pre>",
         "C": "<pre>Content-Type: text/json</pre>",
-        "D": "<pre>Content-Type: application/json</pre>"
+        "D": "<pre>Accept: application/json</pre>"
       },
-      "correct": "D",
+      "correct": "B",
       "explanation": "The Content-Type header tells the server what format the request body is in.",
       "topic": {
         "topics": [
@@ -345,10 +345,10 @@ module.exports = {
       "options": {
         "A": "The HTTP status code",
         "B": "The parsed JSON data",
-        "C": "A string of the response",
-        "D": "A Response object wrapped in a Promise"
+        "C": "A Response object wrapped in a Promise",
+        "D": "A string of the response"
       },
-      "correct": "D",
+      "correct": "C",
       "explanation": "fetch() returns a Promise that resolves to a Response object, which you then need to process to get the actual data.",
       "topic": {
         "topics": [
@@ -361,11 +361,11 @@ module.exports = {
       "question": "How do you add authentication to a fetch request?",
       "options": {
         "A": "Add to the URL",
-        "B": "Use the Authorization header",
-        "C": "Use the auth option",
+        "B": "Use the auth option",
+        "C": "Use the Authorization header",
         "D": "Set in the body"
       },
-      "correct": "B",
+      "correct": "C",
       "explanation": "Authentication is typically done using the Authorization header, often with a Bearer token.",
       "topic": {
         "topics": [
@@ -378,11 +378,11 @@ module.exports = {
       "question": "What is this code doing? [CODE]fetch('/api/data')\n  .then(response => {\n    if (!response.ok) throw new Error('Request failed');\n    return response.json();\n  })</CODE>",
       "options": {
         "A": "Parsing JSON automatically",
-        "B": "Checking for HTTP errors before parsing",
-        "C": "Handling network errors",
+        "B": "Handling network errors",
+        "C": "Checking for HTTP errors before parsing",
         "D": "Sending a POST request"
       },
-      "correct": "B",
+      "correct": "C",
       "explanation": "This code checks if the response was successful (response.ok) and throws an error if not, before attempting to parse the JSON.",
       "topic": {
         "topics": [
@@ -411,12 +411,12 @@ module.exports = {
       "id": 22,
       "question": "What does a 201 status code indicate?",
       "options": {
-        "A": "Resource created successfully",
+        "A": "Resource deleted",
         "B": "Resource updated",
-        "C": "Resource deleted",
+        "C": "Resource created successfully",
         "D": "Resource found"
       },
-      "correct": "A",
+      "correct": "C",
       "explanation": "HTTP 201 means a new resource was successfully created, often used after POST requests.",
       "topic": {
         "topics": [
@@ -447,10 +447,10 @@ module.exports = {
       "options": {
         "A": "Set request format",
         "B": "Accept the request",
-        "C": "Specify what response format you want",
-        "D": "Enable compression"
+        "C": "Enable compression",
+        "D": "Specify what response format you want"
       },
-      "correct": "C",
+      "correct": "D",
       "explanation": "The Accept header tells the server what content types the client can handle in the response.",
       "topic": {
         "topics": [
@@ -464,10 +464,10 @@ module.exports = {
       "options": {
         "A": "Adds authentication",
         "B": "Includes headers automatically",
-        "C": "Sends cookies with the request",
-        "D": "Includes request body"
+        "C": "Includes request body",
+        "D": "Sends cookies with the request"
       },
-      "correct": "C",
+      "correct": "D",
       "explanation": "credentials: 'include' tells fetch to send cookies and authentication headers with cross-origin requests.",
       "topic": {
         "topics": [
@@ -515,10 +515,10 @@ module.exports = {
       "options": {
         "A": "Server error",
         "B": "Not found",
-        "C": "Bad request",
-        "D": "Unauthorized"
+        "C": "Unauthorized",
+        "D": "Bad request"
       },
-      "correct": "C",
+      "correct": "D",
       "explanation": "HTTP 400 means the server couldn't understand the request due to invalid syntax, often due to missing or malformed data.",
       "topic": {
         "topics": [
@@ -530,12 +530,12 @@ module.exports = {
       "id": 29,
       "question": "How do you cancel a fetch request?",
       "options": {
-        "A": "Use AbortController",
+        "A": "It cannot be cancelled",
         "B": "Call fetch.cancel()",
         "C": "Set a timeout",
-        "D": "It cannot be cancelled"
+        "D": "Use AbortController"
       },
-      "correct": "A",
+      "correct": "D",
       "explanation": "AbortController allows you to cancel fetch requests by passing an AbortSignal to the fetch options.",
       "topic": {
         "topics": [
@@ -547,12 +547,12 @@ module.exports = {
       "id": 30,
       "question": "What is the main advantage of using fetch over older XMLHttpRequest?",
       "options": {
-        "A": "Cleaner Promise-based API",
+        "A": "Works in older browsers",
         "B": "Better performance",
         "C": "More features",
-        "D": "Works in older browsers"
+        "D": "Cleaner Promise-based API"
       },
-      "correct": "A",
+      "correct": "D",
       "explanation": "fetch provides a modern, Promise-based API that's easier to use and chain compared to the callback-based XMLHttpRequest.",
       "topic": {
         "topics": [

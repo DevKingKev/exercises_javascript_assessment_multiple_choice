@@ -54,12 +54,12 @@ module.exports = {
       "id": 1,
       "question": "What is the main advantage of using prototype methods?",
       "options": {
-        "A": "Methods are private",
+        "A": "Methods are shared between all instances",
         "B": "Methods are faster",
-        "C": "Methods are shared between all instances",
+        "C": "Methods are private",
         "D": "Methods can't be changed"
       },
-      "correct": "C",
+      "correct": "A",
       "explanation": "When methods are defined on the prototype, all instances share the same method reference, which is memory-efficient compared to each instance having its own copy of the method.",
       "topic": {
         "topics": [
@@ -88,12 +88,12 @@ module.exports = {
       "id": 3,
       "question": "What is the value of <pre>this</pre> inside a prototype method when called?",
       "options": {
-        "A": "The prototype object",
-        "B": "The instance calling the method",
+        "A": "The instance calling the method",
+        "B": "The prototype object",
         "C": "The constructor function",
         "D": "Always <pre>undefined</pre>"
       },
-      "correct": "B",
+      "correct": "A",
       "explanation": "When a prototype method is called on an instance, <pre>this</pre> refers to that specific instance, allowing the method to access and modify instance-specific data.",
       "topic": {
         "topics": [
@@ -139,12 +139,12 @@ module.exports = {
       "id": 6,
       "question": "What is the purpose of a constructor function?",
       "options": {
-        "A": "To destroy old objects",
-        "B": "To initialize new object instances",
+        "A": "To initialize new object instances",
+        "B": "To destroy old objects",
         "C": "To create classes",
         "D": "To modify prototypes"
       },
-      "correct": "B",
+      "correct": "A",
       "explanation": "Constructor functions are used to create and initialize new objects. They typically set up instance properties and are called with the <pre>new</pre> keyword.",
       "topic": {
         "topics": [
@@ -156,12 +156,12 @@ module.exports = {
       "id": 7,
       "question": "What does the <pre>new</pre> keyword automatically set for the new object?",
       "options": {
-        "A": "The prototype to Object.prototype",
+        "A": "The prototype to constructor's prototype property",
         "B": "The prototype to the constructor itself",
-        "C": "The prototype to constructor's prototype property",
+        "C": "The prototype to Object.prototype",
         "D": "No prototype is set"
       },
-      "correct": "C",
+      "correct": "A",
       "explanation": "When using <pre>new</pre>, the new object's prototype is set to the constructor function's <pre>prototype</pre> property, establishing the inheritance chain.",
       "topic": {
         "topics": [
@@ -174,11 +174,11 @@ module.exports = {
       "question": "What is the result of [CODE]typeof Object.prototype[/CODE]?",
       "options": {
         "A": "<pre>'prototype'</pre>",
-        "B": "<pre>'function'</pre>",
+        "B": "<pre>'object'</pre>",
         "C": "<pre>'undefined'</pre>",
-        "D": "<pre>'object'</pre>"
+        "D": "<pre>'function'</pre>"
       },
-      "correct": "D",
+      "correct": "B",
       "explanation": "<pre>Object.prototype</pre> is an object, not a function. It's the base prototype that most JavaScript objects inherit from.",
       "topic": {
         "topics": [
@@ -191,11 +191,11 @@ module.exports = {
       "question": "How can you create multiple objects with the same initial properties?",
       "options": {
         "A": "Use the <pre>clone</pre> keyword",
-        "B": "Copy and paste object literals",
-        "C": "Use a constructor function",
+        "B": "Use a constructor function",
+        "C": "Copy and paste object literals",
         "D": "It's not possible in JavaScript"
       },
-      "correct": "C",
+      "correct": "B",
       "explanation": "Constructor functions allow you to create multiple objects with the same structure. Each call to the constructor with <pre>new</pre> creates a new instance with the defined properties.",
       "topic": {
         "topics": [
@@ -208,11 +208,11 @@ module.exports = {
       "question": "What happens if you modify a property on the prototype?",
       "options": {
         "A": "Existing instances keep old values",
-        "B": "Only new instances see the change",
-        "C": "All instances see the change immediately",
+        "B": "All instances see the change immediately",
+        "C": "Only new instances see the change",
         "D": "It causes an error"
       },
-      "correct": "C",
+      "correct": "B",
       "explanation": "Since objects access properties through the prototype chain dynamically, changes to prototype properties are immediately visible to all instances that inherit from that prototype.",
       "topic": {
         "topics": [
@@ -225,11 +225,11 @@ module.exports = {
       "question": "What is the default return value of a constructor function?",
       "options": {
         "A": "The prototype object",
-        "B": "<pre>undefined</pre>",
-        "C": "The new object instance",
+        "B": "The new object instance",
+        "C": "<pre>undefined</pre>",
         "D": "The constructor itself"
       },
-      "correct": "C",
+      "correct": "B",
       "explanation": "When called with <pre>new</pre>, a constructor function automatically returns the newly created object instance, unless you explicitly return a different object.",
       "topic": {
         "topics": [
@@ -276,11 +276,11 @@ module.exports = {
       "question": "What is the purpose of the <pre>constructor</pre> property on prototypes?",
       "options": {
         "A": "To set inheritance",
-        "B": "To create new instances",
+        "B": "To reference back to the constructor function",
         "C": "To destroy objects",
-        "D": "To reference back to the constructor function"
+        "D": "To create new instances"
       },
-      "correct": "D",
+      "correct": "B",
       "explanation": "The <pre>constructor</pre> property on a prototype object points back to the constructor function that created instances of that prototype.",
       "topic": {
         "topics": [
@@ -293,11 +293,11 @@ module.exports = {
       "question": "How can you add a method to all objects in JavaScript?",
       "options": {
         "A": "It's not possible",
-        "B": "<pre>Object.methodName = function() {}</pre>",
+        "B": "<pre>Object.prototype.methodName = function() {}</pre>",
         "C": "<pre>allObjects.addMethod()</pre>",
-        "D": "<pre>Object.prototype.methodName = function() {}</pre>"
+        "D": "<pre>Object.methodName = function() {}</pre>"
       },
-      "correct": "D",
+      "correct": "B",
       "explanation": "By adding a method to <pre>Object.prototype</pre>, all objects that inherit from <pre>Object.prototype</pre> (which is most objects) will have access to that method.",
       "topic": {
         "topics": [
@@ -328,10 +328,10 @@ module.exports = {
       "options": {
         "A": "Error",
         "B": "<pre>false</pre>",
-        "C": "<pre>undefined</pre>",
-        "D": "<pre>true</pre>"
+        "C": "<pre>true</pre>",
+        "D": "<pre>undefined</pre>"
       },
-      "correct": "D",
+      "correct": "C",
       "explanation": "This returns <pre>true</pre> because objects created with <pre>{}</pre> inherit <pre>hasOwnProperty</pre> from <pre>Object.prototype</pre>, so they reference the same function.",
       "topic": {
         "topics": [
@@ -361,11 +361,11 @@ module.exports = {
       "question": "What is the prototype chain for a custom object created with <pre>new Person()</pre>?",
       "options": {
         "A": "instance → Person → Object.prototype → null",
-        "B": "instance → Person.prototype → Object.prototype → null",
-        "C": "instance → Person.prototype → null",
+        "B": "instance → Person.prototype → null",
+        "C": "instance → Person.prototype → Object.prototype → null",
         "D": "instance → Object.prototype → null"
       },
-      "correct": "B",
+      "correct": "C",
       "explanation": "Custom objects created with constructors inherit from the constructor's prototype, which in turn inherits from <pre>Object.prototype</pre>, ending with <pre>null</pre>.",
       "topic": {
         "topics": [
@@ -377,12 +377,12 @@ module.exports = {
       "id": 20,
       "question": "What happens if a constructor function returns an object?",
       "options": {
-        "A": "That object becomes the result of <pre>new</pre>",
+        "A": "It causes an error",
         "B": "The return is ignored",
-        "C": "It causes an error",
+        "C": "That object becomes the result of <pre>new</pre>",
         "D": "The prototype is changed"
       },
-      "correct": "A",
+      "correct": "C",
       "explanation": "If a constructor function explicitly returns an object, that object becomes the result of the <pre>new</pre> expression instead of the automatically created object.",
       "topic": {
         "topics": [
@@ -394,12 +394,12 @@ module.exports = {
       "id": 21,
       "question": "How do you create an object that doesn't have any inherited methods?",
       "options": {
-        "A": "<pre>Object.create(null)</pre>",
+        "A": "<pre>new Object()</pre>",
         "B": "<pre>{}</pre>",
-        "C": "<pre>new Object()</pre>",
+        "C": "<pre>Object.create(null)</pre>",
         "D": "<pre>Object.empty()</pre>"
       },
-      "correct": "A",
+      "correct": "C",
       "explanation": "<pre>Object.create(null)</pre> creates an object with no prototype, so it doesn't inherit any methods from <pre>Object.prototype</pre> like <pre>toString()</pre> or <pre>hasOwnProperty()</pre>.",
       "topic": {
         "topics": [
@@ -445,12 +445,12 @@ module.exports = {
       "id": 24,
       "question": "How can you prevent new properties from being added to an object?",
       "options": {
-        "A": "<pre>Object.preventExtensions(obj)</pre>",
+        "A": "Delete the <pre>add</pre> method",
         "B": "<pre>obj.freeze()</pre>",
         "C": "<pre>obj.lock()</pre>",
-        "D": "Delete the <pre>add</pre> method"
+        "D": "<pre>Object.preventExtensions(obj)</pre>"
       },
-      "correct": "A",
+      "correct": "D",
       "explanation": "<pre>Object.preventExtensions()</pre> prevents new properties from being added to an object, while existing properties can still be modified.",
       "topic": {
         "topics": [
@@ -462,12 +462,12 @@ module.exports = {
       "id": 25,
       "question": "What is the purpose of the <pre>instanceof</pre> operator?",
       "options": {
-        "A": "To check if an object inherits from a constructor's prototype",
+        "A": "To create new instances",
         "B": "To check if a variable is defined",
         "C": "To compare two objects",
-        "D": "To create new instances"
+        "D": "To check if an object inherits from a constructor's prototype"
       },
-      "correct": "A",
+      "correct": "D",
       "explanation": "The <pre>instanceof</pre> operator checks if an object's prototype chain contains the prototype property of a specific constructor function.",
       "topic": {
         "topics": [
@@ -480,11 +480,11 @@ module.exports = {
       "question": "What happens when you assign to a property that exists only in the prototype?",
       "options": {
         "A": "The prototype property is updated",
-        "B": "A new own property is created on the instance",
+        "B": "It causes an error",
         "C": "All instances get the new value",
-        "D": "It causes an error"
+        "D": "A new own property is created on the instance"
       },
-      "correct": "B",
+      "correct": "D",
       "explanation": "When you assign to a property that only exists in the prototype, JavaScript creates a new 'own property' on the instance with the new value, shadowing the prototype property.",
       "topic": {
         "topics": [
@@ -497,11 +497,11 @@ module.exports = {
       "question": "How can you get all properties (including inherited) of an object?",
       "options": {
         "A": "Use <pre>Object.keys()</pre>",
-        "B": "Use <pre>for...in</pre> loop",
+        "B": "Use <pre>obj.properties</pre>",
         "C": "Use <pre>Object.getOwnPropertyNames()</pre>",
-        "D": "Use <pre>obj.properties</pre>"
+        "D": "Use <pre>for...in</pre> loop"
       },
-      "correct": "B",
+      "correct": "D",
       "explanation": "The <pre>for...in</pre> loop iterates over all enumerable properties, including those inherited through the prototype chain. Other methods only return own properties.",
       "topic": {
         "topics": [
@@ -531,11 +531,11 @@ module.exports = {
       "question": "Why might you add methods to a prototype instead of in the constructor?",
       "options": {
         "A": "To make methods private",
-        "B": "To save memory by sharing methods",
+        "B": "To prevent method overriding",
         "C": "To make methods faster",
-        "D": "To prevent method overriding"
+        "D": "To save memory by sharing methods"
       },
-      "correct": "B",
+      "correct": "D",
       "explanation": "Methods added to the prototype are shared by all instances, which is memory-efficient. Methods defined in the constructor create a new function for each instance.",
       "topic": {
         "topics": [
@@ -548,11 +548,11 @@ module.exports = {
       "question": "What is the simplest way to create a single object with specific properties?",
       "options": {
         "A": "Use a constructor function",
-        "B": "Use object literal syntax: <pre>{prop: value}</pre>",
+        "B": "Use <pre>new Object()</pre>",
         "C": "Use <pre>Object.create()</pre>",
-        "D": "Use <pre>new Object()</pre>"
+        "D": "Use object literal syntax: <pre>{prop: value}</pre>"
       },
-      "correct": "B",
+      "correct": "D",
       "explanation": "For creating a single object with specific properties, object literal syntax <pre>{}</pre> is the simplest and most straightforward approach.",
       "topic": {
         "topics": [

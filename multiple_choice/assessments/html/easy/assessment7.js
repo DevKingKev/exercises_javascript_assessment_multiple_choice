@@ -69,12 +69,12 @@ module.exports = {
       "id": 1,
       "question": "What is the purpose of the <pre>autofocus</pre> attribute in a form?",
       "options": {
-        "A": "Makes the input always visible on screen",
+        "A": "Automatically focuses the input when the page loads",
         "B": "Automatically fills the input with suggested values",
         "C": "Focuses the input when user hovers over it",
-        "D": "Automatically focuses the input when the page loads"
+        "D": "Makes the input always visible on screen"
       },
-      "correct": "D",
+      "correct": "A",
       "explanation": "The <pre>autofocus</pre> attribute automatically focuses the input element when the page loads, placing the cursor in the field ready for user input. Only one element should have this attribute per page. Example: <pre><input type=\"text\" autofocus></pre>",
       "topic": {
         "topics": [
@@ -87,12 +87,12 @@ module.exports = {
       "id": 2,
       "question": "Which input type is best for collecting a user's age?",
       "options": {
-        "A": "<pre>type=\"range\"</pre>",
+        "A": "<pre>type=\"number\"</pre>",
         "B": "<pre>type=\"text\"</pre>",
-        "C": "<pre>type=\"number\"</pre>",
+        "C": "<pre>type=\"range\"</pre>",
         "D": "<pre>type=\"age\"</pre>"
       },
-      "correct": "C",
+      "correct": "A",
       "explanation": "The <pre>type=\"number\"</pre> input is ideal for age because it restricts input to numeric values and provides increment/decrement controls. Example: <pre><input type=\"number\" name=\"age\" min=\"0\" max=\"120\"></pre>",
       "topic": {
         "topics": [
@@ -105,12 +105,12 @@ module.exports = {
       "id": 3,
       "question": "What does the <pre>size</pre> attribute control in a text input?",
       "options": {
-        "A": "The maximum input length",
-        "B": "The visible width in characters",
+        "A": "The visible width in characters",
+        "B": "The maximum input length",
         "C": "The font size of the text",
         "D": "The input field height"
       },
-      "correct": "B",
+      "correct": "A",
       "explanation": "The <pre>size</pre> attribute specifies the visible width of an input field in average character widths. Example: <pre><input type=\"text\" size=\"20\"></pre> creates a field approximately 20 characters wide.",
       "topic": {
         "topics": [
@@ -141,12 +141,12 @@ module.exports = {
       "id": 5,
       "question": "What is the purpose of the <pre>title</pre> attribute in form elements?",
       "options": {
-        "A": "Defines the input field title",
+        "A": "Provides additional information as a tooltip",
         "B": "Sets the form title",
-        "C": "Provides additional information as a tooltip",
+        "C": "Defines the input field title",
         "D": "Creates a title for validation messages"
       },
-      "correct": "C",
+      "correct": "A",
       "explanation": "The <pre>title</pre> attribute provides additional information about an element, typically displayed as a tooltip when users hover over it. It's also used by screen readers and can provide context for validation errors. Example: <pre><input type=\"text\" title=\"Enter your full name\"></pre>",
       "topic": {
         "topics": [
@@ -159,12 +159,12 @@ module.exports = {
       "id": 6,
       "question": "Which attribute makes a radio button selected by default?",
       "options": {
-        "A": "<pre>selected</pre>",
-        "B": "<pre>checked</pre>",
+        "A": "<pre>checked</pre>",
+        "B": "<pre>selected</pre>",
         "C": "<pre>default</pre>",
         "D": "<pre>value=\"true\"</pre>"
       },
-      "correct": "B",
+      "correct": "A",
       "explanation": "The <pre>checked</pre> boolean attribute makes a radio button or checkbox selected by default when the page loads. Example: <pre><input type=\"radio\" name=\"gender\" value=\"male\" checked></pre>",
       "topic": {
         "topics": [
@@ -195,12 +195,12 @@ module.exports = {
       "id": 8,
       "question": "How do you make a textarea non-resizable?",
       "options": {
-        "A": "Use <pre><textarea fixed></pre>",
+        "A": "Use CSS <pre>resize: none;</pre>",
         "B": "Add <pre>resizable=\"false\"</pre> attribute",
-        "C": "Use CSS <pre>resize: none;</pre>",
+        "C": "Use <pre><textarea fixed></pre>",
         "D": "Add <pre>style=\"no-resize\"</pre>"
       },
-      "correct": "C",
+      "correct": "A",
       "explanation": "To prevent users from resizing a textarea, use CSS: <pre>textarea { resize: none; }</pre>. This disables the resize handle that appears in the bottom-right corner of textareas in most browsers.",
       "topic": {
         "topics": [
@@ -214,11 +214,11 @@ module.exports = {
       "question": "Which input type provides a slider for selecting a value from a range?",
       "options": {
         "A": "<pre>type=\"select\"</pre>",
-        "B": "<pre>type=\"slider\"</pre>",
+        "B": "<pre>type=\"range\"</pre>",
         "C": "<pre>type=\"number\"</pre>",
-        "D": "<pre>type=\"range\"</pre>"
+        "D": "<pre>type=\"slider\"</pre>"
       },
-      "correct": "D",
+      "correct": "B",
       "explanation": "The <pre>type=\"range\"</pre> input creates a slider control. Use <pre>min</pre>, <pre>max</pre>, and <pre>step</pre> to configure the range. Example: <pre><input type=\"range\" min=\"0\" max=\"100\" value=\"50\"></pre>",
       "topic": {
         "topics": [
@@ -250,11 +250,11 @@ module.exports = {
       "question": "Which attribute specifies that an input should be submitted with the form but not editable?",
       "options": {
         "A": "<pre>fixed</pre>",
-        "B": "<pre>disabled</pre>",
+        "B": "<pre>readonly</pre>",
         "C": "<pre>static</pre>",
-        "D": "<pre>readonly</pre>"
+        "D": "<pre>disabled</pre>"
       },
-      "correct": "D",
+      "correct": "B",
       "explanation": "The <pre>readonly</pre> attribute makes an input field non-editable but still includes its value in form submission. Example: <pre><input type=\"text\" value=\"Fixed Value\" readonly></pre>",
       "topic": {
         "topics": [
@@ -268,11 +268,11 @@ module.exports = {
       "question": "How do you create a multi-line text input field?",
       "options": {
         "A": "Add <pre>multiline=\"true\"</pre> to text input",
-        "B": "Use <pre><input type=\"multiline\"></pre>",
-        "C": "Use the <pre><textarea></pre> element",
+        "B": "Use the <pre><textarea></pre> element",
+        "C": "Use <pre><input type=\"multiline\"></pre>",
         "D": "Use <pre><text></pre> element"
       },
-      "correct": "C",
+      "correct": "B",
       "explanation": "The <pre><textarea></pre> element creates a multi-line text input field. Use <pre>rows</pre> and <pre>cols</pre> to set initial dimensions. Example: <pre><textarea rows=\"4\" cols=\"50\"></textarea></pre>",
       "topic": {
         "topics": [
@@ -285,12 +285,12 @@ module.exports = {
       "id": 13,
       "question": "What does the <pre>selected</pre> attribute do in an option element?",
       "options": {
-        "A": "Makes the option pre-selected in the dropdown",
-        "B": "Highlights the option as selected",
+        "A": "Highlights the option as selected",
+        "B": "Makes the option pre-selected in the dropdown",
         "C": "Makes the option selectable",
         "D": "Filters the selectable options"
       },
-      "correct": "A",
+      "correct": "B",
       "explanation": "The <pre>selected</pre> attribute makes an option pre-selected when the page loads. Only one option should have this in a single-select dropdown. Example: <pre><option selected>Default Option</option></pre>",
       "topic": {
         "topics": [
@@ -321,12 +321,12 @@ module.exports = {
       "id": 15,
       "question": "What is the purpose of the <pre>pattern</pre> attribute?",
       "options": {
-        "A": "Validates input against a regular expression",
-        "B": "Sets a visual pattern for the input",
+        "A": "Sets a visual pattern for the input",
+        "B": "Validates input against a regular expression",
         "C": "Defines the input formatting pattern",
         "D": "Creates a pattern for auto-completion"
       },
-      "correct": "A",
+      "correct": "B",
       "explanation": "The <pre>pattern</pre> attribute specifies a regular expression that the input's value must match. If the pattern doesn't match, the form won't submit. Example: <pre><input pattern=\"[A-Za-z]{3}\" title=\"Three letters\"></pre>",
       "topic": {
         "topics": [
@@ -340,11 +340,11 @@ module.exports = {
       "question": "How do you create a hidden field that submits data but isn't visible?",
       "options": {
         "A": "Use CSS to hide a regular input",
-        "B": "Use <pre><hidden></pre> element",
+        "B": "Use <pre><input type=\"hidden\"></pre>",
         "C": "Add <pre>visible=\"false\"</pre> to any input",
-        "D": "Use <pre><input type=\"hidden\"></pre>"
+        "D": "Use <pre><hidden></pre> element"
       },
-      "correct": "D",
+      "correct": "B",
       "explanation": "The <pre>type=\"hidden\"</pre> input creates a field that submits data but isn't visible to users. Useful for storing IDs, tokens, or state information. Example: <pre><input type=\"hidden\" name=\"user_id\" value=\"123\"></pre>",
       "topic": {
         "topics": [
@@ -377,10 +377,10 @@ module.exports = {
       "options": {
         "A": "Grays out the control but allows interaction",
         "B": "Hides the form control from view",
-        "C": "Makes the control read-only",
-        "D": "Prevents user interaction and excludes from submission"
+        "C": "Prevents user interaction and excludes from submission",
+        "D": "Makes the control read-only"
       },
-      "correct": "D",
+      "correct": "C",
       "explanation": "The <pre>disabled</pre> attribute prevents users from interacting with the form control and excludes its value from form submission. The control appears grayed out. Example: <pre><input type=\"text\" disabled></pre>",
       "topic": {
         "topics": [
@@ -394,11 +394,11 @@ module.exports = {
       "question": "How do you create a dropdown list with predefined options?",
       "options": {
         "A": "Use <pre><input type=\"dropdown\"></pre>",
-        "B": "Use <pre><select></pre> with <pre><option></pre> elements",
-        "C": "Use <pre><list></pre> element",
+        "B": "Use <pre><list></pre> element",
+        "C": "Use <pre><select></pre> with <pre><option></pre> elements",
         "D": "Use <pre><options></pre> element"
       },
-      "correct": "B",
+      "correct": "C",
       "explanation": "The <pre><select></pre> element creates a dropdown list, with each <pre><option></pre> representing a choice. Example: [CODE]<select name=\"country\">\n  <option value=\"us\">United States</option>\n  <option value=\"ca\">Canada</option>\n</select>[/CODE]",
       "topic": {
         "topics": [
@@ -411,12 +411,12 @@ module.exports = {
       "id": 20,
       "question": "Which input type is specifically designed for email addresses?",
       "options": {
-        "A": "<pre>type=\"email\"</pre>",
+        "A": "<pre>type=\"mail\"</pre>",
         "B": "<pre>type=\"text\"</pre>",
-        "C": "<pre>type=\"mail\"</pre>",
+        "C": "<pre>type=\"email\"</pre>",
         "D": "<pre>type=\"address\"</pre>"
       },
-      "correct": "A",
+      "correct": "C",
       "explanation": "The <pre>type=\"email\"</pre> input is designed for email addresses. It provides validation and on mobile devices shows an email-optimized keyboard. Example: <pre><input type=\"email\" name=\"user_email\"></pre>",
       "topic": {
         "topics": [
@@ -430,11 +430,11 @@ module.exports = {
       "question": "What is the purpose of the <pre>value</pre> attribute in form controls?",
       "options": {
         "A": "Defines the control's importance",
-        "B": "Sets the initial value of the control",
-        "C": "Specifies the validation value",
+        "B": "Specifies the validation value",
+        "C": "Sets the initial value of the control",
         "D": "Sets the display value only"
       },
-      "correct": "B",
+      "correct": "C",
       "explanation": "The <pre>value</pre> attribute sets the initial value of a form control. For text inputs, it pre-fills the field; for checkboxes/radios, it defines the submitted value when checked. Example: <pre><input type=\"text\" value=\"Default Text\"></pre>",
       "topic": {
         "topics": [
@@ -449,10 +449,10 @@ module.exports = {
       "options": {
         "A": "Use <pre><required></pre> element",
         "B": "Use <pre>validate=\"required\"</pre>",
-        "C": "Add <pre>mandatory=\"true\"</pre>",
-        "D": "Add the <pre>required</pre> attribute"
+        "C": "Add the <pre>required</pre> attribute",
+        "D": "Add <pre>mandatory=\"true\"</pre>"
       },
-      "correct": "D",
+      "correct": "C",
       "explanation": "The <pre>required</pre> attribute specifies that a form field must be filled out before the form can be submitted. Example: <pre><input type=\"text\" required></pre>",
       "topic": {
         "topics": [
@@ -483,12 +483,12 @@ module.exports = {
       "id": 24,
       "question": "What does the <pre>placeholder</pre> attribute provide?",
       "options": {
-        "A": "Hint text that disappears when user types",
+        "A": "Example text that stays visible",
         "B": "Default value for the input",
         "C": "Label for the input field",
-        "D": "Example text that stays visible"
+        "D": "Hint text that disappears when user types"
       },
-      "correct": "A",
+      "correct": "D",
       "explanation": "The <pre>placeholder</pre> attribute provides short hint text that describes the expected value. It disappears when the user starts typing. Example: <pre><input type=\"text\" placeholder=\"Enter your name\"></pre>",
       "topic": {
         "topics": [
@@ -502,11 +502,11 @@ module.exports = {
       "question": "Which input type obscures entered characters for privacy?",
       "options": {
         "A": "<pre>type=\"hidden\"</pre>",
-        "B": "<pre>type=\"password\"</pre>",
+        "B": "<pre>type=\"private\"</pre>",
         "C": "<pre>type=\"secure\"</pre>",
-        "D": "<pre>type=\"private\"</pre>"
+        "D": "<pre>type=\"password\"</pre>"
       },
-      "correct": "B",
+      "correct": "D",
       "explanation": "The <pre>type=\"password\"</pre> input obscures entered characters (typically showing dots or asterisks) to prevent shoulder-surfing. Example: <pre><input type=\"password\" name=\"user_password\"></pre>",
       "topic": {
         "topics": [
@@ -520,11 +520,11 @@ module.exports = {
       "question": "How do you specify that a textarea should wrap text?",
       "options": {
         "A": "Add <pre>text-wrap=\"true\"</pre>",
-        "B": "Use the <pre>wrap</pre> attribute",
+        "B": "Textareas wrap by default",
         "C": "Use CSS <pre>white-space: normal;</pre>",
-        "D": "Textareas wrap by default"
+        "D": "Use the <pre>wrap</pre> attribute"
       },
-      "correct": "B",
+      "correct": "D",
       "explanation": "The <pre>wrap</pre> attribute specifies how text should be wrapped in a textarea. Values include <pre>soft</pre> (default), <pre>hard</pre> (with line breaks), and <pre>off</pre> (no wrapping). Example: <pre><textarea wrap=\"hard\"></textarea></pre>",
       "topic": {
         "topics": [
@@ -539,10 +539,10 @@ module.exports = {
       "options": {
         "A": "Defines the field's variable name in JavaScript",
         "B": "Sets the visible label for the field",
-        "C": "Identifies the field when form data is submitted",
-        "D": "Specifies the field's display name"
+        "C": "Specifies the field's display name",
+        "D": "Identifies the field when form data is submitted"
       },
-      "correct": "C",
+      "correct": "D",
       "explanation": "The <pre>name</pre> attribute identifies the form control when the form data is submitted. It becomes the key in the key-value pairs sent to the server. Example: <pre><input type=\"text\" name=\"username\"></pre> submits as <pre>username=entered_value</pre>",
       "topic": {
         "topics": [
@@ -573,12 +573,12 @@ module.exports = {
       "id": 29,
       "question": "How do you allow multiple selections in a dropdown list?",
       "options": {
-        "A": "Add <pre>multiple</pre> attribute to <pre><select></pre>",
+        "A": "Use <pre><multiselect></pre> element",
         "B": "Use <pre><select multiple></pre>",
         "C": "Add <pre>selection=\"multiple\"</pre>",
-        "D": "Use <pre><multiselect></pre> element"
+        "D": "Add <pre>multiple</pre> attribute to <pre><select></pre>"
       },
-      "correct": "A",
+      "correct": "D",
       "explanation": "The <pre>multiple</pre> attribute allows users to select multiple options in a <pre><select></pre> element by holding Ctrl/Cmd while clicking. Example: <pre><select multiple></select></pre>",
       "topic": {
         "topics": [
@@ -591,12 +591,12 @@ module.exports = {
       "id": 30,
       "question": "What does the <pre>maxlength</pre> attribute restrict?",
       "options": {
-        "A": "The maximum number of characters allowed",
+        "A": "The maximum number of options in a select",
         "B": "The maximum value for number inputs",
         "C": "The maximum width of the input field",
-        "D": "The maximum number of options in a select"
+        "D": "The maximum number of characters allowed"
       },
-      "correct": "A",
+      "correct": "D",
       "explanation": "The <pre>maxlength</pre> attribute restricts the maximum number of characters users can enter in a text input or textarea. The browser prevents typing beyond this limit. Example: <pre><input type=\"text\" maxlength=\"50\"></pre>",
       "topic": {
         "topics": [

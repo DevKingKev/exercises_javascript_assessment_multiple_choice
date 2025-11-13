@@ -78,12 +78,12 @@ module.exports = {
       "id": 2,
       "question": "Which method converts a JavaScript object to a JSON string?",
       "options": {
-        "A": "JSON.stringify()",
+        "A": "JSON.toString()",
         "B": "JSON.parse()",
         "C": "JSON.convert()",
-        "D": "JSON.toString()"
+        "D": "JSON.stringify()"
       },
-      "correct": "A",
+      "correct": "D",
       "explanation": "[CODE]JSON.stringify()[/CODE] converts a JavaScript object or value to a JSON string. [CODE]JSON.parse()[/CODE] does the opposite - converts JSON to JavaScript.",
       "topic": {
         "topics": [
@@ -96,11 +96,11 @@ module.exports = {
       "question": "What is the correct syntax for template literals?",
       "options": {
         "A": "\"Hello ${name}\"",
-        "B": "`Hello ${name}`",
+        "B": "'Hello ' + name",
         "C": "'Hello ${name}'",
-        "D": "'Hello ' + name"
+        "D": "`Hello ${name}`"
       },
-      "correct": "B",
+      "correct": "D",
       "explanation": "Template literals use backticks (`) and allow embedded expressions with [CODE]${expression}[/CODE] syntax for string interpolation.",
       "topic": {
         "topics": [
@@ -115,12 +115,12 @@ module.exports = {
       "id": 4,
       "question": "Which statement correctly handles errors in JavaScript?",
       "options": {
-        "A": "error { code } catch (e) { handle }",
+        "A": "try { code } catch (error) { handle }",
         "B": "catch { code } try (error) { handle }",
         "C": "handle { code } error (e) { catch }",
-        "D": "try { code } catch (error) { handle }"
+        "D": "error { code } catch (e) { handle }"
       },
-      "correct": "D",
+      "correct": "A",
       "explanation": "The [CODE]try...catch[/CODE] statement executes code in the try block and handles any exceptions in the catch block with the error parameter.",
       "topic": {
         "topics": [
@@ -132,12 +132,12 @@ module.exports = {
       "id": 5,
       "question": "How do you create a new Date object for the current date and time?",
       "options": {
-        "A": "new Date()",
-        "B": "new Date.now()",
+        "A": "new Date.now()",
+        "B": "new Date()",
         "C": "Date.current()",
         "D": "Date.new()"
       },
-      "correct": "A",
+      "correct": "B",
       "explanation": "[CODE]new Date()[/CODE] creates a new Date object with the current date and time. [CODE]Date.now()[/CODE] returns a timestamp number, not a Date object.",
       "topic": {
         "topics": [
@@ -169,10 +169,10 @@ module.exports = {
       "options": {
         "A": "const {a, b} = [1, 2]",
         "B": "const (a, b) = [1, 2]",
-        "C": "const [a, b] = [1, 2]",
-        "D": "const a, b = [1, 2]"
+        "C": "const a, b = [1, 2]",
+        "D": "const [a, b] = [1, 2]"
       },
-      "correct": "C",
+      "correct": "D",
       "explanation": "Array destructuring uses square brackets []. Object destructuring uses curly braces {}. This assigns [CODE]a=1, b=2[/CODE].",
       "topic": {
         "topics": [
@@ -255,11 +255,11 @@ module.exports = {
       "question": "What happens if you call JSON.parse() with invalid JSON?",
       "options": {
         "A": "Returns null",
-        "B": "Throws an error",
+        "B": "Returns empty object",
         "C": "Returns undefined",
-        "D": "Returns empty object"
+        "D": "Throws an error"
       },
-      "correct": "B",
+      "correct": "D",
       "explanation": "[CODE]JSON.parse()[/CODE] throws a SyntaxError if the string is not valid JSON. You should use [CODE]try...catch[/CODE] to handle this.",
       "topic": {
         "topics": [
@@ -307,12 +307,12 @@ module.exports = {
       "id": 15,
       "question": "How do you catch a specific type of error?",
       "options": {
-        "A": "catch (TypeError e)",
-        "B": "catch (e) { if (e instanceof TypeError) }",
+        "A": "catch (e) { if (e instanceof TypeError) }",
+        "B": "catch (TypeError e)",
         "C": "catch TypeError (e)",
         "D": "catch (e: TypeError)"
       },
-      "correct": "B",
+      "correct": "A",
       "explanation": "JavaScript catch blocks catch all errors. To handle specific types, check the error type inside the catch block using [CODE]instanceof[/CODE].",
       "topic": {
         "topics": [
@@ -324,12 +324,12 @@ module.exports = {
       "id": 16,
       "question": "What is the result of `Hello ${1 + 2} World`?",
       "options": {
-        "A": "Hello 3 World",
-        "B": "Hello ${1 + 2} World",
+        "A": "Hello ${1 + 2} World",
+        "B": "Hello 3 World",
         "C": "Hello 1 + 2 World",
         "D": "Syntax error"
       },
-      "correct": "A",
+      "correct": "B",
       "explanation": "Template literals (backticks) evaluate expressions inside [CODE]${}[/CODE]. The expression [CODE]1 + 2[/CODE] evaluates to 3.",
       "topic": {
         "topics": [
@@ -413,11 +413,11 @@ module.exports = {
       "question": "What is a callback function?",
       "options": {
         "A": "A function that calls itself",
-        "B": "A function passed to another function",
-        "C": "A function that returns a function",
+        "B": "A function that returns a function",
+        "C": "A function passed to another function",
         "D": "A function with no parameters"
       },
-      "correct": "B",
+      "correct": "C",
       "explanation": "A callback function is a function passed as an argument to another function, to be called later when needed.",
       "topic": {
         "topics": [
@@ -448,11 +448,11 @@ module.exports = {
       "question": "What does the finally block do in try...catch?",
       "options": {
         "A": "Runs only if there's an error",
-        "B": "Always runs regardless of error",
-        "C": "Runs only if there's no error",
+        "B": "Runs only if there's no error",
+        "C": "Always runs regardless of error",
         "D": "Prevents errors from occurring"
       },
-      "correct": "B",
+      "correct": "C",
       "explanation": "The [CODE]finally[/CODE] block always executes, whether an error occurs or not. It's useful for cleanup operations.",
       "topic": {
         "topics": [
@@ -465,12 +465,12 @@ module.exports = {
       "id": 24,
       "question": "Which is the correct syntax for default parameters?",
       "options": {
-        "A": "function test(a default 5) {}",
+        "A": "function test(a = 5) {}",
         "B": "function test(a || 5) {}",
-        "C": "function test(a = 5) {}",
+        "C": "function test(a default 5) {}",
         "D": "function test(a := 5) {}"
       },
-      "correct": "C",
+      "correct": "A",
       "explanation": "ES6 default parameters use the syntax [CODE]parameter = defaultValue[/CODE]. This sets a default value if no argument is provided.",
       "topic": {
         "topics": [
@@ -484,11 +484,11 @@ module.exports = {
       "question": "What does the rest parameter (...args) do?",
       "options": {
         "A": "Spreads an array",
-        "B": "Collects remaining arguments into an array",
+        "B": "Creates a new function",
         "C": "Copies function parameters",
-        "D": "Creates a new function"
+        "D": "Collects remaining arguments into an array"
       },
-      "correct": "B",
+      "correct": "D",
       "explanation": "The rest parameter collects all remaining function arguments into an array, allowing functions to accept variable numbers of arguments.",
       "topic": {
         "topics": [
@@ -500,12 +500,12 @@ module.exports = {
       "id": 26,
       "question": "How do you format a Date object to show only the date part?",
       "options": {
-        "A": "date.formatDate()",
+        "A": "date.toDateString()",
         "B": "date.getDate()",
         "C": "date.dateOnly()",
-        "D": "date.toDateString()"
+        "D": "date.formatDate()"
       },
-      "correct": "D",
+      "correct": "A",
       "explanation": "[CODE]toDateString()[/CODE] returns the date portion as a string (e.g., 'Mon Oct 23 2025'). [CODE]getDate()[/CODE] returns only the day number.",
       "topic": {
         "topics": [
@@ -518,12 +518,12 @@ module.exports = {
       "id": 27,
       "question": "What does /^[a-z]+$/ match?",
       "options": {
-        "A": "Any string with lowercase letters",
+        "A": "Strings with only lowercase letters",
         "B": "Strings ending with lowercase letters",
         "C": "Strings starting with lowercase letters",
-        "D": "Strings with only lowercase letters"
+        "D": "Any string with lowercase letters"
       },
-      "correct": "D",
+      "correct": "A",
       "explanation": "[CODE]^[/CODE] means start of string, [CODE][a-z]+[/CODE] means one or more lowercase letters, [CODE]$[/CODE] means end of string. Together they match strings containing only lowercase letters.",
       "topic": {
         "topics": [
@@ -553,12 +553,12 @@ module.exports = {
       "id": 29,
       "question": "What happens with unused parameters in arrow functions?",
       "options": {
-        "A": "Are ignored (no error)",
-        "B": "Must be removed",
+        "A": "Must be removed",
+        "B": "Are ignored (no error)",
         "C": "Causes an error",
         "D": "Automatically deleted"
       },
-      "correct": "A",
+      "correct": "B",
       "explanation": "JavaScript allows functions to have unused parameters without error. They're simply ignored if not used in the function body.",
       "topic": {
         "topics": [

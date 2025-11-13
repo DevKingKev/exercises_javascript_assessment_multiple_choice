@@ -59,12 +59,12 @@ module.exports = {
       "id": 1,
       "question": "What is the primary purpose of ARIA (Accessible Rich Internet Applications) in web development?",
       "options": {
-        "A": "To replace semantic HTML elements with more flexible alternatives",
+        "A": "To enhance accessibility of dynamic content and custom widgets for assistive technologies when semantic HTML is insufficient",
         "B": "To automatically fix accessibility issues in existing code",
         "C": "To provide animations and transitions for users with disabilities",
-        "D": "To enhance accessibility of dynamic content and custom widgets for assistive technologies when semantic HTML is insufficient"
+        "D": "To replace semantic HTML elements with more flexible alternatives"
       },
-      "correct": "D",
+      "correct": "A",
       "explanation": "ARIA provides a way to make web content and applications more accessible when native semantic HTML is insufficient, particularly for dynamic content and custom interactive widgets. It adds semantic information through roles, states, and properties that assistive technologies like screen readers can interpret. ARIA doesn't replace semantic HTML—in fact, the first rule of ARIA is to use native HTML elements when possible. It doesn't provide visual effects or animations, nor does it automatically fix accessibility issues. ARIA is declarative markup that developers must implement correctly. It's most valuable for complex components like tree views, tab panels, modal dialogs, and dynamic content updates that don't have native HTML equivalents.",
       "topics": [
         "ARIA Roles",
@@ -75,12 +75,12 @@ module.exports = {
       "id": 2,
       "question": "What does the <pre>role=\"button\"</pre> attribute do when applied to a <pre><div></pre> element?",
       "options": {
-        "A": "It announces the element as a button to screen readers, but you must still add keyboard event handlers and focus management",
+        "A": "It changes the visual appearance to look like a button",
         "B": "It automatically makes the div clickable and keyboard accessible",
-        "C": "It changes the visual appearance to look like a button",
+        "C": "It announces the element as a button to screen readers, but you must still add keyboard event handlers and focus management",
         "D": "It's unnecessary because divs can already function as buttons"
       },
-      "correct": "A",
+      "correct": "C",
       "explanation": "Adding <pre>role=\"button\"</pre> to a <pre><div></pre> tells assistive technologies to treat it as a button semantically, so screen readers will announce it as \"button\". However, the role alone doesn't add any functionality—you must still implement keyboard support (Enter/Space key activation), ensure it's focusable (add <pre>tabindex=\"0\"</pre>), add click handlers, and manage focus appropriately. The role doesn't affect visual styling; that's CSS's job. Importantly, you should use <pre><button></pre> instead of <pre><div role=\"button\"></pre> whenever possible, as native buttons come with all the keyboard and focus behavior built-in. ARIA roles provide semantics but not behavior, which is why \"no ARIA is better than bad ARIA\" and native HTML is preferred.",
       "topics": [
         "ARIA Roles"
@@ -90,12 +90,12 @@ module.exports = {
       "id": 3,
       "question": "What is the difference between ARIA roles and ARIA properties?",
       "options": {
-        "A": "Roles are permanent attributes, while properties can change during user interaction",
-        "B": "Roles define what an element is (its type/purpose), while properties and states describe characteristics and current conditions",
+        "A": "Roles define what an element is (its type/purpose), while properties and states describe characteristics and current conditions",
+        "B": "Roles are permanent attributes, while properties can change during user interaction",
         "C": "Roles are only for screen readers, while properties affect all users",
         "D": "There is no difference; they are interchangeable terms"
       },
-      "correct": "B",
+      "correct": "A",
       "explanation": "ARIA roles define what an element is—its fundamental type or purpose in the interface, such as <pre>role=\"navigation\"</pre>, <pre>role=\"dialog\"</pre>, or <pre>role=\"tabpanel\"</pre>. Roles typically don't change once set. ARIA properties and states describe characteristics, relationships, and current conditions of elements. States like <pre>aria-expanded=\"true\"</pre>, <pre>aria-checked=\"true\"</pre>, or <pre>aria-selected=\"false\"</pre> often change dynamically based on user interaction. Properties like <pre>aria-label=\"Close\"</pre> or <pre>aria-controls=\"panel1\"</pre> describe characteristics that may be more static. While some properties can change, the key distinction is conceptual: role answers \"what is it?\" while properties/states answer \"how is it configured?\" or \"what's its current condition?\"",
       "topics": [
         "ARIA Roles",
@@ -107,11 +107,11 @@ module.exports = {
       "question": "What does <pre>aria-live=\"polite\"</pre> do on a region?",
       "options": {
         "A": "It prevents screen readers from announcing any changes in that region",
-        "B": "It causes screen readers to announce changes after completing the current announcement",
+        "B": "It only announces changes when the user focuses on that region",
         "C": "It makes the region immediately interrupt the screen reader to announce changes",
-        "D": "It only announces changes when the user focuses on that region"
+        "D": "It causes screen readers to announce changes after completing the current announcement"
       },
-      "correct": "B",
+      "correct": "D",
       "explanation": "An <pre>aria-live=\"polite\"</pre> region announces changes to screen reader users, but waits until the screen reader finishes its current announcement before speaking the update. This is appropriate for non-critical updates like status messages, notifications, or live search results where interrupting the user would be disruptive. In contrast, <pre>aria-live=\"assertive\"</pre> interrupts immediately (reserved for urgent alerts like errors), and <pre>aria-live=\"off\"</pre> (or no aria-live) doesn't announce changes at all. The region doesn't require focus for announcements—that's the power of live regions. They announce dynamic content changes automatically, making them essential for single-page applications, real-time updates, and async content loading. Always use \"polite\" unless the update is truly urgent.",
       "topics": [
         "ARIA Live Regions"
@@ -137,12 +137,12 @@ module.exports = {
       "id": 6,
       "question": "What is the purpose of <pre>aria-controls</pre> and how is it used?",
       "options": {
-        "A": "It indicates the ID(s) of elements that the current element controls or operates on",
-        "B": "It specifies which elements the current element has permission to modify",
+        "A": "It specifies which elements the current element has permission to modify",
+        "B": "It indicates the ID(s) of elements that the current element controls or operates on",
         "C": "It defines parent-child relationships in the DOM tree",
         "D": "It automatically creates event listeners between elements"
       },
-      "correct": "A",
+      "correct": "B",
       "explanation": "The <pre>aria-controls</pre> attribute identifies the elements that the current element controls, using space-separated IDs. For example: <pre><button aria-expanded=\"false\" aria-controls=\"panel1\">Show Details</button><div id=\"panel1\" hidden>...</div></pre>. This creates a programmatic relationship that assistive technologies can communicate, helping users understand what will happen when they interact with the control. Common uses include tab controls (buttons that show/hide tab panels), accordion triggers, and expandable sections. The attribute doesn't create permissions, doesn't affect DOM relationships for JavaScript, and doesn't automatically set up event handlers—you still need to implement the actual functionality. It's purely semantic information for assistive technologies. Support varies across screen readers, so it's often used in conjunction with other ARIA attributes for robust accessibility.",
       "topics": [
         "aria-controls and aria-owns",
@@ -169,11 +169,11 @@ module.exports = {
       "question": "What is the purpose of skip navigation links?",
       "options": {
         "A": "To allow users to skip advertisements and promotional content",
-        "B": "To hide navigation menus on mobile devices",
+        "B": "To provide keyboard users a way to bypass repetitive navigation and jump directly to main content",
         "C": "To create shortcuts for navigating between pages",
-        "D": "To provide keyboard users a way to bypass repetitive navigation and jump directly to main content"
+        "D": "To hide navigation menus on mobile devices"
       },
-      "correct": "D",
+      "correct": "B",
       "explanation": "Skip navigation links (often \"Skip to main content\") allow keyboard and screen reader users to bypass repetitive navigation menus and jump directly to the page's main content. This is crucial for users who navigate by keyboard, as they would otherwise have to tab through dozens of navigation links on every page. A typical implementation: <pre><a href=\"#main-content\" class=\"skip-link\">Skip to main content</a></pre> at the very top of the page, with corresponding <pre><main id=\"main-content\"></pre>. The link is often visually hidden until focused, appearing when tabbed to. This is a WCAG requirement (Level A). Skip links aren't for ads, page-to-page navigation, or responsive design—they're specifically for improving keyboard navigation efficiency on each individual page by allowing users to skip over repeated content.",
       "topics": [
         "Skip Navigation Links",
@@ -185,11 +185,11 @@ module.exports = {
       "question": "What does <pre>aria-live=\"assertive\"</pre> do and when should it be used?",
       "options": {
         "A": "It politely waits to announce changes until the user is idle",
-        "B": "It validates form inputs assertively before submission",
+        "B": "It immediately interrupts screen reader announcements to convey important, time-sensitive information",
         "C": "It makes the content bold and prominent for visual users",
-        "D": "It immediately interrupts screen reader announcements to convey important, time-sensitive information"
+        "D": "It validates form inputs assertively before submission"
       },
-      "correct": "D",
+      "correct": "B",
       "explanation": "An <pre>aria-live=\"assertive\"</pre> region causes screen readers to immediately interrupt whatever they're currently announcing to convey the new content. This is reserved for urgent, time-sensitive information like error messages, important alerts, or critical system notifications that users must know about immediately. For example, \"Your session will expire in 1 minute\" or \"Error: Your payment was declined\". Use assertive live regions sparingly—interrupting users is disruptive and should only happen when truly necessary. For most updates (status messages, loading indicators, non-critical notifications), use <pre>aria-live=\"polite\"</pre> instead. The attribute doesn't affect visual presentation; that's handled by CSS. It's purely about screen reader announcement behavior, making it essential for accessible dynamic content.",
       "topics": [
         "ARIA Live Regions"
@@ -199,12 +199,12 @@ module.exports = {
       "id": 10,
       "question": "How do you properly implement <pre>aria-selected</pre> in a tab interface?",
       "options": {
-        "A": "Add aria-selected=\"true\" to the currently selected tab and aria-selected=\"false\" to the others",
-        "B": "Add aria-selected=\"true\" to all tabs to make them selectable",
+        "A": "Add aria-selected=\"true\" to all tabs to make them selectable",
+        "B": "Add aria-selected=\"true\" to the currently selected tab and aria-selected=\"false\" to the others",
         "C": "Only add aria-selected to the active tab; omit it from others",
         "D": "aria-selected is automatically managed by the browser"
       },
-      "correct": "A",
+      "correct": "B",
       "explanation": "In a tab interface, explicitly set <pre>aria-selected=\"true\"</pre> on the currently selected/active tab and <pre>aria-selected=\"false\"</pre> on all inactive tabs. This tells screen readers which tab is currently selected. For example: <pre><div role=\"tablist\"><button role=\"tab\" aria-selected=\"true\" aria-controls=\"panel1\">Tab 1</button><button role=\"tab\" aria-selected=\"false\" aria-controls=\"panel2\">Tab 2</button></div></pre>. When the user selects a different tab, update the aria-selected values accordingly. Explicitly marking all tabs (true/false) is clearer than omitting the attribute from unselected tabs, though both approaches work. The browser doesn't manage this automatically—you must update it via JavaScript when tabs change. Combine with appropriate roles (tablist, tab, tabpanel) and aria-controls for complete tab accessibility.",
       "topics": [
         "aria-expanded and aria-selected",
@@ -215,12 +215,12 @@ module.exports = {
       "id": 11,
       "question": "What does <pre>aria-checked</pre> do, and how does it differ from the native <pre>checked</pre> attribute?",
       "options": {
-        "A": "They are identical; aria-checked is the ARIA version of checked",
+        "A": "aria-checked is for custom checkboxes/radio buttons built with non-form elements, while checked is for native inputs; aria-checked also supports \"mixed\" state",
         "B": "aria-checked provides better browser support than the checked attribute",
         "C": "aria-checked only works on <pre><input></pre> elements",
-        "D": "aria-checked is for custom checkboxes/radio buttons built with non-form elements, while checked is for native inputs; aria-checked also supports \"mixed\" state"
+        "D": "They are identical; aria-checked is the ARIA version of checked"
       },
-      "correct": "D",
+      "correct": "A",
       "explanation": "The <pre>aria-checked</pre> attribute is used on custom checkboxes and radio buttons built from non-form elements (like <pre><div role=\"checkbox\"></pre>). Native <pre><input type=\"checkbox\"></pre> elements use the <pre>checked</pre> attribute/property instead. A key difference is that <pre>aria-checked</pre> supports three values: <pre>\"true\"</pre> (checked), <pre>\"false\"</pre> (unchecked), and <pre>\"mixed\"</pre> (partially checked, like a parent checkbox when some but not all children are checked). For example: <pre><div role=\"checkbox\" aria-checked=\"true\" tabindex=\"0\">Enable notifications</div></pre>. You must manage the state with JavaScript and implement keyboard support (Space to toggle). Native inputs should use the <pre>checked</pre> attribute, not aria-checked. The ARIA version doesn't improve browser support—it enables creating accessible custom controls when native elements aren't suitable.",
       "topics": [
         "aria-checked and Form States",
@@ -278,11 +278,11 @@ module.exports = {
       "question": "What attributes should be used together to create an accessible accordion component?",
       "options": {
         "A": "role=\"accordion\", aria-expanded, aria-controls on the trigger elements",
-        "B": "role=\"button\", aria-expanded, aria-controls on the triggers; proper heading structure for the headers",
+        "B": "role=\"disclosure\", aria-open, aria-hides on the panels",
         "C": "role=\"tab\", aria-selected, aria-controls on the headers",
-        "D": "role=\"disclosure\", aria-open, aria-hides on the panels"
+        "D": "role=\"button\", aria-expanded, aria-controls on the triggers; proper heading structure for the headers"
       },
-      "correct": "B",
+      "correct": "D",
       "explanation": "For an accessible accordion, use <pre>role=\"button\"</pre> (or native <pre><button></pre> elements, which have implicit button role) on the triggers, along with <pre>aria-expanded</pre> to indicate whether each section is open or closed, and <pre>aria-controls</pre> to link triggers to their panels. Wrap accordion headers in proper heading elements (<pre><h2></pre>, <pre><h3></pre>, etc.) for document structure. Example: <pre><h2><button aria-expanded=\"false\" aria-controls=\"panel1\">Section 1</button></h2><div id=\"panel1\" hidden>...</div></pre>. There's no standard \"accordion\" role in ARIA. Don't use tab/tablist roles for accordions—those are specifically for tab interfaces where selecting one tab deselects others and shows different content. The \"disclosure\" role and \"aria-open\"/\"aria-hides\" attributes don't exist in ARIA. Focus management, keyboard support (Enter/Space, optionally arrow keys), and toggling visibility are also essential.",
       "topics": [
         "ARIA Roles",
@@ -310,12 +310,12 @@ module.exports = {
       "id": 17,
       "question": "What is the first rule of ARIA usage?",
       "options": {
-        "A": "No ARIA is better than bad ARIA; use native HTML elements when possible instead of adding ARIA to generic elements",
-        "B": "Always use ARIA roles on every element for maximum accessibility",
+        "A": "Always use ARIA roles on every element for maximum accessibility",
+        "B": "No ARIA is better than bad ARIA; use native HTML elements when possible instead of adding ARIA to generic elements",
         "C": "ARIA is required for WCAG compliance",
         "D": "Always use ARIA live regions for dynamic content"
       },
-      "correct": "A",
+      "correct": "B",
       "explanation": "The first rule of ARIA is: \"If you can use a native HTML element or attribute with the semantics and behavior you require already built in, instead of re-purposing an element and adding an ARIA role, state or property to make it accessible, then do so.\" In other words, use <pre><button></pre> instead of <pre><div role=\"button\"></pre>, use <pre><nav></pre> instead of <pre><div role=\"navigation\"></pre>, etc. Native elements have built-in keyboard support, focus management, and semantic meaning. Badly implemented ARIA can make interfaces less accessible than no ARIA at all—hence \"no ARIA is better than bad ARIA\". ARIA isn't required for compliance if you use semantic HTML. It's a supplement for custom widgets and dynamic content where semantic HTML is insufficient. Always prefer native elements and only add ARIA when necessary.",
       "topics": [
         "ARIA Roles",
@@ -342,12 +342,12 @@ module.exports = {
       "id": 19,
       "question": "What is the difference between <pre>aria-label</pre> and <pre>aria-labelledby</pre>?",
       "options": {
-        "A": "They are identical; use whichever you prefer",
+        "A": "aria-label provides a text string directly; aria-labelledby references the ID(s) of other elements whose text becomes the label",
         "B": "aria-label is for buttons; aria-labelledby is for form inputs",
-        "C": "aria-label provides a text string directly; aria-labelledby references the ID(s) of other elements whose text becomes the label",
+        "C": "They are identical; use whichever you prefer",
         "D": "aria-labelledby overrides the element's text content; aria-label supplements it"
       },
-      "correct": "C",
+      "correct": "A",
       "explanation": "The <pre>aria-label</pre> attribute provides an accessible name directly as a text string: <pre><button aria-label=\"Close dialog\"><span aria-hidden=\"true\">×</span></button></pre>. The <pre>aria-labelledby</pre> attribute references one or more element IDs whose text content becomes the accessible name: <pre><div role=\"dialog\" aria-labelledby=\"dialog-title\"><h2 id=\"dialog-title\">Confirm Action</h2>...</div></pre>. Use <pre>aria-labelledby</pre> when visible text already exists; use <pre>aria-label</pre> when you need to provide a label that isn't visible or differs from visible text. Both can be used on various elements, not just buttons or inputs. Both override other labeling methods (like visible text content), with <pre>aria-labelledby</pre> taking precedence over <pre>aria-label</pre> if both are present. You can reference multiple IDs with aria-labelledby: <pre>aria-labelledby=\"id1 id2 id3\"</pre>.",
       "topics": [
         "ARIA States and Properties"
@@ -390,11 +390,11 @@ module.exports = {
       "question": "What is the purpose of <pre>aria-describedby</pre>?",
       "options": {
         "A": "To define the primary label for an element",
-        "B": "To reference additional descriptive text that provides more detailed information about an element",
-        "C": "To describe the visual appearance of an element",
+        "B": "To describe the visual appearance of an element",
+        "C": "To reference additional descriptive text that provides more detailed information about an element",
         "D": "To indicate which element describes or contains the current element"
       },
-      "correct": "B",
+      "correct": "C",
       "explanation": "The <pre>aria-describedby</pre> attribute references element IDs that provide additional descriptive information about the current element. It's commonly used for help text, error messages, or additional context. For example: <pre><label for=\"password\">Password</label><input id=\"password\" type=\"password\" aria-describedby=\"password-hint\"><span id=\"password-hint\">Must be at least 8 characters</span></pre>. Screen readers announce the description after the label and role. Unlike <pre>aria-label</pre> or <pre>aria-labelledby</pre> (which provide the primary accessible name), <pre>aria-describedby</pre> provides supplementary information. It doesn't describe visual appearance—it provides functional or contextual information. You can reference multiple IDs: <pre>aria-describedby=\"hint1 error1 hint2\"</pre>. The description is typically announced less prominently than the label, and some screen readers allow users to skip it.",
       "topics": [
         "ARIA States and Properties"
@@ -406,10 +406,10 @@ module.exports = {
       "options": {
         "A": "Tab key to move between tabs, Enter to activate",
         "B": "Only mouse clicks; keyboard access is handled automatically",
-        "C": "Arrow keys to move between tabs, Space or Enter to activate (with roving tabindex so only one tab is in tab order)",
-        "D": "Tab key moves between tabs and panels sequentially"
+        "C": "Tab key moves between tabs and panels sequentially",
+        "D": "Arrow keys to move between tabs, Space or Enter to activate (with roving tabindex so only one tab is in tab order)"
       },
-      "correct": "C",
+      "correct": "D",
       "explanation": "According to the ARIA Authoring Practices Guide, tab interfaces should use arrow keys (Left/Right or Up/Down depending on orientation) to move between tabs. Only one tab should be in the tab order at a time (using <pre>tabindex=\"0\"</pre> on the active tab and <pre>tabindex=\"-1\"</pre> on others—this is called \"roving tabindex\"). When a user tabs to the tablist, they land on the active tab, then use arrows to select different tabs. Space or Enter can activate a tab if it's not automatically activated on focus. The Tab key should move focus from the tablist to the active tab panel, not between individual tabs. This prevents keyboard users from having to tab through 5-10 tabs individually. Example implementation: <pre><div role=\"tablist\"><button role=\"tab\" tabindex=\"0\" aria-selected=\"true\">Tab 1</button><button role=\"tab\" tabindex=\"-1\" aria-selected=\"false\">Tab 2</button></div></pre>.",
       "topics": [
         "Focus Management with tabindex",
@@ -422,11 +422,11 @@ module.exports = {
       "question": "How should skip navigation links be styled for optimal usability?",
       "options": {
         "A": "Always visible at the top of the page",
-        "B": "Visually hidden by default, but visible when focused (using CSS to position off-screen and :focus to bring back)",
-        "C": "Completely hidden with <pre>display: none</pre>",
+        "B": "Completely hidden with <pre>display: none</pre>",
+        "C": "Visually hidden by default, but visible when focused (using CSS to position off-screen and :focus to bring back)",
         "D": "Only visible to screen readers using <pre>aria-hidden=\"false\"</pre>"
       },
-      "correct": "B",
+      "correct": "C",
       "explanation": "Skip links should be visually hidden by default but become visible when focused, ensuring keyboard users can see and use them without cluttering the interface for mouse users. Common CSS pattern: <pre>.skip-link { position: absolute; left: -10000px; } .skip-link:focus { position: static; }</pre> or use <pre>clip</pre> and <pre>clip-path</pre> techniques. When the user tabs and the skip link receives focus, it appears (often at the top-left of the viewport). This makes it available to both sighted keyboard users and screen reader users. Keeping it always visible works but adds visual clutter. Using <pre>display: none</pre> removes it from keyboard navigation entirely, defeating the purpose. The <pre>aria-hidden=\"false\"</pre> approach doesn't hide things visually and doesn't make sense for skip links. The key is: hidden visually but in the accessibility tree, revealed on :focus.",
       "topics": [
         "Skip Navigation Links",
@@ -437,12 +437,12 @@ module.exports = {
       "id": 25,
       "question": "What is the purpose of <pre>aria-current</pre> and what values can it have?",
       "options": {
-        "A": "It indicates the currently focused element; values are \"true\" or \"false\"",
+        "A": "It marks the current item within a set of related elements; values include \"page\", \"step\", \"location\", \"date\", \"time\", \"true\"",
         "B": "It's equivalent to the <pre>:current</pre> CSS pseudo-class",
         "C": "It specifies the current value of a range input; value is numeric",
-        "D": "It marks the current item within a set of related elements; values include \"page\", \"step\", \"location\", \"date\", \"time\", \"true\""
+        "D": "It indicates the currently focused element; values are \"true\" or \"false\""
       },
-      "correct": "D",
+      "correct": "A",
       "explanation": "The <pre>aria-current</pre> attribute indicates the current item within a set of related elements, such as the current page in navigation, the current step in a progress indicator, or the current date in a calendar. Valid values include: <pre>\"page\"</pre> (current page in pagination/navigation), <pre>\"step\"</pre> (current step in a process), <pre>\"location\"</pre> (current location in a breadcrumb), <pre>\"date\"</pre> (current date), <pre>\"time\"</pre> (current time), and <pre>\"true\"</pre> (current in an unspecified context). Example: <pre><nav><a href=\"/\">Home</a><a href=\"/about\" aria-current=\"page\">About</a><a href=\"/contact\">Contact</a></nav></pre>. Screen readers announce the current state, helping users understand their location. It doesn't indicate focus (that's the <pre>:focus</pre> state), doesn't specify numeric values (use <pre>aria-valuenow</pre> for that), and isn't related to the CSS <pre>:current</pre> pseudo-class. Use aria-current instead of just styling with a class.",
       "topics": [
         "ARIA States and Properties"
