@@ -111,7 +111,9 @@ function rebalanceFile (file, apply = false) {
         for (let i = 0; i < n; i++) {
             if (protectedQuestions.has(i)) continue; // skip questions that mention 'both'
             const q = questions[i];
-            const current = String(q.correct || '').toUpperCase();
+            // Support different persisted field names for the correct answer
+            const rawCurrent = q && (q.correct || q.correctAnswer || q.correct_choice || q.correctOption || '');
+            const current = String(rawCurrent).toUpperCase();
             const want = target[i];
             if (!current || !['A', 'B', 'C', 'D'].includes(current)) continue;
             if (current === want) continue;
@@ -122,9 +124,14 @@ function rebalanceFile (file, apply = false) {
                 const existing = Object.keys(opts).find(k => ['A', 'B', 'C', 'D'].includes(k));
                 if (!existing) continue;
             }
-            // Swap the option texts and update correct
+            // Swap the option texts and update correct (persist to known fields)
             swapOptions(opts, current, want);
+            // Update canonical field
             q.correct = want;
+            // Keep backward-compatible field if present
+            if (q.correctAnswer !== undefined) q.correctAnswer = want;
+            if (q.correct_choice !== undefined) q.correct_choice = want;
+            if (q.correctOption !== undefined) q.correctOption = want;
             actions.push({ index: i, from: current, to: want });
         }
 

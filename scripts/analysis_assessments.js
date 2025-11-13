@@ -29,7 +29,9 @@ function loadAssessment (file) {
 function countCorrectLetters (questions) {
     const counts = { A: 0, B: 0, C: 0, D: 0 };
     for (const q of questions) {
-        const c = q && q.correct ? String(q.correct).toUpperCase() : 'UNKNOWN';
+        // support multiple possible property names for the persisted correct answer
+        const raw = q && (q.correct || q.correctAnswer || q.correct_choice || q.correctOption);
+        const c = raw ? String(raw).toUpperCase() : 'UNKNOWN';
         if (counts[c] !== undefined) counts[c]++;
     }
     return counts;
@@ -80,8 +82,10 @@ function analyze () {
                     const keys = Object.keys(q.options).filter(k => ['A', 'B', 'C', 'D'].includes(k));
                     if (keys.length < 4) notes.push('not_four_options');
                 }
-                if (!q.correct) notes.push('missing_correct');
-                else if (!['A', 'B', 'C', 'D'].includes(String(q.correct).toUpperCase())) notes.push('invalid_correct');
+                // accept either `correct` (preferred) or older `correctAnswer` fields
+                const rawCorrect = q.correct || q.correctAnswer || q.correct_choice || q.correctOption;
+                if (!rawCorrect) notes.push('missing_correct');
+                else if (!['A', 'B', 'C', 'D'].includes(String(rawCorrect).toUpperCase())) notes.push('invalid_correct');
             }
             perQuestionNotes.push({ index: i, notes });
         }
