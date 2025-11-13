@@ -89,20 +89,17 @@ function rebalanceFile (file, apply = false) {
                         break;
                     }
                 }
-                // Ensure 'all of the above' or 'none of the above' live in D (unless protected)
-                if (!protectedQuestions.has(i)) {
-                    for (const letter of ['A', 'B', 'C', 'D']) {
-                        const text = opts[letter];
-                        if (typeof text === 'string' && ALL_NONE_RE.test(text)) {
-                            if (letter !== 'D') {
-                                swapOptions(opts, letter, 'D');
-                                const cur = String(q.correct || '').toUpperCase();
-                                if (cur === letter) q.correct = 'D';
-                                else if (cur === 'D') q.correct = letter;
-                                actions.push({ index: i, from: letter, to: 'D', reason: 'ensureAllOrNoneInD' });
-                            }
-                            break;
-                        }
+                // If any option contains 'all of the above' or 'none of the above',
+                // protect this question from any rebalancing swaps. We must never move
+                // those options because doing so can break semantics even when they
+                // are not the correct answer.
+                for (const letter of ['A', 'B', 'C', 'D']) {
+                    const text = opts[letter];
+                    if (typeof text === 'string' && ALL_NONE_RE.test(text)) {
+                        protectedQuestions.add(i);
+                        // record a no-op action so dry-run output shows this protection
+                        actions.push({ index: i, reason: 'protectedAllOrNone', letter });
+                        break;
                     }
                 }
             } catch (e) {
@@ -366,6 +363,20 @@ function scanBackupsForCombinational () {
         console.log('DRY-RUN-RESTORE', r.file, `candidates=${r.candidates.length}`);
     }
 }
+
+// Export internals for unit testing
+module.exports = module.exports || {};
+module.exports._test = {
+    PROTECT_BOTH_RE,
+    ALL_NONE_RE,
+    findAssessmentFiles,
+    requireAssessment,
+    balancedTargetLetters,
+    swapOptions,
+    rebalanceFile,
+    scanBackupsForCombinational,
+    restoreCombinationalQuestionsFromBackups,
+};
 
 if (require.main === module) {
     const args = process.argv.slice(2);

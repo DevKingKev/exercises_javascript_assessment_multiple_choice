@@ -34,6 +34,12 @@ describe('Rebalance dry-run verification', () => {
 
             // apply actions in order to cloned questions
             for (const a of entry.actions) {
+                // Some actions are protection markers (no-op) and don't include
+                // `from`/`to`. Skip those since they indicate the question should
+                // not be modified by the rebalancer (e.g. protected All/None/Both).
+                if (!a || !a.from || !a.to) {
+                    continue;
+                }
                 const idx = a.index;
                 const from = String(a.from).toUpperCase();
                 const to = String(a.to).toUpperCase();

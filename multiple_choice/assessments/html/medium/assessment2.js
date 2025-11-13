@@ -61,7 +61,7 @@ module.exports = {
             }
         ],
         "assessmentId": 2,
-        "assessmentUniqueId": 1762947267390,
+        "assessmentUniqueId": 1762969361992,
         "testType": "multiple-choice"
     },
     "questions": [
@@ -391,20 +391,17 @@ module.exports = {
         },
         {
             "id": 19,
-            "question": "What accessibility issue exists in this SVG implementation?",
+            "question": "What accessibility issue exists in this SVG implementation?\n[CODE]<svg width=\"100\" height=\"100\" viewBox=\"0 0 100 100\">\n  <circle cx=\"50\" cy=\"50\" r=\"40\" stroke=\"black\" stroke-width=\"3\" fill=\"red\" />\n  <text x=\"50\" y=\"55\" text-anchor=\"middle\" fill=\"white\">Logo</text>\n</svg>[/CODE]",
             "options": {
-                "A": "Incorrect use of viewBox attribute",
-                "B": "Missing <pre>title</pre> and <pre>desc</pre> elements for screen readers",
+                "A": "Missing <pre>title</pre> and <pre>desc</pre> elements for screen readers",
+                "B": "Incorrect use of viewBox attribute",
                 "C": "SVG elements cannot be made accessible",
                 "D": "The stroke width is too small for visibility"
             },
-            "correct": "B",
-            "explanation": "The SVG lacks <pre>title</pre> and <pre>desc</pre> elements, making it inaccessible to screen reader users. These elements provide essential context about the graphic's purpose and content.\n\n[CODE]<svg aria-labelledby=\"svg-title svg-desc\" role=\"img\">\n  <title id=\"svg-title\">Company Logo</title>\n  <desc id=\"svg-desc\">A circular logo with company name and icon</desc>\n  <!-- SVG content -->\n</svg>[/CODE]\n\nAlways include <pre>title</pre> for a short description and <pre>desc</pre> for detailed explanation when the SVG conveys meaningful information.",
+            "correct": "A",
+            "explanation": "The SVG lacks <pre>title</pre> and <pre>desc</pre> elements, making it inaccessible to screen reader users. These elements provide essential context about the graphic's purpose and content.\n\n[CODE]<svg width=\"100\" height=\"100\" viewBox=\"0 0 100 100\" role=\"img\" aria-labelledby=\"svg-title\">\n  <title id=\"svg-title\">Company Logo</title>\n  <desc>A circular red logo with white text saying 'Logo'</desc>\n  <circle cx=\"50\" cy=\"50\" r=\"40\" stroke=\"black\" stroke-width=\"3\" fill=\"red\" />\n  <text x=\"50\" y=\"55\" text-anchor=\"middle\" fill=\"white\">Logo</text>\n</svg>[/CODE]\n\nAlways include <pre>title</pre> for a short description and <pre>desc</pre> for detailed explanation when the SVG conveys meaningful information.",
             "topic": {
-                "topics": [
-                    "Accessibility Deep Dive",
-                    "Multimedia Integration"
-                ]
+                "topics": ["Accessibility Deep Dive", "Multimedia Integration"]
             }
         },
         {
