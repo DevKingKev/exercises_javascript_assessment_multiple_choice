@@ -35,9 +35,10 @@ export function formatWithMarkers ( text: string, domain: string = 'javascript' 
                 const uniqueMarker = '\x00PRETAGMARKER\x00'; // Use null bytes as unique markers
                 const withPlaceholders = paragraph.replace( /<pre>([\s\S]*?)<\/pre>/g, ( match, content ) => {
                     const index = codeTags.length;
-                    // If domain is html, render a real <pre> with escaped inner content.
+                    // If domain is html or css, render a real <pre> with escaped inner content.
                     // Otherwise preserve previous behaviour: convert to inline span.pre
-                    if ( String( domain ).trim().toLowerCase() === 'html' ) {
+                    const domainLower = String( domain ).trim().toLowerCase();
+                    if ( domainLower === 'html' || domainLower === 'css' ) {
                         codeTags.push( `<pre>${escapeHtml( content )}</pre>` );
                     } else {
                         codeTags.push( `<span class="pre">${content}</span>` );
