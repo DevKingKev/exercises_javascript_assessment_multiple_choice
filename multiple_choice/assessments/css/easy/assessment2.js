@@ -1,77 +1,89 @@
 module.exports = {
-    "title": "CSS Box Model, Display, and Text Styling",
-    "assessmentId": 2,
-    "assessmentUniqueId": 1731600000000,
-    "difficulty": "easy",
-    "domain": "css",
-    "description": "Test your understanding of the CSS box model, display properties, and text styling fundamentals.",
-    "timeLimit": 30,
-    "passingScore": 70,
-    "questionCount": 30,
-    "topics": [
-        {
-            "name": "Box Model Basics",
-            "link": "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_box_model/Introduction_to_the_CSS_box_model"
-        },
-        {
-            "name": "Margin and Padding",
-            "link": "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_box_model/Mastering_margin_collapsing"
-        },
-        {
-            "name": "Display Property",
-            "link": "https://developer.mozilla.org/en-US/docs/Web/CSS/display"
-        },
-        {
-            "name": "Width and Height",
-            "link": "https://developer.mozilla.org/en-US/docs/Web/CSS/width"
-        },
-        {
-            "name": "Box Sizing",
-            "link": "https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing"
-        },
-        {
-            "name": "Text Properties",
-            "link": "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_text"
-        },
-        {
-            "name": "Font Properties",
-            "link": "https://developer.mozilla.org/en-US/docs/Web/CSS/font"
-        },
-        {
-            "name": "Text Alignment",
-            "link": "https://developer.mozilla.org/en-US/docs/Web/CSS/text-align"
-        }
-    ],
-    "keywords": [
-        "box-model",
-        "margin",
-        "padding",
-        "border",
-        "content",
-        "display",
-        "block",
-        "inline",
-        "inline-block",
-        "none",
-        "width",
-        "height",
-        "box-sizing",
-        "content-box",
-        "border-box",
-        "text-align",
-        "line-height",
-        "letter-spacing",
-        "word-spacing",
-        "text-transform",
-        "text-decoration",
-        "font-size",
-        "font-weight",
-        "font-style",
-        "text-indent",
-        "white-space",
-        "overflow",
-        "vertical-align"
-    ],
+    "metadata": {
+        "title": "CSS Box Model, Display, and Text Styling",
+        "description": "Test your understanding of the CSS box model, display properties, and text styling fundamentals.",
+        "difficulty": "easy",
+        "domain": "css",
+        "timeLimit": 30,
+        "questionCount": 30,
+        "assessmentId": 2,
+        "assessmentUniqueId": 1731600000000,
+        "testType": "multiple-choice",
+        "topics": [
+            "Box Model Basics",
+            "Margin and Padding",
+            "Display Property",
+            "Width and Height",
+            "Box Sizing",
+            "Text Properties",
+            "Font Properties",
+            "Text Alignment"
+        ],
+        "topicLinks": [
+            {
+                "topicName": "Box Model Basics",
+                "refLink": "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_box_model/Introduction_to_the_CSS_box_model"
+            },
+            {
+                "topicName": "Margin and Padding",
+                "refLink": "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_box_model/Mastering_margin_collapsing"
+            },
+            {
+                "topicName": "Display Property",
+                "refLink": "https://developer.mozilla.org/en-US/docs/Web/CSS/display"
+            },
+            {
+                "topicName": "Width and Height",
+                "refLink": "https://developer.mozilla.org/en-US/docs/Web/CSS/width"
+            },
+            {
+                "topicName": "Box Sizing",
+                "refLink": "https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing"
+            },
+            {
+                "topicName": "Text Properties",
+                "refLink": "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_text"
+            },
+            {
+                "topicName": "Font Properties",
+                "refLink": "https://developer.mozilla.org/en-US/docs/Web/CSS/font"
+            },
+            {
+                "topicName": "Text Alignment",
+                "refLink": "https://developer.mozilla.org/en-US/docs/Web/CSS/text-align"
+            }
+        ],
+        "keywords": [
+            "box-model",
+            "margin",
+            "padding",
+            "border",
+            "content",
+            "display",
+            "block",
+            "inline",
+            "inline-block",
+            "none",
+            "width",
+            "height",
+            "box-sizing",
+            "content-box",
+            "border-box",
+            "text-align",
+            "line-height",
+            "letter-spacing",
+            "word-spacing",
+            "text-transform",
+            "text-decoration",
+            "font-size",
+            "font-weight",
+            "font-style",
+            "text-indent",
+            "white-space",
+            "overflow",
+            "vertical-align"
+        ]
+    },
     "questions": [
         {
             "id": 1,
