@@ -1,13 +1,13 @@
 [
   {
-    "file": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/html/medium/assessment13.js",
+    "file": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/html/medium/assessment14.js",
     "applied": true,
-    "backup": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/html/medium/assessment13.js.bak.1763037945663",
+    "backup": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/html/medium/assessment14.js.bak.1763038054696",
     "actions": [
       {
         "index": 0,
         "from": "B",
-        "to": "D"
+        "to": "A"
       },
       {
         "index": 1,
@@ -15,39 +15,49 @@
         "to": "A"
       },
       {
+        "index": 2,
+        "from": "B",
+        "to": "D"
+      },
+      {
+        "index": 3,
+        "from": "A",
+        "to": "B"
+      },
+      {
         "index": 4,
         "from": "B",
-        "to": "A"
+        "to": "D"
       },
       {
         "index": 5,
         "from": "B",
-        "to": "A"
+        "to": "D"
       },
       {
         "index": 7,
         "from": "B",
-        "to": "D"
+        "to": "C"
       },
       {
         "index": 8,
         "from": "B",
-        "to": "D"
+        "to": "A"
       },
       {
         "index": 9,
         "from": "B",
-        "to": "A"
+        "to": "C"
       },
       {
         "index": 10,
         "from": "B",
-        "to": "D"
+        "to": "C"
       },
       {
         "index": 11,
         "from": "B",
-        "to": "C"
+        "to": "D"
       },
       {
         "index": 13,
@@ -55,9 +65,14 @@
         "to": "D"
       },
       {
-        "index": 16,
+        "index": 15,
         "from": "B",
         "to": "A"
+      },
+      {
+        "index": 16,
+        "from": "B",
+        "to": "D"
       },
       {
         "index": 17,
@@ -70,19 +85,14 @@
         "to": "C"
       },
       {
-        "index": 20,
-        "from": "A",
-        "to": "B"
-      },
-      {
         "index": 22,
         "from": "B",
-        "to": "C"
+        "to": "A"
       },
       {
-        "index": 24,
-        "from": "B",
-        "to": "D"
+        "index": 23,
+        "from": "C",
+        "to": "A"
       }
     ]
   }
