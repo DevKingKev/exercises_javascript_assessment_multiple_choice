@@ -157,6 +157,7 @@ Each question must have the following structure:
     ```
     "Here's how it works:\n[CODE]const arr = [1, 2, 3];\nconst doubled = arr.map(x => x * 2);\nconsole.log(doubled); // [2, 4, 6][/CODE]\nThe map method..."
     ```
+**When in the 'html'**: When producing code snippets for HTML, we should not escape `<` and `>` inside `<pre>` with html entities `&lt;`  and `&gt;` , unless we have a question specifically pertaining to html entities.
 
 **General Rule**: If the code is more than a single line or contains multiple statements, use `[CODE]`. Otherwise, use `<pre>`.
 
