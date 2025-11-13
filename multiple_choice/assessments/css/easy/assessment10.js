@@ -1,0 +1,520 @@
+module.exports = {
+    "metadata": {
+        "title": "CSS Box Model - Advanced Fundamentals",
+        "description": "Deepen your understanding of the CSS box model with advanced scenarios including box-sizing calculations, margin auto behavior, padding percentages, and complex dimension computations.",
+        "difficulty": "easy",
+        "domain": "css",
+        "timeLimit": 30,
+        "questionCount": 30,
+        "assessmentId": 10,
+        "assessmentUniqueId": 1763047000000,
+        "testType": "multiple-choice",
+        "topics": [
+            "Box Sizing Calculations",
+            "Margin Auto Centering",
+            "Padding Percentages",
+            "Border Shorthand Variations",
+            "Box Model with Percentages",
+            "Min and Max Dimensions",
+            "Border Individual Sides",
+            "Margin Negative Values",
+            "Padding vs Margin Use Cases",
+            "Total Dimension Calculations"
+        ],
+        "topicLinks": [
+            {
+                "topicName": "Box Sizing Calculations",
+                "refLink": "https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing"
+            },
+            {
+                "topicName": "Margin Auto Centering",
+                "refLink": "https://developer.mozilla.org/en-US/docs/Web/CSS/margin"
+            },
+            {
+                "topicName": "Padding Percentages",
+                "refLink": "https://developer.mozilla.org/en-US/docs/Web/CSS/padding"
+            },
+            {
+                "topicName": "Border Shorthand Variations",
+                "refLink": "https://developer.mozilla.org/en-US/docs/Web/CSS/border"
+            },
+            {
+                "topicName": "Box Model with Percentages",
+                "refLink": "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_box_model"
+            },
+            {
+                "topicName": "Min and Max Dimensions",
+                "refLink": "https://developer.mozilla.org/en-US/docs/Web/CSS/max-width"
+            },
+            {
+                "topicName": "Border Individual Sides",
+                "refLink": "https://developer.mozilla.org/en-US/docs/Web/CSS/border-width"
+            },
+            {
+                "topicName": "Margin Negative Values",
+                "refLink": "https://developer.mozilla.org/en-US/docs/Web/CSS/margin"
+            },
+            {
+                "topicName": "Padding vs Margin Use Cases",
+                "refLink": "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_box_model/Introduction_to_the_CSS_box_model"
+            },
+            {
+                "topicName": "Total Dimension Calculations",
+                "refLink": "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_box_model"
+            }
+        ],
+        "keywords": [
+            "box-sizing",
+            "content-box",
+            "border-box",
+            "margin-auto",
+            "padding-percentage",
+            "min-width",
+            "max-width",
+            "min-height",
+            "max-height",
+            "border-top",
+            "border-right",
+            "border-bottom",
+            "border-left",
+            "negative-margin",
+            "margin-overlap",
+            "padding-ratio",
+            "aspect-ratio",
+            "total-width-calculation",
+            "total-height-calculation",
+            "box-model-math",
+            "width-constraint",
+            "height-constraint",
+            "border-width-values",
+            "margin-shorthand",
+            "padding-shorthand",
+            "element-spacing",
+            "internal-spacing",
+            "external-spacing",
+            "centering-technique"
+        ]
+    },
+    "questions": [
+        {
+            "id": 1,
+            "question": "With [CODE]box-sizing: content-box; width: 100px; padding: 10px; border: 5px; margin: 20px;[/CODE], what space does the element occupy in the layout?",
+            "options": {
+                "A": "170px (width + padding + border + margin)",
+                "B": "130px (width + padding + border)",
+                "C": "100px (width only)",
+                "D": "150px (width + padding + margin)"
+            },
+            "correct": "A",
+            "explanation": "The element occupies total space including margin: 100px (width) + 20px (padding left/right) + 10px (border left/right) + 40px (margin left/right) = 170px total space in the layout.",
+            "difficulty": "easy",
+            "topic": "Total Dimension Calculations"
+        },
+        {
+            "id": 2,
+            "question": "What percentage values refer to when using <pre>padding: 10%;</pre>?",
+            "options": {
+                "A": "The element's own height",
+                "B": "The parent element's width",
+                "C": "The element's own width",
+                "D": "The viewport width"
+            },
+            "correct": "B",
+            "explanation": "Percentage padding (all sides including top/bottom) always refers to the parent element's width, not height. This is useful for creating responsive aspect ratios but can be confusing initially.",
+            "difficulty": "easy",
+            "topic": "Padding Percentages"
+        },
+        {
+            "id": 3,
+            "question": "Which CSS will center a 500px wide block element horizontally?",
+            "options": {
+                "A": "<pre>margin: auto;</pre>",
+                "B": "<pre>margin: 0 auto;</pre>",
+                "C": "<pre>padding: 0 auto;</pre>",
+                "D": "<pre>margin: auto 0;</pre>"
+            },
+            "correct": "B",
+            "explanation": "margin: 0 auto; sets top/bottom margins to 0 and left/right margins to auto, which centers the block element horizontally. The element must have a defined width. margin: auto; alone also works.",
+            "difficulty": "easy",
+            "topic": "Margin Auto Centering"
+        },
+        {
+            "id": 4,
+            "question": "With [CODE]border-box; width: 400px; padding: 30px; border: 10px;[/CODE], what is the content area width?",
+            "options": {
+                "A": "400px",
+                "B": "360px",
+                "C": "340px",
+                "D": "320px"
+            },
+            "correct": "D",
+            "explanation": "With border-box, content width = total width - padding (both sides) - border (both sides) = 400px - 60px - 80px = 320px. The padding is 30px × 2 = 60px, border is 10px × 2 = 20px.",
+            "difficulty": "easy",
+            "topic": "Box Sizing Calculations"
+        },
+        {
+            "id": 5,
+            "question": "What does <pre>max-width: 600px;</pre> do when the content is 400px wide?",
+            "options": {
+                "A": "The element remains 400px wide",
+                "B": "Forces the element to be exactly 600px wide",
+                "C": "Sets width to 600px",
+                "D": "Has no effect without width property"
+            },
+            "correct": "A",
+            "explanation": "max-width sets the maximum width constraint. If the content or specified width is smaller than max-width, the element uses that smaller size. Here, 400px < 600px, so the element is 400px wide.",
+            "difficulty": "easy",
+            "topic": "Min and Max Dimensions"
+        },
+        {
+            "id": 6,
+            "question": "Can you use <pre>margin-left: auto;</pre> alone to center an element?",
+            "options": {
+                "A": "Yes, it centers the element",
+                "B": "Only with position: absolute",
+                "C": "Only in flexbox",
+                "D": "No, it pushes the element to the right"
+            },
+            "correct": "D",
+            "explanation": "margin-left: auto; alone pushes the element all the way to the right by taking up all available space on the left. To center, you need margin-left: auto AND margin-right: auto (or margin: 0 auto).",
+            "difficulty": "easy",
+            "topic": "Margin Auto Centering"
+        },
+        {
+            "id": 7,
+            "question": "What is the total height with [CODE]height: 200px; padding-top: 15px; padding-bottom: 25px; border: 5px; box-sizing: content-box;[/CODE]?",
+            "options": {
+                "A": "250px",
+                "B": "200px",
+                "C": "240px",
+                "D": "245px"
+            },
+            "correct": "A",
+            "explanation": "With content-box: total height = height + padding-top + padding-bottom + border-top + border-bottom = 200px + 15px + 25px + 5px + 5px = 250px.",
+            "difficulty": "easy",
+            "topic": "Total Dimension Calculations"
+        },
+        {
+            "id": 8,
+            "question": "What happens with <pre>margin-top: -15px;</pre> on an element?",
+            "options": {
+                "A": "The element is ignored",
+                "B": "Invalid CSS, will be ignored",
+                "C": "The element moves down 15px",
+                "D": "The element moves up 15px, potentially overlapping above content"
+            },
+            "correct": "D",
+            "explanation": "Negative margins are valid and pull the element in the opposite direction. margin-top: -15px; moves the element upward by 15px, which can create overlapping with content above it.",
+            "difficulty": "easy",
+            "topic": "Margin Negative Values"
+        },
+        {
+            "id": 9,
+            "question": "How do you set different border widths for each side using shorthand?",
+            "options": {
+                "A": "<pre>border: 1px 2px 3px 4px solid;</pre>",
+                "B": "<pre>border-size: 1px 2px 3px 4px;</pre>",
+                "C": "<pre>border-width: 1px 2px 3px 4px;</pre>",
+                "D": "You can't use shorthand for different widths"
+            },
+            "correct": "C",
+            "explanation": "border-width accepts 1-4 values (top, right, bottom, left). Example: border-width: 1px 2px 3px 4px; The main border shorthand doesn't support different widths per side.",
+            "difficulty": "easy",
+            "topic": "Border Individual Sides"
+        },
+        {
+            "id": 10,
+            "question": "If parent is 800px wide, what is <pre>padding: 5%;</pre> in pixels?",
+            "options": {
+                "A": "5px all sides",
+                "B": "40px top/bottom, 5px left/right",
+                "C": "40px all sides",
+                "D": "5px top/bottom, 40px left/right"
+            },
+            "correct": "C",
+            "explanation": "Percentage padding is calculated from parent's width for ALL sides. 5% of 800px = 40px. So padding: 5%; gives 40px on all four sides.",
+            "difficulty": "easy",
+            "topic": "Padding Percentages"
+        },
+        {
+            "id": 11,
+            "question": "What's the main use case for padding over margin?",
+            "options": {
+                "A": "Centering elements",
+                "B": "Creating space between elements",
+                "C": "Creating space inside an element where background shows",
+                "D": "They are interchangeable"
+            },
+            "correct": "C",
+            "explanation": "Padding creates internal spacing within an element, and the background color/image extends into the padding area. Margin creates external spacing between elements and is always transparent.",
+            "difficulty": "easy",
+            "topic": "Padding vs Margin Use Cases"
+        },
+        {
+            "id": 12,
+            "question": "With [CODE]width: 100%; max-width: 500px; padding: 20px; box-sizing: border-box;[/CODE] in a 600px container, what's the element's total width?",
+            "options": {
+                "A": "600px",
+                "B": "500px",
+                "C": "540px",
+                "D": "460px"
+            },
+            "correct": "B",
+            "explanation": "width: 100% would be 600px, but max-width: 500px constrains it to 500px. With border-box, padding is included in this 500px, so total width is 500px (not 540px).",
+            "difficulty": "easy",
+            "topic": "Min and Max Dimensions"
+        },
+        {
+            "id": 13,
+            "question": "What does <pre>border-top: 3px solid red;</pre> do to other borders?",
+            "options": {
+                "A": "Removes all other borders",
+                "B": "Only affects the top border, others remain unchanged",
+                "C": "Sets all borders to red",
+                "D": "Sets all borders to 3px"
+            },
+            "correct": "B",
+            "explanation": "Individual border properties (border-top, border-right, etc.) only affect that specific side. Other borders remain unchanged unless separately specified.",
+            "difficulty": "easy",
+            "topic": "Border Individual Sides"
+        },
+        {
+            "id": 14,
+            "question": "Can padding have negative values?",
+            "options": {
+                "A": "Yes, negative padding creates overlap",
+                "B": "Only in border-box mode",
+                "C": "Only padding-top can be negative",
+                "D": "No, padding cannot be negative"
+            },
+            "correct": "D",
+            "explanation": "Unlike margins, padding cannot have negative values. Browsers will ignore negative padding values. Only margins can be negative to create overlap or pull effects.",
+            "difficulty": "easy",
+            "topic": "Padding vs Margin Use Cases"
+        },
+        {
+            "id": 15,
+            "question": "With [CODE]width: 250px; padding-left: 20px; padding-right: 30px; border: 5px; box-sizing: border-box;[/CODE], what is the content width?",
+            "options": {
+                "A": "250px",
+                "B": "200px",
+                "C": "190px",
+                "D": "240px"
+            },
+            "correct": "C",
+            "explanation": "With border-box: content width = total width - padding-left - padding-right - border-left - border-right = 250px - 20px - 30px - 5px - 5px = 190px.",
+            "difficulty": "easy",
+            "topic": "Box Sizing Calculations"
+        },
+        {
+            "id": 16,
+            "question": "What does <pre>min-width: 300px;</pre> do when container is 200px wide?",
+            "options": {
+                "A": "Element shrinks to 200px",
+                "B": "Element becomes 300px and may overflow container",
+                "C": "Property is ignored",
+                "D": "Element becomes 250px (average)"
+            },
+            "correct": "B",
+            "explanation": "min-width sets the minimum width constraint. Even if the container is smaller, the element will be at least 300px wide, potentially overflowing its container.",
+            "difficulty": "easy",
+            "topic": "Min and Max Dimensions"
+        },
+        {
+            "id": 17,
+            "question": "How can percentage padding create a square?",
+            "options": {
+                "A": "Set padding-top: 100%; with height: 0;",
+                "B": "Set padding: 100%;",
+                "C": "Impossible with padding alone",
+                "D": "Set padding: 50% 50%;"
+            },
+            "correct": "A",
+            "explanation": "Setting padding-top: 100%; with height: 0; creates a square because percentage padding is based on parent's width. If parent is 200px wide, 100% padding-top makes element 200px tall.",
+            "difficulty": "easy",
+            "topic": "Padding Percentages"
+        },
+        {
+            "id": 18,
+            "question": "What happens with [CODE]margin-right: -20px;[/CODE]?",
+            "options": {
+                "A": "Element shifts 20px to the right",
+                "B": "Element pulls content on the right 20px closer",
+                "C": "Invalid and ignored",
+                "D": "Element width increases by 20px"
+            },
+            "correct": "B",
+            "explanation": "Negative right margin pulls following content 20px closer, creating overlap. It effectively reduces the space the element claims, allowing the next element to move leftward.",
+            "difficulty": "easy",
+            "topic": "Margin Negative Values"
+        },
+        {
+            "id": 19,
+            "question": "What's the total width with [CODE]width: 180px; padding: 15px 10px; border: 3px 5px; box-sizing: content-box;[/CODE]?",
+            "options": {
+                "A": "180px",
+                "B": "196px",
+                "C": "200px",
+                "D": "216px"
+            },
+            "correct": "D",
+            "explanation": "With content-box: total width = width + padding-left + padding-right + border-left + border-right = 180px + 10px + 10px + 5px + 5px + 6px = 216px. Wait, border uses border-width format with 2 values: 3px (top/bottom) 5px (left/right).",
+            "difficulty": "easy",
+            "topic": "Total Dimension Calculations"
+        },
+        {
+            "id": 20,
+            "question": "Can <pre>margin: auto;</pre> center an element vertically?",
+            "options": {
+                "A": "Yes, always",
+                "B": "Yes, but only in flexbox or grid containers",
+                "C": "No, only horizontally for block elements",
+                "D": "Yes, with position: absolute"
+            },
+            "correct": "B",
+            "explanation": "In normal flow, margin: auto; only centers horizontally. Vertical centering with margin: auto; works in flexbox/grid containers, or with position: absolute when top/bottom are set to 0.",
+            "difficulty": "easy",
+            "topic": "Margin Auto Centering"
+        },
+        {
+            "id": 21,
+            "question": "What does <pre>border: 2px;</pre> (missing style and color) display?",
+            "options": {
+                "A": "No border at all",
+                "B": "A 2px border with default color",
+                "C": "A 2px black solid border",
+                "D": "A 2px transparent border"
+            },
+            "correct": "A",
+            "explanation": "The border style is required for a border to display. Without it (solid, dashed, etc.), no border appears even if width and color are set. border: 2px; won't show anything.",
+            "difficulty": "easy",
+            "topic": "Border Shorthand Variations"
+        },
+        {
+            "id": 22,
+            "question": "If parent is 400px wide, what is the element's width with <pre>width: 50%; padding: 10%; box-sizing: content-box;</pre>?",
+            "options": {
+                "A": "200px (50% of parent)",
+                "B": "240px",
+                "C": "280px (width + padding)",
+                "D": "300px"
+            },
+            "correct": "C",
+            "explanation": "Width: 50% of 400px = 200px. Padding: 10% of parent width for left + right = 40px + 40px = 80px. With content-box, total = 200px + 80px = 280px.",
+            "difficulty": "easy",
+            "topic": "Box Model with Percentages"
+        },
+        {
+            "id": 23,
+            "question": "What's the best way to add clickable area around a button's text?",
+            "options": {
+                "A": "Use margin",
+                "B": "Use padding",
+                "C": "Increase width and height",
+                "D": "Use border"
+            },
+            "correct": "B",
+            "explanation": "Padding increases the clickable area because it's inside the element. Margin creates space outside the element, which wouldn't be clickable. Padding is ideal for buttons, links, and interactive elements.",
+            "difficulty": "easy",
+            "topic": "Padding vs Margin Use Cases"
+        },
+        {
+            "id": 24,
+            "question": "With [CODE]box-sizing: border-box; width: 100px; min-width: 150px; padding: 10px;[/CODE], what's the final width?",
+            "options": {
+                "A": "100px (width takes precedence)",
+                "B": "170px (min-width + padding)",
+                "C": "150px (min-width overrides smaller width)",
+                "D": "130px"
+            },
+            "correct": "C",
+            "explanation": "min-width overrides a smaller width value. With border-box, padding is included in the 150px, so the total width is 150px (not 170px).",
+            "difficulty": "easy",
+            "topic": "Min and Max Dimensions"
+        },
+        {
+            "id": 25,
+            "question": "What does <pre>border-style: solid none;</pre> create?",
+            "options": {
+                "A": "Solid border on all sides",
+                "B": "Solid left/right, no top/bottom borders",
+                "C": "Solid top/bottom, no left/right borders",
+                "D": "No border at all"
+            },
+            "correct": "C",
+            "explanation": "With two values, first applies to top/bottom, second to left/right. So border-style: solid none; creates solid borders on top and bottom only, with no left or right borders.",
+            "difficulty": "easy",
+            "topic": "Border Individual Sides"
+        },
+        {
+            "id": 26,
+            "question": "Can percentage values be used for borders?",
+            "options": {
+                "A": "Yes, for border-width",
+                "B": "Only for border-spacing",
+                "C": "No, borders require absolute units",
+                "D": "Yes, but only for border-radius"
+            },
+            "correct": "D",
+            "explanation": "border-width cannot use percentages; it requires absolute units like px, em, etc. However, border-radius can use percentages (relative to element dimensions), which is commonly used.",
+            "difficulty": "easy",
+            "topic": "Border Shorthand Variations"
+        },
+        {
+            "id": 27,
+            "question": "What's the result of [CODE]margin-left: -30px; margin-right: -30px;[/CODE] on a 200px wide element?",
+            "options": {
+                "A": "Element stays 200px but appears 260px wide in layout",
+                "B": "Element becomes 140px wide",
+                "C": "Element becomes 260px wide",
+                "D": "Invalid CSS"
+            },
+            "correct": "A",
+            "explanation": "Negative margins don't change the element's actual width (still 200px), but they reduce the space it claims in the layout. Content on both sides can overlap by 30px, making the effective layout space 260px.",
+            "difficulty": "easy",
+            "topic": "Margin Negative Values"
+        },
+        {
+            "id": 28,
+            "question": "Why might you use <pre>padding-bottom: 56.25%;</pre> with <pre>height: 0;</pre>?",
+            "options": {
+                "A": "To create extra space",
+                "B": "To make the element square",
+                "C": "To hide the element",
+                "D": "To create a 16:9 aspect ratio box"
+            },
+            "correct": "D",
+            "explanation": "56.25% = 9/16, creating a 16:9 aspect ratio. Since percentage padding is based on width, if parent is 1600px wide, padding-bottom: 56.25% = 900px tall (16:9 ratio). This technique maintains aspect ratios.",
+            "difficulty": "easy",
+            "topic": "Padding Percentages"
+        },
+        {
+            "id": 29,
+            "question": "What happens with [CODE]width: 500px; max-width: 400px;[/CODE]?",
+            "options": {
+                "A": "Element is 500px (width wins)",
+                "B": "Element is 400px (max-width constrains width)",
+                "C": "Element is 450px (average)",
+                "D": "Conflicting properties, element disappears"
+            },
+            "correct": "B",
+            "explanation": "max-width constrains the width property. Even though width is set to 500px, max-width: 400px limits it to 400px maximum. max-width takes precedence when width exceeds it.",
+            "difficulty": "easy",
+            "topic": "Min and Max Dimensions"
+        },
+        {
+            "id": 30,
+            "question": "What's the total height with [CODE]height: 150px; padding: 20px 30px; border-top: 5px; border-bottom: 10px; box-sizing: border-box;[/CODE]?",
+            "options": {
+                "A": "150px",
+                "B": "205px",
+                "C": "195px",
+                "D": "185px"
+            },
+            "correct": "A",
+            "explanation": "With border-box, the specified height includes padding and border. Total height remains 150px. The content area is reduced to accommodate: 150px - 20px (padding-top) - 20px (padding-bottom) - 5px (border-top) - 10px (border-bottom) = 95px content.",
+            "difficulty": "easy",
+            "topic": "Box Sizing Calculations"
+        }
+    ]
+};

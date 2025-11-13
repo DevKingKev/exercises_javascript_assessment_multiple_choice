@@ -1,96 +1,81 @@
 [
   {
-    "file": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/css/easy/assessment9.js",
+    "file": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/css/easy/assessment10.js",
     "applied": true,
-    "backup": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/css/easy/assessment9.js.bak.1763046635394",
+    "backup": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/css/easy/assessment10.js.bak.1763051242047",
     "actions": [
       {
         "index": 0,
-        "from": "B",
+        "from": "C",
         "to": "A"
       },
       {
-        "index": 1,
-        "from": "D",
-        "to": "B"
-      },
-      {
         "index": 3,
-        "from": "B",
-        "to": "D"
-      },
-      {
-        "index": 4,
-        "from": "D",
-        "to": "C"
-      },
-      {
-        "index": 5,
-        "from": "B",
-        "to": "C"
-      },
-      {
-        "index": 6,
-        "from": "B",
-        "to": "C"
-      },
-      {
-        "index": 7,
         "from": "C",
         "to": "D"
       },
       {
+        "index": 4,
+        "from": "B",
+        "to": "A"
+      },
+      {
+        "index": 5,
+        "from": "B",
+        "to": "D"
+      },
+      {
+        "index": 6,
+        "from": "B",
+        "to": "A"
+      },
+      {
+        "index": 7,
+        "from": "B",
+        "to": "D"
+      },
+      {
         "index": 8,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 10,
-        "from": "A",
-        "to": "D"
-      },
-      {
-        "index": 12,
-        "from": "B",
-        "to": "A"
-      },
-      {
-        "index": 13,
-        "from": "B",
-        "to": "A"
-      },
-      {
-        "index": 14,
-        "from": "B",
-        "to": "D"
-      },
-      {
-        "index": 15,
         "from": "B",
         "to": "C"
       },
       {
-        "index": 16,
+        "index": 9,
+        "from": "B",
+        "to": "C"
+      },
+      {
+        "index": 12,
+        "from": "C",
+        "to": "B"
+      },
+      {
+        "index": 13,
         "from": "B",
         "to": "D"
       },
       {
-        "index": 18,
+        "index": 16,
         "from": "B",
         "to": "A"
       },
       {
-        "index": 20,
-        "from": "A",
+        "index": 18,
+        "from": "B",
+        "to": "D"
+      },
+      {
+        "index": 19,
+        "from": "C",
         "to": "B"
       },
       {
-        "index": 21,
-        "from": "B",
+        "index": 20,
+        "from": "C",
         "to": "A"
       },
       {
-        "index": 22,
+        "index": 21,
         "from": "B",
         "to": "C"
       },
@@ -112,17 +97,12 @@
       {
         "index": 26,
         "from": "B",
-        "to": "D"
-      },
-      {
-        "index": 28,
-        "from": "A",
-        "to": "B"
-      },
-      {
-        "index": 29,
-        "from": "B",
         "to": "A"
+      },
+      {
+        "index": 27,
+        "from": "B",
+        "to": "D"
       }
     ]
   }
