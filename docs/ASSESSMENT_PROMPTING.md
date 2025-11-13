@@ -188,7 +188,7 @@ Each question must have the following structure:
 
 ### Answer Distribution and Option Randomization
 
-- Aim for a largely equitable distribution of correct-answer letters (A, B, C, D) across each assessment. For an assessment with N questions the target is roughly N/4 correct answers per letter (use floor/ceil as needed). Small deviations are acceptable, but avoid heavy bias (for example: >50% of correct answers being the same letter) and avoid long runs where the same letter is correct repeatedly.
+- **IMPORTANT**: Aim for a largely equitable distribution of correct-answer letters (A, B, C, D) across each assessment. For an assessment with N questions the target is roughly N/4 correct answers per letter (use floor/ceil as needed). Small deviations are acceptable, but avoid heavy bias (for example: >30% of correct answers being the same letter) and avoid long runs where the same letter is correct repeatedly (maximum 3 in a row).
 - When authoring manually:
   - Track correct-letter counts as you add questions and choose correct letters so the final distribution is balanced.
   - Avoid assigning the same correct letter more than 3 times in a row unless there is a strong pedagogical reason.
