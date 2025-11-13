@@ -7,7 +7,7 @@ module.exports = {
         "timeLimit": 30,
         "questionCount": 30,
         "assessmentId": 13,
-        "assessmentUniqueId": 1763062812855,
+        "assessmentUniqueId": 1731520800000,
         "testType": "multiple-choice",
         "topics": [
             "Sticky Positioning",
@@ -100,11 +100,11 @@ module.exports = {
             "question": "What is <pre>position: sticky;</pre> in CSS?",
             "options": {
                 "A": "Same as position: fixed",
-                "B": "A deprecated positioning value",
+                "B": "A hybrid between relative and fixed positioning",
                 "C": "Same as position: absolute",
-                "D": "A hybrid between relative and fixed positioning"
+                "D": "A deprecated positioning value"
             },
-            "correct": "D",
+            "correct": "B",
             "explanation": "position: sticky is a hybrid of relative and fixed positioning. The element is treated as relatively positioned until it crosses a specified threshold (using offset values), at which point it becomes fixed. It's commonly used for sticky headers that scroll with content until reaching the top, then stay fixed.",
             "difficulty": "easy",
             "topic": "Sticky Positioning"
@@ -128,11 +128,11 @@ module.exports = {
             "question": "Does setting <pre>opacity: 0.99;</pre> create a new stacking context?",
             "options": {
                 "A": "No, only z-index creates stacking contexts",
-                "B": "Only if the element is positioned",
-                "C": "Yes, any opacity value less than 1 creates a stacking context",
+                "B": "Yes, any opacity value less than 1 creates a stacking context",
+                "C": "Only if the element is positioned",
                 "D": "Only in modern browsers"
             },
-            "correct": "C",
+            "correct": "B",
             "explanation": "Yes, any opacity value less than 1 (including 0.99, 0.5, etc.) creates a new stacking context. This means child elements with z-index will stack relative to this context, not to elements outside it. This is true even for statically positioned elements.",
             "difficulty": "easy",
             "topic": "Opacity and Stacking Context"
@@ -141,12 +141,12 @@ module.exports = {
             "id": 4,
             "question": "If an element has [CODE]position: absolute; top: 0; bottom: 0;[/CODE] with no height set, what happens?",
             "options": {
-                "A": "The element stretches to fill the full height of its positioned parent",
-                "B": "The element has zero height",
+                "A": "The element has zero height",
+                "B": "The element stretches to fill the full height of its positioned parent",
                 "C": "Only top: 0 is applied",
                 "D": "The styles conflict and are ignored"
             },
-            "correct": "A",
+            "correct": "B",
             "explanation": "When both top and bottom are set on an absolutely positioned element without a specified height, the element stretches to fill the space between those two offsets. Similarly, setting both left and right without a width makes the element stretch horizontally. This is a powerful technique for creating flexible layouts.",
             "difficulty": "easy",
             "topic": "Multiple Offset Properties"
@@ -169,12 +169,12 @@ module.exports = {
             "id": 6,
             "question": "Can you use <pre>calc()</pre> with offset properties like <pre>top</pre>?",
             "options": {
-                "A": "Only with position: absolute",
+                "A": "Yes, calc() works with all offset properties",
                 "B": "No, only fixed pixel values are allowed",
-                "C": "Yes, calc() works with all offset properties",
+                "C": "Only with position: absolute",
                 "D": "Only in CSS3"
             },
-            "correct": "C",
+            "correct": "A",
             "explanation": "Yes, calc() can be used with offset properties. For example, top: calc(50% - 20px) or left: calc(100% - 50px). This is very useful for precise positioning calculations that mix units, like combining percentages with fixed pixel offsets.",
             "difficulty": "easy",
             "topic": "Percentage Offsets"
@@ -198,11 +198,11 @@ module.exports = {
             "question": "How can you center an absolutely positioned element horizontally using only offsets and auto margins?",
             "options": {
                 "A": "[CODE]left: 50%; margin-left: auto;[/CODE]",
-                "B": "[CODE]margin-left: 50%;[/CODE]",
+                "B": "[CODE]left: 0; right: 0; margin: 0 auto;[/CODE]",
                 "C": "[CODE]left: auto; right: auto;[/CODE]",
-                "D": "[CODE]left: 0; right: 0; margin: 0 auto;[/CODE]"
+                "D": "[CODE]margin-left: 50%;[/CODE]"
             },
-            "correct": "D",
+            "correct": "B",
             "explanation": "For an absolutely positioned element with a specified width, setting left: 0, right: 0, and margin: 0 auto (or margin-left: auto and margin-right: auto) centers it horizontally. The auto margins equally distribute the remaining space on both sides.",
             "difficulty": "easy",
             "topic": "Centering with Positioning"
@@ -212,11 +212,11 @@ module.exports = {
             "question": "What happens to a <pre>position: fixed;</pre> element when its ancestor has a <pre>transform</pre> property?",
             "options": {
                 "A": "Nothing changes, it stays fixed to the viewport",
-                "B": "The fixed element becomes statically positioned",
-                "C": "The fixed element becomes positioned relative to the transformed ancestor",
+                "B": "The fixed element becomes positioned relative to the transformed ancestor",
+                "C": "The fixed element becomes statically positioned",
                 "D": "The page throws an error"
             },
-            "correct": "C",
+            "correct": "B",
             "explanation": "This is a common gotcha: when an ancestor has a transform property (or will-change: transform, perspective, filter, etc.), it creates a new containing block, and the fixed element positions relative to that ancestor instead of the viewport. This can break fixed positioning unexpectedly.",
             "difficulty": "easy",
             "topic": "Transform and Positioning"
@@ -225,12 +225,12 @@ module.exports = {
             "id": 10,
             "question": "Can <pre>z-index</pre> accept negative values?",
             "options": {
-                "A": "Yes, negative values place elements behind those with z-index: 0 or auto",
-                "B": "No, only positive integers are allowed",
+                "A": "No, only positive integers are allowed",
+                "B": "Yes, negative values place elements behind those with z-index: 0 or auto",
                 "C": "Only on fixed elements",
                 "D": "Only in newer browsers"
             },
-            "correct": "A",
+            "correct": "B",
             "explanation": "Yes, z-index can be negative. A negative z-index (like -1, -10, etc.) places the element behind elements with z-index: 0, auto, or positive values within the same stacking context. This is useful for background overlays or decorative elements that should appear behind normal content.",
             "difficulty": "easy",
             "topic": "Opacity and Stacking Context"
@@ -240,11 +240,11 @@ module.exports = {
             "question": "For <pre>position: sticky;</pre> to work, can the parent container have <pre>overflow: hidden;</pre>?",
             "options": {
                 "A": "Yes, overflow doesn't affect sticky positioning",
-                "B": "Only overflow: scroll prevents it",
-                "C": "No, overflow: hidden (or auto, scroll) on ancestors prevents sticky from working properly",
+                "B": "No, overflow: hidden (or auto, scroll) on ancestors prevents sticky from working properly",
+                "C": "Only overflow: scroll prevents it",
                 "D": "Only overflow: auto prevents it"
             },
-            "correct": "C",
+            "correct": "B",
             "explanation": "Sticky positioning won't work if any ancestor has overflow: hidden, auto, or scroll. The sticky element needs to be able to stick relative to the scrolling container, and overflow properties create new scrolling contexts that interfere with this behavior. This is a common reason why sticky positioning fails.",
             "difficulty": "easy",
             "topic": "Sticky Positioning"
@@ -295,12 +295,12 @@ module.exports = {
             "id": 15,
             "question": "What does [CODE]position: absolute; inset: 0;[/CODE] do?",
             "options": {
-                "A": "Centers the element",
+                "A": "Sets all offsets to 0, making the element fill its positioned parent",
                 "B": "Removes the element from the page",
-                "C": "Sets all offsets to 0, making the element fill its positioned parent",
+                "C": "Centers the element",
                 "D": "inset is not a valid CSS property"
             },
-            "correct": "C",
+            "correct": "A",
             "explanation": "inset is a shorthand for setting top, right, bottom, and left all at once. inset: 0 is equivalent to top: 0; right: 0; bottom: 0; left: 0, which makes an absolutely positioned element fill its entire positioned parent. You can also use inset with 1-4 values like margin or padding.",
             "difficulty": "easy",
             "topic": "Multiple Offset Properties"
@@ -380,11 +380,11 @@ module.exports = {
             "question": "What happens when a sticky element reaches the edge of its container?",
             "options": {
                 "A": "It stays stuck forever",
-                "B": "It disappears",
+                "B": "It stops being sticky and scrolls away with its container",
                 "C": "It becomes fixed",
-                "D": "It stops being sticky and scrolls away with its container"
+                "D": "It disappears"
             },
-            "correct": "D",
+            "correct": "B",
             "explanation": "A sticky element sticks only within its parent container's boundaries. When the container scrolls out of view, the sticky element scrolls with it. This is different from position: fixed, which stays in place indefinitely. Sticky positioning is container-aware.",
             "difficulty": "easy",
             "topic": "Sticky Positioning"
@@ -423,10 +423,10 @@ module.exports = {
             "options": {
                 "A": "Background, inline elements, block elements, positioned elements",
                 "B": "Positioned elements, block elements, inline elements, background",
-                "C": "Random based on browser",
-                "D": "Background, block elements, floats, inline elements, positioned elements"
+                "C": "Background, block elements, floats, inline elements, positioned elements",
+                "D": "Random based on browser"
             },
-            "correct": "D",
+            "correct": "C",
             "explanation": "Within the same stacking context with equal z-index, the stacking order from back to front is: (1) background and borders, (2) positioned elements with negative z-index, (3) block-level descendants in flow, (4) floats, (5) inline descendants in flow, (6) positioned elements with z-index: auto or 0, (7) positioned elements with positive z-index. Source order breaks ties.",
             "difficulty": "easy",
             "topic": "Opacity and Stacking Context"
@@ -450,11 +450,11 @@ module.exports = {
             "question": "What is the difference between <pre>inset: 10px;</pre> and <pre>inset: 10px 20px;</pre>?",
             "options": {
                 "A": "No difference, the second value is ignored",
-                "B": "First sets top to 10px; second sets top to 10px and right to 20px",
-                "C": "First sets all offsets to 10px; second sets top/bottom to 10px and left/right to 20px",
+                "B": "First sets all offsets to 10px; second sets top/bottom to 10px and left/right to 20px",
+                "C": "First sets top to 10px; second sets top to 10px and right to 20px",
                 "D": "inset doesn't accept multiple values"
             },
-            "correct": "C",
+            "correct": "B",
             "explanation": "inset works like margin/padding shorthand: one value sets all four offsets; two values set vertical (top/bottom) and horizontal (left/right); three values set top, horizontal, bottom; four values set top, right, bottom, left in clockwise order.",
             "difficulty": "easy",
             "topic": "Multiple Offset Properties"
@@ -464,11 +464,11 @@ module.exports = {
             "question": "Does <pre>will-change: transform;</pre> create a new stacking context?",
             "options": {
                 "A": "No, will-change is just a performance hint",
-                "B": "Only if combined with position: absolute",
-                "C": "Yes, will-change with certain values creates a stacking context",
+                "B": "Yes, will-change with certain values creates a stacking context",
+                "C": "Only if combined with position: absolute",
                 "D": "Only in Chrome"
             },
-            "correct": "C",
+            "correct": "B",
             "explanation": "Yes, will-change with values like transform, opacity, or filter creates a new stacking context, just like actually setting those properties. It also creates a containing block for fixed-positioned descendants. This is a performance optimization but has stacking side effects.",
             "difficulty": "easy",
             "topic": "Opacity and Stacking Context"
@@ -477,12 +477,12 @@ module.exports = {
             "id": 28,
             "question": "Can you animate an element smoothly from <pre>position: static;</pre> to <pre>position: absolute;</pre>?",
             "options": {
-                "A": "No, position cannot be animated smoothly—it changes instantly",
-                "B": "Yes, with CSS transitions",
+                "A": "Yes, with CSS transitions",
+                "B": "No, position cannot be animated smoothly—it changes instantly",
                 "C": "Only with JavaScript",
                 "D": "Only the offset values can animate"
             },
-            "correct": "A",
+            "correct": "B",
             "explanation": "The position property itself cannot be smoothly animated—it changes instantly. However, you can animate the offset properties (top, left, etc.) on a positioned element, or use transform (which can animate smoothly) to move elements visually without changing their position property.",
             "difficulty": "easy",
             "topic": "Positioning Combinations"
@@ -491,12 +491,12 @@ module.exports = {
             "id": 29,
             "question": "What is the initial value of offset properties like <pre>top</pre>, <pre>left</pre>, etc.?",
             "options": {
-                "A": "<pre>auto</pre>",
-                "B": "<pre>0</pre>",
+                "A": "<pre>0</pre>",
+                "B": "<pre>auto</pre>",
                 "C": "<pre>initial</pre>",
                 "D": "<pre>none</pre>"
             },
-            "correct": "A",
+            "correct": "B",
             "explanation": "The initial value for offset properties (top, right, bottom, left) is auto. With auto, the element positions according to its normal flow (for relative) or at its default position (for absolute/fixed). Setting auto essentially means 'don't offset this edge.'",
             "difficulty": "easy",
             "topic": "Multiple Offset Properties"
@@ -505,12 +505,12 @@ module.exports = {
             "id": 30,
             "question": "How do you position an element in the bottom-right corner of the viewport using <pre>position: fixed;</pre>?",
             "options": {
-                "A": "[CODE]position: fixed; align: bottom-right;[/CODE]",
+                "A": "[CODE]position: fixed; bottom: 0; right: 0;[/CODE]",
                 "B": "[CODE]position: fixed; top: 100%; left: 100%;[/CODE]",
                 "C": "[CODE]position: fixed; bottom: 100%; right: 100%;[/CODE]",
-                "D": "[CODE]position: fixed; bottom: 0; right: 0;[/CODE]"
+                "D": "[CODE]position: fixed; align: bottom-right;[/CODE]"
             },
-            "correct": "D",
+            "correct": "A",
             "explanation": "To position a fixed element in the bottom-right corner of the viewport, use position: fixed with bottom: 0 and right: 0. This pins the element to the bottom and right edges. This pattern is commonly used for 'back to top' buttons or chat widgets.",
             "difficulty": "easy",
             "topic": "Practical Positioning Patterns"
