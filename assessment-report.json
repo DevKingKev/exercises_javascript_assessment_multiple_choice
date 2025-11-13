@@ -1,11 +1,11 @@
 [
   {
-    "file": "multiple_choice/assessments/html/medium/assessment14.js",
+    "file": "multiple_choice/assessments/html/medium/assessment15.js",
     "total": 25,
     "counts": {
-      "A": 1,
+      "A": 2,
       "B": 23,
-      "C": 1,
+      "C": 0,
       "D": 0
     },
     "skew": 0.92,
