@@ -113,7 +113,7 @@ module.exports = {
         },
         {
             "id": 2,
-            "question": "With <pre>box-sizing: content-box;</pre> and <pre>width: 200px; padding: 20px; border: 5px;</pre>, what is the total width?",
+            "question": "With [CODE]box-sizing: content-box; width: 200px; padding: 20px; border: 5px;[/CODE], what is the total width?",
             "options": {
                 "A": "200px",
                 "B": "250px",
@@ -183,7 +183,7 @@ module.exports = {
         },
         {
             "id": 7,
-            "question": "What is the difference between <pre>box-sizing: content-box;</pre> and <pre>box-sizing: border-box;</pre>?",
+            "question": "What is the difference between [CODE]box-sizing: content-box;[/CODE] and [CODE]box-sizing: border-box;[/CODE]?",
             "options": {
                 "A": "content-box includes padding/border in width; border-box doesn't",
                 "B": "They are exactly the same",
@@ -197,7 +197,7 @@ module.exports = {
         },
         {
             "id": 8,
-            "question": "If an element has <pre>width: 300px; padding: 15px;</pre> and <pre>box-sizing: border-box;</pre>, what is the content width?",
+            "question": "If an element has [CODE]width: 300px; padding: 15px; box-sizing: border-box;[/CODE], what is the content width?",
             "options": {
                 "A": "300px",
                 "B": "285px",
@@ -379,7 +379,7 @@ module.exports = {
         },
         {
             "id": 21,
-            "question": "With [CODE]box-sizing: border-box;</pre> and <pre>width: 200px; padding: 20px; border: 10px;[/CODE], what is the total width?",
+            "question": "With [CODE]box-sizing: border-box; width: 200px; padding: 20px; border: 10px;[/CODE], what is the total width?",
             "options": {
                 "A": "240px",
                 "B": "200px",
