@@ -26,21 +26,148 @@ function requireAssessment (file) {
     return mod && (mod.questions ? mod : (mod.default ? mod.default : null));
 }
 
-function balancedTargetLetters (n) {
+/**
+ * Calculate current distribution of correct answers
+ */
+function calculateDistribution (questions) {
+    const counts = { A: 0, B: 0, C: 0, D: 0 };
+    for (const q of questions) {
+        const rawCurrent = q && (q.correct || q.correctAnswer || q.correct_choice || q.correctOption || '');
+        const current = String(rawCurrent).toUpperCase();
+        if (counts[current] !== undefined) counts[current]++;
+    }
+    return counts;
+}
+
+/**
+ * Identify which options are skewed (outside 20-30% range)
+ * Returns { overrepresented: ['B'], underrepresented: ['C', 'D'] }
+ */
+function identifySkewedOptions (counts, total) {
+    const MIN_PERCENT = 0.20;
+    const MAX_PERCENT = 0.30;
+    const overrepresented = [];
+    const underrepresented = [];
+
+    for (const [letter, count] of Object.entries(counts)) {
+        const percent = count / total;
+        if (percent > MAX_PERCENT) {
+            overrepresented.push(letter);
+        } else if (percent < MIN_PERCENT) {
+            underrepresented.push(letter);
+        }
+    }
+
+    return { overrepresented, underrepresented };
+}
+
+/**
+ * Generate target distribution that only rebalances skewed options.
+ * For example: {"A":6,"B":18,"C":0,"D":1} with total=25
+ * - B is overrepresented (72% > 30%)
+ * - C is underrepresented (0% < 20%)
+ * - D is underrepresented (4% < 20%)
+ * - A is fine (24% is within 20-30%)
+ * Target: Keep A at 6, redistribute B's excess to C and D
+ */
+function balancedTargetLetters (n, currentCounts = null) {
     const letters = ['A', 'B', 'C', 'D'];
-    const base = Math.floor(n / 4);
-    const rem = n % 4;
-    const counts = { A: base, B: base, C: base, D: base };
-    for (let i = 0; i < rem; i++) counts[letters[i]]++;
+
+    // If no current counts provided, fall back to equal distribution
+    if (!currentCounts) {
+        const base = Math.floor(n / 4);
+        const rem = n % 4;
+        const counts = { A: base, B: base, C: base, D: base };
+        for (let i = 0; i < rem; i++) counts[letters[i]]++;
+        const arr = [];
+        Object.keys(counts).forEach(l => {
+            for (let i = 0; i < counts[l]; i++) arr.push(l);
+        });
+        // Shuffle array to avoid patterns
+        for (let i = arr.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [arr[i], arr[j]] = [arr[j], arr[i]];
+        }
+        return arr;
+    }
+
+    // Identify skewed options
+    const { overrepresented, underrepresented } = identifySkewedOptions(currentCounts, n);
+
+    // If nothing is skewed, return current distribution
+    if (overrepresented.length === 0 && underrepresented.length === 0) {
+        const arr = [];
+        for (const [letter, count] of Object.entries(currentCounts)) {
+            for (let i = 0; i < count; i++) arr.push(letter);
+        }
+        return arr;
+    }
+
+    // Start with current counts
+    const targetCounts = { ...currentCounts };
+
+    // Calculate how much to redistribute
+    const MIN_COUNT = Math.ceil(n * 0.20);
+    const MAX_COUNT = Math.floor(n * 0.30);
+
+    // Collect excess from overrepresented options
+    let excess = 0;
+    for (const letter of overrepresented) {
+        const currentCount = targetCounts[letter];
+        const maxAllowed = MAX_COUNT;
+        if (currentCount > maxAllowed) {
+            excess += (currentCount - maxAllowed);
+            targetCounts[letter] = maxAllowed;
+        }
+    }
+
+    // Distribute excess to underrepresented options
+    if (excess > 0 && underrepresented.length > 0) {
+        // Sort underrepresented by how much they need (lowest first)
+        underrepresented.sort((a, b) => targetCounts[a] - targetCounts[b]);
+
+        let remaining = excess;
+        for (const letter of underrepresented) {
+            if (remaining === 0) break;
+            const currentCount = targetCounts[letter];
+            const needed = MIN_COUNT - currentCount;
+            if (needed > 0) {
+                const toAdd = Math.min(needed, remaining);
+                targetCounts[letter] += toAdd;
+                remaining -= toAdd;
+            }
+        }
+
+        // If still have excess, distribute evenly to underrepresented
+        if (remaining > 0) {
+            let idx = 0;
+            while (remaining > 0) {
+                const letter = underrepresented[idx % underrepresented.length];
+                if (targetCounts[letter] < MAX_COUNT) {
+                    targetCounts[letter]++;
+                    remaining--;
+                }
+                idx++;
+                // Safety: avoid infinite loop
+                if (idx > underrepresented.length * 100) break;
+            }
+        }
+    }
+
+    // Build result array
     const arr = [];
-    Object.keys(counts).forEach(l => {
-        for (let i = 0; i < counts[l]; i++) arr.push(l);
-    });
-    // Shuffle array to avoid patterns
+    for (const [letter, count] of Object.entries(targetCounts)) {
+        for (let i = 0; i < count; i++) {
+            arr.push(letter);
+        }
+    }
+
+    // Shuffle to avoid patterns
     for (let i = arr.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [arr[i], arr[j]] = [arr[j], arr[i]];
     }
+
     return arr;
 }
 
@@ -71,7 +198,11 @@ function rebalanceFile (file, apply = false) {
         const n = questions.length;
         if (n === 0) return { file, skipped: true };
 
-        const target = balancedTargetLetters(n);
+        // Calculate current distribution
+        const currentCounts = calculateDistribution(questions);
+
+        // Generate target that only rebalances skewed options
+        const target = balancedTargetLetters(n, currentCounts);
 
         const actions = [];
         // First: mark protected questions (contain "both") and ensure any option
@@ -381,6 +512,8 @@ module.exports._test = {
     balancedTargetLetters,
     swapOptions,
     rebalanceFile,
+    calculateDistribution,
+    identifySkewedOptions,
     scanBackupsForCombinational,
     restoreCombinationalQuestionsFromBackups,
 };
