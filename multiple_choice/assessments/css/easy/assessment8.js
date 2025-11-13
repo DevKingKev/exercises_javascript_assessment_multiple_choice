@@ -1,0 +1,522 @@
+module.exports = {
+  "metadata": {
+    "title": "CSS Colors and Backgrounds",
+    "description": "Master CSS color formats and background properties including images, positioning, sizing, and transparency effects.",
+    "difficulty": "easy",
+    "domain": "css",
+    "timeLimit": 30,
+    "questionCount": 30,
+    "assessmentId": 8,
+    "assessmentUniqueId": 1763046037899,
+    "testType": "multiple-choice",
+    "topics": [
+      "Color Formats",
+      "Background Color",
+      "Background Image",
+      "Background Repeat",
+      "Background Position",
+      "Background Size",
+      "Background Attachment",
+      "Background Shorthand",
+      "Opacity Property",
+      "Transparent Colors"
+    ],
+    "topicLinks": [
+      {
+        "topicName": "Color Formats",
+        "refLink": "https://developer.mozilla.org/en-US/docs/Web/CSS/color_value"
+      },
+      {
+        "topicName": "Background Color",
+        "refLink": "https://developer.mozilla.org/en-US/docs/Web/CSS/background-color"
+      },
+      {
+        "topicName": "Background Image",
+        "refLink": "https://developer.mozilla.org/en-US/docs/Web/CSS/background-image"
+      },
+      {
+        "topicName": "Background Repeat",
+        "refLink": "https://developer.mozilla.org/en-US/docs/Web/CSS/background-repeat"
+      },
+      {
+        "topicName": "Background Position",
+        "refLink": "https://developer.mozilla.org/en-US/docs/Web/CSS/background-position"
+      },
+      {
+        "topicName": "Background Size",
+        "refLink": "https://developer.mozilla.org/en-US/docs/Web/CSS/background-size"
+      },
+      {
+        "topicName": "Background Attachment",
+        "refLink": "https://developer.mozilla.org/en-US/docs/Web/CSS/background-attachment"
+      },
+      {
+        "topicName": "Background Shorthand",
+        "refLink": "https://developer.mozilla.org/en-US/docs/Web/CSS/background"
+      },
+      {
+        "topicName": "Opacity Property",
+        "refLink": "https://developer.mozilla.org/en-US/docs/Web/CSS/opacity"
+      },
+      {
+        "topicName": "Transparent Colors",
+        "refLink": "https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#transparent"
+      }
+    ],
+    "keywords": [
+      "color",
+      "named-colors",
+      "hex-color",
+      "rgb",
+      "rgba",
+      "background-color",
+      "background-image",
+      "url",
+      "background-repeat",
+      "no-repeat",
+      "repeat-x",
+      "repeat-y",
+      "background-position",
+      "center",
+      "top",
+      "bottom",
+      "left",
+      "right",
+      "background-size",
+      "cover",
+      "contain",
+      "auto",
+      "background-attachment",
+      "scroll",
+      "fixed",
+      "parallax",
+      "background-shorthand",
+      "opacity",
+      "transparent",
+      "transparency",
+      "alpha-channel"
+    ]
+  },
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which CSS color format includes an alpha channel for transparency?",
+      "options": {
+        "A": "<pre>rgb(255, 0, 0)</pre>",
+        "B": "<pre>rgba(255, 0, 0, 0.5)</pre>",
+        "C": "<pre>#FF0000</pre>",
+        "D": "<pre>red</pre>"
+      },
+      "correct": "B",
+      "explanation": "rgba() is the RGB format with an alpha channel. The fourth value (0.0 to 1.0) controls opacity, where 0 is fully transparent and 1 is fully opaque. Example: rgba(255, 0, 0, 0.5) creates 50% transparent red.",
+      "difficulty": "easy",
+      "topic": "Color Formats"
+    },
+    {
+      "id": 2,
+      "question": "What does <pre>background-color: transparent;</pre> do?",
+      "options": {
+        "A": "Creates a gradient effect",
+        "B": "Makes the entire element invisible",
+        "C": "Sets the background to white",
+        "D": "Makes the background see-through, showing content behind"
+      },
+      "correct": "D",
+      "explanation": "background-color: transparent; makes the background completely see-through, allowing any content behind the element to be visible. This is the default value for most elements and is useful for resetting background colors.",
+      "difficulty": "easy",
+      "topic": "Background Color"
+    },
+    {
+      "id": 3,
+      "question": "How do you set a background image in CSS?",
+      "options": {
+        "A": "<pre>background-image: 'image.jpg';</pre>",
+        "B": "<pre>background: image.jpg;</pre>",
+        "C": "<pre>background-image: url(image.jpg);</pre>",
+        "D": "<pre>image: url('image.jpg');</pre>"
+      },
+      "correct": "C",
+      "explanation": "background-image uses the url() function to specify the image path. The path can be relative or absolute. Example: background-image: url('images/bg.jpg'); The quotes around the filename are optional for simple paths.",
+      "difficulty": "easy",
+      "topic": "Background Image"
+    },
+    {
+      "id": 4,
+      "question": "What does <pre>background-repeat: no-repeat;</pre> do?",
+      "options": {
+        "A": "Displays the background image only once",
+        "B": "Removes the background image",
+        "C": "Makes the background image larger",
+        "D": "Repeats the image only once"
+      },
+      "correct": "A",
+      "explanation": "background-repeat: no-repeat; displays the background image only once, without tiling. By default, background images repeat to fill the entire element. no-repeat prevents this repetition.",
+      "difficulty": "easy",
+      "topic": "Background Repeat"
+    },
+    {
+      "id": 5,
+      "question": "Which value centers a background image both horizontally and vertically?",
+      "options": {
+        "A": "<pre>background-position: middle;</pre>",
+        "B": "<pre>background-position: center;</pre>",
+        "C": "<pre>background-position: 50%;</pre>",
+        "D": "Both B and C are correct"
+      },
+      "correct": "D",
+      "explanation": "Both 'center' and '50% 50%' center the background image. background-position: center; is shorthand for 'center center'. You can also use background-position: 50% 50%; for the same effect.",
+      "difficulty": "easy",
+      "topic": "Background Position"
+    },
+    {
+      "id": 6,
+      "question": "What does <pre>background-size: cover;</pre> do?",
+      "options": {
+        "A": "Scales the image to cover the entire element, may crop parts",
+        "B": "Keeps the image at its original size",
+        "C": "Stretches the image to 100% width and height",
+        "D": "Scales the image to fit entirely within the element"
+      },
+      "correct": "A",
+      "explanation": "background-size: cover; scales the image to cover the entire element while maintaining aspect ratio. This may crop parts of the image if the aspect ratios don't match. It ensures no empty space in the background.",
+      "difficulty": "easy",
+      "topic": "Background Size"
+    },
+    {
+      "id": 7,
+      "question": "What does <pre>background-attachment: fixed;</pre> create?",
+      "options": {
+        "A": "The background scrolls with the page",
+        "B": "The background image doesn't load",
+        "C": "The background repeats infinitely",
+        "D": "The background stays in place while content scrolls (parallax effect)"
+      },
+      "correct": "D",
+      "explanation": "background-attachment: fixed; keeps the background image fixed in the viewport while the content scrolls over it, creating a parallax effect. The default value is 'scroll', which moves the background with the element.",
+      "difficulty": "easy",
+      "topic": "Background Attachment"
+    },
+    {
+      "id": 8,
+      "question": "In the shorthand <pre>background: blue url(img.jpg) no-repeat center;</pre>, what is the order of properties?",
+      "options": {
+        "A": "The order doesn't matter",
+        "B": "image, color, repeat, position",
+        "C": "repeat, position, color, image",
+        "D": "color, image, repeat, position"
+      },
+      "correct": "A",
+      "explanation": "In the background shorthand, the order of most values doesn't matter because each value type is distinct. However, if both background-position and background-size are specified, size must come after position separated by a slash: center/cover.",
+      "difficulty": "easy",
+      "topic": "Background Shorthand"
+    },
+    {
+      "id": 9,
+      "question": "What is the range of values for the <pre>opacity</pre> property?",
+      "options": {
+        "A": "0 to 100",
+        "B": "1 to 10",
+        "C": "0% to 100%",
+        "D": "0 to 1"
+      },
+      "correct": "D",
+      "explanation": "opacity accepts values from 0 (fully transparent) to 1 (fully opaque). 0.5 represents 50% opacity. Unlike rgba(), opacity affects the entire element including text and child elements.",
+      "difficulty": "easy",
+      "topic": "Opacity Property"
+    },
+    {
+      "id": 10,
+      "question": "How many colors are in the CSS named color palette?",
+      "options": {
+        "A": "140+ colors",
+        "B": "256 colors",
+        "C": "Unlimited colors",
+        "D": "16 colors"
+      },
+      "correct": "A",
+      "explanation": "CSS has 140+ named colors including red, blue, green, tomato, cornflowerblue, etc. While named colors are convenient, hex and rgb formats provide access to millions of colors.",
+      "difficulty": "easy",
+      "topic": "Color Formats"
+    },
+    {
+      "id": 11,
+      "question": "What is the default value of <pre>background-color</pre>?",
+      "options": {
+        "A": "transparent",
+        "B": "white",
+        "C": "black",
+        "D": "none"
+      },
+      "correct": "A",
+      "explanation": "The default background-color is 'transparent' for most elements, allowing the parent's background to show through. The root element (html) typically has a white background by browser default.",
+      "difficulty": "easy",
+      "topic": "Background Color"
+    },
+    {
+      "id": 12,
+      "question": "Can you use multiple background images on a single element?",
+      "options": {
+        "A": "No, only one image allowed",
+        "B": "Only in CSS3",
+        "C": "Yes, by separating them with commas",
+        "D": "Only with the background shorthand"
+      },
+      "correct": "C",
+      "explanation": "CSS allows multiple background images separated by commas. Example: background-image: url(img1.jpg), url(img2.jpg); The first image is on top. You can specify different repeat, position, and size for each.",
+      "difficulty": "easy",
+      "topic": "Background Image"
+    },
+    {
+      "id": 13,
+      "question": "What does <pre>background-repeat: repeat-x;</pre> do?",
+      "options": {
+        "A": "Repeats the image vertically only",
+        "B": "Repeats the image horizontally only",
+        "C": "Repeats the image in both directions",
+        "D": "Doesn't repeat the image"
+      },
+      "correct": "B",
+      "explanation": "background-repeat: repeat-x; tiles the background image horizontally (along the x-axis) only. Similarly, repeat-y tiles vertically. This is useful for horizontal or vertical patterns.",
+      "difficulty": "easy",
+      "topic": "Background Repeat"
+    },
+    {
+      "id": 14,
+      "question": "How do you position a background image at the top-right corner?",
+      "options": {
+        "A": "<pre>background-position: top right;</pre>",
+        "B": "<pre>background-position: right top;</pre>",
+        "C": "<pre>background-position: 100% 0;</pre>",
+        "D": "All of the above"
+      },
+      "correct": "D",
+      "explanation": "All three options position the background at the top-right. You can use keywords (top right or right top - order doesn't matter), or percentages (100% 0 = right top). Keywords are more readable.",
+      "difficulty": "easy",
+      "topic": "Background Position"
+    },
+    {
+      "id": 15,
+      "question": "What does <pre>background-size: contain;</pre> do?",
+      "options": {
+        "A": "Scales the image to cover the entire element",
+        "B": "Repeats the image to fill the element",
+        "C": "Keeps the image at original size",
+        "D": "Scales the image to fit entirely within the element, maintaining aspect ratio"
+      },
+      "correct": "D",
+      "explanation": "background-size: contain; scales the image to fit entirely within the element while maintaining its aspect ratio. This may leave empty space if the aspect ratios don't match, but ensures the full image is visible.",
+      "difficulty": "easy",
+      "topic": "Background Size"
+    },
+    {
+      "id": 16,
+      "question": "What is the default value of <pre>background-attachment</pre>?",
+      "options": {
+        "A": "fixed",
+        "B": "local",
+        "C": "scroll",
+        "D": "static"
+      },
+      "correct": "C",
+      "explanation": "The default background-attachment is 'scroll', which means the background scrolls with the element. 'fixed' keeps it fixed to the viewport, and 'local' scrolls with the element's content.",
+      "difficulty": "easy",
+      "topic": "Background Attachment"
+    },
+    {
+      "id": 17,
+      "question": "In the shorthand <pre>background: url(img.jpg) center/cover;</pre>, what does the slash represent?",
+      "options": {
+        "A": "It's a division operator",
+        "B": "It separates position from size",
+        "C": "It's optional decoration",
+        "D": "It separates image from repeat"
+      },
+      "correct": "B",
+      "explanation": "In background shorthand, the slash (/) separates background-position from background-size. The format is position/size. Example: center/cover means centered position with cover sizing.",
+      "difficulty": "easy",
+      "topic": "Background Shorthand"
+    },
+    {
+      "id": 18,
+      "question": "What happens to child elements when you set <pre>opacity: 0.5;</pre> on a parent?",
+      "options": {
+        "A": "Only the parent becomes semi-transparent",
+        "B": "Both parent and all children become semi-transparent",
+        "C": "Children remain fully opaque",
+        "D": "Only text becomes transparent"
+      },
+      "correct": "B",
+      "explanation": "opacity affects the entire element and all its children. If you want only the background transparent, use rgba() for background-color instead. opacity is inherited by all child content.",
+      "difficulty": "easy",
+      "topic": "Opacity Property"
+    },
+    {
+      "id": 19,
+      "question": "Which is a valid way to specify a white color?",
+      "options": {
+        "A": "<pre>white</pre>, <pre>#FFFFFF</pre>, <pre>rgb(255, 255, 255)</pre>",
+        "B": "Only <pre>white</pre>",
+        "C": "Only <pre>#FFFFFF</pre>",
+        "D": "Only <pre>rgb(255, 255, 255)</pre>"
+      },
+      "correct": "A",
+      "explanation": "White can be specified as a named color (white), hex (#FFFFFF or #FFF), RGB rgb(255, 255, 255), or RGBA rgba(255, 255, 255, 1). All methods are equally valid.",
+      "difficulty": "easy",
+      "topic": "Color Formats"
+    },
+    {
+      "id": 20,
+      "question": "Can <pre>background-color</pre> accept rgba values?",
+      "options": {
+        "A": "Only in modern browsers",
+        "B": "Yes, allowing transparent backgrounds",
+        "C": "No, only solid colors",
+        "D": "Only with background shorthand"
+      },
+      "correct": "B",
+      "explanation": "background-color accepts rgba values, allowing semi-transparent backgrounds. Example: background-color: rgba(0, 0, 0, 0.5); creates a 50% transparent black background. This only affects the background, not child elements.",
+      "difficulty": "easy",
+      "topic": "Background Color"
+    },
+    {
+      "id": 21,
+      "question": "What happens if the background image path in <pre>url()</pre> is incorrect?",
+      "options": {
+        "A": "An error message appears",
+        "B": "The page won't load",
+        "C": "The background remains transparent/shows background-color",
+        "D": "A placeholder image appears"
+      },
+      "correct": "C",
+      "explanation": "If the background image fails to load, CSS fails silently. The background will be transparent or show the background-color if specified. No error message is displayed, making debugging important.",
+      "difficulty": "easy",
+      "topic": "Background Image"
+    },
+    {
+      "id": 22,
+      "question": "What does <pre>background-repeat: repeat-y;</pre> do?",
+      "options": {
+        "A": "Repeats the image horizontally",
+        "B": "Repeats the image vertically",
+        "C": "Repeats the image in both directions",
+        "D": "Doesn't repeat the image"
+      },
+      "correct": "B",
+      "explanation": "background-repeat: repeat-y; tiles the background image vertically (along the y-axis) only. This is useful for vertical patterns or borders that extend down the page.",
+      "difficulty": "easy",
+      "topic": "Background Repeat"
+    },
+    {
+      "id": 23,
+      "question": "Can <pre>background-position</pre> use pixel values?",
+      "options": {
+        "A": "No, only keywords",
+        "B": "Yes, for precise positioning",
+        "C": "Only negative pixels",
+        "D": "Only in combination with percentages"
+      },
+      "correct": "B",
+      "explanation": "background-position accepts pixel values for precise control. Example: background-position: 20px 40px; positions the image 20px from left and 40px from top. You can mix units: 10px 50% or use negative values.",
+      "difficulty": "easy",
+      "topic": "Background Position"
+    },
+    {
+      "id": 24,
+      "question": "What does <pre>background-size: auto;</pre> do?",
+      "options": {
+        "A": "Scales the image to fill the element",
+        "B": "Makes the image responsive",
+        "C": "Displays the image at its intrinsic size",
+        "D": "Hides the image"
+      },
+      "correct": "C",
+      "explanation": "background-size: auto; (the default) displays the image at its original (intrinsic) size without scaling. You can also specify dimensions: background-size: 100px 200px; or background-size: 50%; for responsive sizing.",
+      "difficulty": "easy",
+      "topic": "Background Size"
+    },
+    {
+      "id": 25,
+      "question": "Which <pre>background-attachment</pre> value creates a parallax scrolling effect?",
+      "options": {
+        "A": "scroll",
+        "B": "local",
+        "C": "parallax",
+        "D": "fixed"
+      },
+      "correct": "D",
+      "explanation": "background-attachment: fixed; creates a parallax effect where the background image stays fixed in the viewport while content scrolls over it. This is commonly used for hero sections and modern web designs.",
+      "difficulty": "easy",
+      "topic": "Background Attachment"
+    },
+    {
+      "id": 26,
+      "question": "Can the <pre>background</pre> shorthand property set multiple properties at once?",
+      "options": {
+        "A": "No, each property must be set separately",
+        "B": "Yes, it can set color, image, repeat, position, size, and attachment",
+        "C": "Only in CSS3",
+        "D": "Only color and image"
+      },
+      "correct": "B",
+      "explanation": "The background shorthand can set all background properties: background: color image repeat attachment position/size; Example: background: white url(img.jpg) no-repeat fixed center/cover; This sets all six properties in one line.",
+      "difficulty": "easy",
+      "topic": "Background Shorthand"
+    },
+    {
+      "id": 27,
+      "question": "What is the difference between <pre>opacity: 0;</pre> and <pre>visibility: hidden;</pre>?",
+      "options": {
+        "A": "They are exactly the same",
+        "B": "opacity: 0 is invisible but still takes space; visibility: hidden also takes space but doesn't respond to events",
+        "C": "visibility: hidden makes it transparent",
+        "D": "opacity: 0 removes the element from layout"
+      },
+      "correct": "B",
+      "explanation": "Both keep the element in the layout taking space. opacity: 0 makes it invisible but still responds to events (clickable). visibility: hidden makes it invisible and unresponsive to events. display: none removes it from layout entirely.",
+      "difficulty": "easy",
+      "topic": "Opacity Property"
+    },
+    {
+      "id": 28,
+      "question": "In <pre>rgb(128, 128, 128)</pre>, what color is produced?",
+      "options": {
+        "A": "White",
+        "B": "Gray",
+        "C": "Red",
+        "D": "Black"
+      },
+      "correct": "B",
+      "explanation": "When all three RGB values are equal, you get a shade of gray. rgb(128, 128, 128) produces medium gray. rgb(0, 0, 0) is black, rgb(255, 255, 255) is white, and values in between create grays.",
+      "difficulty": "easy",
+      "topic": "Color Formats"
+    },
+    {
+      "id": 29,
+      "question": "What happens if you set both <pre>background-color</pre> and <pre>background-image</pre>?",
+      "options": {
+        "A": "Only the color shows",
+        "B": "The image appears on top of the color",
+        "C": "It creates an error",
+        "D": "Only the image shows"
+      },
+      "correct": "B",
+      "explanation": "When both are set, the image appears on top of the color. If the image has transparency or doesn't cover the entire area, the background-color shows through. This is useful as a fallback if the image fails to load.",
+      "difficulty": "easy",
+      "topic": "Background Color"
+    },
+    {
+      "id": 30,
+      "question": "Which property would you use to add a gradient background?",
+      "options": {
+        "A": "<pre>background-color</pre>",
+        "B": "<pre>background-image</pre>",
+        "C": "<pre>background-gradient</pre>",
+        "D": "<pre>gradient</pre>"
+      },
+      "correct": "B",
+      "explanation": "Gradients are set using background-image with gradient functions. Example: background-image: linear-gradient(to right, red, blue); or background-image: radial-gradient(circle, yellow, green); Gradients are treated as images, not colors.",
+      "difficulty": "easy",
+      "topic": "Background Image"
+    }
+  ]
+}
