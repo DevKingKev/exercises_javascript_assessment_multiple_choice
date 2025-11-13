@@ -1,58 +1,48 @@
 [
   {
-    "file": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/css/easy/assessment11.js",
+    "file": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/css/easy/assessment12.js",
     "applied": true,
-    "backup": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/css/easy/assessment11.js.bak.1763059475995",
+    "backup": "/var/home/kevin/vhosts/buildwithhtml5_assessment_platform/multiple_choice/assessments/css/easy/assessment12.js.bak.1763060767972",
     "actions": [
       {
-        "index": 2,
+        "index": 0,
         "from": "C",
         "to": "A"
       },
       {
-        "index": 4,
-        "from": "B",
-        "to": "C"
-      },
-      {
-        "index": 5,
-        "from": "C",
-        "to": "B"
-      },
-      {
-        "index": 6,
+        "index": 2,
         "from": "B",
         "to": "D"
       },
       {
-        "index": 7,
-        "from": "C",
-        "to": "B"
+        "index": 5,
+        "from": "A",
+        "to": "D"
       },
       {
         "index": 8,
-        "from": "B",
-        "to": "A"
+        "from": "D",
+        "to": "B"
       },
       {
         "index": 9,
         "from": "B",
-        "to": "C"
+        "to": "A"
       },
       {
-        "index": 11,
+        "index": 10,
         "from": "B",
         "to": "D"
       },
       {
-        "index": 12,
-        "from": "B",
-        "to": "A"
+        "index": 11,
+        "from": "C",
+        "to": "B"
       },
       {
         "index": 13,
         "from": "B",
-        "to": "D"
+        "to": "A"
       },
       {
         "index": 14,
@@ -60,49 +50,49 @@
         "to": "C"
       },
       {
-        "index": 15,
-        "from": "B",
-        "to": "C"
-      },
-      {
         "index": 16,
         "from": "B",
-        "to": "A"
+        "to": "D"
       },
       {
         "index": 17,
-        "from": "B",
+        "from": "C",
         "to": "D"
       },
       {
         "index": 18,
-        "from": "B",
-        "to": "A"
+        "from": "D",
+        "to": "C"
       },
       {
         "index": 19,
-        "from": "C",
-        "to": "D"
+        "from": "B",
+        "to": "A"
       },
       {
         "index": 20,
-        "from": "B",
-        "to": "A"
+        "from": "C",
+        "to": "D"
       },
       {
         "index": 22,
         "from": "B",
-        "to": "D"
+        "to": "C"
       },
       {
         "index": 23,
-        "from": "C",
-        "to": "B"
+        "from": "B",
+        "to": "A"
       },
       {
         "index": 24,
-        "from": "B",
+        "from": "A",
         "to": "C"
+      },
+      {
+        "index": 25,
+        "from": "D",
+        "to": "B"
       },
       {
         "index": 26,
@@ -112,17 +102,7 @@
       {
         "index": 27,
         "from": "B",
-        "to": "C"
-      },
-      {
-        "index": 28,
-        "from": "B",
         "to": "A"
-      },
-      {
-        "index": 29,
-        "from": "C",
-        "to": "D"
       }
     ]
   }
