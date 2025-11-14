@@ -22,16 +22,46 @@ module.exports = {
             "Named Grid Lines"
         ],
         "topicLinks": [
-            "Grid Template Areas",
-            "Grid Area Property",
-            "Grid Auto Flow",
-            "Grid Auto Rows and Columns",
-            "Justify Items",
-            "Align Content",
-            "Justify Self",
-            "Align Self",
-            "Grid Item Order",
-            "Named Grid Lines"
+            {
+                "topicName": "Grid Template Areas",
+                "refLink": "https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-areas"
+            },
+            {
+                "topicName": "Grid Area Property",
+                "refLink": "https://developer.mozilla.org/en-US/docs/Web/CSS/grid-area"
+            },
+            {
+                "topicName": "Grid Auto Flow",
+                "refLink": "https://developer.mozilla.org/en-US/docs/Web/CSS/grid-auto-flow"
+            },
+            {
+                "topicName": "Grid Auto Rows and Columns",
+                "refLink": "https://developer.mozilla.org/en-US/docs/Web/CSS/grid-auto-rows"
+            },
+            {
+                "topicName": "Justify Items",
+                "refLink": "https://developer.mozilla.org/en-US/docs/Web/CSS/justify-items"
+            },
+            {
+                "topicName": "Align Content",
+                "refLink": "https://developer.mozilla.org/en-US/docs/Web/CSS/align-content"
+            },
+            {
+                "topicName": "Justify Self",
+                "refLink": "https://developer.mozilla.org/en-US/docs/Web/CSS/justify-self"
+            },
+            {
+                "topicName": "Align Self",
+                "refLink": "https://developer.mozilla.org/en-US/docs/Web/CSS/align-self"
+            },
+            {
+                "topicName": "Grid Item Order",
+                "refLink": "https://developer.mozilla.org/en-US/docs/Web/CSS/order"
+            },
+            {
+                "topicName": "Named Grid Lines",
+                "refLink": "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout/Grid_layout_using_named_grid_lines"
+            }
         ],
         "keywords": [
             "grid-template-areas",
