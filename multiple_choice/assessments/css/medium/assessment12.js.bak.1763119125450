@@ -71,12 +71,12 @@ module.exports = {
       "id": 1,
       "question": "What creates a new stacking context?",
       "options": {
-        "A": "Only elements with z-index: 999",
+        "A": "Elements with position other than static and z-index other than auto, opacity < 1, transform, filter, and several other properties",
         "B": "Any element with a z-index value",
-        "C": "Elements with position other than static and z-index other than auto, opacity < 1, transform, filter, and several other properties",
+        "C": "Only elements with z-index: 999",
         "D": "All positioned elements"
       },
-      "correct": "C",
+      "correct": "A",
       "explanation": "Multiple properties create stacking contexts: positioned elements with z-index ≠ auto, elements with opacity < 1, transform, filter, will-change, contain: paint, and others. Understanding what creates stacking contexts is crucial for z-index behavior.",
       "topic": "Stacking Context"
     },
@@ -86,10 +86,10 @@ module.exports = {
       "options": {
         "A": "Yes, always",
         "B": "Only in flexbox",
-        "C": "No, z-index only works on positioned elements (relative, absolute, fixed, sticky)",
-        "D": "Only with negative values"
+        "C": "Only with negative values",
+        "D": "No, z-index only works on positioned elements (relative, absolute, fixed, sticky)"
       },
-      "correct": "C",
+      "correct": "D",
       "explanation": "Elements with <pre>position: static</pre> (the default) ignore <pre>z-index</pre>. You must use <pre>relative</pre>, <pre>absolute</pre>, <pre>fixed</pre>, or <pre>sticky</pre> positioning for z-index to have any effect. This is a common gotcha.",
       "topic": "z-index"
     },
@@ -99,10 +99,10 @@ module.exports = {
       "options": {
         "A": "Always sticks to viewport like fixed",
         "B": "Same as position: relative",
-        "C": "Makes element permanently visible",
-        "D": "Acts like relative positioning until scrolling reaches a threshold, then behaves like fixed within its container"
+        "C": "Acts like relative positioning until scrolling reaches a threshold, then behaves like fixed within its container",
+        "D": "Makes element permanently visible"
       },
-      "correct": "D",
+      "correct": "C",
       "explanation": "<pre>position: sticky</pre> is a hybrid: it behaves like <pre>relative</pre> until the element reaches a specified offset (e.g., <pre>top: 0</pre>) during scrolling, then it 'sticks' like <pre>fixed</pre> until its container scrolls out of view.",
       "topic": "position: sticky"
     },
@@ -110,12 +110,12 @@ module.exports = {
       "id": 4,
       "question": "What is required for <pre>position: sticky</pre> to work?",
       "options": {
-        "A": "At least one offset property (top, right, bottom, or left) must be specified",
-        "B": "Just position: sticky",
+        "A": "Just position: sticky",
+        "B": "At least one offset property (top, right, bottom, or left) must be specified",
         "C": "A z-index value",
         "D": "A fixed height"
       },
-      "correct": "A",
+      "correct": "B",
       "explanation": "Sticky positioning requires at least one threshold offset like <pre>top: 0</pre> or <pre>bottom: 20px</pre> to define when sticking should occur. Without an offset property, sticky behaves identically to relative positioning.",
       "topic": "position: sticky"
     },
@@ -123,12 +123,12 @@ module.exports = {
       "id": 5,
       "question": "What is the containing block for an absolutely positioned element?",
       "options": {
-        "A": "The nearest ancestor with position other than static (relative, absolute, fixed, sticky)",
+        "A": "Always the viewport",
         "B": "The parent element",
-        "C": "Always the viewport",
+        "C": "The nearest ancestor with position other than static (relative, absolute, fixed, sticky)",
         "D": "The body element"
       },
-      "correct": "A",
+      "correct": "C",
       "explanation": "Absolutely positioned elements are positioned relative to their nearest positioned ancestor (position ≠ static). If no positioned ancestor exists, it uses the initial containing block (viewport). This is why you often set <pre>position: relative</pre> on containers.",
       "topic": "Containing Block"
     },
@@ -136,12 +136,12 @@ module.exports = {
       "id": 6,
       "question": "What is the containing block for a fixed positioned element?",
       "options": {
-        "A": "The viewport (or the element with transform/perspective/filter property)",
-        "B": "The nearest positioned ancestor",
+        "A": "The nearest positioned ancestor",
+        "B": "The viewport (or the element with transform/perspective/filter property)",
         "C": "The parent element",
         "D": "The root element"
       },
-      "correct": "A",
+      "correct": "B",
       "explanation": "Fixed elements are normally positioned relative to the viewport. However, if an ancestor has <pre>transform</pre>, <pre>perspective</pre>, <pre>filter</pre>, or certain other properties, that ancestor becomes the containing block instead. This is a common gotcha.",
       "topic": "Containing Block"
     },
@@ -149,12 +149,12 @@ module.exports = {
       "id": 7,
       "question": "How do offset properties (<pre>top</pre>, <pre>left</pre>, etc.) work with <pre>position: relative</pre>?",
       "options": {
-        "A": "Offset element from its normal position in the document flow, leaving a gap",
-        "B": "Position element relative to parent",
+        "A": "Position element relative to parent",
+        "B": "Offset element from its normal position in the document flow, leaving a gap",
         "C": "Same as absolute positioning",
         "D": "No effect"
       },
-      "correct": "A",
+      "correct": "B",
       "explanation": "With <pre>position: relative</pre>, offset properties move the element from where it would normally be, but it still occupies its original space in the layout. <pre>top: 20px</pre> moves it 20px down from its normal position, leaving a gap.",
       "topic": "Offset Properties"
     },
@@ -188,12 +188,12 @@ module.exports = {
       "id": 10,
       "question": "How do you center an absolutely positioned element?",
       "options": {
-        "A": "It's impossible",
+        "A": "<pre>top: 50%; left: 50%; transform: translate(-50%, -50%);</pre> or <pre>inset: 0; margin: auto;</pre> with defined width/height",
         "B": "<pre>margin: auto;</pre> only",
         "C": "<pre>text-align: center;</pre>",
-        "D": "<pre>top: 50%; left: 50%; transform: translate(-50%, -50%);</pre> or <pre>inset: 0; margin: auto;</pre> with defined width/height"
+        "D": "It's impossible"
       },
-      "correct": "D",
+      "correct": "A",
       "explanation": "Two common methods: 1) <pre>top: 50%; left: 50%; transform: translate(-50%, -50%);</pre> (works without defined dimensions), or 2) <pre>top: 0; right: 0; bottom: 0; left: 0; margin: auto;</pre> (requires defined width/height).",
       "topic": "Centering Techniques"
     },
@@ -201,12 +201,12 @@ module.exports = {
       "id": 11,
       "question": "What does the <pre>inset</pre> property do?",
       "options": {
-        "A": "Creates indentation",
+        "A": "Shorthand for top, right, bottom, left offset properties",
         "B": "Sets padding",
-        "C": "Shorthand for top, right, bottom, left offset properties",
+        "C": "Creates indentation",
         "D": "Sets margins"
       },
-      "correct": "C",
+      "correct": "A",
       "explanation": "<pre>inset</pre> is shorthand for setting all four offset properties. <pre>inset: 10px;</pre> equals <pre>top: 10px; right: 10px; bottom: 10px; left: 10px;</pre>. You can also use 2, 3, or 4 values like margin/padding.",
       "topic": "inset Property"
     },
@@ -215,11 +215,11 @@ module.exports = {
       "question": "What does <pre>inset: 0;</pre> do on an absolutely positioned element?",
       "options": {
         "A": "Removes positioning",
-        "B": "Has no effect",
+        "B": "Stretches the element to fill its containing block (all edges at 0)",
         "C": "Centers the element",
-        "D": "Stretches the element to fill its containing block (all edges at 0)"
+        "D": "Has no effect"
       },
-      "correct": "D",
+      "correct": "B",
       "explanation": "<pre>inset: 0;</pre> sets all offsets to 0, stretching the element to fill its containing block's dimensions. Equivalent to <pre>top: 0; right: 0; bottom: 0; left: 0;</pre>. Combined with <pre>margin: auto;</pre>, it can center elements.",
       "topic": "inset Property"
     },
@@ -229,10 +229,10 @@ module.exports = {
       "options": {
         "A": "Yes, always",
         "B": "Only with z-index: 9999",
-        "C": "Only if parent has z-index: auto",
-        "D": "No, child elements cannot escape their parent's stacking context to appear above elements in a different context"
+        "C": "No, child elements cannot escape their parent's stacking context to appear above elements in a different context",
+        "D": "Only if parent has z-index: auto"
       },
-      "correct": "D",
+      "correct": "C",
       "explanation": "Children are confined to their parent's stacking context. If parent A has z-index: 1 and parent B has z-index: 2, no child of A can appear above B or B's children, regardless of the child's z-index value.",
       "topic": "Stacking Context"
     },
@@ -255,10 +255,10 @@ module.exports = {
       "options": {
         "A": "Browser doesn't support it",
         "B": "Needs JavaScript to activate",
-        "C": "Common issues: no offset property specified, parent has overflow hidden, sticky element is the only child of its container, or container height equals element height",
-        "D": "It always works"
+        "C": "It always works",
+        "D": "Common issues: no offset property specified, parent has overflow hidden, sticky element is the only child of its container, or container height equals element height"
       },
-      "correct": "C",
+      "correct": "D",
       "explanation": "Sticky positioning fails when: 1) no threshold offset is set, 2) ancestor has <pre>overflow: hidden/auto/scroll</pre>, 3) container doesn't have enough scroll space, or 4) element is as tall as its container. These are common gotchas.",
       "topic": "position: sticky"
     },
@@ -267,11 +267,11 @@ module.exports = {
       "question": "What does <pre>top: 50%</pre> mean on an absolutely positioned element?",
       "options": {
         "A": "Element moves 50% of its own height",
-        "B": "Element's top edge is positioned 50% down from the top of its containing block",
+        "B": "Element's center is at 50%",
         "C": "Element is centered",
-        "D": "Element's center is at 50%"
+        "D": "Element's top edge is positioned 50% down from the top of its containing block"
       },
-      "correct": "B",
+      "correct": "D",
       "explanation": "<pre>top: 50%</pre> positions the element's top edge at 50% of the containing block's height. To center, you need <pre>transform: translateY(-50%)</pre> to shift the element up by half its own height: <pre>top: 50%; transform: translateY(-50%);</pre>",
       "topic": "Offset Properties"
     },
@@ -292,12 +292,12 @@ module.exports = {
       "id": 18,
       "question": "What is a common mistake when using <pre>z-index</pre>?",
       "options": {
-        "A": "Using values over 100",
+        "A": "Forgetting that z-index only works on positioned elements and within stacking contexts",
         "B": "Using negative values",
-        "C": "Forgetting that z-index only works on positioned elements and within stacking contexts",
+        "C": "Using values over 100",
         "D": "Using decimal values"
       },
-      "correct": "C",
+      "correct": "A",
       "explanation": "Common mistakes: 1) applying z-index to static elements (doesn't work), 2) not understanding stacking contexts (why z-index: 9999 doesn't always win), 3) forgetting parent context hierarchy. Always ensure <pre>position ≠ static</pre> for z-index to work.",
       "topic": "z-index"
     },
@@ -306,11 +306,11 @@ module.exports = {
       "question": "What does <pre>position: absolute</pre> do to an element's display?",
       "options": {
         "A": "Changes display to block",
-        "B": "Removes element from document flow and can make it blockified (block-level box)",
+        "B": "No effect on display",
         "C": "Makes it invisible",
-        "D": "No effect on display"
+        "D": "Removes element from document flow and can make it blockified (block-level box)"
       },
-      "correct": "B",
+      "correct": "D",
       "explanation": "Absolutely positioned elements are removed from the normal document flow (don't affect other elements' layout) and become block-level boxes. Inline elements with <pre>position: absolute</pre> can have width/height set as if they were blocks.",
       "topic": "position: absolute"
     },
@@ -344,12 +344,12 @@ module.exports = {
       "id": 22,
       "question": "How does <pre>position: sticky</pre> interact with its container?",
       "options": {
-        "A": "Sticky element can only stick while its containing element is in view; it unsticks when container scrolls out",
+        "A": "Ignores container boundaries",
         "B": "Always sticks regardless of container",
-        "C": "Ignores container boundaries",
+        "C": "Sticky element can only stick while its containing element is in view; it unsticks when container scrolls out",
         "D": "Breaks out of container"
       },
-      "correct": "A",
+      "correct": "C",
       "explanation": "Sticky positioning is confined to its container. The element sticks while scrolling within its container's bounds, but when the container itself scrolls out of view, the sticky element goes with it. This is a key difference from fixed positioning.",
       "topic": "position: sticky"
     },
@@ -357,12 +357,12 @@ module.exports = {
       "id": 23,
       "question": "What's a gotcha with percentage values in offset properties?",
       "options": {
-        "A": "Percentages are relative to the containing block's dimensions, not the element's own dimensions",
+        "A": "They don't work",
         "B": "Always relative to viewport",
         "C": "Only work with absolute positioning",
-        "D": "They don't work"
+        "D": "Percentages are relative to the containing block's dimensions, not the element's own dimensions"
       },
-      "correct": "A",
+      "correct": "D",
       "explanation": "Percentage offsets like <pre>top: 50%</pre> are calculated relative to the containing block's height/width, not the element's own dimensions. This is why centering requires <pre>transform: translate(-50%, -50%)</pre> to account for the element's size.",
       "topic": "Offset Properties"
     },
@@ -372,10 +372,10 @@ module.exports = {
       "options": {
         "A": "Yes, always",
         "B": "Only on flex items",
-        "C": "Only with position: relative",
-        "D": "No, z-index must be an integer to create a stacking context (on positioned elements)"
+        "C": "No, z-index must be an integer to create a stacking context (on positioned elements)",
+        "D": "Only with position: relative"
       },
-      "correct": "D",
+      "correct": "C",
       "explanation": "On positioned elements, <pre>z-index: auto</pre> does NOT create a new stacking context, while any integer value (including 0) does. This is crucial: <pre>position: relative; z-index: auto;</pre> doesn't create context, but <pre>position: relative; z-index: 0;</pre> does.",
       "topic": "Stacking Context"
     },
@@ -384,11 +384,11 @@ module.exports = {
       "question": "What's the best way to ensure a modal appears above all content?",
       "options": {
         "A": "Use z-index: 999999",
-        "B": "Understand stacking contexts and place the modal outside deeply nested contexts, or use a high z-index within a top-level stacking context",
-        "C": "Use position: fixed only",
+        "B": "Use position: fixed only",
+        "C": "Understand stacking contexts and place the modal outside deeply nested contexts, or use a high z-index within a top-level stacking context",
         "D": "Use !important"
       },
-      "correct": "B",
+      "correct": "C",
       "explanation": "Rather than using arbitrarily high z-index values, understand stacking contexts. Place modals as direct children of body or a top-level stacking context. If a modal is buried in nested contexts, no z-index value can make it appear above elements in a higher context.",
       "topic": "Stacking Context"
     }
