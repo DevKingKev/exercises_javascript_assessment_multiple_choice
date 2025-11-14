@@ -1,389 +1,422 @@
 module.exports = {
-    metadata: {
-        title: "CSS Medium - Responsive Design and Media Queries",
-        description: "Intermediate assessment covering responsive design and media queries: @media syntax, media types (screen, print, all), media features (width, height, orientation), min-width/max-width breakpoints, mobile-first vs desktop-first approaches, breakpoint strategies, orientation, prefers-color-scheme, prefers-reduced-motion, and print stylesheets.",
-        difficulty: "medium",
-        domain: "css",
-        timeLimit: 45,
-        questionCount: 25,
-        assessmentId: 8,
-        assessmentUniqueId: 1763116563731,
-        testType: "multiple-choice",
-        topics: [
-            "Responsive Design",
-            "Media Queries",
-            "@media syntax",
-            "Media Types",
-            "Media Features",
-            "Breakpoints",
-            "Mobile-first Approach",
-            "Desktop-first Approach",
-            "Orientation",
-            "prefers-color-scheme",
-            "prefers-reduced-motion",
-            "Print Stylesheets"
-        ],
-        topicLinks: [
-            { "topicName": "Responsive Design", "refLink": "https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Responsive_Design" },
-            { "topicName": "Media Queries", "refLink": "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_media_queries/Using_media_queries" },
-            { "topicName": "@media syntax", "refLink": "https://developer.mozilla.org/en-US/docs/Web/CSS/@media" },
-            { "topicName": "Media Types", "refLink": "https://developer.mozilla.org/en-US/docs/Web/CSS/@media#media_types" },
-            { "topicName": "Media Features", "refLink": "https://developer.mozilla.org/en-US/docs/Web/CSS/@media#media_features" },
-            { "topicName": "Breakpoints", "refLink": "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_media_queries/Using_media_queries#defining_breakpoints" },
-            { "topicName": "Mobile-first Approach", "refLink": "https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Responsive/Mobile_first" },
-            { "topicName": "Orientation", "refLink": "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/orientation" },
-            { "topicName": "prefers-color-scheme", "refLink": "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme" },
-            { "topicName": "prefers-reduced-motion", "refLink": "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion" },
-            { "topicName": "Print Stylesheets", "refLink": "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_media_queries/Printing" }
-        ],
-        keywords: [
-            "responsive design",
-            "media query",
-            "@media",
-            "screen",
-            "print",
-            "all",
-            "width",
-            "height",
-            "min-width",
-            "max-width",
-            "breakpoint",
-            "mobile-first",
-            "desktop-first",
-            "orientation",
-            "portrait",
-            "landscape",
-            "prefers-color-scheme",
-            "dark mode",
-            "prefers-reduced-motion",
-            "accessibility"
-        ]
-    },
-    questions: [
-        {
-            id: 1,
-            question: "What is the basic syntax for a media query?",
-            options: {
-                A: "<pre>@media (condition) { /* styles */ }</pre>",
-                B: "<pre>@query media (condition) { /* styles */ }</pre>",
-                C: "<pre>media(condition) { /* styles */ }</pre>",
-                D: "<pre>#media (condition) { /* styles */ }</pre>"
-            },
-            correct: "A",
-            explanation: "Media queries use the <pre>@media</pre> at-rule followed by optional media type and/or conditions in parentheses. For example: <pre>@media screen and (min-width: 768px) { /* styles */ }</pre>. The styles inside apply only when the conditions are met.",
-            topic: "@media syntax"
-        },
-        {
-            id: 2,
-            question: "Which media type targets devices with screens?",
-            options: {
-                A: "<pre>screen</pre>",
-                B: "<pre>display</pre>",
-                C: "<pre>monitor</pre>",
-                D: "<pre>visual</pre>"
-            },
-            correct: "A",
-            explanation: "The <pre>screen</pre> media type targets devices with screens (computers, tablets, phones). Other media types include <pre>print</pre> for print preview/printing and <pre>all</pre> for all devices. Many older media types like <pre>tv</pre> and <pre>handheld</pre> are deprecated.",
-            topic: "Media Types"
-        },
-        {
-            id: 3,
-            question: "What does the <pre>all</pre> media type do?",
-            options: {
-                A: "Matches all elements",
-                B: "Matches all media types (default if not specified)",
-                C: "Selects all stylesheets",
-                D: "Applies all styles"
-            },
-            correct: "B",
-            explanation: "The <pre>all</pre> media type matches all devices regardless of type. It's the default when no media type is specified, so <pre>@media (min-width: 600px)</pre> is equivalent to <pre>@media all and (min-width: 600px)</pre>.",
-            topic: "Media Types"
-        },
-        {
-            id: 4,
-            question: "When would you use the <pre>print</pre> media type?",
-            options: {
-                A: "For printing text on screen",
-                B: "For styles that apply when the page is being printed or in print preview",
-                C: "For printer settings",
-                D: "For debugging"
-            },
-            correct: "B",
-            explanation: "The <pre>print</pre> media type applies styles specifically for printing or print preview mode. Common uses include hiding navigation, adjusting colors for better ink efficiency, and reformatting content for paper. Example: <pre>@media print { .no-print { display: none; } }</pre>",
-            topic: "Media Types"
-        },
-        {
-            id: 5,
-            question: "What does <pre>@media (min-width: 768px)</pre> mean?",
-            options: {
-                A: "Styles apply when viewport is exactly 768px",
-                B: "Styles apply when viewport is 768px or wider",
-                C: "Styles apply when viewport is less than 768px",
-                D: "Styles apply when minimum screen resolution is 768px"
-            },
-            correct: "B",
-            explanation: "<pre>min-width: 768px</pre> means the styles apply when the viewport width is 768px or greater. This is commonly used in mobile-first responsive design to add styles as the screen gets larger. The breakpoint is inclusive (768px matches).",
-            topic: "Media Features"
-        },
-        {
-            id: 6,
-            question: "What does <pre>@media (max-width: 767px)</pre> target?",
-            options: {
-                A: "Viewports wider than 767px",
-                B: "Viewports 767px or narrower",
-                C: "Maximum screen resolution",
-                D: "Maximum zoom level"
-            },
-            correct: "B",
-            explanation: "<pre>max-width: 767px</pre> applies styles when the viewport width is 767px or less. This is commonly used in desktop-first design to override styles for smaller screens. Often used with values like 767px to avoid overlap with min-width: 768px breakpoints.",
-            topic: "Media Features"
-        },
-        {
-            id: 7,
-            question: "In a mobile-first approach, which do you write first?",
-            options: {
-                A: "Desktop styles, then mobile overrides",
-                B: "Base styles for mobile, then min-width media queries for larger screens",
-                C: "Tablet styles",
-                D: "All breakpoints simultaneously"
-            },
-            correct: "B",
-            explanation: "Mobile-first means starting with base styles for small screens, then using <pre>min-width</pre> media queries to add or override styles as screen size increases. This approach is generally more efficient and aligns with progressive enhancement. Example: base mobile CSS, then <pre>@media (min-width: 768px)</pre>.",
-            topic: "Mobile-first Approach"
-        },
-        {
-            id: 8,
-            question: "In a desktop-first approach, which media query type do you primarily use?",
-            options: {
-                A: "<pre>min-width</pre>",
-                B: "<pre>max-width</pre>",
-                C: "<pre>width</pre>",
-                D: "<pre>orientation</pre>"
-            },
-            correct: "B",
-            explanation: "Desktop-first starts with styles for large screens, then uses <pre>max-width</pre> media queries to override or adapt styles for progressively smaller screens. While less common now, it was the traditional approach before mobile browsing became dominant.",
-            topic: "Desktop-first Approach"
-        },
-        {
-            id: 9,
-            question: "What's an advantage of the mobile-first approach?",
-            options: {
-                A: "Faster desktop performance",
-                B: "Simpler code that starts with the smallest use case and progressively enhances",
-                C: "Better for desktop users",
-                D: "No media queries needed"
-            },
-            correct: "B",
-            explanation: "Mobile-first encourages starting simple (mobile constraints force focus on essential content) and progressively adding complexity for larger screens. It often results in better performance on mobile devices since they don't download styles they'll override, and aligns with the reality that mobile traffic often exceeds desktop.",
-            topic: "Mobile-first Approach"
-        },
-        {
-            id: 10,
-            question: "What are common breakpoint values in responsive design?",
-            options: {
-                A: "100px, 200px, 300px",
-                B: "320px, 480px, 768px, 1024px, 1200px (approximately)",
-                C: "500px, 1000px, 1500px",
-                D: "Only 768px"
-            },
-            correct: "B",
-            explanation: "Common breakpoints roughly correspond to device categories: ~320px (small phones), ~480px (phones landscape), ~768px (tablets portrait), ~1024px (tablets landscape/small laptops), ~1200px+ (desktops). However, modern best practice is to add breakpoints based on content needs rather than specific devices.",
-            topic: "Breakpoints"
-        },
-        {
-            id: 11,
-            question: "Should breakpoints be based on specific devices or content needs?",
-            options: {
-                A: "Always based on specific devices like iPhone or iPad",
-                B: "Based on where the content naturally breaks or becomes difficult to read",
-                C: "Only one breakpoint is needed",
-                D: "Random values"
-            },
-            correct: "B",
-            explanation: "Modern responsive design recommends adding breakpoints where your content needs them, not targeting specific devices. Device sizes are constantly changing, so designing for content flexibility creates more resilient layouts. Test at various sizes and add breakpoints where layout or readability suffers.",
-            topic: "Breakpoints"
-        },
-        {
-            id: 12,
-            question: "How do you combine multiple media query conditions?",
-            options: {
-                A: "Using commas",
-                B: "Using <pre>and</pre> for AND logic, commas for OR logic",
-                C: "Using <pre>+</pre>",
-                D: "You cannot combine conditions"
-            },
-            correct: "B",
-            explanation: "Use <pre>and</pre> to require all conditions: <pre>@media screen and (min-width: 768px) and (max-width: 1024px)</pre>. Use commas for OR logic (either condition matches): <pre>@media (min-width: 768px), print</pre>. You can also use <pre>not</pre> and <pre>only</pre> keywords.",
-            topic: "@media syntax"
-        },
-        {
-            id: 13,
-            question: "What does <pre>@media (orientation: portrait)</pre> detect?",
-            options: {
-                A: "Portrait images",
-                B: "When viewport height is greater than or equal to width",
-                C: "Device rotation",
-                D: "Vertical scrolling"
-            },
-            correct: "B",
-            explanation: "The <pre>orientation: portrait</pre> media feature matches when the viewport height is greater than or equal to its width (taller than wide). <pre>orientation: landscape</pre> matches when width exceeds height. This is based on viewport dimensions, not device orientation sensors.",
-            topic: "Orientation"
-        },
-        {
-            id: 14,
-            question: "When does <pre>@media (orientation: landscape)</pre> apply?",
-            options: {
-                A: "When viewing landscape photos",
-                B: "When viewport width is greater than height",
-                C: "Only on mobile devices",
-                D: "When screen is horizontal"
-            },
-            correct: "B",
-            explanation: "<pre>orientation: landscape</pre> applies when the viewport width exceeds its height (wider than tall). This can occur on any device — a phone rotated horizontally, a tablet in landscape mode, or a typical desktop monitor. It's purely based on viewport aspect ratio.",
-            topic: "Orientation"
-        },
-        {
-            id: 15,
-            question: "What does <pre>@media (prefers-color-scheme: dark)</pre> detect?",
-            options: {
-                A: "Dark-colored screens",
-                B: "User's operating system or browser preference for dark mode",
-                C: "Night time",
-                D: "Low brightness"
-            },
-            correct: "B",
-            explanation: "<pre>prefers-color-scheme: dark</pre> detects when the user has enabled dark mode in their operating system or browser settings. This allows you to provide dark color schemes automatically: <pre>@media (prefers-color-scheme: dark) { body { background: #000; color: #fff; } }</pre>",
-            topic: "prefers-color-scheme"
-        },
-        {
-            id: 16,
-            question: "What are the valid values for <pre>prefers-color-scheme</pre>?",
-            options: {
-                A: "<pre>dark</pre> and <pre>light</pre> only",
-                B: "<pre>dark</pre>, <pre>light</pre>, and <pre>no-preference</pre>",
-                C: "<pre>auto</pre> and <pre>manual</pre>",
-                D: "Any color name"
-            },
-            correct: "B",
-            explanation: "The <pre>prefers-color-scheme</pre> media feature accepts <pre>light</pre>, <pre>dark</pre>, or <pre>no-preference</pre> (when user hasn't set a preference). Most implementations default to light when no preference is set, so you typically check for dark mode specifically.",
-            topic: "prefers-color-scheme"
-        },
-        {
-            id: 17,
-            question: "What does <pre>@media (prefers-reduced-motion: reduce)</pre> indicate?",
-            options: {
-                A: "Slow internet connection",
-                B: "User has requested reduced motion/animations for accessibility",
-                C: "Battery saver mode",
-                D: "Low-end device"
-            },
-            correct: "B",
-            explanation: "<pre>prefers-reduced-motion: reduce</pre> detects when users have enabled reduced motion settings (common for those with vestibular disorders or motion sensitivity). Respect this by minimizing or removing animations: <pre>@media (prefers-reduced-motion: reduce) { * { animation: none !important; } }</pre>",
-            topic: "prefers-reduced-motion"
-        },
-        {
-            id: 18,
-            question: "Why is <pre>prefers-reduced-motion</pre> important for accessibility?",
-            options: {
-                A: "It makes sites load faster",
-                B: "It helps users with motion sensitivity or vestibular disorders who may experience discomfort from animations",
-                C: "It's required by law",
-                D: "It saves battery"
-            },
-            correct: "B",
-            explanation: "Some users experience nausea, dizziness, or discomfort from motion and animations (vestibular disorders). Respecting <pre>prefers-reduced-motion: reduce</pre> is an important accessibility consideration. Reduce or eliminate animations, parallax effects, and auto-playing videos for these users.",
-            topic: "prefers-reduced-motion"
-        },
-        {
-            id: 19,
-            question: "What is a common practice in print stylesheets?",
-            options: {
-                A: "Adding more colors",
-                B: "Hiding navigation, ads, and non-essential content to save ink",
-                C: "Increasing animations",
-                D: "Adding background images"
-            },
-            correct: "B",
-            explanation: "Print stylesheets typically hide navigation menus, ads, footers, and other screen-only elements. They also often remove background colors/images (ink savings), adjust font sizes for readability on paper, and ensure links are visible with URLs printed. Example: <pre>@media print { nav, .ads { display: none; } }</pre>",
-            topic: "Print Stylesheets"
-        },
-        {
-            id: 20,
-            question: "How can you display link URLs in print stylesheets?",
-            options: {
-                A: "Links automatically show URLs",
-                B: "Using <pre>a[href]::after { content: ' (' attr(href) ')'; }</pre>",
-                C: "It's not possible",
-                D: "Using JavaScript"
-            },
-            correct: "B",
-            explanation: "A common print stylesheet technique is to show link URLs after the link text using generated content: <pre>@media print { a[href]::after { content: ' (' attr(href) ')'; } }</pre>. This ensures readers can see where links point when viewing printed pages.",
-            topic: "Print Stylesheets"
-        },
-        {
-            id: 21,
-            question: "What does <pre>@media (min-width: 768px) and (max-width: 1024px)</pre> target?",
-            options: {
-                A: "Viewports less than 768px",
-                B: "Viewports between 768px and 1024px inclusive",
-                C: "All viewports",
-                D: "Only tablets"
-            },
-            correct: "B",
-            explanation: "This targets viewports with width from 768px to 1024px (inclusive on both ends). The <pre>and</pre> requires both conditions to be true. This range-based approach is useful for targeting specific device categories, though content-based breakpoints are generally preferred.",
-            topic: "Media Features"
-        },
-        {
-            id: 22,
-            question: "Can you use media queries in a <pre><link></pre> tag?",
-            options: {
-                A: "No, only in CSS files",
-                B: "Yes, using the media attribute: <pre><link rel=\"stylesheet\" media=\"screen and (min-width: 768px)\" href=\"desktop.css\"></pre>",
-                C: "Only with JavaScript",
-                D: "Only for print stylesheets"
-            },
-            correct: "B",
-            explanation: "You can apply media queries to <pre><link></pre> elements using the <pre>media</pre> attribute. However, note that browsers download all stylesheets regardless of media queries; the media attribute only determines when they're applied. The <pre>@media</pre> rule inside CSS is generally preferred.",
-            topic: "@media syntax"
-        },
-        {
-            id: 23,
-            question: "What does <pre>@media (hover: hover)</pre> detect?",
-            options: {
-                A: "When user is hovering over an element",
-                B: "Whether the primary input mechanism can hover over elements (like a mouse)",
-                C: "Hover animations",
-                D: "Mouse speed"
-            },
-            correct: "B",
-            explanation: "<pre>hover: hover</pre> detects if the primary input device supports hovering (typically mouse or trackpad). Touch-only devices would match <pre>hover: none</pre>. This lets you provide hover effects only for devices that can use them: <pre>@media (hover: hover) { button:hover { background: blue; } }</pre>",
-            topic: "Media Features"
-        },
-        {
-            id: 24,
-            question: "What's the difference between <pre>width</pre> and <pre>device-width</pre> in media queries?",
-            options: {
-                A: "They are identical",
-                B: "<pre>width</pre> refers to viewport width; <pre>device-width</pre> is deprecated and referred to screen width",
-                C: "<pre>device-width</pre> is preferred",
-                D: "No difference on mobile"
-            },
-            correct: "B",
-            explanation: "<pre>width</pre> (and <pre>min-width</pre>/<pre>max-width</pre>) refers to the viewport width, which is what you should use. <pre>device-width</pre> referred to the actual screen width and is deprecated. Modern responsive design focuses on viewport, not device, dimensions.",
-            topic: "Media Features"
-        },
-        {
-            id: 25,
-            question: "Which approach generally results in less CSS code?",
-            options: {
-                A: "Desktop-first",
-                B: "Mobile-first",
-                C: "They produce equal code",
-                D: "Neither uses media queries"
-            },
-            correct: "B",
-            explanation: "Mobile-first often results in less CSS because you start with a simpler base (mobile constraints naturally reduce complexity) and progressively add features. Desktop-first typically requires more overrides at smaller sizes to undo complex layouts. However, the best approach depends on your specific project and audience.",
-            topic: "Mobile-first Approach"
-        }
+  "metadata": {
+    "title": "CSS Responsive Design and Media Queries",
+    "description": "Intermediate assessment covering responsive design and media queries: @media syntax, media types (screen, print, all), media features (width, height, orientation), min-width/max-width breakpoints, mobile-first vs desktop-first approaches, breakpoint strategies, orientation, prefers-color-scheme, prefers-reduced-motion, and print stylesheets.",
+    "difficulty": "medium",
+    "domain": "css",
+    "timeLimit": 45,
+    "questionCount": 25,
+    "assessmentId": 8,
+    "assessmentUniqueId": 1763116563731,
+    "testType": "multiple-choice",
+    "topics": [
+      "Responsive Design",
+      "Media Queries",
+      "@media syntax",
+      "Media Types",
+      "Media Features",
+      "Breakpoints",
+      "Mobile-first Approach",
+      "Desktop-first Approach",
+      "Orientation",
+      "prefers-color-scheme",
+      "prefers-reduced-motion",
+      "Print Stylesheets"
+    ],
+    "topicLinks": [
+      {
+        "topicName": "Responsive Design",
+        "refLink": "https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Responsive_Design"
+      },
+      {
+        "topicName": "Media Queries",
+        "refLink": "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_media_queries/Using_media_queries"
+      },
+      {
+        "topicName": "@media syntax",
+        "refLink": "https://developer.mozilla.org/en-US/docs/Web/CSS/@media"
+      },
+      {
+        "topicName": "Media Types",
+        "refLink": "https://developer.mozilla.org/en-US/docs/Web/CSS/@media#media_types"
+      },
+      {
+        "topicName": "Media Features",
+        "refLink": "https://developer.mozilla.org/en-US/docs/Web/CSS/@media#media_features"
+      },
+      {
+        "topicName": "Breakpoints",
+        "refLink": "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_media_queries/Using_media_queries#defining_breakpoints"
+      },
+      {
+        "topicName": "Mobile-first Approach",
+        "refLink": "https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Responsive/Mobile_first"
+      },
+      {
+        "topicName": "Orientation",
+        "refLink": "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/orientation"
+      },
+      {
+        "topicName": "prefers-color-scheme",
+        "refLink": "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme"
+      },
+      {
+        "topicName": "prefers-reduced-motion",
+        "refLink": "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion"
+      },
+      {
+        "topicName": "Print Stylesheets",
+        "refLink": "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_media_queries/Printing"
+      }
+    ],
+    "keywords": [
+      "responsive design",
+      "media query",
+      "@media",
+      "screen",
+      "print",
+      "all",
+      "width",
+      "height",
+      "min-width",
+      "max-width",
+      "breakpoint",
+      "mobile-first",
+      "desktop-first",
+      "orientation",
+      "portrait",
+      "landscape",
+      "prefers-color-scheme",
+      "dark mode",
+      "prefers-reduced-motion",
+      "accessibility"
     ]
-};
+  },
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is the basic syntax for a media query?",
+      "options": {
+        "A": "<pre>@media (condition) { /* styles */ }</pre>",
+        "B": "<pre>@query media (condition) { /* styles */ }</pre>",
+        "C": "<pre>media(condition) { /* styles */ }</pre>",
+        "D": "<pre>#media (condition) { /* styles */ }</pre>"
+      },
+      "correct": "A",
+      "explanation": "Media queries use the <pre>@media</pre> at-rule followed by optional media type and/or conditions in parentheses. For example: <pre>@media screen and (min-width: 768px) { /* styles */ }</pre>. The styles inside apply only when the conditions are met.",
+      "topic": "@media syntax"
+    },
+    {
+      "id": 2,
+      "question": "Which media type targets devices with screens?",
+      "options": {
+        "A": "<pre>display</pre>",
+        "B": "<pre>screen</pre>",
+        "C": "<pre>monitor</pre>",
+        "D": "<pre>visual</pre>"
+      },
+      "correct": "B",
+      "explanation": "The <pre>screen</pre> media type targets devices with screens (computers, tablets, phones). Other media types include <pre>print</pre> for print preview/printing and <pre>all</pre> for all devices. Many older media types like <pre>tv</pre> and <pre>handheld</pre> are deprecated.",
+      "topic": "Media Types"
+    },
+    {
+      "id": 3,
+      "question": "What does the <pre>all</pre> media type do?",
+      "options": {
+        "A": "Matches all elements",
+        "B": "Selects all stylesheets",
+        "C": "Matches all media types (default if not specified)",
+        "D": "Applies all styles"
+      },
+      "correct": "C",
+      "explanation": "The <pre>all</pre> media type matches all devices regardless of type. It's the default when no media type is specified, so <pre>@media (min-width: 600px)</pre> is equivalent to <pre>@media all and (min-width: 600px)</pre>.",
+      "topic": "Media Types"
+    },
+    {
+      "id": 4,
+      "question": "When would you use the <pre>print</pre> media type?",
+      "options": {
+        "A": "For printing text on screen",
+        "B": "For debugging",
+        "C": "For printer settings",
+        "D": "For styles that apply when the page is being printed or in print preview"
+      },
+      "correct": "D",
+      "explanation": "The <pre>print</pre> media type applies styles specifically for printing or print preview mode. Common uses include hiding navigation, adjusting colors for better ink efficiency, and reformatting content for paper. Example: <pre>@media print { .no-print { display: none; } }</pre>",
+      "topic": "Media Types"
+    },
+    {
+      "id": 5,
+      "question": "What does <pre>@media (min-width: 768px)</pre> mean?",
+      "options": {
+        "A": "Styles apply when viewport is 768px or wider",
+        "B": "Styles apply when viewport is exactly 768px",
+        "C": "Styles apply when viewport is less than 768px",
+        "D": "Styles apply when minimum screen resolution is 768px"
+      },
+      "correct": "A",
+      "explanation": "<pre>min-width: 768px</pre> means the styles apply when the viewport width is 768px or greater. This is commonly used in mobile-first responsive design to add styles as the screen gets larger. The breakpoint is inclusive (768px matches).",
+      "topic": "Media Features"
+    },
+    {
+      "id": 6,
+      "question": "What does <pre>@media (max-width: 767px)</pre> target?",
+      "options": {
+        "A": "Viewports wider than 767px",
+        "B": "Viewports 767px or narrower",
+        "C": "Maximum screen resolution",
+        "D": "Maximum zoom level"
+      },
+      "correct": "B",
+      "explanation": "<pre>max-width: 767px</pre> applies styles when the viewport width is 767px or less. This is commonly used in desktop-first design to override styles for smaller screens. Often used with values like 767px to avoid overlap with min-width: 768px breakpoints.",
+      "topic": "Media Features"
+    },
+    {
+      "id": 7,
+      "question": "In a mobile-first approach, which do you write first?",
+      "options": {
+        "A": "Base styles for mobile, then min-width media queries for larger screens",
+        "B": "Desktop styles, then mobile overrides",
+        "C": "Tablet styles",
+        "D": "All breakpoints simultaneously"
+      },
+      "correct": "A",
+      "explanation": "Mobile-first means starting with base styles for small screens, then using <pre>min-width</pre> media queries to add or override styles as screen size increases. This approach is generally more efficient and aligns with progressive enhancement. Example: base mobile CSS, then <pre>@media (min-width: 768px)</pre>.",
+      "topic": "Mobile-first Approach"
+    },
+    {
+      "id": 8,
+      "question": "In a desktop-first approach, which media query type do you primarily use?",
+      "options": {
+        "A": "<pre>min-width</pre>",
+        "B": "<pre>width</pre>",
+        "C": "<pre>max-width</pre>",
+        "D": "<pre>orientation</pre>"
+      },
+      "correct": "C",
+      "explanation": "Desktop-first starts with styles for large screens, then uses <pre>max-width</pre> media queries to override or adapt styles for progressively smaller screens. While less common now, it was the traditional approach before mobile browsing became dominant.",
+      "topic": "Desktop-first Approach"
+    },
+    {
+      "id": 9,
+      "question": "What's an advantage of the mobile-first approach?",
+      "options": {
+        "A": "Faster desktop performance",
+        "B": "No media queries needed",
+        "C": "Better for desktop users",
+        "D": "Simpler code that starts with the smallest use case and progressively enhances"
+      },
+      "correct": "D",
+      "explanation": "Mobile-first encourages starting simple (mobile constraints force focus on essential content) and progressively adding complexity for larger screens. It often results in better performance on mobile devices since they don't download styles they'll override, and aligns with the reality that mobile traffic often exceeds desktop.",
+      "topic": "Mobile-first Approach"
+    },
+    {
+      "id": 10,
+      "question": "What are common breakpoint values in responsive design?",
+      "options": {
+        "A": "100px, 200px, 300px",
+        "B": "320px, 480px, 768px, 1024px, 1200px (approximately)",
+        "C": "500px, 1000px, 1500px",
+        "D": "Only 768px"
+      },
+      "correct": "B",
+      "explanation": "Common breakpoints roughly correspond to device categories: ~320px (small phones), ~480px (phones landscape), ~768px (tablets portrait), ~1024px (tablets landscape/small laptops), ~1200px+ (desktops). However, modern best practice is to add breakpoints based on content needs rather than specific devices.",
+      "topic": "Breakpoints"
+    },
+    {
+      "id": 11,
+      "question": "Should breakpoints be based on specific devices or content needs?",
+      "options": {
+        "A": "Always based on specific devices like iPhone or iPad",
+        "B": "Based on where the content naturally breaks or becomes difficult to read",
+        "C": "Only one breakpoint is needed",
+        "D": "Random values"
+      },
+      "correct": "B",
+      "explanation": "Modern responsive design recommends adding breakpoints where your content needs them, not targeting specific devices. Device sizes are constantly changing, so designing for content flexibility creates more resilient layouts. Test at various sizes and add breakpoints where layout or readability suffers.",
+      "topic": "Breakpoints"
+    },
+    {
+      "id": 12,
+      "question": "How do you combine multiple media query conditions?",
+      "options": {
+        "A": "Using <pre>and</pre> for AND logic, commas for OR logic",
+        "B": "Using commas",
+        "C": "Using <pre>+</pre>",
+        "D": "You cannot combine conditions"
+      },
+      "correct": "A",
+      "explanation": "Use <pre>and</pre> to require all conditions: <pre>@media screen and (min-width: 768px) and (max-width: 1024px)</pre>. Use commas for OR logic (either condition matches): <pre>@media (min-width: 768px), print</pre>. You can also use <pre>not</pre> and <pre>only</pre> keywords.",
+      "topic": "@media syntax"
+    },
+    {
+      "id": 13,
+      "question": "What does <pre>@media (orientation: portrait)</pre> detect?",
+      "options": {
+        "A": "When viewport height is greater than or equal to width",
+        "B": "Portrait images",
+        "C": "Device rotation",
+        "D": "Vertical scrolling"
+      },
+      "correct": "A",
+      "explanation": "The <pre>orientation: portrait</pre> media feature matches when the viewport height is greater than or equal to its width (taller than wide). <pre>orientation: landscape</pre> matches when width exceeds height. This is based on viewport dimensions, not device orientation sensors.",
+      "topic": "Orientation"
+    },
+    {
+      "id": 14,
+      "question": "When does <pre>@media (orientation: landscape)</pre> apply?",
+      "options": {
+        "A": "When viewing landscape photos",
+        "B": "When viewport width is greater than height",
+        "C": "Only on mobile devices",
+        "D": "When screen is horizontal"
+      },
+      "correct": "B",
+      "explanation": "<pre>orientation: landscape</pre> applies when the viewport width exceeds its height (wider than tall). This can occur on any device — a phone rotated horizontally, a tablet in landscape mode, or a typical desktop monitor. It's purely based on viewport aspect ratio.",
+      "topic": "Orientation"
+    },
+    {
+      "id": 15,
+      "question": "What does <pre>@media (prefers-color-scheme: dark)</pre> detect?",
+      "options": {
+        "A": "Dark-colored screens",
+        "B": "Night time",
+        "C": "User's operating system or browser preference for dark mode",
+        "D": "Low brightness"
+      },
+      "correct": "C",
+      "explanation": "<pre>prefers-color-scheme: dark</pre> detects when the user has enabled dark mode in their operating system or browser settings. This allows you to provide dark color schemes automatically: <pre>@media (prefers-color-scheme: dark) { body { background: #000; color: #fff; } }</pre>",
+      "topic": "prefers-color-scheme"
+    },
+    {
+      "id": 16,
+      "question": "What are the valid values for <pre>prefers-color-scheme</pre>?",
+      "options": {
+        "A": "<pre>dark</pre> and <pre>light</pre> only",
+        "B": "<pre>auto</pre> and <pre>manual</pre>",
+        "C": "<pre>dark</pre>, <pre>light</pre>, and <pre>no-preference</pre>",
+        "D": "Any color name"
+      },
+      "correct": "C",
+      "explanation": "The <pre>prefers-color-scheme</pre> media feature accepts <pre>light</pre>, <pre>dark</pre>, or <pre>no-preference</pre> (when user hasn't set a preference). Most implementations default to light when no preference is set, so you typically check for dark mode specifically.",
+      "topic": "prefers-color-scheme"
+    },
+    {
+      "id": 17,
+      "question": "What does <pre>@media (prefers-reduced-motion: reduce)</pre> indicate?",
+      "options": {
+        "A": "Slow internet connection",
+        "B": "Low-end device",
+        "C": "Battery saver mode",
+        "D": "User has requested reduced motion/animations for accessibility"
+      },
+      "correct": "D",
+      "explanation": "<pre>prefers-reduced-motion: reduce</pre> detects when users have enabled reduced motion settings (common for those with vestibular disorders or motion sensitivity). Respect this by minimizing or removing animations: <pre>@media (prefers-reduced-motion: reduce) { * { animation: none !important; } }</pre>",
+      "topic": "prefers-reduced-motion"
+    },
+    {
+      "id": 18,
+      "question": "Why is <pre>prefers-reduced-motion</pre> important for accessibility?",
+      "options": {
+        "A": "It makes sites load faster",
+        "B": "It saves battery",
+        "C": "It's required by law",
+        "D": "It helps users with motion sensitivity or vestibular disorders who may experience discomfort from animations"
+      },
+      "correct": "D",
+      "explanation": "Some users experience nausea, dizziness, or discomfort from motion and animations (vestibular disorders). Respecting <pre>prefers-reduced-motion: reduce</pre> is an important accessibility consideration. Reduce or eliminate animations, parallax effects, and auto-playing videos for these users.",
+      "topic": "prefers-reduced-motion"
+    },
+    {
+      "id": 19,
+      "question": "What is a common practice in print stylesheets?",
+      "options": {
+        "A": "Adding more colors",
+        "B": "Adding background images",
+        "C": "Increasing animations",
+        "D": "Hiding navigation, ads, and non-essential content to save ink"
+      },
+      "correct": "D",
+      "explanation": "Print stylesheets typically hide navigation menus, ads, footers, and other screen-only elements. They also often remove background colors/images (ink savings), adjust font sizes for readability on paper, and ensure links are visible with URLs printed. Example: <pre>@media print { nav, .ads { display: none; } }</pre>",
+      "topic": "Print Stylesheets"
+    },
+    {
+      "id": 20,
+      "question": "How can you display link URLs in print stylesheets?",
+      "options": {
+        "A": "Links automatically show URLs",
+        "B": "Using JavaScript",
+        "C": "It's not possible",
+        "D": "Using <pre>a[href]::after { content: ' (' attr(href) ')'; }</pre>"
+      },
+      "correct": "D",
+      "explanation": "A common print stylesheet technique is to show link URLs after the link text using generated content: <pre>@media print { a[href]::after { content: ' (' attr(href) ')'; } }</pre>. This ensures readers can see where links point when viewing printed pages.",
+      "topic": "Print Stylesheets"
+    },
+    {
+      "id": 21,
+      "question": "What does <pre>@media (min-width: 768px) and (max-width: 1024px)</pre> target?",
+      "options": {
+        "A": "Viewports less than 768px",
+        "B": "Viewports between 768px and 1024px inclusive",
+        "C": "All viewports",
+        "D": "Only tablets"
+      },
+      "correct": "B",
+      "explanation": "This targets viewports with width from 768px to 1024px (inclusive on both ends). The <pre>and</pre> requires both conditions to be true. This range-based approach is useful for targeting specific device categories, though content-based breakpoints are generally preferred.",
+      "topic": "Media Features"
+    },
+    {
+      "id": 22,
+      "question": "Can you use media queries in a <pre><link></pre> tag?",
+      "options": {
+        "A": "No, only in CSS files",
+        "B": "Only with JavaScript",
+        "C": "Yes, using the media attribute: <pre><link rel=\"stylesheet\" media=\"screen and (min-width: 768px)\" href=\"desktop.css\"></pre>",
+        "D": "Only for print stylesheets"
+      },
+      "correct": "C",
+      "explanation": "You can apply media queries to <pre><link></pre> elements using the <pre>media</pre> attribute. However, note that browsers download all stylesheets regardless of media queries; the media attribute only determines when they're applied. The <pre>@media</pre> rule inside CSS is generally preferred.",
+      "topic": "@media syntax"
+    },
+    {
+      "id": 23,
+      "question": "What does <pre>@media (hover: hover)</pre> detect?",
+      "options": {
+        "A": "Whether the primary input mechanism can hover over elements (like a mouse)",
+        "B": "When user is hovering over an element",
+        "C": "Hover animations",
+        "D": "Mouse speed"
+      },
+      "correct": "A",
+      "explanation": "<pre>hover: hover</pre> detects if the primary input device supports hovering (typically mouse or trackpad). Touch-only devices would match <pre>hover: none</pre>. This lets you provide hover effects only for devices that can use them: <pre>@media (hover: hover) { button:hover { background: blue; } }</pre>",
+      "topic": "Media Features"
+    },
+    {
+      "id": 24,
+      "question": "What's the difference between <pre>width</pre> and <pre>device-width</pre> in media queries?",
+      "options": {
+        "A": "They are identical",
+        "B": "<pre>width</pre> refers to viewport width; <pre>device-width</pre> is deprecated and referred to screen width",
+        "C": "<pre>device-width</pre> is preferred",
+        "D": "No difference on mobile"
+      },
+      "correct": "B",
+      "explanation": "<pre>width</pre> (and <pre>min-width</pre>/<pre>max-width</pre>) refers to the viewport width, which is what you should use. <pre>device-width</pre> referred to the actual screen width and is deprecated. Modern responsive design focuses on viewport, not device, dimensions.",
+      "topic": "Media Features"
+    },
+    {
+      "id": 25,
+      "question": "Which approach generally results in less CSS code?",
+      "options": {
+        "A": "Desktop-first",
+        "B": "They produce equal code",
+        "C": "Mobile-first",
+        "D": "Neither uses media queries"
+      },
+      "correct": "C",
+      "explanation": "Mobile-first often results in less CSS because you start with a simpler base (mobile constraints naturally reduce complexity) and progressively add features. Desktop-first typically requires more overrides at smaller sizes to undo complex layouts. However, the best approach depends on your specific project and audience.",
+      "topic": "Mobile-first Approach"
+    }
+  ]
+}
