@@ -1,14 +1,14 @@
 [
   {
-    "file": "multiple_choice/assessments/css/easy/assessment20.js",
-    "total": 30,
+    "file": "multiple_choice/assessments/css/medium/assessment4.js",
+    "total": 25,
     "counts": {
-      "A": 2,
-      "B": 26,
-      "C": 2,
-      "D": 0
+      "A": 5,
+      "B": 13,
+      "C": 6,
+      "D": 1
     },
-    "skew": 0.8666666666666667,
+    "skew": 0.52,
     "questionNotes": [
       {
         "index": 0,
@@ -108,26 +108,6 @@
       },
       {
         "index": 24,
-        "notes": []
-      },
-      {
-        "index": 25,
-        "notes": []
-      },
-      {
-        "index": 26,
-        "notes": []
-      },
-      {
-        "index": 27,
-        "notes": []
-      },
-      {
-        "index": 28,
-        "notes": []
-      },
-      {
-        "index": 29,
         "notes": []
       }
     ]

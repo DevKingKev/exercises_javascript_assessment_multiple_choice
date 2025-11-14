@@ -62,7 +62,7 @@ module.exports = {
                 D: "<pre>[src=\"png\"]</pre>"
             },
             correct: "C",
-            explanation: "The <pre>$=</pre> operator matches attribute values that end with the specified string. So <pre>[src$=\"png\"]</pre> matches <pre>&lt;img src=\"image.png\"&gt;</pre>. The <pre>^=</pre> operator matches "starts with", <pre>*=</pre> matches "contains", and <pre>=</pre> matches exact value.",
+            explanation: "The <pre>$=</pre> operator matches attribute values that end with the specified string. So <pre>[src$=\"png\"]</pre> matches <pre><img src=\"image.png\"></pre>. The <pre>^=</pre> operator matches 'starts with', <pre>*=</pre> matches 'contains', and <pre>=</pre> matches exact value.",
             topic: "Attribute Selectors"
         },
         {
@@ -75,7 +75,7 @@ module.exports = {
                 D: "<pre>ul ~ li</pre>"
             },
             correct: "B",
-            explanation: "The child combinator <pre>></pre> selects direct children only. <pre>ul > li</pre> will match <pre>&lt;li&gt;</pre> elements that are immediate children of <pre>&lt;ul&gt;</pre>. The descendant selector (space) matches any descendant. The adjacent <pre>+</pre> and general sibling <pre>~</pre> select siblings, not children.",
+            explanation: "The child combinator <pre>></pre> selects direct children only. <pre>ul > li</pre> will match <pre><li></pre> elements that are immediate children of <pre><ul></pre>. The descendant selector (space) matches any descendant. The adjacent <pre>+</pre> and general sibling <pre>~</pre> select siblings, not children.",
             topic: "Child Selector"
         },
         {
